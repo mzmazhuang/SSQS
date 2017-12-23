@@ -28,8 +28,7 @@ import com.dading.ssqs.apis.elements.FocusUserElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.GeneralUserBean;
 import com.dading.ssqs.bean.MyFollowBean;
-import com.dading.ssqs.bean.RankingBean2;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -178,7 +177,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
                                         processDataPop(bean);
                                     }
                                 } else {
-                                    LogUtil.util(TAG, result.getMessage() + "红人明星中獎失败信息");
+                                    Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                                 }
                             }
                         });
@@ -208,7 +207,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
                                 holder.mMyFollowFollowTag.setChecked(false);
                                 data.remove(entity);
                                 MyFollowListAdapter.this.notifyDataSetChanged();
-                                LogUtil.util(TAG, "更新数据------------------------------:");
+                                Logger.d(TAG, "更新数据------------------------------:");
 
                             } else {
                                 if (403 == result.getErrno()) {
@@ -324,7 +323,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    LogUtil.util(TAG, result.getMessage());
+                                    Logger.d(TAG, result.getMessage());
                                     if (data.isFriend == 0) {
                                         data.isFriend = 0;
                                         mFollow.setChecked(false);
@@ -343,7 +342,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 mPop.dismiss();
-                LogUtil.util(TAG, "pop消失------------------------------:");
+                Logger.d(TAG, "pop消失------------------------------:");
             }
         });
         mClose.setOnClickListener(new View.OnClickListener() {

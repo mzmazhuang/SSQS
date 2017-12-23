@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.StoreBean2;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -78,7 +78,7 @@ public class MyGvAdpter extends BaseAdapter {
             if (position == 0) {
                 hoder.mTextTurnTable.setText(entity.name);
             }
-            LogUtil.util(TAG, "商品名4千------------------------------:" + entity.name + position);
+            Logger.d(TAG, "商品名4千------------------------------:" + entity.name + position);
         } else if (position == 4) {
             hoder.mLyTurnTable.setBackgroundResource(R.mipmap.sm_lottery);
         } else {
@@ -86,7 +86,7 @@ public class MyGvAdpter extends BaseAdapter {
 
             SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mImageTurnTable);
 
-            LogUtil.util(TAG, "商品名4后------------------------------:" + entity.name + position);
+            Logger.d(TAG, "商品名4后------------------------------:" + entity.name + position);
             hoder.mTextTurnTable.setText(entity.name);
         }
         return convertView;

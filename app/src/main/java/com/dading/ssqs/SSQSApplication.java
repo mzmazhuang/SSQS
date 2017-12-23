@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.utils.AppException;
 import com.dading.ssqs.utils.Constants;
 import com.dading.ssqs.utils.DeviceIDUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.SpUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -84,7 +84,7 @@ public class SSQSApplication extends MultiDexApplication {
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
         String registrationID = JPushInterface.getRegistrationID(this);//极光推送的注册标识
-        LogUtil.util(TAG, "返回数据是------------------------------:" + registrationID);
+        Logger.d(TAG, "返回数据是------------------------------:" + registrationID);
 
         LeakCanary.install(this);
         // 主线程
@@ -132,7 +132,7 @@ public class SSQSApplication extends MultiDexApplication {
             appVersion = String.valueOf(pInfo.versionCode);
             systemVersion = "Android " + Build.VERSION.SDK_INT;
         } catch (Exception e) {
-            LogUtil.e("Application", e);
+            Logger.e("Application", e);
         }
         return "imei=" + imei + "&model=" + deviceModel + "&language=" + langCode + "&version=" + appVersion + "&os=" + systemVersion;
     }

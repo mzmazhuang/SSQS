@@ -21,7 +21,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.FouceArticleCategoryElement;
 import com.dading.ssqs.bean.AllCircleRBean;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
@@ -167,7 +167,7 @@ public class MyAllCircleAdapter extends BaseAdapter implements ListAdapter {
                     Intent intent = new Intent(context, MatchTypeInfoActivity.class);
                     intent.putExtra(Constent.ALL_CIRCLE_TYPE, dataEntity.toString());
                     intent.putExtra(Constent.ALL_CIRCLE_TYPE_TAG, Constent.ALL_CIRCLE2_COME);
-                    LogUtil.util(TAG, "推荐圈子我被执行了------------------------------:");
+                    Logger.d(TAG, "推荐圈子我被执行了------------------------------:");
                     context.startActivity(intent);
 
                 }

@@ -14,7 +14,7 @@ import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.ALLCircleThings;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.view.GlideCircleTransform;
 
 import java.util.List;
@@ -127,7 +127,7 @@ public class MyPostAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = topicsEntity.id;
                 intent.putExtra("infoId", mId);
-                LogUtil.util(TAG, "赛事id---------------------" + topicsEntity.id);
+                Logger.d(TAG, "赛事id---------------------" + topicsEntity.id);
                 context.startActivity(intent);
             }
         });

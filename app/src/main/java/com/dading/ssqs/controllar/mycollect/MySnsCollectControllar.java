@@ -11,7 +11,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.SNSCollectBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 
 import java.util.List;
@@ -95,7 +95,7 @@ public class MySnsCollectControllar extends BaseFragnment {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "社區收藏失败信息");
+                    Logger.d(TAG, result.getMessage() + "社區收藏失败信息");
                 }
             }
         });
@@ -155,7 +155,7 @@ public class MySnsCollectControllar extends BaseFragnment {
                             }
                         }
                     } else {
-                        LogUtil.util(TAG, result.getMessage() + "社區收藏失败信息");
+                        Logger.d(TAG, result.getMessage() + "社區收藏失败信息");
                     }
                 }
             });

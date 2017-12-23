@@ -60,11 +60,11 @@ public class AndroidUtilities {
                     size.set((Integer) mGetRawW.invoke(windowManager.getDefaultDisplay()), (Integer) mGetRawH.invoke(windowManager.getDefaultDisplay()));
                 } catch (Exception e) {
                     size.set(windowManager.getDefaultDisplay().getWidth(), windowManager.getDefaultDisplay().getHeight());
-                    LogUtil.e(TAG, e + "");
+                    Logger.e(TAG, e + "");
                 }
             }
         } catch (Exception e) {
-            LogUtil.e(TAG, e + "");
+            Logger.e(TAG, e + "");
         }
         screenSize = size;
         return screenSize;
@@ -80,11 +80,11 @@ public class AndroidUtilities {
                 if (display != null) {
                     display.getMetrics(displayMetrics);
                     display.getSize(displaySize);
-                    LogUtil.util(TAG, "display size = " + displaySize.x + " " + displaySize.y + " " + displayMetrics.xdpi + "x" + displayMetrics.ydpi);
+                    Logger.d(TAG, "display size = " + displaySize.x + " " + displaySize.y + " " + displayMetrics.xdpi + "x" + displayMetrics.ydpi);
                 }
             }
         } catch (Exception e) {
-            LogUtil.e(TAG, e + "");
+            Logger.e(TAG, e + "");
         }
     }
 

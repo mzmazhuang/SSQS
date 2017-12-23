@@ -12,7 +12,7 @@ import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.activity.MatchInfoActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.JPUSHBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -40,12 +40,12 @@ public class MyRecevice extends BroadcastReceiver {
         //注意是消息的推送广播不是同志notice
         Intent intentInfo = null;
         if (intent.getAction( ).equals(JPushInterface.ACTION_MESSAGE_RECEIVED)) {
-            LogUtil.util(TAG, "受到自定义消息------------------------------:");
+            Logger.d(TAG, "受到自定义消息------------------------------:");
             //自定义的推送
             Bundle bundle = intent.getExtras( );
             String title = bundle.getString(JPushInterface.EXTRA_TITLE);
             String msg = bundle.getString(JPushInterface.EXTRA_MESSAGE);
-            LogUtil.util(TAG, "返回数据是------------------------------:" + "消息的标题:" + title + " 内容:" + msg);
+            Logger.d(TAG, "返回数据是------------------------------:" + "消息的标题:" + title + " 内容:" + msg);
         } else if (intent.getAction( ).equals(JPushInterface.ACTION_NOTIFICATION_RECEIVED)) {
             Bundle extras = intent.getExtras( );
             if (extras != null) {
@@ -54,7 +54,7 @@ public class MyRecevice extends BroadcastReceiver {
                 mNoticTtle = extras.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
                 mNoticTtle1 = extras.getString(JPushInterface.EXTRA_NOTIFICATION_ID);
                 mNoticTtle2 = extras.getString(JPushInterface.EXTRA_NOTIFICATION_DEVELOPER_ARG0);
-                LogUtil.util(TAG, "返回数据是------------------------------:" + "通知的标题:" + mTitle + " 内容:" + mMsg + "附加" + mExEX + "通知标题" + mNoticTtle +
+                Logger.d(TAG, "返回数据是------------------------------:" + "通知的标题:" + mTitle + " 内容:" + mMsg + "附加" + mExEX + "通知标题" + mNoticTtle +
                         "---" + mNoticTtle1 + "---" + mNoticTtle2);
             }
         } else if (intent.getAction( ).equals(JPushInterface.ACTION_NOTIFICATION_OPENED)) {
@@ -82,7 +82,7 @@ public class MyRecevice extends BroadcastReceiver {
                 }
             }
             boolean b = context instanceof Activity;
-            LogUtil.util(TAG, "返回数据是------------------------------:" + "跳转的标题:" + mTitle + " 内容:" + mMsg + "附加" + mExEX + "通知标题" + mNoticTtle +
+            Logger.d(TAG, "返回数据是------------------------------:" + "跳转的标题:" + mTitle + " 内容:" + mMsg + "附加" + mExEX + "通知标题" + mNoticTtle +
                     "---" + mNoticTtle1 + "---" + mNoticTtle2 + "intentInfo instance of Activity----" + b);
         }
     }

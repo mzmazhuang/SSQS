@@ -24,7 +24,7 @@ import com.dading.ssqs.bean.SignResultBean;
 import com.dading.ssqs.bean.TaskBean;
 import com.dading.ssqs.interfaces.MyItemClickListenerPostion;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -101,7 +101,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
         @JavascriptInterface
         public void signPop(String message) {
             mPop.dismiss();
-            LogUtil.util(TAG, "得到签到返回数据是------------------------------" + message);
+            Logger.d(TAG, "得到签到返回数据是------------------------------" + message);
         }
     }*/
 
@@ -143,7 +143,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
         //String url = "http://112.74.130.167/sign/";
         String url = "http://www.ddzlink.com/sign/";
         mSevenDayWeb.loadUrl(url);
-        LogUtil.util(TAG, "签到url------------------------------:" + url);
+        Logger.d(TAG, "签到url------------------------------:" + url);
         //网页版
         mPop = PopUtil.popuMake(mView2);*/
         //// TODO: 2016/11/2 原声版
@@ -290,7 +290,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
             }
         }
         if (mStatus == 0) {
-            LogUtil.util(TAG, "改变今天原点------------------------------:");
+            Logger.d(TAG, "改变今天原点------------------------------:");
             switch (dayCount) {
                 case 0:
                     mSevenDayRedBet1.setImageResource(R.mipmap.s_unclaimed);

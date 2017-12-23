@@ -15,7 +15,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SnsBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +83,7 @@ public class HeadLineHeadAdapter extends BaseAdapter implements ListAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final SnsBean.WritesEntity entity = data.get(position);
-        LogUtil.util(TAG, "头条返回数据是------------------------------:" + entity.id);
+        Logger.d(TAG, "头条返回数据是------------------------------:" + entity.id);
 
         holder.snslvtitle.setText(entity.title);
         holder.snslvcomment.setText(entity.content);

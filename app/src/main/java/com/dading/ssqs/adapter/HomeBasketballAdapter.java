@@ -22,11 +22,10 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.HomeBean;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -138,7 +137,7 @@ public class HomeBasketballAdapter extends BaseAdapter implements ListAdapter {
         holder.time.setText("共" + entity.getNum() + "玩法");
         HomeBean.BasketBallsBean.PayRateBeanX rate = entity.getPayRate();
         if (rate != null) {
-            LogUtil.util(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
+            Logger.d(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
             holder.leftPl.setText(rate.getRealRate1());
             holder.midPl.setText(rate.getRealRate2());
             holder.rightPl.setText(rate.getRealRate3());
@@ -154,7 +153,7 @@ public class HomeBasketballAdapter extends BaseAdapter implements ListAdapter {
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
                 int id = entity.getId();
                 intent.putExtra(Constent.MATCH_ID, id);
-                LogUtil.util(TAG, "home比赛传送的数据是------------------------------:" + id);
+                Logger.d(TAG, "home比赛传送的数据是------------------------------:" + id);
                 intent.putExtra(Constent.INTENT_FROM, "home");
                 content.startActivity(intent);
             }

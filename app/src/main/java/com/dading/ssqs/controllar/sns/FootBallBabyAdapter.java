@@ -18,7 +18,7 @@ import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SnsBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.view.GlideCircleTransform;
 
 import java.util.ArrayList;
@@ -115,7 +115,7 @@ public class FootBallBabyAdapter extends BaseAdapter implements ListAdapter {
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);
-                LogUtil.util(TAG, "足球宝贝跳转------------------------------:");
+                Logger.d(TAG, "足球宝贝跳转------------------------------:");
             }
         });
         holder.footballbabypcontent.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,7 @@ public class FootBallBabyAdapter extends BaseAdapter implements ListAdapter {
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);
-                LogUtil.util(TAG, "足球宝贝跳转------------------------------:");
+                Logger.d(TAG, "足球宝贝跳转------------------------------:");
             }
         });
         return convertView;

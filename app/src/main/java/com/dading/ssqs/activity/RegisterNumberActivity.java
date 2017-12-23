@@ -15,7 +15,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.RegAccountElement;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -125,7 +125,7 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                             TmtUtils.midToast(RegisterNumberActivity.this, "注册成功!", 0);
                             finish();
                         } else {
-                            LogUtil.util(TAG, result.getMessage());
+                            Logger.d(TAG, result.getMessage());
                             TmtUtils.midToast(RegisterNumberActivity.this, result.getMessage(), 0);
                         }
                     }

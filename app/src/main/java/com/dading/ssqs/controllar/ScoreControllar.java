@@ -28,7 +28,7 @@ import com.dading.ssqs.controllar.scores.GZScoreControllar;
 import com.dading.ssqs.controllar.scores.JSScoreControllar;
 import com.dading.ssqs.controllar.scores.SCScoreControllar;
 import com.dading.ssqs.controllar.scores.SGScoreControllar;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -134,7 +134,7 @@ public class ScoreControllar extends BaseTabsContainer {
         Date date1 = calendar.getTime();
         String zt = format.format(date1);
 
-        LogUtil.util(TAG, "三個時間返回数据是------" + zt + "----" + jt + "----" + mt);
+        Logger.d(TAG, "三個時間返回数据是------" + zt + "----" + jt + "----" + mt);
 
         UIUtils.getSputils().putString(Constent.JS_TIME, jt);
         UIUtils.getSputils().putString(Constent.SG_TIME, zt);
@@ -212,7 +212,7 @@ public class ScoreControllar extends BaseTabsContainer {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "竞猜筛选失败信息");
+                    Logger.d(TAG, result.getMessage() + "竞猜筛选失败信息");
                 }
             }
         });
@@ -253,20 +253,20 @@ public class ScoreControllar extends BaseTabsContainer {
                         mType = 2;
                         mScoreChoice.setVisibility(View.VISIBLE);
                         mDate = UIUtils.getSputils().getString(Constent.JS_TIME, "2000-01-01");
-                        LogUtil.util(TAG, "即時得到的時間返回数据是------------" + mDate);
+                        Logger.d(TAG, "即時得到的時間返回数据是------------" + mDate);
                         break;
                     case 1:
                         mPager = 1;
                         mScoreChoice.setVisibility(View.VISIBLE);
                         mType = 3;
                         mDate = UIUtils.getSputils().getString(Constent.SG_TIME, "2000-01-01");
-                        LogUtil.util(TAG, "賽果得到的時間返回数据是-------------" + mDate);
+                        Logger.d(TAG, "賽果得到的時間返回数据是-------------" + mDate);
                         break;
                     case 2:
                         mPager = 2;
                         mScoreChoice.setVisibility(View.VISIBLE);
                         mDate = UIUtils.getSputils().getString(Constent.SC_TIME, "2000-01-01");
-                        LogUtil.util(TAG, "賽程得到的時間返回数据是-------------" + mDate);
+                        Logger.d(TAG, "賽程得到的時間返回数据是-------------" + mDate);
                         mType = 4;
                         break;
                     case 3:
@@ -326,9 +326,9 @@ public class ScoreControllar extends BaseTabsContainer {
         mChioceConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "pop消失前------------------------------:");
+                Logger.d(TAG, "pop消失前------------------------------:");
                 mPopChioce.dismiss();
-                LogUtil.util(TAG, "pop消失后------------------------------:");
+                Logger.d(TAG, "pop消失后------------------------------:");
                 ArrayList<GusessChoiceBean.FilterEntity> listAdd = new ArrayList<>();
                 List<GusessChoiceBean.FilterEntity> list = mAdapterSx.getList();
                 for (int i = 0; i < list.size(); i++) {
@@ -350,7 +350,7 @@ public class ScoreControllar extends BaseTabsContainer {
                     mList.get(i).checked = false;
                 }
                 mleagueIDs = sb.toString();
-                LogUtil.util(TAG, "篩選條件id是------------------------------:" + mleagueIDs);
+                Logger.d(TAG, "篩選條件id是------------------------------:" + mleagueIDs);
 
                 UIUtils.getSputils().putString(Constent.LEAGUEIDS, mleagueIDs);
                 UIUtils.getSputils().putBoolean(Constent.CHIOCE, true);
@@ -378,7 +378,7 @@ public class ScoreControllar extends BaseTabsContainer {
         mScoreChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "比分筛选的時間是------------------------------:" + mDate);
+                Logger.d(TAG, "比分筛选的時間是------------------------------:" + mDate);
 
                 switch (UIUtils.getSputils().getString(Constent.SCORE_TYPE, "0")) {
                     case "2":
@@ -458,7 +458,7 @@ public class ScoreControllar extends BaseTabsContainer {
                 mPager = 0;
             mScrollViewpager.setCurrentItem(mPager);
             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
-            LogUtil.util("GBSS", "收到比分广播------------------------------:" + b);
+            Logger.d("GBSS", "收到比分广播------------------------------:" + b);
             mScoreTitleRg.check(b ? R.id.content_title_score_title_f : R.id.content_title_score_title_b);
         }
     }

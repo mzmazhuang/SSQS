@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.elements.RecommDetailElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ReferInfoBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
@@ -438,7 +438,7 @@ public class SavantLvItemActivity extends BaseActivity {
                      userID:用户ID
                      auth_token：登陆后加入请求头
                      */
-                    LogUtil.util(TAG, "我被选中了");
+                    Logger.d(TAG, "我被选中了");
 
                     SSQSApplication.apiClient(classGuid).getExpertDetails(mMatchID, new CcApiClient.OnCcListener() {
                         @Override
@@ -461,7 +461,7 @@ public class SavantLvItemActivity extends BaseActivity {
                     });
                     mFollowFlag = true;
                 } else {
-                    LogUtil.util(TAG, "我No选中了");
+                    Logger.d(TAG, "我No选中了");
                     mFollowFlag = false;
                 }
             }

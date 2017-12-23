@@ -7,7 +7,7 @@ import android.view.View;
 import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.adapter.BaseMePagerAdapter;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,7 @@ public class SnsVpHeadAdapter extends BaseMePagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "社区轮播数据id------:" + dataId.get(position));
+                Logger.d(TAG, "社区轮播数据id------:" + dataId.get(position));
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, dataId.get(position).toString());
                 context.startActivity(intent);

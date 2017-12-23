@@ -18,7 +18,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ProxyCmmsionsBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -264,7 +264,7 @@ public class ProxyCommissionActivty extends BaseActivity implements View.OnClick
     }
 
     private void setProxyCanlendarTop(String startTime) {
-        LogUtil.util(TAG, "top时间------------------------------:" + startTime);
+        Logger.d(TAG, "top时间------------------------------:" + startTime);
         String[] split = startTime.split("-");
         mCalendarYear.setText(split[0]);
         String aNew = DateUtils.getweekdayBystrNew(startTime);

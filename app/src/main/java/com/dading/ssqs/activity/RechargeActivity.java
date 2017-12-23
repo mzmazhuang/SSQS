@@ -23,8 +23,6 @@ import com.dading.ssqs.apis.elements.ChargeUploadElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.QRCodeBean;
 import com.dading.ssqs.bean.WXDFBean;
-import com.dading.ssqs.utils.APPUtil;
-import com.dading.ssqs.utils.LogUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 

@@ -23,7 +23,7 @@ import com.dading.ssqs.bean.OrderBean;
 import com.dading.ssqs.bean.StoreBean;
 import com.dading.ssqs.bean.WXOrderBean;
 import com.dading.ssqs.utils.DensityUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -295,7 +295,7 @@ public class StorePropControllar implements View.OnClickListener {
                         processData(mData);
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "商店道具失败信息");
+                    Logger.d(TAG, result.getMessage() + "商店道具失败信息");
                 }
             }
         });
@@ -472,7 +472,7 @@ public class StorePropControllar implements View.OnClickListener {
                 break;
             case R.id.pay_method_wx_pay:
                 //调用微信
-                LogUtil.util(TAG, "调用微信");
+                Logger.d(TAG, "调用微信");
                 WXOrder();
                 mPayMethodWxPay.setClickable(false);
                 break;
@@ -486,7 +486,7 @@ public class StorePropControllar implements View.OnClickListener {
                     }
                 }
                 mPayMethodAliyPay.setClickable(false);
-                LogUtil.util(TAG, "调用支付宝");
+                Logger.d(TAG, "调用支付宝");
                 getPay();
                 break;
 

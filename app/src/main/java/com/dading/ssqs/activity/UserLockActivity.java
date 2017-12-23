@@ -18,7 +18,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.UserBindElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -312,7 +312,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                     mLoginTag = 0;
                     Intent intent = new Intent(this, LockPhoneActivity.class);
                     startActivity(intent);
-                    LogUtil.util(TAG, "跳转进绑定手机界面------------------------------:");
+                    Logger.d(TAG, "跳转进绑定手机界面------------------------------:");
                 } else {
                     mPopText.setText("当前登录的账号不可以解绑\r\n如需解绑,请先使用其它账号登录");
 
@@ -327,7 +327,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                 mWxLockArrow.setClickable(false);
                 if (TextUtils.isEmpty(mBean.qqName)) {
                     mLoginTag = 1;
-                    LogUtil.util(TAG, "qq登陆");
+                    Logger.d(TAG, "qq登陆");
                     Platform qq = ShareSDK.getPlatform(this, QQ.NAME);
                     qq.authorize();
                     qq.setPlatformActionListener(new PlatformActionListener() {
@@ -344,7 +344,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                             mUserId = platDB.getUserId();
                             mUserName = platDB.getUserName();
 
-                            LogUtil.util(TAG, "qq的token是---------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender()
+                            Logger.d(TAG, "qq的token是---------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender()
                                     + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName()
                                     + " getPlatformNname:" + platDB.getPlatformNname() + " getExpiresIn:" + platDB.getExpiresIn() + " getTokenSecret" + platDB.getTokenSecret()
                                     + " " + platDB.getExpiresTime());
@@ -380,7 +380,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                 mWxLockArrow.setClickable(false);
                 if (TextUtils.isEmpty(mBean.wechatName)) {
                     mLoginTag = 2;
-                    LogUtil.util(TAG, "微信登陆");
+                    Logger.d(TAG, "微信登陆");
                     Platform wechat = ShareSDK.getPlatform(Wechat.NAME);
                     wechat.authorize();
                     wechat.setPlatformActionListener(new PlatformActionListener() {
@@ -393,7 +393,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                             mUserIcon = platDB.getUserIcon();
                             mUserId = platDB.getUserId();
                             mUserName = platDB.getUserName();
-                            LogUtil.util(TAG, "qq的token是----------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender()
+                            Logger.d(TAG, "qq的token是----------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender()
                                     + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
                             mHandler.sendMessage(msg);
                         }
@@ -427,7 +427,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                 mWxLockArrow.setClickable(false);
                 if (TextUtils.isEmpty(mBean.sinaName)) {
                     mLoginTag = 3;
-                    LogUtil.util(TAG, "新浪登陆:");
+                    Logger.d(TAG, "新浪登陆:");
                     Platform weibo = ShareSDK.getPlatform(this, SinaWeibo.NAME);
                     weibo.SSOSetting(false);
                     weibo.authorize();
@@ -443,7 +443,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                             mUserId = platDB.getUserId();
                             mUserName = platDB.getUserName();
 
-                            LogUtil.util(TAG, "qq的token是------------------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender()
+                            Logger.d(TAG, "qq的token是------------------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender()
                                     + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
                             mHandler.sendMessage(msg);
                         }

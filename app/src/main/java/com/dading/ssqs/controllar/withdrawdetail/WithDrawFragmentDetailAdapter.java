@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.WithDrawDetailBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class WithDrawFragmentDetailAdapter extends BaseQuickAdapter<WithDrawDeta
     @Override
     protected void convert (BaseViewHolder baseViewHolder, WithDrawDetailBean itemsBean) {
         mI++;
-        LogUtil.util(TAG, "item 数------------------------------:" + mI);
+        Logger.d(TAG, "item 数------------------------------:" + mI);
         /**
          * 0：审核中，1：失败 2：提现成功
          */

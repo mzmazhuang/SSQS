@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.SpUtils;
 
 import butterknife.Bind;
@@ -47,7 +47,7 @@ public class LuckBallActivity extends BaseActivity {
         if (spUtils.getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             url = url + spUtils.getString(Constent.TOKEN, "");
         }
-        LogUtil.util(TAG, "娛樂場項目返回数据是------------------------------:" + url);
+        Logger.d(TAG, "娛樂場項目返回数据是------------------------------:" + url);
         mLuckBallWb.setWebChromeClient(new WebChromeClient( ));
         mLuckBallWb.setWebViewClient(new WebViewClient( ));
         mLuckBallWb.loadUrl("http://www.ddzlink.com/ssqsApp/tpl/game.html?token=8b53ebe9e0ce49719ac1117ab63528fc");

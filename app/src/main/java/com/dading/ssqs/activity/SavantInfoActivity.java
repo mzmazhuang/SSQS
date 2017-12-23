@@ -23,7 +23,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SavantInfoBean;
 import com.dading.ssqs.controllar.savantinfo.SavantInfoStatetrendControllarSingle;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
@@ -183,7 +183,7 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                  status:  0-取消关注 1-关注
                  auth_token：登陆后加入请求头
                  */
-                LogUtil.util(TAG, "我被选中了");
+                Logger.d(TAG, "我被选中了");
 
                 FocusUserElement element = new FocusUserElement();
                 element.setFouceUserID(mUserID);
@@ -194,12 +194,12 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
                             if (mInfoData.isFouce == 0) {
-                                LogUtil.util(TAG, result.getMessage() + "关注成功信息");
+                                Logger.d(TAG, result.getMessage() + "关注成功信息");
                                 mInfoData.isFouce = 1;
                                 mFansNum = mFansNum + 1;
                                 mSavantInfoFansNum.setText(String.valueOf(mFansNum));
                             } else {
-                                LogUtil.util(TAG, result.getMessage() + "取消关注成功信息");
+                                Logger.d(TAG, result.getMessage() + "取消关注成功信息");
                                 mFansNum = mFansNum - 1;
                                 mSavantInfoFansNum.setText(String.valueOf(mFansNum));
                                 mInfoData.isFouce = 0;

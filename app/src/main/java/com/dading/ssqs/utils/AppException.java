@@ -10,7 +10,6 @@ import android.os.Looper;
 import android.util.Log;
 
 import com.dading.ssqs.SSQSApplication;
-import com.dading.ssqs.bean.Constent;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -195,7 +194,7 @@ public class AppException implements UncaughtExceptionHandler {
             mFileName = "log-" + time + "-" + timestamp + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/PdaChina/";
-                LogUtil.util(TAG, "存储路径是------------------------------:" + path + "/" + mFileName);
+                Logger.d(TAG, "存储路径是------------------------------:" + path + "/" + mFileName);
                 File dir = new File(path);
                 if (!dir.exists()) {
                     dir.mkdirs();
@@ -240,7 +239,7 @@ public class AppException implements UncaughtExceptionHandler {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.body() != null)
                     response.body().close();
-                LogUtil.util("上传text成功了", response.body().string());
+                Logger.d("上传text成功了", response.body().string());
             }
         });
     }

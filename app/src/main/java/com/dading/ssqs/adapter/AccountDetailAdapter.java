@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.AccountDetailBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class AccountDetailAdapter extends BaseQuickAdapter<AccountDetailBean> {
     @Override
     protected void convert(BaseViewHolder baseViewHolder, AccountDetailBean itemsBean) {
         mI++;
-        LogUtil.util(TAG, "item 数------------------------------:" + mI);
+        Logger.d(TAG, "item 数------------------------------:" + mI);
         /**
          * 1:rmb
          2:钻石，

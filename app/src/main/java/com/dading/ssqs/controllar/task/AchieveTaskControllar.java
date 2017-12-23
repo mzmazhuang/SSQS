@@ -13,7 +13,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.AchieveBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.R;
 
 import java.util.List;
@@ -77,7 +77,7 @@ public class AchieveTaskControllar extends Fragment {
                         mLv.setAdapter(new AchieveTaskAdapter(context, items));
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "成就任務失败信息");
+                    Logger.d(TAG, result.getMessage() + "成就任務失败信息");
                 }
             }
         });

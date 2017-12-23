@@ -49,7 +49,7 @@ import com.dading.ssqs.interfaces.MyItemClickListern;
 import com.dading.ssqs.interfaces.MyItemSonCloseClickListern;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
 import com.dading.ssqs.utils.TmtUtils;
@@ -271,7 +271,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 } else {
                     mJcCheckGp.setVisibility(View.GONE);
                     TmtUtils.midToast(UIUtils.getContext(), "赔率请求失败" + result.getMessage(), 0);
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -290,7 +290,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 } else {
                     mJcCheckGp.setVisibility(View.GONE);
                     TmtUtils.midToast(UIUtils.getContext(), "赔率请求失败" + result.getMessage(), 0);
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -498,7 +498,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
     }
 
     private void processData(List<JCbean> bean) {
-        LogUtil.util(TAG, "竞猜返回数据是------------------------------:" + bean.toString());
+        Logger.d(TAG, "竞猜返回数据是------------------------------:" + bean.toString());
         mData = bean;
         if (mData.size() == 0) {
             mBettingHotLy.setVisibility(View.GONE);
@@ -924,7 +924,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 if (mHotChecked) {
                     mI = 0;
                     mChecked = mHotAdapterL.getChecked();
-                    LogUtil.util(TAG, "huoqu xuanz数据是------------------------------:" + mChecked.toString());
+                    Logger.d(TAG, "huoqu xuanz数据是------------------------------:" + mChecked.toString());
                     isNullClear(mCbBean);
                     for (int id : mChecked.keySet()) {
                         JCbean entity = mChecked.get(id);
@@ -956,7 +956,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     String text = mCbBean.size() + "";
                     mBettingBodyNum.setText(text);
 
-                    LogUtil.util(TAG, "弹框主题------------------------------:" + mCbBean);
+                    Logger.d(TAG, "弹框主题------------------------------:" + mCbBean);
                     mAdapterHot = new PopBettingBodyAdapter(context, mCbBean);
                     mBettingBodyLv.setAdapter(mAdapterHot);
 
@@ -976,7 +976,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     mPopBettingBody.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
                     if (mIsLoading) {
                         String gold = UIUtils.getSputils().getString(Constent.GLODS, null);
-                        LogUtil.util(TAG, "竞猜单子数据是------------------------------:金币" + UIUtils.getSputils().
+                        Logger.d(TAG, "竞猜单子数据是------------------------------:金币" + UIUtils.getSputils().
                                 getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
                         mBettingBodyLoading.setText(gold);
                         mBettingBodyGoldBalance.setVisibility(View.VISIBLE);
@@ -993,7 +993,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     isNullClear(mListScore);
                     for (Integer i : mMapChecks.keySet()) {
                         HashMap<Integer, JCScorebean.ListEntity.ItemsEntity> map = mMapChecks.get(i);
-                        LogUtil.util(TAG, "比分选中返回数据是------------------------------:" + i + "---" + map.size());
+                        Logger.d(TAG, "比分选中返回数据是------------------------------:" + i + "---" + map.size());
                         for (Integer j : map.keySet()) {
                             JCScorebean.ListEntity.ItemsEntity entity = map.get(j);
                             entity.type = i;
@@ -1003,7 +1003,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                 mListScore.add(entity);
                         }
                     }
-                    LogUtil.util(TAG, "比分的个数返回数据是------------------------------:" + mListScore.size());
+                    Logger.d(TAG, "比分的个数返回数据是------------------------------:" + mListScore.size());
                     mPopBettingBodyScoreAdapter = new PopBettingBodyScoreAdapter(context, mListScore, mHomeVsAway);
                     mBettingBodyLv.setAdapter(mPopBettingBodyScoreAdapter);
                     if (mListScore.size() <= 1) {
@@ -1022,7 +1022,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
                     if (mIsLoading) {
                         String gold = UIUtils.getSputils().getString(Constent.GLODS, null);
-                        LogUtil.util(TAG, "竞猜单子数据是------------------------------:金币" + UIUtils.getSputils().
+                        Logger.d(TAG, "竞猜单子数据是------------------------------:金币" + UIUtils.getSputils().
                                 getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
                         mBettingBodyLoading.setText(gold);
                         mBettingBodyGoldBalance.setVisibility(View.VISIBLE);
@@ -1035,7 +1035,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 }
                 break;
             case R.id.betting_body_close:
-                LogUtil.util(TAG, "您点击了pop关闭按钮------------------------------:");
+                Logger.d(TAG, "您点击了pop关闭按钮------------------------------:");
                 isDissmiss(mPopBettingBody);
                 Animation animation1 = AnimationUtils.loadAnimation(context, R.anim.in_from_down);
                 animation1.setFillAfter(false);
@@ -1064,7 +1064,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 if (mIsLoading) {
                     if (mHotChecked) {
                         ArrayList<BetBean> cbGlod = mAdapterHot.getGlod();
-                        LogUtil.util(TAG, "回掉金币长度是------------------------------:" + cbGlod.size());
+                        Logger.d(TAG, "回掉金币长度是------------------------------:" + cbGlod.size());
                         if (cbGlod.size() > 0) {
                             PayBallElement element = new PayBallElement();
 
@@ -1083,7 +1083,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                         return;
                                     } else {
                                         PayBallElement.BetBean betBean = new PayBallElement.BetBean();
-                                        LogUtil.util(TAG, "点击提交------------------------------:JC投注金币为" + bean.amount + "");
+                                        Logger.d(TAG, "点击提交------------------------------:JC投注金币为" + bean.amount + "");
                                         betBean.type = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true) ? 1 : 2;
                                         betBean.matchID = matchId;
                                         betBean.amount = bean.amount;
@@ -1190,9 +1190,9 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 break;
             case R.id.betting_body_loadingornum:
                 mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-                LogUtil.util(TAG, "登录倍点击了");
+                Logger.d(TAG, "登录倍点击了");
                 if (!mIsLoading) {
-                    LogUtil.util(TAG, "登录跳转");
+                    Logger.d(TAG, "登录跳转");
                     setClearHOt();
                     if (mAdapterHot != null)
                         mAdapterHot.notifyDataSetChanged();
@@ -1241,7 +1241,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             mPopBettingBodyScoreAdapter.notifyDataSetChanged();
 
         setHeadScore();
-        LogUtil.util(TAG, "比分清除完毕-------------");
+        Logger.d(TAG, "比分清除完毕-------------");
     }
 
 
@@ -1334,7 +1334,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             }
             mCount = mListScore.size();
         }
-        LogUtil.util(TAG, "比分count返回数据是------------------------------:" + mCount);
+        Logger.d(TAG, "比分count返回数据是------------------------------:" + mCount);
         if (mCount > 0) {
             mBettingNum.setText(String.valueOf(mCount));
             mBettingBodyNum.setText(String.valueOf(mCount));
@@ -1363,7 +1363,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
     private void isShowHotHeadPop() {
         if (mChecked != null) {
             String size = mChecked.size() + "";
-            LogUtil.util(TAG, "重新mmap返回数据是------------------------------:" + size);
+            Logger.d(TAG, "重新mmap返回数据是------------------------------:" + size);
             if (mChecked.size() > 0) {
                 int i = 0;
                 for (int id : mChecked.keySet()) {
@@ -1371,7 +1371,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     i = getNum(i, entity.cbTag1);
                     i = getNum(i, entity.cbTag2);
                     i = getNum(i, entity.cbTag3);
-                    LogUtil.util(TAG, "选中个数是------------------------------:" + i);
+                    Logger.d(TAG, "选中个数是------------------------------:" + i);
                 }
                 mBettingNum.setText(String.valueOf(i));
                 mBettingBodyNum.setText(String.valueOf(i));
@@ -1396,9 +1396,9 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     mBettingLy.startAnimation(animation);
                     mIsShow = true;
                 }
-                LogUtil.util(TAG, "选中-----:" + mCbBean.size() + "显示pop" + mCbBean.toString());
+                Logger.d(TAG, "选中-----:" + mCbBean.size() + "显示pop" + mCbBean.toString());
             } else {
-                LogUtil.util(TAG, "没有选中项-----:" + mCbBean.size() + "显示pop" + mCbBean.toString());
+                Logger.d(TAG, "没有选中项-----:" + mCbBean.size() + "显示pop" + mCbBean.toString());
                 popDown();
                 mIsShow = false;
             }
@@ -1435,7 +1435,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     case Constent.HOT_DATA:
                         if (mHotAdapterL != null) {
                             mChecked = mHotAdapterL.getChecked();
-                            LogUtil.util(TAG, "选中数据是--:" + mChecked.size());
+                            Logger.d(TAG, "选中数据是--:" + mChecked.size());
 
                             if (mChecked.size() > 0) {
                                 int i = 0;
@@ -1444,7 +1444,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                     i = getNum(i, entity.cbTag1);
                                     i = getNum(i, entity.cbTag2);
                                     i = getNum(i, entity.cbTag3);
-                                    LogUtil.util(TAG, "选中个数是----:" + i);
+                                    Logger.d(TAG, "选中个数是----:" + i);
                                 }
                                 mBettingNum.setText(String.valueOf(i));
                                 if (i > 0)
@@ -1473,7 +1473,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                         isNullClear(mMapChecks);
                                         isNullClear(mListScore);
                                         isDissmiss(mPopBettingBody);
-                                        LogUtil.util(TAG, "收到廣播----" + mHotChecked + "-------取消弹框");
+                                        Logger.d(TAG, "收到廣播----" + mHotChecked + "-------取消弹框");
                                     }
                                 });
                             }
@@ -1582,7 +1582,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mItemBettingBodyClose.setOnClickListener(new MyItemSonCloseClickListern(context, position) {
                 @Override
                 public void onClick(View v) {
-                    LogUtil.util(TAG, "关闭的postion是------------------------------:" + postion);
+                    Logger.d(TAG, "关闭的postion是------------------------------:" + postion);
                     mListBean.remove(postion);
 
                     mBettingBodyNum.setText(mListBean.size() + "");
@@ -1591,11 +1591,11 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     for (Map.Entry<Integer, BetBean> bean : mCbBean.entrySet()) {
                         list.add(bean.getKey());
                     }
-                    LogUtil.util(TAG, "关闭的postion是------------------------------:" + postion);
+                    Logger.d(TAG, "关闭的postion是------------------------------:" + postion);
                     Integer key = list.get(postion);
                     final BetBean bet = mCbBean.get(key);
                     mCbBean.remove(key);
-                    LogUtil.util(TAG, "mCbBean返回数据是----------" + bet.toString() + "------------:" + mCbBean.size() + "---" + bet.id + "--" + bet.selected);
+                    Logger.d(TAG, "mCbBean返回数据是----------" + bet.toString() + "------------:" + mCbBean.size() + "---" + bet.id + "--" + bet.selected);
                     PopBettingBodyAdapter.this.notifyDataSetChanged();
                     if (mListBean.size() == 0) {
                         isDissmiss(mPopBettingBody);
@@ -1622,7 +1622,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                             return;
                         }
                     }
-                    LogUtil.util(TAG, "我被点击了....................close" + mListBean.size());
+                    Logger.d(TAG, "我被点击了....................close" + mListBean.size());
 
                 }
             });
@@ -2098,7 +2098,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             /**
              * 还原初始化状态
              */
-            LogUtil.util(TAG, "比分Adapter的返回数据是---------:" + position + "===" + data.size());
+            Logger.d(TAG, "比分Adapter的返回数据是---------:" + position + "===" + data.size());
             final JCScorebean.ListEntity.ItemsEntity item = data.get(position);
             /**
              *1进球数区间
@@ -2107,9 +2107,9 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
              4全场单双
              5半场单双
              */
-            LogUtil.util(TAG, "itemtype返回数据是---------:" + item.type);
-            LogUtil.util(TAG, "itemname返回数据是---------:" + item.name);
-            LogUtil.util(TAG, "item.payRate返回数据是---------:" + item.payRate);
+            Logger.d(TAG, "itemtype返回数据是---------:" + item.type);
+            Logger.d(TAG, "itemname返回数据是---------:" + item.name);
+            Logger.d(TAG, "item.payRate返回数据是---------:" + item.payRate);
             switch (item.type) {
                 case 1:
                     hoder.mBettingBodyItemType.setText("进球数区间");//下注区间
@@ -2151,14 +2151,14 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mItemBettingBodyClose.setOnClickListener(new MyItemSonCloseClickListern(context, position) {
                 @Override
                 public void onClick(View v) {
-                    LogUtil.util(TAG, "关闭的postion是------------------------------:" + postion);
+                    Logger.d(TAG, "关闭的postion是------------------------------:" + postion);
                     JCScorebean.ListEntity.ItemsEntity en = data.get(position);
                     data.remove(position);
                /* if (data.size() <= 1) {
                     int i = DensityUtil.dip2px(context, 200);
                     hoder.mItemBettingBodyLy.setMinimumHeight(i);
                 }*/
-                    LogUtil.util(TAG, "我被点击了....................close" + data.size());
+                    Logger.d(TAG, "我被点击了....................close" + data.size());
                     mBettingBodyNum.setText(String.valueOf(data.size()));
                     if (data.size() <= 0) {
                         isDissmiss(mBettingHeadPop);
@@ -2585,7 +2585,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
     }
 
     private void getRefresh(JCScorebean.ListEntity.ItemsEntity en) {
-        LogUtil.util(TAG, "比赛类型改变的是------------------------------:" + en.type);
+        Logger.d(TAG, "比赛类型改变的是------------------------------:" + en.type);
         switch (en.type) {
             case 1:
                 for (Integer i : mMapChecksInterVal.keySet()) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.BettingMBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -74,7 +74,7 @@ public class MyBettingMAdapter extends BaseExpandableListAdapter {
         BettingMBean entity = data.get(groupPosition);
         if (entity != null) {
             holder.mBettingLvItmeLeagueName.setText(entity.leagueName);
-            LogUtil.util(TAG, "设置主客队------------------------------:" + entity.home + "---" + entity.away);
+            Logger.d(TAG, "设置主客队------------------------------:" + entity.home + "---" + entity.away);
             holder.mBettingLvItmeMain.setText(entity.home);
             holder.mBettingLvItmeSecond.setText(entity.away);
 
@@ -84,7 +84,7 @@ public class MyBettingMAdapter extends BaseExpandableListAdapter {
                 holder.mBettingLvItmeIv.setImageResource(R.mipmap.xia);
             }
             String openTime = entity.openTime;
-            LogUtil.util(TAG, "开始时间返回数据是------------------------------:" + openTime);
+            Logger.d(TAG, "开始时间返回数据是------------------------------:" + openTime);
             if (openTime != null) {
                 String time = openTime.substring(11, 16);
                 String s = time + "";

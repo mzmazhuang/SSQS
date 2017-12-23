@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.BettingTBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.ArrayList;
 
@@ -143,46 +143,46 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.blue_t1));
                     String text0 = info.home + " vs " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text0);
-                    LogUtil.util(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text0);
+                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text0);
                     break;
                 case 1:
                     mBettingLvChildWaitOpenCg1.setText("未完结");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.blue_t1));
                     String text = info.home + " vs " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text);
-                    LogUtil.util(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text);
+                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text);
                     break;
                 case 2:
                     mBettingLvChildWaitOpenCg1.setText("赢");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.red_dark));
                     String text1 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text1);
-                    LogUtil.util(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text1);
+                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text1);
                     break;
                 case 3:
                     mBettingLvChildWaitOpenCg1.setText("输");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.green_a));
                     String text2 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text2);
-                    LogUtil.util(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text2);
+                    Logger.d(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text2);
                     break;
                 case 4:
                     mBettingLvChildWaitOpenCg1.setText("平");
                     String text3 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text3);
-                    LogUtil.util(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text3);
+                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text3);
                     break;
                 case 5:
                     String text4 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text4);
                     mBettingLvChildWaitOpenCg1.setText("输一半");
-                    LogUtil.util(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text4);
+                    Logger.d(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text4);
                     break;
                 case 6:
                     String text5 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     mBettingLvChildDoubleTeamCg1.setText(text5);
                     mBettingLvChildWaitOpenCg1.setText("赢一半");
-                    LogUtil.util(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text5);
+                    Logger.d(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text5);
                     break;
                 default:
                     break;

@@ -16,7 +16,7 @@ import com.dading.ssqs.bean.JPushCheckedBean;
 import com.dading.ssqs.bean.ShareBean;
 import com.dading.ssqs.onekeyshare.OnekeyShare;
 import com.dading.ssqs.utils.DataCleanManager;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -91,7 +91,7 @@ public class MoreSettingActivity extends BaseActivity {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "红人明星中獎失败信息");
+                    Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                 }
             }
         });
@@ -100,7 +100,7 @@ public class MoreSettingActivity extends BaseActivity {
         else
             JPushInterface.stopPush(UIUtils.getContext());*/
         mTopTitle.setText(getString(R.string.setting));
-        LogUtil.util(TAG, "是否登录了" + UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false));
+        Logger.d(TAG, "是否登录了" + UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false));
         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             mOutLoading.setVisibility(View.VISIBLE);
         } else {
@@ -268,13 +268,13 @@ public class MoreSettingActivity extends BaseActivity {
         //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
         oks.setTitle(data.title);
-        LogUtil.util(TAG, "data.title------------------------------:" + data.title);
+        Logger.d(TAG, "data.title------------------------------:" + data.title);
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
         oks.setTitleUrl(data.forwardUrl);
-        LogUtil.util(TAG, "data.forwardUrl------------------------------:" + data.forwardUrl);
+        Logger.d(TAG, "data.forwardUrl------------------------------:" + data.forwardUrl);
         // text是分享文本，所有平台都需要这个字段
         oks.setText(data.content + data.forwardUrl);
-        LogUtil.util(TAG, "data.content------------------------------:" + data.content);
+        Logger.d(TAG, "data.content------------------------------:" + data.content);
         // url仅在微信（包括好友和朋友圈）中使用
         oks.setImageUrl(data.logoUrl);
         oks.setUrl(data.forwardUrl);
@@ -283,7 +283,7 @@ public class MoreSettingActivity extends BaseActivity {
         // site是分享此内容的网站名称，仅在QQ空间使用
         oks.setSite(data.title);
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        LogUtil.util(TAG, "data.logoUrl------------------------------:" + data.logoUrl);
+        Logger.d(TAG, "data.logoUrl------------------------------:" + data.logoUrl);
         oks.setSiteUrl(data.forwardUrl);
         // 启动分享GUI
         oks.show(this);

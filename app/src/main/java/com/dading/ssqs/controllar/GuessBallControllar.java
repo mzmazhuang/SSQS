@@ -32,7 +32,7 @@ import com.dading.ssqs.controllar.guessball.GBMatchBefore;
 import com.dading.ssqs.controllar.guessball.GBSeries;
 import com.dading.ssqs.controllar.guessball.JSGuessControllar;
 import com.dading.ssqs.controllar.guessball.SGGuessControllar;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -171,7 +171,7 @@ public class GuessBallControllar extends BaseTabsContainer {
     }
 
     private void setTitle() {
-        LogUtil.util("GBSS", "TITLE返回数据是------:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
+        Logger.d("GBSS", "TITLE返回数据是------:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
         if (UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true)) {
             mGuessTitleFootball.setChecked(true);
         } else {
@@ -289,7 +289,7 @@ public class GuessBallControllar extends BaseTabsContainer {
         mGuessIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "显示猜球pop");
+                Logger.d(TAG, "显示猜球pop");
                 mPop.showAsDropDown(mGuessBallLy, 0, 0);
             }
         });

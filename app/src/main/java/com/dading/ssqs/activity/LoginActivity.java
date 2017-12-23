@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
@@ -26,7 +25,7 @@ import com.dading.ssqs.apis.elements.LoginElement;
 import com.dading.ssqs.apis.elements.ThreeLoginElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
@@ -161,11 +160,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
                                             UIUtils.getSputils().putBoolean(Constent.USER_TYPE, bean.userType == 3);
                                             UIUtils.getSputils().putInt(Constent.IS_VIP, bean.isVip);
-                                            LogUtil.util(TAG, "返回金币:" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
+                                            Logger.d(TAG, "返回金币:" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
 
                                             goSP(new JSONObject(gson.toJson(bean, LoadingBean.class)), bean.authToken);
                                         } catch (Exception ex) {
-                                            LogUtil.e(TAG, "json failure");
+                                            Logger.e(TAG, "json failure");
                                         }
                                     }
                                 } else {
@@ -310,7 +309,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.loading_iv_qq_loading:
                 mLoginTag = 1;
                 setClicked();
-                LogUtil.util(TAG, "qq登陆");
+                Logger.d(TAG, "qq登陆");
                 Platform qq = ShareSDK.getPlatform(QQ.NAME);
                 qq.authorize();
                 qq.setPlatformActionListener(new PlatformActionListener() {
@@ -326,7 +325,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         mUserIcon = platDB.getUserIcon();
                         mUserId = platDB.getUserId();
                         mUserName = platDB.getUserName();
-                        LogUtil.util(TAG, "qq的token是---------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender() + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
+                        Logger.d(TAG, "qq的token是---------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender() + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
                         mHandler.sendMessage(msg);
                     }
 
@@ -349,7 +348,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.loading_iv_xl_loading:
                 mLoginTag = 3;
-                LogUtil.util(TAG, "新浪登陆:");
+                Logger.d(TAG, "新浪登陆:");
                 setClicked();
                 Platform weibo = ShareSDK.getPlatform(this, SinaWeibo.NAME);
                 weibo.SSOSetting(false);
@@ -366,7 +365,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         mUserId = platDB.getUserId();
                         mUserName = platDB.getUserName();
 
-                        LogUtil.util(TAG, "qq的token是-----" + platDB.getToken() + " gender:" + platDB.getUserGender()
+                        Logger.d(TAG, "qq的token是-----" + platDB.getToken() + " gender:" + platDB.getUserGender()
                                 + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
                         mHandler.sendMessage(msg);
                     }
@@ -389,7 +388,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 });
                 break;
             case R.id.top_back:
-                LogUtil.util(TAG, "我被点击了:返回");
+                Logger.d(TAG, "我被点击了:返回");
                 UIUtils.hideKeyBord(this);
                 finish();
                 break;
@@ -403,7 +402,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
 
             case R.id.et_loading_pwd_look:
-                LogUtil.util(TAG, "我被点击了查看");
+                Logger.d(TAG, "我被点击了查看");
 
                 if (mCbLoadingPwdLook.isChecked()) {//显示密码
                     mEtLoadingPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -464,7 +463,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                     Gson gson = new Gson();
                                     goSP(new JSONObject(gson.toJson(bean, LoadingBean.class)), bean.authToken);
                                 } catch (Exception ex) {
-                                    LogUtil.e(TAG, "up json failure");
+                                    Logger.e(TAG, "up json failure");
                                 }
                             }
                         } else {
@@ -512,11 +511,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
         UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
 
-        LogUtil.util(TAG, "返回金币:" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
+        Logger.d(TAG, "返回金币:" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
         UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean.toString());
         UIUtils.getSputils().putString(Constent.TOKEN, authToken);
         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
-        LogUtil.util(TAG, "令牌----------" + authToken + "登陆状态是" + true);
+        Logger.d(TAG, "令牌----------" + authToken + "登陆状态是" + true);
         finish();
         mLoadingAnimal.setVisibility(View.GONE);
     }

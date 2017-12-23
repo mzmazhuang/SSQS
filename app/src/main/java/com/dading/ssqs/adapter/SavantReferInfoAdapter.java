@@ -15,7 +15,7 @@ import com.dading.ssqs.activity.LoginActivity;
 import com.dading.ssqs.activity.SavantLvItemActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ReferInfoARBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
@@ -80,7 +80,7 @@ public class SavantReferInfoAdapter extends BaseAdapter implements ListAdapter {
 
         String createDate = entity.createDate;
 
-        LogUtil.util(TAG, "创建时间返回数据是------------------------------:" + createDate);
+        Logger.d(TAG, "创建时间返回数据是------------------------------:" + createDate);
         if (createDate != null) {
             String date = createDate.substring(5, 16);
             holder.publishTime.setText(date);//2016-07-29 11:46:05

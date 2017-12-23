@@ -39,7 +39,7 @@ import com.dading.ssqs.bean.BankBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.FileUpResultBean;
 import com.dading.ssqs.utils.FileImageUpload;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
 import com.dading.ssqs.utils.TmtUtils;
@@ -389,7 +389,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                 setCF();
                 break;
             case R.id.savant_auth_loading://提交
-                LogUtil.util(TAG, "提交被点击了------------------------------:");
+                Logger.d(TAG, "提交被点击了------------------------------:");
                 /**
                  2.	申请专家
                  a)	请求地址：
@@ -571,7 +571,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
         if (requestCode == PHOTO_CAMERA) {
             // 设置文件保存路径这里放在跟目录下
             final File picture = new File(Environment.getExternalStorageDirectory() + ImageName);
-            LogUtil.util(TAG, "相机path是------------------------------:" + picture.getPath());
+            Logger.d(TAG, "相机path是------------------------------:" + picture.getPath());
             mFile1 = compressImageFile(picture.getPath());
             ThreadPoolUtils.getInstance().addTask(new Runnable() {
                 @Override
@@ -594,7 +594,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
             String picPath = cursor.getString(columnIndex);
 
             cursor.close();
-            LogUtil.util(TAG, "图库图片地址是------------------------------:" + picPath);
+            Logger.d(TAG, "图库图片地址是------------------------------:" + picPath);
             mFile = new File(picPath);
             mFile1 = compressImageFile(picPath);
             if (mFile1 != null) {
@@ -647,7 +647,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
         try {
             file.createNewFile();
         } catch (IOException e) {
-            LogUtil.util(TAG, e.getMessage());
+            Logger.d(TAG, e.getMessage());
         }
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -667,7 +667,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
             baos.close();
 
         } catch (Exception e) {
-            LogUtil.util(TAG, e.getMessage());
+            Logger.d(TAG, e.getMessage());
         }
         return file;
     }
@@ -685,7 +685,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
          auth_token：登陆后加入请求头
          */
         mS = FileImageUpload.uploadFile(picture, mUrl, UIUtils.getSputils().getString(Constent.TOKEN, null));
-        LogUtil.util(TAG, "上传图片返回数据是------------------------------:" + mS);
+        Logger.d(TAG, "上传图片返回数据是------------------------------:" + mS);
         if (!"FAIL".equals(mS)) {
             num++;
             FileUpResultBean bean = JSON.parseObject(mS, FileUpResultBean.class);
@@ -694,7 +694,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                 mMapUrl.put(mList.get(num - 1), URL);
                 int integer = mList.get(num - 1);
                 for (int i : mMapUrl.keySet()) {
-                    LogUtil.util(TAG, "tupian ---:" + i + "----" + mMapUrl.get(i));
+                    Logger.d(TAG, "tupian ---:" + i + "----" + mMapUrl.get(i));
                 }
                 goImg(integer, URL);
             }
@@ -713,15 +713,15 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                     switch (integer) {
                         case 1:
                             SSQSApplication.glide.load(mMapUrl.get(integer)).error(R.mipmap.fail).centerCrop().into(mSavantAuthIdAttestationPic1);
-                            LogUtil.util(TAG, "第一章执行------------------------------:");
+                            Logger.d(TAG, "第一章执行------------------------------:");
                             break;
                         case 2:
                             SSQSApplication.glide.load(mMapUrl.get(integer)).error(R.mipmap.fail).centerCrop().into(mSavantAuthIdAttestationPic2);
-                            LogUtil.util(TAG, "第二章执行------------------------------:");
+                            Logger.d(TAG, "第二章执行------------------------------:");
                             break;
                         case 3:
                             SSQSApplication.glide.load(mMapUrl.get(integer)).error(R.mipmap.fail).centerCrop().into(mSavantAuthIdAttestationPic3);
-                            LogUtil.util(TAG, "第三章执行------------------------------:" + mMapUrl.get(integer));
+                            Logger.d(TAG, "第三章执行------------------------------:" + mMapUrl.get(integer));
                             break;
                         default:
                             break;

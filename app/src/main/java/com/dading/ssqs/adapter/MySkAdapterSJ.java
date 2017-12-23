@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.SKSJBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -70,7 +70,7 @@ public class MySkAdapterSJ extends BaseAdapter implements ListAdapter {
 
         holder.mSkSjMiddleType.setText(entity.time);
         String main1 = entity.player + "";
-        LogUtil.util(TAG, "人物返回数据是------------------------------:" + main1);
+        Logger.d(TAG, "人物返回数据是------------------------------:" + main1);
         switch (entity.type) {
             case 1:
                 holder.mSkSjLeftNum.setText(main1);
@@ -79,39 +79,39 @@ public class MySkAdapterSJ extends BaseAdapter implements ListAdapter {
                 switch (entity.nameType) {
                     case 1:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dajinqiu);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 2:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dadianqiu);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 3:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dawulong);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 4:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dawuxiao);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 5:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dahuanren);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 6:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dahongpai);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 7:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dahuangpai);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 8:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dalianghuang);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     case 9:
                         holder.mSkSjLeftIv.setImageResource(R.mipmap.dajiaoqiu);
-                        LogUtil.util(TAG,"主隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"主隊------------------------------:"+entity.nameType);
                         break;
                     default:
                         break;
@@ -123,40 +123,40 @@ public class MySkAdapterSJ extends BaseAdapter implements ListAdapter {
                 holder.mSkSjRightNum.setText(main1);
                 switch (entity.nameType) {
                     case 1:
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dajinqiu);
                         break;
                     case 2:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dadianqiu);
-                        LogUtil.util(TAG,"客隊------------------------------:"+entity.nameType);
+                        Logger.d(TAG,"客隊------------------------------:"+entity.nameType);
                         break;
                     case 3:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dawulong);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     case 4:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dawuxiao);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     case 5:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dahuanren);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     case 6:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dahongpai);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     case 7:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dahuangpai);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     case 8:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dalianghuang);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     case 9:
                         holder.mSkSjRightIv.setImageResource(R.mipmap.dajiaoqiu);
-                        LogUtil.util(TAG, "客隊------------------------------:" + entity.nameType);
+                        Logger.d(TAG, "客隊------------------------------:" + entity.nameType);
                         break;
                     default:
                         break;

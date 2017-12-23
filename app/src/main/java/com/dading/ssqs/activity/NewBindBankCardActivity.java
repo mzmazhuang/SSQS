@@ -30,7 +30,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.cells.TitleCell;
 import com.dading.ssqs.components.SelectBankListView;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import java.util.List;
@@ -182,7 +182,7 @@ public class NewBindBankCardActivity extends BaseActivity {
                         finish();
                     } else {
                         TmtUtils.midToast(mContext, "上传提现信息失败!" + result.getMessage(), 0);
-                        LogUtil.util("BindBank", result.getMessage() + "失败信息");
+                        Logger.d("BindBank", result.getMessage() + "失败信息");
                     }
                 }
             });

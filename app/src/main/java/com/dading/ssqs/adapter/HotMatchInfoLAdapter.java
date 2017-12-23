@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.JCbean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.HashMap;
@@ -82,7 +82,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 else
                     holder.mItemSonMid.setVisibility(View.GONE);
 
-                LogUtil.util(TAG,"是不是足球------------:"+isFootBall);
+                Logger.d(TAG,"是不是足球------------:"+isFootBall);
 
                 holder.mMatchInfoItemSubscribe.setText(context.getString(R.string.guess_ninty_result));
                 holder.mMatchInfoItemIcon.setImageResource(R.mipmap.vs);
@@ -132,7 +132,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 else
                     holder.mItemSonMid.setVisibility(View.GONE);
 
-                LogUtil.util(TAG,"是不是足球------------:"+isFootBall);
+                Logger.d(TAG,"是不是足球------------:"+isFootBall);
 
                 holder.mMatchInfoItemSubscribe.setText(context.getString(R.string.guess_half_result));
                 holder.mMatchInfoItemIcon.setImageResource(R.mipmap.vs_banchang);

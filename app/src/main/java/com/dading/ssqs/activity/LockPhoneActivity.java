@@ -15,7 +15,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.SendBindPhoneYZMElement;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PhoneUtils;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -87,7 +87,7 @@ public class LockPhoneActivity extends BaseActivity implements View.OnFocusChang
                     mLockPhonePhoneCode.setClickable(true);
                     return;
                 }
-                LogUtil.util(TAG, mMPhoneNumberText + "这是手机号");
+                Logger.d(TAG, mMPhoneNumberText + "这是手机号");
 
                 SendBindPhoneYZMElement element=new SendBindPhoneYZMElement();
                 element.setMobile(mMPhoneNumberText);
@@ -145,6 +145,6 @@ public class LockPhoneActivity extends BaseActivity implements View.OnFocusChang
             mLockPhonePhoneCode.setBackgroundResource(R.mipmap.register_sel);
             mLockPhonePhoneCode.setClickable(true);
         }
-        LogUtil.util(TAG, s.toString());
+        Logger.d(TAG, s.toString());
     }
 }

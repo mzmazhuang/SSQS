@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.TodayTopicBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -142,7 +142,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.top_icon:
-                LogUtil.util(TAG, "点击删除------------------------------");
+                Logger.d(TAG, "点击删除------------------------------");
                 mPop.showAtLocation(mView, Gravity.CENTER, 0, 0);
                 mTodayTopicDelet.setClickable(false);
 
@@ -204,7 +204,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                     @Override
                     public void run() {
                         mPage++;
-                        LogUtil.util(TAG, "这是第几页--------------:" + mPage);
+                        Logger.d(TAG, "这是第几页--------------:" + mPage);
                         if (mPage > totalCount) {
                             TmtUtils.midToast(UIUtils.getContext(), "已全部加载,无更多数据!", 0);
                         } else {
@@ -245,7 +245,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
         int size = mDataItems.size();
         mDataItems.addAll(items);
         if (mDataItems != null)
-            LogUtil.util(TAG, "总共有" + mDataItems.size() + "条item");
+            Logger.d(TAG, "总共有" + mDataItems.size() + "条item");
         mAdapter.notifyDataSetChanged();
         mTodayTopicList.getRefreshableView().smoothScrollToPosition(size);
         mTodayTopicList.onRefreshComplete();

@@ -11,7 +11,7 @@ import com.dading.ssqs.adapter.MyReferrLvAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ReferReferBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -69,7 +69,7 @@ public class MatchInfoTj {
                     }
                 } else {
                     TmtUtils.midToast(UIUtils.getContext(), "比赛详情推荐" + result.getMessage(), 0);
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });

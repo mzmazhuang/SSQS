@@ -23,7 +23,7 @@ import com.dading.ssqs.bean.MatchInfoLqBean;
 import com.dading.ssqs.bean.MySingletonData;
 import com.dading.ssqs.utils.ConcurrentDateUtil;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -96,7 +96,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
                         processDataMessage(items);
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "中奖信息失败信息");
+                    Logger.d(TAG, result.getMessage() + "中奖信息失败信息");
                 }
             }
         });
@@ -270,8 +270,8 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
         mToken = UIUtils.getSputils().getString(Constent.TOKEN, null);
         mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
 
-        LogUtil.util(TAG, "返回token数据是------------------------------:" + mToken);
-        LogUtil.util(TAG, formatGood);
+        Logger.d(TAG, "返回token数据是------------------------------:" + mToken);
+        Logger.d(TAG, formatGood);
 
         mStr = mEdtText.getText().toString();
         if (mIsLoading) {

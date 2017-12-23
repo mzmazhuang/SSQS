@@ -35,7 +35,7 @@ import com.dading.ssqs.bean.FileUpResultBean;
 import com.dading.ssqs.utils.EmojiFilter;
 import com.dading.ssqs.utils.FileImageUpload;
 import com.dading.ssqs.utils.LocationUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -277,18 +277,18 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                         Intent intent = new Intent(this, LoginActivity.class);
                         startActivity(intent);
                     }
-                    LogUtil.util(TAG, "已经提交------------------------------:");
+                    Logger.d(TAG, "已经提交------------------------------:");
                 } else {
                     TmtUtils.midToast(PuBlishTieZiActivity.this, "文章内容不得少于五字!", 0);
                     return;
                 }
                 break;
             case R.id.publish_note_image:
-                LogUtil.util(TAG, "显示相机------------------------------:");
+                Logger.d(TAG, "显示相机------------------------------:");
                 break;
             case R.id.publish_note_location:
                 LocationUtils.getCNBylocation(this);
-                LogUtil.util(TAG, "显示城市------------------------------:");
+                Logger.d(TAG, "显示城市------------------------------:");
                 mPublishNoteTag.setVisibility(View.VISIBLE);
                 mPublishNoteCity.setText(LocationUtils.cityName);
                 break;
@@ -302,7 +302,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                 mListT.remove(mPublishNoteIv1);
                 mListB.add(mPublishNoteIv1);
                 mListURL.remove(mPublishNoteIv1);
-                LogUtil.util(TAG, mListT.toString());
+                Logger.d(TAG, mListT.toString());
                 break;
             case R.id.publish_note_iv2:
                 UIUtils.hideKeyBord(this);
@@ -310,7 +310,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                 mListT.remove(mPublishNoteIv2);
                 mListB.add(mPublishNoteIv2);
                 mListURL.remove(mPublishNoteIv2);
-                LogUtil.util(TAG, mListT.toString());
+                Logger.d(TAG, mListT.toString());
                 break;
             case R.id.publish_note_iv3:
                 UIUtils.hideKeyBord(this);
@@ -318,18 +318,18 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                 mListT.remove(mPublishNoteIv3);
                 mListB.add(mPublishNoteIv3);
                 mListURL.remove(mPublishNoteIv3);
-                LogUtil.util(TAG, mListT.toString());
+                Logger.d(TAG, mListT.toString());
                 break;
            /* case R.id.publish_note_iv4:
                 mPublishNoteIv4.setVisibility(View.GONE);
                 mListT.remove(mPublishNoteIv4);
-                LogUtil.util(TAG, mListT.toString());
+                Logger.d(TAG, mListT.toString());
                 mListB.add(mPublishNoteIv4);
                 mListURL.remove(mPublishNoteIv4);
                 break;*/
             case R.id.publish_note_iv5:
                 UIUtils.hideKeyBord(this);
-                LogUtil.util(TAG, "显示相机------------------------------:");
+                Logger.d(TAG, "显示相机------------------------------:");
                 mPopup.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
                 mPublishNoteIv5.setClickable(false);
                 break;
@@ -339,7 +339,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
         if (mListURL.size() < 3) {
             mPublishNoteIv5.setVisibility(View.VISIBLE);
         }
-        LogUtil.util(TAG, "上传的图数是------------------------------:" + mListURL.size());
+        Logger.d(TAG, "上传的图数是------------------------------:" + mListURL.size());
     }
 
     @Override
@@ -352,7 +352,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
         if (requestCode == PHOTO_CAMERA) {
             // 设置文件保存路径这里放在跟目录下
             File file = new File(Environment.getExternalStorageDirectory() + ImageName);
-            LogUtil.util(TAG, "相机path是------------------------------:" + file.getPath());
+            Logger.d(TAG, "相机path是------------------------------:" + file.getPath());
             if (mListB.size() <= 0) {
                 mPublishNoteIv5.setVisibility(View.GONE);
             } else {
@@ -379,7 +379,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
             String picPath = cursor.getString(columnIndex);
 
             cursor.close();
-            LogUtil.util(TAG, "图库图片地址是------------------------------:" + picPath);
+            Logger.d(TAG, "图库图片地址是------------------------------:" + picPath);
             File file = new File(picPath);
             File file1 = compressImageFile(picPath);
             if (mIsCompressSuccess) {
@@ -421,7 +421,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
         try {
             file.createNewFile();
         } catch (IOException e) {
-            LogUtil.util(TAG, e.getMessage());
+            Logger.d(TAG, e.getMessage());
         }
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -443,7 +443,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
             //标记压缩图片成功
             mIsCompressSuccess = true;
         } catch (Exception e) {
-            LogUtil.util(TAG, e.getMessage());
+            Logger.d(TAG, e.getMessage());
         }
         return file;
     }
@@ -460,7 +460,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                  */
                 String url = SSQSApplication.apiClient(classGuid).getBaseUri() + "/v1.0/article/uploadImage";
                 mS = FileImageUpload.uploadFile(picture, url, UIUtils.getSputils().getString(Constent.TOKEN, null));
-                LogUtil.util(TAG, "上传图片返回数据是------------------------------:" + mS);
+                Logger.d(TAG, "上传图片返回数据是------------------------------:" + mS);
                 if (!"FAIL".equals(mS)) {
                     FileUpResultBean bean = JSON.parseObject(mS, FileUpResultBean.class);
                     if (bean.status && bean.data != null && bean.data.imageUrl != null) {

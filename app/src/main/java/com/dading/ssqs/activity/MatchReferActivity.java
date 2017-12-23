@@ -23,7 +23,7 @@ import com.dading.ssqs.controllar.myrefer.MyReferHLost;
 import com.dading.ssqs.controllar.myrefer.MyReferHResult;
 import com.dading.ssqs.controllar.myrefer.MyReferNowLost;
 import com.dading.ssqs.controllar.myrefer.MyReferSmallBig;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.SpUtils;
 import com.dading.ssqs.utils.TmtUtils;
@@ -207,7 +207,7 @@ public class MatchReferActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.refer_write_authentication:
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
-                    LogUtil.util(TAG, "pop消失------------------------------:");
+                    Logger.d(TAG, "pop消失------------------------------:");
                     SSQSApplication.apiClient(classGuid).getUserInfo(new CcApiClient.OnCcListener() {
                         @Override
                         public void onResponse(CcApiResult result) {
@@ -222,7 +222,7 @@ public class MatchReferActivity extends BaseActivity implements View.OnClickList
                                     } else {
                                         Intent savantAuth = new Intent(MatchReferActivity.this, SavantAuthenticationActivity.class);
                                         MatchReferActivity.this.startActivity(savantAuth);
-                                        LogUtil.util(TAG, "用户是否注册过专家返回数据是------------------------------:" + bean.isApply);
+                                        Logger.d(TAG, "用户是否注册过专家返回数据是------------------------------:" + bean.isApply);
                                     }
                                     mPopupWindowWrite.dismiss();
 

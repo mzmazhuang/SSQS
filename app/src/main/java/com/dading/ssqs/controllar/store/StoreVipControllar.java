@@ -20,7 +20,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.AwardExchangeElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.StoreBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -170,7 +170,7 @@ public class StoreVipControllar {
                         processData(mData);
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "商店vip失败信息");
+                    Logger.d(TAG, result.getMessage() + "商店vip失败信息");
                 }
             }
         });
@@ -220,7 +220,7 @@ public class StoreVipControllar {
             ((StoreActivity) context).finish();
             return;
         }
-        LogUtil.util(TAG, "返回数据是------------------------------:" + UIUtils.getSputils().getInt(Constent.IS_VIP, 0));
+        Logger.d(TAG, "返回数据是------------------------------:" + UIUtils.getSputils().getInt(Constent.IS_VIP, 0));
         if (UIUtils.getSputils().getInt(Constent.IS_VIP, 0) != 0) {
             TmtUtils.midToast(context, "您已经是vip会员请勿重复购买!", 0);
             return;
@@ -232,7 +232,7 @@ public class StoreVipControllar {
                     mId = mData.get(0).id;
                     mVip = mData.get(0).name;
                 }
-                LogUtil.util(TAG, "购买Vip");
+                Logger.d(TAG, "购买Vip");
                 break;
             case R.id.sm_vip_vip2_ly:
                 if (mData != null && mData.size() > 1) {

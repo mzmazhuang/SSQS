@@ -20,9 +20,8 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseScoreControllar;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -31,7 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import pulltorefresh.PullToRefreshBase;
@@ -156,7 +154,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -182,7 +180,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     public void initScorecalendar() {
         mScoreWeekLayout.setVisibility(View.VISIBLE);
         String text = mScoreWeekData.getText().toString();
-        LogUtil.util(TAG, "日期是:" + text);
+        Logger.d(TAG, "日期是:" + text);
         mScoreWeekData.setText(mWeek);
         mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
         mScoreWeekLeft.setClickable(true);
@@ -285,7 +283,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                                                     }
                                                 }
                                             } else {
-                                                LogUtil.util(TAG, result.getMessage() + "失败信息");
+                                                Logger.d(TAG, result.getMessage() + "失败信息");
                                             }
                                         }
                                     });
@@ -384,7 +382,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     }
 
     private void leftClick() {
-        LogUtil.util(TAG, "点击前，num值-----------:" + mNum);
+        Logger.d(TAG, "点击前，num值-----------:" + mNum);
         if (mNum == -6) {
             mNum--;
             mCalendar.add(Calendar.DAY_OF_YEAR, -1);
@@ -414,7 +412,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
             mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
             mScoreWeekRight.setClickable(true);
         }
-        LogUtil.util(TAG, "点击后，num值-----------" + mNum);
+        Logger.d(TAG, "点击后，num值-----------" + mNum);
     }
 
     private void calendarVolley(String rightLeft) {
@@ -521,7 +519,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtil.util("GBSS", "接到广播赛果------------------------------:");
+            Logger.d("GBSS", "接到广播赛果------------------------------:");
 
             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
             String s = UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0");
@@ -550,7 +548,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                                     }
                                 }
                             } else {
-                                LogUtil.util(TAG, result.getMessage() + "赛国广播失败信息");
+                                Logger.d(TAG, result.getMessage() + "赛国广播失败信息");
                             }
                         }
                     });

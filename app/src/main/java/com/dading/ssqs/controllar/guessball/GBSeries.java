@@ -49,7 +49,7 @@ import com.dading.ssqs.interfaces.MyItemClickListern;
 import com.dading.ssqs.interfaces.MyItemSonCloseClickListern;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -253,7 +253,7 @@ public class GBSeries extends BaseGuessball {
 
         mList = new ArrayList<>();
         String s = UIUtils.getSputils().getString(Constent.GLODS, null);
-        LogUtil.util(TAG, "拥有金币------------------------------:" + s);
+        Logger.d(TAG, "拥有金币------------------------------:" + s);
         mChioceSettingRb1.setChecked(true);
 
         getData();
@@ -276,7 +276,7 @@ public class GBSeries extends BaseGuessball {
                         processData(items);
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -391,7 +391,7 @@ public class GBSeries extends BaseGuessball {
                                     processDataChoice(bean);
                                 }
                             } else {
-                                LogUtil.util(TAG, result.getMessage() + "竞猜筛选失败信息");
+                                Logger.d(TAG, result.getMessage() + "竞猜筛选失败信息");
                             }
                         }
                     });
@@ -406,7 +406,7 @@ public class GBSeries extends BaseGuessball {
                                     processDataChoice(bean);
                                 }
                             } else {
-                                LogUtil.util(TAG, result.getMessage() + "竞猜筛选失败信息");
+                                Logger.d(TAG, result.getMessage() + "竞猜筛选失败信息");
                             }
                         }
                     });
@@ -455,7 +455,7 @@ public class GBSeries extends BaseGuessball {
         mChioceConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "点击提交------------------------------:");
+                Logger.d(TAG, "点击提交------------------------------:");
                 mLoadingAnimal.setVisibility(View.VISIBLE);
                 mDrawable.start();
                 StringBuilder sb = new StringBuilder();
@@ -477,7 +477,7 @@ public class GBSeries extends BaseGuessball {
                         }
                     }
                 }
-                LogUtil.util(TAG, "上传的数据是------------------------------:" + sb.toString());
+                Logger.d(TAG, "上传的数据是------------------------------:" + sb.toString());
                 /**
                  a)	请求地址：
                  /v1.0/match/guess/cg/leagueIDs/{leagueIDs}
@@ -503,7 +503,7 @@ public class GBSeries extends BaseGuessball {
                                 mExpandAdapter.setList(items);
                             }
                         } else {
-                            LogUtil.util(TAG, result.getMessage() + "筛选上传失败信息");
+                            Logger.d(TAG, result.getMessage() + "筛选上传失败信息");
                         }
                     }
                 });
@@ -522,7 +522,7 @@ public class GBSeries extends BaseGuessball {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     //显示键盘
-                    LogUtil.util(TAG, "点击键盘------------------------------:");
+                    Logger.d(TAG, "点击键盘------------------------------:");
                     mKeyBordLy.setVisibility(View.VISIBLE);
                 } else {
                     //隐藏键盘
@@ -533,7 +533,7 @@ public class GBSeries extends BaseGuessball {
         mKey0.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:0");
+                                         Logger.d(TAG, "点击键盘------------------------------:0");
                                          if (mCbBean.amount.length() != 0 && !"000".equals(mCbBean.amount)) {
                                              mCbBean.amount = mCbBean.amount + "0";
                                              setCB();
@@ -544,7 +544,7 @@ public class GBSeries extends BaseGuessball {
         mKey1.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:1");
+                                         Logger.d(TAG, "点击键盘------------------------------:1");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "1";
                                          } else {
@@ -557,7 +557,7 @@ public class GBSeries extends BaseGuessball {
         mKey2.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:2");
+                                         Logger.d(TAG, "点击键盘------------------------------:2");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "2";
                                          } else {
@@ -570,7 +570,7 @@ public class GBSeries extends BaseGuessball {
         mKey3.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------3");
+                                         Logger.d(TAG, "点击键盘------------------------------3");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "3";
                                          } else {
@@ -583,7 +583,7 @@ public class GBSeries extends BaseGuessball {
         mKey4.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:4");
+                                         Logger.d(TAG, "点击键盘------------------------------:4");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "4";
                                          } else {
@@ -596,7 +596,7 @@ public class GBSeries extends BaseGuessball {
         mKey5.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:5");
+                                         Logger.d(TAG, "点击键盘------------------------------:5");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "5";
                                          } else {
@@ -609,7 +609,7 @@ public class GBSeries extends BaseGuessball {
         mKey6.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:6");
+                                         Logger.d(TAG, "点击键盘------------------------------:6");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "6";
                                          } else {
@@ -622,7 +622,7 @@ public class GBSeries extends BaseGuessball {
         mKey7.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:7");
+                                         Logger.d(TAG, "点击键盘------------------------------:7");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "7";
                                          } else {
@@ -635,7 +635,7 @@ public class GBSeries extends BaseGuessball {
         mKey8.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:8");
+                                         Logger.d(TAG, "点击键盘------------------------------:8");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "8";
                                          } else {
@@ -648,7 +648,7 @@ public class GBSeries extends BaseGuessball {
         mKey9.setOnClickListener(new MyItemClickListern(mCbBean) {
                                      @Override
                                      public void onClick(View v) {
-                                         LogUtil.util(TAG, "点击键盘------------------------------:9");
+                                         Logger.d(TAG, "点击键盘------------------------------:9");
                                          if ("000".equals(mCbBean.amount)) {
                                              mCbBean.amount = "9";
                                          } else {
@@ -661,7 +661,7 @@ public class GBSeries extends BaseGuessball {
         mKeyThousand.setOnClickListener(new MyItemClickListern(mCbBean) {
                                             @Override
                                             public void onClick(View v) {
-                                                LogUtil.util(TAG, "点击键盘------------------------------:000");
+                                                Logger.d(TAG, "点击键盘------------------------------:000");
                                                 if ("000".equals(mCbBean.amount) || mCbBean.amount.length() == 0) {
                                                     mCbBean.amount = "";
                                                     mSeriseReturn.setText("");
@@ -675,7 +675,7 @@ public class GBSeries extends BaseGuessball {
         mTenThousand.setOnClickListener(new MyItemClickListern(mCbBean) {
                                             @Override
                                             public void onClick(View v) {
-                                                LogUtil.util(TAG, "点击键盘------------------------------:0000");
+                                                Logger.d(TAG, "点击键盘------------------------------:0000");
                                                 if ("000".equals(mCbBean.amount) || mCbBean.amount.length() == 0) {
                                                     mCbBean.amount = "";
                                                     mSeriseReturn.setText("");
@@ -689,7 +689,7 @@ public class GBSeries extends BaseGuessball {
         mHundredThousand.setOnClickListener(new MyItemClickListern(mCbBean) {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    LogUtil.util(TAG, "点击键盘------------------------------:00000");
+                                                    Logger.d(TAG, "点击键盘------------------------------:00000");
                                                     if ("000".equals(mCbBean.amount) || mCbBean.amount.length() == 0) {
                                                         mCbBean.amount = "";
                                                         mSeriseReturn.setText("");
@@ -703,7 +703,7 @@ public class GBSeries extends BaseGuessball {
         mMillion.setOnClickListener(new MyItemClickListern(mCbBean) {
                                         @Override
                                         public void onClick(View v) {
-                                            LogUtil.util(TAG, "点击键盘------------------------------000000:");
+                                            Logger.d(TAG, "点击键盘------------------------------000000:");
                                             if ("000".equals(mCbBean.amount) || mCbBean.amount.length() == 0) {
                                                 mCbBean.amount = "";
                                                 mSeriseReturn.setText("");
@@ -717,7 +717,7 @@ public class GBSeries extends BaseGuessball {
         mAll.setOnClickListener(new MyItemClickListern(mCbBean) {
                                     @Override
                                     public void onClick(View v) {
-                                        LogUtil.util(TAG, "点击键盘------------------------------all:");
+                                        Logger.d(TAG, "点击键盘------------------------------all:");
                                         mCbBean.amount = UIUtils.getSputils().getString(Constent.GLODS, "");
                                         if ("000".equals(mCbBean.amount) || mCbBean.amount.length() == 0) {
                                             mCbBean.amount = "";
@@ -731,7 +731,7 @@ public class GBSeries extends BaseGuessball {
         mClear.setOnClickListener(new MyItemClickListern(mCbBean) {
                                       @Override
                                       public void onClick(View v) {
-                                          LogUtil.util(TAG, "点击键盘------------------------------:clear");
+                                          Logger.d(TAG, "点击键盘------------------------------:clear");
                                           mCbBean.amount = "";
                                           mInputNum.setText(mCbBean.amount);
                                           mCbBean.returnNum = "0";
@@ -742,7 +742,7 @@ public class GBSeries extends BaseGuessball {
         mConfirm.setOnClickListener(new MyItemClickListern(mCbBean) {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "点击键盘------------------------------:确认");
+                Logger.d(TAG, "点击键盘------------------------------:确认");
                 if (!"000".equals(mCbBean.amount) && mCbBean.amount.length() > 0) {
                     mInputNum.setText(mCbBean.amount);
                     mInputNum.setChecked(mCbBean.cbTag);
@@ -792,10 +792,10 @@ public class GBSeries extends BaseGuessball {
         mBettingLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "串关ly被点击了------------------------------:");
+                Logger.d(TAG, "串关ly被点击了------------------------------:");
                 mFrilstList = new ArrayList<>();
                 Iterator<Map.Entry<Integer, GBSeriesBean.PayRateEntity>> iterator = mMap.entrySet().iterator();
-                LogUtil.util(TAG, "再次添加mmap返回数据是------------------------------:" + mMap.size());
+                Logger.d(TAG, "再次添加mmap返回数据是------------------------------:" + mMap.size());
                 while (iterator.hasNext()) {
                     Map.Entry<Integer, GBSeriesBean.PayRateEntity> next = iterator.next();
                     GBSeriesBean.PayRateEntity payRate = next.getValue();
@@ -819,7 +819,7 @@ public class GBSeries extends BaseGuessball {
                 mPL = 1;
                 for (BetBean bean : mFrilstList) {
                     if (bean.realRate == null) {
-                        LogUtil.util(TAG, "比利时空赛事数据是------------------------------:" + bean);
+                        Logger.d(TAG, "比利时空赛事数据是------------------------------:" + bean);
                         return;
                     }
                     mPL = Double.parseDouble(bean.realRate) * mPL;
@@ -835,7 +835,7 @@ public class GBSeries extends BaseGuessball {
                 mSeriseReturn.setText("0");
                 mInputNum.setText("请输入金币数");
 
-                LogUtil.util(TAG, "传递过去下注数据还有--------:" + mMap.size());
+                Logger.d(TAG, "传递过去下注数据还有--------:" + mMap.size());
                 mBettingBodyLv.setAdapter(mAdapter);
 
                 mBettingBodyLv.setBackgroundResource(R.color.white);
@@ -854,7 +854,7 @@ public class GBSeries extends BaseGuessball {
                 if (mIsLoading) {
                     String gold = UIUtils.getSputils().getString(Constent.GLODS, null);
                     UIUtils.getSputils().putString(Constent.GLODS, gold);
-                    LogUtil.util(TAG, "下朱丹被点击了,数据是------------------------------:金币" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
+                    Logger.d(TAG, "下朱丹被点击了,数据是------------------------------:金币" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
                     mBettingBodyLoading.setText(UIUtils.getSputils().getString(Constent.GLODS, null));
                     mBettingBodyGoldBalance.setVisibility(View.VISIBLE);
                 } else {
@@ -870,7 +870,7 @@ public class GBSeries extends BaseGuessball {
         mBettingBodyClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "您点击了pop关闭按钮------------------------------:");
+                Logger.d(TAG, "您点击了pop关闭按钮------------------------------:");
                 mPL = 1;
                 mPopBettingBody.dismiss();
                 mBettingLy.setFocusable(false);
@@ -902,7 +902,7 @@ public class GBSeries extends BaseGuessball {
             public void onClick(View v) {
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     //传递数据,得到金币值
-                    LogUtil.util(TAG, "已登录------------------------------执行上传");
+                    Logger.d(TAG, "已登录------------------------------执行上传");
                     String gold = UIUtils.getSputils().getString(Constent.GLODS, null);
                     if (gold == null && mCbBean.amount == null) {
                         TmtUtils.midToast(mContent, "参数有误,请重新下注", 0);
@@ -982,7 +982,7 @@ public class GBSeries extends BaseGuessball {
                                 double v1 = Double.parseDouble(UIUtils.getSputils().getString(Constent.GLODS, null)) - Double.parseDouble(mCbBean.amount);
                                 String s1 = mDf.format(v1);
                                 //开奖还不知道
-                                LogUtil.util(TAG, "下注后剩余金额------------------------------:" + s1);
+                                Logger.d(TAG, "下注后剩余金额------------------------------:" + s1);
                                 UIUtils.getSputils().putString(Constent.GLODS, s1);
                                 mBettingBodyLoading.setText(s1);
                                 mBettingBodyGoldBalance.setVisibility(View.VISIBLE);
@@ -1325,7 +1325,7 @@ public class GBSeries extends BaseGuessball {
 
     private void visiablePop(HashMap<Integer, GBSeriesBean.PayRateEntity> map) {
         String size = map.size() + "";
-        LogUtil.util(TAG, "显示选中个数------------------------------:" + size);
+        Logger.d(TAG, "显示选中个数------------------------------:" + size);
         mBettingNum.setText(size);
         mBettingBodyNum.setText(size);
         if (map.size() > 0) {
@@ -1352,7 +1352,7 @@ public class GBSeries extends BaseGuessball {
             switch (intent.getAction()) {
                 case Constent.LOADING_FOOTBALL:
                     boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
-                    LogUtil.util(TAG, "接到广播------:" + (b ? "足球" : "篮球"));
+                    Logger.d(TAG, "接到广播------:" + (b ? "足球" : "篮球"));
                     getData();
                     break;
             }
@@ -1503,7 +1503,7 @@ public class GBSeries extends BaseGuessball {
                         }
                     }
                     visiablePop(mMap);
-                    LogUtil.util(TAG, "返回数据是------------------------------:" + mMap.size());
+                    Logger.d(TAG, "返回数据是------------------------------:" + mMap.size());
                 }
             });
             holder.mItemSonMid.setOnClickListener(new View.OnClickListener() {
@@ -1519,7 +1519,7 @@ public class GBSeries extends BaseGuessball {
                         }
                     }
                     visiablePop(mMap);
-                    LogUtil.util(TAG, "返回数据是------------------------------:" + mMap.size());
+                    Logger.d(TAG, "返回数据是------------------------------:" + mMap.size());
                 }
             });
             holder.mItemSonRight.setOnClickListener(new View.OnClickListener() {
@@ -1535,7 +1535,7 @@ public class GBSeries extends BaseGuessball {
                         }
                     }
                     visiablePop(mMap);
-                    LogUtil.util(TAG, "返回数据是------------------------------:" + mMap.size());
+                    Logger.d(TAG, "返回数据是------------------------------:" + mMap.size());
                 }
             });
             return convertView;
@@ -1687,7 +1687,7 @@ public class GBSeries extends BaseGuessball {
                 @Override
                 public void onClick(View v) {
                     //移除之前先改变其值
-                    LogUtil.util(TAG, "串关返回数据是---:" + bean.toString() + "------" + JSON.toJSON(bean));
+                    Logger.d(TAG, "串关返回数据是---:" + bean.toString() + "------" + JSON.toJSON(bean));
                     list.remove(bean);
                     mFrilstList.remove(bean);
                     mMap.remove(bean.matchID);

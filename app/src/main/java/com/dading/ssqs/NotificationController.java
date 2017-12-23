@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.SparseArray;
 
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.ArrayList;
 
@@ -148,7 +148,7 @@ public class NotificationController {
         if (!allowDuringAnimation && animationInProgress) {
             DelayedPost delayedPost = new DelayedPost(id, args);
             delayedPosts.add(delayedPost);
-            LogUtil.e("Notification", "delay post notification " + id + " with args count = " + args.length);
+            Logger.e("Notification", "delay post notification " + id + " with args count = " + args.length);
             return;
         }
         broadcasting++;

@@ -15,7 +15,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LuckBallActivity;
 import com.dading.ssqs.bean.CasinoBean;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +96,7 @@ public class CasinoAdapter extends BaseAdapter implements ListAdapter {
                 intent.putExtra(Constent.CASINO_NAME, entity.name);
                 intent.putExtra(Constent.CASINO_URL, entity.url);
                 context.startActivity(intent);
-                LogUtil.util(TAG, "點擊它娛樂場------------------------------:");
+                Logger.d(TAG, "點擊它娛樂場------------------------------:");
             }
         });
 

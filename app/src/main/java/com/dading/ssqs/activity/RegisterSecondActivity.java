@@ -20,7 +20,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.RegAccountElement;
 import com.dading.ssqs.apis.elements.SendYZMElement;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -110,7 +110,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
         //获取上一步的手机号
         Intent intent = getIntent();
         mPhone = intent.getStringExtra("mobile");
-        LogUtil.util(TAG, "手机号码:" + mPhone);
+        Logger.d(TAG, "手机号码:" + mPhone);
         mSecondAllowIcon.setChecked(true);
         mSecondSendCode.setClickable(false);
     }
@@ -147,7 +147,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
                             mCountDownTimer.start();
                         } else {
                             TmtUtils.midToast(RegisterSecondActivity.this, result.getMessage(), 0);
-                            LogUtil.util(TAG, "注册手机验证码请求失败!...------------------------------:");
+                            Logger.d(TAG, "注册手机验证码请求失败!...------------------------------:");
                         }
                     }
                 });

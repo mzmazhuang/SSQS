@@ -11,7 +11,7 @@ import com.dading.ssqs.adapter.HeFollowAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.SavantFansBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 
 import java.util.List;
@@ -88,7 +88,7 @@ public class HeFollowControllar {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "专家他的关注失败信息");
+                    Logger.d(TAG, result.getMessage() + "专家他的关注失败信息");
                 }
             }
         });
@@ -140,7 +140,7 @@ public class HeFollowControllar {
                             }
                         } else {
                             mPage--;
-                            LogUtil.util(TAG, result.getMessage() + "专家他的关注失败信息");
+                            Logger.d(TAG, result.getMessage() + "专家他的关注失败信息");
                         }
                     }
                 });

@@ -28,7 +28,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ImgResultBean;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.FileImageUpload;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
 import com.dading.ssqs.utils.TmtUtils;
@@ -144,7 +144,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
         mToken = UIUtils.getSputils().getString(Constent.TOKEN, null);
         Intent intent = getIntent();
         String info = intent.getStringExtra(Constent.MY_INFO);
-        LogUtil.util(TAG, "修改头像传递的数据是------------------------------:" + info);
+        Logger.d(TAG, "修改头像传递的数据是------------------------------:" + info);
         mBean = JSON.parseObject(info, LoadingBean.class);
         if (mBean != null)
             setInfo();
@@ -402,7 +402,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
         try {
             file.createNewFile();
         } catch (IOException e) {
-            LogUtil.util(TAG, e.getMessage());
+            Logger.d(TAG, e.getMessage());
         }
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -433,7 +433,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             baos.close();
             //标记压缩图片成功
         } catch (Exception e) {
-            LogUtil.util(TAG, e.getMessage());
+            Logger.d(TAG, e.getMessage());
         }
         return file;
     }
@@ -478,7 +478,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
         if (requestCode == PHOTO_CAMERA) {
             // 设置文件保存路径这里放在跟目录下
             File picture = new File(Environment.getExternalStorageDirectory() + ImageName);
-            LogUtil.util(TAG, "相机path是------------------------------:" + picture.getPath());
+            Logger.d(TAG, "相机path是------------------------------:" + picture.getPath());
             File file1 = compressImageFile(picture.getPath());
             if (file1 != null) {
                 runUp(file1);
@@ -501,7 +501,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             String picPath = cursor.getString(columnIndex);
             cursor.close();
             File file1 = compressImageFile(picPath);
-            LogUtil.util(TAG, "图库图片地址是----------:" + picPath + "----file___" + file1.getAbsolutePath());
+            Logger.d(TAG, "图库图片地址是----------:" + picPath + "----file___" + file1.getAbsolutePath());
             if (file1 != null) {
                 runUp(file1);
             } else {
@@ -514,7 +514,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             mNickName = data.getStringExtra(Constent.NICK_NAME);
             mChangePhotoNickname.setText(mNickName);
             mBean.username = mNickName;
-            LogUtil.util(TAG, "修改昵称返回数据是------------------------------:" + mNickName);
+            Logger.d(TAG, "修改昵称返回数据是------------------------------:" + mNickName);
 
         }
         //更改签名
@@ -522,7 +522,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             mSignature = data.getStringExtra(Constent.SIGN_TEXT);
             mChangePhotoSignText.setText(mSignature);
             mBean.signature = mSignature;
-            LogUtil.util(TAG, "修改签名返回数据是------------------------------:" + mSignature);
+            Logger.d(TAG, "修改签名返回数据是------------------------------:" + mSignature);
         }
     }
 
@@ -531,7 +531,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void run() {
                 mS = FileImageUpload.uploadFile(picture, mUrl, mToken);
-                LogUtil.util(TAG, "上传头像返回数据是------------------------------:" + mS);
+                Logger.d(TAG, "上传头像返回数据是------------------------------:" + mS);
                 UIUtils.getMainThreadHandler().post(new Runnable() {
                     @Override
                     public void run() {

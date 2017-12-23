@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.dading.ssqs.R;
@@ -17,7 +16,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ExtractUploadElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.WithDrawBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -177,7 +176,7 @@ public class WithDrawActivity extends BaseActivity {
                             mWithDrawBusinsessPwd.setText("");
                         } else {
                             TmtUtils.midToast(UIUtils.getContext(), "提现上传失败." + result.getMessage(), 0);
-                            LogUtil.util(TAG, result.getMessage() + "失败信息");
+                            Logger.d(TAG, result.getMessage() + "失败信息");
                         }
                     }
                 });

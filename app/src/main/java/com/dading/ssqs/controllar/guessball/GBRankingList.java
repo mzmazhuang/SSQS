@@ -19,7 +19,7 @@ import com.dading.ssqs.base.BaseTabsContainer;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.RankingBean;
 import com.dading.ssqs.bean.RankingBean2;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.CalendarUtil;
@@ -73,13 +73,13 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
 
         CalendarUtil util = new CalendarUtil();
         String next = util.getNextMonday();//周一
-        LogUtil.util("ssss", "返回数据是------------------------------:" + next);
+        Logger.d("ssss", "返回数据是------------------------------:" + next);
         String year = next.replace("年", "");
         String month = year.replace("月", ".");
         String day = month.replace("日", "");
         String nextMonday = day.substring(4);
         String[] s = nextMonday.split("\\.");
-        LogUtil.util("ssss", "返回数据是--------:" + nextMonday + "-------" + s.length);
+        Logger.d("ssss", "返回数据是--------:" + nextMonday + "-------" + s.length);
 
 
         if (s[0].length() < 2) {
@@ -129,7 +129,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -166,7 +166,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                                             processData(mItems);
                                         }
                                     } else {
-                                        LogUtil.util(TAG, result.getMessage() + "失败信息");
+                                        Logger.d(TAG, result.getMessage() + "失败信息");
                                     }
                                 }
                             }
@@ -385,7 +385,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                         mRankingList.setAdapter(new MyRankingListAdapter2(mContent, mOrders, checkID));
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "盈利榜失败信息");
+                    Logger.d(TAG, result.getMessage() + "盈利榜失败信息");
                 }
             }
         });
@@ -403,7 +403,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                 UIUtils.SendReRecevice(Constent.LOADING_HOME);
                 break;
             case R.id.ranking_right_arr_ly:
-                LogUtil.util(TAG, "右边点击------------------------------:");
+                Logger.d(TAG, "右边点击------------------------------:");
                 mRankingLeftArr.setVisibility(View.VISIBLE);
                 mRankingLeftArrLy.setClickable(true);
                 if (mDateTAG <= 0) {
@@ -411,7 +411,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                 } else {
                     mDateTAG--;
                     mTime = mListTime.get(mDateTAG);
-                    LogUtil.util(TAG, "第几个日期------------------------------:" + mDateTAG);
+                    Logger.d(TAG, "第几个日期------------------------------:" + mDateTAG);
                     mRankingCalandar.setText(mList.get(mDateTAG));
                     getYGXS(mCheckID, mTime);
                     if (mDateTAG <= 0) {
@@ -423,13 +423,13 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
             case R.id.ranking_left_arr_ly:
                 mRankingRightArr.setVisibility(View.VISIBLE);
                 mRankingRightArrLy.setClickable(true);
-                LogUtil.util(TAG, "左边点击------------------------------:");
+                Logger.d(TAG, "左边点击------------------------------:");
                 if (mDateTAG >= 3) {
                     return;
                 } else {
                     mDateTAG++;
                     mTime = mListTime.get(mDateTAG);
-                    LogUtil.util(TAG, "第几个日期------------------------------:" + mDateTAG);
+                    Logger.d(TAG, "第几个日期------------------------------:" + mDateTAG);
                     mRankingCalandar.setText(mList.get(mDateTAG));
                     getYGXS(mCheckID, mTime);
                     if (mDateTAG >= mList.size() - 1) {

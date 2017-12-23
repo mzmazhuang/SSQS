@@ -22,7 +22,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ExpertInfoByNameElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SavantLeveBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -243,7 +243,7 @@ public class SearchSavantActivity extends BaseActivity {
                                 }
                             }
                         } else {
-                            LogUtil.util(TAG, result.getMessage() + "按级别搜索专家失败信息");
+                            Logger.d(TAG, result.getMessage() + "按级别搜索专家失败信息");
                         }
                     }
                 });

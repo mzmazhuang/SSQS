@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
@@ -12,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
@@ -22,7 +20,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseScoreControllar;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ScoreBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -33,7 +31,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Logger;
 
 import pulltorefresh.PullToRefreshBase;
 import pulltorefresh.PullToRefreshListView;
@@ -131,7 +128,7 @@ public class BaseJs extends BaseScoreControllar {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
         Date date = calendar.getTime();
         mFormatData = sdf.format(date);
-        LogUtil.util(TAG, "日期是-------------------------------------" + mFormatData);
+        Logger.d(TAG, "日期是-------------------------------------" + mFormatData);
         mCount = 10;
         /**
          * 篮球 /v1.0/match/ball/type/{type}/date/{date}/subType/{subType}/leagueIDs/{leagueIds}/page/{page}/count/10
@@ -181,7 +178,7 @@ public class BaseJs extends BaseScoreControllar {
                         }
                     } else {
                         TmtUtils.midToast(mContent, result.getMessage(), 0);
-                        LogUtil.util(TAG, result.getMessage() + "下拉JS失败信息");
+                        Logger.d(TAG, result.getMessage() + "下拉JS失败信息");
                     }
                 }
             });
@@ -250,7 +247,7 @@ public class BaseJs extends BaseScoreControllar {
                                         }
                                     } else {
                                         TmtUtils.midToast(mContent, result.getMessage(), 0);
-                                        LogUtil.util(TAG, result.getMessage() + "下拉JS失败信息");
+                                        Logger.d(TAG, result.getMessage() + "下拉JS失败信息");
                                     }
                                 }
                             });
@@ -266,7 +263,7 @@ public class BaseJs extends BaseScoreControllar {
                 mTaskMore = new Runnable() {
                     @Override
                     public void run() {
-                        LogUtil.util(TAG, "这是第几页--------------:" + mPage);
+                        Logger.d(TAG, "这是第几页--------------:" + mPage);
                         ++mPage;
                         if (mPage > mTotalCount) {
                             --mPage;
@@ -299,7 +296,7 @@ public class BaseJs extends BaseScoreControllar {
                                                 } else {
                                                     mJsList.setMode(PullToRefreshBase.Mode.BOTH);
 
-                                                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                                                    Logger.d(TAG, result.getMessage() + "失败信息");
                                                 }
                                             }
                                         });
@@ -316,7 +313,7 @@ public class BaseJs extends BaseScoreControllar {
         mCount = mItems.size();
         mItems.addAll(items);
         if (mItems != null) {
-            LogUtil.util(TAG, "总共有" + mItems.size() + "条item");
+            Logger.d(TAG, "总共有" + mItems.size() + "条item");
 
             mAdapter.addData(items);
 

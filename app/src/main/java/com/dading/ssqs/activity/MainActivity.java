@@ -29,8 +29,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.NoticegBean;
 import com.dading.ssqs.bean.VersionBean;
 import com.dading.ssqs.fragment.MainContentFragement;
-import com.dading.ssqs.utils.LogUtil;
-import com.dading.ssqs.utils.PackageUtils;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -84,7 +83,7 @@ public class MainActivity extends BaseActivity {
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initFragment();
 
-        LogUtil.util(TAG, "点击的url---" + UIUtils.getSputils().getBoolean(Constent.IS_CLICK, false) + "----:" + UIUtils.getSputils().getString(Constent.IS_CLICK_URL, "https://www.sogou.com/"));
+        Logger.d(TAG, "点击的url---" + UIUtils.getSputils().getBoolean(Constent.IS_CLICK, false) + "----:" + UIUtils.getSputils().getString(Constent.IS_CLICK_URL, "https://www.sogou.com/"));
         /**
          * 打开外部浏览器
          */
@@ -154,7 +153,7 @@ public class MainActivity extends BaseActivity {
                         showUpdataDialog(bean);
                     }
                 } else {
-                    LogUtil.e(TAG, result.getMessage() + "版本更新失败信息");
+                    Logger.e(TAG, result.getMessage() + "版本更新失败信息");
                 }
             }
         });

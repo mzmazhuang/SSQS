@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.elements.ShareArticleElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.JSShareBean;
 import com.dading.ssqs.onekeyshare.OnekeyShare;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -73,7 +73,7 @@ public class MyJsActivity extends BaseActivity {
 
         @JavascriptInterface
         public void androidShare(String mbean) {
-            LogUtil.util(TAG, "JS分享返回数据是------------------------------:" + mbean);
+            Logger.d(TAG, "JS分享返回数据是------------------------------:" + mbean);
             try {
                 JSShareBean shareBean = JSON.parseObject(mbean, JSShareBean.class);
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false))

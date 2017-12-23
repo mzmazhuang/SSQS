@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.WXDFBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -84,14 +84,14 @@ public class WXDFRecycleYHAdapter extends BaseAdapter implements ListAdapter {
                 if (bean.isChecked()) {
                     bean.setChecked(false);
                     mCheckBean = null;
-                    LogUtil.util(TAG, "返回数据是------------------------------:空的");
+                    Logger.d(TAG, "返回数据是------------------------------:空的");
                 } else {
                     for (WXDFBean.InfoBean beas : data) {
                         beas.setChecked(false);
                     }
                     bean.setChecked(true);
                     mCheckBean = bean;
-                    LogUtil.util(TAG, "返回数据是------------------------------:bean");
+                    Logger.d(TAG, "返回数据是------------------------------:bean");
                 }
                 notifyDataSetChanged();
             }

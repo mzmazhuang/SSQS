@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.bean.MatchBeforBeanAll;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -73,7 +73,7 @@ public class MatchBeforeLAdapter extends BaseAdapter implements ListAdapter {
         holder.mMatchbeforeLeftItemType.setText(entity.title);
         String s = "(" + entity.nums + ")";
         holder.mMatchbeforeLeftItemNum.setText(s);
-        LogUtil.util("leftrightl","返回数据是-----------:"+entity.title+"---"+entity.nums +"----"+entity.matchs.size());
+        Logger.d("leftrightl","返回数据是-----------:"+entity.title+"---"+entity.nums +"----"+entity.matchs.size());
         return convertView;
     }
 

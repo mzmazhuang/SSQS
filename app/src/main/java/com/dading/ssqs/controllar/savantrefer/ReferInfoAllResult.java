@@ -12,7 +12,7 @@ import com.dading.ssqs.adapter.SavantReferInfoAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ReferInfoARBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 import java.util.Timer;
@@ -92,7 +92,7 @@ public class ReferInfoAllResult {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "专家推荐列表全场赛果失败信息");
+                    Logger.d(TAG, result.getMessage() + "专家推荐列表全场赛果失败信息");
                 }
             }
         });
@@ -144,7 +144,7 @@ public class ReferInfoAllResult {
                                 }
                             }
                         } else {
-                            LogUtil.util(TAG, result.getMessage() + "专家推荐列表全场赛果失败信息");
+                            Logger.d(TAG, result.getMessage() + "专家推荐列表全场赛果失败信息");
                         }
                     }
                 });

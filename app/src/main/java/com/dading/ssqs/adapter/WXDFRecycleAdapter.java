@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.WXDFBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -121,7 +121,7 @@ public class WXDFRecycleAdapter extends BaseAdapter implements ListAdapter {
 
             if (data.size() > 0) {
                 WXDFBean dataBean = data.get(0);
-                LogUtil.util("WXDaifuActivity", "返回数据是------:" + dataBean.getRemark());
+                Logger.d("WXDaifuActivity", "返回数据是------:" + dataBean.getRemark());
                 holder.mWxDfItemContent.setText(bean.getMfrom() + "--" + bean.getMto());
             }
 

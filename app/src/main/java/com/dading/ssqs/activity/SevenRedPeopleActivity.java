@@ -17,7 +17,7 @@ import com.dading.ssqs.controllar.redpeople.RedPeopleHLost;
 import com.dading.ssqs.controllar.redpeople.RedPeopleHResult;
 import com.dading.ssqs.controllar.redpeople.RedPeopleNowLost;
 import com.dading.ssqs.controllar.redpeople.RedPeopleSmallBig;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -122,7 +122,7 @@ public class SevenRedPeopleActivity extends BaseActivity {
     private class SavantFollowRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtil.util(TAG, "进入七天红人广播------------------------------");
+            Logger.d(TAG, "进入七天红人广播------------------------------");
             initData();
         }
     }

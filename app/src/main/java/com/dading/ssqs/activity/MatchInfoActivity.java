@@ -33,7 +33,7 @@ import com.dading.ssqs.controllar.details.MatchInfoPl;
 import com.dading.ssqs.controllar.details.MatchInfoSk;
 import com.dading.ssqs.controllar.details.MatchInfoTj;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
@@ -189,9 +189,9 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
 
         Intent intent = getIntent();
         mMatchId = intent.getIntExtra(Constent.MATCH_ID, 0);
-        LogUtil.util(TAG, "得到的赛事ID是------------------------------:" + mMatchId);
+        Logger.d(TAG, "得到的赛事ID是------------------------------:" + mMatchId);
         mWhere = intent.getStringExtra(Constent.INTENT_FROM);
-        LogUtil.util(TAG, "来自------------------------------:" + mWhere);
+        Logger.d(TAG, "来自------------------------------:" + mWhere);
         mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
 
         if (mIsLoading) {
@@ -319,7 +319,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
 
             mMatchInfoMain.setText(mData.home);
             mMatchInfoSecond.setText(mData.away);
-            LogUtil.util(TAG, "主队标记返回数据是------------------------------:" + mData.aImageUrl);
+            Logger.d(TAG, "主队标记返回数据是------------------------------:" + mData.aImageUrl);
             SSQSApplication.glide.load(mData.hImageUrl).error(R.mipmap.fail).transform(new GlideCircleTransform(this)).into(mMatchInfoMainIcon);
 
             SSQSApplication.glide.load(mData.aImageUrl).error(R.mipmap.fail).transform(new GlideCircleTransform(this)).into(mMatchInfoSecondIcon);
@@ -327,7 +327,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
             String text = mData.hScore + "-" + mData.aScore;
 
             mMatchInfoScore.setText(text);//现在比分
-            LogUtil.util(TAG, "比分返回数据是------------------------------:" + mData.hScore + "-" + mData.aScore);
+            Logger.d(TAG, "比分返回数据是------------------------------:" + mData.hScore + "-" + mData.aScore);
 
             //半场比分
             if (mData.hHalfScore.equals("")) {
@@ -345,11 +345,11 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                      */
                     try {
                         long nowTimers = new Date().getTime();
-                        LogUtil.util(TAG, "nowTimers------------------------------:" + nowTimers);
+                        Logger.d(TAG, "nowTimers------------------------------:" + nowTimers);
                         long starTimes = DateUtils.formatDate(mData.openTime).getTime();
-                        LogUtil.util(TAG, "startTime数据是------------------------------:" + starTimes);
+                        Logger.d(TAG, "startTime数据是------------------------------:" + starTimes);
                         mPlayTimes = nowTimers - starTimes;
-                        LogUtil.util(TAG, "现在进行的时间是：" + mPlayTimes / 1000 / 60);
+                        Logger.d(TAG, "现在进行的时间是：" + mPlayTimes / 1000 / 60);
                     } catch (IllegalArgumentException e) {
                         e.printStackTrace();
                     }
@@ -368,7 +368,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
 
                             mI = mPlayTimes % 1000 % 60;
                             mH = (int) (mPlayTimes / 1000 / 60);
-                            LogUtil.util(TAG, "现在进行的时间是：" + mH + "分" + mI + "秒" + mPlayTimes);
+                            Logger.d(TAG, "现在进行的时间是：" + mH + "分" + mI + "秒" + mPlayTimes);
                             if (mH > 64) {
                                 int i = mH - 15;
                                 mMatchInfoTimer.setText(String.valueOf(i));
@@ -389,7 +389,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                             String[] split = mData.protime.split(" ");
                             if (split.length > 1) {//判断是篮球还是足球
                                 //判断是否要减15分钟
-                                LogUtil.util(TAG, "分割时间------------------------------:" + split[1]);
+                                Logger.d(TAG, "分割时间------------------------------:" + split[1]);
                                 if (!TextUtils.isEmpty(split[1]) && Integer.parseInt(split[1]) > 64)
                                     mMatchInfoTimer.setText(split[0] + " " + String.valueOf(Integer.parseInt(split[1]) - 15));
                                 else
@@ -436,7 +436,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                             String[] split = mData.protime.split(" ");
                             if (split.length > 1) {//判断是篮球还是足球
                                 //判断是否要减15分钟
-                                LogUtil.util(TAG, "分割时间------------------------------:" + split[1]);
+                                Logger.d(TAG, "分割时间------------------------------:" + split[1]);
                                 if (!TextUtils.isEmpty(split[1]) && Integer.parseInt(split[1]) > 64)
                                     mMatchInfoTimer.setText(split[0] + " " + String.valueOf(Integer.parseInt(split[1]) - 15));
                                 else
@@ -523,13 +523,13 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                     mLivingVideoLy.getLocationInWindow(postions);
 
                     mInitTopPadding = postions[1];
-                    LogUtil.util(TAG, "原来控件x值:" + postions[0] + "原控件Y值" + mInitTopPadding);
+                    Logger.d(TAG, "原来控件x值:" + postions[0] + "原控件Y值" + mInitTopPadding);
 
-                    LogUtil.util(TAG, "原来控件高度值:" + mLivingVideoLy.getHeight() + "滑动Y值:" + f);
+                    Logger.d(TAG, "原来控件高度值:" + mLivingVideoLy.getHeight() + "滑动Y值:" + f);
                     // f位负数时为下拉动作,f位正数时为上推动作
 
                     if (f >= 0 && mInitTopPadding > minTopPadding) {
-                        LogUtil.util(TAG, "上推压缩");
+                        Logger.d(TAG, "上推压缩");
                         if (f > -mInitTopPadding) {
                             mTop = minTopPadding;
                         } else {
@@ -547,7 +547,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                     }
 
                     if (f < 0 && mTop >= minTopPadding && mTop <= 0) {
-                        LogUtil.util(TAG, "下拉伸展");
+                        Logger.d(TAG, "下拉伸展");
                         if (f <= mTop) {
                             mTop = 0;
                         } else {
@@ -638,7 +638,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.match_info_back:
-                LogUtil.util(TAG, "点击返回按钮------------------------------:");
+                Logger.d(TAG, "点击返回按钮------------------------------:");
                 finish();
                 break;
             case R.id.match_info_living:
@@ -737,7 +737,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                         }
                     });
 
-                    LogUtil.util(TAG, "这是比赛闲情josn------------------------------:");
+                    Logger.d(TAG, "这是比赛闲情josn------------------------------:");
                 }
                 break;
             default:
@@ -770,7 +770,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
             String action = intent.getAction();
             if (action.equals(Constent.LOADING_ACTION)) {
                 mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-                LogUtil.util(TAG, "接受到广播后登陆状态是------------------------------:" + mIsLoading);
+                Logger.d(TAG, "接受到广播后登陆状态是------------------------------:" + mIsLoading);
 
                 if (mIsLoading) {
                     if (mIsFouce == 0) {

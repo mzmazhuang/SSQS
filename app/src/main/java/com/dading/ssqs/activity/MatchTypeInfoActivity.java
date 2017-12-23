@@ -24,7 +24,7 @@ import com.dading.ssqs.bean.ALLCircleThings;
 import com.dading.ssqs.bean.AllCircleSingleBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
@@ -102,8 +102,8 @@ public class MatchTypeInfoActivity extends BaseActivity {
 
         String comeTag = intent.getStringExtra(Constent.ALL_CIRCLE_TYPE_TAG);
         String s = intent.getStringExtra(Constent.ALL_CIRCLE_TYPE);
-        LogUtil.util(TAG, "得到sp圈子关注返回数据是------------------------------:" + s + comeTag);
-        LogUtil.util(TAG, "得到sp圈子关注返回数据是------------------------------:" + comeTag);
+        Logger.d(TAG, "得到sp圈子关注返回数据是------------------------------:" + s + comeTag);
+        Logger.d(TAG, "得到sp圈子关注返回数据是------------------------------:" + comeTag);
 
 
         mIsFinish = true;
@@ -121,7 +121,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                     mId = mSingleBean.id;
                     SSQSApplication.glide.load(mSingleBean.imageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mMatchTypeInfoSavantphoto);
 
-                    LogUtil.util(TAG, "图片地址返回数据是------------------------------:" + mSingleBean.imageUrl);
+                    Logger.d(TAG, "图片地址返回数据是------------------------------:" + mSingleBean.imageUrl);
                     mMatchTypeInfoNickname.setText(mSingleBean.name);
                     mFanCount = mSingleBean.fanCount;
                     String text = mFanCount + "";
@@ -129,7 +129,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                     String text1 = mSingleBean.totalCount + "";
                     mMatchTypeInfoTieziNum.setText(text1);
                     mIsFouce = mSingleBean.isFouce;
-                    LogUtil.util(TAG, "是否关注数据是------------------------------:" + mIsFouce);
+                    Logger.d(TAG, "是否关注数据是------------------------------:" + mIsFouce);
                     if (mSingleBean.isFouce == 0) {
                         mMatchTypeInfoFollowCb.setChecked(false);
                     } else {
@@ -158,7 +158,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                         mMatchTypeInfoFollowCb.setChecked(true);
                     }
                 } else {
-                    LogUtil.util(TAG, "woshi kong返回数据是------------------------------:" + s);
+                    Logger.d(TAG, "woshi kong返回数据是------------------------------:" + s);
                 }
                 break;
             default:
@@ -247,7 +247,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, "我是空");
+                    Logger.d(TAG, "我是空");
                 }
             }
         });

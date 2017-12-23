@@ -19,7 +19,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ProxyCodeUpdateElement;
 import com.dading.ssqs.bean.ProxyIntroLookBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -202,7 +202,7 @@ public class ProxyCodeAdapter extends BaseAdapter implements ListAdapter, Compou
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        LogUtil.util(TAG, "返回数据是------------------------------:" + buttonView.getId());
+        Logger.d(TAG, "返回数据是------------------------------:" + buttonView.getId());
         switch (buttonView.getId()) {
             case R.id.pop_proxy_user_setup:
                 if (isChecked) {

@@ -1,6 +1,6 @@
 package com.dading.ssqs;
 
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.Locale;
 
@@ -73,7 +73,7 @@ public class LocaleController {
             }
         } catch (Exception e) {
             String TAG = "LocaleController";
-            LogUtil.e(TAG, e);
+            Logger.e(TAG, e);
         }
         if (value == null) {
             value = "LOC_ERR:" + res;
@@ -82,7 +82,7 @@ public class LocaleController {
             return String.format(value, args);
         } catch (Exception e) {
             String TAG = "LocaleController";
-            LogUtil.e(TAG, e);
+            Logger.e(TAG, e);
         }
         return value;
     }

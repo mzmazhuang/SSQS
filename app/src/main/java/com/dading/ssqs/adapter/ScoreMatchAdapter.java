@@ -26,7 +26,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -217,7 +217,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
 
         //收藏比赛
         mIsLoding = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-        //LogUtil.util(TAG, "登录状态-----------------------------:" + mIsLoding + "-----" + mEntity.isFouce);
+        //Logger.d(TAG, "登录状态-----------------------------:" + mIsLoding + "-----" + mEntity.isFouce);
         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             mMap.get(position).setClickable(true);
             mMapLy.get(position).setClickable(true);
@@ -272,13 +272,13 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         long curTimeL = date.getTime();
         int m = (int) (((curTimeL - openTimeL) / 1000) / 60);
         mEntity.playTime = m;
-        LogUtil.util(TAG, (curTimeL - openTimeL) + "返回数据开始时间是--------------------------" +
+        Logger.d(TAG, (curTimeL - openTimeL) + "返回数据开始时间是--------------------------" +
                 "----:+curTime:" + curTimeL + ",开始时间:" + openTimeL + "执行时间:" + m + "分");
 
         switch (mEntity.isOver) {
             case 0:
 
-                LogUtil.util(TAG, "是不是空的----" + mEntity.protime + "------:" + (mEntity.protime == null));
+                Logger.d(TAG, "是不是空的----" + mEntity.protime + "------:" + (mEntity.protime == null));
                 //根据protime时间长
                 if (!TextUtils.isEmpty(mEntity.protime)) {//如果protime为空不处理
                     String[] split = mEntity.protime.split(" ");
@@ -286,7 +286,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                         mEntity.isVisibleTwilke = true;
                         if (split.length > 1) {//判断是篮球还是足球
                             //判断是否要减15分钟
-                            LogUtil.util(TAG, "分割时间------------------------------:" + split[1]);
+                            Logger.d(TAG, "分割时间------------------------------:" + split[1]);
                             if (!TextUtils.isEmpty(split[1]) && Integer.parseInt(split[1]) > 64)
                                 holder.scoreSgMatchResultTime.setText(/*split[0] + " " + */String.valueOf(Integer.parseInt(split[1]) - 15));
                             else
@@ -435,7 +435,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                  */
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     int fouce = mData.get(position).isFouce;
-                    LogUtil.util(TAG, "添加关注时是否已经关注--------:" + fouce + "---" + mData.get(position).toString());
+                    Logger.d(TAG, "添加关注时是否已经关注--------:" + fouce + "---" + mData.get(position).toString());
                     if (fouce == 1) {
                         removeGz(position);
 
@@ -546,7 +546,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 }
             }
         });
-        LogUtil.util(TAG, "点击的条目是------------------------------:" + position);
+        Logger.d(TAG, "点击的条目是------------------------------:" + position);
     }
 
     private void removeGz(final int position) {

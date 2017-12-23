@@ -14,7 +14,7 @@ import com.dading.ssqs.base.BaseGuessball;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -160,7 +160,7 @@ public class GBGrounder extends BaseGuessball {
                             }
                         } else {
                             TmtUtils.midToast(mContent, result.getMessage(), 0);
-                            LogUtil.util(TAG, result.getMessage() + "下拉滚球失败信息");
+                            Logger.d(TAG, result.getMessage() + "下拉滚球失败信息");
                         }
                     }
                 });
@@ -168,7 +168,7 @@ public class GBGrounder extends BaseGuessball {
 
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                LogUtil.util(TAG, "这是第几页--------------:" + mPage);
+                Logger.d(TAG, "这是第几页--------------:" + mPage);
                 ++mPage;
                 if (mPage > mTotalCount) {
                     --mPage;
@@ -196,7 +196,7 @@ public class GBGrounder extends BaseGuessball {
                                 mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
 
                                 TmtUtils.midToast(mContent, result.getMessage(), 0);
-                                LogUtil.util(TAG, result.getMessage() + "下拉滚球失败信息");
+                                Logger.d(TAG, result.getMessage() + "下拉滚球失败信息");
                             }
                         }
                     });
@@ -216,7 +216,7 @@ public class GBGrounder extends BaseGuessball {
         mCount = mItems.size();
         mItems.addAll(items);
         if (mItems != null) {
-            LogUtil.util(TAG, "总共有" + mItems.size() + "条item");
+            Logger.d(TAG, "总共有" + mItems.size() + "条item");
             mAdapter.notifyDataSetChanged();
             mPullToRefreshListView.getRefreshableView().setSelection(mCount);
             mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);

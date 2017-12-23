@@ -16,7 +16,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.MyTzGTBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.view.GlideCircleTransform;
 
 import java.util.List;
@@ -111,7 +111,7 @@ public class MyGTAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = itemsEntity.articleID;
                 intent.putExtra("infoId", mId);
-                LogUtil.util(TAG, "赛事id---------------------" + mId);
+                Logger.d(TAG, "赛事id---------------------" + mId);
                 context.startActivity(intent);
             }
         });

@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.ReferIncomeBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -94,7 +94,7 @@ public class ReferIncomeActivity extends BaseActivity {
 
                         UIUtils.getSputils().putString(Constent.GLODS, mBean.banlance + "");
                         UIUtils.getSputils().putString(Constent.DIAMONDS, mBean.diamond + "");
-                        LogUtil.util(TAG, "我的金币:" + mBean.banlance + ",我的钻石:" + mBean.diamond);
+                        Logger.d(TAG, "我的金币:" + mBean.banlance + ",我的钻石:" + mBean.diamond);
                     }
                 } else {
                     if (403 == result.getErrno()) {
@@ -150,7 +150,7 @@ public class ReferIncomeActivity extends BaseActivity {
                 break;
             case R.id.refer_income_match_refer:
                 //发送广播
-                LogUtil.util(TAG, "推荐------------------------------:广播");
+                Logger.d(TAG, "推荐------------------------------:广播");
                 UIUtils.SendReRecevice(Constent.LOADING_HOME_SAVANT);
                 finish();
                 break;

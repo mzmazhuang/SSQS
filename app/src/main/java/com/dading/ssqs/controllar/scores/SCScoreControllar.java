@@ -19,7 +19,7 @@ import com.dading.ssqs.base.BaseScoreControllar;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -109,7 +109,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
 
         mDate = mFormatData2.replaceAll("-", "");
         UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
-        LogUtil.util(TAG, "赛程日期:" + mFormatData1);
+        Logger.d(TAG, "赛程日期:" + mFormatData1);
         mWeek = AppendData(mFormatData2);
         mScoreWeekData.setText(mWeek);
 
@@ -149,7 +149,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -346,7 +346,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
 
     private void leftClick() {
         mPage = 1;
-        LogUtil.util(TAG, "点击前，num值-----------:" + mNum);
+        Logger.d(TAG, "点击前，num值-----------:" + mNum);
         if (mNum == 2) {
             mNum--;
             mCalendar.add(Calendar.DAY_OF_YEAR, -1);
@@ -378,7 +378,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
             mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
             mScoreWeekRight.setClickable(true);
         }
-        LogUtil.util(TAG, "点击后，num值-----------" + mNum);
+        Logger.d(TAG, "点击后，num值-----------" + mNum);
     }
 
     private void calendarData(int num) {
@@ -429,7 +429,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "失败信息");
+                    Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -520,7 +520,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtil.util("GBSS", "接到广播SC------------------------------:");
+            Logger.d("GBSS", "接到广播SC------------------------------:");
             String action = intent.getAction();
 
             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
@@ -550,7 +550,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
                                     }
                                 }
                             } else {
-                                LogUtil.util(TAG, result.getMessage() + "SC广播失败信息");
+                                Logger.d(TAG, result.getMessage() + "SC广播失败信息");
                             }
                         }
                     });

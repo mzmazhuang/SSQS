@@ -10,7 +10,7 @@ import com.dading.ssqs.controllar.splash.SplashControllar;
 import com.dading.ssqs.controllar.splash.SplashControllar1;
 import com.dading.ssqs.controllar.splash.SplashControllar2;
 import com.dading.ssqs.controllar.splash.SplashControllar3;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PackageUtils;
 import com.dading.ssqs.utils.ThreadPoolUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -74,7 +74,7 @@ public class SplashAcitivty extends BaseActivity {
         UIUtils.getSputils().putBoolean(Constent.CHIOCE, false);
 
         String s = UIUtils.getSputils().getString(Constent.IS_FRISE, "0");
-        LogUtil.util(TAG, "是否是第一次登陆---0是-1不是---------------------------:" + s);
+        Logger.d(TAG, "是否是第一次登陆---0是-1不是---------------------------:" + s);
         if (s.equals("0")) {
             mList.add(splashControllar1);
             mList.add(splashControllar2);

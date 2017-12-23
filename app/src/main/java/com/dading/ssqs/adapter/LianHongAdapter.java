@@ -20,7 +20,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.FocusUserElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LHRankingBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
 
@@ -151,7 +151,7 @@ public class LianHongAdapter extends BaseAdapter implements ListAdapter {
                                 Intent intent = new Intent(context, LoginActivity.class);
                                 context.startActivity(intent);
                             } else {
-                                LogUtil.util(TAG, result.getMessage());
+                                Logger.d(TAG, result.getMessage());
                                 if (entity.isFouce == 0) {
                                     entity.isFouce = 0;
                                     hoder.mLianhongItemGuessFollow.setChecked(false);

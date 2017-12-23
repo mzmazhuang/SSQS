@@ -25,7 +25,7 @@ import com.dading.ssqs.bean.OrderBean;
 import com.dading.ssqs.bean.StoreBean;
 import com.dading.ssqs.bean.WXOrderBean;
 import com.dading.ssqs.utils.DensityUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -270,7 +270,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
                         processData(mData);
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "红人明星中獎失败信息");
+                    Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                 }
             }
         });
@@ -465,7 +465,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
                 //调用微信
                 mPayMethodWxPay.setClickable(false);
                 sendWX();
-                LogUtil.util(TAG, "调用微信");
+                Logger.d(TAG, "调用微信");
                 break;
             case R.id.pay_method_aliy_pay:
                 //调用支付宝
@@ -476,7 +476,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
                         return;
                     }
                 }
-                LogUtil.util(TAG, "调用支付宝");
+                Logger.d(TAG, "调用支付宝");
                 getPay();
                 mPayMethodAliyPay.setClickable(false);
                 break;

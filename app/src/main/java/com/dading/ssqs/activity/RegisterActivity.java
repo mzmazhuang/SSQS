@@ -15,7 +15,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.SendYZMElement;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PhoneUtils;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -82,7 +82,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
                     TmtUtils.midToast(RegisterActivity.this, "請輸入您的手机号码!", 0);
                     return;
                 }
-                LogUtil.util(TAG, mMPhoneNumberText + "这是手机号");
+                Logger.d(TAG, mMPhoneNumberText + "这是手机号");
 
                 SendYZMElement element=new SendYZMElement();
                 element.setMobile(mMPhoneNumberText);
@@ -146,6 +146,6 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
 
     @Override
     public void afterTextChanged(Editable s) {
-        LogUtil.util(TAG, s.toString());
+        Logger.d(TAG, s.toString());
     }
 }

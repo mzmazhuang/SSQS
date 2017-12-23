@@ -2,7 +2,6 @@ package com.dading.ssqs.apis;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.dading.ssqs.apis.elements.AddressInfoElement;
 import com.dading.ssqs.apis.elements.ArticleSaveElement;
@@ -45,7 +44,7 @@ import com.dading.ssqs.apis.elements.FouceMatchBallElement;
 import com.dading.ssqs.apis.elements.UserElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.NetUtil;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -110,7 +109,7 @@ public class CcApiClient {
                         } catch (Exception e) {
                             if (!NetUtil.isConnected(mContext)) {
                                 //没有网络时, 抛出网络错误。
-                                LogUtil.e(TAG, "error noconnect");
+                                Logger.e(TAG, "error noconnect");
                                 throw e;
                             } else {
                                 if (Constent.DEBUG_VERSION) {
@@ -145,7 +144,7 @@ public class CcApiClient {
         if (index > -1) {
             this.mBaseUri = API_URLS[index];
             UIUtils.getSputils().putString("API_BASE_URL", this.mBaseUri);
-            LogUtil.util(TAG, "************** Select URL Router: " + index + " **************");
+            Logger.d(TAG, "************** Select URL Router: " + index + " **************");
         } else {
             String baseUri = UIUtils.getSputils().getString("API_BASE_URL", "");
             if (TextUtils.isEmpty(baseUri)) {
@@ -2033,7 +2032,7 @@ public class CcApiClient {
                 String url = request.url().toString().split("[?]")[0];
                 //请求超时不记录错误日志
                 if (!(e instanceof SocketTimeoutException) && !(e instanceof UnknownHostException)) {
-                    LogUtil.e(TAG, "Exception " + url + "=" + e);
+                    Logger.e(TAG, "Exception " + url + "=" + e);
                 }
             }
 
@@ -2071,12 +2070,12 @@ public class CcApiClient {
                     errMessage = response.message();
 
                     if (statusCode > 1) {
-                        LogUtil.e(TAG, new IOException("Unexpected code " + response));
+                        Logger.e(TAG, new IOException("Unexpected code " + response));
                     }
                 }
 
                 if (handled) {
-                    LogUtil.util(TAG, url + ": too slow");
+                    Logger.d(TAG, url + ": too slow");
                     return;
                 }
                 handled = true;
@@ -2089,7 +2088,7 @@ public class CcApiClient {
                         }
                     }
                 }
-                LogUtil.util(TAG, "Error Response Status code:" + String.valueOf(statusCode) + ", Error message:" + errMessage);
+                Logger.d(TAG, "Error Response Status code:" + String.valueOf(statusCode) + ", Error message:" + errMessage);
                 final int finalStatusCode = statusCode;
                 final String finalErrMessage = errMessage;
                 AndroidUtilities.runOnUIThread(new Runnable() {
@@ -2107,7 +2106,7 @@ public class CcApiClient {
                 try {
                     arg0 = responseBody.string();
                 } catch (SocketTimeoutException e) {
-                    LogUtil.util(TAG, "read-timeout:" + url);
+                    Logger.d(TAG, "read-timeout:" + url);
                     final int statusCode = 1;
 
                     final String errMessage = "Network connect failed";
@@ -2121,7 +2120,7 @@ public class CcApiClient {
                     });
                     return;
                 } catch (Exception ex) {
-                    LogUtil.util(TAG, "Exception:" + url);
+                    Logger.d(TAG, "Exception:" + url);
                     final int statusCode = 1;
                     final String errMessage = "Network connect failed";
                     AndroidUtilities.runOnUIThread(new Runnable() {
@@ -2134,7 +2133,7 @@ public class CcApiClient {
                     return;
                 }
                 if (handled) {
-                    LogUtil.util(TAG, url + ": too slow");
+                    Logger.d(TAG, url + ": too slow");
                     return;
                 }
 
@@ -2149,7 +2148,7 @@ public class CcApiClient {
                     }
                 }
 
-                LogUtil.util(TAG, url + ": " + arg0);
+                Logger.d(TAG, url + ": " + arg0);
 
                 final CcApiResult mRes = new CcApiResult();
 
@@ -2361,8 +2360,8 @@ public class CcApiClient {
     }
 
     private void RequestURL(String url, String params, final CcListener listener, boolean isPost) {
-        LogUtil.util(TAG, "Request url:" + url);
-        LogUtil.util(TAG, "Request params:" + params);
+        Logger.d(TAG, "Request url:" + url);
+        Logger.d(TAG, "Request params:" + params);
 
         Request.Builder builder;
 
@@ -2380,17 +2379,17 @@ public class CcApiClient {
 
         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             builder.addHeader(Constent.TOKEN, UIUtils.getSputils().getString(Constent.TOKEN, ""));
-            LogUtil.util(TAG, "token " + UIUtils.getSputils().getString(Constent.TOKEN, ""));
+            Logger.d(TAG, "token " + UIUtils.getSputils().getString(Constent.TOKEN, ""));
         } else {
             builder.addHeader(Constent.TOKEN, "");
-            LogUtil.util(TAG, "token " + "");
+            Logger.d(TAG, "token " + "");
         }
         builder.addHeader("Content-Type", "application/json;charset=UTF-8'");
 
         if (null != mDevice) {
             String device = mDevice + "&wifi=" + (NetUtil.isConnectedWifi(mContext) ? "1" : "0");
 //            builder.addHeader("X-Cc-Device", device);
-            LogUtil.util(TAG, "X-Cc-Device " + device);
+            Logger.d(TAG, "X-Cc-Device " + device);
         }
 
         Call call = client.newCall(builder.build());

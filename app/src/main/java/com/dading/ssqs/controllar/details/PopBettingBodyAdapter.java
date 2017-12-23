@@ -18,7 +18,7 @@ import com.dading.ssqs.bean.BetBean;
 import com.dading.ssqs.interfaces.MyItemClickListern;
 import com.dading.ssqs.interfaces.MyItemSonCloseClickListern;
 import com.dading.ssqs.utils.DensityUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 
 import java.text.DecimalFormat;
@@ -121,7 +121,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                 for (Map.Entry<CheckBox, BetBean> cb : map.entrySet()) {
                     list.add(cb.getKey());
                 }
-                LogUtil.util(TAG, "关闭的postion是------------------------------:" + postion);
+                Logger.d(TAG, "关闭的postion是------------------------------:" + postion);
                 CheckBox key = list.get(postion);
                 mListBean.remove(postion);
                 key.setChecked(false);//将外面选择状态改变
@@ -131,7 +131,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                     int i = DensityUtil.dip2px(context, 200);
                     hoder.mItemBettingBodyLy.setMinimumHeight(i);
                 }
-                LogUtil.util(TAG, "我被点击了....................close" + map.size());
+                Logger.d(TAG, "我被点击了....................close" + map.size());
                 PopBettingBodyAdapter.this.notifyDataSetChanged();
             }
         });

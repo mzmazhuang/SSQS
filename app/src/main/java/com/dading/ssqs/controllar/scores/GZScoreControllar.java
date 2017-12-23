@@ -3,7 +3,6 @@ package com.dading.ssqs.controllar.scores;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -18,7 +17,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseScoreControllar;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ScoreBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -162,7 +161,7 @@ public class GZScoreControllar extends BaseScoreControllar {
     private class GZRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtil.util("GBSS", "我的关注收到通知------------------------------:");
+            Logger.d("GBSS", "我的关注收到通知------------------------------:");
             initData();
         }
     }

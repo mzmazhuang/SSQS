@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.R;
 
 import butterknife.Bind;
@@ -38,7 +38,7 @@ public class GreenHandHelp2Activity extends BaseActivity {
     public class Js {
         @JavascriptInterface
         public void sign ( ) {
-            LogUtil.util(TAG, "我被JS调用了------------------------------:");
+            Logger.d(TAG, "我被JS调用了------------------------------:");
             GreenHandHelp2Activity.this.finish( );
         }
     }

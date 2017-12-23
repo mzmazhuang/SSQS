@@ -19,7 +19,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ForgetSecondPasswordElement;
 import com.dading.ssqs.apis.elements.ForgetUserPasswordElement;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
@@ -76,7 +76,7 @@ public class ForgetSecondActivity extends BaseActivity implements View.OnFocusCh
         //获取上一步的手机号
         Intent intent = getIntent();
         mPhone = intent.getStringExtra("mobile");
-        LogUtil.util(TAG, "手机号码:" + mPhone);
+        Logger.d(TAG, "手机号码:" + mPhone);
         mForgetSecondSendcode.setClickable(false);
         mTime = 180;
         final String s = mTime + "s";
@@ -160,7 +160,7 @@ public class ForgetSecondActivity extends BaseActivity implements View.OnFocusCh
                 startActivity(intent);
                 break;
             case R.id.forget_second_sendcode:
-                LogUtil.util(TAG, "mForgetSecondSendcode返回数据是------------------------------:" + mForgetSecondSendcode.getText().toString());
+                Logger.d(TAG, "mForgetSecondSendcode返回数据是------------------------------:" + mForgetSecondSendcode.getText().toString());
                 if (mForgetSecondSendcode.getText().toString().equals(getString(R.string.send_again))) {
                     ForgetUserPasswordElement element = new ForgetUserPasswordElement();
                     element.setMobile(mPhone);

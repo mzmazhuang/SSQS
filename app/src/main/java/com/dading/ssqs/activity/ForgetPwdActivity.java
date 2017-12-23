@@ -15,7 +15,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ForgetUserPasswordElement;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PhoneUtils;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -97,7 +97,7 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
                  */
                 mPhoneNum = mForgetPhoneNumber.getText().toString();
 
-                LogUtil.util(TAG, mPhoneNum + "这是手机号");
+                Logger.d(TAG, mPhoneNum + "这是手机号");
 
                 ForgetUserPasswordElement element=new ForgetUserPasswordElement();
                 element.setMobile(mPhoneNum);
@@ -119,7 +119,7 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
                                 finish();
                             } else {
                                 TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
-                                LogUtil.util(TAG, result.getMessage());
+                                Logger.d(TAG, result.getMessage());
                             }
                         }
                     }
@@ -161,6 +161,6 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
 
     @Override
     public void afterTextChanged(Editable s) {
-        LogUtil.util(TAG, s.toString());
+        Logger.d(TAG, s.toString());
     }
 }

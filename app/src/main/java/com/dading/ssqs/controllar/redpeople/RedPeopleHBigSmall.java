@@ -11,7 +11,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.RedPopleARBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 import java.util.Timer;
@@ -82,7 +82,7 @@ public class RedPeopleHBigSmall extends BaseFragnment {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "红人全场赛果失败信息");
+                    Logger.d(TAG, result.getMessage() + "红人全场赛果失败信息");
                 }
             }
         });
@@ -135,7 +135,7 @@ public class RedPeopleHBigSmall extends BaseFragnment {
                                 }
                             }
                         } else {
-                            LogUtil.util(TAG, result.getMessage() + "红人半场大小失败信息");
+                            Logger.d(TAG, result.getMessage() + "红人半场大小失败信息");
                         }
                     }
                 });

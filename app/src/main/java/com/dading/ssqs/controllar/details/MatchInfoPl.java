@@ -14,7 +14,7 @@ import com.dading.ssqs.adapter.MyLvAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.InfoPLBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +94,7 @@ public class MatchInfoPl {
             mLv.setVisibility(View.VISIBLE);
             mLv.setAdapter(new MyLvAdapter(context, mBean));
             mQxLvBottom.setVisibility(View.VISIBLE);
-            LogUtil.util(TAG, "倾向隐藏");
+            Logger.d(TAG, "倾向隐藏");
             // mLyQx.setVisibility(View.GONE);
         }
     }
@@ -119,7 +119,7 @@ public class MatchInfoPl {
                         mPlNoDataView.setVisibility(View.VISIBLE);
                         mQxLvBottom.setVisibility(View.GONE);
                        /* mLyQx.setVisibility(View.GONE);
-                        LogUtil.util(TAG, "倾向隐藏");
+                        Logger.d(TAG, "倾向隐藏");
                         mLv.setVisibility(View.VISIBLE);*/
                         break;
                     case R.id.pl_btn_qx:
@@ -131,9 +131,9 @@ public class MatchInfoPl {
                       /*  ListScrollUtil.setListViewHeightBasedOnChildren(mQxLv1);
                         ListScrollUtil.setListViewHeightBasedOnChildren(mQxLv2);
                         mLyQx.setVisibility(View.GONE);*/
-                        LogUtil.util(TAG, "倾向显示");
+                        Logger.d(TAG, "倾向显示");
                         mLv.setVisibility(View.GONE);
-                        LogUtil.util(TAG, "倾向隐藏");
+                        Logger.d(TAG, "倾向隐藏");
 
                         break;
                     default:
@@ -156,7 +156,7 @@ public class MatchInfoPl {
                 } else {
                     mPlDataView.setVisibility(View.GONE);
                     mPlNoDataView.setVisibility(View.VISIBLE);
-                    LogUtil.util(TAG, result.getMessage() + "比赛详情赔率请求失败.失败信息");
+                    Logger.d(TAG, result.getMessage() + "比赛详情赔率请求失败.失败信息");
                 }
             }
         });

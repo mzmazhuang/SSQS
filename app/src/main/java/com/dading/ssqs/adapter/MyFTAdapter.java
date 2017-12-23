@@ -16,7 +16,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.MyTzBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -126,7 +126,7 @@ public class MyFTAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = entity.id;
                 intent.putExtra("infoId", mId);
-                LogUtil.util(TAG, "赛事id---------------------" + mId);
+                Logger.d(TAG, "赛事id---------------------" + mId);
                 context.startActivity(intent);
             }
         });

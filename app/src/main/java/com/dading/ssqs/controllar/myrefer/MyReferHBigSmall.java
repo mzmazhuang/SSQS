@@ -11,7 +11,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.MyReferBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 import java.util.Timer;
@@ -91,7 +91,7 @@ public class MyReferHBigSmall extends BaseFragnment {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "我的推荐失败信息");
+                    Logger.d(TAG, result.getMessage() + "我的推荐失败信息");
                 }
             }
         });
@@ -153,7 +153,7 @@ public class MyReferHBigSmall extends BaseFragnment {
                                 }
                             }
                         } else {
-                            LogUtil.util(TAG, result.getMessage() + "我的推荐赛果失败信息");
+                            Logger.d(TAG, result.getMessage() + "我的推荐赛果失败信息");
                         }
                     }
                 });

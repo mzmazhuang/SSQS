@@ -23,7 +23,7 @@ import com.dading.ssqs.controllar.ReferrCntrollar;
 import com.dading.ssqs.controllar.ScoreControllar;
 import com.dading.ssqs.controllar.guessball.GBRankingList;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.NoScrollViewPager;
@@ -142,7 +142,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         mBaseDataControllar.add(mMyControllar);
         mBaseDataControllar.add(mGbRankingList);
 
-        LogUtil.util(TAG, mBaseDataControllar.size() + "");
+        Logger.d(TAG, mBaseDataControllar.size() + "");
 
         //为viewpager赋值
         mAdapter = new MyPagerAdapter(this.getFragmentManager(), mBaseDataControllar);
@@ -178,7 +178,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                             UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
 
-                            LogUtil.util(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
+                            Logger.d(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
                             //发送广播
                             UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                         }
@@ -303,10 +303,10 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     isUserFul();
                     mMCurrButtonId = 1;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-                    LogUtil.util("GBSS", "收到廣播推薦------------------------------:");
+                    Logger.d("GBSS", "收到廣播推薦------------------------------:");
                     break;
                 case Constent.LOADING_GUESS_BALL:
-                    LogUtil.util("GBSS", "收到廣播猜球------------------------------:");
+                    Logger.d("GBSS", "收到廣播猜球------------------------------:");
                     mRg.check(mGuessBall.getId());
                     mMCurrButtonId = 2;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
@@ -315,12 +315,12 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     mRg.check(mMy.getId());
                     mMCurrButtonId = 4;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-                    LogUtil.util("GBSS", "收到个人信息-- ----------------------------:");
+                    Logger.d("GBSS", "收到个人信息-- ----------------------------:");
                     break;
                 case Constent.LOADING_CASINO:
                     Intent casionIntent = new Intent(context, CasionActivity.class);
                     startActivity(casionIntent);
-                    LogUtil.util("GBSS", "收到廣播娱乐场-- ----------------------------:");
+                    Logger.d("GBSS", "收到廣播娱乐场-- ----------------------------:");
                     break;
                 case Constent.LOADING_RANKING:
                     mRg.check(mHome.getId());

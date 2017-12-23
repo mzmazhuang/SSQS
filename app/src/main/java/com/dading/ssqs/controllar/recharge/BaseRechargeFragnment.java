@@ -14,7 +14,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.RechargeDetailBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.EmptyRecyclerView;
@@ -93,7 +93,7 @@ public abstract class BaseRechargeFragnment extends BaseFragnment {
     }
 
     private void processData(List<RechargeDetailBean> bean, int count, int page) {
-        LogUtil.util(TAG, "是否更多------------------------------:" + mB);
+        Logger.d(TAG, "是否更多------------------------------:" + mB);
         mB = page < count;
         if (mB)
             mPage++;

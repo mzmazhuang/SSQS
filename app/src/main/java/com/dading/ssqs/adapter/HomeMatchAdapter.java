@@ -21,7 +21,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.HomeBean;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -138,7 +138,7 @@ public class HomeMatchAdapter extends BaseAdapter {
             }
             HomeBean.MatchsBean.PayRateBean rate = entity.getPayRate();
             if (rate != null) {
-                LogUtil.util(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
+                Logger.d(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
                 holder.leftPl.setText(rate.getRealRate1());
                 holder.midPl.setText(rate.getRealRate2());
                 holder.rightPl.setText(rate.getRealRate3());
@@ -164,7 +164,7 @@ public class HomeMatchAdapter extends BaseAdapter {
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
                 int id = entity.getId();
                 intent.putExtra(Constent.MATCH_ID, id);
-                LogUtil.util(TAG, "home比赛传送的数据是------------------------------:" + id);
+                Logger.d(TAG, "home比赛传送的数据是------------------------------:" + id);
                 intent.putExtra(Constent.INTENT_FROM, "home");
                 content.startActivity(intent);
             }
@@ -212,7 +212,7 @@ public class HomeMatchAdapter extends BaseAdapter {
                                 content.startActivity(intent);
                             }/* else {
                                 TmtUtils.midToast(content, "添加关注失败" + bean.msg + "请刷新界面后添加", 0);
-                                LogUtil.util(TAG,"返回数据是------------------------------:"+"添加关注失败" + bean.msg + "请刷新界面后添加");
+                                Logger.d(TAG,"返回数据是------------------------------:"+"添加关注失败" + bean.msg + "请刷新界面后添加");
                             }*/
                         }
                         mMap1.get(position).setClickable(true);

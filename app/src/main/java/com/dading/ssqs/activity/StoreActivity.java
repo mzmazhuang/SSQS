@@ -31,6 +31,7 @@ import com.dading.ssqs.apis.elements.OrderStatusElement;
 import com.dading.ssqs.bean.AlipaySucBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.controllar.store.StoreDiamondsControllar;
 import com.dading.ssqs.controllar.store.StorePrizeControllar;
@@ -39,7 +40,6 @@ import com.dading.ssqs.controllar.store.StoreTurnTableControllar;
 import com.dading.ssqs.controllar.store.StoreVipControllar;
 import com.dading.ssqs.domain.PayResult;
 import com.dading.ssqs.utils.DensityUtil;
-import com.dading.ssqs.utils.LogUtil;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
 import com.dading.ssqs.view.NoScrollViewPager;
@@ -116,14 +116,14 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                      * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
                      * docType=1) 建议商户依赖异步通知
                      */
-                    LogUtil.util(TAG, "支付宝成功数据是getResult----------" + payResult.getResult());
+                    Logger.d(TAG, "支付宝成功数据是getResult----------" + payResult.getResult());
                     if (TextUtils.isEmpty(payResult.getResult())) {
                         return;
                     }
                     UIUtils.SendReRecevice(Constent.SERIES);
                     final AlipaySucBean sucBean = JSON.parseObject(payResult.getResult(), AlipaySucBean.class);
                     if (sucBean != null)
-                        LogUtil.util(TAG, "支付宝成功数据订单号是----------" + sucBean.alipay_trade_app_pay_response.out_trade_no);
+                        Logger.d(TAG, "支付宝成功数据订单号是----------" + sucBean.alipay_trade_app_pay_response.out_trade_no);
                     String resultStatus = payResult.getResultStatus();
                     /**
                      10.	支付状态提交
@@ -146,9 +146,9 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                         @Override
                         public void onResponse(CcApiResult result) {
                             if (result.isOk()) {
-                                LogUtil.util(TAG, "支付结果提交返回数据是-----:" + result.getMessage());
+                                Logger.d(TAG, "支付结果提交返回数据是-----:" + result.getMessage());
                             } else {
-                                LogUtil.util(TAG, result.getMessage() + "失败信息");
+                                Logger.d(TAG, result.getMessage() + "失败信息");
                             }
                         }
                     });
@@ -181,7 +181,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
 
 
     public void Alipay(String order) {
-        LogUtil.util(TAG, "开始拉起支付------------------------------" + order);
+        Logger.d(TAG, "开始拉起支付------------------------------" + order);
         final String payInfo = order;
         Runnable payRunnable = new Runnable() {
             @Override
@@ -290,7 +290,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
 
         Intent intent = getIntent();
         String flag = intent.getStringExtra(Constent.DIAMONDS);
-        LogUtil.util(TAG, "跳转flag数据是------------------------------:" + flag);
+        Logger.d(TAG, "跳转flag数据是------------------------------:" + flag);
         if ("2".equals(flag)) {
             mStoreViewpager.setCurrentItem(1);
             mStoreRgProp.setChecked(true);
@@ -405,7 +405,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
         public void onReceive(Context context, Intent intent) {
             switch (intent.getAction()) {
                 case Constent.SERIES:
-                    LogUtil.util(TAG, "进入商城广播------------------------------");
+                    Logger.d(TAG, "进入商城广播------------------------------");
                     SSQSApplication.apiClient(classGuid).getUserInfo(new CcApiClient.OnCcListener() {
                         @Override
                         public void onResponse(CcApiResult result) {
@@ -423,7 +423,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                                     mStoreDimondsNum.setText(dimons);
                                     String glod = bean.banlance + "";
                                     mStoreGlodNum.setText(glod);
-                                    LogUtil.util(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
+                                    Logger.d(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
                                     //发送广播
                                     UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                                 }
@@ -442,7 +442,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                     });
                     break;
                 case Constent._SHOPING_GLOD:
-                    LogUtil.util(TAG, "收到充值广播");
+                    Logger.d(TAG, "收到充值广播");
                     mStoreViewpager.setCurrentItem(1);
                     mStoreRgProp.setChecked(true);
                     break;

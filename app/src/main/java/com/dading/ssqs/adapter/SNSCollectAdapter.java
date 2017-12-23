@@ -15,7 +15,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SNSCollectBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -94,7 +94,7 @@ public class SNSCollectAdapter extends BaseAdapter implements ListAdapter {
         holder.mItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "社区条目数据id--:" + entity.id + " 条目标题:" + entity.title);
+                Logger.d(TAG, "社区条目数据id--:" + entity.id + " 条目标题:" + entity.title);
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);

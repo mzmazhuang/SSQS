@@ -27,7 +27,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.GusessChoiceBean;
 import com.dading.ssqs.bean.MatchBeforBeanAll;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -148,7 +148,7 @@ public class GBMatchBefore extends BaseGuessball {
                     mLoadingAnimal.setVisibility(View.GONE);
                     mDrawable.stop();
                     TmtUtils.midToast(mContent, result.getMessage(), 0);
-                    LogUtil.util(TAG, "赛前请求失败------------------------------:" + result.getMessage());
+                    Logger.d(TAG, "赛前请求失败------------------------------:" + result.getMessage());
                 }
             }
         });
@@ -172,7 +172,7 @@ public class GBMatchBefore extends BaseGuessball {
                     mLoadingAnimal.setVisibility(View.GONE);
                     mDrawable.stop();
                     TmtUtils.midToast(mContent, result.getMessage(), 0);
-                    LogUtil.util(TAG, "赛前请求失败------------------------------:" + result.getMessage());
+                    Logger.d(TAG, "赛前请求失败------------------------------:" + result.getMessage());
                 }
             }
         });
@@ -223,7 +223,7 @@ public class GBMatchBefore extends BaseGuessball {
                 if (mLeagueName != null && mLeagueName.size() > 0) {
                     mMatchsN = mLeagueName.get(0).matchs;
                     mAdapterRn = new MatchBeforeRNAdapter(mContent, mMatchsN);
-                    LogUtil.util(TAG, "返回联赛数据是------" + mMatchsN.size() + "-------:" + mMatchsN.toString());
+                    Logger.d(TAG, "返回联赛数据是------" + mMatchsN.size() + "-------:" + mMatchsN.toString());
                     mListRight.setAdapter(mAdapterRn);
                 } else {
                     mEmpty.setVisibility(View.VISIBLE);
@@ -231,7 +231,7 @@ public class GBMatchBefore extends BaseGuessball {
             } else if (mType == 1) {
                 mLeagueDate = bean.leagueDate;
                 for (int i = 0; i < mLeagueDate.size(); i++) {
-                    LogUtil.util(TAG, "返回数据是---------------" + mLeagueDate.size() + "---------------:" + i);
+                    Logger.d(TAG, "返回数据是---------------" + mLeagueDate.size() + "---------------:" + i);
                     MatchBeforBeanAll.LeagueDateEntity entity = mLeagueDate.get(i);
                     if (i == 0) {
                         entity.isColor = true;
@@ -243,7 +243,7 @@ public class GBMatchBefore extends BaseGuessball {
                 mListLeft.setAdapter(mAdapterLd);
                 if (mLeagueDate.size() > 0) {
                     mMatchsRd = mLeagueDate.get(0).matchs;
-                    LogUtil.util(TAG, "返回时间数据是------" + mMatchsRd.size() + "-------:" + mMatchsRd.toString());
+                    Logger.d(TAG, "返回时间数据是------" + mMatchsRd.size() + "-------:" + mMatchsRd.toString());
                     mAdapterRd = new MatchBeforeRDAdapter(mContent, mMatchsRd);
                     mListRight.setAdapter(mAdapterRd);
                 } else {
@@ -314,7 +314,7 @@ public class GBMatchBefore extends BaseGuessball {
         mChioceSetting.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LogUtil.util(TAG, "全部不選------------------------------:");
+                Logger.d(TAG, "全部不選------------------------------:");
                /* mChioceSettingRb1.setChecked(false);
                 mChioceSettingRb2.setChecked(false);*/
                 boolean checked = mList.get(position).checked;
@@ -332,7 +332,7 @@ public class GBMatchBefore extends BaseGuessball {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.guessball_chioce_rb1:
-                        LogUtil.util(TAG, "全選------------------------------:");
+                        Logger.d(TAG, "全選------------------------------:");
                         for (int i = 0; i < mList.size(); i++) {
                             mList.get(i).checked = true;
                         }
@@ -340,7 +340,7 @@ public class GBMatchBefore extends BaseGuessball {
                             mAdapter.notifyDataSetChanged();
                         break;
                     case R.id.guessball_chioce_rb2:
-                        LogUtil.util(TAG, "全bu選------------------------------:");
+                        Logger.d(TAG, "全bu選------------------------------:");
                         for (int i = 0; i < mList.size(); i++) {
                             mList.get(i).checked = false;
                         }
@@ -377,7 +377,7 @@ public class GBMatchBefore extends BaseGuessball {
                         }
                     }
                 }
-                LogUtil.util(TAG, "上传的数据是------------------------------:" + sb.toString());
+                Logger.d(TAG, "上传的数据是------------------------------:" + sb.toString());
                 /**
                  * 15.	猜球-根据筛选项获取赛前列表
                  a)	请求地址：
@@ -475,7 +475,7 @@ public class GBMatchBefore extends BaseGuessball {
                                 }
                             } else {
                                 TmtUtils.midToast(mContent, result.getMessage(), 0);
-                                LogUtil.util(TAG, result.getMessage() + "竞猜筛选失败信息");
+                                Logger.d(TAG, result.getMessage() + "竞猜筛选失败信息");
                             }
                         }
                     });
@@ -491,7 +491,7 @@ public class GBMatchBefore extends BaseGuessball {
                                 }
                             } else {
                                 TmtUtils.midToast(mContent, result.getMessage(), 0);
-                                LogUtil.util(TAG, result.getMessage() + "竞猜筛选失败信息");
+                                Logger.d(TAG, result.getMessage() + "竞猜筛选失败信息");
                             }
                         }
                     });
@@ -535,7 +535,7 @@ public class GBMatchBefore extends BaseGuessball {
     private class MatchBeforRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtil.util("GBSS", "赛前收到广播------:");
+            Logger.d("GBSS", "赛前收到广播------:");
             String action = intent.getAction();
             if (action.equals(Constent.LOADING_FOOTBALL)) {
                 getData();

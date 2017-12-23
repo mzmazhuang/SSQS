@@ -15,7 +15,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseTabsContainer;
 import com.dading.ssqs.bean.CasinoBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -96,7 +96,7 @@ public class GBCasinoF extends BaseTabsContainer {
                     }
                 } else {
                     mLoadAgain.setClickable(false);
-                    LogUtil.util(TAG, result.getMessage() + "娱乐场失败信息");
+                    Logger.d(TAG, result.getMessage() + "娱乐场失败信息");
                 }
             }
         });

@@ -14,7 +14,7 @@ import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.EssayInfoBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 
 import java.util.List;
 
@@ -129,7 +129,7 @@ public class EssayInfoAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = entity.id;
                 intent.putExtra("infoId", mId);
-                LogUtil.util(TAG, "赛事id---------------------" + entity.id);
+                Logger.d(TAG, "赛事id---------------------" + entity.id);
                 context.startActivity(intent);
             }
         });

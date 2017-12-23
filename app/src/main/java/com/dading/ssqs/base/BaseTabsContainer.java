@@ -25,7 +25,7 @@ import com.dading.ssqs.activity.MyMessageActivity;
 import com.dading.ssqs.activity.NewRechargeActivity;
 import com.dading.ssqs.activity.StoreActivity;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -154,10 +154,10 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
     public void setVisbilityViews(ArrayList<RelativeLayout> list, RelativeLayout ly) {
         for (RelativeLayout v : list) {
             if (v == ly) {
-                LogUtil.util(TAG, "是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
+                Logger.d(TAG, "是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
                 v.setVisibility(View.VISIBLE);
             } else {
-                LogUtil.util(TAG, "不是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
+                Logger.d(TAG, "不是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
                 v.setVisibility(View.GONE);
             }
         }
@@ -292,12 +292,12 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
             case R.id.content_title_guessball_title_f:
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
                 UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL);
-                LogUtil.util("GBSS", "發送足球------------------------------:");
+                Logger.d("GBSS", "發送足球------------------------------:");
                 break;
             case R.id.content_title_guessball_title_b:
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
                 UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL);
-                LogUtil.util("GBSS", "發送籃球------------------------------:");
+                Logger.d("GBSS", "發送籃球------------------------------:");
                 break;
             case R.id.content_title_score_title_f:
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);

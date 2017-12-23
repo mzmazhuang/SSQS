@@ -3,10 +3,10 @@ package com.dading.ssqs.utils;
 import android.util.Log;
 
 
-public class LogUtil {
+public class Logger {
     private static boolean isTry = true;
 
-    public static void util(String TAG, String msg) {
+    public static void d(String TAG, String msg) {
         if (isTry) {
             Log.d(TAG, msg);
         }

@@ -15,14 +15,13 @@ import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.SplashBeanGG;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PackageUtils;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import butterknife.Bind;
 
@@ -99,7 +98,7 @@ public class SplashControllar extends BaseFragnment {
                 } else {
                     if (!IS_GO_MAIN) {
                         IS_GO_MAIN = true;
-                        LogUtil.util(TAG, result.getMessage() + "引導頁失败信息");
+                        Logger.d(TAG, result.getMessage() + "引導頁失败信息");
                         Intent intent = new Intent(mContent, MainActivity.class);
                         mContent.startActivity(intent);
                         ((SplashAcitivty) mContent).finish();
@@ -111,7 +110,7 @@ public class SplashControllar extends BaseFragnment {
         //判断是否自动登陆
         mToken = UIUtils.getSputils().getString(Constent.TOKEN, "");
         if (!mToken.equals("")) {
-            LogUtil.util(TAG, "引导页有token------------------------------:" + mToken);
+            Logger.d(TAG, "引导页有token------------------------------:" + mToken);
             SSQSApplication.apiClient(0).getUserInfo(new CcApiClient.OnCcListener() {
                 @Override
                 public void onResponse(CcApiResult result) {
@@ -134,7 +133,7 @@ public class SplashControllar extends BaseFragnment {
                             UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
 
-                            LogUtil.util(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
+                            Logger.d(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
                             //发送广播
                             UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                         }
@@ -169,7 +168,7 @@ public class SplashControllar extends BaseFragnment {
                         UIUtils.getSputils().putString(Constent.IS_FRISE, "1");
                         UIUtils.getSputils().putBoolean(Constent.IS_CLICK, true);
                         ((SplashAcitivty) mContent).finish();
-                        LogUtil.util(TAG, "我被点击了url-----------");
+                        Logger.d(TAG, "我被点击了url-----------");
                     }
                 }
             }

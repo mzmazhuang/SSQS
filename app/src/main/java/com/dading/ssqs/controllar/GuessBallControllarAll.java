@@ -13,13 +13,10 @@ package com.dading.ssqs.controllar;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,13 +43,12 @@ import com.dading.ssqs.base.BaseTabsContainer;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.HomeBean;
 import com.dading.ssqs.bean.HomeMessageBean;
-import com.dading.ssqs.components.swipetoloadlayout.OnLoadMoreListener;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.AutoVerticalScrollTextView;
@@ -60,9 +56,6 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshScrollView;
 
 /**
  * 创建者     ZCL
@@ -277,7 +270,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                         processDataMessage(items);
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "中奖信息失败信息");
+                    Logger.d(TAG, result.getMessage() + "中奖信息失败信息");
                 }
             }
         });
@@ -356,7 +349,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
             for (final HomeBean.AdvertsBean bean : mAdverts) {
                 if (bean != null) {
                     ImageView iv = new ImageView(mContent);
-                    LogUtil.util(TAG, "图片地址:" + bean.getImageUrl());
+                    Logger.d(TAG, "图片地址:" + bean.getImageUrl());
                     SSQSApplication.glide.load(bean.getImageUrl()).error(R.mipmap.image_not).centerCrop().into(iv);
 
                     mHVP.add(iv);
@@ -376,7 +369,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                 if (i == 0) {
                     iv.setImageResource(R.mipmap.grey);
                     mHome_vp_title.setText(mHVpTtile.get(0));
-                    LogUtil.util(TAG, "home的viewpage标题-----" + mHVpTtile.get(0));
+                    Logger.d(TAG, "home的viewpage标题-----" + mHVpTtile.get(0));
                 }
 
                 int width = DensityUtil.dip2px(mContent, 4);
@@ -498,7 +491,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
             @Override
             public void onPageSelected(int position) {
-                LogUtil.util(TAG, "轮播图postion返回数据是------------------------------:" + position);
+                Logger.d(TAG, "轮播图postion返回数据是------------------------------:" + position);
                 for (int i = 0; i < mHVP.size(); i++) {
                     ImageView iv = (ImageView) mHome_vp_ciecle_dots.getChildAt(i);
                     if (iv != null)
@@ -507,7 +500,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                         if (iv != null)
                             iv.setImageResource(R.mipmap.grey);
                         mHome_vp_title.setText(mHVpTtile.get(position));
-                        LogUtil.util(TAG, "home的viewpage标题-----" + mHVpTtile.get(position));
+                        Logger.d(TAG, "home的viewpage标题-----" + mHVpTtile.get(position));
                     }
                 }
             }
@@ -588,13 +581,13 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
     private void setBasketball() {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
-        LogUtil.util("GBSS", "现在是-----:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
+        Logger.d("GBSS", "现在是-----:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
     private void setFootball() {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
-        LogUtil.util("GBSS", "现在是-----:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
+        Logger.d("GBSS", "现在是-----:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
@@ -678,7 +671,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                     Intent intent = new Intent(mContent, HomeViewPagerActivity.class);
                     if (mAdverts != null) {
                         intent.putExtra("infoId", mAdverts.get(position).getForwardID());
-                        LogUtil.util(TAG, "活动跳转返回数据id是----:" + mAdverts.get(position).getForwardID());
+                        Logger.d(TAG, "活动跳转返回数据id是----:" + mAdverts.get(position).getForwardID());
                     } else {
                         intent.putExtra("infoId", position);
                     }
@@ -698,7 +691,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private class HomeControllarRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtil.util(TAG, "home接受到关注的通知------------------------:");
+            Logger.d(TAG, "home接受到关注的通知------------------------:");
             getHOME(null);
         }
     }

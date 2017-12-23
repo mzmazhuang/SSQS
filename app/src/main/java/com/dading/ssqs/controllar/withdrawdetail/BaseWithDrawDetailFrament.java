@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.WithDrawDetailBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.EmptyRecyclerView;
@@ -89,7 +89,7 @@ public abstract class BaseWithDrawDetailFrament extends BaseFragnment {
                         processData(page.getItems(), page.getTotalPage());
                     }
                 } else {
-                    LogUtil.util(TAG, "返回错误数据是------------------------------:" + result.getMessage());
+                    Logger.d(TAG, "返回错误数据是------------------------------:" + result.getMessage());
                     mLoadingAnimal.setVisibility(View.GONE);
                     mShowNetworkErr.setVisibility(View.VISIBLE);
                     TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
@@ -100,7 +100,7 @@ public abstract class BaseWithDrawDetailFrament extends BaseFragnment {
     }
 
     private void processData(List<WithDrawDetailBean> bean, int totalPage) {
-        LogUtil.util(TAG, "是否更多------------------------------:" + mB);
+        Logger.d(TAG, "是否更多------------------------------:" + mB);
 
         if (totalPage == 1) {
             mRecycleview.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));

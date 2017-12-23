@@ -36,7 +36,7 @@ import com.dading.ssqs.adapter.MyAdapter;
 import com.dading.ssqs.base.BaseTabsContainer;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -149,7 +149,7 @@ public class MyControllar extends BaseTabsContainer {
                 case Constent.LOADING_ACTION:
                     //通过传递广播的数据来判断是否登录成功
                     boolean b = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-                    LogUtil.util(TAG, "进入my的广播------------------------------:");
+                    Logger.d(TAG, "进入my的广播------------------------------:");
                     if (b) {
                         setInfo();
                     } else {
@@ -179,7 +179,7 @@ public class MyControllar extends BaseTabsContainer {
         mNoLoading.setVisibility(View.GONE);
         mLoading.setVisibility(View.VISIBLE);
         mSt = UIUtils.getSputils().getString(Constent.LOADING_STATE_SP, "nobean");
-        LogUtil.util(TAG, "我的SP返回数据是------------------------------:" + mSt);
+        Logger.d(TAG, "我的SP返回数据是------------------------------:" + mSt);
 
         if (!"nobean".equals(mSt)) {
             mBean = JSON.parseObject(mSt, LoadingBean.class);

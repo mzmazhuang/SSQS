@@ -13,7 +13,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.SnsBean;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -94,7 +94,7 @@ public class HeadLineControllar {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "头条失败信息");
+                    Logger.d(TAG, result.getMessage() + "头条失败信息");
                 }
             }
         });
@@ -108,7 +108,7 @@ public class HeadLineControllar {
             for (SnsBean.TopPicEntity entity : topPic) {
                 ImageView target = new ImageView(context);
 
-                LogUtil.util(TAG, "社区轮播返回数据id---------:" + entity.id + "---" + entity.smallImage);
+                Logger.d(TAG, "社区轮播返回数据id---------:" + entity.id + "---" + entity.smallImage);
 
                 SSQSApplication.glide.load(entity.smallImage).error(R.mipmap.fail).centerCrop().into(target);
 
@@ -190,7 +190,7 @@ public class HeadLineControllar {
                         }
                     }
                 } else {
-                    LogUtil.util(TAG, result.getMessage() + "头条失败信息");
+                    Logger.d(TAG, result.getMessage() + "头条失败信息");
                 }
             }
         });

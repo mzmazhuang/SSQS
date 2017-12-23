@@ -14,7 +14,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.OrderStatusElement;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
@@ -60,7 +60,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onResp(final BaseResp resp) {
         String order = UIUtils.getSputils().getString(Constent.WX, "");
-        LogUtil.util(TAG, "支付结果返回订单数据是------------------------------:" + order);
+        Logger.d(TAG, "支付结果返回订单数据是------------------------------:" + order);
         int code = 0;
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
 
@@ -108,9 +108,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 @Override
                 public void onResponse(CcApiResult result) {
                     if (result.isOk()) {
-                        LogUtil.util(TAG, "微信支付结果提交返回数据是-----:" + result.getMessage());
+                        Logger.d(TAG, "微信支付结果提交返回数据是-----:" + result.getMessage());
                     } else {
-                        LogUtil.util(TAG, result.getMessage() + "失败信息");
+                        Logger.d(TAG, result.getMessage() + "失败信息");
                     }
                 }
             });

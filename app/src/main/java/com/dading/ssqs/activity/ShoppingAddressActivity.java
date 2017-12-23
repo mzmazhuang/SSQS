@@ -19,7 +19,7 @@ import com.dading.ssqs.apis.elements.AddressInfoElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ShoppingAddBean;
 import com.dading.ssqs.bean.SsxCity;
-import com.dading.ssqs.utils.LogUtil;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.TmtUtils;
 import com.dading.ssqs.utils.UIUtils;
@@ -99,7 +99,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
     protected void initData() {
         Intent intent = getIntent();
         String addMsg = intent.getStringExtra(Constent.ADD_MSG);
-        LogUtil.util(TAG, "收到传递返回数据是------------------------------:" + addMsg);
+        Logger.d(TAG, "收到传递返回数据是------------------------------:" + addMsg);
         if (addMsg != null) {
             mBean = JSON.parseObject(addMsg, ShoppingAddBean.class);
             mIsHave = true;
@@ -153,7 +153,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
 
         for (SsxCity.CitylistEntity ssx : citylist) {
             listP.add(ssx.p);//省集合list
-            LogUtil.util(TAG, "省份:" + ssx.p);
+            Logger.d(TAG, "省份:" + ssx.p);
             listC = new ArrayList<>();
             /**
              * 如果是直辖市name就没有县
@@ -247,7 +247,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
                     sb.append(mSheng.toString()).append(mShi.toString()).append(mXian.toString());
                 }
                 mShoppingAddrPlaceShengshixian.setText(sb.toString());
-                LogUtil.util(TAG, mSheng.toString() + "----" + mShi.toString() + "---" + mXian.toString());
+                Logger.d(TAG, mSheng.toString() + "----" + mShi.toString() + "---" + mXian.toString());
                 mPopu.dismiss();
                 break;
 

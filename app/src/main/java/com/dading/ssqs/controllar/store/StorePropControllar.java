@@ -25,7 +25,7 @@ import com.dading.ssqs.bean.WXOrderBean;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -481,7 +481,7 @@ public class StorePropControllar implements View.OnClickListener {
                 if (Build.MODEL.contains("OPPO")) {
                     mInstall = ((StoreActivity) context).CheckInstall(((StoreActivity) context).ALIPAY_PACKGE_NAME);
                     if (!mInstall) {
-                        TmtUtils.midToast(context, "您还没有安装支付宝,请更换支付方式!", 0);
+                        ToastUtils.midToast(context, "您还没有安装支付宝,请更换支付方式!", 0);
                         return;
                     }
                 }
@@ -529,7 +529,7 @@ public class StorePropControllar implements View.OnClickListener {
                         Intent intent = new Intent(context, LoginActivity.class);
                         context.startActivity(intent);
                     } else {
-                        TmtUtils.midToast(context, result.getMessage(), 0);
+                        ToastUtils.midToast(context, result.getMessage(), 0);
                     }
                 }
             }
@@ -584,7 +584,7 @@ public class StorePropControllar implements View.OnClickListener {
                         Intent intent = new Intent(context, LoginActivity.class);
                         context.startActivity(intent);
                     } else {
-                        TmtUtils.midToast(context, result.getMessage(), 0);
+                        ToastUtils.midToast(context, result.getMessage(), 0);
                     }
                 }
             }

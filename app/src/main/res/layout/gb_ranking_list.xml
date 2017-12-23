@@ -6,10 +6,10 @@
 
     <include layout="@layout/top_toolbar" />
 
-    <pulltorefresh.PullToRefreshListView
+    <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
         android:id="@+id/guessball_ranking_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_e"></pulltorefresh.PullToRefreshListView>
+        android:background="@color/gray_e"></com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 
 </LinearLayout>

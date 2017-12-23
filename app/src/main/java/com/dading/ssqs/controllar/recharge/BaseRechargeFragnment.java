@@ -15,9 +15,9 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.RechargeDetailBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.EmptyRecyclerView;
+import com.dading.ssqs.components.EmptyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +85,7 @@ public abstract class BaseRechargeFragnment extends BaseFragnment {
                     if (mPage == 1) {
                         setVisiable(true);
                     }
-                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
 
                 }
             }

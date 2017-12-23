@@ -34,16 +34,16 @@ import com.dading.ssqs.controllar.details.MatchInfoSk;
 import com.dading.ssqs.controllar.details.MatchInfoTj;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 import com.umeng.analytics.MobclickAgent;
 
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 
 /**
@@ -593,7 +593,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -620,7 +620,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -684,7 +684,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                 intent.putExtra(Constent.LIVING, mData.liveCastUrl);
                 startActivity(intent);
                /* }else{
-                    TmtUtils.midToast(MatchInfoActivity.this,"直播还未开始,请稍后!",0);
+                    ToastUtils.midToast(MatchInfoActivity.this,"直播还未开始,请稍后!",0);
                 }*/
                 //mPopLiving.showAtLocation(mView, Gravity.CENTER,0,0);
 
@@ -731,7 +731,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    // TmtUtils.midToast(MatchInfoActivity.this, bean.msg, 0);
+                                    // ToastUtils.midToast(MatchInfoActivity.this, bean.msg, 0);
                                 }
                             }
                         }

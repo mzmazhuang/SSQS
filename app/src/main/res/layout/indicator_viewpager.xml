@@ -2,14 +2,14 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <tabindicator.TabIndicator
+    <com.dading.ssqs.components.tabindicator.TabIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         app:tiLineColor="@color/home_top"
         app:tiLineStyle="wrap"
         app:tiTabMode="line"
-        app:tiUnderLineColor="@color/gray_e"></tabindicator.TabIndicator>
+        app:tiUnderLineColor="@color/gray_e"></com.dading.ssqs.components.tabindicator.TabIndicator>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"

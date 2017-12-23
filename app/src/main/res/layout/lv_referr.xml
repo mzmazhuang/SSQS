@@ -10,10 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <pulltorefresh.PullToRefreshListView
+    <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
         android:id="@+id/tj_data_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"></pulltorefresh.PullToRefreshListView>
+        android:scrollbars="none"></com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 </RelativeLayout>
 

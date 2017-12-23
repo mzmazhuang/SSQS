@@ -16,7 +16,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.RegAccountElement;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -92,16 +92,16 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
             case R.id.regist_number_button:
                 //提交注册
                 if (!mIsAgree) {
-                    TmtUtils.midToast(RegisterNumberActivity.this, "请选择是否同意注册协议...", 0);
+                    ToastUtils.midToast(RegisterNumberActivity.this, "请选择是否同意注册协议...", 0);
                     return;
                 }
                 String pwUsername = mRegistNumberUsername.getText().toString();
                 String pw = mRegistNumberPw.getText().toString();
                 String pwConfirm = mRegistNumberPwConfirm.getText().toString();
                 if (pwUsername.length() < 6 || pw.length() < 6 && pwConfirm.length() < 6)
-                    TmtUtils.midToast(RegisterNumberActivity.this, "账号或密码长度不得少于6位!", 0);
+                    ToastUtils.midToast(RegisterNumberActivity.this, "账号或密码长度不得少于6位!", 0);
                 if (!pw.equals(pwConfirm)) {
-                    TmtUtils.midToast(RegisterNumberActivity.this, "两次密码输入不一致,请检查设置的密码!", 0);
+                    ToastUtils.midToast(RegisterNumberActivity.this, "两次密码输入不一致,请检查设置的密码!", 0);
                     return;
                 }
                 /**
@@ -122,11 +122,11 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            TmtUtils.midToast(RegisterNumberActivity.this, "注册成功!", 0);
+                            ToastUtils.midToast(RegisterNumberActivity.this, "注册成功!", 0);
                             finish();
                         } else {
                             Logger.d(TAG, result.getMessage());
-                            TmtUtils.midToast(RegisterNumberActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(RegisterNumberActivity.this, result.getMessage(), 0);
                         }
                     }
                 });

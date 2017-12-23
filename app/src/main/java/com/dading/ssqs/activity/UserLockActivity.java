@@ -20,7 +20,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
 
@@ -153,7 +153,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -228,7 +228,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                                         startActivity(intent);
                                         finish();
                                     } else {
-                                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                     }
                                 }
                             }
@@ -236,7 +236,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                     }
                     break;
                     case 2: // 失败
-                        TmtUtils.midToast(UIUtils.getContext(), platform.getName() + "授权失败", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), platform.getName() + "授权失败", 0);
                         mQqLockArrow.setClickable(true);
                         mWbLockArrow.setClickable(true);
                         mPhoneLockArrow.setClickable(true);
@@ -244,7 +244,7 @@ public class UserLockActivity extends BaseActivity implements View.OnClickListen
                         return false;
 
                     case 3: // 取消
-                        TmtUtils.midToast(UIUtils.getContext(), platform.getName() + "授权取消", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), platform.getName() + "授权取消", 0);
                         mQqLockArrow.setClickable(true);
                         mWbLockArrow.setClickable(true);
                         mPhoneLockArrow.setClickable(true);

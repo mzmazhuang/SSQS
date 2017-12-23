@@ -8,12 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.dading.ssqs.view.EmptyRecyclerView
+        <com.dading.ssqs.components.EmptyRecyclerView
             android:id="@+id/recycleview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
-        </com.dading.ssqs.view.EmptyRecyclerView>
+        </com.dading.ssqs.components.EmptyRecyclerView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

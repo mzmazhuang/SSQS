@@ -17,7 +17,7 @@ import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.MyTzGTBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.List;
 

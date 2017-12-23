@@ -22,7 +22,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.InviteCodeBean;
 import com.dading.ssqs.bean.ShareBean;
 import com.dading.ssqs.onekeyshare.OnekeyShare;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
@@ -91,7 +91,7 @@ public class RecomWardsActivity extends BaseActivity implements View.OnClickList
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(RecomWardsActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(RecomWardsActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -120,7 +120,7 @@ public class RecomWardsActivity extends BaseActivity implements View.OnClickList
         String label = "复制链接";
         View.OnClickListener listener = new View.OnClickListener() {
             public void onClick(View v) {
-                TmtUtils.midToast(RecomWardsActivity.this, "复制链接成功!", 0);
+                ToastUtils.midToast(RecomWardsActivity.this, "复制链接成功!", 0);
                 int sdkInt = Build.VERSION.SDK_INT;
                 if (sdkInt > Build.VERSION_CODES.HONEYCOMB) {// api11
                     ClipboardManager copy = (ClipboardManager) RecomWardsActivity.this
@@ -183,7 +183,7 @@ public class RecomWardsActivity extends BaseActivity implements View.OnClickList
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(RecomWardsActivity.this, result.getMessage(), 0);
+                                ToastUtils.midToast(RecomWardsActivity.this, result.getMessage(), 0);
                             }
                         }
                     }

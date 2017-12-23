@@ -30,9 +30,9 @@ import com.dading.ssqs.bean.GeneralUserBean;
 import com.dading.ssqs.bean.MyFollowBean;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 
 import java.util.List;
@@ -221,7 +221,7 @@ public class MyFollowListFansAdapter extends BaseAdapter implements ListAdapter 
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    TmtUtils.midToast(context, result.getMessage(), 0);
+                                    ToastUtils.midToast(context, result.getMessage(), 0);
                                 }
                             }
                         }
@@ -300,7 +300,7 @@ public class MyFollowListFansAdapter extends BaseAdapter implements ListAdapter 
                 }
                 if (data.isSelf == 1) {
                     mFollow.setChecked(false);
-                    TmtUtils.midToast(context, "用户自己不能关注自己!", 0);
+                    ToastUtils.midToast(context, "用户自己不能关注自己!", 0);
                     return;
                 } else {
                     /**

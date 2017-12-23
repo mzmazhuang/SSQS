@@ -41,7 +41,7 @@ import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.fragment.guesstheball.DataController;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -396,7 +396,7 @@ public class ToDayResultFragment extends Fragment implements OnRefreshListener, 
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

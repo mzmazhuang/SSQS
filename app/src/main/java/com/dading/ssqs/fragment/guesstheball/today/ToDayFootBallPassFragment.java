@@ -25,7 +25,6 @@ import com.dading.ssqs.adapter.newAdapter.FilterDialogAdapter;
 import com.dading.ssqs.adapter.newAdapter.PageDialogAdapter;
 import com.dading.ssqs.adapter.newAdapter.ScrollBallCommitMenuAdapter;
 import com.dading.ssqs.adapter.newAdapter.ScrollBallItemAdapter;
-import com.dading.ssqs.adapter.newAdapter.ToDayBasketBallDefaultAdapter;
 import com.dading.ssqs.adapter.newAdapter.ToDayBasketBallPassAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
@@ -33,10 +32,8 @@ import com.dading.ssqs.apis.elements.PayBallElement;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.CommonTitle;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.bean.EarlyBean;
 import com.dading.ssqs.bean.JCbean;
 import com.dading.ssqs.bean.ScoreBean;
-import com.dading.ssqs.bean.ScrollBallBasketBallBean;
 import com.dading.ssqs.bean.ScrollBallFootBallBean;
 import com.dading.ssqs.cells.GuessFilterCell;
 import com.dading.ssqs.cells.ScrollBallCell;
@@ -52,7 +49,7 @@ import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.fragment.guesstheball.DataController;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallDefaultFragment;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -604,7 +601,7 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
                                 SSQSApplication.cachedThreadPool.execute(thread);
                             }
                         } else {
-                            TmtUtils.midToast(mContext, result.getMessage(), 0);
+                            ToastUtils.midToast(mContext, result.getMessage(), 0);
                         }
                     }
                 });
@@ -667,7 +664,7 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <pulltorefresh.PullToRefreshListView
+            <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
                 android:id="@+id/search_savant_search_result"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

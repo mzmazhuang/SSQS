@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.elements.RegTrialElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.TryPlayBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import butterknife.Bind;
@@ -54,7 +54,7 @@ public class UserTrialGameActivity extends BaseActivity {
                         processedData(bean);
                     }
                 } else {
-                    TmtUtils.midToast(UserTrialGameActivity.this, result.getMessage(), 0);
+                    ToastUtils.midToast(UserTrialGameActivity.this, result.getMessage(), 0);
                 }
             }
         });
@@ -134,7 +134,7 @@ public class UserTrialGameActivity extends BaseActivity {
                                 }
                             } else {
                                 UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, false);
-                                TmtUtils.midToast(UserTrialGameActivity.this, result.getMessage(), 0);
+                                ToastUtils.midToast(UserTrialGameActivity.this, result.getMessage(), 0);
                             }
                         }
                     });
@@ -150,7 +150,7 @@ public class UserTrialGameActivity extends BaseActivity {
     }
 
     private void errPwd(String str) {
-        TmtUtils.midToast(UserTrialGameActivity.this, str, 0);
+        ToastUtils.midToast(UserTrialGameActivity.this, str, 0);
         clearPWD();
     }
 

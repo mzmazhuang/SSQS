@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.GuessACEBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -23,8 +23,8 @@ import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -91,7 +91,7 @@ public class GuessBallACEActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -164,7 +164,7 @@ public class GuessBallACEActivity extends BaseActivity {
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

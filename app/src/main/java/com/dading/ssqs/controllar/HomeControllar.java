@@ -20,7 +20,7 @@ import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
 
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 /**
  * 创建者     ZCL

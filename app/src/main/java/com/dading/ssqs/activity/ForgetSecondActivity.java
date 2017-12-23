@@ -20,7 +20,7 @@ import com.dading.ssqs.apis.elements.ForgetSecondPasswordElement;
 import com.dading.ssqs.apis.elements.ForgetUserPasswordElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -144,13 +144,13 @@ public class ForgetSecondActivity extends BaseActivity implements View.OnFocusCh
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            TmtUtils.midToast(ForgetSecondActivity.this, "找回密码成功!", 0);
+                            ToastUtils.midToast(ForgetSecondActivity.this, "找回密码成功!", 0);
 
                             Intent intent = new Intent(ForgetSecondActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-                            TmtUtils.midToast(ForgetSecondActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(ForgetSecondActivity.this, result.getMessage(), 0);
                         }
                     }
                 });
@@ -183,7 +183,7 @@ public class ForgetSecondActivity extends BaseActivity implements View.OnFocusCh
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }

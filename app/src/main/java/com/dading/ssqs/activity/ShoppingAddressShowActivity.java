@@ -12,7 +12,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.ShoppingAddBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
 
@@ -89,7 +89,7 @@ public class ShoppingAddressShowActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }

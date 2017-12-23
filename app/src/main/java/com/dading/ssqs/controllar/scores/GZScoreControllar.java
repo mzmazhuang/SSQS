@@ -18,13 +18,13 @@ import com.dading.ssqs.base.BaseScoreControllar;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
 
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -89,7 +89,7 @@ public class GZScoreControllar extends BaseScoreControllar {
 
                                             mAdapter.setData(mItems);
 
-                                            TmtUtils.midToast(mContent, "刷新成功!", 0);
+                                            ToastUtils.midToast(mContent, "刷新成功!", 0);
                                         }
                                     }
                                 } else {
@@ -99,7 +99,7 @@ public class GZScoreControllar extends BaseScoreControllar {
                                         Intent intent = new Intent(mContent, LoginActivity.class);
                                         mContent.startActivity(intent);
                                     } else {
-                                        TmtUtils.midToast(mContent, result.getMessage(), 0);
+                                        ToastUtils.midToast(mContent, result.getMessage(), 0);
                                     }
                                 }
                             }
@@ -145,7 +145,7 @@ public class GZScoreControllar extends BaseScoreControllar {
                         }
                     }
                 } else {
-                    TmtUtils.midToast(mContent, result.getMessage(), 0);
+                    ToastUtils.midToast(mContent, result.getMessage(), 0);
                 }
             }
         });

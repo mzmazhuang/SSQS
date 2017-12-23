@@ -31,9 +31,9 @@ import com.dading.ssqs.utils.FileImageUpload;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 import com.dading.ssqs.R;
 import com.google.gson.Gson;
 
@@ -309,7 +309,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(ChangePhotoActivity.this, result.getMessage(), 0);
+                                ToastUtils.midToast(ChangePhotoActivity.this, result.getMessage(), 0);
                             }
                         }
                     }
@@ -317,7 +317,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.change_photo_nickname:
                 if (mBean.isEdit == 1) {
-                    //TmtUtils.midToast(ChangePhotoActivity.this, "您已更改过昵称,不可再次更改!", 0);
+                    //ToastUtils.midToast(ChangePhotoActivity.this, "您已更改过昵称,不可再次更改!", 0);
                     return;
                 }
                 Intent intent = new Intent(this, ChangePhotoNicknameActivity.class);
@@ -461,7 +461,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(ChangePhotoActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(ChangePhotoActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -542,7 +542,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                         } else {
                             if (mBean != null)
                                 data = mBean.avatar;
-                            TmtUtils.midToast(ChangePhotoActivity.this, "更新头像失败,请检查图片!", 0);
+                            ToastUtils.midToast(ChangePhotoActivity.this, "更新头像失败,请检查图片!", 0);
                         }
                         goImg(data);
                     }

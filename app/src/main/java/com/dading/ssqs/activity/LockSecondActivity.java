@@ -22,7 +22,7 @@ import com.dading.ssqs.apis.elements.SendBindPhoneYZMElement;
 import com.dading.ssqs.apis.elements.UserBindElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import butterknife.Bind;
@@ -148,7 +148,7 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }
@@ -173,19 +173,19 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
                  */
                 String password = mSecondPwd.getText().toString();
                 if (TextUtils.isEmpty(password)) {
-                    TmtUtils.midToast(LockSecondActivity.this, "请输入密码!", 0);
+                    ToastUtils.midToast(LockSecondActivity.this, "请输入密码!", 0);
                     return;
                 }
                 if (password.length() < 6) {
-                    TmtUtils.midToast(LockSecondActivity.this, "密码长度不得少于六位!", 0);
+                    ToastUtils.midToast(LockSecondActivity.this, "密码长度不得少于六位!", 0);
                     return;
                 } else if (password.length() > 32) {
-                    TmtUtils.midToast(LockSecondActivity.this, "密码长度不得大于三十二位!", 0);
+                    ToastUtils.midToast(LockSecondActivity.this, "密码长度不得大于三十二位!", 0);
                     return;
                 }
                 mCode = mSecondCode.getText().toString();
                 if (TextUtils.isEmpty(mCode)) {
-                    TmtUtils.midToast(LockSecondActivity.this, "请输入验证码!", 0);
+                    ToastUtils.midToast(LockSecondActivity.this, "请输入验证码!", 0);
                     return;
                 }
                 mSecondRegisetButton.setFocusable(true);
@@ -202,7 +202,7 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
                     public void onResponse(CcApiResult result) {
                         mSecondRegisetButton.setClickable(true);
                         if (result.isOk()) {
-                            TmtUtils.midToast(UIUtils.getContext(), "绑定手机成功,即将跳转到绑定界面请稍后...", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "绑定手机成功,即将跳转到绑定界面请稍后...", 0);
                             UIUtils.postTaskDelay(new Runnable() {
                                 @Override
                                 public void run() {
@@ -217,7 +217,7 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

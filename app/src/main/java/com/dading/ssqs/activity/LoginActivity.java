@@ -26,7 +26,7 @@ import com.dading.ssqs.apis.elements.ThreeLoginElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
 
@@ -169,17 +169,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                     }
                                 } else {
                                     mLoadingAnimal.setVisibility(View.GONE);
-                                    TmtUtils.midToast(UIUtils.getContext(), "授权失败,请重新登录..", 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), "授权失败,请重新登录..", 0);
                                 }
                             }
                         });
                         break;
                     case 2: // 失败
-                        TmtUtils.midToast(UIUtils.getContext(), "授权失败..", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "授权失败..", 0);
                         return false;
 
                     case 3: // 取消
-                        TmtUtils.midToast(UIUtils.getContext(), "授权取消..", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "授权取消..", 0);
                         return false;
 
                 }
@@ -426,11 +426,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 final String UserNumber = mEtLoadingNumber.getText().toString();
                 final String UserPwd = mEtLoadingPwd.getText().toString();
                 if (TextUtils.isEmpty(UserNumber)) {
-                    TmtUtils.midToast(LoginActivity.this, "账号不能为空!", 0);
+                    ToastUtils.midToast(LoginActivity.this, "账号不能为空!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(UserPwd)) {
-                    TmtUtils.midToast(LoginActivity.this, "密码不能为空!", 0);
+                    ToastUtils.midToast(LoginActivity.this, "密码不能为空!", 0);
                     return;
                 }
 
@@ -468,7 +468,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                             }
                         } else {
                             mLoadingAnimal.setVisibility(View.GONE);
-                            TmtUtils.midToast(UIUtils.getContext(), "账户或密码错误..", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "账户或密码错误..", 0);
                         }
                     }
                 });

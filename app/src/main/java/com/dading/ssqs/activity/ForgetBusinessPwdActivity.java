@@ -9,7 +9,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ForgetPasswordElement;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -70,23 +70,23 @@ public class ForgetBusinessPwdActivity extends BaseActivity {
                 // String setPwdCode = mForgetBusinsessPwdStateCode.getText().toString();
                 // String setPwdPhone = mForgetBusinsessPwdPhoneNumber.getText().toString();
                 if (TextUtils.isEmpty(mForgetBusinsessOldPwd.getText().toString())) {
-                    TmtUtils.midToast(this, "请输入您旧的交易密码!", 0);
+                    ToastUtils.midToast(this, "请输入您旧的交易密码!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(setPwd)) {
-                    TmtUtils.midToast(this, "请设置您的交易密码!", 0);
+                    ToastUtils.midToast(this, "请设置您的交易密码!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(setPwdConfirm)) {
-                    TmtUtils.midToast(this, "请确认设置的交易密码!", 0);
+                    ToastUtils.midToast(this, "请确认设置的交易密码!", 0);
                     return;
                 }
              /*   if (TextUtils.isEmpty(setPwdCode)) {
-                    TmtUtils.midToast(this, "请输入验证码!", 0);
+                    ToastUtils.midToast(this, "请输入验证码!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(setPwdPhone)) {
-                    TmtUtils.midToast(this, "请输入您的手机号!", 0);
+                    ToastUtils.midToast(this, "请输入您的手机号!", 0);
                     return;
                 }*/
                 /**
@@ -110,10 +110,10 @@ public class ForgetBusinessPwdActivity extends BaseActivity {
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            TmtUtils.midToast(ForgetBusinessPwdActivity.this, "修改交易密码成功!", 0);
+                            ToastUtils.midToast(ForgetBusinessPwdActivity.this, "修改交易密码成功!", 0);
                             finish();
                         } else {
-                            TmtUtils.midToast(ForgetBusinessPwdActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(ForgetBusinessPwdActivity.this, result.getMessage(), 0);
                         }
                     }
                 });

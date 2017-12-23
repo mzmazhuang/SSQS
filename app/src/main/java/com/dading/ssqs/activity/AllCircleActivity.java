@@ -17,7 +17,7 @@ import com.dading.ssqs.bean.AllCircleLBean;
 import com.dading.ssqs.bean.AllCircleRBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.DensityUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -82,7 +82,7 @@ public class AllCircleActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(AllCircleActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(AllCircleActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -144,7 +144,7 @@ public class AllCircleActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(AllCircleActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(AllCircleActivity.this, result.getMessage(), 0);
                     }
                 }
             }

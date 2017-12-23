@@ -18,7 +18,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.JSShareBean;
 import com.dading.ssqs.onekeyshare.OnekeyShare;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -130,9 +130,9 @@ public class MyJsActivity extends BaseActivity {
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            TmtUtils.midToast(UIUtils.getContext(), "分享成功!", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "分享成功!", 0);
                         } else {
-                            TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                            ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                         }
                     }
                 });

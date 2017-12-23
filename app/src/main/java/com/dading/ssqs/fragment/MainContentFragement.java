@@ -24,9 +24,9 @@ import com.dading.ssqs.controllar.ScoreControllar;
 import com.dading.ssqs.controllar.guessball.GBRankingList;
 import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.NoScrollViewPager;
+import com.dading.ssqs.components.NoScrollViewPager;
 
 import java.util.ArrayList;
 
@@ -184,7 +184,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                         }
                     } else {
                         if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContent)) {
-                            TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                            ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                         }
                     }
                 }

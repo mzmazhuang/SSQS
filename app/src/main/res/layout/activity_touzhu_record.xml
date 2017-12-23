@@ -176,7 +176,7 @@
             android:id="@+id/ex_no_data"
             layout="@layout/templete_no_data" />
 
-        <pulltorefresh.PullToRefreshListView
+        <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
             android:id="@+id/betting_record_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -4,12 +4,12 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <pulltorefresh.PullToRefreshListView
+    <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
         android:id="@+id/red_people_h_result_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:showDividers="end">
-    </pulltorefresh.PullToRefreshListView>
+    </com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 
     <include layout="@layout/templete_no_data"/>
 </RelativeLayout>

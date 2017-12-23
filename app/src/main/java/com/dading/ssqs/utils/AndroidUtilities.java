@@ -2,6 +2,8 @@ package com.dading.ssqs.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -164,4 +166,24 @@ public class AndroidUtilities {
             }
         }
     }
+
+    /**
+     * 获取程序版本名称u.
+     *
+     * @param context
+     * @return
+     * @throws Exception
+     */
+    public static String getVersionName(Context context) {
+        PackageManager manager = context.getPackageManager();
+        PackageInfo packageInfo;
+        try {
+            packageInfo = manager.getPackageInfo(context.getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 }

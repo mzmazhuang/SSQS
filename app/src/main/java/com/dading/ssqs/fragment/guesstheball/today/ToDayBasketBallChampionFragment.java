@@ -35,21 +35,17 @@ import com.dading.ssqs.bean.CommonTitle;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.cells.ChampionChildCell;
 import com.dading.ssqs.cells.GuessFilterCell;
-import com.dading.ssqs.cells.TimeCell;
 import com.dading.ssqs.components.FilterDialog;
 import com.dading.ssqs.components.LoadingDialog;
 import com.dading.ssqs.components.PageDialog;
 import com.dading.ssqs.components.RecyclerScrollview;
 import com.dading.ssqs.components.ScrollBallCommitMenuView;
 import com.dading.ssqs.components.ScrollBallCommitView;
-import com.dading.ssqs.components.SelectMatchDialog;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
-import com.dading.ssqs.fragment.guesstheball.DataController;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -533,7 +529,7 @@ public class ToDayBasketBallChampionFragment extends Fragment implements OnRefre
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,29 +21,20 @@ import android.widget.TextView;
 import com.dading.ssqs.LocaleController;
 import com.dading.ssqs.NotificationController;
 import com.dading.ssqs.R;
-import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.newAdapter.GuessBallTopAdapter;
 import com.dading.ssqs.adapter.newAdapter.GuessBallTopSubAdapter;
-import com.dading.ssqs.apis.CcApiClient;
-import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.GuessTopTitle;
-import com.dading.ssqs.bean.GusessChoiceBean;
-import com.dading.ssqs.bean.ScrollBallFootBallBean;
 import com.dading.ssqs.cells.GuessBallTopCell;
-import com.dading.ssqs.components.ScrollBallCommitMenuView;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallBasketBallDefaultFragment;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallBoDanFragment;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallDefaultFragment;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallHalfCourtFragment;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallResultFragment;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallTotalFragment;
-import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.TmtUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by mazhuang on 2017/11/30.

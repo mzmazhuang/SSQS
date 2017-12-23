@@ -37,7 +37,7 @@
                     android:textColor="#FF5723"
                     />
 
-                <com.dading.ssqs.view.AutoVerticalScrollTextView
+             com.dading.ssqs.components.AutoVerticalScrollTextViewView
                     android:id="@+id/guessball_ly_win_info_context"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

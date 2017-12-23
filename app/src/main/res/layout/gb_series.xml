@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <pulltorefresh.PullToRefreshExpandableListView
+            <com.dading.ssqs.components.pulltorefresh.PullToRefreshExpandableListView
                 android:id="@+id/guessball_series_exp_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -123,7 +123,7 @@
                 android:childDivider="@color/gray_e"
                 android:divider="@color/gray_e"
                 android:dividerHeight="0.5dp"
-                android:groupIndicator="@null"></pulltorefresh.PullToRefreshExpandableListView>
+                android:groupIndicator="@null"></com.dading.ssqs.components.pulltorefresh.PullToRefreshExpandableListView>
             <!--android:background="@drawable/shape_top_circle"-->
             <LinearLayout
                 android:id="@+id/betting_list_ly_cg"

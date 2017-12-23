@@ -49,9 +49,9 @@ import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.ListScrollUtil;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.AutoVerticalScrollTextView;
+import com.dading.ssqs.components.AutoVerticalScrollTextView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -329,7 +329,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                                 e.printStackTrace();
                             }
                         } else {
-                            TmtUtils.midToast(mContent, "请求失败,没有缓存数据,请检查网络拉取最新赛事", 0);
+                            ToastUtils.midToast(mContent, "请求失败,没有缓存数据,请检查网络拉取最新赛事", 0);
                         }
                     }
                 }

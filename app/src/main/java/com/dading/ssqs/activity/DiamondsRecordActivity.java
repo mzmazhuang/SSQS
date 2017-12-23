@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.DiamondsGlodRecordBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -86,7 +86,7 @@ public class DiamondsRecordActivity extends BaseActivity implements View.OnTouch
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(DiamondsRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(DiamondsRecordActivity.this, result.getMessage(), 0);
                     }
                 }
             }

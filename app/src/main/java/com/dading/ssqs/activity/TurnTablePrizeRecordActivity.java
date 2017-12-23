@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.TurnTablePrizeBean;
 import com.dading.ssqs.controllar.store.MyPrizeInfoAdapter;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
@@ -75,7 +75,7 @@ public class TurnTablePrizeRecordActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }

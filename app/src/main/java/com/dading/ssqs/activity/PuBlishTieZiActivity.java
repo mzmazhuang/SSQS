@@ -37,7 +37,7 @@ import com.dading.ssqs.utils.FileImageUpload;
 import com.dading.ssqs.utils.LocationUtils;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -224,10 +224,10 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                         String value = mPublishNoteTitle.getText().toString();
                         String valueOk = EmojiFilter.filterEmoji(value);
                         if (TextUtils.isEmpty(valueOk)) {
-                            TmtUtils.midToast(PuBlishTieZiActivity.this, "请输入标题!", 0);
+                            ToastUtils.midToast(PuBlishTieZiActivity.this, "请输入标题!", 0);
                             return;
                         } else if (valueOk.length() > 56) {
-                            TmtUtils.midToast(PuBlishTieZiActivity.this, "标题长度不得大于五十六!", 0);
+                            ToastUtils.midToast(PuBlishTieZiActivity.this, "标题长度不得大于五十六!", 0);
                             return;
                         }
 
@@ -255,7 +255,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                                     mPublishNoteIv4.setVisibility(View.GONE);
                                     mPublishNoteIv5.setVisibility(View.VISIBLE);
 
-                                    TmtUtils.midToast(PuBlishTieZiActivity.this, "发帖成功!", 0);
+                                    ToastUtils.midToast(PuBlishTieZiActivity.this, "发帖成功!", 0);
 
                                     UIUtils.SendReRecevice(Constent.TZ_SUC);
 
@@ -268,7 +268,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                                         startActivity(intent);
                                         finish();
                                     } else {
-                                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                     }
                                 }
                             }
@@ -279,7 +279,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                     }
                     Logger.d(TAG, "已经提交------------------------------:");
                 } else {
-                    TmtUtils.midToast(PuBlishTieZiActivity.this, "文章内容不得少于五字!", 0);
+                    ToastUtils.midToast(PuBlishTieZiActivity.this, "文章内容不得少于五字!", 0);
                     return;
                 }
                 break;
@@ -467,7 +467,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                         goImg(bean.data.imageUrl.get(0));
                     }
                 } else {
-                    TmtUtils.midToast(PuBlishTieZiActivity.this, "更新头像失败,请检查图片!", 0);
+                    ToastUtils.midToast(PuBlishTieZiActivity.this, "更新头像失败,请检查图片!", 0);
                 }
             }
         };
@@ -521,7 +521,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                 //开启摄像头
                 if (ContextCompat.checkSelfPermission(PuBlishTieZiActivity.this, Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
-                    TmtUtils.midToast(PuBlishTieZiActivity.this, "没有授权,请到应用设置界面手动打开相机权限!", 0);
+                    ToastUtils.midToast(PuBlishTieZiActivity.this, "没有授权,请到应用设置界面手动打开相机权限!", 0);
                 } else {
                     // 已经权限
                     startActivityForResult(intent, PHOTO_CAMERA);

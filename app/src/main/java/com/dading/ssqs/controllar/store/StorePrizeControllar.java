@@ -30,9 +30,9 @@ import com.dading.ssqs.bean.StoreBean2;
 import com.dading.ssqs.bean.TurnTablePrizeTextBean;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.AutoVerticalScrollTextView;
+import com.dading.ssqs.components.AutoVerticalScrollTextView;
 import com.google.gson.Gson;
 
 
@@ -441,10 +441,10 @@ public class StorePrizeControllar implements View.OnClickListener {
             return;
         }
         if (mData.isStart == 0) {
-            TmtUtils.midToast(context, "礼品兑换活动尚未开始,敬请期待!", 0);
+            ToastUtils.midToast(context, "礼品兑换活动尚未开始,敬请期待!", 0);
             return;
         } else if (mData.isEnd == 1) {
-            TmtUtils.midToast(context, "礼品兑换活动已经结束,敬请期待下次开启!", 0);
+            ToastUtils.midToast(context, "礼品兑换活动已经结束,敬请期待下次开启!", 0);
             return;
         }
         switch (v.getId()) {
@@ -550,7 +550,7 @@ public class StorePrizeControllar implements View.OnClickListener {
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    TmtUtils.midToast(context, "兑换失败!" + result.getMessage(), 0);
+                                    ToastUtils.midToast(context, "兑换失败!" + result.getMessage(), 0);
                                 }
                             }
                         }

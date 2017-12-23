@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.elements.SendYZMElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PhoneUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -79,7 +79,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
                 mPhoneCode.setClickable(false);
                 mMPhoneNumberText = mPhoneNumber.getText().toString();
                 if (TextUtils.isEmpty(mMPhoneNumberText) || !UIUtils.isMobileNO(mMPhoneNumberText)) {
-                    TmtUtils.midToast(RegisterActivity.this, "請輸入您的手机号码!", 0);
+                    ToastUtils.midToast(RegisterActivity.this, "請輸入您的手机号码!", 0);
                     return;
                 }
                 Logger.d(TAG, mMPhoneNumberText + "这是手机号");
@@ -105,7 +105,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

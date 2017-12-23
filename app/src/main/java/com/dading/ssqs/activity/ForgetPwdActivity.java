@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.elements.ForgetUserPasswordElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PhoneUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -118,7 +118,7 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 Logger.d(TAG, result.getMessage());
                             }
                         }

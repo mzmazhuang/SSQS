@@ -20,8 +20,8 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.MultiItem;
 import com.dading.ssqs.bean.ProxyCenterBean;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
-import com.dading.ssqs.view.RecyclerViewDivider;
+import com.dading.ssqs.components.GlideCircleTransform;
+import com.dading.ssqs.components.RecyclerViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;

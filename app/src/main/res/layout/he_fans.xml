@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <pulltorefresh.PullToRefreshListView
+    <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
         android:id="@+id/he_fans_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white_a"></pulltorefresh.PullToRefreshListView>
+        android:background="@color/white_a"></com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 </LinearLayout>

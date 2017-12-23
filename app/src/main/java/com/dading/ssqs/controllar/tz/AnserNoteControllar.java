@@ -15,7 +15,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.MyGTAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import butterknife.Bind;
@@ -89,7 +89,7 @@ public class AnserNoteControllar extends Fragment {
                         }
                     }
                 } else {
-                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                 }
             }
         });

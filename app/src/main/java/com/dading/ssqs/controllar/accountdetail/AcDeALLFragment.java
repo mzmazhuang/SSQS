@@ -1,7 +1,5 @@
 package com.dading.ssqs.controllar.accountdetail;
 
-import com.dading.ssqs.bean.Constent;
-
 
 /**
  * 创建者     zcl

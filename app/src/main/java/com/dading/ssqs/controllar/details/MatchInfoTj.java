@@ -12,13 +12,13 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ReferReferBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
 
 import butterknife.ButterKnife;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -68,7 +68,7 @@ public class MatchInfoTj {
                         processData(page.getItems());
                     }
                 } else {
-                    TmtUtils.midToast(UIUtils.getContext(), "比赛详情推荐" + result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "比赛详情推荐" + result.getMessage(), 0);
                     Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }

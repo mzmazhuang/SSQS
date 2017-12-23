@@ -2,22 +2,18 @@ package com.dading.ssqs.fragment.guesstheball.today;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dading.ssqs.LocaleController;
@@ -39,18 +35,15 @@ import com.dading.ssqs.bean.CommonTitle;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.cells.ChampionChildCell;
 import com.dading.ssqs.cells.GuessFilterCell;
-import com.dading.ssqs.cells.TimeCell;
 import com.dading.ssqs.components.FilterDialog;
 import com.dading.ssqs.components.LoadingDialog;
 import com.dading.ssqs.components.PageDialog;
 import com.dading.ssqs.components.RecyclerScrollview;
 import com.dading.ssqs.components.ScrollBallCommitMenuView;
 import com.dading.ssqs.components.ScrollBallCommitView;
-import com.dading.ssqs.components.SelectMatchDialog;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
-import com.dading.ssqs.fragment.guesstheball.DataController;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.io.Serializable;
@@ -535,7 +528,7 @@ public class ToDayFootBallChampionFragment extends Fragment implements OnRefresh
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

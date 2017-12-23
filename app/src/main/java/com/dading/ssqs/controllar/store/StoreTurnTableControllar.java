@@ -36,9 +36,9 @@ import com.dading.ssqs.bean.TurnTablePrizeTextBean;
 import com.dading.ssqs.bean.TurnTableResultBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.AutoVerticalScrollTextView;
+import com.dading.ssqs.components.AutoVerticalScrollTextView;
 import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
@@ -343,16 +343,16 @@ public class StoreTurnTableControllar {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 Logger.d(TAG, "开始时间------------------------------:" + mStartTime + "------------现在时间" + new Date().getTime());
                 if (mData.isStart == 0) {
-                    TmtUtils.midToast(context, "转盘抽奖活动尚未开始,敬请期待!", 0);
+                    ToastUtils.midToast(context, "转盘抽奖活动尚未开始,敬请期待!", 0);
                     mGv.setClickable(true);
                     return;
                 } else if (mData.isEnd == 1) {
-                    TmtUtils.midToast(context, "转盘抽奖活动已经结束,敬请期待下次开启!", 0);
+                    ToastUtils.midToast(context, "转盘抽奖活动已经结束,敬请期待下次开启!", 0);
                     mGv.setClickable(true);
                     return;
                 }
                 if (mStartTime > new Date().getTime()) {
-                    TmtUtils.midToast(context, "更新头像成功!", 0);
+                    ToastUtils.midToast(context, "更新头像成功!", 0);
                     final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("活动提示");
                     builder.setMessage("活动尚未开始,敬请期待!");
@@ -410,7 +410,7 @@ public class StoreTurnTableControllar {
                                     if (mIsEnd == 0) {
                                         id = 0;
                                         if (mI > 7) {
-                                            TmtUtils.midToast(context, "转盘参数错误!请联系客服.", 0);
+                                            ToastUtils.midToast(context, "转盘参数错误!请联系客服.", 0);
                                             return;
                                         }
                                         int i = mMapOrder.get(mI);
@@ -425,7 +425,7 @@ public class StoreTurnTableControllar {
                                         new Thread(changeView).start();
                                         isStart = true;
                                     } else {
-                                        TmtUtils.midToast(context, "活动已结束,欢迎下次参与!", 0);
+                                        ToastUtils.midToast(context, "活动已结束,欢迎下次参与!", 0);
                                         mGv.setClickable(true);
                                     }
                                 } else {
@@ -511,7 +511,7 @@ public class StoreTurnTableControllar {
                 mGv.getChildAt(i).setVisibility(View.GONE);
             }
         }
-        TmtUtils.midToast(UIUtils.getContext(), "恭喜您中奖了", 0);
+        ToastUtils.midToast(UIUtils.getContext(), "恭喜您中奖了", 0);
     }
 
     private PopupWindow popuMake(View lv) {

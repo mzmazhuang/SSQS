@@ -59,7 +59,7 @@
             android:textSize="13sp" />
     </RelativeLayout>
 
-    <richtextview.RichTextView
+    <com.dading.ssqs.components.richtextview.RichTextView
         android:id="@+id/football_baby_pcontent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

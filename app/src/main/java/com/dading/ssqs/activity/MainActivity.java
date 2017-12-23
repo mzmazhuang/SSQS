@@ -31,7 +31,7 @@ import com.dading.ssqs.bean.VersionBean;
 import com.dading.ssqs.fragment.MainContentFragement;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.io.File;
@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity {
                         });
                     }
                 } else {
-                    TmtUtils.midToast(MainActivity.this, result.getMessage(), 0);
+                    ToastUtils.midToast(MainActivity.this, result.getMessage(), 0);
                 }
             }
         });
@@ -256,7 +256,7 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         if (mFragment.isBack()) {
             if (System.currentTimeMillis() - mPreTime > 2000) {// 两次点击间隔大于2s
-                TmtUtils.midToast(UIUtils.getContext(), "再按一次,退出实是球事", 0);
+                ToastUtils.midToast(UIUtils.getContext(), "再按一次,退出实是球事", 0);
                 mPreTime = System.currentTimeMillis();
                 return;
             } else {

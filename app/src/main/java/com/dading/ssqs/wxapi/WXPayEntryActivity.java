@@ -15,7 +15,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.OrderStatusElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
@@ -69,17 +69,17 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
             builder.setTitle(R.string.app_tip);
             if (resp.errCode == 0) {
                 code = 9000;
-                TmtUtils.midToast(WXPayEntryActivity.this, "支付成功!", 0);
+                ToastUtils.midToast(WXPayEntryActivity.this, "支付成功!", 0);
                 finish();
                 builder.setMessage(getString(R.string.pay_suc));
             } else if (resp.errCode == -2) {
                 code = resp.errCode;
-                TmtUtils.midToast(WXPayEntryActivity.this, "支付取消!", 0);
+                ToastUtils.midToast(WXPayEntryActivity.this, "支付取消!", 0);
                 finish();
                 builder.setMessage(getString(R.string.pay_fail));
             } else if (resp.errCode == -1) {
                 builder.setMessage(getString(R.string.pay_err));
-                TmtUtils.midToast(WXPayEntryActivity.this, "支付错误:-1!", 0);
+                ToastUtils.midToast(WXPayEntryActivity.this, "支付错误:-1!", 0);
                 finish();
                 code = resp.errCode;
             }

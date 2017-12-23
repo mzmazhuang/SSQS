@@ -19,12 +19,12 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SnsBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import richtextview.RichTextView;
+import com.dading.ssqs.components.richtextview.RichTextView;
 
 /**
  * 创建者     ZCL

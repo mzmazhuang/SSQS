@@ -18,9 +18,9 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ReferInfoBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 
 import butterknife.Bind;
@@ -318,7 +318,7 @@ public class SavantLvItemActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                         mSavantReferBad.setClickable(false);
                         mSavantReferGood.setClickable(false);
                     }
@@ -367,13 +367,13 @@ public class SavantLvItemActivity extends BaseActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(SavantLvItemActivity.this, "点赞失败,请重新点击!", 0);
+                                    ToastUtils.midToast(SavantLvItemActivity.this, "点赞失败,请重新点击!", 0);
                                 }
                             }
                         }
                     });
                 } else {
-                    TmtUtils.midToast(SavantLvItemActivity.this, "您已点赞或反对,请勿重复点击。", 0);
+                    ToastUtils.midToast(SavantLvItemActivity.this, "您已点赞或反对,请勿重复点击。", 0);
                 }
             }
         });
@@ -415,13 +415,13 @@ public class SavantLvItemActivity extends BaseActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }
                     });
                 } else {
-                    TmtUtils.midToast(SavantLvItemActivity.this, "您已点赞或反对,请勿重复点击。", 0);
+                    ToastUtils.midToast(SavantLvItemActivity.this, "您已点赞或反对,请勿重复点击。", 0);
                 }
             }
         });
@@ -453,7 +453,7 @@ public class SavantLvItemActivity extends BaseActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(SavantLvItemActivity.this, "服务器开小差了,请重新关注.", 0);
+                                    ToastUtils.midToast(SavantLvItemActivity.this, "服务器开小差了,请重新关注.", 0);
                                     mSavantReferFollowCb.setChecked(false);
                                 }
                             }

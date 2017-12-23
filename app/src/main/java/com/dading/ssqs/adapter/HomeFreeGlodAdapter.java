@@ -26,7 +26,7 @@ import com.dading.ssqs.interfaces.MyItemClickListenerPostion;
 import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
@@ -420,7 +420,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
                             }
                         } else {
                             if (!AndroidUtilities.checkIsLogin(result.getErrno(), context)) {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

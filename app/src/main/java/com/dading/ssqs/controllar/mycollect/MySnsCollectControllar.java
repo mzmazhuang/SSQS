@@ -12,15 +12,15 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.SNSCollectBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.Bind;
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -169,7 +169,7 @@ public class MySnsCollectControllar extends BaseFragnment {
                     public void run() {
                         mPLv.onRefreshComplete();
                         if (totalPage >= totalCount)
-                            TmtUtils.midToast(mContent, "没有更多数据!", 0);
+                            ToastUtils.midToast(mContent, "没有更多数据!", 0);
                     }
                 });
             }

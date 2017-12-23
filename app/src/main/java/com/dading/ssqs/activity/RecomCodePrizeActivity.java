@@ -11,7 +11,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -53,7 +53,7 @@ public class RecomCodePrizeActivity extends BaseActivity implements View.OnClick
 
                 String inviteCode = inputinvitedcode.getText().toString();
                 if (inviteCode.isEmpty()) {
-                    TmtUtils.midToast(RecomCodePrizeActivity.this, "请输入邀请码!", 0);
+                    ToastUtils.midToast(RecomCodePrizeActivity.this, "请输入邀请码!", 0);
                     return;
                 }
                 if (!UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
@@ -66,7 +66,7 @@ public class RecomCodePrizeActivity extends BaseActivity implements View.OnClick
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            TmtUtils.midToast(RecomCodePrizeActivity.this, "恭喜您获得1000金币!", 0);
+                            ToastUtils.midToast(RecomCodePrizeActivity.this, "恭喜您获得1000金币!", 0);
                         } else {
                             if (403 == result.getErrno()) {
                                 UIUtils.SendReRecevice(Constent.LOADING_ACTION);
@@ -75,7 +75,7 @@ public class RecomCodePrizeActivity extends BaseActivity implements View.OnClick
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(RecomCodePrizeActivity.this, result.getMessage(), 0);
+                                ToastUtils.midToast(RecomCodePrizeActivity.this, result.getMessage(), 0);
                             }
                         }
                     }

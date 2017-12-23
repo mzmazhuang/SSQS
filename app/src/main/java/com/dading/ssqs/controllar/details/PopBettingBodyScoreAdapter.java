@@ -16,7 +16,7 @@ import com.dading.ssqs.bean.JCScorebean;
 import com.dading.ssqs.interfaces.MyItemSonCloseClickListern;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -418,7 +418,7 @@ public class PopBettingBodyScoreAdapter extends BaseAdapter {
                                                              mListKeyBoard.remove(position);
                                                              hoder.mKeybordLy.setVisibility(View.GONE);
                                                          } else {
-                                                             TmtUtils.midToast(context, "请输入下注金额", 0);
+                                                             ToastUtils.midToast(context, "请输入下注金额", 0);
                                                          }
                                                      }
                                                  }

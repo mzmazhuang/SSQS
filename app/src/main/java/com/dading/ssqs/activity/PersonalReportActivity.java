@@ -24,7 +24,7 @@ import com.dading.ssqs.bean.ReportInfoBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.text.SimpleDateFormat;
@@ -270,7 +270,7 @@ public class PersonalReportActivity extends BaseActivity implements View.OnClick
                 } else {
                     mLoadingAnimal.setVisibility(View.GONE);
                     mProxyComisionEmpty.setVisibility(View.VISIBLE);
-                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                 }
             }
         });

@@ -52,9 +52,9 @@ import com.dading.ssqs.utils.ListScrollUtil;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.MyGridView;
+import com.dading.ssqs.components.MyGridView;
 
 import java.lang.ref.WeakReference;
 import java.text.DecimalFormat;
@@ -270,7 +270,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     }
                 } else {
                     mJcCheckGp.setVisibility(View.GONE);
-                    TmtUtils.midToast(UIUtils.getContext(), "赔率请求失败" + result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "赔率请求失败" + result.getMessage(), 0);
                     Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
@@ -289,7 +289,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     }
                 } else {
                     mJcCheckGp.setVisibility(View.GONE);
-                    TmtUtils.midToast(UIUtils.getContext(), "赔率请求失败" + result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "赔率请求失败" + result.getMessage(), 0);
                     Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
@@ -485,7 +485,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                         dialog.dismiss();
                         Intent intent = new Intent(context, NewRechargeActivity.class);
                         if (UIUtils.getSputils().getBoolean(Constent.USER_TYPE, false)) {
-                            TmtUtils.midToast(context, "试玩账号不能进行充值，提现，和查看提现明细、账户明细!", 0);
+                            ToastUtils.midToast(context, "试玩账号不能进行充值，提现，和查看提现明细、账户明细!", 0);
                         } else {
                             intent.putExtra(Constent.DIAMONDS, "2");
                             context.startActivity(intent);
@@ -1070,16 +1070,16 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
 
                             for (BetBean bean : cbGlod) {
                                 if (bean.amount.equals("请输入金币")) {
-                                    TmtUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
+                                    ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
                                     return;
                                 } else {
                                     if (TextUtils.isEmpty(bean.amount) || bean.amount.trim().length() > 7) {
-                                        TmtUtils.midToast(context, "下注金额最少不得少于" + minGlod + ",最多不得大于500万!", 0);
+                                        ToastUtils.midToast(context, "下注金额最少不得少于" + minGlod + ",最多不得大于500万!", 0);
                                         return;
                                     }
                                     int anInt = Integer.parseInt(bean.amount.trim());
                                     if (minGlod > anInt) {
-                                        TmtUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
+                                        ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
                                         return;
                                     } else {
                                         PayBallElement.BetBean betBean = new PayBallElement.BetBean();
@@ -1104,7 +1104,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                              */
                             betMethod(element);
                         } else {
-                            TmtUtils.midToast(context, "请输入您要下注的金币", 1);
+                            ToastUtils.midToast(context, "请输入您要下注的金币", 1);
                         }
                     } else {
                         ArrayList<JCScorebean.ListEntity.ItemsEntity> list = mPopBettingBodyScoreAdapter.getScoreList();
@@ -1113,17 +1113,17 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
 
                         for (JCScorebean.ListEntity.ItemsEntity en : list) {
                             if (en.amount.equals("请输入金币")) {
-                                TmtUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + "请检查金币", 1);
+                                ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + "请检查金币", 1);
                                 return;
                             } else {
                                 if (TextUtils.isEmpty(en.amount) || en.amount.trim().length() > 7) {
-                                    TmtUtils.midToast(context, "下注金额最少不得少于" + minGlod + ",最多不得大于500万!", 0);
+                                    ToastUtils.midToast(context, "下注金额最少不得少于" + minGlod + ",最多不得大于500万!", 0);
                                     return;
                                 }
                             }
                             Integer integer = Integer.valueOf(en.amount);
                             if (minGlod > integer) {
-                                TmtUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
+                                ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
                                 return;
                             }
                             PayBallScoreElement.PayBallBean bean = new PayBallScoreElement.PayBallBean();
@@ -1154,7 +1154,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                             @Override
                             public void onResponse(CcApiResult result) {
                                 if (result.isOk()) {
-                                    TmtUtils.midToast(context, "下注成功!", 0);
+                                    ToastUtils.midToast(context, "下注成功!", 0);
                                     isDissmiss(mPopBettingBody);
                                     isDissmiss(mBettingHeadPop);
                                     setClearScore();
@@ -1165,7 +1165,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                         Intent intent = new Intent(context, LoginActivity.class);
                                         context.startActivity(intent);
                                     } else {
-                                        TmtUtils.midToast(context, result.getMessage(), 0);
+                                        ToastUtils.midToast(context, result.getMessage(), 0);
                                     }
                                 }
                             }
@@ -1284,7 +1284,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                         context.startActivity(intent);
                         mBettingBodyUpload.setClickable(true);
                     } else {
-                        TmtUtils.midToast(context, result.getMessage(), 0);
+                        ToastUtils.midToast(context, result.getMessage(), 0);
                         mBettingBodyUpload.setClickable(true);
                     }
                 }
@@ -1307,7 +1307,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
         setClear();
         backData();
         mHotAdapterL.notifyDataSetChanged();
-        TmtUtils.midToast(context, "下注成功!", 0);
+        ToastUtils.midToast(context, "下注成功!", 0);
 
         mBettingBodyUpload.setClickable(true);
     }
@@ -1962,7 +1962,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                                                  mListKeyBoard.remove(bean.id);
                                                                  hoder.mKeybordLy.setVisibility(View.GONE);
                                                              } else {
-                                                                 TmtUtils.midToast(context, "请输入下注金额", 0);
+                                                                 ToastUtils.midToast(context, "请输入下注金额", 0);
                                                              }
                                                          }
                                                      }
@@ -2512,7 +2512,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                                                  mListKeyBoardScore.remove(bean.id);
                                                                  hoder.mKeybordLy.setVisibility(View.GONE);
                                                              } else {
-                                                                 TmtUtils.midToast(context, "请输入下注金额", 0);
+                                                                 ToastUtils.midToast(context, "请输入下注金额", 0);
                                                              }
                                                          }
                                                      }

@@ -22,7 +22,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.StoreBean;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -222,7 +222,7 @@ public class StoreVipControllar {
         }
         Logger.d(TAG, "返回数据是------------------------------:" + UIUtils.getSputils().getInt(Constent.IS_VIP, 0));
         if (UIUtils.getSputils().getInt(Constent.IS_VIP, 0) != 0) {
-            TmtUtils.midToast(context, "您已经是vip会员请勿重复购买!", 0);
+            ToastUtils.midToast(context, "您已经是vip会员请勿重复购买!", 0);
             return;
         }
         switch (v.getId()) {
@@ -287,7 +287,7 @@ public class StoreVipControllar {
                                 UIUtils.SendReRecevice(Constent.SERIES);
 
                                 UIUtils.SendReRecevice(Constent.IS_VIP);
-                                TmtUtils.midToast(context, "恭喜您购买了" + mVip + "会员!", 0);
+                                ToastUtils.midToast(context, "恭喜您购买了" + mVip + "会员!", 0);
                             } else {
                                 if (403 == result.getErrno()) {
                                     UIUtils.SendReRecevice(Constent.LOADING_ACTION);
@@ -295,7 +295,7 @@ public class StoreVipControllar {
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    TmtUtils.midToast(context, "兑换失败!" + result.getMessage(), 0);
+                                    ToastUtils.midToast(context, "兑换失败!" + result.getMessage(), 0);
                                 }
                             }
                         }

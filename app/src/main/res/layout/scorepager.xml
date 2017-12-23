@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <tabindicator.TabIndicator
+    <com.dading.ssqs.components.tabindicator.TabIndicator
         android:id="@+id/scroll_indicator"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,7 +16,7 @@
         app:tiTabMode="line"
         app:tiTabPaddingLeft="26dp"
         app:tiTabPaddingRight="26dp"
-        app:tiUnderLineColor="@color/gray_e"></tabindicator.TabIndicator>
+        app:tiUnderLineColor="@color/gray_e"></com.dading.ssqs.components.tabindicator.TabIndicator>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/scroll_viewpager"

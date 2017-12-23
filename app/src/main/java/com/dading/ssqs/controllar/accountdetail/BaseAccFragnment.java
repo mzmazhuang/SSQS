@@ -14,9 +14,9 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.AccountDetailBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.EmptyRecyclerView;
+import com.dading.ssqs.components.EmptyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +101,7 @@ public abstract class BaseAccFragnment extends BaseFragnment implements BaseQuic
                     }
                 } else {
                     mLoadingAnimal.setVisibility(View.GONE);
-                    TmtUtils.midToast(mContent, result.getMessage(), 0);
+                    ToastUtils.midToast(mContent, result.getMessage(), 0);
                     setVisiable(true);
                 }
             }
@@ -155,7 +155,7 @@ public abstract class BaseAccFragnment extends BaseFragnment implements BaseQuic
         if (mAdapter != null)
             mAdapter.notifyDataChangedAfterLoadMore(mB);
         /*if (!mB)
-            TmtUtils.midToast(UIUtils.getContext( ), "已经加载完全部数据!", 0);*/
+            ToastUtils.midToast(UIUtils.getContext( ), "已经加载完全部数据!", 0);*/
 
     }
 

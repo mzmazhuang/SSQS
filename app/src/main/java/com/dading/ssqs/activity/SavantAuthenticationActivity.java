@@ -42,7 +42,7 @@ import com.dading.ssqs.utils.FileImageUpload;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -243,7 +243,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -294,7 +294,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                 //开启摄像头
                 if (ContextCompat.checkSelfPermission(UIUtils.getContext(), Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
-                    TmtUtils.midToast(UIUtils.getContext(), "没有授权,请到应用设置界面手动打开相机权限!", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "没有授权,请到应用设置界面手动打开相机权限!", 0);
                 } else {
                     // 已经权限
                     startActivityForResult(intent, PHOTO_CAMERA);
@@ -412,59 +412,59 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                  */
                 String goodMatch = mSavantAuthGoodMatch.getText().toString();
                 if (TextUtils.isEmpty(goodMatch)) {
-                    TmtUtils.midToast(this, "请输入您擅长的联赛!", 0);
+                    ToastUtils.midToast(this, "请输入您擅长的联赛!", 0);
                     return;
                 }
 
                 String intro = mSavantAuthIntroduceContent.getText().toString();
                 if (TextUtils.isEmpty(intro)) {
-                    TmtUtils.midToast(this, "请输入专家介绍!", 0);
+                    ToastUtils.midToast(this, "请输入专家介绍!", 0);
                     return;
                 }
                 String name = mSavantAuthRealName.getText().toString();
                 if (TextUtils.isEmpty(name)) {
-                    TmtUtils.midToast(this, "请输入姓名!", 0);
+                    ToastUtils.midToast(this, "请输入姓名!", 0);
                     return;
                 }
 
                 String idNUm = mSavantAuthIdCard.getText().toString();
                 if (TextUtils.isEmpty(idNUm)) {
-                    TmtUtils.midToast(this, "請輸入身份证号!", 0);
+                    ToastUtils.midToast(this, "請輸入身份证号!", 0);
                     return;
                 }
 
                 mId = UIUtils.isID(mSavantAuthIdCard.getText());
                 if (!mId) {
-                    TmtUtils.midToast(UIUtils.getContext(), "身份证号码有误,请重新输入..", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "身份证号码有误,请重新输入..", 0);
                     mSavantAuthIdCard.setFocusable(true);
                     return;
                 }
                 String backCard = mSavantAuthBankCard.getText().toString();
                 if (TextUtils.isEmpty(backCard)) {
-                    TmtUtils.midToast(this, "请输入银行卡号!", 0);
+                    ToastUtils.midToast(this, "请输入银行卡号!", 0);
                     return;
                 } else if (backCard.length() > 19 || backCard.length() < 16) {
-                    TmtUtils.midToast(this, "请输入正确的银行卡号!", 0);
+                    ToastUtils.midToast(this, "请输入正确的银行卡号!", 0);
                     return;
                 }
 
                 if (!mSavantAuthAgreeImg.isChecked()) {
-                    TmtUtils.midToast(UIUtils.getContext(), "请确认您是否同意该银行协议,同意请打勾!", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "请确认您是否同意该银行协议,同意请打勾!", 0);
                 }
 
                 String phoneNum = mSavantAuthPhone.getText().toString();
                 if (TextUtils.isEmpty(phoneNum)) {
-                    TmtUtils.midToast(this, "請輸入手机号!", 0);
+                    ToastUtils.midToast(this, "請輸入手机号!", 0);
                     return;
                 }
 
                 if (!UIUtils.isMobileNO(phoneNum)) {
-                    TmtUtils.midToast(UIUtils.getContext(), "请输入正确的电话号码!", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "请输入正确的电话号码!", 0);
                     return;
                 }
 
                 if ("请选择银行".equals(mSavantAuthToll.getText())) {
-                    TmtUtils.midToast(UIUtils.getContext(), "请选择您的银行卡所属的银行!", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "请选择您的银行卡所属的银行!", 0);
                     return;
                 }
 
@@ -474,7 +474,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                     list.add(en.getValue());
                 }
                 if (list.size() <= 0 && list.size() != 3) {
-                    TmtUtils.midToast(UIUtils.getContext(), "请上传您的身份认证图片!", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "请上传您的身份认证图片!", 0);
                     return;
                 }
 
@@ -523,7 +523,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }
@@ -700,7 +700,7 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
             }
         } else {
             num++;
-            TmtUtils.midToast(UIUtils.getContext(), "更新头像失败,请重试图片!", 0);
+            ToastUtils.midToast(UIUtils.getContext(), "更新头像失败,请重试图片!", 0);
         }
     }
 

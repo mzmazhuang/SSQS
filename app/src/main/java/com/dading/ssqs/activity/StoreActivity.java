@@ -32,17 +32,17 @@ import com.dading.ssqs.bean.AlipaySucBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.controllar.store.StoreDiamondsControllar;
 import com.dading.ssqs.controllar.store.StorePrizeControllar;
 import com.dading.ssqs.controllar.store.StorePropControllar;
 import com.dading.ssqs.controllar.store.StoreTurnTableControllar;
 import com.dading.ssqs.controllar.store.StoreVipControllar;
-import com.dading.ssqs.domain.PayResult;
+import com.dading.ssqs.bean.PayResult;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
-import com.dading.ssqs.view.NoScrollViewPager;
+import com.dading.ssqs.components.GlideCircleTransform;
+import com.dading.ssqs.components.NoScrollViewPager;
 import com.google.gson.Gson;
 
 
@@ -327,7 +327,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                             startActivity(intent);
                             finish();
                         } else {
-                            TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                            ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                         }
                     }
                 }
@@ -435,7 +435,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }

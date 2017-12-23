@@ -21,7 +21,7 @@ import com.dading.ssqs.bean.ShoppingAddBean;
 import com.dading.ssqs.bean.SsxCity;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -30,8 +30,8 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import wheelview.adapter.ArrayWheelAdapter;
-import wheelview.widget.WheelView;
+import com.dading.ssqs.components.wheelview.adapter.ArrayWheelAdapter;
+import com.dading.ssqs.components.wheelview.widget.WheelView;
 
 /**
  * 创建者     ZCL
@@ -269,23 +269,23 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
                 String xxPlace = mShoppingAddrPlaceXiangxi.getText().toString();
 
                 if (TextUtils.isEmpty(name)) {
-                    TmtUtils.midToast(ShoppingAddressActivity.this, "请填写收件人姓名!", 0);
+                    ToastUtils.midToast(ShoppingAddressActivity.this, "请填写收件人姓名!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(xxPlace)) {
-                    TmtUtils.midToast(ShoppingAddressActivity.this, "请填写您的详细地址!", 0);
+                    ToastUtils.midToast(ShoppingAddressActivity.this, "请填写您的详细地址!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(phone)) {
-                    TmtUtils.midToast(ShoppingAddressActivity.this, "请填写您的手机号码!", 0);
+                    ToastUtils.midToast(ShoppingAddressActivity.this, "请填写您的手机号码!", 0);
                     return;
                 }
                 if (!UIUtils.isMobileNO(phone)) {
-                    TmtUtils.midToast(ShoppingAddressActivity.this, ",手机号码格式有误,请填写您正确的的手机号码!", 0);
+                    ToastUtils.midToast(ShoppingAddressActivity.this, ",手机号码格式有误,请填写您正确的的手机号码!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(sSxPlace) || "请选择".equals(sSxPlace)) {
-                    TmtUtils.midToast(ShoppingAddressActivity.this, "请选择您所在省市区!", 0);
+                    ToastUtils.midToast(ShoppingAddressActivity.this, "请选择您所在省市区!", 0);
                     return;
                 }
                 if (sSxPlace.equals("北京") || sSxPlace.equals("天津") || sSxPlace.equals("上海") || sSxPlace.equals("重庆")
@@ -358,7 +358,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            TmtUtils.midToast(ShoppingAddressActivity.this, "设置地址成功!", 0);
+                            ToastUtils.midToast(ShoppingAddressActivity.this, "设置地址成功!", 0);
                             Intent intent = new Intent(ShoppingAddressActivity.this, ShoppingAddressShowActivity.class);
                             startActivity(intent);
                             finish();
@@ -370,7 +370,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

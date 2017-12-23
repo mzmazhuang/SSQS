@@ -20,15 +20,15 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.RankingBean;
 import com.dading.ssqs.bean.RankingBean2;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.CalendarUtil;
+import com.dading.ssqs.components.CalendarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -277,7 +277,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                                         }
                                     }
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), "上拉加载失败", 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), "上拉加载失败", 0);
                                 }
                             }
                         });
@@ -285,7 +285,7 @@ public class GBRankingList extends BaseTabsContainer implements View.OnClickList
                         mTask = new Runnable() {
                             @Override
                             public void run() {
-                                TmtUtils.midToast(mContent, "没有更多数据", 0);
+                                ToastUtils.midToast(mContent, "没有更多数据", 0);
                                 mRankingList.onRefreshComplete();
                             }
                         };

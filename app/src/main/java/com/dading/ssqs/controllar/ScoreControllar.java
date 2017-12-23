@@ -30,7 +30,7 @@ import com.dading.ssqs.controllar.scores.SCScoreControllar;
 import com.dading.ssqs.controllar.scores.SGScoreControllar;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.text.SimpleDateFormat;
@@ -41,7 +41,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 /**
  * 创建者     ZCL
@@ -434,7 +434,7 @@ public class ScoreControllar extends BaseTabsContainer {
                                     }
                                 }
                             } else {
-                                TmtUtils.midToast(mContent, result.getMessage(), 0);
+                                ToastUtils.midToast(mContent, result.getMessage(), 0);
                             }
                         }
                     });

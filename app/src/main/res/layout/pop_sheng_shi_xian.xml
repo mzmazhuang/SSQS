@@ -15,21 +15,21 @@
         android:background="@color/gray_d"
         android:orientation="horizontal">
 
-        <wheelview.widget.WheelView
+        <com.dading.ssqs.components.wheelview.widget.WheelView
             android:id="@+id/pop_ssx_main_wheelview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0.5dp"
             android:layout_weight="1" />
 
-        <wheelview.widget.WheelView
+        <com.dading.ssqs.components.wheelview.widget.WheelView
             android:id="@+id/pop_ssx_sub_wheelview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0.5dp"
             android:layout_weight="1" />
 
-        <wheelview.widget.WheelView
+        <com.dading.ssqs.components.wheelview.widget.WheelView
             android:id="@+id/pop_ssx_child_wheelview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

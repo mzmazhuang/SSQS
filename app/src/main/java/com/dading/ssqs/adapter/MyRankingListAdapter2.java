@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.RankingBean2;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.List;
 

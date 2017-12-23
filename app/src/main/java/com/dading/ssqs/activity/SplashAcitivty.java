@@ -10,8 +10,8 @@ import com.dading.ssqs.controllar.splash.SplashControllar;
 import com.dading.ssqs.controllar.splash.SplashControllar1;
 import com.dading.ssqs.controllar.splash.SplashControllar2;
 import com.dading.ssqs.controllar.splash.SplashControllar3;
+import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.PackageUtils;
 import com.dading.ssqs.utils.ThreadPoolUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -70,7 +70,7 @@ public class SplashAcitivty extends BaseActivity {
         SplashControllar3 splashControllar3 = new SplashControllar3();
 
         mList = new ArrayList<>();
-        mCurrentName = PackageUtils.getVersionName(this);
+        mCurrentName = AndroidUtilities.getVersionName(this);
         UIUtils.getSputils().putBoolean(Constent.CHIOCE, false);
 
         String s = UIUtils.getSputils().getString(Constent.IS_FRISE, "0");

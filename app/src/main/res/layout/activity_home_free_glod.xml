@@ -7,7 +7,7 @@
 
     <include layout="@layout/top_toolbar" />
 
-    <tabindicator.TabIndicator
+    <com.dading.ssqs.components.tabindicator.TabIndicator
         android:id="@+id/free_glod_indicator"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -16,7 +16,7 @@
         app:tiTabMode="line"
         app:tiTabPaddingLeft="50dp"
         app:tiTabPaddingRight="50dp"
-        app:tiTabTextColor="@color/orange_tv"></tabindicator.TabIndicator>
+        app:tiTabTextColor="@color/orange_tv"></com.dading.ssqs.components.tabindicator.TabIndicator>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/free_glod_viewpager"

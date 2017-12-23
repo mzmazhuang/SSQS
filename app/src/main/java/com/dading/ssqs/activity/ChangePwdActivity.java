@@ -21,7 +21,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.UpdatePassWordElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -199,23 +199,23 @@ public class ChangePwdActivity extends BaseActivity implements View.OnFocusChang
                     mOldPwd = mEtChangePwdOld.getText().toString();
                     mNewPwd = mEtChangePwdNew.getText().toString();
                     if (TextUtils.isEmpty(mOldPwd)) {
-                        TmtUtils.midToast(ChangePwdActivity.this, "请输入原密码!", 0);
+                        ToastUtils.midToast(ChangePwdActivity.this, "请输入原密码!", 0);
                         return;
                     }
                     if (TextUtils.isEmpty(mNewPwd)) {
-                        TmtUtils.midToast(ChangePwdActivity.this, "请输入新密码!", 0);
+                        ToastUtils.midToast(ChangePwdActivity.this, "请输入新密码!", 0);
                         return;
                     }
                     if (mOldPwd.length() < 6 || mOldPwd.length() > 32) {
-                        TmtUtils.midToast(ChangePwdActivity.this, "请输入正确的原密码!", 0);
+                        ToastUtils.midToast(ChangePwdActivity.this, "请输入正确的原密码!", 0);
                         return;
                     }
                     if (mOldPwd.length() < 6) {
-                        TmtUtils.midToast(ChangePwdActivity.this, "密码长度不得少于六位", 0);
+                        ToastUtils.midToast(ChangePwdActivity.this, "密码长度不得少于六位", 0);
                         return;
                     }
                     if (mOldPwd.length() > 32) {
-                        TmtUtils.midToast(ChangePwdActivity.this, "密码长度不的大于三十二位", 0);
+                        ToastUtils.midToast(ChangePwdActivity.this, "密码长度不的大于三十二位", 0);
                         return;
                     }
                     UpdatePassWordElement element = new UpdatePassWordElement();
@@ -236,7 +236,7 @@ public class ChangePwdActivity extends BaseActivity implements View.OnFocusChang
                                     intentOut.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intentOut.setAction(Constent.LOADING_ACTION);
                                     ChangePwdActivity.this.sendBroadcast(intentOut);
-                                    TmtUtils.midToast(ChangePwdActivity.this, "修改密码成功,2s后将跳转到登陆界面", 0);
+                                    ToastUtils.midToast(ChangePwdActivity.this, "修改密码成功,2s后将跳转到登陆界面", 0);
                                     mRunnable = new Runnable() {
                                         @Override
                                         public void run() {
@@ -258,7 +258,7 @@ public class ChangePwdActivity extends BaseActivity implements View.OnFocusChang
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), "密码修改失败..." + result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), "密码修改失败..." + result.getMessage(), 0);
                                 }
                             }
                         }

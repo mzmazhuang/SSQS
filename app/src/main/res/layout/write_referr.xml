@@ -47,13 +47,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <pulltorefresh.PullToRefreshExpandableListView
+        <com.dading.ssqs.components.pulltorefresh.PullToRefreshExpandableListView
             android:id="@+id/write_refer_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white_c"
             android:dividerHeight="5dp"
-            android:gravity="center|end"></pulltorefresh.PullToRefreshExpandableListView>
+            android:gravity="center|end"></com.dading.ssqs.components.pulltorefresh.PullToRefreshExpandableListView>
 
         <include layout="@layout/load_data" />
     </RelativeLayout>

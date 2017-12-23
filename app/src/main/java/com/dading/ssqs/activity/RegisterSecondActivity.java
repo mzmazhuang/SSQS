@@ -21,7 +21,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.RegAccountElement;
 import com.dading.ssqs.apis.elements.SendYZMElement;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -146,7 +146,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
                         if (result.isOk()) {
                             mCountDownTimer.start();
                         } else {
-                            TmtUtils.midToast(RegisterSecondActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(RegisterSecondActivity.this, result.getMessage(), 0);
                             Logger.d(TAG, "注册手机验证码请求失败!...------------------------------:");
                         }
                     }
@@ -155,24 +155,24 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
             case R.id.regiset_second_regisetbutton:
                 mSecondRegisetButton.setClickable(false);
                 if (!mIsAgree) {
-                    TmtUtils.midToast(RegisterSecondActivity.this, "请选择是否同意注册协议...", 0);
+                    ToastUtils.midToast(RegisterSecondActivity.this, "请选择是否同意注册协议...", 0);
                     return;
                 }
                 String password = mSecondPwd.getText().toString();
                 if (TextUtils.isEmpty(password)) {
-                    TmtUtils.midToast(RegisterSecondActivity.this, "请输入密码!", 0);
+                    ToastUtils.midToast(RegisterSecondActivity.this, "请输入密码!", 0);
                     return;
                 }
                 if (password.length() < 6) {
-                    TmtUtils.midToast(RegisterSecondActivity.this, "密码长度不得少于六位!", 0);
+                    ToastUtils.midToast(RegisterSecondActivity.this, "密码长度不得少于六位!", 0);
                     return;
                 } else if (password.length() > 32) {
-                    TmtUtils.midToast(RegisterSecondActivity.this, "密码长度不得大于三十二位!", 0);
+                    ToastUtils.midToast(RegisterSecondActivity.this, "密码长度不得大于三十二位!", 0);
                     return;
                 }
                 mCode = mSecondCode.getText().toString();
                 if (TextUtils.isEmpty(mCode)) {
-                    TmtUtils.midToast(RegisterSecondActivity.this, "请输入验证码!", 0);
+                    ToastUtils.midToast(RegisterSecondActivity.this, "请输入验证码!", 0);
                     return;
                 }
 
@@ -190,7 +190,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
                         mSecondRegisetButton.setClickable(true);
 
                         if (result.isOk()) {
-                            TmtUtils.midToast(UIUtils.getContext(), "注册成功,即将跳转到登陆界面...", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "注册成功,即将跳转到登陆界面...", 0);
                             mR = new Runnable() {
                                 @Override
                                 public void run() {
@@ -200,7 +200,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
                             };
                             UIUtils.postTaskDelay(mR, 3000);
                         } else {
-                            TmtUtils.midToast(RegisterSecondActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(RegisterSecondActivity.this, result.getMessage(), 0);
                         }
                     }
                 });

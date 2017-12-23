@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.elements.SendBindPhoneYZMElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PhoneUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -83,7 +83,7 @@ public class LockPhoneActivity extends BaseActivity implements View.OnFocusChang
                  */
                 mMPhoneNumberText = mLockPhonePhoneNumber.getText().toString();
                 if (TextUtils.isEmpty(mMPhoneNumberText)) {
-                    TmtUtils.midToast(LockPhoneActivity.this, "请输入手机号!", 0);
+                    ToastUtils.midToast(LockPhoneActivity.this, "请输入手机号!", 0);
                     mLockPhonePhoneCode.setClickable(true);
                     return;
                 }
@@ -108,7 +108,7 @@ public class LockPhoneActivity extends BaseActivity implements View.OnFocusChang
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

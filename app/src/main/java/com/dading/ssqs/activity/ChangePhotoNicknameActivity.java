@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -80,7 +80,7 @@ public class ChangePhotoNicknameActivity extends BaseActivity {
             case R.id.change_photo_nickname_save:
                 String newName = mChangePhotoNicknameNew.getText( ).toString( );
                 if (newName.length( ) > 10) {
-                    TmtUtils.midToast(ChangePhotoNicknameActivity.this, "修改名称不能大于10个字!", 0);
+                    ToastUtils.midToast(ChangePhotoNicknameActivity.this, "修改名称不能大于10个字!", 0);
                     return;
                 }
                 Intent intent = new Intent( );

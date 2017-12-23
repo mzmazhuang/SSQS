@@ -23,7 +23,7 @@ import com.dading.ssqs.apis.elements.ChargeUploadElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.QRCodeBean;
 import com.dading.ssqs.bean.WXDFBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -111,7 +111,7 @@ public class RechargeActivity extends BaseActivity {
                                 setIv(bean.getData());
                             }
                         } else {
-                            TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                            ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                         }
                     }
                 });
@@ -162,7 +162,7 @@ public class RechargeActivity extends BaseActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            TmtUtils.midToast(RechargeActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(RechargeActivity.this, result.getMessage(), 0);
                         }
                     }
                 });
@@ -260,7 +260,7 @@ public class RechargeActivity extends BaseActivity {
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            TmtUtils.midToast(this, "设备上没有安装此应用", 0);
+            ToastUtils.midToast(this, "设备上没有安装此应用", 0);
         }
     }
 }

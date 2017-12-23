@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.elements.ExtractUploadElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.WithDrawBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -109,7 +109,7 @@ public class WithDrawActivity extends BaseActivity {
                         processedData(bean);
                     }
                 }else{
-                    TmtUtils.midToast(WithDrawActivity.this, "拉取提现信息失败请重试!", 0);
+                    ToastUtils.midToast(WithDrawActivity.this, "拉取提现信息失败请重试!", 0);
                 }
             }
         });
@@ -145,17 +145,17 @@ public class WithDrawActivity extends BaseActivity {
                 String drawRmb = mWithDrawDrawRmb.getText().toString();
                 String drawPwd = mWithDrawBusinsessPwd.getText().toString();
                 if (TextUtils.isEmpty(drawRmb)) {
-                    TmtUtils.midToast(this, "请输入提现金额!", 0);
+                    ToastUtils.midToast(this, "请输入提现金额!", 0);
                     return;
                 } else if (Double.valueOf(drawRmb) < 10) {
-                    TmtUtils.midToast(this, "提现金额最低不得少于10元!", 0);
+                    ToastUtils.midToast(this, "提现金额最低不得少于10元!", 0);
                     return;
                 } else if (Double.valueOf(drawRmb) > Double.valueOf(mMoney)) {
-                    TmtUtils.midToast(this, "提现金额不得大于可提现金额!", 0);
+                    ToastUtils.midToast(this, "提现金额不得大于可提现金额!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(drawPwd) || drawPwd.length() < 6) {
-                    TmtUtils.midToast(this, "请输入6位交易密码!", 0);
+                    ToastUtils.midToast(this, "请输入6位交易密码!", 0);
                     return;
                 }
                 mWithDrawConfirm.setClickable(false);
@@ -175,7 +175,7 @@ public class WithDrawActivity extends BaseActivity {
                             mWithDrawDrawRmb.setText("");
                             mWithDrawBusinsessPwd.setText("");
                         } else {
-                            TmtUtils.midToast(UIUtils.getContext(), "提现上传失败." + result.getMessage(), 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "提现上传失败." + result.getMessage(), 0);
                             Logger.d(TAG, result.getMessage() + "失败信息");
                         }
                     }

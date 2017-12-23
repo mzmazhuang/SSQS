@@ -25,9 +25,9 @@ import com.dading.ssqs.bean.AllCircleSingleBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.ListScrollUtil;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.HashMap;
 import java.util.List;
@@ -197,7 +197,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }

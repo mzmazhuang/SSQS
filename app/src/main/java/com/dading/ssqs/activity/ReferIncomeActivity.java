@@ -14,7 +14,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.ReferIncomeBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import butterknife.Bind;
@@ -101,7 +101,7 @@ public class ReferIncomeActivity extends BaseActivity {
                         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, false);
                         //发送广播
                         UIUtils.SendReRecevice(Constent.LOADING_ACTION);
-                        TmtUtils.midToast(ReferIncomeActivity.this, "您的账号已在其他手机登录!如不是您本人,请修改密码..", 0);
+                        ToastUtils.midToast(ReferIncomeActivity.this, "您的账号已在其他手机登录!如不是您本人,请修改密码..", 0);
                     }
                 }
             }
@@ -129,7 +129,7 @@ public class ReferIncomeActivity extends BaseActivity {
                         startActivity(intent);*/
                         finish();
                     } else {
-                        TmtUtils.midToast(ReferIncomeActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(ReferIncomeActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -161,11 +161,11 @@ public class ReferIncomeActivity extends BaseActivity {
                     finish();
                 } else {
                     if (mBean.isQualify != 1) {
-                        TmtUtils.midToast(this, "对不起,您暂时还没有申请资格..", 0);
+                        ToastUtils.midToast(this, "对不起,您暂时还没有申请资格..", 0);
                         return;
                     }
                     if (mBean.isApply == 1) {
-                        TmtUtils.midToast(this, "您已经申请专家认证,请勿重复申请,请等待审核!", 0);
+                        ToastUtils.midToast(this, "您已经申请专家认证,请勿重复申请,请等待审核!", 0);
                     } else {
                         Intent intent = new Intent(this, SavantAuthenticationActivity.class);
                         startActivity(intent);

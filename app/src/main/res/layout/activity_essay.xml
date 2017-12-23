@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <pulltorefresh.PullToRefreshListView
+        <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
             android:id="@+id/essay_he_lv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </pulltorefresh.PullToRefreshListView>
+        </com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 
         <ImageView
             android:id="@+id/essay_he_no_data"

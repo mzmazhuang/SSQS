@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <pulltorefresh.PullToRefreshListView
+    <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
         android:id="@+id/guessball_grounder_exp_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:scrollbars="none"></pulltorefresh.PullToRefreshListView>
+        android:scrollbars="none"></com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 
 </RelativeLayout>

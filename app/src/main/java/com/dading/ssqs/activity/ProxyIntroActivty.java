@@ -10,11 +10,11 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ProxyIntroBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import richtextview.RichTextView;
+import com.dading.ssqs.components.richtextview.RichTextView;
 
 /**
  * Created by lenovo on 2017/8/8.
@@ -47,7 +47,7 @@ public class ProxyIntroActivty extends BaseActivity {
                         processedData(bean);
                     }
                 } else {
-                    TmtUtils.midToast(ProxyIntroActivty.this, result.getMessage(), 0);
+                    ToastUtils.midToast(ProxyIntroActivty.this, result.getMessage(), 0);
                 }
             }
         });

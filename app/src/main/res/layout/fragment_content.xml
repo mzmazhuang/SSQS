@@ -5,11 +5,11 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.dading.ssqs.view.NoScrollViewPager
+    <com.dading.ssqs.components.NoScrollViewPager
         android:id="@+id/noscroeViewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></com.dading.ssqs.view.NoScrollViewPager>
+        android:layout_weight="1"></com.dading.ssqs.components.NoScrollViewPager>
 
     <View
         android:layout_width="match_parent"

@@ -2,7 +2,6 @@ package com.dading.ssqs.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,11 +13,10 @@ import android.widget.TextView;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.HomeBean;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

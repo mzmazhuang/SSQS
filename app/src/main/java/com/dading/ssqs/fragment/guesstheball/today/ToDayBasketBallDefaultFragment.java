@@ -8,7 +8,6 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import com.dading.ssqs.activity.LoginActivity;
 import com.dading.ssqs.adapter.newAdapter.BasketScrollBallItemAdapter;
 import com.dading.ssqs.adapter.newAdapter.FilterDialogAdapter;
 import com.dading.ssqs.adapter.newAdapter.PageDialogAdapter;
-import com.dading.ssqs.adapter.newAdapter.ScrollBallBasketBallDefaultAdapter;
 import com.dading.ssqs.adapter.newAdapter.ScrollBallCommitMenuAdapter;
 import com.dading.ssqs.adapter.newAdapter.ToDayBasketBallDefaultAdapter;
 import com.dading.ssqs.apis.CcApiClient;
@@ -34,7 +32,6 @@ import com.dading.ssqs.apis.elements.PayBallElement;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.CommonTitle;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.bean.EarlyBean;
 import com.dading.ssqs.bean.JCbean;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.bean.ScrollBallBasketBallBean;
@@ -52,7 +49,7 @@ import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.fragment.guesstheball.DataController;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallBasketBallDefaultFragment;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -622,7 +619,7 @@ public class ToDayBasketBallDefaultFragment extends Fragment implements OnRefres
                                 SSQSApplication.cachedThreadPool.execute(thread);
                             }
                         } else {
-                            TmtUtils.midToast(mContext, result.getMessage(), 0);
+                            ToastUtils.midToast(mContext, result.getMessage(), 0);
                         }
                     }
                 });
@@ -685,7 +682,7 @@ public class ToDayBasketBallDefaultFragment extends Fragment implements OnRefres
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

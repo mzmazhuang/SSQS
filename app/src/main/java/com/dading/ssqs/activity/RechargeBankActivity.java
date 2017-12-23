@@ -29,7 +29,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.WXDFBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -163,19 +163,19 @@ public class RechargeBankActivity extends BaseActivity implements View.OnClickLi
                 switch (i) {
                     case 0:
                         setCopy(mBean.getName());
-                        TmtUtils.midToast(UIUtils.getContext(), "复制收款银行成功", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "复制收款银行成功", 0);
                         break;
                     case 1:
                         setCopy(mBean.getOwner());
-                        TmtUtils.midToast(UIUtils.getContext(), "复制收款人成功", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "复制收款人成功", 0);
                         break;
                     case 2:
                         setCopy(mBean.getCardNumber());
-                        TmtUtils.midToast(UIUtils.getContext(), "复制收款卡号成功", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "复制收款卡号成功", 0);
                         break;
                     case 3:
                         setCopy(mBean.getBankAddress());
-                        TmtUtils.midToast(UIUtils.getContext(), "复制收款支行成功", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "复制收款支行成功", 0);
                         break;
                 }
             }
@@ -201,19 +201,19 @@ public class RechargeBankActivity extends BaseActivity implements View.OnClickLi
                 String acount = mDepositAmount.getText().toString();
                 String name = mTransferAccountsName.getText().toString();
                 if (TextUtils.isEmpty(time)) {
-                    TmtUtils.midToast(RechargeBankActivity.this, "请选择转账时间!", 0);
+                    ToastUtils.midToast(RechargeBankActivity.this, "请选择转账时间!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(acount)) {
-                    TmtUtils.midToast(RechargeBankActivity.this, "请输入充值金额!", 0);
+                    ToastUtils.midToast(RechargeBankActivity.this, "请输入充值金额!", 0);
                     return;
                 }
                 if (TextUtils.isEmpty(name)) {
-                    TmtUtils.midToast(RechargeBankActivity.this, "请填写卡主姓名!", 0);
+                    ToastUtils.midToast(RechargeBankActivity.this, "请填写卡主姓名!", 0);
                     return;
                 }
               /*  if (TextUtils.isEmpty(mAdapterType.getCheckTitle( ))) {
-                    TmtUtils.midToast(RechargeBankActivity.this, "请选择转账渠道!", 0);
+                    ToastUtils.midToast(RechargeBankActivity.this, "请选择转账渠道!", 0);
                     return;
                 }*/
                 /**
@@ -241,7 +241,7 @@ public class RechargeBankActivity extends BaseActivity implements View.OnClickLi
                             startActivity(intent);
                             finish();
                         } else {
-                            TmtUtils.midToast(RechargeBankActivity.this, result.getMessage(), 0);
+                            ToastUtils.midToast(RechargeBankActivity.this, result.getMessage(), 0);
                         }
                     }
                 });
@@ -253,7 +253,7 @@ public class RechargeBankActivity extends BaseActivity implements View.OnClickLi
 
     private void setCopy(String copyStr) {
         if (TextUtils.isEmpty(copyStr)) {
-            TmtUtils.midToast(UIUtils.getContext(), "没有需要复制的内容", 0);
+            ToastUtils.midToast(UIUtils.getContext(), "没有需要复制的内容", 0);
             return;
         }
         int sdkInt = Build.VERSION.SDK_INT;

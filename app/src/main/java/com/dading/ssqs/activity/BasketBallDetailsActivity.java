@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dading.ssqs.LocaleController;
-import com.dading.ssqs.NotificationController;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.newAdapter.BasketBallDetailsItemAdapter;
@@ -40,7 +39,7 @@ import com.dading.ssqs.components.ScrollBallCommitView;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -740,7 +739,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     swipeToLoadLayout.setRefreshing(false);
                     swipeToLoadLayout.setRefreshEnabled(true);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });
@@ -761,7 +760,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     swipeToLoadLayout.setRefreshing(false);
                     swipeToLoadLayout.setRefreshEnabled(true);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.MultiItem;
 import com.dading.ssqs.bean.ProxyCenterBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class ProxyCenterActivity extends BaseActivity {
                         processedData(bean);
                     }
                 } else {
-                    TmtUtils.midToast(ProxyCenterActivity.this, result.getMessage(), 0);
+                    ToastUtils.midToast(ProxyCenterActivity.this, result.getMessage(), 0);
                 }
             }
         });

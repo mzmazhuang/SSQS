@@ -38,7 +38,7 @@
                     android:gravity="center_vertical"
                     />
 
-                <com.dading.ssqs.view.AutoVerticalScrollTextView
+                <com.dading.ssqs.components.AutoVerticalScrollTextView
                     android:id="@+id/store_prize_record_prize_info"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

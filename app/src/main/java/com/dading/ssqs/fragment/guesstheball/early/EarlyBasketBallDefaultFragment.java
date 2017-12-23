@@ -38,7 +38,6 @@ import com.dading.ssqs.bean.CommonTitle;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.EarlyBean;
 import com.dading.ssqs.bean.JCbean;
-import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.bean.ScrollBallBasketBallBean;
 import com.dading.ssqs.cells.GuessFilterCell;
 import com.dading.ssqs.cells.ScrollBallCell;
@@ -55,7 +54,7 @@ import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.fragment.guesstheball.DataController;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallBasketBallDefaultFragment;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -644,7 +643,7 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
                                 SSQSApplication.cachedThreadPool.execute(thread);
                             }
                         } else {
-                            TmtUtils.midToast(mContext, result.getMessage(), 0);
+                            ToastUtils.midToast(mContext, result.getMessage(), 0);
                         }
                     }
                 });
@@ -707,7 +706,7 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

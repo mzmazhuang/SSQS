@@ -10,10 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <pulltorefresh.PullToRefreshListView
+        <com.dading.ssqs.components.pulltorefresh.PullToRefreshListView
             android:id="@+id/today_topic_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></pulltorefresh.PullToRefreshListView>
+            android:layout_height="match_parent"></com.dading.ssqs.components.pulltorefresh.PullToRefreshListView>
 
         <include
             layout="@layout/templete_no_data"

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 
 /**

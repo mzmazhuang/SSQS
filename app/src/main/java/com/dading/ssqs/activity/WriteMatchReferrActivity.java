@@ -26,9 +26,9 @@ import com.dading.ssqs.bean.JCbean;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.MatchInfoBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,7 +170,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -233,7 +233,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -358,19 +358,19 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
 
 
                 if (0 == mSelect) {
-                    TmtUtils.midToast(WriteMatchReferrActivity.this, "请选择赔率!", 0);
+                    ToastUtils.midToast(WriteMatchReferrActivity.this, "请选择赔率!", 0);
                     return;
                 }
 
                 String reason = mTextReason.getText().toString();
                 if (reason.length() < 2) {
-                    TmtUtils.midToast(WriteMatchReferrActivity.this, "推荐理由至少不得少于2字!", 0);
+                    ToastUtils.midToast(WriteMatchReferrActivity.this, "推荐理由至少不得少于2字!", 0);
                     return;
                 }
 
                 String price = mWriteReferPrice.getText().toString();
                 if (TextUtils.isEmpty(price)) {
-                    TmtUtils.midToast(WriteMatchReferrActivity.this, "请填入推荐价格!", 0);
+                    ToastUtils.midToast(WriteMatchReferrActivity.this, "请填入推荐价格!", 0);
                     return;
                 } else {
                     /**
@@ -422,10 +422,10 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                                     break;
                             }
                         } else {
-                            TmtUtils.midToast(WriteMatchReferrActivity.this, "请查看专家等级,输入正确价格!", 0);
+                            ToastUtils.midToast(WriteMatchReferrActivity.this, "请查看专家等级,输入正确价格!", 0);
                         }
                     } else {
-                        TmtUtils.midToast(WriteMatchReferrActivity.this, "请输入价格!", 0);
+                        ToastUtils.midToast(WriteMatchReferrActivity.this, "请输入价格!", 0);
                     }
                 }
 
@@ -448,7 +448,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                         if (result.isOk()) {
                             mTextReason.setText("");
                             mWriteReferPrice.setText("");
-                            TmtUtils.midToast(WriteMatchReferrActivity.this, "恭喜您,上传推荐成功!", 0);
+                            ToastUtils.midToast(WriteMatchReferrActivity.this, "恭喜您,上传推荐成功!", 0);
                             finish();
                         } else {
                             if (403 == result.getErrno()) {
@@ -458,7 +458,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }
@@ -581,7 +581,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
             getPlData();
         }
         if (!mPlState) {
-            TmtUtils.midToast(WriteMatchReferrActivity.this, "拉取赔率信息失败,请重新选择比赛类型!", 0);
+            ToastUtils.midToast(WriteMatchReferrActivity.this, "拉取赔率信息失败,请重新选择比赛类型!", 0);
             return;
         }
         mWriteReferMainWin.setVisibility(View.GONE);

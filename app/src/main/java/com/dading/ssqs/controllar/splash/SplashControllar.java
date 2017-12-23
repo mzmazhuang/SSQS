@@ -15,9 +15,9 @@ import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.SplashBeanGG;
+import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.PackageUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
 
@@ -60,7 +60,7 @@ public class SplashControllar extends BaseFragnment {
 
     @Override
     public void initData() {
-        currentName = PackageUtils.getVersionName(mContent);
+        currentName = AndroidUtilities.getVersionName(mContent);
         UIUtils.getSputils().putBoolean(Constent.IS_CLICK, false);
         mTime = 3;
 
@@ -140,7 +140,7 @@ public class SplashControllar extends BaseFragnment {
                     } else {
                         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, false);
                         UIUtils.getSputils().putInt(Constent.USER_TYPE_NUM, 0);
-                        TmtUtils.midToast(UIUtils.getContext(), "登录失效,请重新登录.", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "登录失效,请重新登录.", 0);
                     }
                 }
             });

@@ -26,14 +26,14 @@ import com.dading.ssqs.controllar.myrefer.MyReferSmallBig;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.SpUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 /**
  * 创建者     ZCL
@@ -216,9 +216,9 @@ public class MatchReferActivity extends BaseActivity implements View.OnClickList
 
                                 if (bean != null) {
                                     if (bean.isQualify != 1) {
-                                        TmtUtils.midToast(MatchReferActivity.this, "对不起,您暂时还没有申请资格..", 0);
+                                        ToastUtils.midToast(MatchReferActivity.this, "对不起,您暂时还没有申请资格..", 0);
                                     } else if (bean.isApply == 1) {
-                                        TmtUtils.midToast(MatchReferActivity.this, "您已经申请专家认证,请勿重复申请,请等待审核!", 0);
+                                        ToastUtils.midToast(MatchReferActivity.this, "您已经申请专家认证,请勿重复申请,请等待审核!", 0);
                                     } else {
                                         Intent savantAuth = new Intent(MatchReferActivity.this, SavantAuthenticationActivity.class);
                                         MatchReferActivity.this.startActivity(savantAuth);
@@ -235,7 +235,7 @@ public class MatchReferActivity extends BaseActivity implements View.OnClickList
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }

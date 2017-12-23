@@ -9,11 +9,11 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -101,7 +101,7 @@ public class PPAPControllar {
                     @Override
                     public void run() {
                         mLv.onRefreshComplete();
-                        TmtUtils.midToast(context, "没有更多数据!", 0);
+                        ToastUtils.midToast(context, "没有更多数据!", 0);
                     }
                 }, 1000);
             }

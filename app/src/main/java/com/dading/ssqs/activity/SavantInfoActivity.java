@@ -24,9 +24,9 @@ import com.dading.ssqs.bean.SavantInfoBean;
 import com.dading.ssqs.controllar.savantinfo.SavantInfoStatetrendControllarSingle;
 import com.dading.ssqs.utils.ListScrollUtil;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 
 import java.util.ArrayList;
@@ -149,7 +149,7 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                     loadingAnimal.setVisibility(View.GONE);
                     mSavantInfSC.setVisibility(View.VISIBLE);
@@ -212,7 +212,7 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }
@@ -306,7 +306,7 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                     UIUtils.SendReRecevice(Constent.SERIES);
                     SavantInfoActivity.this.startActivity(intentRefer);
                 } else {
-                    TmtUtils.midToast(SavantInfoActivity.this, "对不起您的余额不足请充值!", 0);
+                    ToastUtils.midToast(SavantInfoActivity.this, "对不起您的余额不足请充值!", 0);
                 }
             } else {
                 SavantInfoActivity.this.startActivity(intentRefer);

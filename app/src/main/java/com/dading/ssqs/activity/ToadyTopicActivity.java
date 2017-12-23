@@ -19,7 +19,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.TodayTopicBean;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -121,7 +121,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -188,7 +188,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                                         startActivity(intent);
                                         finish();
                                     } else {
-                                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                     }
                                 }
                             }
@@ -206,7 +206,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                         mPage++;
                         Logger.d(TAG, "这是第几页--------------:" + mPage);
                         if (mPage > totalCount) {
-                            TmtUtils.midToast(UIUtils.getContext(), "已全部加载,无更多数据!", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "已全部加载,无更多数据!", 0);
                         } else {
                             SSQSApplication.apiClient(classGuid).getMyMsgList(mPage, 10, new CcApiClient.OnCcListener() {
                                 @Override
@@ -225,7 +225,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                                             startActivity(intent);
                                             finish();
                                         } else {
-                                            TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                            ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                         }
                                     }
                                 }
@@ -284,7 +284,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }

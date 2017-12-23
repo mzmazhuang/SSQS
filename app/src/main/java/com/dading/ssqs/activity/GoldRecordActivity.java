@@ -13,7 +13,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.DiamondsGlodRecordBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -87,7 +87,7 @@ public class GoldRecordActivity extends BaseActivity implements View.OnTouchList
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -151,7 +151,7 @@ public class GoldRecordActivity extends BaseActivity implements View.OnTouchList
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }

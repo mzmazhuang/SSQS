@@ -17,7 +17,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ProxyCodeBean;
 import com.dading.ssqs.bean.ProxyIntroLookBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
@@ -92,7 +92,7 @@ public class ProxyCodeActivty extends BaseActivity {
                 break;
             case R.id.proxy_upload_code:
                 if (TextUtils.isEmpty(mProxyUpCode.getText())) {
-                    TmtUtils.midToast(UIUtils.getContext(), "请输入您要生成的邀请码!", 0);
+                    ToastUtils.midToast(UIUtils.getContext(), "请输入您要生成的邀请码!", 0);
                     return;
                 }
                 /**
@@ -120,7 +120,7 @@ public class ProxyCodeActivty extends BaseActivity {
                         processedDataLook(beanLook);
                     }
                 } else {
-                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                 }
             }
         });
@@ -143,7 +143,7 @@ public class ProxyCodeActivty extends BaseActivity {
                         }
                     }
                 } else {
-                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                 }
             }
         });
@@ -157,7 +157,7 @@ public class ProxyCodeActivty extends BaseActivity {
 
 
     private void processedDataUp() {
-        TmtUtils.midToast(UIUtils.getContext(), "邀请码已生成!", 0);
+        ToastUtils.midToast(UIUtils.getContext(), "邀请码已生成!", 0);
         mProxyUpCode.setText("");
     }
 

@@ -27,7 +27,7 @@ import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -482,7 +482,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
 
                     if (bean != null) {
                         mData.get(position).isFouce = 1;
-                        //TmtUtils.midToast(content, "添加关注成功", 0);
+                        //ToastUtils.midToast(content, "添加关注成功", 0);
                         mMap.get(position).setChecked(true);
                         mMap.get(position).setClickable(true);
                         mMapLy.get(position).setClickable(true);
@@ -541,7 +541,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                         Intent intent = new Intent(content, LoginActivity.class);
                         content.startActivity(intent);
                     } else {
-                        //   TmtUtils.midToast(content, "添加关注失败" + bean.msg, 0);
+                        //   ToastUtils.midToast(content, "添加关注失败" + bean.msg, 0);
                     }
                 }
             }
@@ -564,7 +564,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                     if (bean != null) {
                         mData.get(position).isFouce = 0;
                         // Toast.makeText(content, "取消关注成功", Toast.LENGTH_SHORT).show();
-                        //TmtUtils.midToast(content, "取消关注成功", 0);
+                        //ToastUtils.midToast(content, "取消关注成功", 0);
                         mMap.get(position).setChecked(false);
                         mMapLy.get(position).setClickable(true);
                         /**
@@ -628,7 +628,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                         Intent intent = new Intent(content, LoginActivity.class);
                         content.startActivity(intent);
                     } else {
-                        // TmtUtils.midToast(content, "取消关注失败" + bean.msg, 0);
+                        // ToastUtils.midToast(content, "取消关注失败" + bean.msg, 0);
                     }
                 }
             }
@@ -686,7 +686,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
 
         @Override
         public void onClick(View v) {
-            TmtUtils.midToast(UIUtils.getContext(), "您点击了-" + position, 0);
+            ToastUtils.midToast(UIUtils.getContext(), "您点击了-" + position, 0);
         }
     }
 }

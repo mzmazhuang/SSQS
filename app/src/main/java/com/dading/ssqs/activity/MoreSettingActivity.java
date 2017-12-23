@@ -17,7 +17,7 @@ import com.dading.ssqs.bean.ShareBean;
 import com.dading.ssqs.onekeyshare.OnekeyShare;
 import com.dading.ssqs.utils.DataCleanManager;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -146,7 +146,7 @@ public class MoreSettingActivity extends BaseActivity {
                                 }
                                 mIsOpen = !mIsOpen;
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     });
@@ -225,7 +225,7 @@ public class MoreSettingActivity extends BaseActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }

@@ -13,7 +13,7 @@ import com.dading.ssqs.bean.Constent;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import richtextview.RichTextView;
+import com.dading.ssqs.components.richtextview.RichTextView;
 
 /**
  * 创建者     zcl

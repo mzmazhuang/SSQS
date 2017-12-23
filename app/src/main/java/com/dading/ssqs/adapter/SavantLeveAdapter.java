@@ -15,7 +15,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.SavantInfoActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SavantLeveBean;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.List;
 

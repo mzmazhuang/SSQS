@@ -22,7 +22,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.GuessACEBean;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 import com.dading.ssqs.R;
 
 

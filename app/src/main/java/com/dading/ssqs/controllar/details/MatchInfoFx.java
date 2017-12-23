@@ -20,7 +20,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.FXBean;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.ListScrollUtil;
-import com.dading.ssqs.view.SoftSpaceStyle;
+import com.dading.ssqs.components.SoftSpaceStyle;
 
 import java.util.ArrayList;
 import java.util.List;

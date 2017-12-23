@@ -35,7 +35,6 @@ import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.bean.ScrollBallFootBallResultBean;
 import com.dading.ssqs.cells.GuessFilterCell;
 import com.dading.ssqs.cells.ResultTimeLayout;
-import com.dading.ssqs.cells.TimeCell;
 import com.dading.ssqs.components.FilterDialog;
 import com.dading.ssqs.components.LoadingDialog;
 import com.dading.ssqs.components.PageDialog;
@@ -46,7 +45,7 @@ import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.fragment.guesstheball.DataController;
 import com.dading.ssqs.utils.DateUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -404,7 +403,7 @@ public class EarlyResultFragment extends Fragment implements OnRefreshListener, 
 
                     defaultView.setVisibility(View.VISIBLE);
 
-                    TmtUtils.midToast(mContext, result.getMessage(), 1000);
+                    ToastUtils.midToast(mContext, result.getMessage(), 1000);
                 }
             }
         });

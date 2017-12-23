@@ -37,7 +37,7 @@ import com.dading.ssqs.base.BaseTabsContainer;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -248,7 +248,7 @@ public class MyControllar extends BaseTabsContainer {
                     case 2:
                         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                             if (b) {
-                                TmtUtils.midToast(mContent, "试玩账号不能进行充值，提现，查看提现、充值、账户明细!", 0);
+                                ToastUtils.midToast(mContent, "试玩账号不能进行充值，提现，查看提现、充值、账户明细!", 0);
                                 return;
                             }
                             mIntent = new Intent(mContent, WithDrawDentailActivity.class);
@@ -258,7 +258,7 @@ public class MyControllar extends BaseTabsContainer {
                     case 3:
                         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                             if (b) {
-                                TmtUtils.midToast(mContent, "试玩账号不能进行充值，提现，查看提现、充值、账户明细!", 0);
+                                ToastUtils.midToast(mContent, "试玩账号不能进行充值，提现，查看提现、充值、账户明细!", 0);
                                 return;
                             }
                             mIntent = new Intent(mContent, RechargeDetailActivity.class);
@@ -269,7 +269,7 @@ public class MyControllar extends BaseTabsContainer {
                     case 4:
                         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                             if (b) {
-                                TmtUtils.midToast(mContent, "试玩账号不能进行充值，提现，查看提现、充值、账户明细!", 0);
+                                ToastUtils.midToast(mContent, "试玩账号不能进行充值，提现，查看提现、充值、账户明细!", 0);
                                 return;
                             }
                             mIntent = new Intent(mContent, AccountDetailActivity.class);
@@ -350,7 +350,7 @@ public class MyControllar extends BaseTabsContainer {
             public void onClick(View v) {
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     if (UIUtils.getSputils().getBoolean(Constent.USER_TYPE, false)) {
-                        TmtUtils.midToast(mContent, "试玩账号不能进行充值，提现，和查看提现明细、账户明细!", 0);
+                        ToastUtils.midToast(mContent, "试玩账号不能进行充值，提现，和查看提现明细、账户明细!", 0);
                         return;
                     }
                     Intent intent = new Intent(mContent, NewRechargeActivity.class);
@@ -366,7 +366,7 @@ public class MyControllar extends BaseTabsContainer {
             public void onClick(View v) {
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     if (UIUtils.getSputils().getBoolean(Constent.USER_TYPE, false)) {
-                        TmtUtils.midToast(mContent, "试玩账号不能进行充值，提现，和查看提现明细、账户明细!", 0);
+                        ToastUtils.midToast(mContent, "试玩账号不能进行充值，提现，和查看提现明细、账户明细!", 0);
                         return;
                     }
                     Intent intent;

@@ -1152,7 +1152,7 @@
                                 android:textSize="12sp"/>
                         </LinearLayout>
 
-                        <com.dading.ssqs.view.MyGridView
+                        <com.dading.ssqs.components.MyGridView
                             android:id="@+id/jc_score_gv_interval"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1219,7 +1219,7 @@
                                 android:textSize="13sp"
                                 android:visibility="gone"/>
 
-                            <com.dading.ssqs.view.MyGridView
+                            <com.dading.ssqs.components.MyGridView
                                 android:id="@+id/jc_score_gv_main_win"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1245,7 +1245,7 @@
                                 android:textSize="13sp"
                                 android:visibility="gone"/>
 
-                            <com.dading.ssqs.view.MyGridView
+                            <com.dading.ssqs.components.MyGridView
 
                                 android:id="@+id/jc_score_gv_draw"
                                 android:layout_width="match_parent"
@@ -1272,7 +1272,7 @@
                                 android:textSize="13sp"
                                 android:visibility="gone"/>
 
-                            <com.dading.ssqs.view.MyGridView
+                            <com.dading.ssqs.components.MyGridView
                                 android:id="@+id/jc_score_gv_main_lost"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1298,7 +1298,7 @@
                                 android:textSize="13sp"
                                 android:visibility="gone"/>
 
-                            <com.dading.ssqs.view.MyGridView
+                            <com.dading.ssqs.components.MyGridView
                                 android:id="@+id/jc_score_gv_other"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -1345,7 +1345,7 @@
                         </LinearLayout>
 
 
-                        <com.dading.ssqs.view.MyGridView
+                        <com.dading.ssqs.components.MyGridView
                             android:id="@+id/jc_score_gv_half_result"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1392,7 +1392,7 @@
                         </LinearLayout>
 
 
-                        <com.dading.ssqs.view.MyGridView
+                        <com.dading.ssqs.components.MyGridView
                             android:id="@+id/jc_score_gv_single_double"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1437,7 +1437,7 @@
                         </LinearLayout>
 
 
-                        <com.dading.ssqs.view.MyGridView
+                        <com.dading.ssqs.components.MyGridView
                             android:id="@+id/jc_score_gv_half_single_double"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

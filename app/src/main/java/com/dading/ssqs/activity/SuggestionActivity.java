@@ -34,7 +34,7 @@ import com.dading.ssqs.utils.EmojiFilter;
 import com.dading.ssqs.utils.FileImageUpload;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
@@ -218,7 +218,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                 //开启摄像头
                 if (ContextCompat.checkSelfPermission(SuggestionActivity.this, Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
-                    TmtUtils.midToast(SuggestionActivity.this, "没有授权,请到应用设置界面手动打开相机权限!", 0);
+                    ToastUtils.midToast(SuggestionActivity.this, "没有授权,请到应用设置界面手动打开相机权限!", 0);
                 } else {
                     // 已经权限
                     startActivityForResult(intent, PHOTO_CAMERA);
@@ -313,7 +313,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
 
                 String value = mSuggestionUploadEdit.getText().toString();
                 if (value.length() >= 13 && value.length() > 400) {
-                    TmtUtils.midToast(SuggestionActivity.this, "请检查字数!字数不得少于13,大于400", 0);
+                    ToastUtils.midToast(SuggestionActivity.this, "请检查字数!字数不得少于13,大于400", 0);
                     return;
                 }
                 String valueOk = EmojiFilter.filterEmoji(value);
@@ -332,7 +332,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                             mSuggestionUploadIv3.setVisibility(View.GONE);
                             mSuggestionUploadIv4.setVisibility(View.GONE);
                             mSuggestionUploadIv5.setVisibility(View.VISIBLE);
-                            TmtUtils.midToast(SuggestionActivity.this, "意见反馈成功!", 0);
+                            ToastUtils.midToast(SuggestionActivity.this, "意见反馈成功!", 0);
                             finish();
                         } else {
                             mSuggestionUploadConfirm.setClickable(true);
@@ -343,7 +343,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                                 startActivity(intent);
                                 finish();
                             } else {
-                                TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }
                     }
@@ -475,7 +475,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                         goImg(bean.data.imageUrl.get(0));
                     }
                 } else {
-                    TmtUtils.midToast(SuggestionActivity.this, "上传图片失败,请检查图片!", 0);
+                    ToastUtils.midToast(SuggestionActivity.this, "上传图片失败,请检查图片!", 0);
                 }
             }
         };

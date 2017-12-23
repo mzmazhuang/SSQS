@@ -9,7 +9,7 @@ import com.dading.ssqs.controllar.withdrawdetail.WithDrawDetailAdapter;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 /**
  * 创建者     ZCL

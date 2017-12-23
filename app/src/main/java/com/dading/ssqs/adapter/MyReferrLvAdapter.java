@@ -33,7 +33,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ReferReferBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.List;
 
@@ -225,7 +225,7 @@ public class MyReferrLvAdapter extends BaseAdapter implements ListAdapter {
                                 UIUtils.SendReRecevice(Constent.SERIES);
                                 mContent.startActivity(intentRefer);
                             } else {
-                                // TmtUtils.midToast(mContent, "对不起您的余额不足请充值!", 0);
+                                // ToastUtils.midToast(mContent, "对不起您的余额不足请充值!", 0);
                                 initDialog();
                             }
                         } else {
@@ -256,7 +256,7 @@ public class MyReferrLvAdapter extends BaseAdapter implements ListAdapter {
                                 UIUtils.SendReRecevice(Constent.SERIES);
                                 mContent.startActivity(intentRefer);
                             } else {
-                                // TmtUtils.midToast(mContent, "对不起您的余额不足请充值!", 0);
+                                // ToastUtils.midToast(mContent, "对不起您的余额不足请充值!", 0);
                                 initDialog();
                             }
                         } else {

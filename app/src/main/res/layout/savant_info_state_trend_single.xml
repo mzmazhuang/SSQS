@@ -51,7 +51,7 @@
             android:layout_marginTop="5dp"
             android:layout_weight="1">
 
-            <progressbar.CircleProgressBar
+            <com.dading.ssqs.components.progressbar.CircleProgressBar
                 android:id="@+id/savant_info_vp_item_pb1"
                 android:layout_width="100dp"
                 android:layout_height="90dp"
@@ -109,7 +109,7 @@
             android:layout_marginTop="5dp"
             android:layout_weight="1">
 
-            <progressbar.CircleProgressBar
+            <com.dading.ssqs.components.progressbar.CircleProgressBar
                 android:id="@+id/savant_info_vp_item_pb2"
                 android:layout_width="100dp"
                 android:layout_height="90dp"
@@ -166,7 +166,7 @@
             android:layout_marginTop="5dp"
             android:layout_weight="1">
 
-            <progressbar.CircleProgressBar
+            <com.dading.ssqs.components.progressbar.CircleProgressBar
                 android:id="@+id/savant_info_vp_item_pb3"
                 android:layout_width="100dp"
                 android:layout_height="90dp"

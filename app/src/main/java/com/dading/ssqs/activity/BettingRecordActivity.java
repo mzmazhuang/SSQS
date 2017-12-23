@@ -26,7 +26,7 @@ import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ThreadPoolUtils;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -44,7 +44,7 @@ import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -461,7 +461,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -491,7 +491,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -531,7 +531,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -587,7 +587,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         processData(items);
                     } else {
                         mBettingRecordENo.setVisibility(View.VISIBLE);
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 } else {
                     mBettingRecordENo.setVisibility(View.VISIBLE);
@@ -598,7 +598,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 }
             }
@@ -619,7 +619,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         processDataM(items);
                     } else {
                         mBettingRecordENo.setVisibility(View.VISIBLE);
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 } else {
                     mBettingRecordENo.setVisibility(View.VISIBLE);
@@ -630,7 +630,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 }
             }

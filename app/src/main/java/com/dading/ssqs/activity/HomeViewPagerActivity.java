@@ -32,9 +32,9 @@ import com.dading.ssqs.onekeyshare.OnekeyShare;
 import com.dading.ssqs.utils.ListScrollUtil;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 import com.dading.ssqs.R;
 
 import java.util.ArrayList;
@@ -190,12 +190,12 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                         ClipboardManager copy = (ClipboardManager) HomeViewPagerActivity.this
                                 .getSystemService(Context.CLIPBOARD_SERVICE);
                         copy.setText(mDataShare.forwardUrl);
-                        TmtUtils.midToast(UIUtils.getContext(), "URL链接成功复制到粘贴板", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "URL链接成功复制到粘贴板", 0);
                     } else if (sdkInt <= Build.VERSION_CODES.HONEYCOMB) {
                         android.text.ClipboardManager copyq = (android.text.ClipboardManager) HomeViewPagerActivity.this
                                 .getSystemService(Context.CLIPBOARD_SERVICE);
                         copyq.setText(mDataShare.forwardUrl);
-                        TmtUtils.midToast(UIUtils.getContext(), "URL链接成功复制到粘贴板", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "URL链接成功复制到粘贴板", 0);
                     }
                     mPop.dismiss();
                 }
@@ -224,7 +224,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 50) {
-                    TmtUtils.midToast(HomeViewPagerActivity.this, "评论数不得大于50字!", 0);
+                    ToastUtils.midToast(HomeViewPagerActivity.this, "评论数不得大于50字!", 0);
                     return;
                 }
             }
@@ -275,7 +275,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }
@@ -330,7 +330,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -359,7 +359,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                         finish();
                     } else {
                         mIsSUC = false;
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -528,7 +528,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                                     Intent intent = new Intent(HomeViewPagerActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }
@@ -552,7 +552,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                             if (page != null && page.getItems() != null) {
                                 mData1 = page.getItems();
                                 if (page.getItems().size() == 0) {
-                                    TmtUtils.midToast(UIUtils.getContext(), "没有最新评论啦!", 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), "没有最新评论啦!", 0);
                                     return;
                                 } else {
                                     UIUtils.postTaskDelay(new Runnable() {
@@ -572,7 +572,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                                 }
                             }
                         }
@@ -602,7 +602,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                 String s1 = mHomeMatchThingInfoPublishContent.getText().toString();
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     if (s1.equals("")) {
-                        TmtUtils.midToast(UIUtils.getContext(), "请输入您要发表的内容....", 0);
+                        ToastUtils.midToast(UIUtils.getContext(), "请输入您要发表的内容....", 0);
                     } else {
                         SendArticleCommentElement element = new SendArticleCommentElement();
                         element.setArticleID(String.valueOf(mData.articles.id));
@@ -612,7 +612,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                             @Override
                             public void onResponse(CcApiResult result) {
                                 if (result.isOk()) {
-                                    TmtUtils.midToast(UIUtils.getContext(), "发表成功!", 0);
+                                    ToastUtils.midToast(UIUtils.getContext(), "发表成功!", 0);
                                     mHomeMatchThingInfoPublishContent.setText("");
                                     goRest();
                                 } else {
@@ -622,7 +622,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                                         Intent intent = new Intent(HomeViewPagerActivity.this, LoginActivity.class);
                                         startActivity(intent);
                                     } else {
-                                        TmtUtils.midToast(UIUtils.getContext(), "发表失败,请重新发布!", 0);
+                                        ToastUtils.midToast(UIUtils.getContext(), "发表失败,请重新发布!", 0);
                                     }
                                 }
                             }
@@ -660,7 +660,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         }
         mPage++;
         /*if (mPage <= data.totalCount) {*/
-        TmtUtils.midToast(UIUtils.getContext(), "刷新成功!", 0);
+        ToastUtils.midToast(UIUtils.getContext(), "刷新成功!", 0);
         Logger.d(TAG, "加载更多返回数据是------------------------------:条目" + data.size());
         //mItems.addAll(data.items);
         for (CommentsBean s1 : data) {
@@ -710,7 +710,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                         finish();
                     } else {
                         mIsSUC = false;
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }

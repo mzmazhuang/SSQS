@@ -14,9 +14,9 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.WithDrawDetailBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.EmptyRecyclerView;
+import com.dading.ssqs.components.EmptyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +92,7 @@ public abstract class BaseWithDrawDetailFrament extends BaseFragnment {
                     Logger.d(TAG, "返回错误数据是------------------------------:" + result.getMessage());
                     mLoadingAnimal.setVisibility(View.GONE);
                     mShowNetworkErr.setVisibility(View.VISIBLE);
-                    TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                    ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
 
                 }
             }

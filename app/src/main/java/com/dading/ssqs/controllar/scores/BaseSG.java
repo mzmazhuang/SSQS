@@ -23,7 +23,7 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.text.SimpleDateFormat;
@@ -32,8 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -237,13 +237,13 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                                         mPage = 1;
                                         mTotalCount = page.getTotalCount();
                                         if (page.getItems() != null) {
-                                            TmtUtils.midToast(mContent, "刷新成功!", 0);
+                                            ToastUtils.midToast(mContent, "刷新成功!", 0);
 
                                             mAdapter.setData(page.getItems());
                                         }
                                     }
                                 } else {
-                                    TmtUtils.midToast(mContent, result.getMessage(), 0);
+                                    ToastUtils.midToast(mContent, result.getMessage(), 0);
                                 }
                             }
                         });
@@ -261,7 +261,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                         ++mPage;
                         if (mPage > mTotalCount) {
                             mPage--;
-                            TmtUtils.midToast(mContent, "已全部加载,无新数据!", 0);
+                            ToastUtils.midToast(mContent, "已全部加载,无新数据!", 0);
                             mSgList.onRefreshComplete();
                         } else {
                             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);

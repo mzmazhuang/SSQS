@@ -23,7 +23,7 @@ import com.dading.ssqs.apis.elements.ExpertInfoByNameElement;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SavantLeveBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -32,8 +32,8 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -104,7 +104,7 @@ public class SearchSavantActivity extends BaseActivity {
          count:条数
          */
         if (TextUtils.isEmpty(mName)) {
-            TmtUtils.midToast(SearchSavantActivity.this, "请输入搜索条件!", 0);
+            ToastUtils.midToast(SearchSavantActivity.this, "请输入搜索条件!", 0);
             return;
         }
         mSearchSavantSearchText.setText(mName);
@@ -151,7 +151,7 @@ public class SearchSavantActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }
@@ -162,7 +162,7 @@ public class SearchSavantActivity extends BaseActivity {
         mSearchSavantSearchLy.setVisibility(View.GONE);
         mSearchSavantSearchResult.setVisibility(View.VISIBLE);
         if (items.size() == 0) {
-            TmtUtils.midToast(SearchSavantActivity.this, "没有符合条件的专家", 0);
+            ToastUtils.midToast(SearchSavantActivity.this, "没有符合条件的专家", 0);
         }
         mSearchSavantSearchResult.setAdapter(new SavantLeveAdapter(SearchSavantActivity.this, items));
     }
@@ -217,7 +217,7 @@ public class SearchSavantActivity extends BaseActivity {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 if (mCurrPage >= mTotalPage) {
-                    TmtUtils.midToast(SearchSavantActivity.this, "没有更多数据!", 0);
+                    ToastUtils.midToast(SearchSavantActivity.this, "没有更多数据!", 0);
                     mSearchSavantSearchResult.onRefreshComplete();
                     return;
                 }

@@ -22,9 +22,9 @@ import com.dading.ssqs.apis.elements.FouceArticleCategoryElement;
 import com.dading.ssqs.bean.AllCircleRBean;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
-import com.dading.ssqs.view.GlideCircleTransform;
+import com.dading.ssqs.components.GlideCircleTransform;
 
 import java.util.List;
 
@@ -154,7 +154,7 @@ public class MyAllCircleAdapter extends BaseAdapter implements ListAdapter {
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    TmtUtils.midToast(context, result.getMessage(), 0);
+                                    ToastUtils.midToast(context, result.getMessage(), 0);
                                 }
                             }
                         }

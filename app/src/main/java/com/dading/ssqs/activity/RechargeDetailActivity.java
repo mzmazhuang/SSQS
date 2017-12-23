@@ -9,7 +9,7 @@ import com.dading.ssqs.adapter.RechargeDetailAdapter;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import tabindicator.TabIndicator;
+import com.dading.ssqs.components.tabindicator.TabIndicator;
 
 /**
  * Created by lenovo on 2017/9/11.

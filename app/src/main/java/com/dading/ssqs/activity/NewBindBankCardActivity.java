@@ -31,7 +31,7 @@ import com.dading.ssqs.cells.TitleCell;
 import com.dading.ssqs.components.SelectBankListView;
 import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import java.util.List;
 
@@ -181,7 +181,7 @@ public class NewBindBankCardActivity extends BaseActivity {
 
                         finish();
                     } else {
-                        TmtUtils.midToast(mContext, "上传提现信息失败!" + result.getMessage(), 0);
+                        ToastUtils.midToast(mContext, "上传提现信息失败!" + result.getMessage(), 0);
                         Logger.d("BindBank", result.getMessage() + "失败信息");
                     }
                 }
@@ -191,29 +191,29 @@ public class NewBindBankCardActivity extends BaseActivity {
 
     private boolean isEmpty() {
         if (TextUtils.isEmpty(peopleCell.getEditValue())) {
-            TmtUtils.midToast(this, "请输入真实姓名!", 1000);
+            ToastUtils.midToast(this, "请输入真实姓名!", 1000);
             return false;
         }
         if (bankId <= 0) {
-            TmtUtils.midToast(this, "请选择银行!", 1000);
+            ToastUtils.midToast(this, "请选择银行!", 1000);
             return false;
         }
 
         if (TextUtils.isEmpty(bankNumberCell.getEditValue())) {
-            TmtUtils.midToast(this, "请输入银行卡账号!", 1000);
+            ToastUtils.midToast(this, "请输入银行卡账号!", 1000);
             return false;
         } else if (bankNumberCell.getEditValue().length() > 19 || bankNumberCell.getEditValue().length() < 16) {
-            TmtUtils.midToast(this, "请输入正确的银行卡号!", 1000);
+            ToastUtils.midToast(this, "请输入正确的银行卡号!", 1000);
             return false;
         }
 
         if (TextUtils.isEmpty(bankSubCell.getEditValue())) {
-            TmtUtils.midToast(this, "请输入银行支行", 1000);//开户银行更改后可以使用
+            ToastUtils.midToast(this, "请输入银行支行", 1000);//开户银行更改后可以使用
             return false;
         }
 
         if (TextUtils.isEmpty(passwordCell.getEditValue())) {
-            TmtUtils.midToast(this, "请输入交易密码!", 1000);
+            ToastUtils.midToast(this, "请输入交易密码!", 1000);
             return false;
         }
 

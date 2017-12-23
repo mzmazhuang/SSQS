@@ -21,7 +21,7 @@ import com.dading.ssqs.base.BaseScoreControllar;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.text.SimpleDateFormat;
@@ -32,8 +32,8 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -177,7 +177,7 @@ public class BaseJs extends BaseScoreControllar {
                             }
                         }
                     } else {
-                        TmtUtils.midToast(mContent, result.getMessage(), 0);
+                        ToastUtils.midToast(mContent, result.getMessage(), 0);
                         Logger.d(TAG, result.getMessage() + "下拉JS失败信息");
                     }
                 }
@@ -236,7 +236,7 @@ public class BaseJs extends BaseScoreControllar {
                                             mTotalCount = page.getTotalCount();
 
                                             if (page.getItems() != null) {
-                                                TmtUtils.midToast(mContent, "刷新成功!", 0);
+                                                ToastUtils.midToast(mContent, "刷新成功!", 0);
 
                                                 mCount = 10;
 
@@ -246,7 +246,7 @@ public class BaseJs extends BaseScoreControllar {
                                             }
                                         }
                                     } else {
-                                        TmtUtils.midToast(mContent, result.getMessage(), 0);
+                                        ToastUtils.midToast(mContent, result.getMessage(), 0);
                                         Logger.d(TAG, result.getMessage() + "下拉JS失败信息");
                                     }
                                 }
@@ -267,7 +267,7 @@ public class BaseJs extends BaseScoreControllar {
                         ++mPage;
                         if (mPage > mTotalCount) {
                             --mPage;
-                            TmtUtils.midToast(UIUtils.getContext(), "已全部加载,无新数据!", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "已全部加载,无新数据!", 0);
                             mJsList.onRefreshComplete();
                         } else {
                             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
@@ -362,7 +362,7 @@ public class BaseJs extends BaseScoreControllar {
                                         }
                                     }
                                 } else {
-                                    TmtUtils.midToast(mContent, result.getMessage(), 0);
+                                    ToastUtils.midToast(mContent, result.getMessage(), 0);
                                 }
                             }
                         });

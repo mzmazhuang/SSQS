@@ -21,18 +21,19 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.HomeMessageBean;
 import com.dading.ssqs.bean.MatchInfoLqBean;
 import com.dading.ssqs.bean.MySingletonData;
+import com.dading.ssqs.components.AutoVerticalScrollTextView;
 import com.dading.ssqs.utils.ConcurrentDateUtil;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 
 import java.util.List;
 
 import butterknife.ButterKnife;
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -56,7 +57,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
     private String mStr;
     private List<MatchInfoLqBean> mItems;
     private ListView mLv;
-    private com.dading.ssqs.view.AutoVerticalScrollTextView mTalkBall;
+    private AutoVerticalScrollTextView mTalkBall;
     private int number = 0;
     private List<HomeMessageBean> mData;
     private String mDate;
@@ -154,7 +155,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
                                 mLv.setStackFromBottom(false);
                             }
                         } else {
-                            TmtUtils.midToast(context, result.getMessage(), 0);
+                            ToastUtils.midToast(context, result.getMessage(), 0);
                         }
                     }
                 });
@@ -194,7 +195,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
                                 mLv.setStackFromBottom(false);
                             }
                         } else {
-                            TmtUtils.midToast(context, result.getMessage(), 0);
+                            ToastUtils.midToast(context, result.getMessage(), 0);
                         }
                     }
                 });
@@ -229,7 +230,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
                         processData(page.getItems());
                     }
                 } else {
-                    TmtUtils.midToast(context, result.getMessage(), 0);
+                    ToastUtils.midToast(context, result.getMessage(), 0);
                 }
             }
         });
@@ -277,7 +278,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
         if (mIsLoading) {
             UIUtils.hideKeyBord(((MatchInfoActivity) context));
             if (mStr.equals("")) {
-                TmtUtils.midToast(UIUtils.getContext(), "请输入您要发送的评论!", 0);
+                ToastUtils.midToast(UIUtils.getContext(), "请输入您要发送的评论!", 0);
             } else {
                 /**
                  * /v1.0/matchMessage/save
@@ -308,7 +309,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
                                 Intent intent = new Intent(context, LoginActivity.class);
                                 context.startActivity(intent);
                             } else {
-                                TmtUtils.midToast(context, result.getMessage(), 0);
+                                ToastUtils.midToast(context, result.getMessage(), 0);
                             }
                         }
                     }

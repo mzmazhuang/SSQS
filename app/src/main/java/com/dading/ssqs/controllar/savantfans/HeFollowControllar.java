@@ -12,15 +12,15 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.SavantFansBean;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.ButterKnife;
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -113,7 +113,7 @@ public class HeFollowControllar {
                                 @Override
                                 public void run() {
                                     mHeFollowLv.onRefreshComplete();
-                                    TmtUtils.midToast(context, "没有更多数据!", 0);
+                                    ToastUtils.midToast(context, "没有更多数据!", 0);
                                 }
                             });
                         }

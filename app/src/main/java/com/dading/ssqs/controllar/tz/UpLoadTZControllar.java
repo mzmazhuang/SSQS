@@ -19,7 +19,7 @@ import com.dading.ssqs.adapter.MyFTAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 /**
@@ -89,7 +89,7 @@ public class UpLoadTZControllar extends Fragment {
                         context.startActivity(intent);
                         ((NoteRecordActivity) context).finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }

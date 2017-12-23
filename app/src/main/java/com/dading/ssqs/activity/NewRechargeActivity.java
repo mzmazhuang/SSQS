@@ -33,7 +33,7 @@ import com.dading.ssqs.fragment.recharge.BankFragment;
 import com.dading.ssqs.fragment.recharge.OnLineFragment;
 import com.dading.ssqs.fragment.recharge.WxFragment;
 import com.dading.ssqs.fragment.recharge.ZfbFragment;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -198,7 +198,7 @@ public class NewRechargeActivity extends BaseActivity {
         public void onClick(WXDFBean.InfoBean bean) {
             int money = Integer.valueOf(moneyView.getText().toString());
             if (money <= 0) {
-                TmtUtils.midToast(UIUtils.getContext(), "请输入具体金额", 0);
+                ToastUtils.midToast(UIUtils.getContext(), "请输入具体金额", 0);
                 return;
             }
             WXDFBean.InfoBean newBean = bean;
@@ -268,7 +268,7 @@ public class NewRechargeActivity extends BaseActivity {
                         }
                     }
                 } else {
-                    TmtUtils.midToast(mContext, result.getMessage(), 0);
+                    ToastUtils.midToast(mContext, result.getMessage(), 0);
                 }
             }
         });

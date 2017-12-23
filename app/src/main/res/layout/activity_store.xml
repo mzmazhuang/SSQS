@@ -148,9 +148,9 @@
         </RadioGroup>
     </RelativeLayout>
 
-    <com.dading.ssqs.view.NoScrollViewPager
+    <com.dading.ssqs.components.NoScrollViewPager
         android:id="@+id/store_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.dading.ssqs.view.NoScrollViewPager>
+        android:layout_height="match_parent"></com.dading.ssqs.components.NoScrollViewPager>
 
 </LinearLayout>

@@ -8,7 +8,7 @@
 
     <include layout="@layout/top_toolbar" />
 
-    <tabindicator.TabIndicator
+    <com.dading.ssqs.components.tabindicator.TabIndicator
         android:id="@+id/seven_red_prople_indicator"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -18,7 +18,7 @@
         app:tiTabMode="line"
         app:tiTabPaddingLeft="25dp"
         app:tiTabPaddingRight="25dp"
-        app:tiUnderLineColor="@color/gray_e"></tabindicator.TabIndicator>
+        app:tiUnderLineColor="@color/gray_e"></com.dading.ssqs.components.tabindicator.TabIndicator>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/seven_red_prople_viewpager"

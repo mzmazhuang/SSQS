@@ -21,7 +21,7 @@ import com.dading.ssqs.bean.ScoreBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.text.SimpleDateFormat;
@@ -31,8 +31,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import pulltorefresh.PullToRefreshBase;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -199,7 +199,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
                                     if (page != null) {
                                         mTotalCount = page.getTotalCount();
                                         if (page.getItems() != null) {
-                                            TmtUtils.midToast(mContent, "刷新成功!", 0);
+                                            ToastUtils.midToast(mContent, "刷新成功!", 0);
                                             mPage = 1;
 
                                             mItems = page.getItems();
@@ -208,7 +208,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
                                         }
                                     }
                                 } else {
-                                    TmtUtils.midToast(mContent, result.getMessage(), 0);
+                                    ToastUtils.midToast(mContent, result.getMessage(), 0);
                                 }
                             }
                         });
@@ -227,7 +227,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
                         mPage++;
                         if (mPage > mTotalCount) {
                             mPage--;
-                            TmtUtils.midToast(UIUtils.getContext(), "已全部加载,无新数据!", 0);
+                            ToastUtils.midToast(UIUtils.getContext(), "已全部加载,无新数据!", 0);
                             mScList.onRefreshComplete();
                         } else {
                             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);

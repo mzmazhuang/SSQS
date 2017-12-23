@@ -16,12 +16,12 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.MatchBeforBeanAll;
 import com.dading.ssqs.utils.Logger;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import pulltorefresh.PullToRefreshExpandableListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshExpandableListView;
 
 /**
  * 创建者     ZCL
@@ -80,7 +80,7 @@ public class WriteReferActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
             }

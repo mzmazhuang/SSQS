@@ -11,7 +11,7 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.EssayInfoBean;
-import com.dading.ssqs.utils.TmtUtils;
+import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.R;
 
@@ -19,7 +19,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import pulltorefresh.PullToRefreshListView;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
  * 创建者     ZCL
@@ -85,7 +85,7 @@ public class EssayInfoActivity extends BaseActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        TmtUtils.midToast(EssayInfoActivity.this, result.getMessage(), 0);
+                        ToastUtils.midToast(EssayInfoActivity.this, result.getMessage(), 0);
                     }
                 }
             }

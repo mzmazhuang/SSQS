@@ -5,14 +5,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.ProxyIntroBean;
 import com.dading.ssqs.utils.TmtUtils;
-import com.dading.ssqs.utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -56,11 +54,7 @@ public class ProxyIntroActivty extends BaseActivity {
     }
 
     private void processedData(ProxyIntroBean bean) {
-        Glide.with(UIUtils.getContext())
-                .load(bean.getImageUrl())
-                .error(R.mipmap.fail)
-                .centerCrop()
-                .into(mProxyIntroImg);
+        SSQSApplication.glide.load(bean.getImageUrl()).error(R.mipmap.fail).centerCrop().into(mProxyIntroImg);
 
         mProxyIntroTxt.setHtml(bean.getContent(), 800);
         mProxyIntroTxt.setMovementMethod(LinkMovementMethod.getInstance());

@@ -25,7 +25,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
@@ -487,11 +486,7 @@ public class PuBlishTieZiActivity extends BaseActivity implements View.OnClickLi
                 @Override
                 public void run() {
                     ImageView imageView = mListB.get(0);
-                    Glide.with(UIUtils.getContext())
-                            .load(data)
-                            .error(R.mipmap.fail)
-                            .centerCrop()
-                            .into(imageView);
+                    SSQSApplication.glide.load(data).error(R.mipmap.fail).centerCrop().into(imageView);
 
                     mListT.add(imageView);
                     mListB.remove(imageView);

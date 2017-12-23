@@ -38,8 +38,7 @@ final class GlideImageGetter implements Html.ImageGetter, Drawable.Callback {
 			boolean animated) {
 		GenericRequestBuilder<String, ?, ?, GlideDrawable> load;
 		if (animated) {
-			load = glide
-					.fromString()
+			load = glide.fromString()
 					//".asDrawable()" default loading handles animated GIFs and still images as well
 					.diskCacheStrategy(DiskCacheStrategy.SOURCE) // animated GIFs need source cache
 					// show full image when animating

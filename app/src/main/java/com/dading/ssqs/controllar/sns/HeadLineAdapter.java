@@ -10,13 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SnsBean;
 import com.dading.ssqs.utils.LogUtil;
-import com.dading.ssqs.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,11 +90,7 @@ public class HeadLineAdapter extends BaseAdapter implements ListAdapter {
         String talk = entity.commentCount + "评论";
         holder.snslvcommentnum.setText(talk);
 
-        Glide.with(UIUtils.getContext())
-                .load(entity.smallImage)
-                .error(R.mipmap.fail)
-                .centerCrop()
-                .into(holder.snslviv);
+        SSQSApplication.glide.load(entity.smallImage).error(R.mipmap.fail).centerCrop().into(holder.snslviv);
 
         if (entity.isAdv == 1) {
             holder.snslvAdv.setVisibility(View.VISIBLE);

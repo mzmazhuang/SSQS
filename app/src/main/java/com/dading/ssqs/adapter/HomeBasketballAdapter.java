@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
@@ -118,17 +117,9 @@ public class HomeBasketballAdapter extends BaseAdapter implements ListAdapter {
                 holder.type.setText(entity.getHScore() + " : " + entity.getAScore());
 
 
-            Glide.with(content.getApplicationContext())
-                    .load(entity.getHImageUrl())
-                    .error(R.mipmap.image_not_white)
-                    .centerCrop()
-                    .into(holder.mainIcon);
+            SSQSApplication.glide.load(entity.getHImageUrl()).error(R.mipmap.image_not_white).centerCrop().into(holder.mainIcon);
 
-            Glide.with(content.getApplicationContext())
-                    .load(entity.getAImageUrl())
-                    .error(R.mipmap.image_not_white)
-                    .centerCrop()
-                    .into(holder.secondIcon);
+            SSQSApplication.glide.load(entity.getAImageUrl()).error(R.mipmap.image_not_white).centerCrop().into(holder.secondIcon);
         }
 
         String entityOpenTime = entity.getOpenTime();

@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.SavantInfoActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SavantLeveBean;
@@ -32,8 +32,8 @@ import butterknife.ButterKnife;
  * 更新描述   ${TODO}
  */
 public class SavantLeveAdapter extends BaseAdapter implements ListAdapter {
-    private  Context                                          context;
-    private  List<SavantLeveBean> data;
+    private Context context;
+    private List<SavantLeveBean> data;
 
     public SavantLeveAdapter(Context context, List<SavantLeveBean> items) {
         this.context = context;
@@ -71,12 +71,7 @@ public class SavantLeveAdapter extends BaseAdapter implements ListAdapter {
 
         final SavantLeveBean entity = data.get(position);
 
-        Glide.with(context.getApplicationContext())
-                .load(entity.avatar)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .transform(new GlideCircleTransform(context))
-                .into( hoder.mSavantSeachItemSavantpoto);
+        SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(hoder.mSavantSeachItemSavantpoto);
 
         hoder.mSavantSeachItemNickname.setText(entity.userName);
         String s = entity.tag + "连红";
@@ -102,7 +97,7 @@ public class SavantLeveAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SavantInfoActivity.class);
-                intent.putExtra(Constent.SAVANT_ID,entity.id);
+                intent.putExtra(Constent.SAVANT_ID, entity.id);
                 context.startActivity(intent);
             }
         });
@@ -111,13 +106,13 @@ public class SavantLeveAdapter extends BaseAdapter implements ListAdapter {
 
     static class ViewHolder {
         @Bind(R.id.savant_seach_item_savantpoto)
-        ImageView    mSavantSeachItemSavantpoto;
+        ImageView mSavantSeachItemSavantpoto;
         @Bind(R.id.savant_seach_item_nickname)
-        TextView     mSavantSeachItemNickname;
+        TextView mSavantSeachItemNickname;
         @Bind(R.id.savant_seach_item_nickleve)
-        TextView     mSavantSeachItemNickleve;
+        TextView mSavantSeachItemNickleve;
         @Bind(R.id.savant_seach_item_lianhong)
-        TextView     mSavantSeachItemLianhong;
+        TextView mSavantSeachItemLianhong;
         @Bind(R.id.savant_seach_item)
         LinearLayout mSavantSeachItem;
 

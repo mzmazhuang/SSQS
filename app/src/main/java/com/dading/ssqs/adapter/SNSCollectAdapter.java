@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SNSCollectBean;
@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class SNSCollectAdapter extends BaseAdapter implements ListAdapter {
     private static final String TAG = "HeadLineAdapter";
-    private Context                                     context;
+    private Context context;
     private List<SNSCollectBean> data;
 
     public SNSCollectAdapter(Context context, List<SNSCollectBean> list) {
@@ -74,31 +74,27 @@ public class SNSCollectAdapter extends BaseAdapter implements ListAdapter {
         String talk = entity.commentCount + "评论";
         holder.snslvcommentnum.setText(talk);
 
-        Glide.with(context.getApplicationContext())
-                .load(entity.smallImage)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .into(holder.snslviv);
+        SSQSApplication.glide.load(entity.smallImage).error(R.mipmap.fail).centerCrop().into(holder.snslviv);
 
-        if (entity.isAdv==1){
+        if (entity.isAdv == 1) {
             holder.snslvAdv.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             holder.snslvAdv.setVisibility(View.GONE);
         }
-        if (entity.isDeep==1){
+        if (entity.isDeep == 1) {
             holder.snslvDeep.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             holder.snslvDeep.setVisibility(View.GONE);
         }
-        if (entity.isTop==1){
+        if (entity.isTop == 1) {
             holder.snslvTop.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             holder.snslvTop.setVisibility(View.GONE);
         }
         holder.mItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogUtil.util(TAG, "社区条目数据id--:" + entity.id+" 条目标题:"+entity.title);
+                LogUtil.util(TAG, "社区条目数据id--:" + entity.id + " 条目标题:" + entity.title);
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);
@@ -108,11 +104,11 @@ public class SNSCollectAdapter extends BaseAdapter implements ListAdapter {
     }
 
     public class ViewHolder {
-        public final  ImageView snslviv;
-        public final  TextView  snslvtitle;
-        public final  TextView  snslvcomment;
-        public final  TextView  snslvcommentnum;
-        public final  View      root;
+        public final ImageView snslviv;
+        public final TextView snslvtitle;
+        public final TextView snslvcomment;
+        public final TextView snslvcommentnum;
+        public final View root;
         private final ImageView snslvAdv;
         private final ImageView snslvDeep;
         private final ImageView snslvTop;

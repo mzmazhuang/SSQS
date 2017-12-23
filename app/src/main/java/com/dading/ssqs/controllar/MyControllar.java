@@ -15,9 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.AccountDetailActivity;
 import com.dading.ssqs.activity.BettingRecordActivity;
 import com.dading.ssqs.activity.ChangePhotoActivity;
@@ -205,7 +205,7 @@ public class MyControllar extends BaseTabsContainer {
                             break;
                     }
                 } else {
-                    Glide.with(UIUtils.getContext()).load(mBean.avatar).asBitmap().centerCrop().into(new BitmapImageViewTarget(mMyPhoto) {
+                    SSQSApplication.glide.load(mBean.avatar).asBitmap().centerCrop().into(new BitmapImageViewTarget(mMyPhoto) {
                         @Override
                         protected void setResource(Bitmap resource) {
                             RoundedBitmapDrawable circularBitmapDrawable = RoundedBitmapDrawableFactory.create(mContent.getResources(), resource);

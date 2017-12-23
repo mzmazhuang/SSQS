@@ -29,7 +29,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.SavantAuthPopAdapter;
@@ -713,28 +712,15 @@ public class SavantAuthenticationActivity extends BaseActivity implements TextWa
                     /*for (int integer : mMapUrl.keySet()) {*/
                     switch (integer) {
                         case 1:
-                            Glide.with(UIUtils.getContext())
-                                    .load(mMapUrl.get(integer))
-                                    .error(R.mipmap.fail)
-                                    .centerCrop()
-                                    .into(mSavantAuthIdAttestationPic1);
+                            SSQSApplication.glide.load(mMapUrl.get(integer)).error(R.mipmap.fail).centerCrop().into(mSavantAuthIdAttestationPic1);
                             LogUtil.util(TAG, "第一章执行------------------------------:");
                             break;
                         case 2:
-                            Glide.with(UIUtils.getContext())
-                                    .load(mMapUrl.get(integer))
-                                    .error(R.mipmap.fail)
-                                    .centerCrop()
-                                    .into(mSavantAuthIdAttestationPic2);
+                            SSQSApplication.glide.load(mMapUrl.get(integer)).error(R.mipmap.fail).centerCrop().into(mSavantAuthIdAttestationPic2);
                             LogUtil.util(TAG, "第二章执行------------------------------:");
                             break;
                         case 3:
-
-                            Glide.with(UIUtils.getContext())
-                                    .load(mMapUrl.get(integer))
-                                    .error(R.mipmap.fail)
-                                    .centerCrop()
-                                    .into(mSavantAuthIdAttestationPic3);
+                            SSQSApplication.glide.load(mMapUrl.get(integer)).error(R.mipmap.fail).centerCrop().into(mSavantAuthIdAttestationPic3);
                             LogUtil.util(TAG, "第三章执行------------------------------:" + mMapUrl.get(integer));
                             break;
                         default:

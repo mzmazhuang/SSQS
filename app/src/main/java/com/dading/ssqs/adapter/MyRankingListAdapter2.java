@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.RankingBean2;
 import com.dading.ssqs.view.GlideCircleTransform;
 
@@ -32,11 +32,11 @@ import butterknife.ButterKnife;
 public class MyRankingListAdapter2 extends BaseAdapter implements ListAdapter {
     private static final String TAG = "MyRankingListAdapter2";
     private final List<RankingBean2.OrdersEntity> data;
-    private final Context                                    content;
+    private final Context content;
     private final int checkID;
 
 
-    public MyRankingListAdapter2 (Context content, List<RankingBean2.OrdersEntity> arrayList, int checkID) {
+    public MyRankingListAdapter2(Context content, List<RankingBean2.OrdersEntity> arrayList, int checkID) {
         this.content = content;
         this.data = arrayList;
         this.checkID = checkID;
@@ -75,12 +75,7 @@ public class MyRankingListAdapter2 extends BaseAdapter implements ListAdapter {
         holder.mRankingItem2Nickname.setText(entity.userName);
 
 
-        Glide.with(content.getApplicationContext())
-                .load(entity.avatar )
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .transform(new GlideCircleTransform(content))
-                .into(holder.mGbRankingitem2Photo );
+        SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(content)).into(holder.mGbRankingitem2Photo);
 
         if (position % 2 != 0) {
             if (!TextUtils.isEmpty(entity.avatar))
@@ -93,10 +88,10 @@ public class MyRankingListAdapter2 extends BaseAdapter implements ListAdapter {
         holder.mGbRankingitem2Ranking.setText(entity.ranking);
 
         String s;
-        if (checkID==4)
-         s = entity.value + "%";
+        if (checkID == 4)
+            s = entity.value + "%";
         else
-         s = entity.value;
+            s = entity.value;
         holder.mRankingItem2PrizeName.setText(s);
 
 
@@ -106,14 +101,14 @@ public class MyRankingListAdapter2 extends BaseAdapter implements ListAdapter {
 
     static class ViewHolder {
         @Bind(R.id.gb_rankingitem2_ranking)
-        TextView     mGbRankingitem2Ranking;
+        TextView mGbRankingitem2Ranking;
         @Bind(R.id.gb_rankingitem2_photo)
-        ImageView    mGbRankingitem2Photo;
+        ImageView mGbRankingitem2Photo;
         @Bind(R.id.ranking_item2_nickname)
-        TextView     mRankingItem2Nickname;
+        TextView mRankingItem2Nickname;
 
         @Bind(R.id.ranking_item2_prize_name)
-        TextView     mRankingItem2PrizeName;
+        TextView mRankingItem2PrizeName;
         @Bind(R.id.rankingitem2_list_item)
         LinearLayout mRankingitem2ListItem;
 

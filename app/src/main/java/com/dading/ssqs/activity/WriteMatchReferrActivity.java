@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
@@ -206,21 +205,9 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                 mTextOpenTime.setText(mData.openTime.substring(0, 16));
 
             LogUtil.util(TAG, "主队标记返回数据是------------------------------:" + mData.aImageUrl);
-            Glide.with(UIUtils.getContext())
-                    .load(mData.hImageUrl)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(this))
-                    .into(mMainIcon);
+            SSQSApplication.glide.load(mData.hImageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mMainIcon);
 
-
-            Glide.with(UIUtils.getContext())
-                    .load(mData.aImageUrl)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(this))
-                    .into(mSecondIcon);
-
+            SSQSApplication.glide.load(mData.aImageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mSecondIcon);
         }
         getPlData();
     }

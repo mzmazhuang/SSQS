@@ -9,10 +9,9 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.AchieveBean;
-import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ import butterknife.ButterKnife;
  * 更新描述   ${TODO}
  */
 public class AchieveTaskAdapter extends BaseAdapter implements ListAdapter {
-    private Context                      context;
+    private Context context;
     private List<AchieveBean> data;
 
     public AchieveTaskAdapter(Context context, List<AchieveBean> data) {
@@ -67,17 +66,13 @@ public class AchieveTaskAdapter extends BaseAdapter implements ListAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         AchieveBean entity = data.get(position);
-        if (entity.status==0){
+        if (entity.status == 0) {
             holder.mFreeGlodAchieveItemState.setImageResource(R.mipmap.notfinish);
-        }else {
+        } else {
             holder.mFreeGlodAchieveItemState.setImageResource(R.mipmap.finish);
         }
 
-        Glide.with(UIUtils.getContext( ))
-                .load(entity.imageUrl)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .into(holder.mFreeGlodAchieveItemIv);
+        SSQSApplication.glide.load(entity.imageUrl).error(R.mipmap.fail).centerCrop().into(holder.mFreeGlodAchieveItemIv);
 
         if (!TextUtils.isEmpty(entity.name))
             holder.mFreeGlodAchieveItemTitle.setText(entity.name);
@@ -91,11 +86,12 @@ public class AchieveTaskAdapter extends BaseAdapter implements ListAdapter {
         @Bind(R.id.free_glod_achieve_item_iv)
         ImageView mFreeGlodAchieveItemIv;
         @Bind(R.id.free_glod_achieve_item_title)
-        TextView  mFreeGlodAchieveItemTitle;
+        TextView mFreeGlodAchieveItemTitle;
         @Bind(R.id.free_glod_achieve_item_tv)
-        TextView  mFreeGlodAchieveItemTv;
+        TextView mFreeGlodAchieveItemTv;
         @Bind(R.id.free_glod_achieve_item_state)
         ImageView mFreeGlodAchieveItemState;
+
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }

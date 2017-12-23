@@ -11,11 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.HomeBean;
-import com.dading.ssqs.utils.LogUtil;
 import com.dading.ssqs.view.GlideCircleTransform;
 
 import java.util.ArrayList;

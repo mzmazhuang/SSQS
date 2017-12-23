@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
@@ -83,12 +82,7 @@ public class RedPeopleSingleAdapterHBS extends BaseAdapter implements ListAdapte
         hoder.mRedPeopleArItemNumber.setText(String.valueOf(1 + position));
         final RedPopleARBean entity = data.get(position);
         if (entity.avatar != null) {
-            Glide.with(context.getApplicationContext())
-                    .load(entity.avatar)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(context))
-                    .into(hoder.mRedPeopleArItemSavantpoto);
+            SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(hoder.mRedPeopleArItemSavantpoto);
 
             hoder.mRedPeopleArItemNickname.setText(entity.userName);
             switch (entity.level) {

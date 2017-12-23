@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.StoreBean2;
 import com.dading.ssqs.utils.LogUtil;
 
@@ -72,7 +72,7 @@ public class MyGvAdpter extends BaseAdapter {
         if (position < 4) {
             StoreBean2.AwardsEntity entity = data.get(position);
 
-            Glide.with(context.getApplicationContext()).load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mImageTurnTable);
+            SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mImageTurnTable);
 
             hoder.mTextTurnTable.setText(entity.name);
             if (position == 0) {
@@ -84,7 +84,7 @@ public class MyGvAdpter extends BaseAdapter {
         } else {
             StoreBean2.AwardsEntity entity = data.get(position - 1);
 
-            Glide.with(context.getApplicationContext()).load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mImageTurnTable);
+            SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mImageTurnTable);
 
             LogUtil.util(TAG, "商品名4后------------------------------:" + entity.name + position);
             hoder.mTextTurnTable.setText(entity.name);

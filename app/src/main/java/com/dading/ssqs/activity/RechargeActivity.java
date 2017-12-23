@@ -15,13 +15,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.apis.elements.ChargeUploadElement;
-import com.dading.ssqs.bean.AppInfo;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.QRCodeBean;
 import com.dading.ssqs.bean.WXDFBean;

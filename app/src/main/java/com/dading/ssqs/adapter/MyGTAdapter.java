@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.MyTzGTBean;
 import com.dading.ssqs.utils.DateUtils;
@@ -90,12 +90,7 @@ public class MyGTAdapter extends BaseAdapter implements ListAdapter {
             mTime = ButterKnife.findById(mView, R.id.my_note_item_publish_time);
             mText = ButterKnife.findById(mView, R.id.my_note_item_publish_text);
 
-            Glide.with(context.getApplicationContext())
-                    .load(comm.avatar )
-                    .error(R.mipmap.fail)
-                    .centerCrop( )
-                    .transform(new GlideCircleTransform(context))
-                    .into(mPhoto );
+            SSQSApplication.glide.load(comm.avatar ).error(R.mipmap.fail).centerCrop( ).transform(new GlideCircleTransform(context)).into(mPhoto );
 
             mName.setText(comm.userName);
             mText.setText(comm.content);

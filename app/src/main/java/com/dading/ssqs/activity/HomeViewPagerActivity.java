@@ -17,7 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.CommentsLvAdapter;
 import com.dading.ssqs.apis.CcApiClient;
@@ -372,13 +371,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         if (mData.articles != null) {
             mArticles = mData.articles;
             if (mMatchThingInfoTypeIcon != null)
-                Glide.with(UIUtils.getContext())
-                        .load(mArticles.categoryImageUrl)
-                        .error(R.mipmap.fail)
-                        .centerCrop()
-                        .transform(new GlideCircleTransform(this))
-                        .into(mMatchThingInfoTypeIcon);
-
+                SSQSApplication.glide.load(mArticles.categoryImageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mMatchThingInfoTypeIcon);
             if (mArticles.isCollect == 0) {
                 mPopCollect.setText("收藏");
             } else {
@@ -386,13 +379,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
             }
 
             if (mMatchThingInfoSavantphoto != null)
-                Glide.with(UIUtils.getContext())
-                        .load(mArticles.avatar)
-                        .error(R.mipmap.nologinportrait)
-                        .centerCrop()
-                        .transform(new GlideCircleTransform(this))
-                        .into(mMatchThingInfoSavantphoto);
-
+                SSQSApplication.glide.load(mArticles.avatar).error(R.mipmap.nologinportrait).centerCrop().transform(new GlideCircleTransform(this)).into(mMatchThingInfoSavantphoto);
             mMatchThingInfoTypeText.setText(mData.articles.categoryName);
         }
         String hotnum = mArticles.hotCount + "条热帖";
@@ -425,23 +412,23 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                     iv1.setVisibility(View.VISIBLE);
                     iv2.setVisibility(View.GONE);
                     iv3.setVisibility(View.GONE);
-                    Glide.with(UIUtils.getContext()).load(mUrlContrllar.get(0)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv1);
+                    SSQSApplication.glide.load(mUrlContrllar.get(0)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv1);
 
                     break;
                 case 2:
                     iv1.setVisibility(View.VISIBLE);
                     iv2.setVisibility(View.VISIBLE);
                     iv3.setVisibility(View.GONE);
-                    Glide.with(UIUtils.getContext()).load(mUrlContrllar.get(0)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv1);
-                    Glide.with(UIUtils.getContext()).load(mUrlContrllar.get(1)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv2);
+                    SSQSApplication.glide.load(mUrlContrllar.get(0)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv1);
+                    SSQSApplication.glide.load(mUrlContrllar.get(1)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv2);
                     break;
                 case 3:
                     iv1.setVisibility(View.VISIBLE);
                     iv2.setVisibility(View.VISIBLE);
                     iv3.setVisibility(View.VISIBLE);
-                    Glide.with(UIUtils.getContext()).load(mUrlContrllar.get(0)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv1);
-                    Glide.with(UIUtils.getContext()).load(mUrlContrllar.get(1)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv2);
-                    Glide.with(UIUtils.getContext()).load(mUrlContrllar.get(2)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv3);
+                    SSQSApplication.glide.load(mUrlContrllar.get(0)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv1);
+                    SSQSApplication.glide.load(mUrlContrllar.get(1)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv2);
+                    SSQSApplication.glide.load(mUrlContrllar.get(2)).error(R.mipmap.fail)/*.centerCrop( )*/.into(iv3);
                     break;
             }
         mZanCount = mData.articles.zanCount;

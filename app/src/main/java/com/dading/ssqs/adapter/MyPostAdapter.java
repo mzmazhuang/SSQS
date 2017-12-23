@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.ALLCircleThings;
 import com.dading.ssqs.utils.LogUtil;
@@ -89,36 +89,30 @@ public class MyPostAdapter extends BaseAdapter implements ListAdapter {
         String PL = topicsEntity.commentCount + "";
         holder.mMyPostPl.setText(PL);
 
-        Glide.with(context)
-                .load(topicsEntity.avatar)
-                .error(R.mipmap.fail)
-                .centerCrop()
-                .transform(new GlideCircleTransform(context))
-                .into(holder.mMyPostPhoto);
-
+        SSQSApplication.glide.load(topicsEntity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(holder.mMyPostPhoto);
 
         List<String> url = topicsEntity.imageUrl;
         switch (url.size()) {
             case 1:
-                Glide.with(context.getApplicationContext()).load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv1);
+                SSQSApplication.glide.load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv1);
 
                 holder.mMyPostItemIv1.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                Glide.with(context.getApplicationContext()).load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv1);
+                SSQSApplication.glide.load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv1);
                 holder.mMyPostItemIv1.setVisibility(View.VISIBLE);
 
-                Glide.with(context.getApplicationContext()).load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv2);
+                SSQSApplication.glide.load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv2);
                 holder.mMyPostItemIv2.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                Glide.with(context.getApplicationContext()).load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv1);
+                SSQSApplication.glide.load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv1);
                 holder.mMyPostItemIv1.setVisibility(View.VISIBLE);
 
-                Glide.with(context.getApplicationContext()).load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv2);
+                SSQSApplication.glide.load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv2);
                 holder.mMyPostItemIv2.setVisibility(View.VISIBLE);
 
-                Glide.with(context.getApplicationContext()).load(url.get(2)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv3);
+                SSQSApplication.glide.load(url.get(2)).error(R.mipmap.fail).centerCrop().into(holder.mMyPostItemIv3);
                 holder.mMyPostItemIv3.setVisibility(View.VISIBLE);
 
                 break;

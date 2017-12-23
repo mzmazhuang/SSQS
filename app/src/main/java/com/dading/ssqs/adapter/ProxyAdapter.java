@@ -8,10 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.PersonalReportActivity;
 import com.dading.ssqs.activity.ProxyCodeActivty;
 import com.dading.ssqs.activity.ProxyCommissionActivty;
@@ -57,11 +57,7 @@ public class ProxyAdapter extends BaseMultiItemQuickAdapter<MultiItem> {
                     .setText(R.id.proxy_head_commisions_earned, "佣金收入: " + data.getFee());
 
             ImageView photo = baseViewHolder.getView(R.id.proxy_head_photo);
-            Glide.with(UIUtils.getContext())
-                    .load(data.getAvatar())
-                    .asBitmap().centerCrop()
-                    .transform(new GlideCircleTransform(mContext))
-                    .into(photo);
+            SSQSApplication.glide.load(data.getAvatar()).asBitmap().centerCrop().transform(new GlideCircleTransform(mContext)).into(photo);
 
         } else if (type == MultiItem.PROXY_RECYCLE_VIEW) {
             RecyclerView recycleView = baseViewHolder.getView(R.id.templete_recycleview);

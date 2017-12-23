@@ -17,7 +17,6 @@ import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
@@ -139,12 +138,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
 
         final MyFollowBean entity = data.get(position);
         if (entity != null) {
-            Glide.with(context.getApplicationContext())
-                    .load(entity.avatar)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(context))
-                    .into(holder.mMyFollowItemPhoto);
+            SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(holder.mMyFollowItemPhoto);
 
             holder.mMyFollowItemNickName.setText(entity.userName);
             holder.mMyFollowItemDesc.setText(entity.signature);
@@ -236,7 +230,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
 
     private void processDataPop(final GeneralUserBean data) {
         if (data != null && !TextUtils.isEmpty(data.avatar)) {
-            Glide.with(context.getApplicationContext()).load(data.avatar).asBitmap().centerCrop().
+            SSQSApplication.glide.load(data.avatar).asBitmap().centerCrop().
                     into(new BitmapImageViewTarget(mPhoto) {
                         @Override
                         protected void setResource(Bitmap resource) {

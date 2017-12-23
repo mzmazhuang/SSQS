@@ -11,8 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.MyTzBean;
 import com.dading.ssqs.utils.DateUtils;
@@ -34,9 +34,9 @@ import butterknife.ButterKnife;
  */
 public class MyFTAdapter extends BaseAdapter implements ListAdapter {
     private static final String TAG = "MyFTAdapter";
-    private final Context                               context;
+    private final Context context;
     private final List<MyTzBean> data;
-    private       int                                   mId;
+    private int mId;
 
     public MyFTAdapter(Context context, List<MyTzBean> list) {
         this.context = context;
@@ -92,7 +92,7 @@ public class MyFTAdapter extends BaseAdapter implements ListAdapter {
             case 1:
                 holder.mMyFtItemLy.setVisibility(View.VISIBLE);
 
-                Glide.with(context.getApplicationContext()).load( imageUrl.get(0)).error(R.mipmap.fail).centerCrop( ).into( holder.mMyFtItemIv1);
+                SSQSApplication.glide.load(imageUrl.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyFtItemIv1);
 
                 holder.mMyFtItemIv2.setImageResource(R.mipmap.query_background);
                 holder.mMyFtItemIv3.setImageResource(R.mipmap.query_background);
@@ -100,16 +100,16 @@ public class MyFTAdapter extends BaseAdapter implements ListAdapter {
             case 2:
                 holder.mMyFtItemLy.setVisibility(View.VISIBLE);
 
-                Glide.with(context.getApplicationContext()).load( imageUrl.get(0)).error(R.mipmap.fail).centerCrop( ).into( holder.mMyFtItemIv1);
-                Glide.with(context.getApplicationContext()).load( imageUrl.get(1)).error(R.mipmap.fail).centerCrop( ).into( holder.mMyFtItemIv2);
+                SSQSApplication.glide.load(imageUrl.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyFtItemIv1);
+                SSQSApplication.glide.load(imageUrl.get(1)).error(R.mipmap.fail).centerCrop().into(holder.mMyFtItemIv2);
 
                 holder.mMyFtItemIv3.setImageResource(R.mipmap.query_background);
                 break;
             case 3:
                 holder.mMyFtItemLy.setVisibility(View.VISIBLE);
-                Glide.with(context.getApplicationContext()).load( imageUrl.get(0)).error(R.mipmap.fail).centerCrop( ).into( holder.mMyFtItemIv1);
-                Glide.with(context.getApplicationContext()).load( imageUrl.get(1)).error(R.mipmap.fail).centerCrop( ).into( holder.mMyFtItemIv2);
-                Glide.with(context.getApplicationContext()).load( imageUrl.get(2)).error(R.mipmap.fail).centerCrop( ).into( holder.mMyFtItemIv3);
+                SSQSApplication.glide.load(imageUrl.get(0)).error(R.mipmap.fail).centerCrop().into(holder.mMyFtItemIv1);
+                SSQSApplication.glide.load(imageUrl.get(1)).error(R.mipmap.fail).centerCrop().into(holder.mMyFtItemIv2);
+                SSQSApplication.glide.load(imageUrl.get(2)).error(R.mipmap.fail).centerCrop().into(holder.mMyFtItemIv3);
             default:
                 break;
         }
@@ -137,23 +137,23 @@ public class MyFTAdapter extends BaseAdapter implements ListAdapter {
         @Bind(R.id.my_ft_item_ly)
         LinearLayout mMyFtItemLy;
         @Bind(R.id.my_ft_item_title)
-        TextView     mMyFtItemTitle;
+        TextView mMyFtItemTitle;
         @Bind(R.id.my_ft_item_content)
-        TextView     mMyFtItemContent;
+        TextView mMyFtItemContent;
         @Bind(R.id.my_ft_item_iv1)
-        ImageView    mMyFtItemIv1;
+        ImageView mMyFtItemIv1;
         @Bind(R.id.my_ft_item_iv2)
-        ImageView    mMyFtItemIv2;
+        ImageView mMyFtItemIv2;
         @Bind(R.id.my_ft_item_iv3)
-        ImageView    mMyFtItemIv3;
+        ImageView mMyFtItemIv3;
         @Bind(R.id.my_ft_item_explan_name)
-        TextView     mMyFtItemExplanName;
+        TextView mMyFtItemExplanName;
         @Bind(R.id.my_ft_item_explan_time)
-        TextView     mMyFtItemExplanTime;
+        TextView mMyFtItemExplanTime;
         @Bind(R.id.my_ft_number_goods_home)
-        TextView     mMyFtNumberGoodsHome;
+        TextView mMyFtNumberGoodsHome;
         @Bind(R.id.my_ft_number_comments_home)
-        TextView     mMyFtNumberCommentsHome;
+        TextView mMyFtNumberCommentsHome;
         @Bind(R.id.my_ft_item)
         LinearLayout mMyFtItem;
 

@@ -14,7 +14,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
@@ -378,11 +377,7 @@ public class StorePrizeControllar implements View.OnClickListener {
             mListPrice.get(i).setText(price);
 
             ImageView iv = mListIv.get(i);
-            Glide.with(UIUtils.getContext())
-                    .load(data.awards.get(i).itemImageUrl)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .into(iv);
+            SSQSApplication.glide.load(data.awards.get(i).itemImageUrl).error(R.mipmap.fail).centerCrop().into(iv);
         }
         String time = data.endTime;
         String endTime = time.substring(0, 4) + "年" + time.substring(5, 7) + "月" + time.substring(8, 10) + "日" + time.substring(11, 16);

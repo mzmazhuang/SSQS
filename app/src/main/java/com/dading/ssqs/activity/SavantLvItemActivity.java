@@ -9,7 +9,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
@@ -97,12 +96,7 @@ public class SavantLvItemActivity extends BaseActivity {
 
 
     private void processData(final ReferInfoBean data) {
-        Glide.with(UIUtils.getContext())
-                .load(data.avatar)
-                .error(R.mipmap.nologinportrait)
-                .centerCrop()
-                .transform(new GlideCircleTransform(this))
-                .into(mSavantReferSavantphoto);
+        SSQSApplication.glide.load(data.avatar).error(R.mipmap.nologinportrait).centerCrop().transform(new GlideCircleTransform(this)).into(mSavantReferSavantphoto);
 
         mSavantReferNickname.setText(data.userName);
 
@@ -129,18 +123,9 @@ public class SavantLvItemActivity extends BaseActivity {
         mSavantReferMain.setText(data.home);
         mSavantReferSecond.setText(data.away);
 
-        Glide.with(UIUtils.getContext())
-                .load(data.aImageUrl)
-                .error(R.mipmap.fail)
-                .centerCrop()
-                .into(mSavantReferSecondIcon);
+        SSQSApplication.glide.load(data.aImageUrl).error(R.mipmap.fail).centerCrop().into(mSavantReferSecondIcon);
 
-
-        Glide.with(UIUtils.getContext())
-                .load(data.hImageUrl)
-                .error(R.mipmap.fail)
-                .centerCrop()
-                .into(mSavantReferMainIcon);
+        SSQSApplication.glide.load(data.hImageUrl).error(R.mipmap.fail).centerCrop().into(mSavantReferMainIcon);
 
         String hRanking = data.leagueName + "[" + data.hOrder + "]";
         mSavantReferMainRanking.setText(hRanking);

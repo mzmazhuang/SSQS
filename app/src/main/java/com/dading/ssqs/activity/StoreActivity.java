@@ -22,7 +22,6 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alipay.sdk.app.PayTask;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.MyStoreAdapter;
@@ -228,12 +227,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
         if (bean != null) {
             //显示图片的配置
 
-            Glide.with(UIUtils.getContext())
-                    .load(bean.avatar)
-                    .error(R.mipmap.nologinportrait)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(this))
-                    .into(mStoreIvPhoto);
+            SSQSApplication.glide.load(bean.avatar).error(R.mipmap.nologinportrait).centerCrop().transform(new GlideCircleTransform(this)).into(mStoreIvPhoto);
 
             if (TextUtils.isEmpty(bean.avatar))
                 switch (bean.sex) {

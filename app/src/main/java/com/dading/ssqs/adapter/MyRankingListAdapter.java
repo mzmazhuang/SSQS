@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.RankingBean;
 import com.dading.ssqs.view.GlideCircleTransform;
 
@@ -68,12 +68,7 @@ public class MyRankingListAdapter extends BaseAdapter implements ListAdapter {
 
         final RankingBean entity = data.get(position);
 
-        Glide.with(content.getApplicationContext())
-                .load(entity.avatar)
-                .error(R.mipmap.nologinportrait)
-                .centerCrop()
-                .transform(new GlideCircleTransform(content))
-                .into(holder.mGbRankingPhoto);
+        SSQSApplication.glide.load(entity.avatar).error(R.mipmap.nologinportrait).centerCrop().transform(new GlideCircleTransform(content)).into(holder.mGbRankingPhoto);
 
         if (position % 2 != 0) {
             holder.mRankingitem.setBackgroundColor(content.getResources().getColor(R.color.white));

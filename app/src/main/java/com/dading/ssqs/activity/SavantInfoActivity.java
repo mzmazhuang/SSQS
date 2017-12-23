@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.SavantInfoAdapter;
@@ -317,12 +316,7 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
 
     private void processData(final SavantInfoBean data) {
         mInfoData = data;
-        Glide.with(UIUtils.getContext())
-                .load(data.avatar)
-                .error(R.mipmap.nologinportrait)
-                .centerCrop()
-                .transform(new GlideCircleTransform(this))
-                .into(mSavantInfphoto);
+        SSQSApplication.glide.load(data.avatar).error(R.mipmap.nologinportrait).centerCrop().transform(new GlideCircleTransform(this)).into(mSavantInfphoto);
 
         mSavantInfoNickname.setText(mInfoData.userName);
         switch (data.level) {

@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.FXCupAdapter;
@@ -221,17 +220,9 @@ public class MatchInfoFx {
             mdefendProgress.setProgressMax(100);
             mdefendProgress.setProgress(fxBean.hAvLostBallPer);
 
-            Glide.with(context.getApplicationContext())
-                    .load(AImageUrl)
-                    .error(R.mipmap.icon_fail)
-                    .centerCrop()
-                    .into(mIntegralSecondTeamIcon);
+            SSQSApplication.glide.load(AImageUrl).error(R.mipmap.icon_fail).centerCrop().into(mIntegralSecondTeamIcon);
 
-            Glide.with(context.getApplicationContext())
-                    .load(HImageUrl)
-                    .error(R.mipmap.icon_fail)
-                    .centerCrop()
-                    .into(mIntegralMainTeamIcon);
+            SSQSApplication.glide.load(HImageUrl).error(R.mipmap.icon_fail).centerCrop().into(mIntegralMainTeamIcon);
 
             mIntegralMainTeam.setText(home);
             mIntegralSecondTeam.setText(away);

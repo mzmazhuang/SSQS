@@ -8,10 +8,9 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.TurnTablePrizeBean;
-import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ import butterknife.ButterKnife;
  * 更新描述   ${TODO}
  */
 public class MyTurnTablePrizeAdapter extends BaseAdapter implements ListAdapter {
-    private final Context                             context;
+    private final Context context;
     private final List<TurnTablePrizeBean> data;
 
     public MyTurnTablePrizeAdapter(Context context, List<TurnTablePrizeBean> list) {
@@ -66,17 +65,13 @@ public class MyTurnTablePrizeAdapter extends BaseAdapter implements ListAdapter 
         }
         TurnTablePrizeBean entity = data.get(position);
 
-        Glide.with(UIUtils.getContext( ))
-                .load(entity.itemImageUrl)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .into(hoder.mStorePrizeRecordIcon);
+        SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mStorePrizeRecordIcon);
 
         hoder.mStorePrizeRecordName.setText(entity.name);
-        if (entity.status==0){
-        hoder.mStorePrizeRecordState.setText("未兑换");
-        }else{
-        hoder.mStorePrizeRecordState.setText("已兑换");
+        if (entity.status == 0) {
+            hoder.mStorePrizeRecordState.setText("未兑换");
+        } else {
+            hoder.mStorePrizeRecordState.setText("已兑换");
         }
         String cost = entity.cost + "金币";
         hoder.mStorePrizeRecordCost.setText(cost);
@@ -86,18 +81,17 @@ public class MyTurnTablePrizeAdapter extends BaseAdapter implements ListAdapter 
     }
 
 
-
     class ViewHolder {
         @Bind(R.id.store_prize_record_icon)
         ImageView mStorePrizeRecordIcon;
         @Bind(R.id.store_prize_record_name)
-        TextView  mStorePrizeRecordName;
+        TextView mStorePrizeRecordName;
         @Bind(R.id.store_prize_record_state)
-        TextView  mStorePrizeRecordState;
+        TextView mStorePrizeRecordState;
         @Bind(R.id.store_prize_record_time)
-        TextView  mStorePrizeRecordTime;
+        TextView mStorePrizeRecordTime;
         @Bind(R.id.store_prize_record_cost)
-        TextView  mStorePrizeRecordCost;
+        TextView mStorePrizeRecordCost;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.bean.EssayInfoBean;
 import com.dading.ssqs.utils.LogUtil;
@@ -96,19 +96,19 @@ public class EssayInfoAdapter extends BaseAdapter implements ListAdapter {
         if (url != null) {
             switch (url.size()) {
                 case 1:
-                    Glide.with(context.getApplicationContext()).load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.ivIv1);
+                    SSQSApplication.glide.load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.ivIv1);
                     holder.ivIv2.setImageResource(R.mipmap.query_background);
                     holder.ivIv3.setImageResource(R.mipmap.query_background);
                     break;
                 case 2:
-                    Glide.with(context.getApplicationContext()).load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.ivIv1);
-                    Glide.with(context.getApplicationContext()).load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.ivIv2);
+                    SSQSApplication.glide.load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.ivIv1);
+                    SSQSApplication.glide.load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.ivIv2);
                     holder.ivIv3.setImageResource(R.mipmap.query_background);
                     break;
                 case 3:
-                    Glide.with(context.getApplicationContext()).load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.ivIv1);
-                    Glide.with(context.getApplicationContext()).load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.ivIv2);
-                    Glide.with(context.getApplicationContext()).load(url.get(2)).error(R.mipmap.fail).centerCrop().into(holder.ivIv3);
+                    SSQSApplication.glide.load(url.get(0)).error(R.mipmap.fail).centerCrop().into(holder.ivIv1);
+                    SSQSApplication.glide.load(url.get(1)).error(R.mipmap.fail).centerCrop().into(holder.ivIv2);
+                    SSQSApplication.glide.load(url.get(2)).error(R.mipmap.fail).centerCrop().into(holder.ivIv3);
                     break;
                 default:
                     break;

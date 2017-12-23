@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.NewInfoBean;
 import com.dading.ssqs.view.GlideCircleTransform;
 
@@ -30,48 +30,43 @@ import butterknife.ButterKnife;
  * 更新描述   ${TODO}
  */
 public class CommentsLvAdapter extends BaseAdapter implements ListAdapter {
-    private final Context                                     context;
+    private final Context context;
     private final List<NewInfoBean.CommentsEntity> data;
 
-    public CommentsLvAdapter (Context context, List<NewInfoBean.CommentsEntity> comments) {
+    public CommentsLvAdapter(Context context, List<NewInfoBean.CommentsEntity> comments) {
         this.context = context;
         this.data = comments;
     }
 
     @Override
-    public int getCount ( ) {
+    public int getCount() {
         if (data != null) {
-            return data.size( );
+            return data.size();
         }
         return 0;
     }
 
     @Override
-    public Object getItem (int position) {
+    public Object getItem(int position) {
         return null;
     }
 
     @Override
-    public long getItemId (int position) {
+    public long getItemId(int position) {
         return 0;
     }
 
     @Override
-    public View getView (int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHoder hoder;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.comments_items, null);
             hoder = new ViewHoder(convertView);
             convertView.setTag(hoder);
         } else {
-            hoder = (ViewHoder) convertView.getTag( );
+            hoder = (ViewHoder) convertView.getTag();
         }
-        Glide.with(context.getApplicationContext())
-                .load(data.get(position).avatar)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .transform(new GlideCircleTransform(context))
-                .into(hoder.mCommentsLvPhoto);
+        SSQSApplication.glide.load(data.get(position).avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(hoder.mCommentsLvPhoto);
 
         hoder.mCommentsLvName.setText(data.get(position).userName);
         NewInfoBean.CommentsEntity commentsEntity = data.get(position);
@@ -86,7 +81,7 @@ public class CommentsLvAdapter extends BaseAdapter implements ListAdapter {
             String decode = URLDecoder.decode(context, "UTF-8");
             hoder.mCommentsLvContext.setText(decode);
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace( );
+            e.printStackTrace();
         }
         return convertView;
     }
@@ -95,13 +90,13 @@ public class CommentsLvAdapter extends BaseAdapter implements ListAdapter {
         @Bind(R.id.comments_lv_photo)
         ImageView mCommentsLvPhoto;
         @Bind(R.id.comments_lv_name)
-        TextView  mCommentsLvName;
+        TextView mCommentsLvName;
         @Bind(R.id.comments_lv_publish)
-        TextView  mCommentsLvPublish;
+        TextView mCommentsLvPublish;
         @Bind(R.id.comments_lv_context)
-        TextView  mCommentsLvContext;
+        TextView mCommentsLvContext;
 
-        public ViewHoder (View v) {
+        public ViewHoder(View v) {
             ButterKnife.bind(this, v);
         }
     }

@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.GuessBallACEActivity;
 import com.dading.ssqs.activity.LoginActivity;
@@ -85,12 +84,7 @@ public class GuessballAceAdapter extends BaseAdapter implements ListAdapter {
         String text = entity.order + "";
         hoder.mGuessballAceWinRanking.setText(text);
 
-        Glide.with(context.getApplicationContext())
-                .load(entity.avatar)
-                .error(R.mipmap.fail)
-                .centerCrop()
-                .transform(new GlideCircleTransform(context))
-                .into(hoder.mGuessballAceItemSavantpoto);
+        SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(hoder.mGuessballAceItemSavantpoto);
 
         hoder.mGuessballAceItemNickname.setText(entity.userName);
         switch (entity.level) {

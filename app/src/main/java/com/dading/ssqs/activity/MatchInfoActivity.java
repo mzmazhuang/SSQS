@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.MatchInfoContentAdapter;
@@ -321,16 +320,9 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
             mMatchInfoMain.setText(mData.home);
             mMatchInfoSecond.setText(mData.away);
             LogUtil.util(TAG, "主队标记返回数据是------------------------------:" + mData.aImageUrl);
-            Glide.with(UIUtils.getContext()).load(mData.hImageUrl)
-                    .error(R.mipmap.fail)
-                    .transform(new GlideCircleTransform(this))
-                    .into(mMatchInfoMainIcon);
+            SSQSApplication.glide.load(mData.hImageUrl).error(R.mipmap.fail).transform(new GlideCircleTransform(this)).into(mMatchInfoMainIcon);
 
-
-            Glide.with(UIUtils.getContext()).load(mData.aImageUrl)
-                    .error(R.mipmap.fail)
-                    .transform(new GlideCircleTransform(this))
-                    .into(mMatchInfoSecondIcon);
+            SSQSApplication.glide.load(mData.aImageUrl).error(R.mipmap.fail).transform(new GlideCircleTransform(this)).into(mMatchInfoSecondIcon);
 
             String text = mData.hScore + "-" + mData.aScore;
 

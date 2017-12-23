@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
@@ -82,12 +81,7 @@ public class MyAllCircleAdapter extends BaseAdapter implements ListAdapter {
         final AllCircleRBean dataEntity = data.get(position);
         if (dataEntity != null) {
 
-            Glide.with(context.getApplicationContext())
-                    .load(dataEntity.imageUrl)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(context))
-                    .into(holder.mAllCircleItemIv);
+            SSQSApplication.glide.load(dataEntity.imageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(holder.mAllCircleItemIv);
 
             String text = dataEntity.fanCount + "";
             holder.mAllCircleItemFans.setText(text);

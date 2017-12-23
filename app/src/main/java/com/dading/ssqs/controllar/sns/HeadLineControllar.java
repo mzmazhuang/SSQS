@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
@@ -111,11 +110,7 @@ public class HeadLineControllar {
 
                 LogUtil.util(TAG, "社区轮播返回数据id---------:" + entity.id + "---" + entity.smallImage);
 
-                Glide.with(UIUtils.getContext())
-                        .load(entity.smallImage)
-                        .error(R.mipmap.fail)
-                        .centerCrop()
-                        .into(target);
+                SSQSApplication.glide.load(entity.smallImage).error(R.mipmap.fail).centerCrop().into(target);
 
                 listiv.add(target);
                 listId.add(entity.id);

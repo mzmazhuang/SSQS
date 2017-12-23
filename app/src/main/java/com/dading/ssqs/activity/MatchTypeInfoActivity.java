@@ -13,7 +13,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.adapter.MyPostAdapter;
@@ -120,12 +119,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                 mSingleBean = JSON.parseObject(s, AllCircleSingleBean.class);
                 if (mSingleBean != null) {
                     mId = mSingleBean.id;
-                    Glide.with(UIUtils.getContext())
-                            .load(mSingleBean.imageUrl)
-                            .error(R.mipmap.fail)
-                            .centerCrop()
-                            .transform(new GlideCircleTransform(this))
-                            .into(mMatchTypeInfoSavantphoto);
+                    SSQSApplication.glide.load(mSingleBean.imageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mMatchTypeInfoSavantphoto);
 
                     LogUtil.util(TAG, "图片地址返回数据是------------------------------:" + mSingleBean.imageUrl);
                     mMatchTypeInfoNickname.setText(mSingleBean.name);
@@ -150,12 +144,7 @@ public class MatchTypeInfoActivity extends BaseActivity {
                     mMatchTypeInfoNickname.setText(mSingleHome.userName);
                     mName = mSingleHome.categoryName;
                     if (mSingleHome != null)
-                        Glide.with(UIUtils.getContext())
-                                .load(mSingleHome.categoryImageUrl)
-                                .error(R.mipmap.fail)
-                                .centerCrop()
-                                .transform(new GlideCircleTransform(this))
-                                .into(mMatchTypeInfoSavantphoto);
+                        SSQSApplication.glide.load(mSingleHome.categoryImageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mMatchTypeInfoSavantphoto);
 
                     mMatchTypeInfoNickname.setText(mName);
                     mFanCount = mSingleHome.fanCount;

@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.MatchInfoLqBean;
 import com.dading.ssqs.view.GlideCircleTransform;
 
@@ -30,7 +30,7 @@ import butterknife.ButterKnife;
  */
 public class MyLqAdapter extends BaseAdapter implements ListAdapter {
     private List<MatchInfoLqBean> data;
-    private Context                                      context;
+    private Context context;
 
     public MyLqAdapter(Context context, List<MatchInfoLqBean> list) {
         this.context = context;
@@ -66,19 +66,14 @@ public class MyLqAdapter extends BaseAdapter implements ListAdapter {
             hoder = (ViewHoder) convertView.getTag();
         }
         MatchInfoLqBean entity = data.get(position);
-            hoder.otherSayItem.setVisibility(View.VISIBLE);
-            hoder.mySayItem.setVisibility(View.GONE);
-            String text = entity.content;
-            hoder.otherPublishText.setText(text);
-            hoder.otherPublishTime.setText(entity.createDate);
-            hoder.otherUserName.setText(entity.userName);
+        hoder.otherSayItem.setVisibility(View.VISIBLE);
+        hoder.mySayItem.setVisibility(View.GONE);
+        String text = entity.content;
+        hoder.otherPublishText.setText(text);
+        hoder.otherPublishTime.setText(entity.createDate);
+        hoder.otherUserName.setText(entity.userName);
 
-        Glide.with(context.getApplicationContext())
-                .load( entity.avatar)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .transform(new GlideCircleTransform(context))
-                .into( hoder.otherUserPhoto);
+        SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(hoder.otherUserPhoto);
 
         return convertView;
     }
@@ -90,20 +85,20 @@ public class MyLqAdapter extends BaseAdapter implements ListAdapter {
         LinearLayout otherSayItem;
 
         @Bind(R.id.lq_user_name_my)
-        public TextView  myUserName;
+        public TextView myUserName;
         @Bind(R.id.lq_publish_time_my)
-        public TextView  myPublishTime;
+        public TextView myPublishTime;
         @Bind(R.id.lq_publish_text_my)
-        public TextView  myPublishText;
+        public TextView myPublishText;
         @Bind(R.id.lq_user_name_photo_my)
         public ImageView myUserPhoto;
 
         @Bind(R.id.lq_user_name_other)
-        public TextView  otherUserName;
+        public TextView otherUserName;
         @Bind(R.id.lq_publish_time_other)
-        public TextView  otherPublishTime;
+        public TextView otherPublishTime;
         @Bind(R.id.lq_publish_text_other)
-        public TextView  otherPublishText;
+        public TextView otherPublishText;
         @Bind(R.id.lq_user_name_photo_other)
         public ImageView otherUserPhoto;
 

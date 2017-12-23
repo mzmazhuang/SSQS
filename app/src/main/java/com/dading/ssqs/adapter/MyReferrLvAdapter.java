@@ -23,8 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
 import com.dading.ssqs.activity.SavantInfoActivity;
 import com.dading.ssqs.activity.SavantLvItemActivity;
@@ -136,12 +136,7 @@ public class MyReferrLvAdapter extends BaseAdapter implements ListAdapter {
 
         final ReferReferBean entity = data.get(position);
         if (entity != null) {
-            Glide.with(mContent.getApplicationContext())
-                    .load(entity.avatar)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(mContent))
-                    .into(holder.savantPhoto);
+            SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(mContent)).into(holder.savantPhoto);
 
             switch (entity.level) {
                 case 1:

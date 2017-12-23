@@ -11,7 +11,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
@@ -181,12 +180,7 @@ public class StoreVipControllar {
         for (int i = 0; i < data.size(); i++) {
             StoreBean entity = data.get(i);
             if (entity != null) {
-                Glide.with(UIUtils.getContext())
-                        .load(entity.itemImageUrl)
-                        .error(R.mipmap.fail)
-                        .centerCrop()
-                        .into(mListIm.get(i));
-
+                SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(mListIm.get(i));
 
                 mListName.get(i).setText(entity.name);
                 mListText.get(i).setText(entity.remark);

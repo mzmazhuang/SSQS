@@ -8,10 +8,9 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.TurnTablePrizeBean;
-import com.dading.ssqs.utils.UIUtils;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ import butterknife.ButterKnife;
  * 更新描述   ${TODO}
  */
 public class MyPrizeInfoAdapter extends BaseAdapter implements ListAdapter {
-    private final Context                             context;
+    private final Context context;
     private final List<TurnTablePrizeBean> data;
 
     public MyPrizeInfoAdapter(Context context, List<TurnTablePrizeBean> list) {
@@ -66,11 +65,7 @@ public class MyPrizeInfoAdapter extends BaseAdapter implements ListAdapter {
         }
         TurnTablePrizeBean entity = data.get(position);
 
-        Glide.with(UIUtils.getContext( ))
-                .load(entity.itemImageUrl)
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .into(hoder.prizeItemImg);
+        SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.prizeItemImg);
 
         hoder.prizeItemName.setText(entity.name);
         if (entity.status == 0) {
@@ -89,13 +84,13 @@ public class MyPrizeInfoAdapter extends BaseAdapter implements ListAdapter {
         @Bind(R.id.store_prize_info_record_item_icon)
         ImageView prizeItemImg;
         @Bind(R.id.store_prize_info_record_item_prize_text)
-        TextView  prizeItemName;
+        TextView prizeItemName;
         @Bind(R.id.store_prize_info_record_item_prize_status)
-        TextView  prizeItemStatus;
+        TextView prizeItemStatus;
         @Bind(R.id.store_prize_info_record_item_cost)
-        TextView  prizeItemCost;
+        TextView prizeItemCost;
         @Bind(R.id.store_prize_info_record_item_data)
-        TextView  prizeItemData;
+        TextView prizeItemData;
 
         public ViewHoder(View v) {
             ButterKnife.bind(this, v);

@@ -11,7 +11,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.LoginActivity;
@@ -349,11 +348,7 @@ public class StorePropControllar implements View.OnClickListener {
                 mPrice.get(i).setText(price);
                 mRemark.get(i).setText(bean.get(i).remark);
 
-                Glide.with(UIUtils.getContext())
-                        .load(bean.get(i).itemImageUrl)
-                        .error(R.mipmap.fail)
-                        .centerCrop()
-                        .into(mImg.get(i));
+                SSQSApplication.glide.load(bean.get(i).itemImageUrl).error(R.mipmap.fail).centerCrop().into(mImg.get(i));
             } else {
                 Ly.get(i).setClickable(false);
                 mPrice.get(i).setClickable(false);

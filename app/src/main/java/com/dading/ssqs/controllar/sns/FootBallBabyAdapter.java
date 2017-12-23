@@ -12,14 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.MyJsActivity;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.SnsBean;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.LogUtil;
-import com.dading.ssqs.utils.UIUtils;
 import com.dading.ssqs.view.GlideCircleTransform;
 
 import java.util.ArrayList;
@@ -91,12 +90,7 @@ public class FootBallBabyAdapter extends BaseAdapter implements ListAdapter {
         }
         final SnsBean.WritesEntity entity = data.get(position);
 
-        Glide.with(UIUtils.getContext())
-                .load(entity.avatar)
-                .error(R.mipmap.nologinportrait)
-                .centerCrop()
-                .transform(new GlideCircleTransform(context))
-                .into(holder.footballbabyphoto);
+        SSQSApplication.glide.load(entity.avatar).error(R.mipmap.nologinportrait).centerCrop().transform(new GlideCircleTransform(context)).into(holder.footballbabyphoto);
 
         holder.footballbabynickname.setText(entity.userName);
 

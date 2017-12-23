@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.R;
+import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.bean.PerferentialBean;
 
 import java.util.List;
@@ -20,54 +20,50 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class PerferentialAdapter extends BaseAdapter implements ListAdapter {
-    private final Context                         context;
+    private final Context context;
     private final List<PerferentialBean> data;
 
-    public PerferentialAdapter (Context context, List<PerferentialBean> bean) {
+    public PerferentialAdapter(Context context, List<PerferentialBean> bean) {
         this.context = context;
         this.data = bean;
     }
 
     @Override
-    public int getCount ( ) {
+    public int getCount() {
         if (data != null) {
-            return data.size( );
+            return data.size();
         }
         return 0;
     }
 
     @Override
-    public Object getItem (int position) {
+    public Object getItem(int position) {
         return null;
     }
 
     @Override
-    public long getItemId (int position) {
+    public long getItemId(int position) {
         return 0;
     }
 
     @Override
-    public View getView (int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.perferential_item, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) convertView.getTag( );
+            viewHolder = (ViewHolder) convertView.getTag();
         }
         PerferentialBean bean = data.get(position);
-        Glide.with(context.getApplicationContext( ))
-                .load(bean.getImageUrl( ))
-                .error(R.mipmap.fail)
-                .centerCrop( )
-                .into(viewHolder.mPerferentialItemIv);
-        viewHolder.mPerferentialItemTitle.setText(bean.getTitle( ));
+        SSQSApplication.glide.load(bean.getImageUrl()).error(R.mipmap.fail).centerCrop().into(viewHolder.mPerferentialItemIv);
+        viewHolder.mPerferentialItemTitle.setText(bean.getTitle());
 
-        String start = getSubStr(bean.getStartDate( ));
-        String end = getSubStr(bean.getEndDate( ));
+        String start = getSubStr(bean.getStartDate());
+        String end = getSubStr(bean.getEndDate());
         viewHolder.mPerferentialItemSubtitle.setText("活动时间:" + start + "至" + end);
-        String remark = bean.getRemark( );
+        String remark = bean.getRemark();
         if (!TextUtils.isEmpty(remark)) {
             viewHolder.mPerferentialItemRemark.setText(remark);
             viewHolder.mPerferentialItemRemark.setVisibility(View.VISIBLE);
@@ -78,24 +74,24 @@ public class PerferentialAdapter extends BaseAdapter implements ListAdapter {
     }
 
     @NonNull
-    private String getSubStr (String string) {
+    private String getSubStr(String string) {
         String s = null;
-        if (string.length( ) > 9)
+        if (string.length() > 9)
             s = string.substring(0, 9);
         return s;
     }
 
     class ViewHolder {
         @Bind(R.id.perferential_item_title)
-        TextView  mPerferentialItemTitle;
+        TextView mPerferentialItemTitle;
         @Bind(R.id.perferential_item_subtitle)
-        TextView  mPerferentialItemSubtitle;
+        TextView mPerferentialItemSubtitle;
         @Bind(R.id.perferential_item_iv)
         ImageView mPerferentialItemIv;
         @Bind(R.id.perferential_item_remark)
-        TextView  mPerferentialItemRemark;
+        TextView mPerferentialItemRemark;
 
-        ViewHolder (View view) {
+        ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }

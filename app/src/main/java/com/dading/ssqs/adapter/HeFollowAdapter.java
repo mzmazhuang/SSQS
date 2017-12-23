@@ -19,7 +19,6 @@ import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.dading.ssqs.R;
@@ -134,12 +133,7 @@ public class HeFollowAdapter extends BaseAdapter implements ListAdapter {
         final SavantFansBean entity = data.get(position);
 
         if (entity != null)
-            Glide.with(context.getApplicationContext())
-                    .load(entity.avatar)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(context))
-                    .into(hoder.mFollowInfoSavantpoto);
+            SSQSApplication.glide.load(entity.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(context)).into(hoder.mFollowInfoSavantpoto);
 
         if (entity.userType == 2) {
             hoder.mFollowInfoNickname.setText(entity.userName);

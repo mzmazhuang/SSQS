@@ -20,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
-import com.bumptech.glide.Glide;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
@@ -159,11 +158,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
         mChangePhotoLvNum.setText(lv);
         mChangePhotoLvCount.setText(text);
         if (mBean != null) {
-            Glide.with(UIUtils.getContext()).load(mBean.avatar)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(this))
-                    .into(mChangePhotoImg);
+            SSQSApplication.glide.load(mBean.avatar).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mChangePhotoImg);
         } else {
             switch (mBean.sex) {
                 case 1:
@@ -559,13 +554,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
 
     private void goImg(final String data) {
         if (!TextUtils.isEmpty(data))
-            Glide.with(UIUtils.getContext())
-                    .load(data)
-                    .error(R.mipmap.fail)
-                    .centerCrop()
-                    .transform(new GlideCircleTransform(ChangePhotoActivity.this))
-                    .into(mChangePhotoImg);
-
+            SSQSApplication.glide.load(data).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(ChangePhotoActivity.this)).into(mChangePhotoImg);
     }
 }
 

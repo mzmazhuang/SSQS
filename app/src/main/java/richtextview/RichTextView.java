@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.dading.ssqs.SSQSApplication;
 
 /**
  * Created by wing on 9/26/16.
@@ -65,9 +65,7 @@ public class RichTextView extends TextView {
             @Override
             public void onGlobalLayout() {
                 getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                stringBuilder = (SpannableStringBuilder) Html.fromHtml(source,
-                        new GlideImageGetter(mContext, Glide.with(mContext), RichTextView.this, false,
-                                ((View) getParent()).getWidth(), height), null);
+                stringBuilder = (SpannableStringBuilder) Html.fromHtml(source, new GlideImageGetter(mContext, SSQSApplication.glide, RichTextView.this, false, ((View) getParent()).getWidth(), height), null);
 
                 setImageClickable(stringBuilder);
                 setText(stringBuilder);

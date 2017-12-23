@@ -3,6 +3,7 @@ package com.dading.ssqs.controllar.scores;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -145,7 +146,7 @@ public class GZScoreControllar extends BaseScoreControllar {
                         }
                     }
                 } else {
-                    TmtUtils.midToast(mContent, "请求数据失败,网络超时!", 0);
+                    TmtUtils.midToast(mContent, result.getMessage(), 0);
                 }
             }
         });

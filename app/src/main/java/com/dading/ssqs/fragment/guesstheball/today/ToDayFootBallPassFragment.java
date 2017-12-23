@@ -495,6 +495,8 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
 
         List<PayBallElement.BetBean> items = new ArrayList<>();
 
+        String moneys = commitMenuView.getStandResult();
+
         for (int i = 0; i < leagusList.size(); i++) {
             List<ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem> list = leagusList.get(i).getBean();
 
@@ -502,10 +504,12 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
                 PayBallElement.BetBean bean = new PayBallElement.BetBean();
                 bean.matchID = leagusList.get(i).getItems().getId();
                 bean.type = 1;
-                bean.amount = commitMenuView.getStandResult();
+                bean.amount = moneys;
                 bean.payRateID = list.get(j).getId();
                 bean.selected = list.get(j).getSelected();
                 items.add(bean);
+
+                moneys = "0";
             }
         }
 

@@ -232,7 +232,7 @@ public class LazyViewPager extends ViewGroup {
 		 * @param positionOffsetPixels
 		 *            Value in pixels indicating the offset from position.
 		 */
-		public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels);
+        void onPageScrolled(int position, float positionOffset, int positionOffsetPixels);
 
 		/**
 		 * This method will be invoked when a new page becomes selected.
@@ -241,7 +241,7 @@ public class LazyViewPager extends ViewGroup {
 		 * @param position
 		 *            Position index of the new selected page.
 		 */
-		public void onPageSelected(int position);
+        void onPageSelected(int position);
 
 		/**
 		 * Called when the scroll state changes. Useful for discovering when the
@@ -254,7 +254,7 @@ public class LazyViewPager extends ViewGroup {
 		 * @see ViewPager#SCROLL_STATE_DRAGGING
 		 * @see ViewPager#SCROLL_STATE_SETTLING
 		 */
-		public void onPageScrollStateChanged(int state);
+        void onPageScrollStateChanged(int state);
 	}
 
 	/**
@@ -283,7 +283,7 @@ public class LazyViewPager extends ViewGroup {
 	 * Used internally to monitor when adapters are switched.
 	 */
 	interface OnAdapterChangeListener {
-		public void onAdapterChanged(PagerAdapter oldAdapter, PagerAdapter newAdapter);
+		void onAdapterChanged(PagerAdapter oldAdapter, PagerAdapter newAdapter);
 	}
 
 	/**

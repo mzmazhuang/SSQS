@@ -206,11 +206,7 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
         boolean checkResult = false;
         try {
             PackageInfo packageInfo = this.getPackageManager().getPackageInfo(packageName, 0);
-            if (packageInfo == null) {
-                checkResult = false;
-            } else {
-                checkResult = true;
-            }
+            checkResult = packageInfo != null;
         } catch (Exception e) {
             checkResult = false;
         }

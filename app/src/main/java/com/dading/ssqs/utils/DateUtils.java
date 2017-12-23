@@ -383,11 +383,8 @@ public class DateUtils {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
 			Date date = sdf.parse(deadLine);
 			long anotherTimeMillis = date.getTime();
-			if ((currentTimeMillis - anotherTimeMillis) > 0) {// 大于
-				return true;
-			} else {
-				return false;
-			}
+            // 大于
+            return (currentTimeMillis - anotherTimeMillis) > 0;
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return false;
@@ -408,11 +405,8 @@ public class DateUtils {
 			Date date = new Date();
 			String otherStr = formater.format(date1);
 			String curtimeStr = formater.format(date);
-			if (otherStr.equals(curtimeStr)) {
-				return true;
-			}
-			return false;
-		} catch (ParseException e) {
+            return otherStr.equals(curtimeStr);
+        } catch (ParseException e) {
 			e.printStackTrace();
 			return false;
 		}

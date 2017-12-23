@@ -102,11 +102,7 @@ public class DiamondsRecordActivity extends BaseActivity implements View.OnTouch
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount > 0) {
-                    mIsLastRow = true;
-                } else {
-                    mIsLastRow = false;
-                }
+                mIsLastRow = firstVisibleItem + visibleItemCount == totalItemCount && totalItemCount > 0;
             }
         });
         mDiamondsRecordLv.setOnTouchListener(this);

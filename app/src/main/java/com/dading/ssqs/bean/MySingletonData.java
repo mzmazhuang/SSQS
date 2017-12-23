@@ -19,7 +19,7 @@ public class MySingletonData extends Date{
     private static Context         mCtx;
 
     private MySingletonData(Context context) {
-        this.mCtx = context;
+        mCtx = context;
     }
 
 

@@ -55,11 +55,7 @@ public class AllMatchActivity extends LinearLayout {
         for (int i = 0; i < list.size(); i++) {
             List<GusessChoiceBean.FilterEntity> entities = list.get(i).filter;
             for (int j = 0; j < entities.size(); j++) {
-                if (isAll) {
-                    entities.get(j).checked = true;
-                } else {
-                    entities.get(j).checked = false;
-                }
+                entities.get(j).checked = isAll;
             }
         }
 

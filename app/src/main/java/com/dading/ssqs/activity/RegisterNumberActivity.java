@@ -164,12 +164,8 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            //是否同意
-            mIsAgree = true;
-        } else {
-            mIsAgree = false;
-        }
+        //是否同意
+        mIsAgree = isChecked;
     }
 
 }

@@ -461,7 +461,6 @@ public class StoreTurnTableControllar {
                 mDialogResult.show();
                 String diamonsStr = UIUtils.getSputils().getString(Constent.GLODS, "");
                 int glod = Integer.parseInt(diamonsStr.replaceAll(",", ""));
-                ;
                 UIUtils.getSputils().putString(Constent.GLODS, (glod - 500 + ""));
                 UIUtils.SendReRecevice(Constent.SERIES);
                 isStart = false;
@@ -479,11 +478,11 @@ public class StoreTurnTableControllar {
     private void ChangeBG(int id) {
         for (int i = 0; i < mGv.getChildCount(); i++) {
             if (i == id) {
-                ((LinearLayout) mGv.getChildAt(id)).setBackgroundResource(R.mipmap.sm_lottery_frame_sel);
+                mGv.getChildAt(id).setBackgroundResource(R.mipmap.sm_lottery_frame_sel);
             } else if (i == 4) {
                 continue;
             } else {
-                ((LinearLayout) mGv.getChildAt(i)).setBackgroundResource(R.mipmap.sm_lottery_frame);
+                mGv.getChildAt(i).setBackgroundResource(R.mipmap.sm_lottery_frame);
             }
         }
     }

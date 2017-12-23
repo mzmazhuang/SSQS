@@ -30,7 +30,7 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return true - if the Demo has been started, false if not.
 	 */
-	public boolean demo();
+    boolean demo();
 
 	/**
 	 * Get the mode that this view is currently in. This is only really useful
@@ -38,7 +38,7 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return Mode that the view is currently in
 	 */
-	public PullToRefreshBase.Mode getCurrentMode();
+    PullToRefreshBase.Mode getCurrentMode();
 
 	/**
 	 * Returns whether the Touch Events are filtered or not. If true is
@@ -49,7 +49,7 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return boolean - true if the View is filtering Touch Events
 	 */
-	public boolean getFilterTouchEvents();
+    boolean getFilterTouchEvents();
 
 	/**
 	 * Returns a proxy object which allows you to call methods on all of the
@@ -61,7 +61,7 @@ public interface IPullToRefresh<T extends View> {
 	 * @return Object which will proxy any calls you make on it, to all of the
 	 *         LoadingLayouts.
 	 */
-	public ILoadingLayout getLoadingLayoutProxy();
+    ILoadingLayout getLoadingLayoutProxy();
 
 	/**
 	 * Returns a proxy object which allows you to call methods on the
@@ -77,7 +77,7 @@ public interface IPullToRefresh<T extends View> {
 	 * @return Object which will proxy any calls you make on it, to the
 	 *         LoadingLayouts included.
 	 */
-	public ILoadingLayout getLoadingLayoutProxy(boolean includeStart, boolean includeEnd);
+    ILoadingLayout getLoadingLayoutProxy(boolean includeStart, boolean includeEnd);
 
 	/**
 	 * Get the mode that this view has been set to. If this returns
@@ -86,7 +86,7 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return Mode that the view has been set to
 	 */
-	public PullToRefreshBase.Mode getMode();
+    PullToRefreshBase.Mode getMode();
 
 	/**
 	 * Get the Wrapped Refreshable View. Anything returned here has already been
@@ -94,7 +94,7 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return The View which is currently wrapped
 	 */
-	public T getRefreshableView();
+    T getRefreshableView();
 
 	/**
 	 * Get whether the 'Refreshing' View should be automatically shown when
@@ -102,19 +102,19 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return - true if the Refreshing View will be show
 	 */
-	public boolean getShowViewWhileRefreshing();
+    boolean getShowViewWhileRefreshing();
 
 	/**
 	 * @return - The state that the View is currently in.
 	 */
-	public PullToRefreshBase.State getState();
+    PullToRefreshBase.State getState();
 
 	/**
 	 * Whether Pull-to-Refresh is enabled
 	 * 
 	 * @return enabled
 	 */
-	public boolean isPullToRefreshEnabled();
+    boolean isPullToRefreshEnabled();
 
 	/**
 	 * Gets whether Overscroll support is enabled. This is different to
@@ -124,14 +124,14 @@ public interface IPullToRefresh<T extends View> {
 	 * @return true - if both PullToRefresh-OverScroll and Android's inbuilt
 	 *         OverScroll are enabled
 	 */
-	public boolean isPullToRefreshOverScrollEnabled();
+    boolean isPullToRefreshOverScrollEnabled();
 
 	/**
 	 * Returns whether the Widget is currently in the Refreshing mState
 	 * 
 	 * @return true if the Widget is currently refreshing
 	 */
-	public boolean isRefreshing();
+    boolean isRefreshing();
 
 	/**
 	 * Returns whether the widget has enabled scrolling on the Refreshable View
@@ -139,13 +139,13 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @return true if the widget has enabled scrolling while refreshing
 	 */
-	public boolean isScrollingWhileRefreshingEnabled();
+    boolean isScrollingWhileRefreshingEnabled();
 
 	/**
 	 * Mark the current Refresh as complete. Will Reset the UI and hide the
 	 * Refreshing View
 	 */
-	public void onRefreshComplete();
+    void onRefreshComplete();
 
 	/**
 	 * Set the Touch Events to be filtered or not. If set to true, then the View
@@ -158,14 +158,14 @@ public interface IPullToRefresh<T extends View> {
 	 * @param filterEvents - true if you want to filter Touch Events. Default is
 	 *            true.
 	 */
-	public void setFilterTouchEvents(boolean filterEvents);
+    void setFilterTouchEvents(boolean filterEvents);
 
 	/**
 	 * Set the mode of Pull-to-Refresh that this view will use.
 	 * 
 	 * @param mode - Mode to set the View to
 	 */
-	public void setMode(PullToRefreshBase.Mode mode);
+    void setMode(PullToRefreshBase.Mode mode);
 
 	/**
 	 * Set OnPullEventListener for the Widget
@@ -173,21 +173,21 @@ public interface IPullToRefresh<T extends View> {
 	 * @param listener - Listener to be used when the Widget has a pull event to
 	 *            propogate.
 	 */
-	public void setOnPullEventListener(PullToRefreshBase.OnPullEventListener<T> listener);
+    void setOnPullEventListener(PullToRefreshBase.OnPullEventListener<T> listener);
 
 	/**
 	 * Set OnRefreshListener for the Widget
 	 * 
 	 * @param listener - Listener to be used when the Widget is set to Refresh
 	 */
-	public void setOnRefreshListener(PullToRefreshBase.OnRefreshListener<T> listener);
+    void setOnRefreshListener(PullToRefreshBase.OnRefreshListener<T> listener);
 
 	/**
 	 * Set OnRefreshListener for the Widget
 	 * 
 	 * @param listener - Listener to be used when the Widget is set to Refresh
 	 */
-	public void setOnRefreshListener(PullToRefreshBase.OnRefreshListener2<T> listener);
+    void setOnRefreshListener(PullToRefreshBase.OnRefreshListener2<T> listener);
 
 	/**
 	 * Sets whether Overscroll support is enabled. This is different to
@@ -196,13 +196,13 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @param enabled - true if you want Overscroll enabled
 	 */
-	public void setPullToRefreshOverScrollEnabled(boolean enabled);
+    void setPullToRefreshOverScrollEnabled(boolean enabled);
 
 	/**
 	 * Sets the Widget to be in the refresh state. The UI will be updated to
 	 * show the 'Refreshing' view, and be scrolled to show such.
 	 */
-	public void setRefreshing();
+    void setRefreshing();
 
 	/**
 	 * Sets the Widget to be in the refresh state. The UI will be updated to
@@ -211,7 +211,7 @@ public interface IPullToRefresh<T extends View> {
 	 * @param doScroll - true if you want to force a scroll to the Refreshing
 	 *            view.
 	 */
-	public void setRefreshing(boolean doScroll);
+    void setRefreshing(boolean doScroll);
 
 	/**
 	 * Sets the Animation Interpolator that is used for animated scrolling.
@@ -219,7 +219,7 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @param interpolator - Interpolator to use
 	 */
-	public void setScrollAnimationInterpolator(Interpolator interpolator);
+    void setScrollAnimationInterpolator(Interpolator interpolator);
 
 	/**
 	 * By default the Widget disables scrolling on the Refreshable View while
@@ -228,7 +228,7 @@ public interface IPullToRefresh<T extends View> {
 	 * @param scrollingWhileRefreshingEnabled - true if you want to enable
 	 *            scrolling while refreshing
 	 */
-	public void setScrollingWhileRefreshingEnabled(boolean scrollingWhileRefreshingEnabled);
+    void setScrollingWhileRefreshingEnabled(boolean scrollingWhileRefreshingEnabled);
 
 	/**
 	 * A mutator to enable/disable whether the 'Refreshing' View should be
@@ -236,6 +236,6 @@ public interface IPullToRefresh<T extends View> {
 	 * 
 	 * @param showView
 	 */
-	public void setShowViewWhileRefreshing(boolean showView);
+    void setShowViewWhileRefreshing(boolean showView);
 
 }

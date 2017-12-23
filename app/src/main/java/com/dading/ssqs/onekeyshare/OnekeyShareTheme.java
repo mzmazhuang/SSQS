@@ -19,7 +19,7 @@ public enum OnekeyShareTheme {
 	private final int                  value;
 	private final OnekeyShareThemeImpl impl;
 
-	private OnekeyShareTheme(int value, OnekeyShareThemeImpl impl) {
+	OnekeyShareTheme(int value, OnekeyShareThemeImpl impl) {
 		this.value = value;
 		this.impl = impl;
 	}

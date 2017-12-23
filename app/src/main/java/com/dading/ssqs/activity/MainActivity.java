@@ -197,7 +197,7 @@ public class MainActivity extends BaseActivity {
         DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(uri);
         // 设置允许使用的网络类型，这里是移动网络和wifi都可以
-        request.setAllowedNetworkTypes(request.NETWORK_MOBILE | request.NETWORK_WIFI);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);
         //设置是否允许漫游
         request.setAllowedOverRoaming(false);
         //设置文件类型
@@ -205,7 +205,7 @@ public class MainActivity extends BaseActivity {
         String mimeString = mimeTypeMap.getMimeTypeFromExtension(MimeTypeMap.getFileExtensionFromUrl(apkUrl));
         request.setMimeType(mimeString);
         //在通知栏中显示
-        request.setNotificationVisibility(request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setTitle("下载ing...");
         request.setVisibleInDownloadsUi(true);
         //sdcard目录下的download文件夹

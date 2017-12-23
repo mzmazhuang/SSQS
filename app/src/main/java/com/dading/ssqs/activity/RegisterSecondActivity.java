@@ -264,12 +264,8 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
                 }
                 break;
             case R.id.regiset_second_allow_icon:
-                if (isChecked) {
-                    //是否同意
-                    mIsAgree = true;
-                } else {
-                    mIsAgree = false;
-                }
+                //是否同意
+                mIsAgree = isChecked;
             default:
                 break;
         }

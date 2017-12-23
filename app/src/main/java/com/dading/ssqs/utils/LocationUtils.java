@@ -187,7 +187,7 @@ public class LocationUtils {
 
         try {
 
-            httpsConn = (URLConnection) myURL.openConnection();
+            httpsConn = myURL.openConnection();
 
             if (httpsConn != null) {
                 InputStreamReader insr = new InputStreamReader(

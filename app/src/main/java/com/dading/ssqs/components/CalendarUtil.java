@@ -50,14 +50,14 @@ public class CalendarUtil {
         System.out.println("获取本季度最后一天:" + tt.getThisSeasonFinallyTime(11));
         System.out.println("获取两个日期之间间隔天数2008-12-1~2008-9.29:"
                 + CalendarUtil.getTwoDay("2008-12-1", "2008-9-29"));
-        System.out.println("获取当前月的第几周：" + tt.getWeekOfMonth());
-        System.out.println("获取当前年份：" + tt.getYear());
-        System.out.println("获取当前月份：" + tt.getMonth());
-        System.out.println("获取今天在本年的第几天：" + tt.getDayOfYear());
-        System.out.println("获得今天在本月的第几天(获得当前日)：" + tt.getDayOfMonth());
-        System.out.println("获得今天在本周的第几天：" + tt.getDayOfWeek());
+        System.out.println("获取当前月的第几周：" + getWeekOfMonth());
+        System.out.println("获取当前年份：" + getYear());
+        System.out.println("获取当前月份：" + getMonth());
+        System.out.println("获取今天在本年的第几天：" + getDayOfYear());
+        System.out.println("获得今天在本月的第几天(获得当前日)：" + getDayOfMonth());
+        System.out.println("获得今天在本周的第几天：" + getDayOfWeek());
         System.out.println("获得半年后的日期："
-                + tt.convertDateToString(tt.getTimeYearNext()));
+                + convertDateToString(getTimeYearNext()));
     }
 
 

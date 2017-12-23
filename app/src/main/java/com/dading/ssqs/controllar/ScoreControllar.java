@@ -294,11 +294,7 @@ public class ScoreControllar extends BaseTabsContainer {
                 mChioceSettingRb1.setChecked(false);
                 mChioceSettingRb2.setChecked(false);
                 boolean checked = mList.get(position).checked;
-                if (checked) {
-                    mList.get(position).checked = false;
-                } else {
-                    mList.get(position).checked = true;
-                }
+                mList.get(position).checked = !checked;
                 mAdapterSx.setList(mList);
             }
         });

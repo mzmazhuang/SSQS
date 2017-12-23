@@ -104,7 +104,7 @@
     <ImageView
         android:id="@+id/recom_wards_qr_code_iv"
         android:layout_width="150dp"
-        android:layout_height="150dp "
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:src="@mipmap/about" />

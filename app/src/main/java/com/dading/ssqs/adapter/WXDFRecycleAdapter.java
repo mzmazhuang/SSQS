@@ -114,7 +114,7 @@ public class WXDFRecycleAdapter extends BaseAdapter implements ListAdapter {
 
         if (bean != null) {
             holder.mWxDfItemTitle.setText(bean.getName());
-            holder.mWxDfItemCb.setChecked(bean.isChecked() ? true : false);
+            holder.mWxDfItemCb.setChecked(bean.isChecked());
             String logo = bean.getLogo();
 
             SSQSApplication.glide.load(logo).error(R.mipmap.fail).centerCrop().into(holder.mWxDfItemIcon);

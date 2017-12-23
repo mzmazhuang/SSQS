@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/score_chioce_ly"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_e"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/score_chioce_top_rg"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="2"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <RadioButton
+                android:id="@+id/score_chioce_rb1_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_collect3"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/all"
+                android:textColor="@color/gray2"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/score_chioce_rb2_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:layout_marginStart="35dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_collect3"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/hot_door"
+                android:textColor="@color/gray2"
+                android:textSize="17sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_d" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <RadioGroup
+            android:id="@+id/score_chioce_gp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/score_chioce_rb2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_collect3"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/all_no_chioce"
+                android:textColor="@drawable/selector_color_w_g"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/score_chioce_rb1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_collect3"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/all_chocie"
+                android:textColor="@drawable/selector_color_w_g"
+                android:textSize="17sp" />
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_d" />
+
+        <TextView
+            android:id="@+id/score_chioce_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/orange"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+
+    <GridView
+        android:id="@+id/score_chioce_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="10dp"></GridView>
+
+
+</LinearLayout>

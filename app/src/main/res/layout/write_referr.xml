@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/by_time_match"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:id="@+id/write_refer_by_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingEnd="10dp"
+            android:paddingStart="15dp"
+            android:text="@string/az_time"
+            android:textColor="@color/gray3"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/write_refer_by_time_icon"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:paddingEnd="15dp"
+            android:paddingStart="5dp"
+            android:src="@mipmap/xia" />
+
+        <TextView
+            android:id="@+id/write_refer_prize_protect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|end"
+            android:paddingEnd="30dp"
+            android:paddingStart="10dp"
+            android:text="@string/refer_prize_protect"
+            android:textColor="@color/gray3"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <pulltorefresh.PullToRefreshExpandableListView
+            android:id="@+id/write_refer_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white_c"
+            android:dividerHeight="5dp"
+            android:gravity="center|end"></pulltorefresh.PullToRefreshExpandableListView>
+
+        <include layout="@layout/load_data" />
+    </RelativeLayout>
+</LinearLayout>

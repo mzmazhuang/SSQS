@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/invited_code_ly"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <EditText
+        android:id="@+id/input_invited_code"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:background="@mipmap/captcha"
+        android:hint="@string/write_invite_code_prize"
+        android:paddingBottom="10dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/invited_code_protecy"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/invited_code_checked"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/immediately_verify"
+        android:padding="10dp"
+        android:textColor="@color/white" />
+
+</LinearLayout>

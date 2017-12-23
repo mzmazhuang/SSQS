@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/fx_cup_item"
+        android:layout_width="match_parent"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:gravity="center"
+        android:layout_height="30dp">
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv1"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv2"
+            style="@style/w0h"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv3"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv4"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv5"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv6"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv7"
+            style="@style/w0h"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv8"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/fx_cup_item_tv9"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/match_main"
+            android:textColor="@color/gray2"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+</LinearLayout>

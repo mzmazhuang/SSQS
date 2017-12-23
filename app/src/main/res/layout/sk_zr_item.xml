@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="33dp"
+              android:background="@color/white"
+              android:orientation="horizontal"
+
+    >
+
+
+    <LinearLayout
+        style="@style/w0h"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:id="@+id/sk_zr_main_item_shirt"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/cast_yellow"
+            android:gravity="center"
+            android:text="@string/nine"
+            android:textColor="@color/white"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/sk_zr_main_item_player_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end|center_vertical"
+            android:singleLine="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/match_main"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="match_parent"
+        android:background="@color/gray_d"
+        />
+
+    <RelativeLayout
+        style="@style/w0h"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:id="@+id/sk_zr_second_item_shirt"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/cast_blue"
+            android:gravity="center"
+            android:text="@string/good_num"
+            android:textColor="@color/white"
+            android:textSize="10sp"/>
+        <TextView
+            android:id="@+id/sk_zr_second_item_player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@id/sk_zr_second_item_shirt"
+            android:singleLine="true"
+            android:text="@string/match_second"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"
+            />
+    </RelativeLayout>
+</LinearLayout>

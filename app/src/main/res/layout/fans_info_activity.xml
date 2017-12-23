@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <tabindicator.TabIndicator
+        android:id="@+id/fans_info_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:tiLineColor="@color/home_top"
+        app:tiLineStyle="wrap"
+        app:tiTabMode="line"
+        app:tiTabPaddingLeft="60dp"
+        app:tiTabPaddingRight="60dp"
+        app:tiUnderLineColor="@color/gray_e"></tabindicator.TabIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fans_info_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+</LinearLayout>

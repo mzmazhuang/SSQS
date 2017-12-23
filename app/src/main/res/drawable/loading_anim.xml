@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--false为一直循环  true为值循环一次-->
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+                android:duration="1200"
+                android:oneshot="false">
+    <item
+        android:drawable="@drawable/anim01"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim02"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim03"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim04"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim05"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim06"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim07"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/anim08"
+        android:duration="150"/>
+</animation-list>

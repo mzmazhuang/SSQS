@@ -1,0 +1,1498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:id="@+id/jc_hava_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/series_bg"
+        android:scrollbars="none"
+        android:saveEnabled="false"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_e"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginEnd="10dp"
+                            android:src="@mipmap/introduce"/>
+
+                        <TextView
+                            android:id="@+id/jc_play_help"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/play_talk"
+                            android:textColor="@color/gray6"
+                            android:textSize="15sp"
+                            />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/jc_betting_history_icon"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@mipmap/record"/>
+
+                    <TextView
+                        android:id="@+id/jc_betting_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/betting_record"
+                        android:textColor="@color/gray6"
+                        android:textSize="15sp"
+                        />
+
+                </LinearLayout>
+                <!--  android:focusable="true"
+                   android:focusableInTouchMode="true"
+                   获取焦点
+                   -->
+                <RadioGroup
+                    android:id="@+id/jc_cb_gp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white_e7"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/jc_cb_hot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selecotr_score_left"
+                        android:button="@null"
+                        android:gravity="center"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/jc_cb_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selecotr_score_right"
+                        android:button="@null"
+                        android:gravity="center"
+                        />
+                </RadioGroup>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ListView
+                        android:id="@+id/jc_hot_recycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:divider="@null">
+                    </ListView>
+
+                    <LinearLayout
+                        android:id="@+id/jc_hot_betting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/jc_betting_all_result"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@color/series_bg"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@mipmap/er_cai"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="@string/all_match_result"
+                                    android:textColor="@color/gray2"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/guess_ninty_result"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/series_bg"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn1_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:padding="2dp">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn1_text1"
+                                            android:layout_width="60dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="3dp"
+                                            android:gravity="center_vertical|end"
+                                            android:singleLine="true"
+                                            android:text="@string/match_main"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn1_text2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:singleLine="true"
+                                            android:text="@string/num34112"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn2_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:singleLine="true">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn2_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/draw_result"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn2_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1">
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn3_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:padding="2dp">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn3_text1"
+                                            android:layout_width="60dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="3dp"
+                                            android:gravity="center_vertical|end"
+                                            android:minWidth="40dp"
+                                            android:singleLine="true"
+                                            android:text="@string/match_second"
+                                            android:textColor="#000"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn3_text2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--当前让球-->
+                        <LinearLayout
+                            android:id="@+id/jc_betting_now_lost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@color/series_bg"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@mipmap/er_cai"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="@string/now_lost"
+                                    android:textColor="@color/gray2"
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/ninty_lostball"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/series_bg"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn4_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn4_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical|end"
+                                            android:maxWidth="90dp"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/match_main"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn4_text11"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:maxWidth="90dp"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/match_main"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn4_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1">
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn5_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn5_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginEnd="2dp"
+                                            android:gravity="center_vertical|end"
+                                            android:maxWidth="80dp"
+                                            android:paddingEnd="2dp"
+                                            android:paddingStart="2dp"
+                                            android:singleLine="true"
+                                            android:text="@string/match_second"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn5_text11"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:maxWidth="80dp"
+                                            android:paddingEnd="2dp"
+                                            android:paddingStart="2dp"
+                                            android:singleLine="true"
+                                            android:text="@string/match_second"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn5_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--全场大小-->
+                        <LinearLayout
+                            android:id="@+id/jc_betting_all_sb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@color/series_bg"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@mipmap/er_cai"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="@string/all_match_smallbig"
+                                    android:textColor="@color/gray2"
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/ninty_all_balls"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/series_bg"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn6_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn6_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_high"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn6_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1">
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn7"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn7_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn7_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_low"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn7_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--半场赛果-->
+                        <LinearLayout
+                            android:id="@+id/jc_betting_half_result"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@color/series_bg"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@mipmap/er_cai"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="@string/half_result"
+                                    android:textColor="@color/gray2"
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/guess_half_result"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/series_bg"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn12_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:padding="2dp">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn12_text1"
+                                            android:layout_width="60dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="3dp"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_high"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn12_text2"
+                                            android:layout_width="40dp"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn14"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn14_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:singleLine="true">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn14_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/draw_result"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn14_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1">
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn13"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn13_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:padding="2dp">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn13_text1"
+                                            android:layout_width="60dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_marginStart="3dp"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_low"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn13_text2"
+                                            android:layout_width="40dp"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--半场让球-->
+                        <LinearLayout
+                            android:id="@+id/jc_betting_half_lost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@color/series_bg"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@mipmap/er_cai"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="@string/half_lost"
+                                    android:textColor="@color/gray2"
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/guess_half_match_lost"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/series_bg"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1">
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn8"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn8_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentEnd="false"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn8_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:padding="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_high"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn8_text11"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_high"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn8_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn9"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn9_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn9_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:padding="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_low"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn9_text11"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_low"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn9_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--半场大小-->
+                        <LinearLayout
+                            android:id="@+id/jc_betting_half_sb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@color/series_bg"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@mipmap/er_cai"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@color/transparent"
+                                    android:gravity="center"
+                                    android:text="@string/half_samll_big"
+                                    android:textColor="@color/gray2"
+                                    />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/half_samll_big_score_num"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="12sp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@color/series_bg"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal"
+                                >
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="0.5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_weight="1">
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn10"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn10_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentEnd="false"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn10_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_high"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn10_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    style="@style/w0h"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="0.5dp"
+                                    android:layout_weight="1"
+                                    >
+
+                                    <CheckBox
+                                        android:id="@+id/jc_btn11"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"/>
+
+                                    <LinearLayout
+                                        android:id="@+id/jc_btn11_ly"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/white"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/jc_btn11_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="@string/serise_smallbig_low"
+                                            android:textColor="@color/black"
+                                            android:textSize="12sp"/>
+
+                                        <TextView
+                                            android:id="@+id/jc_btn11_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="match_parent"
+                                            android:gravity="center_vertical"
+                                            android:paddingEnd="3dp"
+                                            android:paddingStart="3dp"
+                                            android:singleLine="true"
+                                            android:text="@string/odds_num"
+                                            android:textColor="#FF3B06"
+                                            android:textSize="12sp"/>
+                                    </LinearLayout>
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/jc_score_ly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/jc_score_ball_interval"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/series_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@mipmap/er_cai"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/transparent"
+                                android:gravity="center"
+                                android:text="进球数区间"
+                                android:textColor="@color/gray2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:gravity="center_vertical"
+                                android:text="猜90分钟内(含补时)的比赛总进球数区间"
+                                android:textColor="@color/gray_a"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <com.dading.ssqs.view.MyGridView
+                            android:id="@+id/jc_score_gv_interval"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/gray_e"
+                            android:horizontalSpacing="1dp"
+                            android:numColumns="2"
+                            android:verticalSpacing="1dp"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/jc_score_all_result"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/series_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@mipmap/er_cai"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/transparent"
+                                android:gravity="center"
+                                android:text="全场比分"
+                                android:textColor="@color/gray2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:gravity="center_vertical"
+                                android:text="猜两队90分钟内(含补时)的最终比分"
+                                android:textColor="@color/gray_a"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/series_bg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/jc_score_all_main_win"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:background="@mipmap/key_frame1"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="5dp"
+                                android:text="@string/main_win"
+                                android:textColor="@color/gray3"
+                                android:textSize="13sp"
+                                android:visibility="gone"/>
+
+                            <com.dading.ssqs.view.MyGridView
+                                android:id="@+id/jc_score_gv_main_win"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_e"
+                                android:horizontalSpacing="1dp"
+                                android:numColumns="3"
+                                android:verticalSpacing="1dp"/>
+
+                            <TextView
+                                android:id="@+id/jc_score_all_draw"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@mipmap/key_frame1"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="5dp"
+                                android:text="@string/draw_result"
+                                android:textColor="@color/gray3"
+                                android:textSize="13sp"
+                                android:visibility="gone"/>
+
+                            <com.dading.ssqs.view.MyGridView
+
+                                android:id="@+id/jc_score_gv_draw"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_e"
+                                android:horizontalSpacing="1dp"
+                                android:numColumns="3"
+                                android:verticalSpacing="1dp"/>
+
+                            <TextView
+                                android:id="@+id/jc_score_all_main_lost"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@mipmap/key_frame1"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="5dp"
+                                android:text="@string/main_lost"
+                                android:textColor="@color/gray3"
+                                android:textSize="13sp"
+                                android:visibility="gone"/>
+
+                            <com.dading.ssqs.view.MyGridView
+                                android:id="@+id/jc_score_gv_main_lost"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_e"
+                                android:horizontalSpacing="1dp"
+                                android:numColumns="3"
+                                android:verticalSpacing="1dp"/>
+
+                            <TextView
+                                android:id="@+id/jc_score_all_other"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="15dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@mipmap/key_frame1"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="5dp"
+                                android:text="@string/other"
+                                android:textColor="@color/gray3"
+                                android:textSize="13sp"
+                                android:visibility="gone"/>
+
+                            <com.dading.ssqs.view.MyGridView
+                                android:id="@+id/jc_score_gv_other"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/gray_e"
+                                android:horizontalSpacing="1dp"
+                                android:numColumns="2"
+                                android:verticalSpacing="1dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/jc_score_half_result"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/series_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@mipmap/er_cai"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/transparent"
+                                android:gravity="center"
+                                android:text="半全场赛果"
+                                android:textColor="@color/gray2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:gravity="center_vertical"
+                                android:text="猜两队上半场和全场的赛果"
+                                android:textColor="@color/gray_a"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+
+                        <com.dading.ssqs.view.MyGridView
+                            android:id="@+id/jc_score_gv_half_result"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/gray_e"
+                            android:horizontalSpacing="1dp"
+                            android:numColumns="3"
+                            android:verticalSpacing="1dp"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/jc_score_all_single_double"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/series_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@mipmap/er_cai"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/transparent"
+                                android:gravity="center"
+                                android:text="全场单双"
+                                android:textColor="@color/gray2"
+                                />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:gravity="center_vertical"
+                                android:text="猜90分钟内(含补时)比赛总进球数的单双"
+                                android:textColor="@color/gray_a"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+
+                        <com.dading.ssqs.view.MyGridView
+                            android:id="@+id/jc_score_gv_single_double"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/gray_e"
+                            android:horizontalSpacing="1dp"
+                            android:numColumns="2"
+                            android:verticalSpacing="1dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/jc_score_half_single_double"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@color/series_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@mipmap/er_cai"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginStart="5dp"
+                                android:background="@color/transparent"
+                                android:gravity="center"
+                                android:text="半场单双"
+                                android:textColor="@color/gray2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:gravity="center_vertical"
+                                android:text="猜上半场比赛总进球数的单双"
+                                android:textColor="@color/gray_a"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+
+
+                        <com.dading.ssqs.view.MyGridView
+                            android:id="@+id/jc_score_gv_half_single_double"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/gray_e"
+                            android:horizontalSpacing="1dp"
+                            android:numColumns="2"
+                            android:verticalSpacing="1dp"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/series_bg"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/series_bg"
+                    android:paddingEnd="3dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="40dp"
+                    android:text="@string/jc_bottom_text"
+                    android:textColor="@color/gray8"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+     <LinearLayout
+         android:id="@+id/jc_no_data"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@color/white_a"
+         android:gravity="center"
+         android:visibility="visible">
+
+         <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:src="@mipmap/background_image"
+             />
+     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/fab_main_jc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@mipmap/see"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="75dp"
+        />
+
+</RelativeLayout>

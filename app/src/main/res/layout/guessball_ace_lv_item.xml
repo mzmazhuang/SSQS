@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/guessball_ace_win_ranking"
+        android:layout_width="25dp"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="@string/one"
+        android:textColor="@color/orange"
+        android:textSize="15sp"/>
+
+    <ImageView
+        android:id="@+id/guessball_ace_item_savantpoto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/guessball_ace_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                        <TextView
+                            android:id="@+id/guessball_ace_item_nickname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="@string/savant_name"
+                            android:textColor="@color/orange"
+                            android:textSize="15sp"
+                            />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="#ccc"/>
+
+                        <TextView
+                            android:id="@+id/guessball_ace_item_nickleve"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="@string/samll_savant"
+                            android:textColor="@color/gray6"
+                            android:textSize="14sp"
+                     />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="5dp"
+                        >
+
+                        <CheckBox
+                            android:id="@+id/guessball_ace_item_guess_follow"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="5dp"
+                            android:background="@drawable/selecotr_red_people_gz"
+                            android:button="@null"
+                            android:gravity="center|start"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/guessball_ace_item_score_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="11dp"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
+                        android:background="@drawable/rect_red_0"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="@string/how_lian_hong"
+                        android:textSize="7sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/guessball_ace_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="@string/tie_zi_content"
+            android:textColor="@color/gray3"
+            android:textSize="12sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_d"/>
+    </LinearLayout>
+</LinearLayout>

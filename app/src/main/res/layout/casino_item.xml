@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="180dp">
+        <ImageView
+            android:id="@+id/casino_gv_item_iv"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/reward_quizzes"/>
+
+        <TextView
+            android:id="@+id/casino_gv_item_tv"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@color/black_alpha_8"
+            android:gravity="center"
+            android:text="@string/ComingSoon"
+            android:textColor="@color/white_a"
+            android:textSize="20sp"/>
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="72dp"
+              android:layout_height="wrap_content"
+              android:background="@color/gray_e"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="68dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:background="@drawable/rect_5_gray"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/proxy_commission_pop_today"
+            style="@style/wh0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/today"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/gray_d"/>
+
+        <TextView
+            android:id="@+id/proxy_commission_pop_yesterday"
+            style="@style/wh0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/yesterday"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/gray_d"/>
+
+        <TextView
+            android:id="@+id/proxy_commission_pop_week"
+            style="@style/wh0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/one_week"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="@color/gray_d"/>
+
+        <TextView
+            android:id="@+id/proxy_commission_pop_month"
+            style="@style/wh0"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/half_month"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+    </LinearLayout>
+</LinearLayout>

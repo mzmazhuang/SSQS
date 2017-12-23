@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#EBEEF0"
+              android:orientation="vertical">
+
+<include layout="@layout/top_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_voil">
+
+            <ImageView
+                android:id="@+id/lock_phone_second_code_icon"
+                style="@style/w0h"
+                android:layout_weight="2"
+                android:padding="10dp"
+                android:src="@mipmap/r_reg_code"/>
+
+            <EditText
+                android:id="@+id/lock_phone_second_code"
+                style="@style/w0h"
+                android:layout_weight="7"
+                android:background="@null"
+                android:hint="@string/hint_state_code"
+                android:inputType="number"
+                />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@color/gray"/>
+
+            <TextView
+                android:id="@+id/lock_phone_second_sendcode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/send_again"
+                android:textColor="@color/gray"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/shape_voil">
+
+            <ImageView
+                android:id="@+id/lock_phone_second_pwd_icon"
+                style="@style/w0h"
+                android:layout_weight="2"
+                android:padding="10dp"
+                android:src="@mipmap/reg_lock"/>
+
+            <EditText
+                android:id="@+id/lock_phone_second_pwd"
+                style="@style/w0h"
+                android:layout_weight="8"
+                android:inputType="textPassword"
+                android:background="@null"
+                android:hint="@string/hint_set_pwd"
+                />
+
+            <CheckBox
+                android:id="@+id/lock_phone_second_pwd_look"
+                android:layout_width="17dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/selecotr_reg_eyes"
+                android:button="@null"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lock_phone_second_lock_phonebutton"
+        style="@style/wh0"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:background="@mipmap/register"
+        android:gravity="center"
+        android:text="@string/upload"
+        android:textColor="@color/white">
+    </TextView>
+
+    <View
+        style="@style/wh0"
+        android:layout_weight="7"/>
+</LinearLayout>

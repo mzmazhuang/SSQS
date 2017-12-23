@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="all_circle_rbt1" type="id">111111111111111111111111111</item>
+    <item name="rfab__id_content_label_list_item_position" type="id" />
+
+
+    <item name="gridview" type="id" />
+    <item name="webview" type="id" />
+    <item name="scrollview" type="id" />
+    <item name="chargeMoney" type="id" />
+    <item name="bind_bank_name" type="id" />
+    <item name="bind_bank_image" type="id" />
+    <item name="message_tv" type="id" />
+    <item name="title_tv" type="id" />
+    <item name="ok_btn" type="id" />
+    <item name="recharge_tip" type="id" />
+    <item name="recharge_money" type="id" />
+    <!--swipeToLoadLayout-->
+    <item name="swipe_refresh_header" type="id" />
+    <item name="swipe_target" type="id" />
+    <item name="swiptToLoadLayout" type="id" />
+    <item name="swipe_load_more_footer" type="id" />
+    <item name="page_refresh_text" type="id" />
+    <item name="page_loadmore_text" type="id" />
+    <item name="casion_container" type="id" />
+    <item name="guess_parent" type="id" />
+    <item name="scroll_commit_menu_view" type="id" />
+    <item name="scroll_commit_menu_vs" type="id" />
+    <item name="scroll_commit_menu_link" type="id" />
+    <item name="scroll_commit_menu_money_view" type="id" />
+    <item name="scrollball_parent" type="id" />
+    <item name="today_parent" type="id" />
+    <item name="early_parent" type="id" />
+    <item name="select_match_viewPager" type="id" />
+    <item name="select_match_operation" type="id" />
+    <!--end swipeToLoadLayout-->
+
+</resources>

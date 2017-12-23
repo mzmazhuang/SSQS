@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+    <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingEnd="10dp"
+                android:paddingStart="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/buy_num"
+                    android:textColor="@color/gray6"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/my_referr_buy_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/zero"
+                    android:textColor="@color/gray6"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray_a"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingEnd="10dp"
+                android:paddingStart="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/refer_sale"
+                    android:textColor="@color/gray6"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/my_referr_sale_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/zero_diamons"
+                    android:textColor="@color/gray6"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_a" />
+
+    <tabindicator.TabIndicator
+        android:id="@+id/my_referr_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="5dp"
+        app:tiLineColor="@color/home_top"
+        app:tiLineStyle="wrap"
+        app:tiTabMode="line"
+        app:tiTabPaddingLeft="25dp"
+        app:tiTabPaddingRight="25dp"
+        app:tiUnderLineColor="@color/gray_e"></tabindicator.TabIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/my_referr_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+</LinearLayout>

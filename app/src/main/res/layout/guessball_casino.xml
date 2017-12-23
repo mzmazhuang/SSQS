@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_d"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/casino_gv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:horizontalSpacing="5dp"
+            android:numColumns="2"
+            android:padding="5dp"
+            android:verticalSpacing="5dp"></GridView>
+
+        <RelativeLayout
+            android:id="@+id/err_with_draw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_c">
+
+            <ImageView
+                android:id="@+id/refer_im_no"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignEnd="@+id/err_load_again"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="162dp"
+                android:src="@mipmap/no_attention_1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/refer_im_no"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/get_data_err"
+                android:textColor="@color/gray6"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/err_load_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_centerHorizontal="true"
+                android:text="@string/refresh_data" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                style="@style/w0h"
+                android:layout_marginBottom="6dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/reward_quizzes" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#88888888"
+                    android:gravity="center"
+                    android:text="@string/ComingSoon"
+                    android:textColor="@color/white_a"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/wh0"
+            android:layout_weight="4">
+
+            <TextView
+                android:id="@+id/luck_ball"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/orange2"
+                android:gravity="center"
+                android:text="@string/luck_ball"
+                android:textColor="@color/gray2"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/wh0"
+            android:layout_weight="5"></LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

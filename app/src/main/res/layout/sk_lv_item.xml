@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray8"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            style="@style/w0h"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sk_tj_left_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:gravity="center_vertical|end"
+                android:text="@string/odds_num"
+                android:padding="2dp"
+                android:textColor="@color/gray6"
+                android:textSize="13sp"
+                />
+
+            <ProgressBar
+                android:id="@+id/sk_tj_left_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="4"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progress_horizontal_tj_right">
+            </ProgressBar>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sk_tj_middle_type"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:background="@color/gray_d"
+            android:gravity="center"
+            android:text="@string/about_sevent_day"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"
+            />
+
+        <LinearLayout
+            style="@style/w0h"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sk_tj_right_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:gravity="center_vertical"
+                android:text="@string/odds_num"
+                android:padding="2dp"
+                android:textColor="@color/gray6"
+                android:textSize="13sp"
+                />
+
+            <ProgressBar
+                android:id="@+id/sk_tj_right_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:max="4"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progress_horizontal_tj_left"
+                >
+            </ProgressBar>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/gray8"/>
+</LinearLayout>

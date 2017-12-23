@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/savant_info_sc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:saveEnabled="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow_orange"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:id="@+id/savant_info_return"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:padding="15dp"
+                    android:src="@mipmap/er_back_arrow" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
+
+
+                    <ImageView
+                        android:id="@+id/savant_info_savantphoto"
+                        android:layout_width="43dp"
+                        android:layout_height="43dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="15dp"
+                        android:padding="2dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/savant_info_nickname"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="5dp"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/savant_info_nickleve"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="5dp"
+                                    android:gravity="center"
+                                    android:singleLine="true"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="5dp">
+
+
+                                <CheckBox
+                                    android:id="@+id/savant_info_follow_cb"
+                                    android:layout_width="50dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginStart="5dp"
+                                    android:background="@drawable/selecotr_savant_info_gz"
+                                    android:button="@null"
+                                    android:gravity="center|start" />
+                            </LinearLayout>
+                        </RelativeLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/savant_info_doyen"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginEnd="2dp"
+                                android:gravity="center"
+                                android:src="@mipmap/tarento" />
+
+                            <TextView
+                                android:id="@+id/savant_info_lianhong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="15dp"
+                                android:layout_marginEnd="2dp"
+                                android:background="@mipmap/red"
+                                android:gravity="center"
+                                android:padding="2dp"
+                                android:textSize="8sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/savant_info_top_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/gray6"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/savat_info_up_down"
+                    android:layout_width="48dp"
+                    android:layout_height="27dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:button="@null"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:src="@mipmap/xia" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/wh0"
+                    android:layout_marginBottom="3dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:id="@+id/savant_info_fans"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/fens"
+                        android:textColor="@color/gray6"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/savant_info_refer"
+                        style="@style/w0h"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="@string/referr"
+                        android:textColor="@color/gray6"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/savant_info_essay"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/essay"
+                        android:textColor="@color/gray6"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/wh0"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/savant_info_fans_num"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/red_dark"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/savant_info_refer_num"
+                        style="@style/w0h"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:textColor="@color/red_dark"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/savant_info_essay_num"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textColor="@color/red_dark"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray_d" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/orange" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="7dp"
+                    android:text="@string/state_go_like"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/savant_info_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"></android.support.v4.view.ViewPager>
+
+            <RadioGroup
+                android:id="@+id/savant_info_rg"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingEnd="100dp"
+                android:paddingStart="100dp">
+
+                <RadioButton
+                    android:id="@+id/savant_info_rg1"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selecotr_mycolor"
+                    android:button="@null"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/savant_info_rg2"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selecotr_mycolor"
+                    android:button="@null" />
+
+                <RadioButton
+                    android:id="@+id/savant_info_rg3"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selecotr_mycolor"
+                    android:button="@null" />
+            </RadioGroup>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/savant_red_recter"
+                    android:layout_width="5dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical|left"
+                    android:background="@color/orange" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/savant_red_recter"
+                    android:gravity="center_vertical|start"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="7dp"
+                    android:text="@string/new_topic_referr"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/savant_info_match_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:drawableEnd="@mipmap/you"
+                    android:drawablePadding="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="0dp"
+                    android:textColor="@color/gray8"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_d" />
+
+            <ListView
+                android:id="@+id/savant_info_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+
+            <TextView
+                android:id="@+id/savant_info_more_data"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/gray_d"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/look_more_data"
+                android:textColor="@color/gray6"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/load_data" />
+</RelativeLayout>

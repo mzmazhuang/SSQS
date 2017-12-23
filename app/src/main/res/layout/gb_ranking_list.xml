@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_e"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <pulltorefresh.PullToRefreshListView
+        android:id="@+id/guessball_ranking_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_e"></pulltorefresh.PullToRefreshListView>
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_e"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <include layout="@layout/templete_calendar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- <include layout="@layout/templete_recycle"/>-->
+        <ListView
+            android:id="@+id/proxy_commission_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+        <include layout="@layout/templete_no_data" />
+    </RelativeLayout>
+
+
+</LinearLayout>

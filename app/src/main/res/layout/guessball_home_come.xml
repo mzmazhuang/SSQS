@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="@color/home_top_blue">
+
+        <ImageView
+            android:id="@+id/guess_four_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:src="@mipmap/chongzhi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/guess"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/guess_four_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:gravity="center"
+            android:text="@string/loading_regist"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@id/swiptToLoadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:default_to_refreshing_scrolling_duration="500"
+        app:swipe_style="classic">
+
+        <com.dading.ssqs.components.swipetoloadlayout.PageRefreshHeaderView
+            android:id="@id/swipe_refresh_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/refresh_header_height_twitter" />
+
+        <ScrollView
+            android:id="@id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/home_scrollview_ly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="155dp">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/home_vp_circle_pic"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentBottom="true"></android.support.v4.view.ViewPager>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_alignBottom="@+id/home_vp_circle_pic"
+                            android:layout_alignParentStart="true">
+
+                            <TextView
+                                android:id="@+id/home_vp_circle_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <LinearLayout
+                                android:id="@+id/home_rl_all_dots"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#8888"
+                                android:gravity="center_vertical|end"
+                                android:orientation="horizontal"
+                                android:paddingEnd="20dp"
+                                android:paddingStart="10dp"></LinearLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+
+                    <!--首页按钮-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/home_four_free_glod"
+                            style="@style/w0h"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/home_four_free_glod_iv"
+                                android:layout_width="44dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="9.5dp"
+                                android:src="@mipmap/football" />
+
+                            <TextView
+                                android:id="@+id/home_four_free_glod_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="9.5dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@color/white"
+                                android:gravity="center"
+                                android:text="@string/football"
+                                android:textColor="@color/gray4"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_four_rank_win"
+                            style="@style/w0h"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/home_four_rank_win_iv"
+                                android:layout_width="44dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="9.5dp"
+                                android:src="@mipmap/basketball" />
+
+                            <TextView
+                                android:id="@+id/home_four_rank_win_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="9.5dp"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="@string/basketball"
+                                android:textColor="@color/gray4"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_four_yp_refer"
+                            style="@style/w0h"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/home_four_yp_refer_iv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="9.5dp"
+                                android:src="@mipmap/entertainment" />
+
+                            <TextView
+                                android:id="@+id/home_four_yp_refer_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="9.5dp"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="@string/casino"
+                                android:textColor="@color/gray4"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/home_four_greenhand_help"
+                            style="@style/w0h"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/home_four_greenhand_help_iv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="9.5dp"
+                                android:src="@mipmap/help" />
+
+                            <TextView
+                                android:id="@+id/home_four_greenhand_help_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="9.5dp"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="@string/greenhand_help"
+                                android:textColor="@color/gray4"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/home_four_luck_lotto"
+                            style="@style/w0h"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/home_four_luck_lotto_iv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="9.5dp"
+                                android:src="@mipmap/service" />
+
+                            <TextView
+                                android:id="@+id/home_four_luck_lotto_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="9.5dp"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="@string/online_server"
+                                android:textColor="@color/gray4"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <!--中奖信息-->
+                    <LinearLayout
+                        android:id="@+id/guessball_ly_win_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="33dp"
+                        android:background="@color/zhongjiang_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginStart="25dp"
+                            android:src="@mipmap/notice" />
+
+                        <LinearLayout
+                            android:id="@+id/guessball_ly_win_info"
+                            style="@style/w0h"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/home_win_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:text="@string/win_infomation"
+                                android:textColor="#ef7158"
+                                android:textSize="11sp"
+                                android:visibility="gone" />
+
+                            <com.dading.ssqs.view.AutoVerticalScrollTextView
+                                android:id="@+id/home_win_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginStart="5dp"
+                                android:textColor="@color/gray5f" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--比赛列表信息-->
+                    <View
+                        android:id="@+id/home_football_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:background="@color/gray_e3" />
+
+                    <LinearLayout
+                        android:id="@+id/home_football_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="25dp"
+                            android:padding="5dp"
+                            android:src="@mipmap/zuqiu" />
+
+                        <TextView
+                            android:id="@+id/home_activity"
+                            style="@style/w0h"
+                            android:layout_weight="5"
+                            android:background="@color/transparent"
+                            android:gravity="center_vertical"
+                            android:paddingEnd="0dp"
+                            android:paddingStart="10dp"
+                            android:text="@string/football_guessball"
+                            android:textColor="@color/gray6"
+                            android:textSize="13sp" />
+
+
+                        <TextView
+                            android:id="@+id/home_activity_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@color/transparent"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="@string/more"
+                            android:textColor="@color/gray6"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:src="@mipmap/you" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp0.5"
+                        android:background="@color/gray_d" />
+
+                    <ListView
+                        android:id="@+id/home_listView_match"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@color/gray_e"
+                        android:dividerHeight="0.5dp"></ListView>
+
+                    <View
+                        android:id="@+id/home_basketball_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:background="@color/gray_e3" />
+
+                    <!--专家推荐-->
+                    <LinearLayout
+                        android:id="@+id/home_basketball_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/gray_e">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="9dp"
+                            android:padding="5dp"
+                            android:src="@mipmap/lanqiu" />
+
+                        <TextView
+                            android:id="@+id/home_referr"
+                            style="@style/w0h"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="5"
+                            android:gravity="center_vertical"
+                            android:text="@string/basketball_guess"
+                            android:textColor="@color/gray6"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/home_referr_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="3dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/more"
+                            android:textColor="@color/gray6"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:src="@mipmap/you" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp0.5"
+                        android:background="@color/gray_d" />
+
+                    <ListView
+                        android:id="@+id/home_recy_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"></ListView>
+
+                    <View
+                        android:id="@+id/home_rank_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:background="@color/gray_d" />
+
+                    <LinearLayout
+                        android:id="@+id/home_rank_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="20dp"
+                            android:background="@color/transparent"
+                            android:src="@mipmap/ranking" />
+
+                        <TextView
+                            android:id="@+id/home_rank"
+                            style="@style/w0h"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="5"
+                            android:gravity="center_vertical"
+                            android:text="@string/ranking_list"
+                            android:textColor="@color/pink_home"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/home_rank_more"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="3dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/more"
+                            android:textColor="@color/gray6"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:src="@mipmap/you" />
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/gray_e" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ListView
+                            android:id="@+id/home_listView_information"
+                            android:layout_width="match_parent"
+                            android:layout_height="400dp"
+                            android:divider="@color/gray_e"
+                            android:dividerHeight="0.5dp"
+                            android:scrollbars="none"></ListView>
+
+                        <ImageView
+                            android:id="@+id/home_ranking"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout>
+</LinearLayout>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/seven_day_ly_out"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/seven_sign_suc_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="70dp">
+
+        <ImageView
+            android:id="@+id/get_glod_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/sign_success_bg" />
+
+        <TextView
+            android:id="@+id/get_glod_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/get_glod_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-22dp"
+            android:gravity="center"
+            android:text="@string/num34112"
+            android:textColor="@color/red"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/get_glod_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="金币还可兑换iPhone7等奖品哦!"
+            android:textColor="@color/white_a"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/seven_day_suc_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/icon_close" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/seven_day_sign_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="70dp"
+        android:background="@mipmap/s_background_image">
+
+
+        <ImageView
+            android:id="@+id/seven_day_close"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/s_countermand" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingEnd="0dp"
+            android:paddingStart="18dp"
+            android:paddingTop="18dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet1"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_vertical_bar" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_vertical_bar" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_vertical_bar" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_vertical_bar" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet51"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_vertical_bar" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet61"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_vertical_bar" />
+
+                <ImageView
+                    android:id="@+id/seven_day_red_bet7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:src="@mipmap/s_have_checked_in" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/seven_day1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/one_day"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/two_day"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/three_day"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/four_day"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/five_day"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/six_day"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/seven_day"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv1"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv2"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv3"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv4"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv5"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv6"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+
+                <ImageView
+                    android:id="@+id/seven_day_gd_iv7"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/s_gold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/seven_day_add1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day_add2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day_add3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day_add4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day_add5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day_add6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/seven_day_add7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/add_188"
+                    android:textColor="@color/orange_light"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/seven_day_lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingEnd="0dp"
+            android:paddingStart="18dp"
+            android:paddingTop="18dp">
+
+        </ListView>
+
+        <ImageView
+            android:id="@+id/seven_sign_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/s_sign_in" />
+    </RelativeLayout>
+</RelativeLayout>

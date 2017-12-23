@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="@color/home_top_blue">
+
+        <ImageView
+            android:id="@+id/proxy_code_return"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:padding="@dimen/home_top_iv_padding"
+            android:src="@mipmap/er_back_arrow" />
+
+        <RadioGroup
+            android:id="@+id/proxy_code_rg"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/rect_white_top"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/proxy_code_rb_l"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rect_white_green_top"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/make_invite_code"
+                android:textColor="@drawable/selecotr_color_rb"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/proxy_code_rb_r"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rect_white_green_top_right"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/look_invite_code"
+                android:textColor="@drawable/selecotr_color_rb"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="@string/invite_code"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/type_normal"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="@string/commission"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/state"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="@string/operate"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/proxy_code_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+
+            <include layout="@layout/templete_no_data" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/proxy_make_code_ly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="70dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="@string/invite_code_dot"
+                    android:textColor="@color/gray2"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/proxy_up_code"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/hint_make_invite_code"
+                    android:inputType="text"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/proxy_random_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rect_blue_em"
+                    android:gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/random_code"
+                    android:textColor="@color/blue_btn"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginBottom="50dp"
+                android:background="@color/gray_d" />
+
+            <Button
+                android:id="@+id/proxy_upload_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/rect_blue"
+                android:text="@string/make_invite_code"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

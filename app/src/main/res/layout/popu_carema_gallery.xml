@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/popu_carema_gallery_ly"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/transparent"
+              android:padding="15dp">
+
+    <TextView
+        android:id="@+id/popu_sugestion_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/gray2"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rect_5"
+        android:layout_marginTop="5dp"
+        android:textSize="20sp"/>
+    <TextView
+        android:id="@+id/popu_sugestion_carema"
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_above="@id/popu_sugestion_cancle"
+        android:text="@string/carema"
+        android:textColor="@color/gray2"
+        android:background="@drawable/rect_bottom"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/popu_sugestion_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/gallery"
+        android:background="@drawable/rect_top"
+        android:layout_above="@id/popu_sugestion_carema"
+        android:textColor="@color/gray2"
+        android:textSize="20sp"/>
+</RelativeLayout>

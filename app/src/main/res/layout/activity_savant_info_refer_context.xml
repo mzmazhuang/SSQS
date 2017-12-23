@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/yellow_orange">
+
+        <ImageView
+            android:id="@+id/savant_refer_context_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:padding="15dp"
+            android:src="@mipmap/er_back_arrow" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/yellow_orange"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp">
+
+
+        <ImageView
+            android:id="@+id/savant_refer_savantphoto"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            android:padding="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/savant_refer_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:textColor="@color/white_a"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_nickleve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:textColor="@color/white_a"
+                        android:textSize="13sp" />
+
+                    <!-- <ImageView
+                         android:id="@+id/savant_refer_invited"
+                         android:layout_width="20dp"
+                         android:layout_height="20dp"
+                         android:layout_gravity="center"
+                         android:layout_marginStart="5dp"
+                         android:src="@mipmap/specially_invite"
+                         android:visibility="gone"/>
+
+                     <ImageView
+                         android:id="@+id/savant_refer_savant"
+                         android:layout_width="20dp"
+                         android:layout_height="20dp"
+                         android:layout_gravity="center"
+                         android:layout_marginStart="5dp"
+                         android:src="@mipmap/logicians"
+                         android:visibility="gone"/>-->
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="5dp">
+
+
+                    <CheckBox
+                        android:id="@+id/savant_refer_follow_cb"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/selecotr_savant_info_gz"
+                        android:button="@null"
+                        android:gravity="center|start" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp">
+
+                <!--   <ImageView
+                       android:id="@+id/savant_refer_doyen"
+                       android:layout_width="20dp"
+                       android:layout_height="15dp"
+                       android:layout_marginEnd="2dp"
+                       android:src="@mipmap/tarento"
+                       />-->
+
+                <TextView
+                    android:id="@+id/savant_refer_score_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:background="@color/red_light"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:textSize="8sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:saveEnabled="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_d"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/savant_refer_main_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/gray2"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_main_ranking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/gray8"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/savant_refer_mid_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/gray8"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_mid_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/gray8"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/savant_refer_second_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="50dp"
+                        android:padding="5dp" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_second"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/gray2"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_second_ranking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:textColor="@color/gray8"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="5dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/savant_refer_type_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableStart="@mipmap/red_card"
+                    android:gravity="center"
+                    android:text="@string/guessball_refer_context"
+                    android:textColor="@color/gray2"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/savant_refer_publish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/gray2"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <!--
+                                <TextView
+                                    android:id="@+id/savant_refer_type"
+                                    style="@style/w0h"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:textColor="@color/gray1"
+                                    android:textSize="13sp"/>
+                -->
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_a" />
+
+                <TextView
+                    android:id="@+id/savant_refer_left_btn"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_a" />
+
+                <TextView
+                    android:id="@+id/savant_refer_mid_btn"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_a" />
+
+                <TextView
+                    android:id="@+id/savant_refer_right_btn"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:text="@string/refer_reason"
+                android:textColor="@color/gray1"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/savant_refer_intro"
+                    style="@style/wh0"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/tie_zi_content"
+                    android:textColor="@color/gray1"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/savant_refer_good"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@mipmap/zan"
+                        android:gravity="center"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/savant_refer_bad"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@mipmap/cai"
+                        android:gravity="center"
+                        android:textColor="@color/gray2"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/big_zan"
+                        android:textColor="@color/orange"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/hehe"
+                        android:textColor="@color/gray2"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/savant_refer_info_bottom"
+                android:textColor="@color/gray6"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

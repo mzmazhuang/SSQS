@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <tabindicator.TabIndicator
+            android:id="@+id/sns_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            app:theme="@style/AppTheme"
+            app:tiLineColor="@color/home_top"
+            app:tiLineStyle="wrap"
+            app:tiTabMode="line"
+            app:tiTabPaddingLeft="20dp"
+            app:tiTabPaddingRight="20dp"
+            app:tiUnderLineColor="@color/white_a"></tabindicator.TabIndicator>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/sns_viewpage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <include layout="@layout/load_data" />
+</RelativeLayout>

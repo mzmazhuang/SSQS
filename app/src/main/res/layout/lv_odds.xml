@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/gray_back"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_d"/>
+
+    <LinearLayout
+        android:id="@+id/pl_rg_ly"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingEnd="33dp"
+        android:paddingStart="33dp"
+        android:paddingTop="5dp">
+
+        <RadioGroup
+            android:id="@+id/pl_rg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/pl_btn_op"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_pl_bg"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/pl_btn_yp"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_pl_bg2"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/pl_btn_dx"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_pl_bg3"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/pl_btn_kl"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_pl_bg4"
+                android:button="@null"/>
+
+            <RadioButton
+                android:id="@+id/pl_btn_qx"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_pl_bg5"
+                android:button="@null"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/pl_gray_bg_second"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#ddd"/>
+
+    <LinearLayout
+        style="@style/wh0"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <!--    <RelativeLayout
+                android:id="@+id/pl_data_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingBottom="20dp">
+
+
+                    <LinearLayout
+                        android:id="@+id/pl_ly_qx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:text="@string/pl_qx_bet_prefer"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_margin="10dp"
+                                android:text="@string/pl_qx_bet_sucess_num"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"/>
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@color/blue_black_light"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/options"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/odds"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:text="@string/volum"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:text="@string/profert_lost"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/scale"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                        </LinearLayout>
+
+                        <ListView
+                            android:id="@+id/pl_qx_listview1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp">
+                        </ListView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/pl_qx_bet_ratio"
+                            android:textColor="@color/black"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@color/blue_black_light"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/options"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:text="@string/pl_main_company_bet"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:text="@string/pl_guessball_bet"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                style="@style/w0h"
+                                android:layout_weight="2"
+                                android:gravity="center"
+                                android:text="@string/profert_lost"
+                                android:textColor="@color/white"
+                                android:textSize="13sp"/>
+
+                        </LinearLayout>
+
+                        <ListView
+                            android:id="@+id/pl_qx_listview2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp">
+                        </ListView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/gray_d"
+                            android:gravity="center"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="90dp"
+                            android:paddingRight="90dp"
+                            android:paddingTop="10dp"
+                            android:text="@string/bottom_second"
+                            android:textColor="@color/gray8"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+
+
+        </RelativeLayout>-->
+        <LinearLayout
+            android:id="@+id/pl_data_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/pl_listview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            </ListView>
+
+            <TextView
+                android:id="@+id/pl_cb_group_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/gray_d"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="90dp"
+                android:paddingRight="90dp"
+                android:paddingTop="10dp"
+                android:text="@string/bottom_second"
+                android:textColor="@color/gray8"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <include layout="@layout/templete_no_data"/>
+
+    </LinearLayout>
+</LinearLayout>

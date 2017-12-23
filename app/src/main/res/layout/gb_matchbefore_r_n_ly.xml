@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/match_ly"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:padding="5dp">
+
+    <TextView
+        android:id="@+id/match_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:text="@string/hh_mm"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/gray2"
+        android:textSize="12sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/match_main"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/match_second"
+            android:textColor="@color/gray4"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="@string/vs"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            />
+
+        <TextView
+            android:id="@+id/match_second"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/match_second"
+            android:textColor="@color/gray4"
+            android:textSize="14sp"
+            />
+
+        <ImageView
+            android:id="@+id/go_match_info"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|end"
+            android:paddingLeft="5dp"
+            android:paddingRight="10dp"
+            android:src="@mipmap/you"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/guess_people"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|end"
+        android:maxWidth="60dp"
+        android:paddingLeft="5dp"
+        android:singleLine="true"
+        android:text="@string/guess_people"
+        android:textColor="@color/gray8"
+        android:textSize="12sp"
+        android:visibility="gone"
+        />
+
+</LinearLayout>
+

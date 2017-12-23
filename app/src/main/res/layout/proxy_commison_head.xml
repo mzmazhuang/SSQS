@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="130dp"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/proxy_comision_head_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/today"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/item_proxy_comm_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:src="@mipmap/money"/>
+
+            <TextView
+                android:id="@+id/proxy_comision_head_commisson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/item_proxy_comm_icon"
+                android:gravity="center"
+                android:text="@string/commission"
+                android:textColor="@color/gray2"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/proxy_comision_head_comm_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/proxy_comision_head_commisson"
+                android:layout_below="@id/proxy_comision_head_commisson"
+                android:layout_toEndOf="@id/item_proxy_comm_icon"
+                android:gravity="center"
+                android:text="@string/num34112"
+                android:textColor="@color/gray2"
+                android:textSize="13sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/item_proxy_betting_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:src="@mipmap/glod"/>
+
+            <TextView
+                android:id="@+id/proxy_comision_head_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/item_proxy_betting_icon"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/item_proxy_betting_icon"
+                android:gravity="center"
+                android:text="@string/betting_num_txt"
+                android:textColor="@color/gray2"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/proxy_comision_head_fee_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/proxy_comision_head_fee"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/item_proxy_betting_icon"
+                android:gravity="center"
+                android:text="@string/num34112"
+                android:textColor="@color/gray2"
+                android:textSize="13sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

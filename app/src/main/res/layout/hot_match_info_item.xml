@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/match_info_item_title_ly"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/series_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/match_info_item_icon"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@mipmap/er_cai"/>
+
+        <TextView
+            android:id="@+id/match_info_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="@string/all_match_result"
+            android:textColor="@color/gray2"/>
+
+        <TextView
+            android:id="@+id/match_info_item_subscribe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:text="@string/guess_ninty_result"
+            android:textColor="@color/gray_a"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/series_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/series_bg"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/item_son_left"
+            style="@style/w0h"
+            android:layout_marginEnd="0.5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/item_son_left_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/serise_smallbig_high"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/item_son_left_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/serise_smallbig_high"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/item_son_left_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:maxWidth="40dp"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:singleLine="true"
+                android:text="@string/odds_num"
+                android:textColor="#FF3B06"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_son_mid"
+            style="@style/w0h"
+            android:layout_marginEnd="0.5dp"
+            android:layout_marginStart="0.5dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/item_son_mid_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/serise_smallbig_high"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/item_son_mid_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:singleLine="true"
+                android:text="@string/odds_num"
+                android:textColor="#FF3B06"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_son_right"
+            style="@style/w0h"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="0.5dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/item_son_right_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:gravity="center"
+                android:maxWidth="60dp"
+                android:singleLine="true"
+                android:text="@string/serise_smallbig_high"
+                android:textColor="@color/black"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/item_son_right_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/serise_smallbig_high"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/item_son_right_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:maxWidth="60dp"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
+                android:singleLine="true"
+                android:text="@string/odds_num"
+                android:textColor="#FF3B06"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/series_bg"
+        />
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.dading.ssqs.view.NoScrollViewPager
+        android:id="@+id/noscroeViewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></com.dading.ssqs.view.NoScrollViewPager>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_d5" />
+
+    <RadioGroup
+        android:id="@+id/fragment_bottom_rg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/transparent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/main_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white_f9"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_home"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingTop="6dp"
+            android:text="@string/home_page"
+            android:textColor="@color/home_top_blue"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_score"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingTop="6dp"
+            android:text="@string/score"
+            android:textColor="@color/gray28"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_guessball"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_guessball"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingTop="6dp"
+            android:text="@string/guess_ball"
+            android:textColor="@color/gray28"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_referr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_referr"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingTop="6dp"
+            android:text="@string/perferential"
+            android:textColor="@color/gray28"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/main_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_my"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingTop="6dp"
+            android:text="@string/my"
+            android:textColor="@color/gray28"
+            android:textSize="10sp" />
+    </RadioGroup>
+</LinearLayout>

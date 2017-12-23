@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="@color/home_top_blue">
+
+        <ImageView
+            android:id="@+id/personal_top_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:padding="@dimen/home_top_iv_padding"
+            android:src="@mipmap/er_back_arrow" />
+
+        <RadioGroup
+            android:id="@+id/personal_report_radio_group"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@mipmap/recommend_circle"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/personal_report"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_referr_radiobutton"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/personal_report"
+                android:textColor="@drawable/selecotr_color_rb"
+                android:textSize="@dimen/sp15" />
+
+            <RadioButton
+                android:id="@+id/team_report"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@drawable/selector_referr_radiobutton"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/team_report"
+                android:textColor="@drawable/selecotr_color_rb"
+                android:textSize="@dimen/sp15" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <include layout="@layout/templete_calendar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- <include layout="@layout/templete_recycle"/>-->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/personal_report_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+        <include layout="@layout/templete_no_data" />
+
+        <include layout="@layout/load_data" />
+    </RelativeLayout>
+</LinearLayout>

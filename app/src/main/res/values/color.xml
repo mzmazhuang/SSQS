@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- list类型的文本颜色 -->
+    <color name="rfab__color_text_label_item">#777777</color>
+    <!-- 背景颜色 -->
+    <color name="rfab__color_background_normal">#ffffff</color>
+    <color name="rfab__color_background_pressed">#dddddd</color>
+
+    <!-- RFAL的frame覆盖层颜色 -->
+    <color name="rfab__color_frame">#ffffff</color>
+
+    <!-- 背景阴影颜色 -->
+    <color name="rfab__color_shadow">#c6c6c6</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="pink_home">#FA6A54</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent3">#11000000</color>
+    <color name="white">#fff</color>
+    <color name="blue_btn">#35B5FE</color>
+    <color name="blue_top">#3389D2</color>
+    <color name="white_f9">#f9f9f9</color>
+    <color name="zhongjiang_bg">#f6f6f6</color>
+    <color name="white_c">#fcfcfc</color>
+    <color name="white_ch">#99fcfcfc</color>
+    <color name="white_a">#fafafa</color>
+    <color name="white_ea">#eaeaea</color>
+    <color name="white_e8">#e8e8e8</color>
+    <color name="white_e7">#E7E7E7</color>
+    <color name="black">#000</color>
+    <color name="PURSE">#B848FF</color>
+    <color name="red_l1">#F87FAA</color>
+    <color name="gray">#bbb</color>
+    <color name="f9">#f9f9f9</color>
+    <color name="f6">#f6f6f6</color>
+    <color name="home_top1">#32b968</color>
+    <color name="home_top">#009bdb</color>
+    <color name="home_top_blue">#009bdb</color>
+    <color name="pink_a">#F97F6A</color>
+    <color name="BLUE_GRAY1">#E0E4E3</color>
+    <color name="gray_c">#ccc</color>
+    <color name="gray_e3">#E3E3E3</color>
+    <color name="gray8">#888</color>
+    <color name="gray9">#999</color>
+    <color name="gray6">#666</color>
+    <color name="gray5">#535353</color>
+    <color name="grayda">#DADFE2</color>
+    <color name="gray5f">#5f5f5f</color>
+    <color name="gray3">#333</color>
+    <color name="redf2b">#ff2b00</color>
+    <color name="g3">#32b968</color>
+    <color name="gray35">#353535</color>
+    <color name="gray4">#444</color>
+    <color name="gray2">#222</color>
+    <color name="gray28">#282828</color>
+    <color name="gray1">#111</color>
+    <color name="black1">#111</color>
+    <color name="black2">#100</color>
+    <color name="gray_d">#ddd</color>
+    <color name="gray_d5">#d5d5d5</color>
+    <color name="light_blue">#DADFE2</color>
+    <color name="pink">#F3F3F3</color>
+    <color name="gray_setting_bg">#EAEDEF</color>
+    <color name="series_bg">#cfff</color>
+    <color name="gray_suggestion_bg">#EBEEEF</color>
+    <color name="gray_e">#eee</color>
+    <color name="gray_ef">#eefffffe</color>
+    <color name="gray_e_circle">#EBEEF0</color>
+    <color name="gray_a">#aaa</color>
+    <color name="gray_b">#bbb</color>
+    <color name="red">#F00</color>
+    <color name="red_dark">#ED1C27</color>
+    <color name="red_light">#f7471d</color>
+    <color name="green">#0f0</color>
+    <color name="green_a">#8080</color>
+    <color name="green_tv">#A7D698</color>
+    <color name="green_d1">#118800</color>
+    <color name="green_d2">#47CB6B</color>
+    <color name="green_dark">#87B952</color>
+    <color name="green_light">#ADE5BC</color>
+    <color name="blue">#00f</color>
+    <color name="blue_light2">#2378E1</color>
+    <color name="blue_light3">#35b5fe</color>
+    <color name="blue_lighte">#EBEFF0</color>
+    <color name="blue_light">#EBEFF0</color>
+    <color name="blue_light4">#EFEFEF</color>
+
+    <color name="blue_Light">#015BBB</color>
+    <color name="blue_Light1">#EBEEF0</color>
+    <color name="blue_Light2">#F5F5F5</color>
+    <color name="blue_t1">#2479E2</color>
+    <color name="blue_right">#43ACFE</color>
+    <color name="yellow_left">#FDCC49</color>
+    <color name="blue_t">#3781FC</color>
+    <color name="blue_tv">#8AB2DE</color>
+    <color name="blue_green">#96E1FE</color>
+    <color name="yellow">#FCD116</color>
+    <color name="orange">#FF5500</color>
+    <color name="orange_tv">#FF9761</color>
+    <color name="orange_tv_mid">#FBAD5F</color>
+    <color name="orange2">#FF5b06</color>
+    <color name="orange1">#FF5A0F</color>
+    <color name="orange_light">#F6B1AC</color>
+    <color name="blue_black_light">#CDD7E2</color>
+    <color name="blue_black_light2">#CBD8E2</color>
+    <color name="yellow_light">#FEE48E</color>
+    <color name="yellow_light1">#FECC6B</color>
+    <color name="yellow_light2">#FFF8E4</color>
+    <color name="yellow_orange">#E47317</color>
+    <color name="yellow_orange2">#fc823c</color>
+    <color name="yellow_orange_alpha">#66E47317</color>
+    <color name="blue_black">#071C2A</color>
+    <color name="blue_black_alpha">#55071C2A</color>
+    <color name="black_alpha">#55000000</color>
+    <color name="black_alpha_8">#88888888</color>
+    <color name="blue_black_2">#152F41</color>
+    <color name="blue_black_3">#214055</color>
+    <color name="blue_black_4">#4A6F8A</color>
+
+    <!--TabIndicator-->
+    <color name="tab_bg_pressed">#8833B5E5</color>
+    <color name="tab_bg_focesed">#32b968</color>
+    <color name="tab_bg_focesed1">#7733B5E5</color>
+    <color name="tab_bg_selected">#32b968</color>
+    <color name="tab_bg_selected1">#6633B5E5</color>
+
+
+    <color name="tab_title_selected">#009bdb</color>
+
+    <color name="tab_title_selected1">#ccff3000</color>
+    <color name="tab_title_normal">#222222</color>
+
+</resources>

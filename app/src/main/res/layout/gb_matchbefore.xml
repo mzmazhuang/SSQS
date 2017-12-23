@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/guessball_matchbefore_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white_ea"
+            android:orientation="vertical"
+            app:layout_heightPercent="99%"
+            app:layout_widthPercent="100%">
+
+            <include layout="@layout/gb_matchbefore_headview" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/guessball_matchbefore_left"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:childDivider="@color/gray_e"
+                    android:dividerHeight="0.5dp"
+                    android:focusable="true"
+                    android:groupIndicator="@null"
+                    android:scrollbars="none" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_d" />
+
+                <ListView
+                    android:id="@+id/guessball_matchbefore_right"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/white_a"
+                    android:childDivider="@color/gray_e"
+                    android:dividerHeight="0.5dp"
+                    android:groupIndicator="@null"
+                    android:scrollbars="none"
+                    app:layout_heightPercent="99%"
+                    app:layout_widthPercent="100%" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <include
+        layout="@layout/load_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/templete_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</android.support.percent.PercentRelativeLayout>

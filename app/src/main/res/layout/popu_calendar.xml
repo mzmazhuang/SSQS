@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/pop_calendar_pop_ly"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                >
+
+    <RadioGroup
+        android:id="@+id/pop_calendar_rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb1"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb2"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb3"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb4"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb5"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb6"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb7"
+            android:layout_width="150dp"
+            android:layout_height="36dp"
+            android:background="@drawable/selecotr_calendar"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="@string/about_five_num"
+            android:textColor="@drawable/selecotr_calendar_text_color"
+            android:textSize="12sp"
+            />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/pop_calendar_rg_checkmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_toEndOf="@+id/pop_calendar_rg"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb1_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:checked="true"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb2_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb3_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb4_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb5_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb6_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+        <RadioButton
+            android:id="@+id/pop_calendar_rb7_cm"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/selecotr_calendar_cm"
+            android:button="@null"
+            android:padding="8dp"
+            android:singleLine="true"
+            />
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/pop_calendar_close"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@mipmap/a_dot"
+        android:layout_marginBottom="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

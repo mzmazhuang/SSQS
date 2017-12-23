@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/score_week_ly"
+        style="@style/wh0"
+        android:layout_weight="1"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            app:layout_heightPercent="100%"
+            app:layout_widthPercent="40%">
+
+            <ImageButton
+                android:id="@+id/score_week_left"
+                style="@style/w0hm"
+                android:layout_weight="1"
+                android:src="@mipmap/arrows"/>
+
+            <TextView
+                android:id="@+id/score_week_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/week_xiangxi"
+                android:singleLine="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"/>
+
+            <ImageButton
+                android:id="@+id/score_week_right"
+                style="@style/w0hm"
+                android:layout_weight="1"
+                android:src="@mipmap/arrows_checked"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/score_week_calendar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/schedule"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_e"/>
+    </android.support.percent.PercentRelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/score_vp_content"
+        style="@style/wh0"
+        android:layout_weight="12">
+    </FrameLayout>
+
+</LinearLayout>

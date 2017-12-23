@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/proxy_comision_time_ly"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center_vertical"
+    android:visibility="visible"
+    tools:showIn="@layout/activity_proxy_commission">
+
+    <TextView
+        android:id="@+id/proxy_comision_time_start_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="4"
+        android:background="@mipmap/date_background"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/time_year"
+        android:textSize="13sp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:text="@string/recevie"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/proxy_comision_time_end_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="4"
+        android:background="@mipmap/date_background"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/time_year"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/proxy_comision_time_pop"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/rect_5_gray"
+        android:drawableEnd="@mipmap/daili_zuotian"
+        android:gravity="center"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="@string/today"
+        android:textColor="@color/gray6"
+        android:textSize="14sp"/>
+</LinearLayout>
+
+    

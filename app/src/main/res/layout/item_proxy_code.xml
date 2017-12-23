@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:padding="3dp"
+              android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/item_proxy_code_code"
+        style="@style/w0h"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="@string/invite_code"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/item_proxy_code_type"
+        style="@style/w0h"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/type_normal"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/item_proxy_code_commison"
+        style="@style/w0h"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="@string/commission"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/item_proxy_code_state"
+        style="@style/w0h"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/state"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"/>
+
+    <LinearLayout
+        style="@style/w0h"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/item_proxy_code_change"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/rect_blue"
+            android:text="@string/change"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:id="@+id/item_proxy_code_del"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/rect_red_five"
+            android:textSize="13sp"
+            android:text="@string/delete"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+</LinearLayout>

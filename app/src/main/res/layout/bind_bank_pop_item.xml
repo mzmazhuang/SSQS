@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/bind_bank_card_pop_ly"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="35dp"
+              android:orientation="horizontal"
+              android:paddingStart="19dp">
+
+    <ImageView
+        android:layout_width="12dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:src="@color/red"/>
+
+    <TextView
+        android:id="@+id/bind_bank_pop_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textSize="15sp"/>
+</LinearLayout>

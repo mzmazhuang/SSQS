@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+       xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+        android:id="@+id/green_hand_bottom"
+       tools:showIn="@layout/gb_ranking_list">
+
+    <TextView
+        android:id="@+id/green_hand_bottom1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="5dp"
+        android:gravity="center_vertical"
+        android:text="@string/ranking_green_people_bottom"
+        android:textColor="@color/gray6"
+        android:background="@color/white"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/green_hand_bottom2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/ranking_bottom2"
+        android:textColor="@color/gray6"
+        android:textSize="13sp"
+        android:visibility="gone"/>
+</LinearLayout>

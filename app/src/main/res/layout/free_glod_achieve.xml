@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="65dp"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:paddingEnd="2dp"
+        android:paddingStart="25dp">
+
+        <ImageView
+            android:id="@+id/free_glod_achieve_item_iv"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="18dp"
+            />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@+id/free_glod_achieve_item_iv">
+
+            <TextView
+                android:id="@+id/free_glod_achieve_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginEnd="9dp"
+                android:textColor="@color/redf2b"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/free_glod_achieve_item_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray2"
+                android:textSize="8sp"
+                android:singleLine="true"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/free_glod_achieve_item_state"
+            android:layout_width="67dp"
+            android:layout_height="31dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+</LinearLayout>

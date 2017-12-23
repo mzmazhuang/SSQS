@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/blue_black"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:saveEnabled="false"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/sm_picture_3"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/vip_privilege"
+                android:layout_width="82dp"
+                android:layout_height="21dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/sm_vip_privilege"/>
+
+            <LinearLayout
+                android:id="@+id/sm_vip_vip1_ly"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="17dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/vip_st_end"
+                android:paddingStart="@dimen/vip_st_end"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/vip_price_mar_end"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/sm_vip_vip1"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:src="@mipmap/sm_vip_1"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip1"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/vip_price_mar_top"
+                        android:background="@mipmap/sm_price_margin"
+                        android:gravity="center"
+                        android:text="@string/diamonds_100"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/vip_name1"
+                        android:layout_marginBottom="@dimen/vip_how_mar_bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/one_mouth_vip"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip_leve1_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:text="@string/vip1_text"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue_black_4"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!--2222222222222222-->
+            <LinearLayout
+                android:id="@+id/sm_vip_vip2_ly"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/vip_st_end"
+                android:paddingStart="@dimen/vip_st_end"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/vip_price_mar_end"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/sm_vip_vip2"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:src="@mipmap/sm_vip_2"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip2"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/vip_price_mar_top"
+                        android:background="@mipmap/sm_price_margin"
+                        android:gravity="center"
+                        android:text="@string/diamonds_300"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/vip_name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/one_mouth_vip2"
+                        android:textColor="@color/orange"
+                        android:layout_marginBottom="@dimen/vip_how_mar_bottom"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:id="@+id/store_buy_vip_leve2_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:textStyle="bold"
+                        android:text="@string/vip1_text"
+                        android:textColor="@color/blue_black_4"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--3333333333333-->
+            <LinearLayout
+                android:id="@+id/sm_vip_vip3_ly"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/vip_st_end"
+                android:paddingStart="@dimen/vip_st_end"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/vip_price_mar_end"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/sm_vip_vip3"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:src="@mipmap/sm_vip_3"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip3"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/vip_price_mar_top"
+                        android:background="@mipmap/sm_price_margin"
+                        android:gravity="center"
+                        android:text="@string/diamonds_500"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/vip_price_mar_end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/vip_name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/one_mouth_vip3"
+                        android:layout_marginBottom="@dimen/vip_how_mar_bottom"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip_leve3_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textStyle="bold"
+                        android:text="@string/vip1_text"
+                        android:textColor="@color/blue_black_4"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sm_vip_vip4_ly"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/vip_st_end"
+                android:paddingStart="@dimen/vip_st_end"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginEnd="@dimen/vip_price_mar_end"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/sm_vip_vip4"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:src="@mipmap/sm_vip_v"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip4"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="@dimen/vip_price_mar_top"
+                        android:background="@mipmap/sm_price_margin"
+                        android:gravity="center"
+                        android:text="@string/diamonds_5000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/vip_name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/one_mouth_vip_ace"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/vip_how_mar_bottom"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/store_buy_vip_leve4_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:text="@string/vip1_text"
+                        android:textColor="@color/blue_black_4"
+                        android:textStyle="bold"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+            <include
+                layout="@layout/store_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">-->
+
+<LinearLayout
+    android:id="@+id/item_betting_body_ly"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/item_betting_body_close"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:paddingBottom="5dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:src="@mipmap/g_turn_off1"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/item_betting_body_close"
+            android:gravity="center"
+            android:paddingBottom="0dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="0dp"
+            android:paddingTop="5dp"
+            >
+
+            <TextView
+                android:id="@+id/betting_body_item_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:text="type"
+                android:textColor="@color/gray_a"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:id="@+id/betting_body_item_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/betting_body_item_type"
+                android:gravity="center"
+                android:textColor="@color/gray2"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/betting_body_item_team"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/betting_body_item_type"
+                android:text="队伍"
+                android:textColor="@color/gray_a"
+                android:textSize="12sp"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_betting_body_pl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/orange"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <CheckBox
+            android:id="@+id/betting_body_item_input_gold"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_gold_bg"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:text="@string/input_gold"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/gray8"
+            android:textSize="10sp"/>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/betting_body_item_input_gold"
+            android:layout_marginEnd="15dp"
+            android:gravity="center_vertical|end">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|end"
+                android:singleLine="true"
+                android:text="@string/expected_return"
+                android:textColor="@color/gray_a"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/betting_body_item_expected_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxWidth="110dp"
+                android:singleLine="true"
+                android:text="0"
+                android:textColor="@color/orange"
+                android:textSize="13sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include
+        layout="@layout/keybord"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"/>
+    <!--
+            <LinearLayout
+                android:id="@+id/keybord_ly"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@mipmap/g_underframe"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <Button
+                        android:id="@+id/keybord_1"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/one"/>
+
+                    <Button
+                        android:id="@+id/keybord_2"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/two"/>
+
+                    <Button
+                        android:id="@+id/keybord_3"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/three"/>
+
+                    <Button
+                        android:id="@+id/keybord_4"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/four"/>
+
+                    <Button
+                        android:id="@+id/keybord_5"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/five"/>
+
+                    <Button
+                        android:id="@+id/keybord_6"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/six"/>
+
+                    <Button
+                        android:id="@+id/keybord_7"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/seven"/>
+
+                    <Button
+                        android:id="@+id/keybord_8"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/eight"/>
+
+                    <Button
+                        android:id="@+id/keybord_9"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/nine"/>
+
+                    <Button
+                        android:id="@+id/keybord_0"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/zero"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/keybord_thousand"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/thousand"/>
+
+                    <Button
+                        android:id="@+id/keybord_ten_thousand"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/ten_thousand"/>
+
+                    <Button
+                        android:id="@+id/keybord_hundred_thousand"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/hundrod_thousand"/>
+
+                    <Button
+                        android:id="@+id/keybord_million"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/million"/>
+
+                    <Button
+                        android:id="@+id/keybord_clear"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/rect_gray_press"
+                        android:text="@string/clear"/>
+
+                    <Button
+                        android:id="@+id/keybord_confirm"
+                        style="@style/w0h"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/rect_orange"
+                        android:text="@string/confirm"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+    -->
+</LinearLayout>
+    <!--
+    </RelativeLayout>-->

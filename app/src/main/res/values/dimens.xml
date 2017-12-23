@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="sp15">15sp</dimen>
+    <dimen name="dp15">15dp</dimen>
+    <dimen name="dp0">0dp</dimen>
+    <dimen name="dp48">48dp</dimen>
+    <dimen name="dp0.5">0.5dp</dimen>
+    <dimen name="dp45">45dp</dimen>
+    <dimen name="home_top_iv_padding">15dp</dimen>
+    <dimen name="dp_glod_store">40dp</dimen>
+    <dimen name="mar_top_tv">5dp</dimen>
+    <dimen name="iv_wh">45dp</dimen>
+    <dimen name="prop_iv_top_mar">15dp</dimen>
+    <dimen name="vip_st_end">53dp</dimen>
+    <dimen name="vip_price_mar_top">5dp</dimen>
+    <dimen name="vip_price_mar_end">23dp</dimen>
+    <dimen name="vip_how_mar_bottom">6dp</dimen>
+    <dimen name="space">10dp</dimen>
+    <!--pull to refresh-->
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+
+    <!--SwipeToLoadLayout-->
+    <dimen name="refresh_header_height_twitter">90dp</dimen>
+    <dimen name="load_more_footer_height_twitter">40dp</dimen>
+    <!--end-->
+</resources>

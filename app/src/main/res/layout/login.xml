@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_a"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/top_toolbar" />    <!--手机号密码-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/shape_voil"
+                        android:orientation="horizontal">
+
+                        <ImageView
+
+                            android:id="@+id/et_loading_number_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@mipmap/reg_phone_select" />
+
+                        <EditText
+                            android:id="@+id/et_loading_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="@string/hint_phone_number"
+                            android:maxLines="1"
+                            android:textColor="@color/gray2"
+                            android:textColorHint="@color/gray8"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_loading_number_close"
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:src="@mipmap/bet_close"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/shape_voil"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/et_loading_pwd_icon"
+                            android:layout_width="15dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@mipmap/r_reg_lock" />
+
+                        <EditText
+                            android:id="@+id/et_loading_pwd"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@id/et_loading_pwd_icon"
+                            android:background="@null"
+                            android:hint="@string/hint_write_pwd"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/gray2"
+                            android:textColorHint="@color/gray8"
+                            android:textSize="15sp" />
+
+                        <CheckBox
+                            android:id="@+id/et_loading_pwd_look"
+                            android:layout_width="21dp"
+                            android:layout_height="12dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/selecotr_reg_eyes"
+                            android:button="@null"
+                            android:checked="false" />
+
+                        <ImageButton
+                            android:id="@+id/et_loading_pwd_close"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="5dp"
+                            android:layout_toStartOf="@id/et_loading_pwd_look"
+                            android:background="@color/transparent"
+                            android:padding="5dp"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/close"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/loading_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@mipmap/register"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/loading_button_try_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@mipmap/register_sel"
+                android:gravity="center"
+                android:text="@string/try_play"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                style="@style/wh0"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/loading_tv_new_user_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="91dp"
+                    android:layout_marginStart="15dp"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/new_user_regist"
+                    android:textColor="@color/orange"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/loading_tv_new_user_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/loading_tv_new_user_phone"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/new_user_regist_number"
+                    android:textColor="@color/orange"
+                    android:textSize="13sp" />
+
+
+                <TextView
+                    android:id="@+id/loading_tv_forgot_pwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:clickable="true"
+                    android:gravity="end|center_vertical"
+                    android:text="@string/forgot_pwd"
+                    android:textColor="@color/orange"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                style="@style/wh0"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp0.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#888"
+                    android:gravity="center" />
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/other_load_method"
+                    android:textSize="13sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp0.5"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#888"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/loading_iv_wx_loading"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="30dp"
+                    android:background="@color/transparent"
+                    android:src="@mipmap/login_weixin" />
+
+                <ImageButton
+                    android:id="@+id/loading_iv_qq_loading"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="30dp"
+                    android:background="@color/transparent"
+                    android:src="@mipmap/login_qq" />
+
+                <ImageButton
+                    android:id="@+id/loading_iv_xl_loading"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="30dp"
+                    android:background="@color/transparent"
+                    android:src="@mipmap/login_weibo" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                style="@style/wh0"
+                android:layout_weight="3"></LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        layout="@layout/load_data"
+        android:visibility="gone" />
+</RelativeLayout>

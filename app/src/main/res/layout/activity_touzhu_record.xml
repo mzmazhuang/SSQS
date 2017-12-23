@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:background="@color/home_top_blue">
+
+        <ImageView
+            android:id="@+id/betting_record_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:padding="@dimen/home_top_iv_padding"
+            android:src="@mipmap/er_back_arrow" />
+
+        <RadioGroup
+            android:id="@+id/betting_record_fb_gp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/betting_record_football"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:padding="10dp"
+                android:text="@string/football"
+                android:textColor="@drawable/selecotr_color_w_g"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/betting_record_basketball"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:padding="10dp"
+                android:text="@string/basketball"
+                android:textColor="@drawable/selecotr_color_w_g"
+                android:textSize="18sp" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/betting_record_gp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/betting_record_near"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_betting"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/near_betting"
+            android:textColor="@drawable/selecotr_betting_check_color" />
+
+        <RadioButton
+            android:id="@+id/betting_record_no_finish"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_betting"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/no_finish_betting"
+            android:textColor="@drawable/selecotr_betting_check_color" />
+
+        <RadioButton
+            android:id="@+id/betting_record_history"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_betting"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/history_record"
+            android:textColor="@drawable/selecotr_betting_check_color" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_d" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:maxHeight="40dp">
+
+        <LinearLayout
+            android:id="@+id/betting_record_near_title_ly"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/betting_record_by_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/by_time"
+                android:textColor="@drawable/selecotr_check_color"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/betting_record_by_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/by_film"
+                android:textColor="@drawable/selecotr_check_color"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <include layout="@layout/time_to_time" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/betting_record_line_top2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_d" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/betting_record_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_d" />
+
+        <ExpandableListView
+            android:id="@+id/betting_record_ex"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_a"
+            android:childDivider="@color/gray_e"
+            android:dividerHeight="0.5dp"
+            android:groupIndicator="@null"
+            android:scrollbars="none" />
+
+        <include
+            android:id="@+id/ex_no_data"
+            layout="@layout/templete_no_data" />
+
+        <pulltorefresh.PullToRefreshListView
+            android:id="@+id/betting_record_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+
+        <include layout="@layout/templete_no_data" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/guessball_chioce_ly"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:background="@color/black_alpha_8"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/guessball_chioce_close"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        >
+
+        <GridView
+            android:id="@+id/guessball_chioce_setting"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/gray_e"
+            android:horizontalSpacing="10dp"
+            android:maxHeight="250dp"
+            android:numColumns="3"
+            android:padding="10dp"
+            android:scrollbars="none"
+            android:verticalSpacing="10dp">
+        </GridView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <RadioGroup
+                android:id="@+id/guessball_chioce_gp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/guessball_chioce_rb2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selecotr_collect3"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/all_no_chioce"
+                    android:textColor="@drawable/selector_color_w_g"
+                    android:textSize="13sp"/>
+
+                <RadioButton
+                    android:id="@+id/guessball_chioce_rb1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selecotr_collect3"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/all_chocie"
+                    android:textColor="@drawable/selector_color_w_g"
+                    android:textSize="13sp"/>
+
+            </RadioGroup>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray_d"/>
+
+            <TextView
+                android:id="@+id/guessball_chioce_confirm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/confirm"
+                android:textColor="@color/orange"
+                android:textSize="13sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

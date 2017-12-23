@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+<include layout="@layout/top_toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="11dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="11dp"
+            android:text="@string/old_pwd"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+
+        <EditText
+            android:id="@+id/forget_businsess_old_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:layout_marginTop="11dp"
+            android:hint="@string/input_old_business_pwd"
+            android:textColor="@color/gray5"
+            android:textSize="13sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginBottom="11dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="11dp"
+            android:text="@string/business_pwd_setting"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+
+        <EditText
+            android:id="@+id/forget_businsess_pwd_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:layout_marginTop="11dp"
+            android:hint="@string/input_new_business_pwd"
+            android:textColor="@color/gray5"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="11dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="11dp"
+            android:gravity="center"
+            android:text="@string/business_pwd_confirm"
+            android:textColor="@color/gray6"
+            android:textSize="13sp"/>
+
+        <EditText
+            android:id="@+id/forget_businsess_pwd_setting_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="numberPassword"
+            android:maxLength="6"
+            android:layout_marginTop="11dp"
+            android:textColor="@color/gray5"
+            android:hint="@string/confirm_business_pwd"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:text="@string/phone_num"
+            android:textColor="@color/gray6"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/forget_businsess_pwd_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="number"
+            android:padding="3dp"
+            android:textColor="@color/gray5"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:text="@string/state_code"
+            android:textColor="@color/gray6"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/forget_businsess_pwd_state_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="3dp"
+            android:inputType="number"
+            android:textColor="@color/gray5"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/forget_businsess_pwd_get_code"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/rect_orange2"
+            android:text="@string/get_phone_code"
+            android:textColor="@color/white_c"
+            android:textSize="13sp"/>
+    </LinearLayout>-->
+
+    <Button
+        android:id="@+id/forget_businsess_pwd_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@mipmap/g_submit1"
+        android:text="@string/finsh_task"
+        android:textColor="@color/white_c"/>
+</LinearLayout>

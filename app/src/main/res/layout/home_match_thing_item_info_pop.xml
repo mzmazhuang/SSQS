@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/tiezi_share_ly"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/s_share"/>
+
+            <TextView
+                android:id="@+id/tiezi_share"
+                style="@style/wh0"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/share"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tiezi_collect_ly"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/s_collection"/>
+
+            <TextView
+                android:id="@+id/tiezi_collect"
+                style="@style/wh0"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/share"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tiezi_tip_ly"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/s_report"/>
+
+            <TextView
+                android:id="@+id/tiezi_tip"
+                style="@style/wh0"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/copy_url"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

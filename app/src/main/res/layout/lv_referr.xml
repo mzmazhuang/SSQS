@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include
+        layout="@layout/templete_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <pulltorefresh.PullToRefreshListView
+        android:id="@+id/tj_data_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"></pulltorefresh.PullToRefreshListView>
+</RelativeLayout>
+

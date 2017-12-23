@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/wx_df_item_ly"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="110dp"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="10dp"
+              android:paddingTop="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/wx_df_item_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
+        android:src="@mipmap/sm_buywechat"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_weight="1"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/wx_df_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:text="@string/wx"
+            android:textColor="@color/gray2"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/wx_df_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/business_pwd"
+            android:textColor="@color/gray8"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/wx_df_item_cb"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:background="@drawable/selector_agree_type"
+        android:button="@null"
+        android:clickable="false"
+        android:focusable="false"
+        android:layout_margin="15dp"
+        android:visibility="visible"/>
+</LinearLayout>

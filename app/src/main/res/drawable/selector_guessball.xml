@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 选中时候的效果(弹起时候的效果) xxx.setSelected(true) -->
+    <item android:drawable="@mipmap/caiqiu_highlight" android:state_checked="true"></item>
+    <item android:drawable="@mipmap/caiqiu_highlight" android:state_pressed="true"></item>
+    <item android:drawable="@mipmap/caiqiu"></item>
+
+</selector>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="40dp">
+    <TextView
+        android:id="@+id/templete_recycleview_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:text="@string/about_leve"
+        android:layout_marginStart="15dp"
+        />
+
+    <TextView
+        android:id="@+id/templete_recycleview_item_num"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|end"
+        android:text="@string/add_188"
+        android:textColor="@color/gray6"
+        android:layout_marginEnd="18dp"
+        />
+</LinearLayout>

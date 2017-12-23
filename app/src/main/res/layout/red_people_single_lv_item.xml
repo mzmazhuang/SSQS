@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="100dp"
+              android:background="@color/white"
+              android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/red_people_ar_item_number"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/one"
+        android:textColor="@color/orange"
+        android:textSize="15sp"/>
+
+    <ImageView
+        android:id="@+id/red_people_ar_item_savantpoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        />
+    <LinearLayout
+        android:id="@+id/red_people_ar_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                        <TextView
+                            android:id="@+id/red_people_ar_item_nickname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="@string/savant_name"
+                            android:textColor="@color/orange"
+                            android:textSize="15sp"
+                            />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/gray_c"/>
+
+                        <TextView
+                            android:id="@+id/red_people_ar_item_nickleve"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textColor="@color/gray6"
+                            android:textSize="14sp"
+                            />
+
+                       <!-- <ImageView
+                            android:id="@+id/red_people_ar_invited"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:src="@mipmap/specially_invite"
+                            android:visibility="gone"/>
+
+                        <ImageView
+                            android:id="@+id/red_people_ar_savant"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:src="@mipmap/logicians"
+                            android:visibility="gone"/>-->
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="5dp"
+                        >
+                        
+                        <CheckBox
+                            android:id="@+id/red_people_ar_item_follow"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="5dp"
+                            android:background="@drawable/selecotr_red_people_gz"
+                            android:button="@null"
+                            android:gravity="center|start"
+                            />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center_vertical"
+                        >
+
+                       <!-- <ImageView
+                            android:id="@+id/red_people_ar_item_doyen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="2dp"
+                            android:gravity="center"
+                            android:src="@mipmap/tarento"
+                            />-->
+
+                        <TextView
+                            android:id="@+id/red_people_ar_item_lianhong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:textSize="8sp"
+                            android:paddingStart="2dp"
+                            android:paddingEnd="2dp"
+                            android:layout_marginEnd="2dp"
+                            android:background="@drawable/rect_red_0"
+                            android:gravity="center"
+                            android:text="@string/how_lian_hong"
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seven_win_lv"
+                        android:textColor="@color/gray3"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/red_people_ar_item_seven_win"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hundred_lv"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seven_win_record"
+                        android:textColor="@color/gray3"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/red_people_ar_item_win_how"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray8"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:text="@string/win_get_lv"
+                        android:textColor="@color/gray3"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/red_people_ar_item_win_money_lv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hundred_lv"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>

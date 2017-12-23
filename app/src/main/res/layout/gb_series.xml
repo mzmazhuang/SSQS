@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/templete_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include layout="@layout/load_data" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white_a"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/by_league_gbserise"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_weight="1.42"
+                android:gravity="center_vertical|end">
+
+                <TextView
+                    android:id="@+id/headview_series_sx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|end"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="0dp"
+                    android:text="@string/choice"
+                    android:textColor="@color/gray2"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@mipmap/choose" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:gravity="clip_vertical|end"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/introduce" />
+
+                <TextView
+                    android:id="@+id/headview_series_playhelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="3dp"
+                    android:paddingStart="5dp"
+                    android:singleLine="true"
+                    android:text="@string/play_talk"
+                    android:textColor="@color/gray2"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:gravity="clip_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/headview_series_bettingrecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="20dp"
+                    android:paddingStart="5dp"
+                    android:text="@string/betting_record"
+                    android:textColor="@color/gray2"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/headview_series_bettingrecord"
+                    android:src="@mipmap/record" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_d" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <pulltorefresh.PullToRefreshExpandableListView
+                android:id="@+id/guessball_series_exp_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/white_a"
+                android:childDivider="@color/gray_e"
+                android:divider="@color/gray_e"
+                android:dividerHeight="0.5dp"
+                android:groupIndicator="@null"></pulltorefresh.PullToRefreshExpandableListView>
+            <!--android:background="@drawable/shape_top_circle"-->
+            <LinearLayout
+                android:id="@+id/betting_list_ly_cg"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="-5dp"
+                android:background="@drawable/shape_top_circle"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:text="@string/betting_list"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/betting_num_cg"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@mipmap/g_data_box"
+                    android:gravity="center"
+                    android:text="@string/good_num"
+                    android:textColor="@color/gray2"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@mipmap/shang_" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

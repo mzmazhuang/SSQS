@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/betting_record_history_title_ly"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center_vertical"
+    android:visibility="visible"
+    tools:showIn="@layout/activity_touzhu_record">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="@string/start"
+        android:textColor="@color/gray6"
+        android:textSize="15sp"
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:src="@mipmap/schedule"/>
+
+    <TextView
+        android:id="@+id/betting_record_start_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="5"
+        android:background="@mipmap/date_background"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/time_year"
+        android:textSize="13sp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/recevie"
+        android:textSize="15sp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:src="@mipmap/schedule"/>
+
+    <TextView
+        android:id="@+id/betting_record_end_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="5"
+        android:background="@mipmap/date_background"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/time_year"
+        android:textSize="13sp"/>
+
+    <Button
+        android:id="@+id/betting_record_look_for"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_weight="2"
+        android:background="@drawable/selecotr_touzhu_button"
+        android:gravity="center"
+        android:paddingBottom="2dp"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:paddingTop="2dp"
+        android:singleLine="true"
+        android:text="@string/look_for"
+        android:textColor="@color/white_a"
+        android:textSize="13sp"/>
+</LinearLayout>
+    

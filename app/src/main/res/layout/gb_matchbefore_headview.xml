@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="38dp"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_weight="1"
+        android:background="@color/white_a"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/by_time_laegue"
+            style="@style/w0h"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/by_time_match"
+                android:layout_width="60dp"
+                android:layout_marginStart="15dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/az_time"
+                android:button="@null"
+                android:textColor="@drawable/selector_color_rb_bg"
+                android:textSize="12sp"/>
+
+            <RadioButton
+                android:id="@+id/by_league_match"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/by_league"
+                android:button="@null"
+                android:textColor="@drawable/selector_color_rb_bg"
+                android:textSize="12sp"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/by_league"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            >
+
+            <TextView
+                android:id="@+id/headview_matchbefore_sx"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|end"
+                android:paddingEnd="5dp"
+                android:paddingStart="0dp"
+                android:text="@string/choice"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/choose"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/matchbefore_playhelp"
+            style="@style/w0h"
+            android:layout_weight="1"
+            android:background="@color/white_a"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/introduce"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:text="@string/play_talk"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/blue_black_light2"/>
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:background="@color/home_top_blue"
+        android:gravity="center_horizontal"
+        android:paddingTop="14dp"
+        android:text="@string/perferential_activity"
+        android:textColor="@color/white"
+        android:textSize="18sp"/>
+
+
+    <ListView
+        android:id="@+id/referrr_circle_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/gray_e"
+        android:dividerHeight="0.5dp"
+        android:scrollbars="none"
+        />
+
+    <include
+        android:id="@+id/referrr_no_data"
+        layout="@layout/templete_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

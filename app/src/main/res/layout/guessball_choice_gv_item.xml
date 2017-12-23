@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="100dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/gessball_choice_item_cb"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:button="@null"
+        android:gravity="center"
+        android:background="@drawable/selecotr_collect_choice"
+        android:textColor="@drawable/selector_color_rb_text2"
+        />
+
+</LinearLayout>

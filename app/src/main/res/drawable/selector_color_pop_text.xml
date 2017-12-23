@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 选中时候的效果(弹起时候的效果) xxx.setSelected(true) -->
+    <item android:state_checked="true" android:color="#FF5B06"/>
+    <item android:state_pressed="true" android:color="#FF5B06"/>
+    <item android:color="#000"/>
+
+</selector>

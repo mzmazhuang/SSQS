@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 标题内容 -->
+    <RelativeLayout
+        android:id="@+id/content_title_ly"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/home_top_blue">
+        <!--首页-->
+
+
+        <RelativeLayout
+            android:id="@+id/content_title_home_ly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/content_icon_Store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/chongzhi" />
+
+            <ImageView
+                android:id="@+id/home_LOG"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/h_home_log_2"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/my_sns_colloect"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:padding="5dp"
+                android:src="@mipmap/my_favorite" />
+        </RelativeLayout>
+
+
+        <!--推荐-->
+        <RelativeLayout
+            android:id="@+id/content_title_referr_ly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/content_referr_Store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/chongzhi" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:foregroundGravity="center">
+
+                <RadioGroup
+                    android:id="@+id/content_referr_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/recommend_circle"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/content_referr_referr"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_referr_radiobutton"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/referr" />
+
+                    <RadioButton
+                        android:id="@+id/content_referr_circle"
+                        style="@style/w0h"
+                        android:layout_weight="1"
+                        android:background="@drawable/selector_referr_radiobutton"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="@string/cirecle" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/content_referr_write"
+                android:layout_width="35dp"
+                android:layout_height="28dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="10dp"
+                android:clickable="true"
+                android:src="@mipmap/writing_recommend" />
+
+            <ImageView
+                android:id="@+id/content_referr_help"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignBottom="@+id/content_referr_write"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_toStartOf="@+id/content_referr_write"
+                android:clickable="true"
+                android:src="@mipmap/enquiry" />
+        </RelativeLayout>
+
+
+        <!--猜球-->
+
+        <RelativeLayout
+            android:id="@+id/content_title_guessball_ly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/content_title_guessball_photo_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@mipmap/er_back_arrow"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/content_title_guessball_bet_ly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/content_title_guessball_photo_back"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/content_title_guessball_beticon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:padding="3dp"
+                    android:src="@mipmap/a_bet_coin_1"
+
+                    />
+
+                <TextView
+                    android:id="@+id/content_title_guessball_glod_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="12dp"
+                    android:layout_marginEnd="5dp"
+                    android:singleLine="true"
+                    android:text="@string/number_text"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/content_title_guessball_glod_add"
+                    android:layout_width="12dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@mipmap/a_round_frame"
+                    android:visibility="gone"></ImageView>
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/content_title_guessball_title_rg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/content_title_guessball_title_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:padding="10dp"
+                    android:text="@string/football"
+                    android:textColor="@drawable/selecotr_color_w_g"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/content_title_guessball_title_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:padding="10dp"
+                    android:text="@string/basketball"
+                    android:textColor="@drawable/selecotr_color_w_g"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/content_title_guessball_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/ranking_list"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+            <ImageButton
+                android:id="@+id/content_title_guessball_icon"
+                android:layout_width="25dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:background="@mipmap/a_login"
+                android:gravity="center"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <!--比分-->
+
+        <RelativeLayout
+            android:id="@+id/content_title_score_ly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/content_title_score_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/chongzhi" />
+
+            <RadioGroup
+                android:id="@+id/content_title_score_title_rg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/content_title_score_title_f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:checked="true"
+                    android:padding="10dp"
+                    android:text="@string/football"
+                    android:textColor="@drawable/selecotr_color_w_g"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/content_title_score_title_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:padding="10dp"
+                    android:text="@string/basketball"
+                    android:textColor="@drawable/selecotr_color_w_g"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+            <ImageView
+                android:id="@+id/content_title_score_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:src="@mipmap/set" />
+
+            <ImageView
+                android:id="@+id/content_title_score_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:layout_toStartOf="@id/content_title_score_setting"
+                android:gravity="center"
+                android:src="@mipmap/suaixuan" />
+        </RelativeLayout>
+
+        <!--我的-->
+        <RelativeLayout
+            android:id="@+id/content_title_my_ly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/content_my_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/set"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/my"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:id="@+id/content_my_message"
+                android:layout_width="30dp"
+                android:layout_height="27dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="24dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:src="@mipmap/information" />
+
+                <TextView
+                    android:id="@+id/content_my_message_num"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/progress_circle_white"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:singleLine="true"
+                    android:text="@string/win_lv_num"
+                    android:textColor="@color/red"
+                    android:textSize="6sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <!-- 具体内容 -->
+    <FrameLayout
+        android:id="@+id/content_main_middle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10" />
+</LinearLayout>

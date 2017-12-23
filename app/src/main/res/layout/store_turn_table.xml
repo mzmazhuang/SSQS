@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/blue_black"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:saveEnabled="false"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:background="@color/blue_black_2"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="5dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@mipmap/tongzhi"
+                    android:gravity="center_vertical"
+                    />
+
+                <com.dading.ssqs.view.AutoVerticalScrollTextView
+                    android:id="@+id/store_turntable_prize_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/win_information_content"/>
+
+                <ImageView
+                    android:id="@+id/store_turntable_protocol"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@mipmap/sm_rule"
+                    />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/store_turntable_finish_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/finish_data"
+                android:textColor="@color/orange"
+                android:textSize="15sp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/store_turntable_prize_record"
+                    android:layout_width="65dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/sm_record"/>
+
+                <ImageView
+                    android:id="@+id/store_turntable_shopping_addr"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30dp"
+                    android:src="@mipmap/sm_shipping_address"/>
+            </RelativeLayout>
+
+            <!--
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="320dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@mipmap/sm_aperture"
+                            android:paddingBottom="10dp"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:paddingTop="10dp">
+
+                            <ImageView
+                                android:id="@+id/store_turn_table_lottery"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery"/>
+                            <ImageView
+                                android:id="@+id/store_turn_table_21"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:layout_toStartOf="@id/store_turn_table_lottery"
+                                android:src="@mipmap/sm_lottery_frame"/>
+
+                            <ImageView
+                                android:id="@+id/store_turn_table_12"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_above="@id/store_turn_table_lottery"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery_frame"/>
+
+                            <ImageView
+                                android:id="@+id/store_turn_table_23"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:layout_toEndOf="@id/store_turn_table_lottery"
+                                android:src="@mipmap/sm_lottery_frame"/>
+
+                            <ImageView
+                                android:id="@+id/store_turn_table_32"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_below="@id/store_turn_table_lottery"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery_frame"/>
+
+                            <ImageView
+                                android:id="@+id/store_turn_table_11"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_toStartOf="@id/store_turn_table_12"
+                                android:layout_above="@id/store_turn_table_21"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery_frame"/>
+                            <ImageView
+                                android:id="@+id/store_turn_table_31"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_toStartOf="@id/store_turn_table_32"
+                                android:layout_below="@id/store_turn_table_21"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery_frame"/>
+                            <ImageView
+                                android:id="@+id/store_turn_table_13"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_toEndOf="@id/store_turn_table_12"
+                                android:layout_above="@id/store_turn_table_23"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery_frame"/>
+                            <ImageView
+                                android:id="@+id/store_turn_table_33"
+                                android:layout_width="95dp"
+                                android:layout_height="80dp"
+                                android:layout_toEndOf="@id/store_turn_table_32"
+                                android:layout_below="@id/store_turn_table_23"
+                                android:layout_margin="5dp"
+                                android:src="@mipmap/sm_lottery_frame"/>
+                        </RelativeLayout>
+            -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="340dp"
+                android:layout_marginTop="15dp"
+                android:background="@mipmap/sm_aperture"
+                android:padding="20dp"
+                >
+
+                <GridView
+                    android:id="@+id/gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:numColumns="3">
+                </GridView>
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <include
+                layout="@layout/store_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_d"/>
+
+    <ScrollView
+        android:id="@+id/fx_scroll_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:saveEnabled="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/analysis_headbg"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/fx_frist_title"
+                android:textColor="@color/white_c"
+                android:textSize="15sp"/>
+
+            <!--综合-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_synthesize_main"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/fx_synthesize_middle"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/synthesize"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/fx_synthesize_second"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_synthesize_progress"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+
+            <!--战力-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_power_main_zj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_power_main_jf"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_power_middle"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/power"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_power_second_jf"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_power_second_zj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_power_progress"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+            <!--主客-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_mian_second_main_zj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_mian_second_main_jf"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_mian_second_middle"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/power"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_mian_second_second_jf"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_mian_second_second_zj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_mian_second_progress"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+            <!--攻击-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_attack_main"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_attack_middle"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/attack"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_attack_second"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_attack_progress"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+            <!--防守-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_defend_main"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_defend_middle"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/defend"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_defend_second"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_defend_progress"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/fx_frist_bottom"
+                android:textColor="@color/gray"
+                android:textSize="12sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray_d"/>
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/analysis_headbg"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:text="@string/fx_intgral_ranking_title"
+                android:textColor="@color/white_c"
+                android:textSize="15sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/fx_integral_main_team_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"
+                    android:src="@mipmap/arrowicon"/>
+
+                <TextView
+                    android:id="@+id/fx_integral_main_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/match_main"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fx_integral_main_framelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/fx_integral_second_team_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="gone"
+                    android:src="@mipmap/arrowicon"/>
+
+                <TextView
+                    android:id="@+id/fx_integral_second_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/match_main"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fx_integral_second_framelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+            <ListView
+                android:id="@+id/fx_cup_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:visibility="gone">
+            </ListView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray_d"/>
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/analysis_headbg"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:padding="3dp"
+                android:text="@string/history_attack"
+                android:textColor="@color/white_c"
+                android:textSize="15sp"/>
+            <!--历史交锋-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_history_main"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_history_middle"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_history_second"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_history_progress"
+                android:layout_width="match_parent"
+                android:layout_height="13dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray_d"/>
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:background="@mipmap/analysis_headbg"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:padding="3dp"
+                android:text="@string/recom_duibi"
+                android:textColor="@color/white_c"
+                android:textSize="15sp"/>
+            <!--历史交锋-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_recom_main"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_recom_second"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:id="@+id/fx_recom_main2"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/sixty"
+                    android:textColor="@color/yellow"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="@string/record_num"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:id="@+id/fx_recom_second2"
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/tridty"
+                    android:textColor="@color/blue_Light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <com.dading.ssqs.view.SoftSpaceStyle
+                android:id="@+id/fx_recom_progress"
+                android:layout_width="match_parent"
+                android:layout_height="13dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+            </com.dading.ssqs.view.SoftSpaceStyle>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray_d"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:paddingTop="10dp"
+                android:text="@string/only_cankao"
+                android:textColor="@color/gray8"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+    </ScrollView>
+    <include layout="@layout/templete_no_data"/>
+
+</LinearLayout>

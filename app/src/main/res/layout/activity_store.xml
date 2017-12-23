@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/store_info_top_ly"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@mipmap/sm_base_map"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/store_info_ly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/store_iv_photo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true" />
+
+            <!--android:src="@drawable/layerlist_circle_mask_gark"-->
+            <TextView
+                android:id="@+id/store_tv_nikname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/store_iv_photo"
+                android:textColor="@color/gray2"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/store_glod_num"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/sm_user_game_coin"
+                android:gravity="center"
+                android:maxWidth="120dp"
+                android:minWidth="70dp"
+                android:paddingEnd="10dp"
+                android:paddingStart="30dp"
+                android:singleLine="true"
+                android:textColor="@color/orange"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/store_dimonds_num"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/store_glod_num"
+                android:background="@mipmap/sm_diamonds"
+                android:gravity="center"
+                android:maxHeight="120dp"
+                android:minWidth="70dp"
+                android:paddingEnd="5dp"
+                android:paddingStart="20dp"
+                android:textColor="@color/orange"
+                android:textSize="8sp" />
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/store_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:background="@mipmap/sm_rectangular_frame"
+            android:orientation="horizontal"
+            android:paddingBottom="3dp"
+            android:paddingEnd="6dp"
+            android:paddingStart="6dp"
+            android:paddingTop="3dp">
+
+            <RadioButton
+                android:id="@+id/store_rg_diamonds"
+                style="@style/w0h"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_store"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/diamonds"
+                android:textColor="@color/white_a" />
+
+            <RadioButton
+                android:id="@+id/store_rg_prop"
+                style="@style/w0h"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_store"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/prop"
+                android:textColor="@color/white_a" />
+
+            <RadioButton
+                android:id="@+id/store_rg_vip"
+                style="@style/w0h"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_store"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/vip"
+                android:textColor="@color/white_a" />
+
+            <RadioButton
+                android:id="@+id/store_rg_turntable"
+                style="@style/w0h"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_store"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/turntable"
+                android:textColor="@color/white_a" />
+
+            <RadioButton
+                android:id="@+id/store_rg_prize"
+                style="@style/w0h"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/selecotr_store"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/prize"
+                android:textColor="@color/white_a" />
+        </RadioGroup>
+    </RelativeLayout>
+
+    <com.dading.ssqs.view.NoScrollViewPager
+        android:id="@+id/store_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.dading.ssqs.view.NoScrollViewPager>
+
+</LinearLayout>

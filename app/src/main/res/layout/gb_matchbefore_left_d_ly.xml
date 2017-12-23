@@ -1,0 +1,27 @@
+<LinearLayout android:id="@+id/matchbefore_group_d_ly"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/matchbefore_group_d_week"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/match_type"
+        android:textColor="@color/gray8"
+        android:layout_marginBottom="5dp"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/matchbefore_group_d_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/num34112"
+        android:textColor="@color/gray8"
+        android:textSize="12sp"/>
+</LinearLayout>

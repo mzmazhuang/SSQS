@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="330dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:background="@drawable/rect_black"
+        android:padding="2dp">
+
+        <LinearLayout
+            android:id="@+id/betting_pop_calendar_btly"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/betting_pop_calendar_clear"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:gravity="center"
+                android:text="@string/clear"
+                android:textColor="@color/gray2"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/betting_pop_calendar_today"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:gravity="center"
+                android:text="@string/today"
+                android:textColor="@color/gray2"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/betting_pop_calendar_close"
+                style="@style/w0h"
+                android:layout_weight="1"
+                android:background="@color/gray"
+                android:gravity="center"
+                android:text="@string/close"
+                android:textColor="@color/gray2"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <CalendarView
+            android:id="@+id/betting_pop_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/betting_pop_calendar_btly"
+            android:background="@color/light_blue"
+            android:firstDayOfWeek="3"
+            android:shownWeekCount="4"></CalendarView>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="53dp"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/transfer_type_cb"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/selector_agree_type"
+        android:button="@null"
+        android:focusable="false"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/transfer_type_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/wx_pay"
+        android:clickable="false"
+        android:textColor="@color/gray2"
+        android:textSize="14sp"/>
+</LinearLayout>

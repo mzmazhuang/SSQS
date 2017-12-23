@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/follow_info_ly"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/gray_e"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="7dp">
+
+
+        <ImageView
+            android:id="@+id/follow_info_savantpoto"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
+            android:padding="2dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    >
+
+                    <TextView
+                        android:id="@+id/follow_info_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="5dp"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:text="@string/savant_name"
+                        android:textColor="@color/orange"
+                        android:textSize="15sp"
+                        />
+
+                    <!--<ImageView
+                        android:id="@+id/follow_info_invited"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:src="@mipmap/specially_invite"
+                        android:visibility="gone"/>
+
+                    <ImageView
+                        android:id="@+id/follow_info_savant"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:src="@mipmap/logicians"
+                        android:visibility="gone"/>-->
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="5dp"
+                    >
+
+
+                    <CheckBox
+                        android:id="@+id/follow_info_follow_cb"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/selecotr_fans_gz"
+                        android:button="@null"
+                        android:gravity="center|start"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/follow_info_follow_text"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginEnd="70dp"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/gray8"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

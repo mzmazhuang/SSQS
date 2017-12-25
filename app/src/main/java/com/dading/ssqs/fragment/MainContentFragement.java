@@ -211,6 +211,9 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                 setChecked(0);
                 break;
             case R.id.main_referr:
+                if (mReferrCntrollar != null) {
+                    mReferrCntrollar.init();
+                }
                 mMCurrButtonId = 1;
                 setChecked(3);
                 break;

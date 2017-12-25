@@ -55,26 +55,32 @@ public class ReferrCntrollar extends BaseTabsContainer {
         return mReferrView;
     }
 
+    private boolean hasInit = false;
+
+    public void init() {
+        if (!hasInit) {
+            hasInit = true;
+
+            SSQSApplication.apiClient(0).getActivityList(new CcApiClient.OnCcListener() {
+                @Override
+                public void onResponse(CcApiResult result) {
+                    if (result.isOk()) {
+                        List<PerferentialBean> items = (List<PerferentialBean>) result.getData();
+
+                        if (items != null) {
+                            processedData(items);
+                        }
+                    } else {
+                        Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
+                    }
+                }
+            });
+        }
+    }
+
     @Override
     public void initData() {
-        /**
-         * /v1.0/activity
-         */
 
-        SSQSApplication.apiClient(0).getActivityList(new CcApiClient.OnCcListener() {
-            @Override
-            public void onResponse(CcApiResult result) {
-                if (result.isOk()) {
-                    List<PerferentialBean> items = (List<PerferentialBean>) result.getData();
-
-                    if (items != null) {
-                        processedData(items);
-                    }
-                } else {
-                    Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
-                }
-            }
-        });
     }
 
     private void processedData(List<PerferentialBean> bean) {

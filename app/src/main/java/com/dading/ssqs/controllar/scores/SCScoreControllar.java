@@ -84,6 +84,19 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
         return view;
     }
 
+    private boolean hasInit = false;
+
+    public void init() {
+        if (!hasInit) {
+            hasInit = true;
+
+            if (!isGetData) {
+                isGetData = true;
+                getNetDataWork(mFormatData1, "0", 0, "0", mPage, true);
+            }
+        }
+    }
+
     @Override
     public void initData() {
         mRecevice = new SCRecevice();
@@ -103,8 +116,6 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
         Date date = mCalendar.getTime();
         mFormatData1 = mSdf1.format(date);
         mFormatData2 = mSdf2.format(date);
-
-        boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
         mDate = mFormatData2.replaceAll("-", "");
         UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
@@ -128,11 +139,6 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
 
         for (int i = 0; i < mListRB.size(); i++) {
             mListRB.get(i).setText(mListData2.get(i));
-        }
-
-        if (!isGetData) {
-            isGetData = true;
-            getNetDataWork(mFormatData1, "0", 0, "0", mPage, true);
         }
     }
 

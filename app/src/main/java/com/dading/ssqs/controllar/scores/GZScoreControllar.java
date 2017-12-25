@@ -74,7 +74,7 @@ public class GZScoreControllar extends BaseScoreControllar {
                     public void run() {
                         boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
-                        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "20160822","0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
+                        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "20160822", "0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
                             @Override
                             public void onResponse(CcApiResult result) {
                                 mGZList.onRefreshComplete();
@@ -123,32 +123,42 @@ public class GZScoreControllar extends BaseScoreControllar {
         return view;
     }
 
+    private boolean hasInit = false;
+
+    public void init() {
+        if (!hasInit) {
+            hasInit = true;
+
+            boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
+
+            mLoadingAnimal.setVisibility(View.VISIBLE);
+            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "20160822", "0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
+                @Override
+                public void onResponse(CcApiResult result) {
+                    mLoadingAnimal.setVisibility(View.GONE);
+
+                    if (result.isOk()) {
+                        CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
+
+                        if (page != null) {
+
+                            if (page.getItems() != null) {
+                                mItems = page.getItems();
+
+                                mAdapter.setData(mItems);
+                            }
+                        }
+                    } else {
+                        ToastUtils.midToast(mContent, result.getMessage(), 0);
+                    }
+                }
+            });
+        }
+    }
+
     @Override
     public void initData() {
-        boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
-        mLoadingAnimal.setVisibility(View.VISIBLE);
-        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "20160822","0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
-            @Override
-            public void onResponse(CcApiResult result) {
-                mLoadingAnimal.setVisibility(View.GONE);
-
-                if (result.isOk()) {
-                    CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
-
-                    if (page != null) {
-
-                        if (page.getItems() != null) {
-                            mItems = page.getItems();
-
-                            mAdapter.setData(mItems);
-                        }
-                    }
-                } else {
-                    ToastUtils.midToast(mContent, result.getMessage(), 0);
-                }
-            }
-        });
     }
 
     @Override

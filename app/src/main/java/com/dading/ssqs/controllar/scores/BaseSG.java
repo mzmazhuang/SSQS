@@ -96,6 +96,25 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
 
     }
 
+    private boolean hasInit = false;
+
+    public void init() {
+        if (!hasInit) {
+            hasInit = true;
+
+            mLoadAnimal.setVisibility(View.VISIBLE);
+            mDrawable.start();
+
+            if (!isGetData) {
+                isGetData = true;
+
+                mPage = 1;
+
+                getNetDataWork(mFormatData, "0", "0", mPage, 10, true);
+            }
+        }
+    }
+
     @Override
     public void initData() {
         mLoadAnimalIv.setImageResource(R.drawable.loading_anim);
@@ -137,17 +156,6 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
 
         for (int i = 0; i < mListRB.size(); i++) {
             mListRB.get(i).setText(mListData2.get(i));
-        }
-
-        mLoadAnimal.setVisibility(View.VISIBLE);
-        mDrawable.start();
-
-        if (!isGetData) {
-            isGetData = true;
-
-            mPage = 1;
-
-            getNetDataWork(mFormatData, "0", "0", mPage, 10, true);
         }
     }
 

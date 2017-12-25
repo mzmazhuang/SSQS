@@ -254,6 +254,9 @@ public class ScoreControllar extends BaseTabsContainer {
                         mScoreChoice.setVisibility(View.VISIBLE);
                         mDate = UIUtils.getSputils().getString(Constent.JS_TIME, "2000-01-01");
                         Logger.d(TAG, "即時得到的時間返回数据是------------" + mDate);
+                        if (mJsScoreControllar != null) {
+                            mJsScoreControllar.init();
+                        }
                         break;
                     case 1:
                         mPager = 1;
@@ -261,6 +264,9 @@ public class ScoreControllar extends BaseTabsContainer {
                         mType = 3;
                         mDate = UIUtils.getSputils().getString(Constent.SG_TIME, "2000-01-01");
                         Logger.d(TAG, "賽果得到的時間返回数据是-------------" + mDate);
+                        if (mSgScoreControllar != null) {
+                            mSgScoreControllar.init();
+                        }
                         break;
                     case 2:
                         mPager = 2;
@@ -268,11 +274,17 @@ public class ScoreControllar extends BaseTabsContainer {
                         mDate = UIUtils.getSputils().getString(Constent.SC_TIME, "2000-01-01");
                         Logger.d(TAG, "賽程得到的時間返回数据是-------------" + mDate);
                         mType = 4;
+                        if (mScScoreControllar != null) {
+                            mScScoreControllar.init();
+                        }
                         break;
                     case 3:
                         mPager = 3;
                         mType = 1;
                         mScoreChoice.setVisibility(View.GONE);
+                        if (mGzScoreControllar != null) {
+                            mGzScoreControllar.init();
+                        }
                         break;
                     default:
                         break;

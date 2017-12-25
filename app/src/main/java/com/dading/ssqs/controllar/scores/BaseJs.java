@@ -101,6 +101,26 @@ public class BaseJs extends BaseScoreControllar {
         return view;
     }
 
+    private boolean hasInit = false;
+
+    public void init() {
+        if (!hasInit) {
+            hasInit = true;
+
+            mDrawable.start();
+
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount);
+                }
+            };
+            mTimer.schedule(task, 5000, 40 * 1000);
+
+            getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount);
+        }
+    }
+
     public void setEmptyView() {
     }
 
@@ -109,16 +129,8 @@ public class BaseJs extends BaseScoreControllar {
         mLoadAnimal.setVisibility(View.VISIBLE);
         mLoadAnimalIv.setImageResource(R.drawable.loading_anim);
         mDrawable = (AnimationDrawable) mLoadAnimalIv.getDrawable();
-        //mDrawable.stop( );
 
         mTimer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount);
-            }
-        };
-        mTimer.schedule(task, 5000, 40 * 1000);
 
         mRecevice = new JSRecevice();
 
@@ -130,10 +142,6 @@ public class BaseJs extends BaseScoreControllar {
         mFormatData = sdf.format(date);
         Logger.d(TAG, "日期是-------------------------------------" + mFormatData);
         mCount = 10;
-        /**
-         * 篮球 /v1.0/match/ball/type/{type}/date/{date}/subType/{subType}/leagueIDs/{leagueIds}/page/{page}/count/10
-         */
-        getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), 10);
     }
 
     public void setSend() {

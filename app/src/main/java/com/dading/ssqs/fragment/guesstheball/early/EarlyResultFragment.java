@@ -238,7 +238,7 @@ public class EarlyResultFragment extends Fragment implements OnRefreshListener, 
         View view = View.inflate(mContext, R.layout.fragment_scrollball, null);
         contentLayout.addView(view);
 
-        swipeToLoadLayout = (SwipeToLoadLayout) view.findViewById(R.id.swiptToLoadLayout);
+        swipeToLoadLayout = (SwipeToLoadLayout) view.findViewById(R.id.swipeToLoadLayout);
         //为swipeToLoadLayout设置下拉刷新监听者
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setRefreshEnabled(false);//初始先不能刷新

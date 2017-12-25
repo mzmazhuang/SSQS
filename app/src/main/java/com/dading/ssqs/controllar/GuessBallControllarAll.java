@@ -181,7 +181,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         mHome_sc_scrollView_ly.setFocusableInTouchMode(true);
         mHome_sc_scrollView_ly.requestFocus();
 
-        swipeToLoadLayout = (SwipeToLoadLayout) view.findViewById(R.id.swiptToLoadLayout);
+        swipeToLoadLayout = (SwipeToLoadLayout) view.findViewById(R.id.swipeToLoadLayout);
         //为swipeToLoadLayout设置下拉刷新监听者
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setRefreshEnabled(false);//初始先不能刷新

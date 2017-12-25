@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout
-        android:id="@id/swipeToLoadLayout"
+        android:id="@+id/swipeToLoadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:default_to_refreshing_scrolling_duration="500"
@@ -17,11 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/refresh_header_height_twitter" />
 
-        <com.dading.ssqs.components.RecyclerScrollview
+        <RelativeLayout
             android:id="@id/swipe_target"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none" />
+            android:layout_height="match_parent"></RelativeLayout>
+
+        <com.dading.ssqs.components.swipetoloadlayout.PageLoadMoreFooterView
+            android:id="@id/swipe_load_more_footer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/load_more_footer_height_twitter" />
 
     </com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout>
 

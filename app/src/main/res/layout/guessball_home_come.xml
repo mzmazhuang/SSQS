@@ -41,7 +41,7 @@
     </RelativeLayout>
 
     <com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout
-        android:id="@id/swiptToLoadLayout"
+        android:id="@id/swipeToLoadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:default_to_refreshing_scrolling_duration="500"

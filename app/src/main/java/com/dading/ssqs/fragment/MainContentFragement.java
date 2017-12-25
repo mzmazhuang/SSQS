@@ -306,7 +306,14 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     Logger.d("GBSS", "收到廣播推薦------------------------------:");
                     break;
                 case Constent.LOADING_GUESS_BALL:
-                    Logger.d("GBSS", "收到廣播猜球------------------------------:");
+                    if (guessTheBallFragment != null) {
+                        if (UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true)) {//足球
+                            guessTheBallFragment.setType(1);
+                        } else {//篮球
+                            guessTheBallFragment.setType(2);
+                        }
+                    }
+
                     mRg.check(mGuessBall.getId());
                     mMCurrButtonId = 2;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);

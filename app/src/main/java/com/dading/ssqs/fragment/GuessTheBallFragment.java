@@ -44,6 +44,7 @@ public class GuessTheBallFragment extends Fragment {
 
     private GuessBallType currType = GuessBallType.SCROLLBALL;//当前的页面
 
+    private int type = -1;
 
     private enum GuessBallType {
         SCROLLBALL,//滚球
@@ -81,7 +82,7 @@ public class GuessTheBallFragment extends Fragment {
         scrollBallTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changePageTextColor(GuessBallType.SCROLLBALL);
+                changePageTextColor(GuessBallType.SCROLLBALL, false);
             }
         });
         titleTextLayout.addView(scrollBallTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
@@ -95,7 +96,7 @@ public class GuessTheBallFragment extends Fragment {
         toDayTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changePageTextColor(GuessBallType.TODAY);
+                changePageTextColor(GuessBallType.TODAY, false);
             }
         });
         titleTextLayout.addView(toDayTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
@@ -109,7 +110,7 @@ public class GuessTheBallFragment extends Fragment {
         earlyTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changePageTextColor(GuessBallType.Early);
+                changePageTextColor(GuessBallType.Early, false);
             }
         });
         titleTextLayout.addView(earlyTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
@@ -143,7 +144,7 @@ public class GuessTheBallFragment extends Fragment {
     }
 
     //改变title文字颜色
-    private void changePageTextColor(GuessBallType type) {
+    private void changePageTextColor(GuessBallType type, boolean checkPage) {
         if (this.currType != type) {
             this.currType = type;
 
@@ -159,6 +160,16 @@ public class GuessTheBallFragment extends Fragment {
 
             changePage(type);
         }
+
+        if (checkPage) {
+            changePage(type);
+        }
+    }
+
+    public void setType(int type) {
+        this.type = type;
+
+        changePageTextColor(GuessBallType.SCROLLBALL, true);
     }
 
     public void fragmentResume() {
@@ -229,6 +240,13 @@ public class GuessTheBallFragment extends Fragment {
             } else {
                 scrollBallFragment.fragmentResume();
                 fragmentTransaction.show(scrollBallFragment);
+            }
+            if (this.type > 0) {
+                if (this.type == 1) {
+                    scrollBallFragment.selectFootBall();
+                } else if (this.type == 2) {
+                    scrollBallFragment.selectBasketBall();
+                }
             }
         } else if (type == GuessBallType.TODAY) {
             if (toDayMatchFragment == null) {

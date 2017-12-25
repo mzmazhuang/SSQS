@@ -38,7 +38,7 @@ public class GuessBallTopSubAdapter extends RecyclerView.Adapter<GuessBallTopSub
         }
     }
 
-    private void refreshData() {
+    public void refreshData() {
         List<GuessTopTitle> data = new ArrayList<>();
         data.addAll(list);
         setData(data);

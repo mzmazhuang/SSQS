@@ -272,8 +272,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         long curTimeL = date.getTime();
         int m = (int) (((curTimeL - openTimeL) / 1000) / 60);
         mEntity.playTime = m;
-        Logger.d(TAG, (curTimeL - openTimeL) + "返回数据开始时间是--------------------------" +
-                "----:+curTime:" + curTimeL + ",开始时间:" + openTimeL + "执行时间:" + m + "分");
 
         switch (mEntity.isOver) {
             case 0:
@@ -392,10 +390,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
             mMapRed.get(position).setVisibility(View.GONE);
             holder.scoreSgMatchRedTwinkleIvLy.setVisibility(View.GONE);
         }
-
-
-        //holder.scoreSgMatchRedTwinkleIvLy.setVisibility(View.VISIBLE);
-
 
         holder.scoreSgWeekStarCbLy.setOnClickListener(new View.OnClickListener() {
             @Override

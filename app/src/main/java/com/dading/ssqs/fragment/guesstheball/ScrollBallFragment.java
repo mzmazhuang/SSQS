@@ -204,6 +204,40 @@ public class ScrollBallFragment extends Fragment implements NotificationControll
         }
     }
 
+    public void selectBasketBall() {
+        if (currTitlePosition != 2 || twoTitleBasketPosition != 0) {
+
+            currTitlePosition = 2;
+
+            twoTitleBasketPosition = 0;
+
+            topCell.setTopTitleSelect(1);
+            topCell.setTopSubTitleSelect(twoTitleBasketPosition);
+            topCell.refreshTitle();
+
+            tvTitle.setText(LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.basketball) + ":" + LocaleController.getString(R.string.scroll_title1));
+
+            changePage(LocaleController.getString(R.string.scroll_title1));
+        }
+    }
+
+    public void selectFootBall() {
+        if (currTitlePosition != 1 || twoTitleFootPosition != 0) {
+
+            currTitlePosition = 1;
+
+            twoTitleFootPosition = 0;
+
+            topCell.setTopTitleSelect(twoTitleFootPosition);
+            topCell.setTopSubTitleSelect(twoTitleFootPosition);
+            topCell.refreshTitle();
+
+            tvTitle.setText(LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1));
+
+            changePage(LocaleController.getString(R.string.scroll_title1));
+        }
+    }
+
     //二级title点击事件
     private GuessBallTopSubAdapter.OnGuessSubTitleClickListener subTitleClickListener = new GuessBallTopSubAdapter.OnGuessSubTitleClickListener() {
         @Override
@@ -226,98 +260,102 @@ public class ScrollBallFragment extends Fragment implements NotificationControll
 
             tvTitle.setText(LocaleController.getString(R.string.scroll_ball) + "-" + (currTitlePosition == 1 ? LocaleController.getString(R.string.football) : LocaleController.getString(R.string.basketball)) + ":" + str);
 
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            if (scrollball_parent != null) {
-                fragmentTransaction.hide(scrollball_parent);
-                scrollball_parent.filterPause();
-            }
-            if (boDanFragment != null) {
-                fragmentTransaction.hide(boDanFragment);
-                boDanFragment.filterPause();
-            }
-            if (totalFragment != null) {
-                fragmentTransaction.hide(totalFragment);
-                totalFragment.filterPause();
-            }
-            if (halfCourtFragment != null) {
-                fragmentTransaction.hide(halfCourtFragment);
-                halfCourtFragment.filterPause();
-            }
-            if (resultFragment != null) {
-                fragmentTransaction.hide(resultFragment);
-                resultFragment.filterPause();
-            }
-            if (ballBasketBallDefaultFragment != null) {
-                fragmentTransaction.hide(ballBasketBallDefaultFragment);
-                ballBasketBallDefaultFragment.filterPause();
-            }
-            rightLayout.setVisibility(View.GONE);
-
-            if (currTitlePosition == 1) {
-                if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
-                    if (scrollball_parent == null) {
-                        scrollball_parent = new ScrollBallDefaultFragment();
-                        fragmentTransaction.add(R.id.scrollball_parent, scrollball_parent);
-                    } else {
-                        scrollball_parent.filterResume();
-                        fragmentTransaction.show(scrollball_parent);
-                    }
-                    currPage = 1;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title2))) {
-                    if (boDanFragment == null) {
-                        boDanFragment = new ScrollBallBoDanFragment();
-                        fragmentTransaction.add(R.id.scrollball_parent, boDanFragment);
-                    } else {
-                        boDanFragment.filterResume();
-                        fragmentTransaction.show(boDanFragment);
-                    }
-                    currPage = 2;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title3))) {
-                    if (totalFragment == null) {
-                        totalFragment = new ScrollBallTotalFragment();
-                        fragmentTransaction.add(R.id.scrollball_parent, totalFragment);
-                    } else {
-                        totalFragment.filterResume();
-                        fragmentTransaction.show(totalFragment);
-                    }
-                    currPage = 3;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title4))) {
-                    if (halfCourtFragment == null) {
-                        halfCourtFragment = new ScrollBallHalfCourtFragment();
-                        fragmentTransaction.add(R.id.scrollball_parent, halfCourtFragment);
-                    } else {
-                        halfCourtFragment.filterResume();
-                        fragmentTransaction.show(halfCourtFragment);
-                    }
-                    currPage = 4;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title5))) {
-                    if (resultFragment == null) {
-                        resultFragment = new ScrollBallResultFragment();
-                        fragmentTransaction.add(R.id.scrollball_parent, resultFragment);
-                    } else {
-                        resultFragment.filterResume();
-                        fragmentTransaction.show(resultFragment);
-                    }
-                    currPage = 5;
-                }
-            } else {
-                rightLayout.setVisibility(View.VISIBLE);
-                //篮球
-                if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
-                    if (ballBasketBallDefaultFragment == null) {
-                        ballBasketBallDefaultFragment = new ScrollBallBasketBallDefaultFragment();
-                        fragmentTransaction.add(R.id.scrollball_parent, ballBasketBallDefaultFragment);
-                    } else {
-                        ballBasketBallDefaultFragment.filterResume();
-                        fragmentTransaction.show(ballBasketBallDefaultFragment);
-                    }
-                    currPage = 6;
-                }
-            }
-            fragmentTransaction.commit();
+            changePage(str);
         }
     };
+
+    public void changePage(String str) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if (scrollball_parent != null) {
+            fragmentTransaction.hide(scrollball_parent);
+            scrollball_parent.filterPause();
+        }
+        if (boDanFragment != null) {
+            fragmentTransaction.hide(boDanFragment);
+            boDanFragment.filterPause();
+        }
+        if (totalFragment != null) {
+            fragmentTransaction.hide(totalFragment);
+            totalFragment.filterPause();
+        }
+        if (halfCourtFragment != null) {
+            fragmentTransaction.hide(halfCourtFragment);
+            halfCourtFragment.filterPause();
+        }
+        if (resultFragment != null) {
+            fragmentTransaction.hide(resultFragment);
+            resultFragment.filterPause();
+        }
+        if (ballBasketBallDefaultFragment != null) {
+            fragmentTransaction.hide(ballBasketBallDefaultFragment);
+            ballBasketBallDefaultFragment.filterPause();
+        }
+        rightLayout.setVisibility(View.GONE);
+
+        if (currTitlePosition == 1) {
+            if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
+                if (scrollball_parent == null) {
+                    scrollball_parent = new ScrollBallDefaultFragment();
+                    fragmentTransaction.add(R.id.scrollball_parent, scrollball_parent);
+                } else {
+                    scrollball_parent.filterResume();
+                    fragmentTransaction.show(scrollball_parent);
+                }
+                currPage = 1;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title2))) {
+                if (boDanFragment == null) {
+                    boDanFragment = new ScrollBallBoDanFragment();
+                    fragmentTransaction.add(R.id.scrollball_parent, boDanFragment);
+                } else {
+                    boDanFragment.filterResume();
+                    fragmentTransaction.show(boDanFragment);
+                }
+                currPage = 2;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title3))) {
+                if (totalFragment == null) {
+                    totalFragment = new ScrollBallTotalFragment();
+                    fragmentTransaction.add(R.id.scrollball_parent, totalFragment);
+                } else {
+                    totalFragment.filterResume();
+                    fragmentTransaction.show(totalFragment);
+                }
+                currPage = 3;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title4))) {
+                if (halfCourtFragment == null) {
+                    halfCourtFragment = new ScrollBallHalfCourtFragment();
+                    fragmentTransaction.add(R.id.scrollball_parent, halfCourtFragment);
+                } else {
+                    halfCourtFragment.filterResume();
+                    fragmentTransaction.show(halfCourtFragment);
+                }
+                currPage = 4;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title5))) {
+                if (resultFragment == null) {
+                    resultFragment = new ScrollBallResultFragment();
+                    fragmentTransaction.add(R.id.scrollball_parent, resultFragment);
+                } else {
+                    resultFragment.filterResume();
+                    fragmentTransaction.show(resultFragment);
+                }
+                currPage = 5;
+            }
+        } else {
+            rightLayout.setVisibility(View.VISIBLE);
+            //篮球
+            if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
+                if (ballBasketBallDefaultFragment == null) {
+                    ballBasketBallDefaultFragment = new ScrollBallBasketBallDefaultFragment();
+                    fragmentTransaction.add(R.id.scrollball_parent, ballBasketBallDefaultFragment);
+                } else {
+                    ballBasketBallDefaultFragment.filterResume();
+                    fragmentTransaction.show(ballBasketBallDefaultFragment);
+                }
+                currPage = 6;
+            }
+        }
+        fragmentTransaction.commit();
+    }
 
     private void initTitles() {
         GuessTopTitle subTitle1 = new GuessTopTitle();

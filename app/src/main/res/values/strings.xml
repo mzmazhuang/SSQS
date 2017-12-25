@@ -74,7 +74,7 @@
     <string name="pulicsh_time">今天14:710发布</string>
     <string name="hh_mm">11:05</string>
     <string name="week">星期</string>
-    <string name="samll_num">[1]</string>
+    <string name="samll_num">[]</string>
     <string name="samll_dot_num">--</string>
     <string name="hg_num">皇冠--</string>
     <string name="kefu">客服热线:0755-26918451,客服QQ:2698803023</string>
@@ -86,7 +86,7 @@
     <string name="work_time_cz">工作时间:周一至周日 09:00 - 24:00 如上述不能满足您的充值要求，请联系客服。</string>
     <string name="context_text">--</string>
     <string name="good_num">--</string>
-    <string name="double_ranking">[19]</string>
+    <string name="double_ranking">[]</string>
     <string name="time_hm">--</string>
     <string name="now_lost">当前让球:</string>
     <string name="now_lost1">当前让球</string>

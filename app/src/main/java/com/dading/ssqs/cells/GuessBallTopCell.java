@@ -86,6 +86,15 @@ public class GuessBallTopCell extends LinearLayout {
         topSubAdapter.setSelect(sel);
     }
 
+    public void refreshTitle() {
+        if (topAdapter != null) {
+            topAdapter.refreshData();
+        }
+        if (topSubAdapter != null) {
+            topSubAdapter.refreshData();
+        }
+    }
+
     private void init() {
         topTitleRecyclerView.setHasFixedSize(true);
         LinearLayoutManager topTitleLinearLayoutManager = new LinearLayoutManager(mContext);

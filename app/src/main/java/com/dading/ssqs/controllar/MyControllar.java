@@ -163,7 +163,7 @@ public class MyControllar extends BaseTabsContainer {
                         String num = (Integer.valueOf(UIUtils.getSputils().getString(Constent.GLODS, "")) + banlance) + "";
 
                         UIUtils.getSputils().putString(Constent.GLODS, num);
-                        
+
                         mRmbNum.setText(num);
                     }
                     break;

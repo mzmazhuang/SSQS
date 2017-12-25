@@ -1623,6 +1623,27 @@ public class CcApiClient {
     }
 
     /**
+     * 篮球2
+     *
+     * @param b
+     * @param mFormatData
+     * @param subType
+     * @param leagueId
+     * @param mPage
+     * @param limit
+     * @param listener
+     */
+    public void getMatchBallOrTypeList2(boolean b, int type, String mFormatData, String subType, String leagueId, int mPage, int limit, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doMatchBallTypeList2");
+
+        if (b) {
+            Request("/v1.0/match/type/" + type + "/date/" + mFormatData + "/subType/" + subType + "/leagueIDs/" + leagueId + "/page/" + mPage + "/count/" + limit, null, mListener, false);
+        } else {
+            Request("/v1.0/match/ball/type/" + type + "/date/" + mFormatData + "/subType/" + subType + "/leagueIDs/" + leagueId + "/page/" + mPage + "/count/" + limit, null, mListener, false);
+        }
+    }
+
+    /**
      * 财富榜
      *
      * @param offset

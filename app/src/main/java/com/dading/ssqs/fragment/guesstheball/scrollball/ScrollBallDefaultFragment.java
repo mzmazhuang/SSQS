@@ -689,7 +689,6 @@ public class ScrollBallDefaultFragment extends Fragment implements OnRefreshList
 
     @Override
     public void onRefresh() {
-        Log.e("mazhuang", "refresh");
         if (!isRefresh) {
             isRefresh = true;
             if (isFilter) {

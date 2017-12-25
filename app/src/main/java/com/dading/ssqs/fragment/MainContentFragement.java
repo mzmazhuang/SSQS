@@ -237,7 +237,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
             case R.id.main_my:
                 mMCurrButtonId = 4;
                 setChecked(4);
-                UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                 break;
             default:
                 break;

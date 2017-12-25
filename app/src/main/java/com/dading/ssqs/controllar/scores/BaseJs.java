@@ -156,7 +156,7 @@ public class BaseJs extends BaseScoreControllar {
         if (!isRefresh && !isLoadMore) {
             isRefresh = true;
 
-            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData, 0, "0", 1, count, new CcApiClient.OnCcListener() {
+            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData, "0", 0, "0", 1, count, new CcApiClient.OnCcListener() {
                 @Override
                 public void onResponse(CcApiResult result) {
                     mLoadAnimal.setVisibility(View.GONE);
@@ -221,7 +221,7 @@ public class BaseJs extends BaseScoreControllar {
                         if (!isRefresh && !isLoadMore) {
                             isRefresh = true;
 
-                            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData, 0, "0", 1, 10, new CcApiClient.OnCcListener() {
+                            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData, "0", 0, "0", 1, 10, new CcApiClient.OnCcListener() {
                                 @Override
                                 public void onResponse(CcApiResult result) {
                                     mFristItem = 0;
@@ -274,8 +274,8 @@ public class BaseJs extends BaseScoreControllar {
 
                             if (!isLoadMore && !isRefresh) {
                                 isLoadMore = true;
-                                SSQSApplication.apiClient(0).getMatchBallOrTypeList2(b, 2, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
-                                        (b ? UIUtils.getSputils().getString(Constent.SUBTYPE, "0") : "0"),
+                                SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
+                                        (b ? UIUtils.getSputils().getString(Constent.SUBTYPE, "0") : "0"), 0,
                                         (b ? UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0") : "0"), mPage, 10, new CcApiClient.OnCcListener() {
                                             @Override
                                             public void onResponse(CcApiResult result) {
@@ -332,8 +332,8 @@ public class BaseJs extends BaseScoreControllar {
 
             if (!isRefresh && !isLoadMore) {
                 isRefresh = true;
-                SSQSApplication.apiClient(0).getMatchBallOrTypeList2(b, 2, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
-                        (b ? UIUtils.getSputils().getString(Constent.SUBTYPE, "0") : "0"),
+                SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
+                        (b ? UIUtils.getSputils().getString(Constent.SUBTYPE, "0") : "0"), 0,
                         (action.equals(Constent.JS_SG_SC_FITTER) ? s : "0"), 1, 10, new CcApiClient.OnCcListener() {
                             @Override
                             public void onResponse(CcApiResult result) {

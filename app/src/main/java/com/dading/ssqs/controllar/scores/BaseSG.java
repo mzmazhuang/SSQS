@@ -56,7 +56,6 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     private Calendar mCalendar;
     private SimpleDateFormat mSdf1;
     private SimpleDateFormat mSdf2;
-    private int mNum = -1;
     private ArrayList<String> mListData1;
     private ArrayList<String> mListData2;
     private View mView;
@@ -71,6 +70,8 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     public LinearLayout mEmptyGB;
     private ImageView mLoadAnimalIv;
     private AnimationDrawable mDrawable;
+
+    private boolean isGetData = false;
 
 
     @Override
@@ -114,7 +115,9 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         Date date = mCalendar.getTime();
         mFormatData = mSdf1.format(date);
         mFormatData2 = mSdf2.format(date);
-        mScoreWeekData.setText(mFormatData2);
+
+        String data = AppendData(mFormatData2);
+        mScoreWeekData.setText(data);
 
         mDate = mFormatData2.replaceAll("-", "");
         UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
@@ -135,11 +138,26 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         for (int i = 0; i < mListRB.size(); i++) {
             mListRB.get(i).setText(mListData2.get(i));
         }
+
+        mLoadAnimal.setVisibility(View.VISIBLE);
+        mDrawable.start();
+
+        if (!isGetData) {
+            isGetData = true;
+
+            mPage = 1;
+
+            getNetDataWork(mFormatData, "0", "0", mPage, 10, true);
+        }
+    }
+
+    private void getNetDataWork(String date, String subType, String leagusIds, int page, int limit, final boolean isRefresh) {
         boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
-        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 3, mFormatData, 0, "0", 1, 10, new CcApiClient.OnCcListener() {
+        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 3, date, subType, 0, leagusIds, page, limit, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
+                mSgList.onRefreshComplete();
                 mLoadAnimal.setVisibility(View.GONE);
                 mDrawable.stop();
 
@@ -149,18 +167,20 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                     if (page != null) {
                         mTotalCount = page.getTotalCount();
                         if (page.getItems() != null) {
-
-                            mAdapter.setData(page.getItems());
+                            if (isRefresh) {
+                                mAdapter.setData(page.getItems());
+                            } else {
+                                mAdapter.addData(page.getItems());
+                            }
                         }
                     }
+
+                    isGetData = false;
                 } else {
                     Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
-
-        mLoadAnimal.setVisibility(View.VISIBLE);
-        mDrawable.start();
     }
 
     public void setSend() {
@@ -216,40 +236,23 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         mSgList.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                mTask = new Runnable() {
+                if (!isGetData) {
+                    isGetData = true;
 
-                    @Override
-                    public void run() {
-                        UIUtils.getSputils().putString(Constent.SUBTYPE, "0");
-                        UIUtils.getSputils().putString(Constent.LEAGUEIDS, "0");
+                    mTask = new Runnable() {
 
-                        boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
+                        @Override
+                        public void run() {
+                            UIUtils.getSputils().putString(Constent.SUBTYPE, "0");
+                            UIUtils.getSputils().putString(Constent.LEAGUEIDS, "0");
 
-                        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 3, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"), 0, "0", 1, 10, new CcApiClient.OnCcListener() {
-                            @Override
-                            public void onResponse(CcApiResult result) {
-                                mSgList.onRefreshComplete();
+                            mPage = 1;
 
-                                if (result.isOk()) {
-                                    CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
-
-                                    if (page != null) {
-                                        mPage = 1;
-                                        mTotalCount = page.getTotalCount();
-                                        if (page.getItems() != null) {
-                                            ToastUtils.midToast(mContent, "刷新成功!", 0);
-
-                                            mAdapter.setData(page.getItems());
-                                        }
-                                    }
-                                } else {
-                                    ToastUtils.midToast(mContent, result.getMessage(), 0);
-                                }
-                            }
-                        });
-                    }
-                };
-                UIUtils.postTaskDelay(mTask, 500);
+                            getNetDataWork(UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"), "0", "0", 1, 10, true);
+                        }
+                    };
+                    UIUtils.postTaskDelay(mTask, 500);
+                }
             }
 
             @Override
@@ -264,31 +267,10 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                             ToastUtils.midToast(mContent, "已全部加载,无新数据!", 0);
                             mSgList.onRefreshComplete();
                         } else {
-                            boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
-
-                            SSQSApplication.apiClient(0).getMatchBallOrTypeList2(b, 3, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
-                                    UIUtils.getSputils().getString(Constent.SUBTYPE, "0"), UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0")
-                                    , mPage, 10, new CcApiClient.OnCcListener() {
-                                        @Override
-                                        public void onResponse(CcApiResult result) {
-                                            mSgList.onRefreshComplete();
-
-                                            if (result.isOk()) {
-                                                CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
-
-                                                if (page != null) {
-
-                                                    if (page.getItems() != null) {
-                                                        mAdapter.addData(page.getItems());
-                                                    }
-                                                }
-                                            } else {
-                                                Logger.d(TAG, result.getMessage() + "失败信息");
-                                            }
-                                        }
-                                    });
-                            mAdapter.notifyDataSetChanged();
-                            //关闭上啦加载的效果
+                            if (!isGetData) {
+                                isGetData = true;
+                                getNetDataWork(UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"), UIUtils.getSputils().getString(Constent.SUBTYPE, "0"), UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0"), mPage, 10, false);
+                            }
                         }
                     }
                 };
@@ -307,42 +289,86 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.score_week_left:
-                leftClick();
-                calendarData(mNum);
-                mPage = 1;
+                timeOperation(true);
                 break;
             case R.id.score_week_right:
-                rightClick();
-                calendarData(mNum);
-                mPage = 1;
+                timeOperation(false);
                 break;
             default:
                 break;
         }
     }
 
+    private int day = 6;
+
+    private void timeOperation(boolean isLeft) {
+        if (day == 0 && isLeft || day >= 6 && !isLeft) {
+            return;
+        }
+        mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
+        mScoreWeekLeft.setClickable(true);
+        mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
+        mScoreWeekRight.setClickable(true);
+
+        if (isLeft) {
+            day--;
+
+            mCalendar.add(Calendar.DAY_OF_YEAR, -1);
+
+            if (day == 0) {
+                mScoreWeekLeft.setImageResource(R.mipmap.arrows);
+                mScoreWeekLeft.setClickable(false);
+                mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
+                mScoreWeekRight.setClickable(true);
+            }
+        } else {
+            day++;
+
+            mCalendar.add(Calendar.DAY_OF_YEAR, 1);
+
+            if (day == 6) {
+                mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
+                mScoreWeekLeft.setClickable(true);
+                mScoreWeekRight.setImageResource(R.mipmap.arrows_2);
+                mScoreWeekRight.setClickable(false);
+            }
+        }
+
+        Date date = mCalendar.getTime();
+        String s = mSdf2.format(date);
+        String data = AppendData(s);
+        mScoreWeekData.setText(data);
+
+        mDate = s.replaceAll("-", "");
+        UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
+
+        calendarVolley(mDate);
+
+        calendarData(day);
+    }
+
     private void calendarData(int num) {
         mPage = 1;
         switch (num) {
-            case -1:
+            case 6:
                 mRg.check(R.id.pop_calendar_rb1);
                 break;
-            case -2:
+            case 5:
                 mRg.check(R.id.pop_calendar_rb2);
                 break;
-            case -3:
+            case 4:
                 mRg.check(R.id.pop_calendar_rb3);
                 break;
-            case -4:
+            case 3:
                 mRg.check(R.id.pop_calendar_rb4);
                 break;
-            case -5:
+            case 2:
                 mRg.check(R.id.pop_calendar_rb5);
                 break;
-            case -6:
+            case 1:
                 mRg.check(R.id.pop_calendar_rb6);
                 break;
-            case -7:
+            case 0:
                 mRg.check(R.id.pop_calendar_rb7);
                 break;
             default:
@@ -350,91 +376,14 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         }
     }
 
-    private void rightClick() {
-        if (mNum == -2) {
-            mNum++;
-            mCalendar.add(Calendar.DAY_OF_YEAR, 1);
-            Date date = mCalendar.getTime();
-            String s = mSdf2.format(date);
-            mDate = s;
-            String data = AppendData(s);
-            mScoreWeekData.setText(data);
-            mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
-            mScoreWeekLeft.setClickable(true);
-            mScoreWeekRight.setImageResource(R.mipmap.arrows_2);
-            mScoreWeekRight.setClickable(false);
-        } else if (mNum >= -1) {
-            return;
-        } else {
-            mNum++;
-            mCalendar.add(Calendar.DAY_OF_YEAR, 1);
-            Date date = mCalendar.getTime();
-            String s = mSdf2.format(date);
-            mDate = s.replaceAll("-", "");
-            UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
-            String data = AppendData(s);
-            mScoreWeekData.setText(data);
-            mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
-            mScoreWeekLeft.setClickable(true);
-            mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
-            mScoreWeekRight.setClickable(true);
-        }
-    }
-
-    private void leftClick() {
-        Logger.d(TAG, "点击前，num值-----------:" + mNum);
-        if (mNum == -6) {
-            mNum--;
-            mCalendar.add(Calendar.DAY_OF_YEAR, -1);
-            Date date = mCalendar.getTime();
-            String s = mSdf2.format(date);
-            mDate = s.replaceAll("-", "");
-            UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
-            String data = AppendData(s);
-            mScoreWeekData.setText(data);
-            mScoreWeekLeft.setImageResource(R.mipmap.arrows);
-            mScoreWeekLeft.setClickable(false);
-            mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
-            mScoreWeekRight.setClickable(true);
-        } else if (mNum <= -7) {
-            return;
-        } else {
-            mNum--;
-            mCalendar.add(Calendar.DAY_OF_YEAR, -1);
-            Date date = mCalendar.getTime();
-            String s = mSdf2.format(date);
-            mDate = s.replaceAll("-", "");
-            UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
-            String data = AppendData(s);
-            mScoreWeekData.setText(data);
-            mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
-            mScoreWeekLeft.setClickable(true);
-            mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
-            mScoreWeekRight.setClickable(true);
-        }
-        Logger.d(TAG, "点击后，num值-----------" + mNum);
-    }
-
     private void calendarVolley(String rightLeft) {
-        boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
+        if (!isGetData) {
+            isGetData = true;
 
-        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 3, rightLeft, 0, "0", 1, 10, new CcApiClient.OnCcListener() {
-            @Override
-            public void onResponse(CcApiResult result) {
-                if (result.isOk()) {
-                    CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
+            mPage = 1;
 
-                    if (page != null) {
-                        mTotalCount = page.getTotalCount();
-                        if (page.getItems() != null) {
-                            mAdapter.setData(page.getItems());
-                        }
-                    }
-                } else {
-
-                }
-            }
-        });
+            getNetDataWork(rightLeft, "0", "0", mPage, 10, true);
+        }
     }
 
     @Override
@@ -442,30 +391,30 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         mPage = 1;
         switch (mCalendarPostion) {
             case 0:
-                mNum = -1;
+                day = 6;
                 break;
             case 1:
-                mNum = -2;
+                day = 5;
                 break;
             case 2:
-                mNum = -3;
+                day = 4;
                 break;
             case 3:
-                mNum = -4;
+                day = 3;
                 break;
             case 4:
-                mNum = -5;
+                day = 2;
                 break;
             case 5:
-                mNum = -6;
+                day = 1;
                 break;
             case 6:
-                mNum = -7;
+                day = 0;
                 break;
             default:
                 break;
         }
-        CalendarClick(mNum);
+        CalendarClick((mCalendarPostion + 1));
         String s1 = mListData1.get(mCalendarPostion);
         mFormatData = s1;
         calendarVolley(s1);
@@ -477,32 +426,32 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     }
 
     private void CalendarClick(int num) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, num);
-        Date date = calendar.getTime();
+        mCalendar.setTime(new Date());
+        mCalendar.add(Calendar.DAY_OF_YEAR, -num);
+        Date date = mCalendar.getTime();
         String s = mSdf2.format(date);
         String data = AppendData(s);
         mDate = s.replaceAll("-", "");
         UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
         mScoreWeekData.setText(data);
         switch (num) {
-            case -1:
+            case 1:
                 mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
                 mScoreWeekLeft.setClickable(true);
                 mScoreWeekRight.setImageResource(R.mipmap.arrows_2);
                 mScoreWeekRight.setClickable(false);
                 break;
-            case -2:
-            case -3:
-            case -4:
-            case -5:
-            case -6:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
                 mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
                 mScoreWeekLeft.setClickable(true);
                 mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
                 mScoreWeekRight.setClickable(true);
                 break;
-            case -7:
+            case 7:
                 mScoreWeekLeft.setImageResource(R.mipmap.arrows);
                 mScoreWeekLeft.setClickable(false);
                 mScoreWeekRight.setImageResource(R.mipmap.arrows_checked);
@@ -521,37 +470,16 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         public void onReceive(Context context, Intent intent) {
             Logger.d("GBSS", "接到广播赛果------------------------------:");
 
-            boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
             String s = UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0");
             String action = intent.getAction();//用于筛选
 
-            SSQSApplication.apiClient(0).getMatchBallOrTypeList2(b, 3, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"), "0",
-                    (action.equals(Constent.JS_SG_SC_FITTER) ? s : "0"), 1, 10, new CcApiClient.OnCcListener() {
-                        @Override
-                        public void onResponse(CcApiResult result) {
-                            mLoadAnimal.setVisibility(View.GONE);
-                            mDrawable.stop();
+            if (!isGetData) {
+                isGetData = true;
 
-                            if (result.isOk()) {
-                                CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
+                mPage = 1;
 
-                                if (page != null) {
-                                    mTotalCount = page.getTotalCount();
-                                    if (page.getItems() != null) {
-                                        if (mAdapter != null) {
-                                            int mPostion = mAdapter.getScorePostion();
-
-                                            mAdapter.addData(page.getItems());
-
-                                            mSgList.getRefreshableView().smoothScrollToPosition(mPostion);
-                                        }
-                                    }
-                                }
-                            } else {
-                                Logger.d(TAG, result.getMessage() + "赛国广播失败信息");
-                            }
-                        }
-                    });
+                getNetDataWork(UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"), "0", (action.equals(Constent.JS_SG_SC_FITTER) ? s : "0"), mPage, 10, true);
+            }
         }
     }
 }

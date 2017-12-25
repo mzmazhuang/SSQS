@@ -632,7 +632,7 @@ public class ToDayBasketBallPassFragment extends Fragment implements OnRefreshLi
     private void getNetDataWork(final int off, int lim) {
         String mDate = DateUtils.getCurTime("yyyyMMdd");
 
-        SSQSApplication.apiClient(0).getMatchBallOrTypeList(false, 2, mDate, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
+        SSQSApplication.apiClient(0).getMatchBallOrTypeList(false, 2, mDate,"0", sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
                 loadingDialog.dismiss();

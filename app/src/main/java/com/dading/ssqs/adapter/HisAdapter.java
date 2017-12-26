@@ -1,6 +1,7 @@
 package com.dading.ssqs.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -28,11 +29,11 @@ import butterknife.ButterKnife;
  */
 public class HisAdapter extends BaseAdapter implements ListAdapter {
     private static final String TAG = "HisAdapter";
-    private final Context                                             context;
+    private final Context context;
     private final ArrayList<BettingTBean.PayDetailsEntity> data;
-    private       View                                                mView;
-    private       View                                                mViewHowSerise;
-    private       View                                                mViewNoSerise;
+    private View mView;
+    private View mViewHowSerise;
+    private View mViewNoSerise;
 
     public HisAdapter(Context context, ArrayList<BettingTBean.PayDetailsEntity> data) {
         this.context = context;
@@ -84,6 +85,9 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
 
             switch (info.matchType) {
                 // 1-全场赛果2- 当前让球3-全场大小4-半场赛果5-半场让球6-半场大小
+                case 0:
+                    mBettingLvChildOrderTypeCg1.setText("冠军");
+                    break;
                 case 1:
                     mBettingLvChildOrderTypeCg1.setText("全场赛果");
                     break;
@@ -141,48 +145,79 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                 case 0:
                     mBettingLvChildWaitOpenCg1.setText("未开奖");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.blue_t1));
-                    String text0 = info.home + " vs " + info.away;
+                    String text0 = info.home;
+                    if (!TextUtils.isEmpty(info.away)) {
+                        text0 += " vs " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text0);
-                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text0);
+                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text0);
                     break;
                 case 1:
                     mBettingLvChildWaitOpenCg1.setText("未完结");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.blue_t1));
-                    String text = info.home + " vs " + info.away;
+                    String text = info.home;
+                    if (!TextUtils.isEmpty(info.away)) {
+                        text += " vs " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text);
-                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text);
+                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text);
                     break;
                 case 2:
                     mBettingLvChildWaitOpenCg1.setText("赢");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.red_dark));
-                    String text1 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    String text1;
+                    if (info.matchType == 0) {
+                        text1 = info.home;
+                    } else {
+                        text1 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text1);
-                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text1);
+                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text1);
                     break;
                 case 3:
                     mBettingLvChildWaitOpenCg1.setText("输");
                     mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.green_a));
-                    String text2 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    String text2;
+                    if (info.matchType == 0) {
+                        text2 = info.home;
+                    } else {
+                        text2 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text2);
-                    Logger.d(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text2);
+                    Logger.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text2);
                     break;
                 case 4:
                     mBettingLvChildWaitOpenCg1.setText("平");
-                    String text3 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    String text3;
+                    if (info.matchType == 0) {
+                        text3 = info.home;
+                    } else {
+                        text3 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text3);
-                    Logger.d(TAG, "結果是--"+position+"---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text3);
+                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text3);
                     break;
                 case 5:
-                    String text4 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    String text4;
+                    if (info.matchType == 0) {
+                        text4 = info.home;
+                    } else {
+                        text4 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text4);
                     mBettingLvChildWaitOpenCg1.setText("输一半");
-                    Logger.d(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text4);
+                    Logger.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text4);
                     break;
                 case 6:
-                    String text5 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    String text5;
+                    if (info.matchType == 0) {
+                        text5 = info.home;
+                    } else {
+                        text5 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
+                    }
                     mBettingLvChildDoubleTeamCg1.setText(text5);
                     mBettingLvChildWaitOpenCg1.setText("赢一半");
-                    Logger.d(TAG, "結果是---"+position+"--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text5);
+                    Logger.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text5);
                     break;
                 default:
                     break;
@@ -222,9 +257,9 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
         @Bind(R.id.betting_no_his_ly)
         LinearLayout mBettingNoHisLy;
         @Bind(R.id.betting_lv_no_his_num_cg)
-        TextView     mBettingLvNoHisNumCg;
+        TextView mBettingLvNoHisNumCg;
         @Bind(R.id.betting_lv_no_his_time_cg)
-        TextView     mBettingLvNoHisTimeCg;
+        TextView mBettingLvNoHisTimeCg;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

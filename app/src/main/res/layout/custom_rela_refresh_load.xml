@@ -22,11 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"></RelativeLayout>
 
-        <com.dading.ssqs.components.swipetoloadlayout.PageLoadMoreFooterView
-            android:id="@id/swipe_load_more_footer"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/load_more_footer_height_twitter" />
-
     </com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout>
 
 </LinearLayout>

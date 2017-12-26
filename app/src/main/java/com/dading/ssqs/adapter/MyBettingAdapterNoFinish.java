@@ -1,6 +1,7 @@
 package com.dading.ssqs.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -26,11 +27,11 @@ import java.util.List;
  */
 public class MyBettingAdapterNoFinish extends BaseExpandableListAdapter {
     private static final String TAG = "MyBettingAdapterHis";
-    private final Context                       context;
+    private final Context context;
     private final List<BettingTBean> data;
-    private       View                          mView;
-    private       View                          mViewHowSerise;
-    private       View                          mViewNoSerise;
+    private View mView;
+    private View mViewHowSerise;
+    private View mViewNoSerise;
 
     public MyBettingAdapterNoFinish(Context context, List<BettingTBean> data) {
         this.context = context;
@@ -135,6 +136,9 @@ public class MyBettingAdapterNoFinish extends BaseExpandableListAdapter {
                              * 13全场单双14半场单双
                              */
                             // 1-全场赛果2- 当前让球3-全场大小4-半场赛果5-半场让球6-半场大小
+                            case 0:
+                                mBettingLvChildOrderTypeCg1.setText("冠军");
+                                break;
                             case 1:
                                 mBettingLvChildOrderTypeCg1.setText("全场赛果");
                                 break;
@@ -191,33 +195,74 @@ public class MyBettingAdapterNoFinish extends BaseExpandableListAdapter {
                             case 1:
                                 mBettingLvChildWaitOpenCg1.setText("未完结");
                                 mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.blue_t1));
-                                String text = infoEntity.home + " vs " + infoEntity.away;
+
+                                String text = infoEntity.home;
+                                if (!TextUtils.isEmpty(infoEntity.away)) {
+                                    text += " vs " + infoEntity.away;
+                                }
+
                                 mBettingLvChildDoubleTeamCg1.setText(text);
                                 break;
                             case 2:
                                 mBettingLvChildWaitOpenCg1.setText("赢");
                                 mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.red_dark));
-                                String text1 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+
+                                String text1;
+                                if (infoEntity.matchType == 0) {
+                                    text1 = infoEntity.home;
+                                } else {
+                                    text1 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+                                }
+
                                 mBettingLvChildDoubleTeamCg1.setText(text1);
                                 break;
                             case 3:
                                 mBettingLvChildWaitOpenCg1.setText("输");
                                 mBettingLvChildWaitOpenCg1.setTextColor(context.getResources().getColor(R.color.green_a));
-                                String text2 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+
+                                String text2;
+                                if (infoEntity.matchType == 0) {
+                                    text2 = infoEntity.home;
+                                } else {
+                                    text2 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+                                }
+
                                 mBettingLvChildDoubleTeamCg1.setText(text2);
                                 break;
                             case 4:
                                 mBettingLvChildWaitOpenCg1.setText("平");
-                                String text3 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+
+                                String text3;
+                                if (infoEntity.matchType == 0) {
+                                    text3 = infoEntity.home;
+                                } else {
+                                    text3 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+                                }
+
+
                                 mBettingLvChildDoubleTeamCg1.setText(text3);
                                 break;
                             case 5:
-                                String text4 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+
+                                String text4;
+                                if (infoEntity.matchType == 0) {
+                                    text4 = infoEntity.home;
+                                } else {
+                                    text4 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+                                }
+
                                 mBettingLvChildDoubleTeamCg1.setText(text4);
                                 mBettingLvChildWaitOpenCg1.setText("输一半");
                                 break;
                             case 6:
-                                String text5 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+
+                                String text5;
+                                if (infoEntity.matchType == 0) {
+                                    text5 = infoEntity.home;
+                                } else {
+                                    text5 = infoEntity.home + " " + infoEntity.homeScore + ":" + infoEntity.awayScore + " " + infoEntity.away;
+                                }
+
                                 mBettingLvChildDoubleTeamCg1.setText(text5);
                                 mBettingLvChildWaitOpenCg1.setText("赢一半");
                                 break;
@@ -259,13 +304,13 @@ public class MyBettingAdapterNoFinish extends BaseExpandableListAdapter {
     }
 
     class ViewHolder {
-        public TextView     mBettingLvItmeGroup;
-        public ImageView    mBettingLvItmeIv;
-        public TextView     mBettingLvItmeProfit;
-        public TextView     mBettingLvChildOrderTimeCg;
-        public TextView     mBettingLvChildOrderNumCg;
+        public TextView mBettingLvItmeGroup;
+        public ImageView mBettingLvItmeIv;
+        public TextView mBettingLvItmeProfit;
+        public TextView mBettingLvChildOrderTimeCg;
+        public TextView mBettingLvChildOrderNumCg;
         public LinearLayout mBettingMatchLy;
-        public TextView     mBettingLvItmeProfitText;
+        public TextView mBettingLvItmeProfitText;
     }
 
     /*--------------------------------------------------------------------*/

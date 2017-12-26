@@ -6,6 +6,7 @@ import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,6 +23,7 @@ import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.BettingMBean;
 import com.dading.ssqs.bean.BettingTBean;
 import com.dading.ssqs.bean.Constent;
+import com.dading.ssqs.components.pulltorefresh.PullToRefreshBase;
 import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
@@ -44,6 +46,7 @@ import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+
 import com.dading.ssqs.components.pulltorefresh.PullToRefreshListView;
 
 /**
@@ -114,6 +117,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
         mClose = (TextView) mCanlendarView.findViewById(R.id.betting_pop_calendar_close);
         mToday = (TextView) mCanlendarView.findViewById(R.id.betting_pop_calendar_today);
         mPop = PopUtil.popuMakemm(mCanlendarView);
+        this.listView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         this.listView.setEmptyView(mBettingRecordNo);
         mBettingRecordExpand.setEmptyView(mBettingRecordENo);
     }
@@ -214,6 +218,23 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
             public void onDismiss() {
                 mBettingRecordStartTime.setClickable(true);
                 mBettingRecordEndTime.setClickable(true);
+            }
+        });
+        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                if (mType == 1) {
+                    requestNear();
+                } else if (mType == 2) {
+                    requestNoFinish();
+                } else if (mType == 3) {
+                    getHistoryBetting();
+                }
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+
             }
         });
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -450,7 +471,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                 if (result.isOk()) {
                     List<BettingTBean> items = (List<BettingTBean>) result.getData();
 
-                    if (items != null) {
+                    if (items != null && items.size() >= 1) {
                         processDataNoFinish(items);
                     }
                 } else {
@@ -471,17 +492,20 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
     private void requestNoFinish() {
         mBettingRecordHistoryTitleLy.setVisibility(View.GONE);
         mBettingRecordNearTitleLy.setVisibility(View.GONE);
-        /**
-         * /v1.0/payBall/unchecked
-         */
+        listView.setVisibility(View.GONE);
+
         SSQSApplication.apiClient(classGuid).getMyPayBallUnChecked(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
+                listView.onRefreshComplete();
+
                 if (result.isOk()) {
                     List<BettingTBean> items = (List<BettingTBean>) result.getData();
 
-                    if (items != null) {
+                    if (items != null && items.size() >= 1) {
                         processDataNoFinish(items);
+                    } else {
+                        mBettingRecordENo.setVisibility(View.VISIBLE);
                     }
                 } else {
                     if (403 == result.getErrno()) {
@@ -502,6 +526,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
         line1.setVisibility(View.VISIBLE);
         mBettingRecordNearTitleLy.setVisibility(View.VISIBLE);
         mBettingRecordHistoryTitleLy.setVisibility(View.GONE);
+        listView.setVisibility(View.GONE);
 
         if (mBettingRecordByTime.isChecked()) {
             getByTime();
@@ -512,15 +537,18 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
 
     private void getHistoryBetting() {
         mBettingRecordNearTitleLy.setVisibility(View.GONE);
+        mBettingRecordExpand.setVisibility(View.GONE);
         mBettingRecordHistoryTitleLy.setVisibility(View.VISIBLE);
 
         SSQSApplication.apiClient(classGuid).getMyPayBallHistoryList(mStart, mEnd, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
+                listView.onRefreshComplete();
+
                 if (result.isOk()) {
                     List<BettingTBean> items = (List<BettingTBean>) result.getData();
 
-                    if (items != null) {
+                    if (items != null && items.size() >= 1) {
                         processDataHis(items);
                     }
                 } else {
@@ -551,6 +579,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                 }
             }
             listView.setAdapter(new HisAdapter(this, list));
+            listView.setVisibility(View.VISIBLE);
         } else {
             mBettingRecordExpand.setVisibility(View.GONE);
         }
@@ -580,14 +609,14 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
         SSQSApplication.apiClient(classGuid).getRecentType(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
+                listView.onRefreshComplete();
                 if (result.isOk()) {
                     List<BettingTBean> items = (List<BettingTBean>) result.getData();
 
-                    if (items != null) {
+                    if (items != null && items.size() >= 1) {
                         processData(items);
                     } else {
                         mBettingRecordENo.setVisibility(View.VISIBLE);
-                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 } else {
                     mBettingRecordENo.setVisibility(View.VISIBLE);
@@ -611,15 +640,15 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
         SSQSApplication.apiClient(classGuid).getRecentType2(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
+                listView.onRefreshComplete();
                 if (result.isOk()) {
                     List<BettingMBean> items = (List<BettingMBean>) result.getData();
 
-                    if (items != null) {
+                    if (items != null && items.size() >= 1) {
                         mBettingRecordENo.setVisibility(View.GONE);
                         processDataM(items);
                     } else {
                         mBettingRecordENo.setVisibility(View.VISIBLE);
-                        ToastUtils.midToast(BettingRecordActivity.this, result.getMessage(), 0);
                     }
                 } else {
                     mBettingRecordENo.setVisibility(View.VISIBLE);
@@ -651,7 +680,6 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
         line1.setVisibility(View.VISIBLE);
         mBettingRecordExpand.setVisibility(View.VISIBLE);
         mBettingRecordExpand.setAdapter(new MyBettingAdapter(this, tBean));
-
     }
 
     int mCurrPosition = -1;

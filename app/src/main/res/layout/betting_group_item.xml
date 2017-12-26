@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_marginStart="15dp"
             android:gravity="center"
             android:textColor="@color/gray3"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/betting_lv_itme_group_iv"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="13dp"
-            android:src="@mipmap/xia"/>
+            android:src="@mipmap/xia" />
 
         <TextView
             android:id="@+id/betting_lv_itme_group_profit"
@@ -33,7 +33,7 @@
             android:layout_marginEnd="5dp"
             android:layout_toStartOf="@id/betting_lv_itme_group_iv"
             android:gravity="center"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/betting_lv_itme_group_profit_text"
@@ -44,6 +44,6 @@
             android:gravity="center"
             android:text="@string/profit"
             android:textColor="@color/gray3"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
     </RelativeLayout>
 </LinearLayout>

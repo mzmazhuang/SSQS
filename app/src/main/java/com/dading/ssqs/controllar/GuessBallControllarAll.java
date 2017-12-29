@@ -14,16 +14,15 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.dading.ssqs.R;
@@ -33,16 +32,19 @@ import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.activity.LoginActivity;
 import com.dading.ssqs.activity.NewRechargeActivity;
 import com.dading.ssqs.activity.OnLineServerActivity;
+import com.dading.ssqs.activity.RankingListActivity;
 import com.dading.ssqs.adapter.BaseMePagerAdapter;
 import com.dading.ssqs.adapter.HomeBasketballAdapter;
 import com.dading.ssqs.adapter.HomeMatchAdapter;
-import com.dading.ssqs.adapter.MyRankingListHAdapter;
+import com.dading.ssqs.adapter.newAdapter.RankingAdapter;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.base.BaseTabsContainer;
+import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.HomeBean;
 import com.dading.ssqs.bean.HomeMessageBean;
+import com.dading.ssqs.components.RankingView;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.utils.AndroidUtilities;
@@ -73,7 +75,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private ListView mHome_lv_match;
     private ViewPager mHome_vp_ciecle;
     private LinearLayout mHome_vp_ciecle_dots;
-    private ListView mHome_lv_information;
     private int number = 0;
     private ArrayList<View> mHVP;
     private AutoVerticalScrollTextView mHome_win_text;
@@ -94,10 +95,8 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private TextView mGuessFourLoading;
     private LinearLayout mHome_football_title;
     private LinearLayout mHome_basketball_title;
-    private TextView mRankMore;
     private View mFootballView;
     private View mBasketballView;
-    private ImageView mImRanking;
     private TextView mHome_vp_title;
     private ArrayList<String> mHVpTtile;
 
@@ -105,10 +104,10 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
     private HomeVpCircleAdapter homeVpCircleAdapter;
     private HomeMatchAdapter homeMatchAdapter;
-    private MyRankingListHAdapter myRankingListHAdapter;
+
+    private RankingView rankingView;
 
     private void processDataMessage(List<HomeMessageBean> bean) {
-        listScrollDown();
         if (bean != null) {
             mData = bean;
             if (number < mData.size()) {
@@ -118,8 +117,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-                    listScrollOff();
-                    UIUtils.postTaskDelay(run_scroll_up, 0);
                     if (number < mData.size()) {
                         mHome_win_text.setText(mData.get(number).content);
                         ++number;
@@ -144,7 +141,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     public View initContentView(Context content) {
         View view = View.inflate(mContent, R.layout.guessball_home_come, null);
 
-        mImRanking = (ImageView) view.findViewById(R.id.home_ranking);
         mGuessFourShop = (ImageView) view.findViewById(R.id.guess_four_shop);
         mGuessFourLoading = (TextView) view.findViewById(R.id.guess_four_loading);
         mHome_sc_scrollView_ly = (LinearLayout) view.findViewById(R.id.home_scrollview_ly);//scrollview
@@ -157,7 +153,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
         mHome_basketball_title = (LinearLayout) view.findViewById(R.id.home_basketball_title);//篮球标题
         mHome_recy_savant = (ListView) view.findViewById(R.id.home_recy_btn);//专家
-        mHome_lv_information = (ListView) view.findViewById(R.id.home_listView_information);//排行榜
 
         mFreeGlod = (LinearLayout) view.findViewById(R.id.home_four_free_glod);
         mLuckLotto = (LinearLayout) view.findViewById(R.id.home_four_luck_lotto);
@@ -167,13 +162,22 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
         mMore = (TextView) view.findViewById(R.id.home_activity_more);
         mReferMore = (TextView) view.findViewById(R.id.home_referr_more);
-        mRankMore = (TextView) view.findViewById(R.id.home_rank_more);
         mFootballView = view.findViewById(R.id.home_football_view);
         mBasketballView = view.findViewById(R.id.home_basketball_view);
 
-        /**
-         * 四组件
-         */
+        LinearLayout rankingLayout = (LinearLayout) view.findViewById(R.id.ranking);
+
+        //添加排行榜
+        rankingView = new RankingView(content, new RankingAdapter.OnItemClickListener() {
+            @Override
+            public void onClick() {
+                Intent intent = new Intent(mContent, RankingListActivity.class);
+                startActivity(intent);
+            }
+        });
+        rankingView.setVisibility(View.GONE);
+        rankingLayout.addView(rankingView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 500));
+
         mHome_win_text = (AutoVerticalScrollTextView) view.findViewById(R.id.home_win_text);
 
         //防止跳转listview上
@@ -192,70 +196,28 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         homeMatchAdapter = new HomeMatchAdapter(mContent);
         mHome_lv_match.setAdapter(homeMatchAdapter);
 
-        myRankingListHAdapter = new MyRankingListHAdapter(mContent);
-        mHome_lv_information.setAdapter(myRankingListHAdapter);
-
         return view;
     }
 
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            handler.removeCallbacks(run_scroll_down);
-            handler.removeCallbacks(run_scroll_up);
+    public void resume() {
+        if (rankingView != null) {
+            rankingView.resume();
         }
-    };
-
-    /**
-     * 向下滚动
-     */
-    public void listScrollDown() {
-        listScrollOff();
-        handler.postDelayed(run_scroll_down, 0);
+        if (mAutoScrollTask != null) {
+            mAutoScrollTask.start();
+        }
     }
 
-    /**
-     * 停止滚动
-     */
-    public void listScrollOff() {
-        handler.removeCallbacks(run_scroll_down);
-        handler.removeCallbacks(run_scroll_up);
+    public void pause() {
+        if (rankingView != null) {
+            rankingView.pause();
+        }
+        if (mAutoScrollTask != null) {
+            mAutoScrollTask.stop();
+        }
     }
-
-    /**
-     * 自身循环
-     */
-    Runnable run_scroll_up = new Runnable() {
-        @Override
-        public void run() {
-            mHome_lv_information.smoothScrollBy(1, 10);
-            handler.postDelayed(run_scroll_up, 10);
-        }
-    };
-
-    Runnable run_scroll_down = new Runnable() {
-        @Override
-        public void run() {
-            mHome_lv_information.smoothScrollBy(-1, 10);
-            handler.postDelayed(run_scroll_down, 10);
-        }
-    };
-
 
     private void getData() {
-        /**
-         * 设置文字滑动
-         * a)	请求地址：
-         /v1.0/sysMessage/list
-         b)	请求方式:
-         get
-         a)	请求地址：
-         /v1.0/sysMessage/list
-         b)	请求方式:
-         get
-         */
-
         SSQSApplication.apiClient(0).getSysMessageList(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
@@ -287,15 +249,12 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_ACTION);
         mAutoScrollTask = new AutoScrollTask();
         mAutoScrollTask.start();
-        /**
-         * 正式数据
-         */
+
+        //文字滑动
         getData();
-        boolean networkAvailable = AndroidUtilities.isNetworkAvailable(mContent);
-        if (networkAvailable) {
-            //首页活动请求数据
-            getHOME(null);
-        }
+        //首页活动请求数据
+        getHOME(null);
+        //中奖名单
     }
 
     private void getHOME(final OnDoneListener listener) {
@@ -304,6 +263,9 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         SSQSApplication.apiClient(0).getMainDataList(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
+                swipeToLoadLayout.setRefreshing(false);
+                swipeToLoadLayout.setRefreshEnabled(true);
+
                 if (result.isOk()) {
                     HomeBean homeBean = (HomeBean) result.getData();
 
@@ -331,6 +293,8 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                         } else {
                             ToastUtils.midToast(mContent, "请求失败,没有缓存数据,请检查网络拉取最新赛事", 0);
                         }
+                    } else {
+                        Toast.makeText(mContent, result.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -420,50 +384,21 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         }
 
         /**
-         * 排行榜
+         * 中奖名单
          */
-        if (dataEntity.getOrders() != null) {
-            List<HomeBean.OrdersBeanX.OrdersBean> orders = dataEntity.getOrders().getOrders();
-            orders.addAll(orders);
-            orders.addAll(orders);
-            orders.addAll(orders);
-            orders.addAll(orders);
-            orders.addAll(orders);
+        HomeBean.OrdersBeanX ordersBeanX = dataEntity.getOrders();
 
-            myRankingListHAdapter.setList(orders);
-
-            listScrollOff();
-
-            ListScrollUtil.setListViewHeightBasedOnChildren5(mHome_lv_information);
-            UIUtils.postTaskDelay(run_scroll_up, 0);
+        if (ordersBeanX != null && ordersBeanX.getSysMessge() != null && ordersBeanX.getSysMessge().size() >= 1) {
+            rankingView.setVisibility(View.VISIBLE);
+            rankingView.setData(ordersBeanX.getSysMessge());
+        } else {
+            rankingView.setVisibility(View.GONE);
         }
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-        /**
-         *  mFreeGlod  mLuckLotto  mYpRfer  mRankWin   mGreenhandHelp
-         */
-        mHome_lv_information.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UIUtils.SendReRecevice(Constent.LOADING_RANKING);
-            }
-        });
-
-        mImRanking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UIUtils.SendReRecevice(Constent.LOADING_RANKING);
-            }
-        });
-        mRankMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UIUtils.SendReRecevice(Constent.LOADING_RANKING);
-            }
-        });
         mGuessFourShop.setOnClickListener(new View.OnClickListener() {
             private Intent mIntent;
 
@@ -491,7 +426,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
             @Override
             public void onPageSelected(int position) {
-                Logger.d(TAG, "轮播图postion返回数据是------------------------------:" + position);
                 for (int i = 0; i < mHVP.size(); i++) {
                     ImageView iv = (ImageView) mHome_vp_ciecle_dots.getChildAt(i);
                     if (iv != null)
@@ -500,7 +434,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                         if (iv != null)
                             iv.setImageResource(R.mipmap.grey);
                         mHome_vp_title.setText(mHVpTtile.get(position));
-                        Logger.d(TAG, "home的viewpage标题-----" + mHVpTtile.get(position));
                     }
                 }
             }
@@ -581,13 +514,11 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
     private void setBasketball() {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
-        Logger.d("GBSS", "现在是-----:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
     private void setFootball() {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
-        Logger.d("GBSS", "现在是-----:" + UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true));
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 

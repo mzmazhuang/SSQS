@@ -62,6 +62,7 @@ public class BasketBallLastBean implements Serializable {
         private String payRate;
         private String teamName;
         private int payTypeID;
+        private int matchID;
 
         public int getId() {
             return id;
@@ -101,6 +102,14 @@ public class BasketBallLastBean implements Serializable {
 
         public void setPayTypeID(int payTypeID) {
             this.payTypeID = payTypeID;
+        }
+
+        public int getMatchID() {
+            return matchID;
+        }
+
+        public void setMatchID(int matchID) {
+            this.matchID = matchID;
         }
     }
 }

@@ -102,11 +102,11 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         if (!hasInit) {
             hasInit = true;
 
-            mLoadAnimal.setVisibility(View.VISIBLE);
-            mDrawable.start();
-
             if (!isGetData) {
                 isGetData = true;
+
+                mLoadAnimal.setVisibility(View.VISIBLE);
+                mDrawable.start();
 
                 mPage = 1;
 
@@ -125,7 +125,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
 
         mDate = mFormatData2;
         mCalendar = Calendar.getInstance();
-        mSdf1 = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+        mSdf1 = new SimpleDateFormat("yyyyMMddHH:mm:ss", Locale.CHINA);
         mSdf2 = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
         mListData1 = new ArrayList<>();
         mListData2 = new ArrayList<>();
@@ -139,7 +139,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         mScoreWeekData.setText(data);
 
         mDate = mFormatData2.replaceAll("-", "");
-        UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
+        UIUtils.getSputils().putString(Constent.SG_TIME, mFormatData);
 
         mWeek = AppendData(mFormatData2);
 
@@ -182,9 +182,9 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                             }
                         }
                     }
-
                     isGetData = false;
                 } else {
+                    isGetData = false;
                     Logger.d(TAG, result.getMessage() + "失败信息");
                 }
             }
@@ -348,9 +348,11 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         mScoreWeekData.setText(data);
 
         mDate = s.replaceAll("-", "");
-        UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
 
-        calendarVolley(mDate);
+        String netWorkDate = mSdf1.format(date);
+        UIUtils.getSputils().putString(Constent.SC_TIME, netWorkDate);
+
+        calendarVolley(netWorkDate);
 
         calendarData(day);
     }
@@ -440,7 +442,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         String s = mSdf2.format(date);
         String data = AppendData(s);
         mDate = s.replaceAll("-", "");
-        UIUtils.getSputils().putString(Constent.SG_TIME, mDate);
+        UIUtils.getSputils().putString(Constent.SG_TIME, mSdf1.format(date));
         mScoreWeekData.setText(data);
         switch (num) {
             case 1:

@@ -507,7 +507,7 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
         }
 
         @Override
-        public void onInfoClick(int matchId, String title) {
+        public void onInfoClick(int matchId,String title) {
 
         }
     };
@@ -661,7 +661,7 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
 
     private void getNetDataWork() {
         if (TextUtils.isEmpty(currSelectTime)) {
-            currSelectTime = DateUtils.getCurTime("yyyyMMdd");
+            currSelectTime = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getEarlyFootBallList(currSelectTime, sType, leagueIDs, new CcApiClient.OnCcListener() {
@@ -837,11 +837,7 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
             item.setTitle(currScoreBean.getHome());
             item.setByTitle(currScoreBean.getAway());
 
-            //硬编码
-            String time = currScoreBean.getOpenTime();
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+            String time = DateUtils.changeFormater(currScoreBean.getOpenTime(), "yyyy-MM-dd HH:mm:ss", "HH:mm");
 
             item.setTime(time);
 

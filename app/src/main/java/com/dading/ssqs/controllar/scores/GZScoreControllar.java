@@ -74,7 +74,7 @@ public class GZScoreControllar extends BaseScoreControllar {
                     public void run() {
                         boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
-                        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "20160822", "0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
+                        SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "2016082200:00:00", "0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
                             @Override
                             public void onResponse(CcApiResult result) {
                                 mGZList.onRefreshComplete();
@@ -132,7 +132,7 @@ public class GZScoreControllar extends BaseScoreControllar {
             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
             mLoadingAnimal.setVisibility(View.VISIBLE);
-            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "20160822", "0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
+            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 5, "2016082200:00:00", "0", 0, "0", 1, 1000, new CcApiClient.OnCcListener() {
                 @Override
                 public void onResponse(CcApiResult result) {
                     mLoadingAnimal.setVisibility(View.GONE);

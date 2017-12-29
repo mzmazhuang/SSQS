@@ -145,7 +145,7 @@ public class DataController {
         if (!TextUtils.isEmpty(date)) {
             mDate = date;
         } else {
-            mDate = DateUtils.getCurTime("yyyyMMdd");
+            mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getMatchBasketBallFilterList(type, 0, mDate, new CcApiClient.OnCcListener() {
@@ -178,7 +178,7 @@ public class DataController {
         if (!TextUtils.isEmpty(date)) {
             mDate = date;
         } else {
-            mDate = DateUtils.getCurTime("yyyyMMdd");
+            mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getMatchBasketBallFilterList(type, 1, mDate, new CcApiClient.OnCcListener() {
@@ -211,7 +211,7 @@ public class DataController {
         if (!TextUtils.isEmpty(date)) {
             mDate = date;
         } else {
-            mDate = DateUtils.getCurTime("yyyyMMdd");
+            mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getMatchFilterList(type, 1, mDate, new CcApiClient.OnCcListener() {
@@ -244,7 +244,7 @@ public class DataController {
         if (!TextUtils.isEmpty(date)) {
             mDate = date;
         } else {
-            mDate = DateUtils.getCurTime("yyyyMMdd");
+            mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getMatchFilterList(type, 0, mDate, new CcApiClient.OnCcListener() {

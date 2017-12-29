@@ -163,7 +163,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybord0.setOnClickListener(new MyItemClickListern(bean) {
                                                @Override
                                                public void onClick(View v) {
-                                                   if (bean.amount.length() != 0 && !"请输入金币".equals(bean.amount)) {
+                                                   if (bean.amount.length() != 0 && !"请输入金额".equals(bean.amount)) {
                                                        bean.amount = bean.amount + "0";
                                                        hoder.mBettingBodyItemInputGold.setText(bean.amount);
                                                        Double resid = Double.parseDouble(bean.amount.trim()) * Double.parseDouble(bean.realRate.trim());
@@ -177,7 +177,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybord1.setOnClickListener(new MyItemClickListern(bean) {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "1";
                                                    } else {
                                                        bean.amount = bean.amount + "1";
@@ -194,7 +194,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybord2.setOnClickListener(new MyItemClickListern(bean) {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "2";
                                                    } else {
                                                        bean.amount = bean.amount + "2";
@@ -211,7 +211,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybord3.setOnClickListener(new MyItemClickListern(bean) {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "3";
                                                    } else {
                                                        bean.amount = bean.amount + "3";
@@ -228,7 +228,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybord4.setOnClickListener(new MyItemClickListern(bean) {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "4";
                                                    } else {
                                                        bean.amount = bean.amount + "4";
@@ -245,7 +245,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybord5.setOnClickListener(new MyItemClickListern(bean) {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "5";
                                                    } else {
                                                        bean.amount = bean.amount + "5";
@@ -264,7 +264,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                            {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "6";
                                                    } else {
                                                        bean.amount = bean.amount + "6";
@@ -283,7 +283,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                            {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "7";
                                                    } else {
                                                        bean.amount = bean.amount + "7";
@@ -302,7 +302,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                            {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "8";
                                                    } else {
                                                        bean.amount = bean.amount + "8";
@@ -321,7 +321,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                            {
                                                @Override
                                                public void onClick(View v) {
-                                                   if ("请输入金币".equals(bean.amount)) {
+                                                   if ("请输入金额".equals(bean.amount)) {
                                                        bean.amount = "9";
                                                    } else {
                                                        bean.amount = bean.amount + "9";
@@ -340,7 +340,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                                   {
                                                       @Override
                                                       public void onClick(View v) {
-                                                          if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                          if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                               bean.amount = "";
                                                               hoder.mBettingBodyItemExpectedReturn.setText("");
                                                           } else {
@@ -360,7 +360,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                                      {
                                                          @Override
                                                          public void onClick(View v) {
-                                                             if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                             if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                  bean.amount = "";
                                                                  hoder.mBettingBodyItemExpectedReturn.setText("");
                                                              } else {
@@ -380,7 +380,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                                          {
                                                              @Override
                                                              public void onClick(View v) {
-                                                                 if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                                 if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                      bean.amount = "";
                                                                      hoder.mBettingBodyItemExpectedReturn.setText("");
                                                                  } else {
@@ -400,7 +400,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                                                  {
                                                      @Override
                                                      public void onClick(View v) {
-                                                         if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                         if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                              bean.amount = "";
                                                              hoder.mBettingBodyItemExpectedReturn.setText("");
                                                          } else {
@@ -429,7 +429,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
         hoder.mKeybordConfirm.setOnClickListener(new MyItemClickListern(bean) {
                                                      @Override
                                                      public void onClick(View v) {
-                                                         if (!"请输入金币".equals(bean.amount) && bean.amount.length() > 0) {
+                                                         if (!"请输入金额".equals(bean.amount) && bean.amount.length() > 0) {
                                                              hoder.mBettingBodyItemInputGold.setText(bean.amount);
                                                              hoder.mBettingBodyItemInputGold.setChecked(bean.cbTag);
                                                              Double resid = Double.parseDouble(bean.amount.trim()) * Double.parseDouble(bean.realRate.trim());

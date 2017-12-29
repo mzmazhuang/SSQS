@@ -33,6 +33,9 @@
     <item name="early_parent" type="id" />
     <item name="select_match_viewPager" type="id" />
     <item name="select_match_operation" type="id" />
+    <item name="ranking_container" type="id" />
+    <item name="ranking_image" type="id" />
+    <item name="ranking_right" type="id" />
     <!--end swipeToLoadLayout-->
 
 </resources>

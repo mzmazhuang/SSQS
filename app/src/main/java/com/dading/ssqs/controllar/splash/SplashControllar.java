@@ -133,7 +133,6 @@ public class SplashControllar extends BaseFragnment {
                             UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
 
-                            Logger.d(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
                             //发送广播
                             UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                         }

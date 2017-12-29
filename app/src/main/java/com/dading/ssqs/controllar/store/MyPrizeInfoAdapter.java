@@ -73,7 +73,7 @@ public class MyPrizeInfoAdapter extends BaseAdapter implements ListAdapter {
         } else {
             hoder.prizeItemStatus.setText("已发放");
         }
-        String glod = entity.cost + "金币";
+        String glod = entity.cost + "元";
         hoder.prizeItemCost.setText(glod);
 
         hoder.prizeItemData.setText(entity.createDate.substring(2));

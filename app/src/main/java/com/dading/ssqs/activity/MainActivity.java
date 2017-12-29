@@ -98,9 +98,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int setLayoutId() {
-        //去除标题栏并全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         return R.layout.activity_main;
     }
 
@@ -256,7 +253,7 @@ public class MainActivity extends BaseActivity {
     public void onBackPressed() {
         if (mFragment.isBack()) {
             if (System.currentTimeMillis() - mPreTime > 2000) {// 两次点击间隔大于2s
-                ToastUtils.midToast(UIUtils.getContext(), "再按一次,退出实是球事", 0);
+                ToastUtils.midToast(UIUtils.getContext(), "再按一次,退出皇冠现金网", 0);
                 mPreTime = System.currentTimeMillis();
                 return;
             } else {

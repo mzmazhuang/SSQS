@@ -250,7 +250,6 @@
                                 android:textSize="12sp" />
                         </LinearLayout>
 
-
                     </LinearLayout>
 
                     <!--中奖信息-->
@@ -305,7 +304,7 @@
                         android:id="@+id/home_football_view"
                         android:layout_width="match_parent"
                         android:layout_height="8dp"
-                        android:background="@color/gray_e3" />
+                        android:background="#EFEFF4" />
 
                     <LinearLayout
                         android:id="@+id/home_football_title"
@@ -371,7 +370,7 @@
                         android:id="@+id/home_basketball_view"
                         android:layout_width="match_parent"
                         android:layout_height="8dp"
-                        android:background="@color/gray_e3" />
+                        android:background="#EFEFF4" />
 
                     <!--专家推荐-->
                     <LinearLayout
@@ -432,74 +431,13 @@
                         android:id="@+id/home_rank_view"
                         android:layout_width="match_parent"
                         android:layout_height="8dp"
-                        android:background="@color/gray_d" />
+                        android:background="#EFEFF4" />
 
                     <LinearLayout
-                        android:id="@+id/home_rank_title"
+                        android:id="@+id/ranking"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/white">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="20dp"
-                            android:background="@color/transparent"
-                            android:src="@mipmap/ranking" />
-
-                        <TextView
-                            android:id="@+id/home_rank"
-                            style="@style/w0h"
-                            android:layout_marginStart="9dp"
-                            android:layout_weight="5"
-                            android:gravity="center_vertical"
-                            android:text="@string/ranking_list"
-                            android:textColor="@color/pink_home"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:id="@+id/home_rank_more"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="3dp"
-                            android:gravity="center_vertical"
-                            android:text="@string/more"
-                            android:textColor="@color/gray6"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginEnd="10dp"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:src="@mipmap/you" />
-                    </LinearLayout>
-
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/gray_e" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ListView
-                            android:id="@+id/home_listView_information"
-                            android:layout_width="match_parent"
-                            android:layout_height="400dp"
-                            android:divider="@color/gray_e"
-                            android:dividerHeight="0.5dp"
-                            android:scrollbars="none"></ListView>
-
-                        <ImageView
-                            android:id="@+id/home_ranking"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp" />
-                    </RelativeLayout>
+                        android:orientation="vertical"></LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

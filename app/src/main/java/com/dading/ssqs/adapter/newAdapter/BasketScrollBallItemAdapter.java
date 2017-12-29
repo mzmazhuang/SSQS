@@ -22,8 +22,8 @@ public class BasketScrollBallItemAdapter extends RecyclerView.Adapter<BasketScro
     private Context mContext;
     private List<ScrollBallBasketBallBean.ScrollBaksetBallItems> list;
     private int dataId;
-    private String title;
     private List<ScrollBallBasketBallDefaultFragment.MergeBean> focusList;
+    private String title;
 
     public void setTitle(String title) {
         this.title = title;

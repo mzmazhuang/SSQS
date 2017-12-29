@@ -623,7 +623,7 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
     }
 
     private void getNetDataWork(final int off, final int lim) {
-        String mDate = DateUtils.getCurTime("yyyyMMdd");
+        String mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
 
         SSQSApplication.apiClient(0).getScrollBallList(true, 2, mDate, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
             @Override
@@ -799,11 +799,7 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
             item.setTitle(currScoreBean.home);
             item.setByTitle(currScoreBean.away);
 
-            //硬编码
-            String time = currScoreBean.openTime;
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+            String time = DateUtils.changeFormater(currScoreBean.openTime, "yyyy-MM-dd HH:mm:ss", "HH:mm");
 
             item.setTime(time);
 

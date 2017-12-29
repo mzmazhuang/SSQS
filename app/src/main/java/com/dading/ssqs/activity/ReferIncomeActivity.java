@@ -94,7 +94,6 @@ public class ReferIncomeActivity extends BaseActivity {
 
                         UIUtils.getSputils().putString(Constent.GLODS, mBean.banlance + "");
                         UIUtils.getSputils().putString(Constent.DIAMONDS, mBean.diamond + "");
-                        Logger.d(TAG, "我的金币:" + mBean.banlance + ",我的钻石:" + mBean.diamond);
                     }
                 } else {
                     if (403 == result.getErrno()) {

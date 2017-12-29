@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">实是球是</string>
+    <string name="app_name">皇冠现金网</string>
     <string name="hint_bank_sub">请输入银行支行</string>
     <string name="prompt_password">请输入您的密码</string>
     <string name="prompt_password_second">请再次输入您的密码</string>
@@ -7,7 +7,7 @@
     <string name="match_second">绿色手联</string>
     <string name="match_start_time">07月13号 16:30</string>
     <string name="match_type">球会友谊</string>
-    <string name="glod">金币</string>
+    <string name="glod">元</string>
     <string name="hint_say">说点什么吧</string>
     <string name="publish">发表</string>
     <string name="main_stye_thread">主题帖</string>
@@ -17,7 +17,7 @@
     <string name="have_number">已有账号</string>
     <string name="click_loding">点此登录</string>
     <string name="hava_click_loding">已有账户,点此登录</string>
-    <string name="regiset_protocol">实是球事《注册协议》</string>
+    <string name="regiset_protocol">皇冠现金网《注册协议》</string>
     <string name="allow_regiset_protocol">点此注册,表明您同意</string>
     <string name="hint_set_pwd">请设置您的新密码</string>
     <string name="send_again">重新发送</string>
@@ -29,7 +29,7 @@
     <string name="setting">设置</string>
     <string name="my">我的</string>
     <string name="number_text">--</string>
-    <string name="username">用户名:</string>
+    <string name="username">用户名</string>
     <string name="play_talk">玩法介绍</string>
     <string name="betting_record">投注记录</string>
     <string name="guess_people">--人竞猜</string>
@@ -45,7 +45,7 @@
     <string name="ninty_all_balls">猜两队90分钟内的比赛总进球数(含补时)</string>
     <string name="savant_name">--</string>
     <string name="win_infomation">中奖信息:</string>
-    <string name="win_information_content">恭喜\'瞎包\'在次爱情中猜中10000金币</string>
+    <string name="win_information_content">恭喜\'瞎包\'在次爱情中猜中10000元</string>
     <string name="from_text">来自</string>
     <string name="free_get_glod">免费领币</string>
     <string name="greenhand_help">新手帮助</string>
@@ -156,10 +156,10 @@
     <string name="auth_once">立即认证</string>
     <string name="refer_savant_protocol">《专家推荐》</string>
     <string name="savant_protocol_1">一、专家资格认证</string>
-    <string name="savant_protocol_11">实是球事APP注册用户申请专家认证，通过审核即可成为专家。审核周期为1～2个工作日。</string>
+    <string name="savant_protocol_11">皇冠现金网APP注册用户申请专家认证，通过审核即可成为专家。审核周期为1～2个工作日。</string>
     <string name="savant_protocol_2">二、专家推荐发起规则</string>
     <string name="savant_protocol_3">三、专家等级规则</string>
-    <string name="savant_protocol_21">1 、 专家可发起竞彩单关，亚盘，大小球推荐；\n2 、 每场比赛发起推荐的截止时间为赛前１分钟；\n3 、 发起推荐时，每场比赛只允许推荐一个选项；\n4 、 异常赛事推荐处理：专家已发起的比赛推荐，若因比赛遭遇取消，待定，腰斩和推迟等其他原因，赛事超过36小时无法获取赛果，且被用户购买，实是球事将对该推荐单做撤单退款处理。</string>
+    <string name="savant_protocol_21">1 、 专家可发起竞彩单关，亚盘，大小球推荐；\n2 、 每场比赛发起推荐的截止时间为赛前１分钟；\n3 、 发起推荐时，每场比赛只允许推荐一个选项；\n4 、 异常赛事推荐处理：专家已发起的比赛推荐，若因比赛遭遇取消，待定，腰斩和推迟等其他原因，赛事超过36小时无法获取赛果，且被用户购买，皇冠现金网将对该推荐单做撤单退款处理。</string>
     <string name="savant_protocol_title4">四、专家推荐收费标准</string>
     <string name="savant_protocol_text4">不同等级的专家，推荐收费标准不同：\n 1 、 初级专家：每单推荐收费0～10钻；\n 2 、 中级专家：每单推荐收费0～30钻；\n 3 、 高级专家：每单推荐收费0～50钻；\n 4 、 资深专家：每单推荐收费0～100钻</string>
     <string name="savant_protocol_title5">五、专家推荐违规处理</string>
@@ -268,7 +268,7 @@
     <string name="one_mouth_vip2">1个月VIP2</string>
     <string name="one_mouth_vip3">1个月VIP3</string>
     <string name="one_mouth_vip_ace">1个月至尊VIP</string>
-    <string name="vip1_text">购买后立即获得VIP专属标识;每天免费领取100金币,免费使用剪刀石头布等。</string>
+    <string name="vip1_text">购买后立即获得VIP专属标识;每天免费领取100元,免费使用剪刀石头布等。</string>
     <string name="diamonds_100">100钻</string>
     <string name="diamonds_300">300钻</string>
     <string name="diamonds_500">500钻</string>
@@ -276,7 +276,7 @@
     <string name="fifty_phone">50元话费卷</string>
     <string name="have_zero">还剩0个</string>
     <string name="pay_mothod">支付方式</string>
-    <string name="glod34112">--金币</string>
+    <string name="glod34112">--元</string>
     <string name="num34112">--</string>
     <string name="wx_pay">微信支付</string>
     <string name="aliy_pay">支付宝支付</string>
@@ -295,7 +295,7 @@
     <string name="write_living_place">请填写详细地址</string>
     <string name="sended">已发放</string>
     <string name="year_moth_day">16\-08\-15</string>
-    <string name="cost_500">消耗500金币</string>
+    <string name="cost_500">消耗500元</string>
     <string name="JD50">京东卷50元</string>
     <string name="cancel">取消</string>
     <string name="confirm">确认</string>
@@ -346,58 +346,58 @@
     <string name="give_score">给我们评分</string>
     <string name="share_friend">分享给好友</string>
     <string name="user_service_protocol">用户服务协议</string>
-    <string name="about_ssqs">关于实是球事</string>
+    <string name="about_ssqs">关于皇冠现金网</string>
     <string name="allow_regiset_protocol_all">一、总则</string>
-    <string name="allow_regiset_protocol_1">本协议是用户与实是球事之间的法律协议。“用户”是指愿意接受或者实际上已经接受实是球事提供的游戏产品和服务的个人。</string>
-    <string name="allow_regiset_protocol_2">1.2 \n注册成功后，实是求事将给予每个用户一个用户账号及对应密码，该用户账号和密码由用户负责保管；用户应当对使用该账号在实是球事所有产品上进行的所有行为和事件负法律责任。\n 1.3\n 该用户服务协议可由实是球事根据国家法律政策或公司运营要求随时更新，且无需要另行通知。用户在使用相关服务时应关注本服务协议及其他服务规则的变化。若用户不同意本用户协议或相关服务规则或不同意实是球事作出的修改，用户可主动停止使用实是球事提供的产品和服务，若在实是球事修改协议或服务规则后用户仍继续使用实是球事提供的产品和服务，即表示用户同意实是球事对本用户协议及相关服务规则所做的所有修改。由于用户在用户协议变更后因未熟悉该变更而引起的损失，实是球事将不会承担任何法律责任。用户在使用实是球事提供的各项服务之前，应仔细阅读本服务协议。此后，用户不得以未阅读本服务协议做任何形式的抗辩。</string>
+    <string name="allow_regiset_protocol_1">本协议是用户与皇冠现金网之间的法律协议。“用户”是指愿意接受或者实际上已经接受皇冠现金网提供的游戏产品和服务的个人。</string>
+    <string name="allow_regiset_protocol_2">1.2 \n注册成功后，实是求事将给予每个用户一个用户账号及对应密码，该用户账号和密码由用户负责保管；用户应当对使用该账号在皇冠现金网所有产品上进行的所有行为和事件负法律责任。\n 1.3\n 该用户服务协议可由皇冠现金网根据国家法律政策或公司运营要求随时更新，且无需要另行通知。用户在使用相关服务时应关注本服务协议及其他服务规则的变化。若用户不同意本用户协议或相关服务规则或不同意皇冠现金网作出的修改，用户可主动停止使用皇冠现金网提供的产品和服务，若在皇冠现金网修改协议或服务规则后用户仍继续使用皇冠现金网提供的产品和服务，即表示用户同意皇冠现金网对本用户协议及相关服务规则所做的所有修改。由于用户在用户协议变更后因未熟悉该变更而引起的损失，皇冠现金网将不会承担任何法律责任。用户在使用皇冠现金网提供的各项服务之前，应仔细阅读本服务协议。此后，用户不得以未阅读本服务协议做任何形式的抗辩。</string>
     <string name="allow_regiset_protocol_all_2">二、注册信息和隐私保护</string>
-    <string name="allow_regiset_protocol_21">2.1\n 实是球事账号的所有权归大鼎智联，用户完成注册流程后，即获得实是球事账号的使用权。用户应提供及时、详尽及准确的个人资料，并不断更新注册资料，符合及时、详尽、准确的要求。如果因注册信息不真实或更新不及时而引起的不利后果，均由用户自行承担，大鼎智联不承担任何责任。 \n2.2\n 用户应当通过真实身份信息认证注册账号，且用户提交的账号名，头像等注册信息中不得出现违法或不良信息，如存在上述情况，实是球事有权中止注册流程。注册后，如发现用户以虚假信息骗取账号名称注册，或者账号头像等注册信息存在违法和不良信息的，实是球事有权不经通知，单方采取限期改正、暂停使用、注销登记、收回等措施。 \n2.3\n 用户不得将其账号，密码转让、出售或出借于他人使用。如因用户自身过错或用户计算机感染病毒或木马，而导致账号或密码泄露的，用户应自行承担由此造成的一切损失。 \n2.4\n 保护用户隐私和其他个人信息是实是球事的一项基本政策，在不透露单个用户隐私资料的前提下，实是球事有权对整个用户数据库进行技术分析并对已进行分析，整理后的用户数据库进行商业上的利用。未经用户许可实是球事不得向任何第三方公开或共享用户注册资料中的姓名、个人有效身份证件号码、联系方式、家庭住址等个人身份信息，但下列情况除外： \n2.4.1\n 事先获得用户的明确授权；\n 2.4.2 \n为维护社会公共利益； \n2.4.3\n 学校、科研机构等基于公共利益为学术研究或统计的目的，经自然人用户书面同意，且公开方式不足以识别特定的自然人；\n 2.4.4\n 用户自行在网络上公开的信息或其他已合法公开的个人信息； \n2.4.5 \n用户侵害实是球事合法权益，为维护前述合法权益且在必要范围内； \n2.4.6\n 根据相关政府主管部门或相关的法律及政策的要求； \n2.4.7\n 其他必要情况  \n2.5\n 实是球事可能会与合作伙伴共同向用户提供所要求的服务或者共同向用户展示用户可能感兴趣的内容，在此情况下，如该合作伙伴同意承担与实是球事同等的保护用户隐私的责任，实是球事可将用户信息提供给该合作伙伴。 \n2.6 \n用户了解并同意：尽管实是球事对用户的隐私权保护做了极大的努力，但是还不能保证现有的安全技术措施使用户的技术信息等不受任何形式的损失。</string>
+    <string name="allow_regiset_protocol_21">2.1\n 皇冠现金网账号的所有权归大鼎智联，用户完成注册流程后，即获得皇冠现金网账号的使用权。用户应提供及时、详尽及准确的个人资料，并不断更新注册资料，符合及时、详尽、准确的要求。如果因注册信息不真实或更新不及时而引起的不利后果，均由用户自行承担，大鼎智联不承担任何责任。 \n2.2\n 用户应当通过真实身份信息认证注册账号，且用户提交的账号名，头像等注册信息中不得出现违法或不良信息，如存在上述情况，皇冠现金网有权中止注册流程。注册后，如发现用户以虚假信息骗取账号名称注册，或者账号头像等注册信息存在违法和不良信息的，皇冠现金网有权不经通知，单方采取限期改正、暂停使用、注销登记、收回等措施。 \n2.3\n 用户不得将其账号，密码转让、出售或出借于他人使用。如因用户自身过错或用户计算机感染病毒或木马，而导致账号或密码泄露的，用户应自行承担由此造成的一切损失。 \n2.4\n 保护用户隐私和其他个人信息是皇冠现金网的一项基本政策，在不透露单个用户隐私资料的前提下，皇冠现金网有权对整个用户数据库进行技术分析并对已进行分析，整理后的用户数据库进行商业上的利用。未经用户许可皇冠现金网不得向任何第三方公开或共享用户注册资料中的姓名、个人有效身份证件号码、联系方式、家庭住址等个人身份信息，但下列情况除外： \n2.4.1\n 事先获得用户的明确授权；\n 2.4.2 \n为维护社会公共利益； \n2.4.3\n 学校、科研机构等基于公共利益为学术研究或统计的目的，经自然人用户书面同意，且公开方式不足以识别特定的自然人；\n 2.4.4\n 用户自行在网络上公开的信息或其他已合法公开的个人信息； \n2.4.5 \n用户侵害皇冠现金网合法权益，为维护前述合法权益且在必要范围内； \n2.4.6\n 根据相关政府主管部门或相关的法律及政策的要求； \n2.4.7\n 其他必要情况  \n2.5\n 皇冠现金网可能会与合作伙伴共同向用户提供所要求的服务或者共同向用户展示用户可能感兴趣的内容，在此情况下，如该合作伙伴同意承担与皇冠现金网同等的保护用户隐私的责任，皇冠现金网可将用户信息提供给该合作伙伴。 \n2.6 \n用户了解并同意：尽管皇冠现金网对用户的隐私权保护做了极大的努力，但是还不能保证现有的安全技术措施使用户的技术信息等不受任何形式的损失。</string>
     <string name="allow_regiset_protocol_all_3">三、使用规则</string>
     <string name="allow_regiset_protocol_31">3.1\n
-用户在使用实是球事游戏产品和接受服务的过程中，应当遵循以下规则：
+用户在使用皇冠现金网游戏产品和接受服务的过程中，应当遵循以下规则：
 （1）	遵守中华人民共和国有关的法律和法规；
 （2）	遵守所有与服务有关的网络协议、程序和规定；
-（3）	不得为任何非法目的及与实是球事提供服务或产品未有直接关系而使用网络服务系统；包括不限于买卖号、虚拟货币、游戏币、钻石、解盘等；
-（4）	不得对包括但不限于实是球事的网站及提供的软件进行修改，还原工程，译码，反向组译、复制或散布；
-（5）	不得采取任何可能影响实是球事的网络服务的非正常使用行为，包括但不限于损失、攻击服务器或使用服务器过度负荷等；
-（6）	不得通过第三方软件或在第三方软件的辅助下使用实是球事的产品或接受实是球事的服务，不得采取任何破坏游戏规则和违反游戏公平性的行为；
-（7）	未经实是球事许可，不得使用实是球事任何知识产权，来创造或提供相同或类似的网络服务，如仿真服务器，私人服务器等；
-（8）	不得利用实是球事网络服务系统传输任何骚扰性的，中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的、欺诈性的或其他任何非法的信息资料；
-（9）	任何利用实是球事网络服务系统进行其他不利于实是球事足球的行为，一经实是球事甄别认定，实是球事将有权暂时或永久封禁违规账号而不需要事先经过用户同意；
-（10）	不得使用从非由实是球事指定的渠道所所得的资料或信息；
-（11）	如发现任何非法使用用户账号或账号出现安全漏洞的情况，应立即通知实是球事；
-（12）	不得以违法实是球事使用规则等非正常方式获得实是球事的虚拟物品。
-（13）	不得利用实是球事的服务或产品发送或传播敏感信息和违反国家法律制度的信息。</string>
+（3）	不得为任何非法目的及与皇冠现金网提供服务或产品未有直接关系而使用网络服务系统；包括不限于买卖号、虚拟货币、游戏币、钻石、解盘等；
+（4）	不得对包括但不限于皇冠现金网的网站及提供的软件进行修改，还原工程，译码，反向组译、复制或散布；
+（5）	不得采取任何可能影响皇冠现金网的网络服务的非正常使用行为，包括但不限于损失、攻击服务器或使用服务器过度负荷等；
+（6）	不得通过第三方软件或在第三方软件的辅助下使用皇冠现金网的产品或接受皇冠现金网的服务，不得采取任何破坏游戏规则和违反游戏公平性的行为；
+（7）	未经皇冠现金网许可，不得使用皇冠现金网任何知识产权，来创造或提供相同或类似的网络服务，如仿真服务器，私人服务器等；
+（8）	不得利用皇冠现金网网络服务系统传输任何骚扰性的，中伤他人的、辱骂性的、恐吓性的、庸俗淫秽的、欺诈性的或其他任何非法的信息资料；
+（9）	任何利用皇冠现金网网络服务系统进行其他不利于皇冠现金网足球的行为，一经皇冠现金网甄别认定，皇冠现金网将有权暂时或永久封禁违规账号而不需要事先经过用户同意；
+（10）	不得使用从非由皇冠现金网指定的渠道所所得的资料或信息；
+（11）	如发现任何非法使用用户账号或账号出现安全漏洞的情况，应立即通知皇冠现金网；
+（12）	不得以违法皇冠现金网使用规则等非正常方式获得皇冠现金网的虚拟物品。
+（13）	不得利用皇冠现金网的服务或产品发送或传播敏感信息和违反国家法律制度的信息。</string>
     <string name="allow_regiset_protocol_all_4">四、服务内容</string>
     <string name="allow_regiset_protocol_41">4.1\n
-实是球事网络服务的具体内容由大鼎智联根据实际情况提供\n
+皇冠现金网网络服务的具体内容由大鼎智联根据实际情况提供\n
 4.2\n
 除非本服务协议另有其他明示规定，大鼎智联所推出的新产品、新功能、新服务、均受到本服务协议之规范。\n
 4.3\n
 为使用本服务，用户必须能够自行经有法律资格对您提供互联网接入服务的第三方，进入国际狐狸我，并应自行支付相关服务费用。此外，用户必须自行配备及负责与国际联网连线所需之一切必要装备，包括计算机，数据机或其他存取装置。\n
 4.4\n
-鉴于网络服务的特殊性，用户同意实是球事有权不经事先通知，随时变更、中断或终止部分或全部的网络服务。实是球事不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也不做担保。\n
+鉴于网络服务的特殊性，用户同意皇冠现金网有权不经事先通知，随时变更、中断或终止部分或全部的网络服务。皇冠现金网不担保网络服务不会中断，对网络服务的及时性、安全性、准确性也不做担保。\n
 4.5\n
-实是球事需要定期或不定期地对提供网络服务的平台或相关的设备进行检修或者维护，如因此类情况而造成网络服务在合理时间内的中断，实是球事无须为此承担任何责任。实是球事保留不经事先通知为维修保养、升级或其他目的暂停本服务任何部分的权利。\n
+皇冠现金网需要定期或不定期地对提供网络服务的平台或相关的设备进行检修或者维护，如因此类情况而造成网络服务在合理时间内的中断，皇冠现金网无须为此承担任何责任。皇冠现金网保留不经事先通知为维修保养、升级或其他目的暂停本服务任何部分的权利。\n
 4.6\n
-用户明确同意其使用实是球事网络服务所存在的风险将完全由其本人承担。用户了解并同意：下载或通过实是球事服务取得的任何信息资料取决于用户本人，并由其承担系统受损、资料丢失以及其他风险。实是球事对在服务网上得到的任何商品购物服务、交易进程、招聘信息，都不作担保。\n
+用户明确同意其使用皇冠现金网网络服务所存在的风险将完全由其本人承担。用户了解并同意：下载或通过皇冠现金网服务取得的任何信息资料取决于用户本人，并由其承担系统受损、资料丢失以及其他风险。皇冠现金网对在服务网上得到的任何商品购物服务、交易进程、招聘信息，都不作担保。\n
 4.7\n
 服务的中止与终止：
-（1）	用户了解并同意：实是球事可随时根据实际情况终止服务。之前有权单方不经通知终止向用户提供某一项或多项服务，但根据法律法规规定或用户与实是球事的约定需要提前通知的除外。结束用户服务后，用户使用实是球事产品和服务的权利立即终止。从此时起，实是球事不再对用户承担任何义务。
-（2）	用户了解并同意：在一个实是球事账户充值之前，实是球事其提供的是完全免费的服务。基于免费服务的成本限制，实是球事有权根据运营需要随时终止对该账户的服务。服务变更、中止与结束属于实是球事商业决策之内容。用户不得因服务的变更、中止或者结束而要求实是球事继续提供服务或者承担任何形式的赔偿责任等。
-（3）	用户了解并同意：若一个实是球事账号连续一年未登录的，实是球事服务系统可以不再保留该账号及与该账号相关的数据。</string>
+（1）	用户了解并同意：皇冠现金网可随时根据实际情况终止服务。之前有权单方不经通知终止向用户提供某一项或多项服务，但根据法律法规规定或用户与皇冠现金网的约定需要提前通知的除外。结束用户服务后，用户使用皇冠现金网产品和服务的权利立即终止。从此时起，皇冠现金网不再对用户承担任何义务。
+（2）	用户了解并同意：在一个皇冠现金网账户充值之前，皇冠现金网其提供的是完全免费的服务。基于免费服务的成本限制，皇冠现金网有权根据运营需要随时终止对该账户的服务。服务变更、中止与结束属于皇冠现金网商业决策之内容。用户不得因服务的变更、中止或者结束而要求皇冠现金网继续提供服务或者承担任何形式的赔偿责任等。
+（3）	用户了解并同意：若一个皇冠现金网账号连续一年未登录的，皇冠现金网服务系统可以不再保留该账号及与该账号相关的数据。</string>
     <string name="allow_regiset_protocol_all_5">五、资费政策</string>
-    <string name="allow_regiset_protocol_51">5.1\n 实是球事向用户提供的游戏产品和服务本身属于商业行为，用户需要支付相应的费用。在此情况下，实是球事会在相关页面上做明确的提示。如用户不同意支付该等费用，则可不接受相关的服务。\n 5.2\n 对于实是球事的收费产品和服务，用户应该按照实是球事确定的资费政策购买；否则，实是球事可以立即终止向用户提供该游戏产品和服务。\n 5.3\n 实是球事将有权决定并随时修改所提供的产品和服务的资费标准和收费方式，但实是球事会将相关产品和服务的资费标准、收费方式、购买方式或其他有关资费政策的信息放置在该产品和服务相关页面的显著位置。\n</string>
+    <string name="allow_regiset_protocol_51">5.1\n 皇冠现金网向用户提供的游戏产品和服务本身属于商业行为，用户需要支付相应的费用。在此情况下，皇冠现金网会在相关页面上做明确的提示。如用户不同意支付该等费用，则可不接受相关的服务。\n 5.2\n 对于皇冠现金网的收费产品和服务，用户应该按照皇冠现金网确定的资费政策购买；否则，皇冠现金网可以立即终止向用户提供该游戏产品和服务。\n 5.3\n 皇冠现金网将有权决定并随时修改所提供的产品和服务的资费标准和收费方式，但皇冠现金网会将相关产品和服务的资费标准、收费方式、购买方式或其他有关资费政策的信息放置在该产品和服务相关页面的显著位置。\n</string>
     <string name="allow_regiset_protocol_all_6">六、知识产权和其他合法权益</string>
-    <string name="allow_regiset_protocol_61">6.1\n 对于用户通过实是球事服务上传到实是球事网站上可公开获取区域的任何内容，用户同意实是球事在全世界范围内具有免费的，永久性的，不可撤销的，非独家的和完全再许可的权利和许可，以使用、复制、修改、改编、出版、翻译、据以创作衍生作品、传播、表演和展示此等内容，或将此等内容编入当前已知的或以后开发的任何形式的作品，媒体或技术中。\n 6.2\n 实是球事提供的与网络服务相关的著作权、商标权、专利权、商业秘密及其他信息、技术的知识产权或其他权利，均为实是球事或其权利人所有。用户不得对以上产品和服务进行修改、拷贝、散布、复制、发行、授权、制作衍生著作、转移或销售。如用户未遵守本条款的上述规定，实是球事可立即终止向用户提供产品和服务，用户必须销毁任何已经获得的上述信息、资料、软件或产品。否则，实是球事将依法追究用户的法律责任。\n</string>
+    <string name="allow_regiset_protocol_61">6.1\n 对于用户通过皇冠现金网服务上传到皇冠现金网网站上可公开获取区域的任何内容，用户同意皇冠现金网在全世界范围内具有免费的，永久性的，不可撤销的，非独家的和完全再许可的权利和许可，以使用、复制、修改、改编、出版、翻译、据以创作衍生作品、传播、表演和展示此等内容，或将此等内容编入当前已知的或以后开发的任何形式的作品，媒体或技术中。\n 6.2\n 皇冠现金网提供的与网络服务相关的著作权、商标权、专利权、商业秘密及其他信息、技术的知识产权或其他权利，均为皇冠现金网或其权利人所有。用户不得对以上产品和服务进行修改、拷贝、散布、复制、发行、授权、制作衍生著作、转移或销售。如用户未遵守本条款的上述规定，皇冠现金网可立即终止向用户提供产品和服务，用户必须销毁任何已经获得的上述信息、资料、软件或产品。否则，皇冠现金网将依法追究用户的法律责任。\n</string>
     <string name="allow_regiset_protocol_all_7">七、青少年用户特别提示</string>
     <string name="allow_regiset_protocol_71">7.1\n 未成年人应经其监护人陪同阅读本服务条款并表示同意，方可接受本服务条款。监护人应加强对未成年人的监督和保护，因其未谨慎履行监护责任而损害未成年人利益或者影响联众公司利益的，应由监护人承担责任。\n 7.2\n 青少年用户必须遵守全国青少年网络文明公约：要善于网上学习，不浏览不良信息；要诚实友好交流，不侮辱欺诈他人；要增强自我保护意识，不随意约会网友；要维护网络安全，不破坏网络秩序；要有益身心健康，不沉溺虚拟时空。\n</string>
     <string name="allow_regiset_protocol_all_8">八、免责与赔偿声明</string>
-    <string name="allow_regiset_protocol_81">所有在本公司进行的竞猜都需要依照以下规则和条款处理。在个别体育项目里注明的规则将视为体育主要规则：\n 8.1\n 若实是球事已经明示其网络服务提供方式发生变更并提醒用户应当注意事项，用户未按要求操作所产生的一切后果由用户自行承担。\n 8.2\n 用户明确同意其使用实是球事网络服务所存在的风险将完全由本人承担；因其使用实是球事服务而产生的一切后果也由本人承担，实是球事对用户不承担任何责任。\n 8.3\n 实是球事禁止用户对本应用任何产品、服务、游戏道具进行任何形式的私下交易，因此不保证用户从第三方获得的实是球事虚拟货币，游戏币，钻石，解盘服务等物品能正常使用，也不保证该等物品不被索回，因私下购买虚拟货币等物品所产生的一切损失均由用户自行承担，实是球事及所属公司不承担任何责任。\n 8.4\n 实是球事不对用户所有的线下交易行为及一切交易行为后果承担任何责任。\n 8.5\n 实是球事就用户游戏的行为、活动、交易或利用实是球事进行的非法活动不承担任何责任。\n 8.6\n 实是球事有权采取技术措施防止用户从事任何非法行为，包括但不限于进行任何诸如发布广告，销售商品的商业行为，或者进行任何非法的侵害实是球事利益的行为，如贩卖外挂，游戏币，钻石，解盘等。\n 8.7\n 所有竞猜项目的最高和最低限额将由公司决定，如有任何更改无须提前通知。\n 8.8\n 会员申请账户需提供正确的个人信息，本公司对提供伪造或错误信息的账户将不负任何责任。\n 8.9\n 用户将全权负责账户提交的所有交易。在下单前请仔细检查选项，一旦订单提交成功后，将无法更改或取消。公司对会员自身原因造成的遗漏或重复下单不负任何责任。会员可以在交易记录中查看详情确保所有提交的注单已成功。\n 8.10\n 在任何投诉中，如果公司的数据库没有存储任何记录，公司将不接受也不认可任何会员提供的复印件或单据。\n 8.11\n 公司保留在任何时候关闭或冻结会员账号的权利。\n 8.12\n 公司保留在任何时候暂停或中止会员对任何盘口进行竞猜的权利。\n 8.13\n 公司保留对已预先知道赛果的竞猜订单做出取消的权利。如果由于滚球现场延迟而引起盘口的赔率错误，此期间的注单将视为无效。\n 8.14\n 赛事时间，计时器和红牌等信息仅供会员参考，公司对提供此信息的准确性不负任何责任。\n 8.15\n 对任何怀疑在下单时涉嫌作弊或破坏本公司竞猜平台的会员，公司有权在毫无警告或通知下取消此会员所有的注单并且冻结账户。异常行为包括使用任何设备，自动设备、软件、程序等方式干涉本网站的运作。</string>
+    <string name="allow_regiset_protocol_81">所有在本公司进行的竞猜都需要依照以下规则和条款处理。在个别体育项目里注明的规则将视为体育主要规则：\n 8.1\n 若皇冠现金网已经明示其网络服务提供方式发生变更并提醒用户应当注意事项，用户未按要求操作所产生的一切后果由用户自行承担。\n 8.2\n 用户明确同意其使用皇冠现金网网络服务所存在的风险将完全由本人承担；因其使用皇冠现金网服务而产生的一切后果也由本人承担，皇冠现金网对用户不承担任何责任。\n 8.3\n 皇冠现金网禁止用户对本应用任何产品、服务、游戏道具进行任何形式的私下交易，因此不保证用户从第三方获得的皇冠现金网虚拟货币，游戏币，钻石，解盘服务等物品能正常使用，也不保证该等物品不被索回，因私下购买虚拟货币等物品所产生的一切损失均由用户自行承担，皇冠现金网及所属公司不承担任何责任。\n 8.4\n 皇冠现金网不对用户所有的线下交易行为及一切交易行为后果承担任何责任。\n 8.5\n 皇冠现金网就用户游戏的行为、活动、交易或利用皇冠现金网进行的非法活动不承担任何责任。\n 8.6\n 皇冠现金网有权采取技术措施防止用户从事任何非法行为，包括但不限于进行任何诸如发布广告，销售商品的商业行为，或者进行任何非法的侵害皇冠现金网利益的行为，如贩卖外挂，游戏币，钻石，解盘等。\n 8.7\n 所有竞猜项目的最高和最低限额将由公司决定，如有任何更改无须提前通知。\n 8.8\n 会员申请账户需提供正确的个人信息，本公司对提供伪造或错误信息的账户将不负任何责任。\n 8.9\n 用户将全权负责账户提交的所有交易。在下单前请仔细检查选项，一旦订单提交成功后，将无法更改或取消。公司对会员自身原因造成的遗漏或重复下单不负任何责任。会员可以在交易记录中查看详情确保所有提交的注单已成功。\n 8.10\n 在任何投诉中，如果公司的数据库没有存储任何记录，公司将不接受也不认可任何会员提供的复印件或单据。\n 8.11\n 公司保留在任何时候关闭或冻结会员账号的权利。\n 8.12\n 公司保留在任何时候暂停或中止会员对任何盘口进行竞猜的权利。\n 8.13\n 公司保留对已预先知道赛果的竞猜订单做出取消的权利。如果由于滚球现场延迟而引起盘口的赔率错误，此期间的注单将视为无效。\n 8.14\n 赛事时间，计时器和红牌等信息仅供会员参考，公司对提供此信息的准确性不负任何责任。\n 8.15\n 对任何怀疑在下单时涉嫌作弊或破坏本公司竞猜平台的会员，公司有权在毫无警告或通知下取消此会员所有的注单并且冻结账户。异常行为包括使用任何设备，自动设备、软件、程序等方式干涉本网站的运作。</string>
     <string name="allow_regiset_protocol_all_9">九、管辖与法律适用</string>
-    <string name="allow_regiset_protocol_91">9.1\n 本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律。\n 9.2\n 用户和实是球事一致同意，有关本协议以及使用实是球事的服务产生的争议首先应友好协商解决；协商不成的，用户同意将争议提交实是球事运营公司所在地有管理辖全的人民法院管辖。</string>
+    <string name="allow_regiset_protocol_91">9.1\n 本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律。\n 9.2\n 用户和皇冠现金网一致同意，有关本协议以及使用皇冠现金网的服务产生的争议首先应友好协商解决；协商不成的，用户同意将争议提交皇冠现金网运营公司所在地有管理辖全的人民法院管辖。</string>
     <string name="allow_regiset_protocol_all_ten">十、其他</string>
-    <string name="allow_regiset_protocol_ten_1">10.1\n 实是球事将视向用户所提供服务内容之特性，要求用户在注册实是球事提供的有关服务时，遵守特定的条件和条款；如该特定条件和条款与以上服务条款有任何不一致之处，则已特定条件和条款为准\n 10.2\n 本服务条款中的任何条款无论因何种原因完全或部分无效或不具有执行力，其余条款依旧有效并且具有约束力。\n 10.3\n 以上条款的解释权归大鼎智联最终所有。\n</string>
+    <string name="allow_regiset_protocol_ten_1">10.1\n 皇冠现金网将视向用户所提供服务内容之特性，要求用户在注册皇冠现金网提供的有关服务时，遵守特定的条件和条款；如该特定条件和条款与以上服务条款有任何不一致之处，则已特定条件和条款为准\n 10.2\n 本服务条款中的任何条款无论因何种原因完全或部分无效或不具有执行力，其余条款依旧有效并且具有约束力。\n 10.3\n 以上条款的解释权归大鼎智联最终所有。\n</string>
     <string name="register_protocol_bottom">有任何疑问请联系实事球是客服邮箱：\n 614214702@163.com</string>
     <string name="suggestion_upload">意见反馈</string>
     <string name="hint_suggestion">请提出您的宝贵意见，我们将在第一时间内回复您！</string>
@@ -415,18 +415,18 @@
     <string name="add_more">点击加载更多</string>
     <string name="out_loading">退出登录</string>
     <string name="add_dimons">钻石充值</string>
-    <string name="add_glod">金币充值</string>
+    <string name="add_glod">现金充值</string>
     <string name="diamonds_record">钻石明细</string>
     <string name="time">时间</string>
     <string name="thing">事项</string>
     <string name="diamonds_change">钻石变动</string>
     <string name="ddzl2016">Copyrights\(c\)DaDingZhiLian2016</string>
-    <string name="ddzl2016_name">Copyrights实是球事</string>
-    <string name="tiyangold">注:体验金币仅可参与猜球和不定期抽奖,不得用于赠送和参与悬赏答题</string>
+    <string name="ddzl2016_name">Copyrights皇冠现金网</string>
+    <string name="tiyangold">注:体验现金仅可参与猜球和不定期抽奖,不得用于赠送和参与悬赏答题</string>
     <string name="one_moth_record">最多只提供一个近一个月的明细查询</string>
     <string name="all_time">2016\-08\-25 10:56:17</string>
-    <string name="say_arrice_ty">签到(体验金币)</string>
-    <string name="glod_record">金币明细</string>
+    <string name="say_arrice_ty">签到(体验现金)</string>
+    <string name="glod_record">余额明细</string>
     <string name="Vs">Vs</string>
     <string name="spf">胜平负</string>
     <string name="jc_pop_top">全场竞猜表示竞猜90分钟内两队的最终比赛结果,包含补时,不含加时,半场竞猜表示竞猜上半场45分钟的比赛结果,包含补时。</string>
@@ -439,14 +439,14 @@
     <string name="delete_all">删除全部</string>
     <string name="delete">删除</string>
     <string name="loading">登录</string>
-    <string name="gold_balance">金币余额</string>
+    <string name="gold_balance">余额</string>
     <string name="upload">提交</string>
     <string name="china">中国</string>
     <string name="half_result">半场赛果:</string>
     <string name="half_result1">半场赛果</string>
     <string name="two_two_team">韩国 VS 中国</string>
     <string name="betting_body_pl">\@ 2.16</string>
-    <string name="input_gold">输入金币</string>
+    <string name="input_gold">输入金额</string>
     <string name="expected_return">预计返还 </string>
     <string name="houbu_team">替补阵容</string>
     <string name="first_team">首发阵容</string>
@@ -468,7 +468,7 @@
     <string name="guess_half_result">猜半场的比赛结果</string>
     <string name="recharge_dialog">充值提醒</string>
     <string name="go_recharge">去充值</string>
-    <string name="balance_dialog_glod">剩余金币不足,请先充值!</string>
+    <string name="balance_dialog_glod">余额不足,请先充值!</string>
     <string name="balance_dialog_diamons">剩余钻石不足,请先充值!</string>
     <string name="pass_mothod">过关方式</string>
     <string name="three_to_one">三串一</string>
@@ -540,7 +540,7 @@
     <string name="double_line">--</string>
     <string name="profit">盈亏:</string>
     <string name="order_id">订单号:</string>
-    <string name="num_betting">投注金币:100</string>
+    <string name="num_betting">投注金额:100</string>
     <string name="odds_pl">回报:3.90倍</string>
     <string name="wait_open">待开奖</string>
     <string name="expected_returns">预计返还:390</string>
@@ -606,10 +606,10 @@
     <string name="get_glod_num">盈利  1552</string>
     <string name="give_present">赠送</string>
     <string name="give_history">赠送记录</string>
-    <string name="green_hand_t1">Q1.钻石和金币的区别是什么?</string>
-    <string name="green_hand_t2">Q2.如何获得金币?</string>
-    <string name="green_hand_t3">Q3.金币如何赢取奖品?</string>
-    <string name="green_hand_t4">Q4.金币是否可以私下交易?</string>
+    <string name="green_hand_t1">Q1.钻石和现金的区别是什么?</string>
+    <string name="green_hand_t2">Q2.如何获得现金?</string>
+    <string name="green_hand_t3">Q3.现金如何赢取奖品?</string>
+    <string name="green_hand_t4">Q4.现金是否可以私下交易?</string>
     <string name="green_hand_t5">Q5.赛前游戏的玩法规则是什么?</string>
     <string name="green_hand_t6">Q6.串关游戏的玩法规则是什么?</string>
     <string name="green_hand_t7">Q7.排行榜是什么?</string>
@@ -619,12 +619,12 @@
     <string name="refer_result">推荐结果</string>
     <string name="match_second_win">客胜</string>
     <string name="refer_price">推荐价格:</string>
-    <string name="refer_price_hint">请输入您要设置的查看推荐金币数</string>
+    <string name="refer_price_hint">请输入您要设置的查看推荐金额</string>
     <string name="leve_price">１、初级专家：每单推荐收费0～10钻;\n２、中级专家：每单推荐收费0～30钻;\n３、高级专家：每单推荐收费0～50钻;\n４、资深专家：每单推荐收费0～100钻。\n</string>
     <string name="shopping_name">商品名</string>
     <string name="change_add">修改地址</string>
     <string name="protect_notice">规则说明</string>
-    <string name="turn_table_result">恭喜你，获得了300金币!</string>
+    <string name="turn_table_result">恭喜你，获得了300元!</string>
     <string name="go_look_prize">去查看礼品</string>
     <string name="prop">道具</string>
     <string name="give_as_prize">送</string>
@@ -648,13 +648,13 @@
     <string name="math_prize">算奖</string>
     <string name="math_prize_text">单关：返奖=赔率*下注金额\n
         串关：返奖=赔率*赔率*…*下注金额\n
-        小数点后的金币金额不显示\n
+        小数点后的金额不显示\n
         取消的比赛按1计算赔率\n
         延迟超过一天的比赛按取消处理。</string>
     <string name="half_match_play">半场玩法</string>
     <string name="half_math_text">竞猜主队上半场和全场比赛结果，包含伤停补时，不包含加时。</string>
     <string name="betting_do">下注处理</string>
-    <string name="betting_do_text">串关最高下注8串1，仅支持N串1模式，不支持混合串关。单注最低100金币，最高500万金币。奖金上线为1亿金币。</string>
+    <string name="betting_do_text">串关最高下注8串1，仅支持N串1模式，不支持混合串关。单注最低100元，最高500万元。奖金上线为1亿现金。</string>
     <string name="PL">赔率</string>
     <string name="refer_price_pro">推荐价格规则</string>
     <string name="disclaimer_notices">免责声明</string>
@@ -673,11 +673,11 @@
     <string name="pay_fail">支付状态:支付取消</string>
     <string name="pay_err">支付状态:支付错误(-1)</string>
     <string name="pay_result">支付结果</string>
-    <string name="store_prop_bottom1">1、您购买的道具将先充值为钻石,充值后系统将自动兑换道具,同时附赠金币。金币可参与猜球游戏。(1元可充1钻石)</string>
+    <string name="store_prop_bottom1">1、您购买的道具将先充值为钻石,充值后系统将自动兑换道具,同时附赠现金。现金可参与猜球游戏。(1元可充1钻石)</string>
     <string name="version">V.1.5</string>
     <string name="record_num">战绩</string>
     <string name="recom_duibi">战绩对比</string>
-    <string name="glod_change">金币变动</string>
+    <string name="glod_change">金额变动</string>
     <string name="living">赛事直播</string>
     <string name="no_living">暂时没有直播源..</string>
     <string name="casino">娱乐场</string>
@@ -695,15 +695,15 @@
     <string name="invite_code_num">BY349163</string>
     <string name="send_invite_code">将邀请码发送给朋友</string>
     <string name="refer_income">推荐收入</string>
-    <string name="recom_code_prize">邀请码领金币</string>
-    <string name="write_invite_code_prize">输入邀请码即可领取1000金币</string>
+    <string name="recom_code_prize">邀请码领现金</string>
+    <string name="write_invite_code_prize">输入邀请码即可领取1000元</string>
     <string name="invited_code_protecy">*验证码区分大小写</string>
     <string name="checked_at_once">马上验证</string>
     <string name="account_balance">账户余额(</string>
     <string name="right_kh">)</string>
     <string name="is_not_savant">您还不是专家</string>
     <string name="how_tobe_savant">如何成为专家?</string>
-    <string name="savant_do_what">成为实是球事专家,就可以发布各类赛事推荐</string>
+    <string name="savant_do_what">成为皇冠现金网专家,就可以发布各类赛事推荐</string>
     <string name="refer_prize_protect">推荐奖励规则</string>
     <string name="write_refer_prize_pro">比赛推荐奖励规则</string>
     <string name="js">交互</string>
@@ -902,4 +902,8 @@
     <string name="scroll_title18">实时比分</string>
     <string name="all_date">所有日期</string>
     <string name="future">未来</string>
+    <string name="winning_list">中奖名单</string>
+    <string name="new_ranking_people">最新中奖榜</string>
+    <string name="winning_money">中奖金额(元)</string>
+    <string name="ranking_match_type">比赛</string>
 </resources>

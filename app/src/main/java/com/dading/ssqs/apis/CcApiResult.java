@@ -546,6 +546,18 @@ public class CcApiResult {
         }
     }
 
+    public class ResultRankingListPage extends ResultPage {
+        private List<HomeBean.OrdersBeanX.OrdersBean> items = new ArrayList<>();
+
+        public List<HomeBean.OrdersBeanX.OrdersBean> getItems() {
+            return items;
+        }
+
+        public void setItems(List<HomeBean.OrdersBeanX.OrdersBean> items) {
+            this.items = items;
+        }
+    }
+
     public CcApiResult fromUserInfoResult(String str) {
         Gson gson = getGson();
         LoadingBean bean = new LoadingBean();
@@ -2131,6 +2143,44 @@ public class CcApiResult {
             Logger.e("CcApiResult", e);
         }
         this.setData(items);
+        return this;
+    }
+
+    public CcApiResult fromRankListResult(String str) {
+        Gson gson = getGson();
+        ResultRankingListPage page = new ResultRankingListPage();
+        try {
+            JSONObject json = new JSONObject(str);
+            this.setErrno(json.getInt("code"));
+            this.setMessage(json.getString("msg"));
+            this.setStatus(json.getBoolean("status"));
+            if (json.has("data") && !json.isNull("data")) {
+                JSONObject data = json.getJSONObject("data");
+                page = gson.fromJson(data.toString(), ResultRankingListPage.class);
+            }
+        } catch (Exception e) {
+            Logger.e("CcApiResult", e);
+        }
+        this.setData(page);
+        return this;
+    }
+
+    public CcApiResult fromBasketBallHeadInfoResult(String str) {
+        Gson gson = getGson();
+        ScoreBean bean = new ScoreBean();
+        try {
+            JSONObject json = new JSONObject(str);
+            this.setErrno(json.getInt("code"));
+            this.setMessage(json.getString("msg"));
+            this.setStatus(json.getBoolean("status"));
+            if (json.has("data") && !json.isNull("data")) {
+                JSONObject data = json.getJSONObject("data");
+                bean = gson.fromJson(data.toString(), ScoreBean.class);
+            }
+        } catch (Exception e) {
+            Logger.e("CcApiResult", e);
+        }
+        this.setData(bean);
         return this;
     }
 

@@ -73,7 +73,7 @@ public class MyTurnTablePrizeAdapter extends BaseAdapter implements ListAdapter 
         } else {
             hoder.mStorePrizeRecordState.setText("已兑换");
         }
-        String cost = entity.cost + "金币";
+        String cost = entity.cost + "元";
         hoder.mStorePrizeRecordCost.setText(cost);
         String time = entity.createDate.substring(2);
         hoder.mStorePrizeRecordTime.setText(time);

@@ -665,7 +665,7 @@ public class EarlyDefaultFragment extends Fragment implements OnRefreshListener,
 
     private void getNetDataWork() {
         if (TextUtils.isEmpty(currSelectTime)) {
-            currSelectTime = DateUtils.getCurTime("yyyyMMdd");
+            currSelectTime = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getEarlyFootBallList(currSelectTime, sType, leagueIDs, new CcApiClient.OnCcListener() {
@@ -838,11 +838,7 @@ public class EarlyDefaultFragment extends Fragment implements OnRefreshListener,
             item.setTitle(currData.get(i).getHome());
             item.setByTitle(currData.get(i).getAway());
 
-            //硬编码
-            String time = currData.get(i).getOpenTime();
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+            String time = DateUtils.changeFormater(currData.get(i).getOpenTime(), "yyyy-MM-dd HH:mm:ss", "HH:mm");
 
             item.setTime(time);
 

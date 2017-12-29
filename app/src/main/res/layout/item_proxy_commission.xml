@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/white"
-              android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/item_proxy_commisions_username"
@@ -15,9 +15,9 @@
         android:paddingEnd="5dp"
         android:paddingStart="5dp"
         android:paddingTop="10dp"
-        android:text="@string/username"
+        android:text="用户名:"
         android:textColor="@color/gray2"
-        android:textSize="13sp"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/item_proxy_commisions_fee"
@@ -31,7 +31,7 @@
         android:paddingTop="10dp"
         android:text="@string/commission"
         android:textColor="@color/gray2"
-        android:textSize="13sp"/>
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/item_proxy_commisions_account"
@@ -45,5 +45,5 @@
         android:paddingTop="10dp"
         android:text="@string/betting_num_txt"
         android:textColor="@color/gray2"
-        android:textSize="13sp"/>
+        android:textSize="13sp" />
 </LinearLayout>

@@ -160,7 +160,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
                                             UIUtils.getSputils().putBoolean(Constent.USER_TYPE, bean.userType == 3);
                                             UIUtils.getSputils().putInt(Constent.IS_VIP, bean.isVip);
-                                            Logger.d(TAG, "返回金币:" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
 
                                             goSP(new JSONObject(gson.toJson(bean, LoadingBean.class)), bean.authToken);
                                         } catch (Exception ex) {
@@ -511,7 +510,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
         UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
 
-        Logger.d(TAG, "返回金币:" + UIUtils.getSputils().getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
         UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean.toString());
         UIUtils.getSputils().putString(Constent.TOKEN, authToken);
         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);

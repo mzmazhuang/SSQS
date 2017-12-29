@@ -228,13 +228,19 @@ public class ToDayMatchFragment extends Fragment implements NotificationControll
         public void onClick(int id) {
             if (id == 1) {//足球
                 currTitlePosition = 1;
+                twoTitleFootPosition = 0;
                 topCell.setTopSubTitleData(footBallSubTitles);
                 topCell.setTopSubTitleSelect(twoTitleFootPosition);
             } else if (id == 2) {//篮球
                 currTitlePosition = 2;
+                twoTitleBasketPosition = 0;
                 topCell.setTopSubTitleData(basketBallSubTitles);
                 topCell.setTopSubTitleSelect(twoTitleBasketPosition);
             }
+
+            tvTitle.setText("今日-" + (currTitlePosition == 1 ? "足球" : "篮球") + ":" + LocaleController.getString(R.string.scroll_title1));
+
+            changePage(LocaleController.getString(R.string.scroll_title1));
         }
     };
 
@@ -308,147 +314,151 @@ public class ToDayMatchFragment extends Fragment implements NotificationControll
 
             tvTitle.setText("今日-" + (currTitlePosition == 1 ? "足球" : "篮球") + ":" + str);
 
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            if (defaultFragment != null) {
-                defaultFragment.filterPause();
-                fragmentTransaction.hide(defaultFragment);
-            }
-            if (boDanFragment != null) {
-                boDanFragment.filterPause();
-                fragmentTransaction.hide(boDanFragment);
-            }
-            if (toDayTotalFragment != null) {
-                toDayTotalFragment.filterPause();
-                fragmentTransaction.hide(toDayTotalFragment);
-            }
-            if (halfCourtFragment != null) {
-                halfCourtFragment.filterPause();
-                fragmentTransaction.hide(halfCourtFragment);
-            }
-            if (toDayChampionFragment != null) {
-                toDayChampionFragment.filterPause();
-                fragmentTransaction.hide(toDayChampionFragment);
-            }
-            if (toDayBasketBallChampionFragment != null) {
-                toDayBasketBallChampionFragment.filterPause();
-                fragmentTransaction.hide(toDayBasketBallChampionFragment);
-            }
-            if (basketBallDefaultFragment != null) {
-                basketBallDefaultFragment.filterPause();
-                fragmentTransaction.hide(basketBallDefaultFragment);
-            }
-            if (resultFragment != null) {
-                resultFragment.filterPause();
-                fragmentTransaction.hide(resultFragment);
-            }
-            if (basketBallPassFragment != null) {
-                basketBallPassFragment.filterPause();
-                fragmentTransaction.hide(basketBallPassFragment);
-            }
-            if (footBallPassFragment != null) {
-                footBallPassFragment.filterPause();
-                fragmentTransaction.hide(footBallPassFragment);
-            }
-
-            if (currTitlePosition == 1) {//足球
-                if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
-                    if (defaultFragment == null) {
-                        defaultFragment = new ToDayDefaultFragment();
-                        fragmentTransaction.add(R.id.today_parent, defaultFragment);
-                    } else {
-                        defaultFragment.filterResume();
-                        fragmentTransaction.show(defaultFragment);
-                    }
-                    currPage = 1;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title2))) {
-                    if (boDanFragment == null) {
-                        boDanFragment = new TodayBoDanFragment();
-                        fragmentTransaction.add(R.id.today_parent, boDanFragment);
-                    } else {
-                        boDanFragment.filterResume();
-                        fragmentTransaction.show(boDanFragment);
-                    }
-                    currPage = 2;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title3))) {
-                    if (toDayTotalFragment == null) {
-                        toDayTotalFragment = new ToDayTotalFragment();
-                        fragmentTransaction.add(R.id.today_parent, toDayTotalFragment);
-                    } else {
-                        toDayTotalFragment.filterResume();
-                        fragmentTransaction.show(toDayTotalFragment);
-                    }
-                    currPage = 3;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title4))) {
-                    if (halfCourtFragment == null) {
-                        halfCourtFragment = new ToDayHalfCourtFragment();
-                        fragmentTransaction.add(R.id.today_parent, halfCourtFragment);
-                    } else {
-                        halfCourtFragment.filterResume();
-                        fragmentTransaction.show(halfCourtFragment);
-                    }
-                    currPage = 4;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
-                    if (toDayChampionFragment == null) {
-                        toDayChampionFragment = new ToDayFootBallChampionFragment();
-                        fragmentTransaction.add(R.id.today_parent, toDayChampionFragment);
-                    } else {
-                        toDayChampionFragment.filterResume();
-                        fragmentTransaction.show(toDayChampionFragment);
-                    }
-                    currPage = 5;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
-                    if (basketBallPassFragment == null) {
-                        basketBallPassFragment = new ToDayFootBallPassFragment();
-                        fragmentTransaction.add(R.id.today_parent, basketBallPassFragment);
-                    } else {
-                        basketBallPassFragment.filterResume();
-                        fragmentTransaction.show(basketBallPassFragment);
-                    }
-                    currPage = 6;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title5))) {
-                    if (resultFragment == null) {
-                        resultFragment = new ToDayResultFragment();
-                        fragmentTransaction.add(R.id.today_parent, resultFragment);
-                    } else {
-                        resultFragment.filterResume();
-                        fragmentTransaction.show(resultFragment);
-                    }
-                    currPage = 7;
-                }
-            } else {//篮球
-                if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
-                    if (basketBallDefaultFragment == null) {
-                        basketBallDefaultFragment = new ToDayBasketBallDefaultFragment();
-                        fragmentTransaction.add(R.id.today_parent, basketBallDefaultFragment);
-                    } else {
-                        basketBallDefaultFragment.filterResume();
-                        fragmentTransaction.show(basketBallDefaultFragment);
-                    }
-                    currPage = 8;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
-                    if (toDayBasketBallChampionFragment == null) {
-                        toDayBasketBallChampionFragment = new ToDayBasketBallChampionFragment();
-                        fragmentTransaction.add(R.id.today_parent, toDayBasketBallChampionFragment);
-                    } else {
-                        toDayBasketBallChampionFragment.filterResume();
-                        fragmentTransaction.show(toDayBasketBallChampionFragment);
-                    }
-                    currPage = 9;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
-                    if (footBallPassFragment == null) {
-                        footBallPassFragment = new ToDayBasketBallPassFragment();
-                        fragmentTransaction.add(R.id.today_parent, footBallPassFragment);
-                    } else {
-                        footBallPassFragment.filterResume();
-                        fragmentTransaction.show(footBallPassFragment);
-                    }
-                    currPage = 10;
-                }
-            }
-            fragmentTransaction.commit();
+            changePage(str);
         }
     };
+
+    private void changePage(String str) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if (defaultFragment != null) {
+            defaultFragment.filterPause();
+            fragmentTransaction.hide(defaultFragment);
+        }
+        if (boDanFragment != null) {
+            boDanFragment.filterPause();
+            fragmentTransaction.hide(boDanFragment);
+        }
+        if (toDayTotalFragment != null) {
+            toDayTotalFragment.filterPause();
+            fragmentTransaction.hide(toDayTotalFragment);
+        }
+        if (halfCourtFragment != null) {
+            halfCourtFragment.filterPause();
+            fragmentTransaction.hide(halfCourtFragment);
+        }
+        if (toDayChampionFragment != null) {
+            toDayChampionFragment.filterPause();
+            fragmentTransaction.hide(toDayChampionFragment);
+        }
+        if (toDayBasketBallChampionFragment != null) {
+            toDayBasketBallChampionFragment.filterPause();
+            fragmentTransaction.hide(toDayBasketBallChampionFragment);
+        }
+        if (basketBallDefaultFragment != null) {
+            basketBallDefaultFragment.filterPause();
+            fragmentTransaction.hide(basketBallDefaultFragment);
+        }
+        if (resultFragment != null) {
+            resultFragment.filterPause();
+            fragmentTransaction.hide(resultFragment);
+        }
+        if (basketBallPassFragment != null) {
+            basketBallPassFragment.filterPause();
+            fragmentTransaction.hide(basketBallPassFragment);
+        }
+        if (footBallPassFragment != null) {
+            footBallPassFragment.filterPause();
+            fragmentTransaction.hide(footBallPassFragment);
+        }
+
+        if (currTitlePosition == 1) {//足球
+            if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
+                if (defaultFragment == null) {
+                    defaultFragment = new ToDayDefaultFragment();
+                    fragmentTransaction.add(R.id.today_parent, defaultFragment);
+                } else {
+                    defaultFragment.filterResume();
+                    fragmentTransaction.show(defaultFragment);
+                }
+                currPage = 1;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title2))) {
+                if (boDanFragment == null) {
+                    boDanFragment = new TodayBoDanFragment();
+                    fragmentTransaction.add(R.id.today_parent, boDanFragment);
+                } else {
+                    boDanFragment.filterResume();
+                    fragmentTransaction.show(boDanFragment);
+                }
+                currPage = 2;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title3))) {
+                if (toDayTotalFragment == null) {
+                    toDayTotalFragment = new ToDayTotalFragment();
+                    fragmentTransaction.add(R.id.today_parent, toDayTotalFragment);
+                } else {
+                    toDayTotalFragment.filterResume();
+                    fragmentTransaction.show(toDayTotalFragment);
+                }
+                currPage = 3;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title4))) {
+                if (halfCourtFragment == null) {
+                    halfCourtFragment = new ToDayHalfCourtFragment();
+                    fragmentTransaction.add(R.id.today_parent, halfCourtFragment);
+                } else {
+                    halfCourtFragment.filterResume();
+                    fragmentTransaction.show(halfCourtFragment);
+                }
+                currPage = 4;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
+                if (toDayChampionFragment == null) {
+                    toDayChampionFragment = new ToDayFootBallChampionFragment();
+                    fragmentTransaction.add(R.id.today_parent, toDayChampionFragment);
+                } else {
+                    toDayChampionFragment.filterResume();
+                    fragmentTransaction.show(toDayChampionFragment);
+                }
+                currPage = 5;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
+                if (basketBallPassFragment == null) {
+                    basketBallPassFragment = new ToDayFootBallPassFragment();
+                    fragmentTransaction.add(R.id.today_parent, basketBallPassFragment);
+                } else {
+                    basketBallPassFragment.filterResume();
+                    fragmentTransaction.show(basketBallPassFragment);
+                }
+                currPage = 6;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title5))) {
+                if (resultFragment == null) {
+                    resultFragment = new ToDayResultFragment();
+                    fragmentTransaction.add(R.id.today_parent, resultFragment);
+                } else {
+                    resultFragment.filterResume();
+                    fragmentTransaction.show(resultFragment);
+                }
+                currPage = 7;
+            }
+        } else {//篮球
+            if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
+                if (basketBallDefaultFragment == null) {
+                    basketBallDefaultFragment = new ToDayBasketBallDefaultFragment();
+                    fragmentTransaction.add(R.id.today_parent, basketBallDefaultFragment);
+                } else {
+                    basketBallDefaultFragment.filterResume();
+                    fragmentTransaction.show(basketBallDefaultFragment);
+                }
+                currPage = 8;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
+                if (toDayBasketBallChampionFragment == null) {
+                    toDayBasketBallChampionFragment = new ToDayBasketBallChampionFragment();
+                    fragmentTransaction.add(R.id.today_parent, toDayBasketBallChampionFragment);
+                } else {
+                    toDayBasketBallChampionFragment.filterResume();
+                    fragmentTransaction.show(toDayBasketBallChampionFragment);
+                }
+                currPage = 9;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
+                if (footBallPassFragment == null) {
+                    footBallPassFragment = new ToDayBasketBallPassFragment();
+                    fragmentTransaction.add(R.id.today_parent, footBallPassFragment);
+                } else {
+                    footBallPassFragment.filterResume();
+                    fragmentTransaction.show(footBallPassFragment);
+                }
+                currPage = 10;
+            }
+        }
+        fragmentTransaction.commit();
+    }
 
     private void openMask() {
         ObjectAnimator animator = ObjectAnimator.ofFloat(maskView, "alpha", 0.0f, 1.0f);

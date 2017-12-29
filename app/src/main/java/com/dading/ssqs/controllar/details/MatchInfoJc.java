@@ -976,8 +976,6 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     mPopBettingBody.showAtLocation(mView, Gravity.BOTTOM, 0, 0);
                     if (mIsLoading) {
                         String gold = UIUtils.getSputils().getString(Constent.GLODS, null);
-                        Logger.d(TAG, "竞猜单子数据是------------------------------:金币" + UIUtils.getSputils().
-                                getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
                         mBettingBodyLoading.setText(gold);
                         mBettingBodyGoldBalance.setVisibility(View.VISIBLE);
                     } else {
@@ -997,7 +995,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                         for (Integer j : map.keySet()) {
                             JCScorebean.ListEntity.ItemsEntity entity = map.get(j);
                             entity.type = i;
-                            entity.amount = "请输入金币";
+                            entity.amount = "请输入金额";
                             entity.returnNum = "0";
                             if (entity.checked)
                                 mListScore.add(entity);
@@ -1022,8 +1020,6 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                     mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
                     if (mIsLoading) {
                         String gold = UIUtils.getSputils().getString(Constent.GLODS, null);
-                        Logger.d(TAG, "竞猜单子数据是------------------------------:金币" + UIUtils.getSputils().
-                                getString(Constent.GLODS, null) + "钻石" + UIUtils.getSputils().getString(Constent.DIAMONDS, null));
                         mBettingBodyLoading.setText(gold);
                         mBettingBodyGoldBalance.setVisibility(View.VISIBLE);
                     } else {
@@ -1064,13 +1060,12 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 if (mIsLoading) {
                     if (mHotChecked) {
                         ArrayList<BetBean> cbGlod = mAdapterHot.getGlod();
-                        Logger.d(TAG, "回掉金币长度是------------------------------:" + cbGlod.size());
                         if (cbGlod.size() > 0) {
                             PayBallElement element = new PayBallElement();
 
                             for (BetBean bean : cbGlod) {
-                                if (bean.amount.equals("请输入金币")) {
-                                    ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
+                                if (bean.amount.equals("请输入金额")) {
+                                    ToastUtils.midToast(context, "请输入金额,下注金额不能少于" + minGlod + ",请检查余额", 1);
                                     return;
                                 } else {
                                     if (TextUtils.isEmpty(bean.amount) || bean.amount.trim().length() > 7) {
@@ -1079,11 +1074,10 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                     }
                                     int anInt = Integer.parseInt(bean.amount.trim());
                                     if (minGlod > anInt) {
-                                        ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
+                                        ToastUtils.midToast(context, "请输入金额,下注金额不能少于" + minGlod + ",请检查余额", 1);
                                         return;
                                     } else {
                                         PayBallElement.BetBean betBean = new PayBallElement.BetBean();
-                                        Logger.d(TAG, "点击提交------------------------------:JC投注金币为" + bean.amount + "");
                                         betBean.type = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true) ? 1 : 2;
                                         betBean.matchID = matchId;
                                         betBean.amount = bean.amount;
@@ -1104,7 +1098,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                              */
                             betMethod(element);
                         } else {
-                            ToastUtils.midToast(context, "请输入您要下注的金币", 1);
+                            ToastUtils.midToast(context, "请输入您要下注的金额", 1);
                         }
                     } else {
                         ArrayList<JCScorebean.ListEntity.ItemsEntity> list = mPopBettingBodyScoreAdapter.getScoreList();
@@ -1112,8 +1106,8 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                         PayBallScoreElement element = new PayBallScoreElement();
 
                         for (JCScorebean.ListEntity.ItemsEntity en : list) {
-                            if (en.amount.equals("请输入金币")) {
-                                ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + "请检查金币", 1);
+                            if (en.amount.equals("请输入金额")) {
+                                ToastUtils.midToast(context, "请输入金额,下注金额不能少于" + minGlod + "请检查金额", 1);
                                 return;
                             } else {
                                 if (TextUtils.isEmpty(en.amount) || en.amount.trim().length() > 7) {
@@ -1123,7 +1117,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                             }
                             Integer integer = Integer.valueOf(en.amount);
                             if (minGlod > integer) {
-                                ToastUtils.midToast(context, "请输入金币,下注金币不能少于" + minGlod + ",请检查金币", 1);
+                                ToastUtils.midToast(context, "请输入金额,下注金额不能少于" + minGlod + ",请检查余额", 1);
                                 return;
                             }
                             PayBallScoreElement.PayBallBean bean = new PayBallScoreElement.PayBallBean();
@@ -1218,7 +1212,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
         bean.home = entity.home;
         bean.away = entity.away;
         bean.cbTag = false;
-        bean.amount = "请输入金币";
+        bean.amount = "请输入金额";
         bean.returnNum = "0";
         bean.payTypeName = entity.payTypeName;
         return bean;
@@ -1659,7 +1653,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord0.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if (bean.amount.length() >= 0 && !"请输入金币".equals(bean.amount)) {
+                                                       if (bean.amount.length() >= 0 && !"请输入金额".equals(bean.amount)) {
                                                            bean.amount = bean.amount + "0";
                                                            hoder.mBettingBodyItemInputGold.setText(bean.amount);
 
@@ -1676,7 +1670,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord1.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "1";
                                                        } else {
                                                            bean.amount = bean.amount + "1";
@@ -1695,7 +1689,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord2.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "2";
                                                        } else {
                                                            bean.amount = bean.amount + "2";
@@ -1714,7 +1708,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord3.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "3";
                                                        } else {
                                                            bean.amount = bean.amount + "3";
@@ -1733,7 +1727,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord4.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "4";
                                                        } else {
                                                            bean.amount = bean.amount + "4";
@@ -1752,7 +1746,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord5.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "5";
                                                        } else {
                                                            bean.amount = bean.amount + "5";
@@ -1771,7 +1765,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord6.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "6";
                                                        } else {
                                                            bean.amount = bean.amount + "6";
@@ -1789,7 +1783,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord7.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "7";
                                                        } else {
                                                            bean.amount = bean.amount + "7";
@@ -1807,7 +1801,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord8.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "8";
                                                        } else {
                                                            bean.amount = bean.amount + "8";
@@ -1826,7 +1820,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord9.setOnClickListener(new MyItemClickListern(bean) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "9";
                                                        } else {
                                                            bean.amount = bean.amount + "9";
@@ -1844,7 +1838,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordThousand.setOnClickListener(new MyItemClickListern(bean) {
                                                           @Override
                                                           public void onClick(View v) {
-                                                              if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                              if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                   bean.amount = "";
                                                                   hoder.mBettingBodyItemExpectedReturn.setText("");
                                                               } else {
@@ -1863,7 +1857,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordTenThousand.setOnClickListener(new MyItemClickListern(bean) {
                                                              @Override
                                                              public void onClick(View v) {
-                                                                 if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                                 if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                      bean.amount = "";
                                                                      hoder.mBettingBodyItemExpectedReturn.setText("");
                                                                  } else {
@@ -1882,7 +1876,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordHundredThousand.setOnClickListener(new MyItemClickListern(bean) {
                                                                  @Override
                                                                  public void onClick(View v) {
-                                                                     if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                                     if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                          bean.amount = "";
                                                                          hoder.mBettingBodyItemExpectedReturn.setText("");
                                                                      } else {
@@ -1901,7 +1895,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordMillion.setOnClickListener(new MyItemClickListern(bean) {
                                                          @Override
                                                          public void onClick(View v) {
-                                                             if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                             if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                  bean.amount = "";
                                                                  hoder.mBettingBodyItemExpectedReturn.setText("");
                                                              } else {
@@ -1922,7 +1916,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                 @Override
                 public void onClick(View v) {
                     bean.amount = UIUtils.getSputils().getString(Constent.GLODS, "");
-                    if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                    if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                         bean.amount = "";
                         hoder.mBettingBodyItemExpectedReturn.setText("");
                     } else {
@@ -1950,7 +1944,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordConfirm.setOnClickListener(new MyItemClickListern(bean) {
                                                          @Override
                                                          public void onClick(View v) {
-                                                             if (!"请输入金币".equals(bean.amount) && bean.amount.length() > 0) {
+                                                             if (!"请输入金额".equals(bean.amount) && bean.amount.length() > 0) {
                                                                  hoder.mBettingBodyItemInputGold.setText(bean.amount);
                                                                  hoder.mBettingBodyItemInputGold.setChecked(bean.cbTag);
                                                                  Double resid = Double.parseDouble(bean.amount.trim()) * Double.parseDouble(bean.realRate.trim());
@@ -2198,7 +2192,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord0.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if (bean.amount.length() >= 0 && !"请输入金币".equals(bean.amount)) {
+                                                       if (bean.amount.length() >= 0 && !"请输入金额".equals(bean.amount)) {
                                                            bean.amount = bean.amount + "0";
                                                            hoder.mBettingBodyItemInputGold.setText(bean.amount);
 
@@ -2216,7 +2210,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord1.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "1";
                                                        } else {
                                                            bean.amount = bean.amount + "1";
@@ -2234,7 +2228,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord2.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "2";
                                                        } else {
                                                            bean.amount = bean.amount + "2";
@@ -2252,7 +2246,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord3.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "3";
                                                        } else {
                                                            bean.amount = bean.amount + "3";
@@ -2271,7 +2265,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord4.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "4";
                                                        } else {
                                                            bean.amount = bean.amount + "4";
@@ -2290,7 +2284,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord5.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "5";
                                                        } else {
                                                            bean.amount = bean.amount + "5";
@@ -2310,7 +2304,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord6.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "6";
                                                        } else {
                                                            bean.amount = bean.amount + "6";
@@ -2329,7 +2323,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord7.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "7";
                                                        } else {
                                                            bean.amount = bean.amount + "7";
@@ -2348,7 +2342,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord8.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "8";
                                                        } else {
                                                            bean.amount = bean.amount + "8";
@@ -2367,7 +2361,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybord9.setOnClickListener(new MyItemScoreClickListern(item) {
                                                    @Override
                                                    public void onClick(View v) {
-                                                       if ("请输入金币".equals(bean.amount)) {
+                                                       if ("请输入金额".equals(bean.amount)) {
                                                            bean.amount = "9";
                                                        } else {
                                                            bean.amount = bean.amount + "9";
@@ -2386,7 +2380,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordThousand.setOnClickListener(new MyItemScoreClickListern(item) {
                                                           @Override
                                                           public void onClick(View v) {
-                                                              if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                              if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                   bean.amount = "";
                                                                   hoder.mBettingBodyItemExpectedReturn.setText("");
                                                               } else {
@@ -2406,7 +2400,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordTenThousand.setOnClickListener(new MyItemScoreClickListern(item) {
                                                              @Override
                                                              public void onClick(View v) {
-                                                                 if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                                 if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                      bean.amount = "";
                                                                      hoder.mBettingBodyItemExpectedReturn.setText("");
                                                                  } else {
@@ -2426,7 +2420,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordHundredThousand.setOnClickListener(new MyItemScoreClickListern(item) {
                                                                  @Override
                                                                  public void onClick(View v) {
-                                                                     if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                                     if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                          bean.amount = "";
                                                                          hoder.mBettingBodyItemExpectedReturn.setText("");
                                                                      } else {
@@ -2446,7 +2440,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordMillion.setOnClickListener(new MyItemScoreClickListern(item) {
                                                          @Override
                                                          public void onClick(View v) {
-                                                             if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                             if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                                  bean.amount = "";
                                                                  hoder.mBettingBodyItemExpectedReturn.setText("");
                                                              } else {
@@ -2467,7 +2461,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
                                               @Override
                                               public void onClick(View v) {
                                                   bean.amount = UIUtils.getSputils().getString(Constent.GLODS, "");
-                                                  if ("请输入金币".equals(bean.amount) || bean.amount.length() == 0) {
+                                                  if ("请输入金额".equals(bean.amount) || bean.amount.length() == 0) {
                                                       bean.amount = "";
                                                       hoder.mBettingBodyItemExpectedReturn.setText("");
                                                   } else {
@@ -2498,7 +2492,7 @@ public class MatchInfoJc implements View.OnClickListener/*, CompoundButton.OnChe
             hoder.mKeybordConfirm.setOnClickListener(new MyItemScoreClickListern(item) {
                                                          @Override
                                                          public void onClick(View v) {
-                                                             if (!"请输入金币".equals(bean.amount) && bean.amount.length() > 0) {
+                                                             if (!"请输入金额".equals(bean.amount) && bean.amount.length() > 0) {
                                                                  hoder.mBettingBodyItemInputGold.setText(bean.amount);
                                                                  hoder.mBettingBodyItemInputGold.setChecked(bean.cbTag);
                                                                  if (TextUtils.isEmpty(bean.amount.trim()) || TextUtils.isEmpty(bean.payRate.trim()))

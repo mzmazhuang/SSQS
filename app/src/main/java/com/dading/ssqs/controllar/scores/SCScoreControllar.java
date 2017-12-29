@@ -109,7 +109,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
          */
 
         mCalendar = Calendar.getInstance();
-        mSdf1 = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+        mSdf1 = new SimpleDateFormat("yyyyMMddHH:mm:ss", Locale.CHINA);
         mSdf2 = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
 
         mCalendar.add(Calendar.DAY_OF_YEAR, 1);
@@ -118,7 +118,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
         mFormatData2 = mSdf2.format(date);
 
         mDate = mFormatData2.replaceAll("-", "");
-        UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
+        UIUtils.getSputils().putString(Constent.SC_TIME, mFormatData1);
         Logger.d(TAG, "赛程日期:" + mFormatData1);
         mWeek = AppendData(mFormatData2);
         mScoreWeekData.setText(mWeek);
@@ -174,7 +174,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
         CalendarClick((day + 1));
         String s1 = mListData1.get(mCalendarPostion);
         mFormatData1 = s1;
-        calendarVolley(s1);
+        calendarVolley(UIUtils.getSputils().getString(Constent.SC_TIME, ""));
         if (mPopupWindow == null) {
             return;
         } else {
@@ -219,7 +219,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
         String s = mSdf2.format(date);
         String data = AppendData(s);
         mDate = s.replaceAll("-", "");
-        UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
+        UIUtils.getSputils().putString(Constent.SC_TIME, mSdf1.format(date));
         mScoreWeekData.setText(data);
         switch (num) {
             case 7:
@@ -436,9 +436,10 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
         mScoreWeekData.setText(data);
 
         mDate = s.replaceAll("-", "");
-        UIUtils.getSputils().putString(Constent.SC_TIME, mDate);
+        String netWorkDate=mSdf1.format(date);
+        UIUtils.getSputils().putString(Constent.SC_TIME, netWorkDate);
 
-        calendarVolley(mDate);
+        calendarVolley(netWorkDate);
 
         calendarData(day);
     }

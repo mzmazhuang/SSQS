@@ -87,7 +87,7 @@ public class HomeBean implements Serializable {
         private int isEnd;
         private String startDate;
         private String endDate;
-        private List<OrdersBean> orders;
+        private List<OrdersBean> sysMessge;
 
         public int getIsEnd() {
             return isEnd;
@@ -113,97 +113,96 @@ public class HomeBean implements Serializable {
             this.endDate = endDate;
         }
 
-        public List<OrdersBean> getOrders() {
-            return orders;
+        public List<OrdersBean> getSysMessge() {
+            return sysMessge;
         }
 
-        public void setOrders(List<OrdersBean> orders) {
-            this.orders = orders;
+        public void setSysMessge(List<OrdersBean> sysMessge) {
+            this.sysMessge = sysMessge;
         }
 
         public static class OrdersBean implements Serializable {
-            /**
-             * userID : 20161226000000
-             * userName : 名匠
-             * avatar : http://192.168.0.115:8080/images/avatar/default/8ca7fd41950a45f98aea5c1351436450-100x100.jpg
-             * ranking : 1
-             * value : 1000000
-             * awardName : iphone 7 Plus
-             * awardUrlArr : ["http://192.168.0.115:8080/images/award/20161014035103AvHKyTokwL-66x87.png"]
-             * status : 1
-             */
 
-            private String userID;
-            private String userName;
-            private String avatar;
-            private String ranking;
-            private String value;
-            private String awardName;
-            private int status;
-            private List<String> awardUrlArr;
+            private String content;
+            private String type;
+            private String typeName;
+            private String matchName;//比赛名字
+            private String userName;//用户名字
+            private String matchType;//中奖比赛类型1，足球；2，篮球3，冠军
+            private String payBallType;//1:单关2:串关3:比分4:滚球5：冠军
+            private String mark;//1：登陆后个人信息，null未登录其他人员信息
+            private String amount;//获奖金额
 
-            public String getUserID() {
-                return userID;
+            public String getContent() {
+                return content;
             }
 
-            public void setUserID(String userID) {
-                this.userID = userID;
+            public void setContent(String content) {
+                this.content = content;
             }
 
-            public String getUserName() {
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public String getTypeName() {
+                return typeName;
+            }
+
+            public void setTypeName(String typeName) {
+                this.typeName = typeName;
+            }
+
+            public String getMatchName() {
+                return matchName;
+            }
+
+            public void setMatchName(String matchName) {
+                this.matchName = matchName;
+            }
+
+            public String getUsername() {
                 return userName;
             }
 
-            public void setUserName(String userName) {
-                this.userName = userName;
+            public void setUsername(String username) {
+                this.userName = username;
             }
 
-            public String getAvatar() {
-                return avatar;
+            public String getMatchType() {
+                return matchType;
             }
 
-            public void setAvatar(String avatar) {
-                this.avatar = avatar;
+            public void setMatchType(String matchType) {
+                this.matchType = matchType;
             }
 
-            public String getRanking() {
-                return ranking;
+            public String getPayBallType() {
+                return payBallType;
             }
 
-            public void setRanking(String ranking) {
-                this.ranking = ranking;
+            public void setPayBallType(String payBallType) {
+                this.payBallType = payBallType;
             }
 
-            public String getValue() {
-                return value;
+            public String getMark() {
+                return mark;
             }
 
-            public void setValue(String value) {
-                this.value = value;
+            public void setMark(String mark) {
+                this.mark = mark;
             }
 
-            public String getAwardName() {
-                return awardName;
+            public String getAmount() {
+                return amount;
             }
 
-            public void setAwardName(String awardName) {
-                this.awardName = awardName;
-            }
-
-            public int getStatus() {
-                return status;
-            }
-
-            public void setStatus(int status) {
-                this.status = status;
-            }
-
-            public List<String> getAwardUrlArr() {
-                return awardUrlArr;
-            }
-
-            public void setAwardUrlArr(List<String> awardUrlArr) {
-                this.awardUrlArr = awardUrlArr;
+            public void setAmount(String amount) {
+                this.amount = amount;
             }
         }
     }

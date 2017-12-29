@@ -373,7 +373,7 @@ public class StorePrizeControllar implements View.OnClickListener {
             mListName.get(i).setText(entity.name);
             String count = "还剩" + entity.count + "个";
             mListCount.get(i).setText(count);
-            String price = entity.cost + "金币";
+            String price = entity.cost + "元";
             mListPrice.get(i).setText(price);
 
             ImageView iv = mListIv.get(i);
@@ -514,7 +514,7 @@ public class StorePrizeControllar implements View.OnClickListener {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("兑换奖品");
-        builder.setMessage("使用金币" + mPriceStr + "兑换:" + mName);
+        builder.setMessage("使用现金" + mPriceStr + "兑换:" + mName);
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

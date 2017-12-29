@@ -205,13 +205,17 @@ public class EarlyFragment extends Fragment implements NotificationController.No
         public void onClick(int id) {
             if (id == 1) {//足球
                 currTitlePosition = 1;
+                twoTitleFootPosition = 0;
                 topCell.setTopSubTitleData(footBallSubTitles);
                 topCell.setTopSubTitleSelect(twoTitleFootPosition);
             } else if (id == 2) {//篮球
                 currTitlePosition = 2;
+                twoTitleBasketPosition = 0;
                 topCell.setTopSubTitleData(basketBallSubTitles);
                 topCell.setTopSubTitleSelect(twoTitleBasketPosition);
             }
+
+            changePage(LocaleController.getString(R.string.scroll_title1));
         }
     };
 
@@ -284,152 +288,155 @@ public class EarlyFragment extends Fragment implements NotificationController.No
                 }
             }
 
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            if (defaultFragment != null) {
-                defaultFragment.filterPause();
-                fragmentTransaction.hide(defaultFragment);
-            }
-            if (boDanFragment != null) {
-                boDanFragment.filterPause();
-                fragmentTransaction.hide(boDanFragment);
-            }
-            if (totalFragment != null) {
-                totalFragment.filterPause();
-                fragmentTransaction.hide(totalFragment);
-            }
-            if (halfCourtFragment != null) {
-                halfCourtFragment.filterPause();
-                fragmentTransaction.hide(halfCourtFragment);
-            }
-            if (resultFragment != null) {
-                resultFragment.filterPause();
-                fragmentTransaction.hide(resultFragment);
-            }
-            if (earlyChampionFragment != null) {
-                earlyChampionFragment.filterPause();
-                fragmentTransaction.hide(earlyChampionFragment);
-            }
-            if (earlyBasketBallChampionFragmen != null) {
-                earlyBasketBallChampionFragmen.filterPause();
-                fragmentTransaction.hide(earlyBasketBallChampionFragmen);
-            }
-            if (basketBallDefaultFragment != null) {
-                basketBallDefaultFragment.filterPause();
-                fragmentTransaction.hide(basketBallDefaultFragment);
-            }
-            if (basketBallPassFragment != null) {
-                basketBallPassFragment.filterPause();
-                fragmentTransaction.hide(basketBallPassFragment);
-            }
-            if (footBallPassFragment != null) {
-                footBallPassFragment.filterPause();
-                fragmentTransaction.hide(footBallPassFragment);
-            }
-
-            if (currTitlePosition == 1) {//足球
-                if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
-                    if (defaultFragment == null) {
-                        defaultFragment = new EarlyDefaultFragment();
-                        fragmentTransaction.add(R.id.early_parent, defaultFragment);
-                    } else {
-                        defaultFragment.filterResume();
-                        fragmentTransaction.show(defaultFragment);
-                    }
-
-                    currPage = 1;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title2))) {
-                    if (boDanFragment == null) {
-                        boDanFragment = new EarlyBoDanFragment();
-                        fragmentTransaction.add(R.id.early_parent, boDanFragment);
-                    } else {
-                        boDanFragment.filterResume();
-                        fragmentTransaction.show(boDanFragment);
-                    }
-
-                    currPage = 2;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title3))) {
-                    if (totalFragment == null) {
-                        totalFragment = new EarlyTotalFragment();
-                        fragmentTransaction.add(R.id.early_parent, totalFragment);
-                    } else {
-                        totalFragment.filterResume();
-                        fragmentTransaction.show(totalFragment);
-                    }
-                    currPage = 3;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title4))) {
-                    if (halfCourtFragment == null) {
-                        halfCourtFragment = new EarlyHalfCourtFragment();
-                        fragmentTransaction.add(R.id.early_parent, halfCourtFragment);
-                    } else {
-                        halfCourtFragment.filterResume();
-                        fragmentTransaction.show(halfCourtFragment);
-                    }
-                    currPage = 4;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title5))) {
-                    if (resultFragment == null) {
-                        resultFragment = new EarlyResultFragment();
-                        fragmentTransaction.add(R.id.early_parent, resultFragment);
-                    } else {
-                        resultFragment.filterResume();
-                        fragmentTransaction.show(resultFragment);
-                    }
-                    currPage = 5;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
-                    if (earlyChampionFragment == null) {
-                        earlyChampionFragment = new EarlyChampionFragment();
-                        fragmentTransaction.add(R.id.early_parent, earlyChampionFragment);
-                    } else {
-                        earlyChampionFragment.filterResume();
-                        fragmentTransaction.show(earlyChampionFragment);
-                    }
-                    currPage = 6;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
-                    if (footBallPassFragment == null) {
-                        footBallPassFragment = new EarlyFootBallPassFragment();
-                        fragmentTransaction.add(R.id.early_parent, footBallPassFragment);
-                    } else {
-                        footBallPassFragment.filterResume();
-                        fragmentTransaction.show(footBallPassFragment);
-                    }
-                    currPage = 7;
-                }
-
-            } else if (currTitlePosition == 2) {//篮球
-                if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
-                    if (basketBallDefaultFragment == null) {
-                        basketBallDefaultFragment = new EarlyBasketBallDefaultFragment();
-                        fragmentTransaction.add(R.id.early_parent, basketBallDefaultFragment);
-                    } else {
-                        basketBallDefaultFragment.filterResume();
-                        fragmentTransaction.show(basketBallDefaultFragment);
-                    }
-                    currPage = 8;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
-                    if (earlyBasketBallChampionFragmen == null) {
-                        earlyBasketBallChampionFragmen = new EarlyBasketBallChampionFragment();
-                        fragmentTransaction.add(R.id.early_parent, earlyBasketBallChampionFragmen);
-                    } else {
-                        earlyBasketBallChampionFragmen.filterResume();
-                        fragmentTransaction.show(earlyBasketBallChampionFragmen);
-                    }
-                    currPage = 9;
-                } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
-                    if (basketBallPassFragment == null) {
-                        basketBallPassFragment = new EarlyBasketBallPassFragment();
-                        fragmentTransaction.add(R.id.early_parent, basketBallPassFragment);
-                    } else {
-                        basketBallPassFragment.filterResume();
-                        fragmentTransaction.show(basketBallPassFragment);
-                    }
-                    currPage = 10;
-                }
-            }
-
-            fragmentTransaction.commit();
-
+            changePage(str);
         }
     };
+
+    private void changePage(String str) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if (defaultFragment != null) {
+            defaultFragment.filterPause();
+            fragmentTransaction.hide(defaultFragment);
+        }
+        if (boDanFragment != null) {
+            boDanFragment.filterPause();
+            fragmentTransaction.hide(boDanFragment);
+        }
+        if (totalFragment != null) {
+            totalFragment.filterPause();
+            fragmentTransaction.hide(totalFragment);
+        }
+        if (halfCourtFragment != null) {
+            halfCourtFragment.filterPause();
+            fragmentTransaction.hide(halfCourtFragment);
+        }
+        if (resultFragment != null) {
+            resultFragment.filterPause();
+            fragmentTransaction.hide(resultFragment);
+        }
+        if (earlyChampionFragment != null) {
+            earlyChampionFragment.filterPause();
+            fragmentTransaction.hide(earlyChampionFragment);
+        }
+        if (earlyBasketBallChampionFragmen != null) {
+            earlyBasketBallChampionFragmen.filterPause();
+            fragmentTransaction.hide(earlyBasketBallChampionFragmen);
+        }
+        if (basketBallDefaultFragment != null) {
+            basketBallDefaultFragment.filterPause();
+            fragmentTransaction.hide(basketBallDefaultFragment);
+        }
+        if (basketBallPassFragment != null) {
+            basketBallPassFragment.filterPause();
+            fragmentTransaction.hide(basketBallPassFragment);
+        }
+        if (footBallPassFragment != null) {
+            footBallPassFragment.filterPause();
+            fragmentTransaction.hide(footBallPassFragment);
+        }
+
+        if (currTitlePosition == 1) {//足球
+            if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
+                if (defaultFragment == null) {
+                    defaultFragment = new EarlyDefaultFragment();
+                    fragmentTransaction.add(R.id.early_parent, defaultFragment);
+                } else {
+                    defaultFragment.filterResume();
+                    fragmentTransaction.show(defaultFragment);
+                }
+
+                currPage = 1;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title2))) {
+                if (boDanFragment == null) {
+                    boDanFragment = new EarlyBoDanFragment();
+                    fragmentTransaction.add(R.id.early_parent, boDanFragment);
+                } else {
+                    boDanFragment.filterResume();
+                    fragmentTransaction.show(boDanFragment);
+                }
+
+                currPage = 2;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title3))) {
+                if (totalFragment == null) {
+                    totalFragment = new EarlyTotalFragment();
+                    fragmentTransaction.add(R.id.early_parent, totalFragment);
+                } else {
+                    totalFragment.filterResume();
+                    fragmentTransaction.show(totalFragment);
+                }
+                currPage = 3;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title4))) {
+                if (halfCourtFragment == null) {
+                    halfCourtFragment = new EarlyHalfCourtFragment();
+                    fragmentTransaction.add(R.id.early_parent, halfCourtFragment);
+                } else {
+                    halfCourtFragment.filterResume();
+                    fragmentTransaction.show(halfCourtFragment);
+                }
+                currPage = 4;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title5))) {
+                if (resultFragment == null) {
+                    resultFragment = new EarlyResultFragment();
+                    fragmentTransaction.add(R.id.early_parent, resultFragment);
+                } else {
+                    resultFragment.filterResume();
+                    fragmentTransaction.show(resultFragment);
+                }
+                currPage = 5;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
+                if (earlyChampionFragment == null) {
+                    earlyChampionFragment = new EarlyChampionFragment();
+                    fragmentTransaction.add(R.id.early_parent, earlyChampionFragment);
+                } else {
+                    earlyChampionFragment.filterResume();
+                    fragmentTransaction.show(earlyChampionFragment);
+                }
+                currPage = 6;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
+                if (footBallPassFragment == null) {
+                    footBallPassFragment = new EarlyFootBallPassFragment();
+                    fragmentTransaction.add(R.id.early_parent, footBallPassFragment);
+                } else {
+                    footBallPassFragment.filterResume();
+                    fragmentTransaction.show(footBallPassFragment);
+                }
+                currPage = 7;
+            }
+
+        } else if (currTitlePosition == 2) {//篮球
+            if (str.equals(LocaleController.getString(R.string.scroll_title1))) {
+                if (basketBallDefaultFragment == null) {
+                    basketBallDefaultFragment = new EarlyBasketBallDefaultFragment();
+                    fragmentTransaction.add(R.id.early_parent, basketBallDefaultFragment);
+                } else {
+                    basketBallDefaultFragment.filterResume();
+                    fragmentTransaction.show(basketBallDefaultFragment);
+                }
+                currPage = 8;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title13))) {
+                if (earlyBasketBallChampionFragmen == null) {
+                    earlyBasketBallChampionFragmen = new EarlyBasketBallChampionFragment();
+                    fragmentTransaction.add(R.id.early_parent, earlyBasketBallChampionFragmen);
+                } else {
+                    earlyBasketBallChampionFragmen.filterResume();
+                    fragmentTransaction.show(earlyBasketBallChampionFragmen);
+                }
+                currPage = 9;
+            } else if (str.equals(LocaleController.getString(R.string.scroll_title14))) {
+                if (basketBallPassFragment == null) {
+                    basketBallPassFragment = new EarlyBasketBallPassFragment();
+                    fragmentTransaction.add(R.id.early_parent, basketBallPassFragment);
+                } else {
+                    basketBallPassFragment.filterResume();
+                    fragmentTransaction.show(basketBallPassFragment);
+                }
+                currPage = 10;
+            }
+        }
+
+        fragmentTransaction.commit();
+    }
 
     @Override
     public void didReceivedNotification(int id, String... args) {

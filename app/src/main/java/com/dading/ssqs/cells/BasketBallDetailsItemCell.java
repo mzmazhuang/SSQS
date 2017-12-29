@@ -35,9 +35,9 @@ public class BasketBallDetailsItemCell extends LinearLayout {
     private LinearLayout oneAndTwoLayout;
     private LinearLayout oneRowTwoColumLayout;
     private LinearLayout oneRowMantColumLayout;
+    private LinearLayout moreRowTwoColumLayout;
 
-    private List<BasketDetailsChildCell> oneAndTwoCells = new ArrayList<>();//第一行第二行的cells
-    private List<BasketDetailsChildCell> oneRowTwoColumCells = new ArrayList<>();//除开第一行和第二行还有一行多列的cells
+    private List<BasketDetailsChildCell> oneRowTwoColumCells = new ArrayList<>();//一行两列
     private List<BasketDetailsChildCell> oneRowManyColumCells = new ArrayList<>();//一行多列的cells
 
     public BasketBallDetailsItemCell(Context context) {
@@ -71,33 +71,6 @@ public class BasketBallDetailsItemCell extends LinearLayout {
         oneAndTwoLayout.setOrientation(LinearLayout.VERTICAL);
         oneAndTwoLayout.setVisibility(View.GONE);
         layout.addView(oneAndTwoLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-
-        for (int i = 0; i < 2; i++) {
-            LinearLayout linearLayout = new LinearLayout(mContext);
-            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-            oneAndTwoLayout.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
-
-            View view = new View(mContext);
-            view.setBackgroundColor(0xFFE7E7E7);
-            oneAndTwoLayout.addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
-
-            for (int j = 0; j < 2; j++) {
-                BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
-
-                linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
-                oneAndTwoCells.add(childCell);
-
-                if (j != 1) {
-                    childCell.isShowLine(true);
-                    childCell.setLeftPadding(12);
-                    childCell.setRightPadding(8);
-                } else {
-                    childCell.isShowLine(false);
-                    childCell.setLeftPadding(8);
-                    childCell.setRightPadding(12);
-                }
-            }
-        }
 
         oneRowTwoColumLayout = new LinearLayout(context);
         oneRowTwoColumLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -145,6 +118,11 @@ public class BasketBallDetailsItemCell extends LinearLayout {
             }
         }
 
+        moreRowTwoColumLayout = new LinearLayout(context);
+        moreRowTwoColumLayout.setOrientation(LinearLayout.HORIZONTAL);
+        moreRowTwoColumLayout.setVisibility(View.GONE);
+        layout.addView(moreRowTwoColumLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
+
         View view = new View(context);
         view.setBackgroundColor(0xFFE7E7E7);
         addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
@@ -176,36 +154,109 @@ public class BasketBallDetailsItemCell extends LinearLayout {
         }
 
         List<BasketBallDetailsActivity.BasketData.BasketItemData> list = data.getItems();
-        //第一和第二的样式跟其他不同  多行多列
-        if (list.size() == 4) {
-            oneAndTwoLayout.setVisibility(View.VISIBLE);
-            oneRowTwoColumLayout.setVisibility(View.GONE);
-            oneRowMantColumLayout.setVisibility(View.GONE);
+        if (list != null) {
+            //第一和第二的样式跟其他不同  多行多列
+            if ("全场大小".equals(list.get(0).getTagName()) || "全场让球".equals(list.get(0).getTagName())) {
+                oneAndTwoLayout.setVisibility(View.VISIBLE);
+                oneRowTwoColumLayout.setVisibility(View.GONE);
+                oneRowMantColumLayout.setVisibility(View.GONE);
+                moreRowTwoColumLayout.setVisibility(View.GONE);
 
-            for (int i = 0; i < list.size(); i++) {
-                oneAndTwoCells.get(i).setData(list.get(i), data, focusList);
-                oneAndTwoCells.get(i).setListener(itemClickListener);
-            }
-        } else if (list.size() != 2) {
-            oneAndTwoLayout.setVisibility(View.GONE);
-            oneRowTwoColumLayout.setVisibility(View.GONE);
-            oneRowMantColumLayout.setVisibility(View.VISIBLE);
-            //一行 多列的
+                oneAndTwoLayout.removeAllViews();
 
-            for (int i = 0; i < list.size(); i++) {
-                oneRowManyColumCells.get(i).setData(list.get(i), data, focusList);
-                oneRowManyColumCells.get(i).changeParams();
-                oneRowManyColumCells.get(i).setListener(itemClickListener);
-            }
-        } else if (list.size() == 2) {
-            oneAndTwoLayout.setVisibility(View.GONE);
-            oneRowMantColumLayout.setVisibility(View.GONE);
-            oneRowTwoColumLayout.setVisibility(View.VISIBLE);
-            //一行 两列的
+                int position = 0;
 
-            for (int i = 0; i < list.size(); i++) {
-                oneRowTwoColumCells.get(i).setData(list.get(i), data, focusList);
-                oneRowTwoColumCells.get(i).setListener(itemClickListener);
+                for (int i = 0; i < (list.size() / 2); i++) {
+                    LinearLayout linearLayout = new LinearLayout(mContext);
+                    linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                    oneAndTwoLayout.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
+
+                    View view = new View(mContext);
+                    view.setBackgroundColor(0xFFE7E7E7);
+                    oneAndTwoLayout.addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
+
+                    for (int j = 0; j < 2; j++) {
+                        BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
+                        childCell.setData(list.get(position), data, focusList);
+                        childCell.setListener(itemClickListener);
+
+                        linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
+
+                        if (j != 1) {
+                            childCell.isShowLine(true);
+                            childCell.setLeftPadding(12);
+                            childCell.setRightPadding(8);
+                        } else {
+                            childCell.isShowLine(false);
+                            childCell.setLeftPadding(8);
+                            childCell.setRightPadding(12);
+                        }
+
+                        position++;
+                    }
+                }
+            } else if ("最后一位".equals(list.get(0).getTagName())) {//最后一位
+                oneAndTwoLayout.setVisibility(View.GONE);
+                oneRowTwoColumLayout.setVisibility(View.GONE);
+                oneRowMantColumLayout.setVisibility(View.VISIBLE);
+                moreRowTwoColumLayout.setVisibility(View.GONE);
+                //一行 多列的
+
+                for (int i = 0; i < list.size(); i++) {
+                    oneRowManyColumCells.get(i).setData(list.get(i), data, focusList);
+                    oneRowManyColumCells.get(i).changeParams();
+                    oneRowManyColumCells.get(i).setListener(itemClickListener);
+                }
+            } else if (list.size() == 2) {
+                oneAndTwoLayout.setVisibility(View.GONE);
+                oneRowMantColumLayout.setVisibility(View.GONE);
+                oneRowTwoColumLayout.setVisibility(View.VISIBLE);
+                moreRowTwoColumLayout.setVisibility(View.GONE);
+                //一行 两列的
+
+                for (int i = 0; i < list.size(); i++) {
+                    oneRowTwoColumCells.get(i).setData(list.get(i), data, focusList);
+                    oneRowTwoColumCells.get(i).setListener(itemClickListener);
+                }
+            } else {
+                oneAndTwoLayout.setVisibility(View.GONE);
+                oneRowMantColumLayout.setVisibility(View.GONE);
+                oneRowTwoColumLayout.setVisibility(View.GONE);
+                moreRowTwoColumLayout.setVisibility(View.VISIBLE);
+
+                moreRowTwoColumLayout.removeAllViews();
+
+                int position = 0;
+
+                for (int i = 0; i < (list.size() / 2); i++) {
+                    LinearLayout linearLayout = new LinearLayout(mContext);
+                    linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                    oneAndTwoLayout.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
+
+                    View view = new View(mContext);
+                    view.setBackgroundColor(0xFFE7E7E7);
+                    oneAndTwoLayout.addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
+
+                    for (int j = 0; j < 2; j++) {
+                        BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
+                        childCell.setData(list.get(position), data, focusList);
+                        childCell.setListener(itemClickListener);
+
+                        linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
+
+                        if (j != 1) {
+                            childCell.isShowLine(true);
+                            childCell.setLeftPadding(12);
+                            childCell.setRightPadding(8);
+                        } else {
+                            childCell.isShowLine(false);
+                            childCell.setLeftPadding(8);
+                            childCell.setRightPadding(12);
+                        }
+
+                        position++;
+                    }
+                }
             }
         }
     }

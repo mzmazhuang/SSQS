@@ -274,7 +274,7 @@ public class MyBettingAdapter extends BaseExpandableListAdapter {
                     TextView mBettingLvChildAcountCg = (TextView) mViewHowSerise.findViewById(R.id.betting_lv_child_acount_cg);
                     TextView mBettingLvChildExpectedReturnCg = (TextView) mViewHowSerise.findViewById(R.id.betting_lv_child_expected_return_cg);
 
-                    String text1 = "下注金币:" + info.get(0).amount;
+                    String text1 = "下注金额:" + info.get(0).amount;
                     mBettingLvChildAcountCg.setText(text1);
                     String returnGold = "预计返还:" + info.get(0).profit;
                     mBettingLvChildExpectedReturnCg.setText(returnGold);
@@ -286,7 +286,7 @@ public class MyBettingAdapter extends BaseExpandableListAdapter {
                     TextView mBettingLvChildacount = (TextView) mViewNoSerise.findViewById(R.id.betting_lv_child_acount_1);
                     TextView mBettingLvChildReturn = (TextView) mViewNoSerise.findViewById(R.id.betting_lv_child_expected_return_1);
 
-                    String text1 = "下注金币:" + info.get(0).amount;
+                    String text1 = "下注金额:" + info.get(0).amount;
                     mBettingLvChildacount.setText(text1);
 
                     String returnGold = "预计返还:" + info.get(0).profit;

@@ -119,7 +119,7 @@ public class ScoreControllar extends BaseTabsContainer {
         UIUtils.ReRecevice(mRecevice, Constent.HOME_SCORE);
         UIUtils.ReRecevice(mRecevice, Constent.GO_TO_BEFORE);
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHH:mm:ss", Locale.CHINA);
         Calendar calendar = new GregorianCalendar();
         Date now = calendar.getTime();
         String jt = format.format(now);
@@ -183,12 +183,6 @@ public class ScoreControllar extends BaseTabsContainer {
     }
 
     private void getNetDataWork(int type, int subType, String date, final OnDataDoneListener listener) {
-        /**
-         * 获取比分筛选列表
-         * /v1.0/match/filter/type/{type}/subType/{subType}/date/{date}
-         *
-         */
-
         SSQSApplication.apiClient(0).getMatchFilterList(type, subType, date, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
@@ -419,7 +413,7 @@ public class ScoreControllar extends BaseTabsContainer {
                         }
                     });
                 } else {
-                    SSQSApplication.apiClient(0).getMatchBallFilterList(new CcApiClient.OnCcListener() {
+                    SSQSApplication.apiClient(0).getMatchBallFilterList(mType, mSubType, mDate, new CcApiClient.OnCcListener() {
                         @Override
                         public void onResponse(CcApiResult result) {
                             if (result.isOk()) {

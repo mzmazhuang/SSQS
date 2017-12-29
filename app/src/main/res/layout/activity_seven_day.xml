@@ -40,7 +40,7 @@
             android:layout_below="@+id/get_glod_icon"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="金币还可兑换iPhone7等奖品哦!"
+            android:text="现金还可兑换iPhone7等奖品哦!"
             android:textColor="@color/white_a"
             android:textSize="16sp" />
 

@@ -419,7 +419,6 @@ public class StoreActivity extends BaseActivity implements RadioGroup.OnCheckedC
                                     mStoreDimondsNum.setText(dimons);
                                     String glod = bean.banlance + "";
                                     mStoreGlodNum.setText(glod);
-                                    Logger.d(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
                                     //发送广播
                                     UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                                 }

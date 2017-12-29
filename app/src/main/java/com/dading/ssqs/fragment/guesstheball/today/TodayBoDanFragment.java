@@ -630,7 +630,7 @@ public class TodayBoDanFragment extends Fragment implements OnRefreshListener, N
     }
 
     private void getNetDataWork(final int off, int lim) {
-        String mDate = DateUtils.getCurTime("yyyyMMdd");
+        String mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
 
         SSQSApplication.apiClient(0).getScrollBallList(true, 2, mDate, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
             @Override
@@ -752,10 +752,7 @@ public class TodayBoDanFragment extends Fragment implements OnRefreshListener, N
             item.setByTitle(currData.get(i).away);
 
             //硬编码
-            String time = currData.get(i).openTime;
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+            String time = DateUtils.changeFormater(currData.get(i).openTime, "yyyy-MM-dd HH:mm:ss", "HH:mm");
 
             item.setTime(time);
 
@@ -778,25 +775,33 @@ public class TodayBoDanFragment extends Fragment implements OnRefreshListener, N
                         if (entityList.get(k).name.equals("主胜")) {
                             for (int l = 0; l < itemsEntities.size(); l++) {
                                 if (currData.get(i).id == itemsEntities.get(l).matchID) {
-                                    twoRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 1));
+                                    if (twoRowData.size() < 11) {
+                                        twoRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 1));
+                                    }
                                 }
                             }
                         } else if (entityList.get(k).name.equals("主负")) {
                             for (int l = 0; l < itemsEntities.size(); l++) {
                                 if (currData.get(i).id == itemsEntities.get(l).matchID) {
-                                    threeRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 2));
+                                    if (threeRowData.size() < 11) {
+                                        threeRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 2));
+                                    }
                                 }
                             }
                         } else if (entityList.get(k).name.equals("平")) {
                             for (int l = 0; l < itemsEntities.size(); l++) {
                                 if (currData.get(i).id == itemsEntities.get(l).matchID) {
-                                    fiveRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 1));
+                                    if (fiveRowData.size() < 6) {
+                                        fiveRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 1));
+                                    }
                                 }
                             }
                         } else if (entityList.get(k).name.equals("其他")) {
                             for (int l = 0; l < itemsEntities.size(); l++) {
                                 if (currData.get(i).id == itemsEntities.get(l).matchID) {
-                                    fiveRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 1));
+                                    if (fiveRowData.size() < 7) {
+                                        fiveRowData.add(new ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities.get(l).id, itemsEntities.get(l).payRate, 1));
+                                    }
                                 }
                             }
                         }

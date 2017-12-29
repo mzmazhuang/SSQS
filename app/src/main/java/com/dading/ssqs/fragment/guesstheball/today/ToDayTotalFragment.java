@@ -631,7 +631,7 @@ public class ToDayTotalFragment extends Fragment implements OnRefreshListener, N
     }
 
     private void getNetDataWork(final int off, int lim) {
-        String mDate = DateUtils.getCurTime("yyyyMMdd");
+        String mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
 
         SSQSApplication.apiClient(0).getScrollBallList(true, 2, mDate, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
             @Override
@@ -751,11 +751,7 @@ public class ToDayTotalFragment extends Fragment implements OnRefreshListener, N
             item.setTitle(currData.get(i).home);
             item.setByTitle(currData.get(i).away);
 
-            //硬编码
-            String time = currData.get(i).openTime;
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+            String time = DateUtils.changeFormater(currData.get(i).openTime, "yyyy-MM-dd HH:mm:ss", "HH:mm");
 
             item.setTime(time);
 

@@ -437,7 +437,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
         mPopu = PopUtil.popuMake(mPopview);
         String s = "¥" + price + "元";
         mPayMethodRmb.setText(s);
-        String s1 = price + "金币";
+        String s1 = price + "元";
         mPayMethodGlod.setText(s1);
         int i = DensityUtil.dip2px(context, 50);
         int j = DensityUtil.dip2px(context, 200);

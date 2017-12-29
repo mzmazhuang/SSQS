@@ -160,14 +160,24 @@ public class ScrollBallFragment extends Fragment implements NotificationControll
     private GuessBallTopAdapter.OnGuessTopClickListener topClickListener = new GuessBallTopAdapter.OnGuessTopClickListener() {
         @Override
         public void onClick(int id) {
-            if (id == 1) {//足球
-                currTitlePosition = 1;
-                topCell.setTopSubTitleData(footBallSubTitles);
-                topCell.setTopSubTitleSelect(twoTitleFootPosition);
-            } else if (id == 2) {//篮球
-                currTitlePosition = 2;
-                topCell.setTopSubTitleData(basketBallSubTitles);
-                topCell.setTopSubTitleSelect(twoTitleBasketPosition);
+            if (currTitlePosition != id) {
+                if (id == 1) {//足球
+                    currTitlePosition = 1;
+                    twoTitleFootPosition = 0;
+                    topCell.setTopSubTitleData(footBallSubTitles);
+                    topCell.setTopSubTitleSelect(twoTitleFootPosition);
+                } else if (id == 2) {//篮球
+                    currTitlePosition = 2;
+                    twoTitleBasketPosition = 0;
+                    topCell.setTopSubTitleData(basketBallSubTitles);
+                    topCell.setTopSubTitleSelect(twoTitleBasketPosition);
+                }
+
+                String str = LocaleController.getString(R.string.scroll_title1);
+
+                tvTitle.setText(LocaleController.getString(R.string.scroll_ball) + "-" + (currTitlePosition == 1 ? LocaleController.getString(R.string.football) : LocaleController.getString(R.string.basketball)) + ":" + str);
+
+                changePage(str);
             }
         }
     };

@@ -21,7 +21,6 @@ import com.dading.ssqs.controllar.GuessBallControllarAll;
 import com.dading.ssqs.controllar.MyControllar;
 import com.dading.ssqs.controllar.ReferrCntrollar;
 import com.dading.ssqs.controllar.ScoreControllar;
-import com.dading.ssqs.controllar.guessball.GBRankingList;
 import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.ToastUtils;
@@ -69,7 +68,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     public MyControllar mMyControllar;
     private GuessBallControllarAll mGuessBallControllarAll;
     private ArrayList<RadioButton> mList;
-    private GBRankingList mGbRankingList;
 
     private LoadingBean bean;
     private boolean isFirst;
@@ -100,7 +98,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_MY);
         UIUtils.ReRecevice(mRecevice, Constent.HOME_BALL);
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_CASINO);
-        UIUtils.ReRecevice(mRecevice, Constent.LOADING_RANKING);
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_SCORE);
 
         mList = new ArrayList<>();
@@ -131,16 +128,12 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         //首页
         mGuessBallControllarAll = new GuessBallControllarAll();
 
-        //排行榜
-        mGbRankingList = new GBRankingList();
-
         mBaseDataControllar = new ArrayList<>();
         mBaseDataControllar.add(mGuessBallControllarAll);
         mBaseDataControllar.add(mReferrCntrollar);
         mBaseDataControllar.add(guessTheBallFragment);
         mBaseDataControllar.add(mScoreControllar);
         mBaseDataControllar.add(mMyControllar);
-        mBaseDataControllar.add(mGbRankingList);
 
         Logger.d(TAG, mBaseDataControllar.size() + "");
 
@@ -178,7 +171,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                             UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
 
-                            Logger.d(TAG, "我的金币:" + bean.banlance + ",我的钻石:" + bean.diamond);
                             //发送广播
                             UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                         }
@@ -204,11 +196,17 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         if (guessTheBallFragment != null) {
             guessTheBallFragment.fragmentPause();
         }
+        if (mGuessBallControllarAll != null) {
+            mGuessBallControllarAll.pause();
+        }
 
         switch (checkedId) {
             case R.id.main_home:
-                mMCurrButtonId = 0;
                 setChecked(0);
+                mMCurrButtonId = 0;
+                if (mGuessBallControllarAll != null) {
+                    mGuessBallControllarAll.resume();
+                }
                 break;
             case R.id.main_referr:
                 if (mReferrCntrollar != null) {
@@ -247,28 +245,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     }
 
     public boolean isBack() {
-        if (mMCurrButtonId == 1) {
-            mMCurrButtonId = 0;
-            setChecked(0);
-            mHome.setChecked(true);
-
-            mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-            return false;
-        } else if (mMCurrButtonId == 2) {
-            mMCurrButtonId = 0;
-            setChecked(0);
-            mHome.setChecked(true);
-
-            mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-            return false;
-        } else if (mMCurrButtonId == 3) {
-            mMCurrButtonId = 0;
-            setChecked(0);
-            mHome.setChecked(true);
-
-            mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-            return false;
-        } else if (mMCurrButtonId == 4) {
+        if (mMCurrButtonId == 1 || mMCurrButtonId == 2 || mMCurrButtonId == 3 || mMCurrButtonId == 4 || mMCurrButtonId == 5) {
             mMCurrButtonId = 0;
             setChecked(0);
             mHome.setChecked(true);
@@ -330,11 +307,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     Intent casionIntent = new Intent(context, CasionActivity.class);
                     startActivity(casionIntent);
                     Logger.d("GBSS", "收到廣播娱乐场-- ----------------------------:");
-                    break;
-                case Constent.LOADING_RANKING:
-                    mRg.check(mHome.getId());
-                    mMCurrButtonId = 5;
-                    mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
                     break;
                 case Constent.LOADING_SCORE:
                     mRg.check(mScore.getId());

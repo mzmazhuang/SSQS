@@ -66,7 +66,7 @@ public class RecomCodePrizeActivity extends BaseActivity implements View.OnClick
                     @Override
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
-                            ToastUtils.midToast(RecomCodePrizeActivity.this, "恭喜您获得1000金币!", 0);
+                            ToastUtils.midToast(RecomCodePrizeActivity.this, "恭喜您获得1000现金!", 0);
                         } else {
                             if (403 == result.getErrno()) {
                                 UIUtils.SendReRecevice(Constent.LOADING_ACTION);

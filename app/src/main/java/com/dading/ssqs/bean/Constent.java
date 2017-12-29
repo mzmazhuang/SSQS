@@ -19,9 +19,9 @@ public interface Constent {
      */
     String LOADING_ACTION = "LOADING_SUC";
     /**
-     * 刷新我的金币
+     * 刷新我的余额
      */
-    String REFRESH_MONY="Refresh_money";
+    String REFRESH_MONY = "Refresh_money";
     /**
      * 令牌
      */
@@ -51,7 +51,7 @@ public interface Constent {
      */
     String DIAMONDS = "DIAMONDS";
     /**
-     * 金币数
+     * 现金数
      */
     String GLODS = "GLODS";
 
@@ -65,7 +65,7 @@ public interface Constent {
      */
     String IS_FRISE = "IS_FRISE";
     /**
-     * 签到获得的金币数
+     * 签到获得的现金数
      */
     String SIGN_GLOD = "SIGN_GLOD";
     /**
@@ -189,10 +189,6 @@ public interface Constent {
      * 足球
      */
     String LOADING_FOOTBALL = "LOADING_FOOTBALL";
-    /**
-     * 排行榜
-     */
-    String LOADING_RANKING = "LOADING_RANKING";
     /**
      * 娱乐场
      */

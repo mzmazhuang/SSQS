@@ -514,7 +514,7 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
         }
 
         @Override
-        public void onInfoClick(int matchId, String title) {
+        public void onInfoClick(int matchId,String title) {
 
         }
     };
@@ -669,7 +669,7 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
 
     private void getNetDataWork() {
         if (TextUtils.isEmpty(currSelectTime)) {
-            currSelectTime = DateUtils.getCurTime("yyyyMMdd");
+            currSelectTime = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getMatchBallGuessEarlyList(currSelectTime, sType, leagueIDs, new CcApiClient.OnCcListener() {
@@ -845,11 +845,7 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
             item.setTitle(currScoreBean.getHome());
             item.setByTitle(currScoreBean.getAway());
 
-            //硬编码
-            String time = currScoreBean.getOpenTime();
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+            String time = DateUtils.changeFormater(currScoreBean.getOpenTime(), "yyyy-MM-dd HH:mm:ss", "HH:mm");
 
             item.setTime(time);
 

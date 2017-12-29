@@ -137,7 +137,7 @@ public class BaseJs extends BaseScoreControllar {
         setSend();
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.CHINA);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHH:mm:ss", Locale.CHINA);
         Date date = calendar.getTime();
         mFormatData = sdf.format(date);
         Logger.d(TAG, "日期是-------------------------------------" + mFormatData);
@@ -282,7 +282,7 @@ public class BaseJs extends BaseScoreControllar {
 
                             if (!isLoadMore && !isRefresh) {
                                 isLoadMore = true;
-                                SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
+                                SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData,
                                         (b ? UIUtils.getSputils().getString(Constent.SUBTYPE, "0") : "0"), 0,
                                         (b ? UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0") : "0"), mPage, 10, new CcApiClient.OnCcListener() {
                                             @Override
@@ -340,7 +340,7 @@ public class BaseJs extends BaseScoreControllar {
 
             if (!isRefresh && !isLoadMore) {
                 isRefresh = true;
-                SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, UIUtils.getSputils().getString(Constent.SG_TIME, "20000101"),
+                SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData,
                         (b ? UIUtils.getSputils().getString(Constent.SUBTYPE, "0") : "0"), 0,
                         (action.equals(Constent.JS_SG_SC_FITTER) ? s : "0"), 1, 10, new CcApiClient.OnCcListener() {
                             @Override

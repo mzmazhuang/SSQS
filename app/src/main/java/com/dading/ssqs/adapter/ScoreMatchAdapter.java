@@ -275,28 +275,11 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
 
         switch (mEntity.isOver) {
             case 0:
-
-                Logger.d(TAG, "是不是空的----" + mEntity.protime + "------:" + (mEntity.protime == null));
                 //根据protime时间长
                 if (!TextUtils.isEmpty(mEntity.protime)) {//如果protime为空不处理
-                    String[] split = mEntity.protime.split(" ");
                     if (!"半场".equals(mEntity.protime)) {
                         mEntity.isVisibleTwilke = true;
-                        if (split.length > 1) {//判断是篮球还是足球
-                            //判断是否要减15分钟
-                            Logger.d(TAG, "分割时间------------------------------:" + split[1]);
-                            if (!TextUtils.isEmpty(split[1]) && Integer.parseInt(split[1]) > 64)
-                                holder.scoreSgMatchResultTime.setText(/*split[0] + " " + */String.valueOf(Integer.parseInt(split[1]) - 15));
-                            else
-                                holder.scoreSgMatchResultTime.setText(split[1]);
-                        } else {
-                            if (Integer.parseInt(mEntity.protime) > 64) {
-                                mEntity.playTime = Integer.parseInt(mEntity.protime) - 15;
-                            } else if (Integer.parseInt(mEntity.protime) >= 0) {
-                                mEntity.playTime = Integer.parseInt(mEntity.protime);
-                            }
-                            holder.scoreSgMatchResultTime.setText(String.valueOf(mEntity.playTime));
-                        }
+                        holder.scoreSgMatchResultTime.setText(mEntity.protime);
                     } else {
                         mEntity.isVisibleTwilke = false;
                         holder.scoreSgMatchResultTime.setText(String.valueOf(mEntity.protime));
@@ -353,24 +336,9 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 mEntity.isVisibleTwilke = false;
                 holder.scoreSgMatchResultTime.setText("半场");
                 if (!TextUtils.isEmpty(mEntity.protime)) {//如果protime为空不处理
-                    String[] split = mEntity.protime.split(" ");
                     if (!"半场".equals(mEntity.protime)) {
+                        holder.scoreSgMatchResultTime.setText(mEntity.protime);
                         mEntity.isVisibleTwilke = true;
-                        if (split.length > 1) {//判断是篮球还是足球
-                            //判断是否要减15分钟
-                            if (!TextUtils.isEmpty(split[1]) && Integer.parseInt(split[1]) > 64)
-                                holder.scoreSgMatchResultTime.setText(/*split[0] + " " + */(Integer.parseInt(split[1]) - 15));
-                            else
-                                holder.scoreSgMatchResultTime.setText(Integer.parseInt(split[1]));
-                        } else {
-                            if (Integer.parseInt(mEntity.protime) > 64) {
-                                mEntity.playTime = Integer.parseInt(mEntity.protime) - 15;
-                            } else if (Integer.parseInt(mEntity.protime) >= 0) {
-                                mEntity.playTime = Integer.parseInt(mEntity.protime);
-                            }
-                            holder.scoreSgMatchResultTime.setText(String.valueOf(mEntity.playTime));
-                        }
-
                     }
                     mAlphaAnim.start();
                 }

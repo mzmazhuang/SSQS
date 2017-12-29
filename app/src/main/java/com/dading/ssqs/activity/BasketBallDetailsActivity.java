@@ -39,6 +39,7 @@ import com.dading.ssqs.components.ScrollBallCommitView;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.utils.AndroidUtilities;
+import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -65,9 +66,12 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
     private LoadingDialog loadingDialog;
 
     private ScoreBean bean;
+    private int matchID;
+    private String matchTitle;
 
     private boolean mainRefresh = false;
     private boolean myRefresh = false;
+    private boolean basketRefresh = false;
 
     private boolean isRefresh = false;
 
@@ -150,6 +154,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
         myItemCell = new BasketBallItemCell(mContext, 1);
         myItemCell.setOnItemClickListener(myListener);
+        myItemCell.setListener(myClickListener);
         infoLayout.addView(myItemCell);
 
         mainItemCell = new BasketBallItemCell(mContext, 2);
@@ -307,107 +312,66 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
         loadingDialog.show();
 
-        PayBallElement lastElement = new PayBallElement();
         PayBallElement element = new PayBallElement();
 
         List<PayBallElement.BetBean> items = new ArrayList<>();
-        List<PayBallElement.BetBean> lastItems = new ArrayList<>();
 
         if (mainDatas.size() > 0) {
             mainItemCell.refreshData();
 
             for (int i = 0; i < mainDatas.size(); i++) {
+                BasketData.BasketItemData list = mainDatas.get(i);
+
+                PayBallElement.BetBean bean = new PayBallElement.BetBean();
                 if (mainDatas.get(i).getTitle().contains("最后一位")) {
-                    BasketData.BasketItemData list = mainDatas.get(i);
-
-                    PayBallElement.BetBean bean = new PayBallElement.BetBean();
-                    bean.type = 2;
-                    bean.itemID = list.getId();
-                    bean.amount = moneyLists.get(i).getMoney();
-                    lastItems.add(bean);
+                    bean.type = 3;
+                    items.add(bean);
                 } else {
-                    BasketData.BasketItemData list = mainDatas.get(i);
-
-                    PayBallElement.BetBean bean = new PayBallElement.BetBean();
                     bean.type = 2;
-                    bean.matchID = list.getMatchID();
-                    bean.payRateID = list.getId();
                     bean.selected = list.getSelected();
-                    bean.amount = moneyLists.get(i).getMoney();
                     items.add(bean);
                 }
+                bean.matchID = list.getMatchID();
+                bean.payRateID = list.getId();
+                bean.amount = moneyLists.get(i).getMoney();
             }
             mainDatas.clear();
         } else if (myDatas.size() > 0) {
             myItemCell.refreshData();
 
             for (int i = 0; i < myDatas.size(); i++) {
+                BasketData.BasketItemData list = myDatas.get(i);
+
+                PayBallElement.BetBean bean = new PayBallElement.BetBean();
                 if (myDatas.get(i).getTitle().contains("最后一位")) {
-                    BasketData.BasketItemData list = myDatas.get(i);
-
-                    PayBallElement.BetBean bean = new PayBallElement.BetBean();
-                    bean.type = 2;
-                    bean.itemID = list.getId();
-                    bean.amount = moneyLists.get(i).getMoney();
-                    lastItems.add(bean);
+                    bean.type = 3;
+                    items.add(bean);
                 } else {
-                    BasketData.BasketItemData list = myDatas.get(i);
-
-                    PayBallElement.BetBean bean = new PayBallElement.BetBean();
                     bean.type = 2;
-                    bean.matchID = list.getMatchID();
-                    bean.payRateID = list.getId();
                     bean.selected = list.getSelected();
-                    bean.amount = moneyLists.get(i).getMoney();
                     items.add(bean);
                 }
+                bean.matchID = list.getMatchID();
+                bean.payRateID = list.getId();
+                bean.amount = moneyLists.get(i).getMoney();
             }
             myDatas.clear();
         }
 
         element.setItems(items);
-        lastElement.setItems(lastItems);
 
         if (items.size() > 0) {
-            basketBallPay(element, lastElement);
-        } else if (lastItems.size() > 0) {
-            basketBallLastPay(lastElement);
+            basketBallPay(element);
         }
     }
 
-    private void basketBallLastPay(PayBallElement element) {
-        SSQSApplication.apiClient(classGuid).payBallScore(element, new CcApiClient.OnCcListener() {
-            @Override
-            public void onResponse(CcApiResult result) {
-                loadingDialog.dismiss();
-
-                if (result.isOk()) {
-                    Toast.makeText(mContext, "下注成功", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (result.getErrno() == 403) {
-                        UIUtils.SendReRecevice(Constent.LOADING_ACTION);
-                        UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, false);
-                        Intent intent = new Intent(mContext, LoginActivity.class);
-                        mContext.startActivity(intent);
-                    } else {
-                        Toast.makeText(mContext, result.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-    }
-
-    private void basketBallPay(PayBallElement element, final PayBallElement lastElement) {
+    private void basketBallPay(PayBallElement element) {
         SSQSApplication.apiClient(classGuid).payBall(element, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
                 if (result.isOk()) {
-                    if (lastElement != null && lastElement.getItems().size() > 0) {
-                        basketBallLastPay(lastElement);
-                    } else {
-                        loadingDialog.dismiss();
-                        Toast.makeText(mContext, "下注成功", Toast.LENGTH_SHORT).show();
-                    }
+                    loadingDialog.dismiss();
+                    Toast.makeText(mContext, "下注成功", Toast.LENGTH_SHORT).show();
                 } else {
                     loadingDialog.dismiss();
                     if (result.getErrno() == 403) {
@@ -422,6 +386,35 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             }
         });
     }
+
+    private BasketBallDetailsItemCell.OnItemClickListener myClickListener = new BasketBallDetailsItemCell.OnItemClickListener() {
+        @Override
+        public boolean onClick(BasketData.BasketItemData data, BasketData basketData, boolean isAdd) {
+            if (mainDatas.size() == 0) {
+
+                if (isAdd) {
+                    data.setTitle(basketData.getTitle());
+                    data.setHomeName(bean == null ? "" : bean.home);
+                    data.setAwayName(bean == null ? "" : bean.away);
+
+                    myDatas.add(data);
+                } else {
+                    myDatas.remove(data);
+                }
+
+                if (myDatas.size() > 0) {
+                    commitView.setCount(1);
+                    commitView.setVisibility(View.VISIBLE);
+                } else {
+                    commitView.setVisibility(View.GONE);
+                }
+
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
 
     private BasketBallDetailsItemCell.OnItemClickListener mainClickListener = new BasketBallDetailsItemCell.OnItemClickListener() {
         @Override
@@ -644,48 +637,65 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
     private void init() {
         Intent intent = getIntent();
-        bean = (ScoreBean) intent.getSerializableExtra("data");
+        matchID = intent.getIntExtra("data_id", 0);
+        matchTitle = intent.getStringExtra("data_title");
 
-        if (bean != null) {
-            headCell.setTitle(bean.leagueName);
+        if (loadingDialog == null) {
+            loadingDialog = new LoadingDialog(mContext);
+        }
+        loadingDialog.show();
 
-            //硬编码
-            String time = bean.openTime;
-            if (time.length() == 19) {
-                time = time.substring(11, time.length() - 3);
-            }
+        getBasketBallHeadInfo(matchID);
+    }
 
-            headCell.setTime(time);
+    private void getBasketBallHeadInfo(int matchId) {
+        SSQSApplication.apiClient(classGuid).getBasketBallHeadInfo(matchId, new CcApiClient.OnCcListener() {
+            @Override
+            public void onResponse(CcApiResult result) {
+                if (result.isOk()) {
+                    bean = (ScoreBean) result.getData();
+                    if (bean != null) {
+                        headCell.setTitle(matchTitle);
 
-            String str;
+                        String str;
+                        String time;
 
-            if ((TextUtils.isEmpty(bean.part2AScore) || bean.part2AScore.equals("0")) && (TextUtils.isEmpty(bean.part2HScore) || bean.part2HScore.equals("0"))) {
-                str = "第一节";
-            } else if ((TextUtils.isEmpty(bean.part3AScore) || bean.part3AScore.equals("0")) && (TextUtils.isEmpty(bean.part3HScore) || bean.part3HScore.equals("0"))) {
-                str = "第二节";
-            } else if ((TextUtils.isEmpty(bean.part4AScore) || bean.part4AScore.equals("0")) && (TextUtils.isEmpty(bean.part4HScore) || bean.part4HScore.equals("0"))) {
-                str = "第三节";
-            } else {
-                if ((TextUtils.isEmpty(bean.aOverTimeScore) || bean.aOverTimeScore.equals("0")) && (TextUtils.isEmpty(bean.hOverTimeScore) || bean.hOverTimeScore.equals("0"))) {
-                    str = "第四节";
+                        if ((TextUtils.isEmpty(bean.part2AScore) || bean.part2AScore.equals("0")) && (TextUtils.isEmpty(bean.part2HScore) || bean.part2HScore.equals("0"))) {
+                            str = "第一节";
+                            time = bean.part1Time;
+                        } else if ((TextUtils.isEmpty(bean.part3AScore) || bean.part3AScore.equals("0")) && (TextUtils.isEmpty(bean.part3HScore) || bean.part3HScore.equals("0"))) {
+                            str = "第二节";
+                            time = bean.part2Time;
+                        } else if ((TextUtils.isEmpty(bean.part4AScore) || bean.part4AScore.equals("0")) && (TextUtils.isEmpty(bean.part4HScore) || bean.part4HScore.equals("0"))) {
+                            str = "第三节";
+                            time = bean.part3Time;
+                        } else {
+                            if ((TextUtils.isEmpty(bean.aOverTimeScore) || bean.aOverTimeScore.equals("0")) && (TextUtils.isEmpty(bean.hOverTimeScore) || bean.hOverTimeScore.equals("0"))) {
+                                str = "第四节";
+                                time = bean.part4Time;
+                            } else {
+                                str = "加时赛";
+                                time = bean.overTime;
+                            }
+                        }
+                        headCell.setTime(time);
+                        headCell.setSection(str);
+
+                        headCell.setHomeTeamInfo(bean.home, bean.part1HScore, bean.part2HScore, bean.part3HScore, bean.part4HScore, bean.hOverTimeScore, bean.hHalfScore, bean.hSHalfScore, bean.homeScore);
+                        headCell.setvisitingTeamInfo(bean.away, bean.part1AScore, bean.part2AScore, bean.part3AScore, bean.part4AScore, bean.aOverTimeScore, bean.aHalfScore, bean.aSHalfScore, bean.awayScore);
+
+                        basketRefresh = true;
+
+                        getBasketBallInfo(bean.id);
+                        getMyBasketBallInfo(bean.id);
+                    }
                 } else {
-                    str = "加时赛";
+                    basketRefresh = true;
+
+                    checkRefresh();
                 }
             }
-
-            headCell.setSection(str);
-
-            headCell.setHomeTeamInfo(bean.home, bean.part1HScore, bean.part2HScore, bean.part3HScore, bean.part4HScore, bean.hOverTimeScore, bean.hHalfScore, bean.hSHalfScore, bean.hScore);
-            headCell.setvisitingTeamInfo(bean.away, bean.part1AScore, bean.part2AScore, bean.part3AScore, bean.part4AScore, bean.aOverTimeScore, bean.aHalfScore, bean.aSHalfScore, bean.aScore);
-
-            if (loadingDialog == null) {
-                loadingDialog = new LoadingDialog(mContext);
-            }
-            loadingDialog.show();
-
-            getBasketBallInfo(bean.id);
-            getMyBasketBallInfo(bean.id);
-        }
+        });
     }
 
     //我的盘口信息
@@ -794,7 +804,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
     }
 
     private void checkRefresh() {
-        if (mainRefresh && myRefresh) {
+        if (mainRefresh && myRefresh && basketRefresh) {
             loadingDialog.dismiss();
             swipeToLoadLayout.setRefreshing(false);
             swipeToLoadLayout.setRefreshEnabled(true);
@@ -830,6 +840,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             isRefresh = false;
             mainRefresh = false;
             myRefresh = false;
+            basketRefresh = false;
         }
     }
 
@@ -882,6 +893,15 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             private String awayName;
             private int matchID;
             private int selected;
+            private String tagName;
+
+            public String getTagName() {
+                return tagName;
+            }
+
+            public void setTagName(String tagName) {
+                this.tagName = tagName;
+            }
 
             public String getHomeName() {
                 return homeName;
@@ -969,8 +989,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
     public void onRefresh() {
         if (!isRefresh) {
             isRefresh = true;
-            getBasketBallInfo(bean.id);
-            getMyBasketBallInfo(bean.id);
+            getBasketBallHeadInfo(matchID);
         }
     }
 
@@ -1461,7 +1480,9 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         };
 
         public void setTitle(String title) {
-            tvTitle.setText(title);
+            if (!TextUtils.isEmpty(title)) {
+                tvTitle.setText(title);
+            }
         }
 
         public void setSection(String section) {
@@ -1577,8 +1598,10 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         bean19.setId(19);
         bean19.setTitle("<font color=\"#FFFFFF\">总分：单/双-</font><font color=\"#FFF000\">第4节</font>");
 
-        List<BasketData.BasketItemData> itemData1 = new ArrayList<>();
-        List<BasketData.BasketItemData> itemData2 = new ArrayList<>();
+        List<BasketData.BasketItemData> itemData = new ArrayList<>();//全场让球
+        List<BasketData.BasketItemData> itemData1 = new ArrayList<>();//总分 大/小
+        List<BasketData.BasketItemData> itemData10 = new ArrayList<>();//最后一位主队
+        List<BasketData.BasketItemData> itemData11 = new ArrayList<>();//最后一位客队
         List<BasketData.BasketItemData> itemData3 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData4 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData5 = new ArrayList<>();
@@ -1586,8 +1609,6 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         List<BasketData.BasketItemData> itemData7 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData8 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData9 = new ArrayList<>();
-        List<BasketData.BasketItemData> itemData10 = new ArrayList<>();
-        List<BasketData.BasketItemData> itemData11 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData12 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData13 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData14 = new ArrayList<>();
@@ -1597,54 +1618,23 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         List<BasketData.BasketItemData> itemData18 = new ArrayList<>();
         List<BasketData.BasketItemData> itemData19 = new ArrayList<>();
 
-        BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData3 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData4 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData5 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData6 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData7 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData8 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData9 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData10 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData11 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData12 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData13 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData14 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData15 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData16 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData17 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData18 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData19 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData20 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData21 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData22 = new BasketData.BasketItemData();
-        //最后一位
-        BasketData.BasketItemData basketItemData23 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData24 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData25 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData26 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData27 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData28 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData29 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData30 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData31 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData32 = new BasketData.BasketItemData();
         //第几节
-        BasketData.BasketItemData basketItemData33 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData34 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData35 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData36 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData37 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData38 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData39 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData40 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData41 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData42 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData43 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData44 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData45 = new BasketData.BasketItemData();
-        BasketData.BasketItemData basketItemData46 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData47 = new BasketData.BasketItemData();
         BasketData.BasketItemData basketItemData48 = new BasketData.BasketItemData();
 
@@ -1656,144 +1646,80 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                 List<BasketBallLastBean.BasketItem> list = lastBean.getList().get(0).getItems();
                 for (int i = 0; i < list.size(); i++) {
                     if (bean.home.equals(list.get(i).getTeamName())) {//主队
-                        if (TextUtils.isEmpty(basketItemData23.getLeftStr())) {
-                            basketItemData23.setId(list.get(i).getId());
-                            basketItemData23.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData23.setLeftStr(list.get(i).getName());
-                            basketItemData23.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData24.getLeftStr())) {
-                            basketItemData24.setId(list.get(i).getId());
-                            basketItemData24.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData24.setLeftStr(list.get(i).getName());
-                            basketItemData24.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData25.getLeftStr())) {
-                            basketItemData25.setId(list.get(i).getId());
-                            basketItemData25.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData25.setLeftStr(list.get(i).getName());
-                            basketItemData25.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData26.getLeftStr())) {
-                            basketItemData26.setId(list.get(i).getId());
-                            basketItemData26.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData26.setLeftStr(list.get(i).getName());
-                            basketItemData26.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData27.getLeftStr())) {
-                            basketItemData27.setId(list.get(i).getId());
-                            basketItemData27.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData27.setLeftStr(list.get(i).getName());
-                            basketItemData27.setNumber(list.get(i).getPayRate());
-                        }
+                        BasketData.BasketItemData basketItemData = new BasketData.BasketItemData();
+                        basketItemData.setMatchID(list.get(i).getMatchID());
+                        basketItemData.setId(list.get(i).getId());
+                        basketItemData.setPayTypeID(list.get(i).getPayTypeID());
+                        basketItemData.setLeftStr(list.get(i).getName());
+                        basketItemData.setNumber(list.get(i).getPayRate());
+                        basketItemData.setTagName("最后一位");
+
+                        itemData10.add(basketItemData);
                     } else if (bean.away.equals(list.get(i).getTeamName())) {//客队
-                        if (TextUtils.isEmpty(basketItemData28.getLeftStr())) {
-                            basketItemData28.setId(list.get(i).getId());
-                            basketItemData28.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData28.setLeftStr(list.get(i).getName());
-                            basketItemData28.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData29.getLeftStr())) {
-                            basketItemData29.setId(list.get(i).getId());
-                            basketItemData29.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData29.setLeftStr(list.get(i).getName());
-                            basketItemData29.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData30.getLeftStr())) {
-                            basketItemData30.setId(list.get(i).getId());
-                            basketItemData30.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData30.setLeftStr(list.get(i).getName());
-                            basketItemData30.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData31.getLeftStr())) {
-                            basketItemData31.setId(list.get(i).getId());
-                            basketItemData31.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData31.setLeftStr(list.get(i).getName());
-                            basketItemData31.setNumber(list.get(i).getPayRate());
-                        } else if (TextUtils.isEmpty(basketItemData32.getLeftStr())) {
-                            basketItemData32.setId(list.get(i).getId());
-                            basketItemData32.setPayTypeID(list.get(i).getPayTypeID());
-                            basketItemData32.setLeftStr(list.get(i).getName());
-                            basketItemData32.setNumber(list.get(i).getPayRate());
-                        }
+                        BasketData.BasketItemData basketItemData = new BasketData.BasketItemData();
+                        basketItemData.setMatchID(list.get(i).getMatchID());
+                        basketItemData.setId(list.get(i).getId());
+                        basketItemData.setPayTypeID(list.get(i).getPayTypeID());
+                        basketItemData.setLeftStr(list.get(i).getName());
+                        basketItemData.setNumber(list.get(i).getPayRate());
+                        basketItemData.setTagName("最后一位");
+
+                        itemData11.add(basketItemData);
                     }
                 }
             }
         }
 
         if (items != null) {
-
-            int letTheBallCount = 1;
-            int totalScoreCount = 1;
-
             for (int i = 0; i < items.size(); i++) {
                 if ("全场让球".equals(items.get(i).payTypeName)) {
-                    if (letTheBallCount <= 2) {
-                        if (letTheBallCount == 2) {
-                            basketItemData3.setId(items.get(i).id);
-                            basketItemData3.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData3.setMatchID(items.get(i).matchID);
-                            basketItemData3.setLeftStr(bean.home);
-                            basketItemData3.setNumber(items.get(i).realRate1);
-                            basketItemData3.setRightStr(items.get(i).realRate2);
-                            basketItemData1.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr(bean.home);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setSelected(1);
+                    basketItemData1.setTagName(items.get(i).payTypeName);
 
-                            basketItemData4.setId(items.get(i).id);
-                            basketItemData4.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData4.setMatchID(items.get(i).matchID);
-                            basketItemData4.setLeftStr(bean.away);
-                            basketItemData4.setRightStr(items.get(i).realRate2);
-                            basketItemData4.setNumber(items.get(i).realRate3);
-                            basketItemData4.setSelected(2);
-                        } else {
-                            basketItemData1.setId(items.get(i).id);
-                            basketItemData1.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData1.setMatchID(items.get(i).matchID);
-                            basketItemData1.setLeftStr(bean.home);
-                            basketItemData1.setNumber(items.get(i).realRate1);
-                            basketItemData1.setRightStr(items.get(i).realRate2);
-                            basketItemData1.setSelected(1);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr(bean.away);
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+                    basketItemData2.setTagName(items.get(i).payTypeName);
 
-                            basketItemData2.setId(items.get(i).id);
-                            basketItemData2.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData2.setMatchID(items.get(i).matchID);
-                            basketItemData2.setLeftStr(bean.away);
-                            basketItemData2.setRightStr(items.get(i).realRate2);
-                            basketItemData2.setNumber(items.get(i).realRate3);
-                            basketItemData2.setSelected(2);
-                        }
-                        letTheBallCount++;
-                    }
-                } else if ("全场大小".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {//总
-                    if (totalScoreCount <= 2) {
-                        if (totalScoreCount == 2) {
-                            basketItemData7.setId(items.get(i).id);
-                            basketItemData7.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData7.setMatchID(items.get(i).matchID);
-                            basketItemData7.setLeftStr("大");
-                            basketItemData7.setRightStr(items.get(i).realRate2);
-                            basketItemData7.setNumber(items.get(i).realRate1);
-                            basketItemData7.setSelected(1);
+                    itemData.add(basketItemData1);
+                    itemData.add(basketItemData2);
 
-                            basketItemData8.setId(items.get(i).id);
-                            basketItemData8.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData8.setMatchID(items.get(i).matchID);
-                            basketItemData8.setLeftStr("小");
-                            basketItemData8.setRightStr(items.get(i).realRate2);
-                            basketItemData8.setNumber(items.get(i).realRate3);
-                            basketItemData8.setSelected(2);
-                        } else {
-                            basketItemData5.setId(items.get(i).id);
-                            basketItemData5.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData5.setMatchID(items.get(i).matchID);
-                            basketItemData5.setLeftStr("大");
-                            basketItemData5.setRightStr(items.get(i).realRate2);
-                            basketItemData5.setNumber(items.get(i).realRate1);
-                            basketItemData5.setSelected(1);
+                } else if (items.get(i).payTypeID == 3) {//总
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
+                    basketItemData1.setTagName(items.get(i).payTypeName);
 
-                            basketItemData6.setId(items.get(i).id);
-                            basketItemData6.setPayTypeID(items.get(i).payTypeID);
-                            basketItemData6.setMatchID(items.get(i).matchID);
-                            basketItemData6.setLeftStr("小");
-                            basketItemData6.setRightStr(items.get(i).realRate2);
-                            basketItemData6.setNumber(items.get(i).realRate3);
-                            basketItemData6.setSelected(2);
-                        }
-                        totalScoreCount++;
-                    }
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+                    basketItemData2.setTagName(items.get(i).payTypeName);
+
+                    itemData1.add(basketItemData1);
+                    itemData1.add(basketItemData2);
+
                 } else if ("全场单双".equals(items.get(i).payTypeName)) {
                     basketItemData9.setId(items.get(i).id);
                     basketItemData9.setPayTypeID(items.get(i).payTypeID);
@@ -1809,21 +1735,26 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData10.setNumber(items.get(i).realRate3);
                     basketItemData10.setSelected(2);
                 } else if ("上半场大小".equals(items.get(i).payTypeName)) {
-                    basketItemData11.setId(items.get(i).id);
-                    basketItemData11.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData11.setMatchID(items.get(i).matchID);
-                    basketItemData11.setLeftStr("大");
-                    basketItemData11.setRightStr(items.get(i).realRate2);
-                    basketItemData11.setNumber(items.get(i).realRate1);
-                    basketItemData11.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
 
-                    basketItemData12.setId(items.get(i).id);
-                    basketItemData12.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData12.setMatchID(items.get(i).matchID);
-                    basketItemData12.setLeftStr("小");
-                    basketItemData12.setRightStr(items.get(i).realRate2);
-                    basketItemData12.setNumber(items.get(i).realRate3);
-                    basketItemData12.setSelected(2);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+
+                    itemData4.add(basketItemData1);
+                    itemData4.add(basketItemData2);
                 } else if ("上半场单双".equals(items.get(i).payTypeName)) {
                     basketItemData13.setId(items.get(i).id);
                     basketItemData13.setPayTypeID(items.get(i).payTypeID);
@@ -1839,21 +1770,26 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData14.setNumber(items.get(i).realRate3);
                     basketItemData14.setSelected(2);
                 } else if ("下半场大小".equals(items.get(i).payTypeName)) {
-                    basketItemData15.setId(items.get(i).id);
-                    basketItemData15.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData15.setMatchID(items.get(i).matchID);
-                    basketItemData15.setLeftStr("大");
-                    basketItemData15.setRightStr(items.get(i).realRate2);
-                    basketItemData15.setNumber(items.get(i).realRate1);
-                    basketItemData15.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
 
-                    basketItemData16.setId(items.get(i).id);
-                    basketItemData16.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData16.setMatchID(items.get(i).matchID);
-                    basketItemData16.setLeftStr("小");
-                    basketItemData16.setRightStr(items.get(i).realRate2);
-                    basketItemData16.setNumber(items.get(i).realRate3);
-                    basketItemData16.setSelected(2);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+
+                    itemData6.add(basketItemData1);
+                    itemData6.add(basketItemData2);
                 } else if ("下半场单双".equals(items.get(i).payTypeName)) {
                     basketItemData17.setId(items.get(i).id);
                     basketItemData17.setPayTypeID(items.get(i).payTypeID);
@@ -1901,27 +1837,31 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData22.setNumber(items.get(i).realRate3);
                     basketItemData22.setSelected(2);
                 } else if ("第一节大小".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
-                    basketItemData33.setId(items.get(i).id);
-                    basketItemData33.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData33.setLeftStr("大");
-                    basketItemData33.setRightStr(items.get(i).realRate2);
-                    basketItemData33.setMatchID(items.get(i).matchID);
-                    basketItemData33.setNumber(items.get(i).realRate1);
-                    basketItemData33.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
 
-                    basketItemData34.setId(items.get(i).id);
-                    basketItemData34.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData34.setMatchID(items.get(i).matchID);
-                    basketItemData34.setLeftStr("小");
-                    basketItemData34.setRightStr(items.get(i).realRate2);
-                    basketItemData34.setNumber(items.get(i).realRate3);
-                    basketItemData34.setSelected(2);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+
+                    itemData12.add(basketItemData1);
+                    itemData12.add(basketItemData2);
                 } else if ("第一节单双".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
                     basketItemData35.setId(items.get(i).id);
                     basketItemData35.setPayTypeID(items.get(i).payTypeID);
                     basketItemData35.setMatchID(items.get(i).matchID);
                     basketItemData35.setLeftStr("单");
-                    basketItemData35.setRightStr(items.get(i).realRate2);
                     basketItemData35.setNumber(items.get(i).realRate1);
                     basketItemData35.setSelected(1);
 
@@ -1929,25 +1869,29 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData36.setPayTypeID(items.get(i).payTypeID);
                     basketItemData36.setMatchID(items.get(i).matchID);
                     basketItemData36.setLeftStr("双");
-                    basketItemData36.setRightStr(items.get(i).realRate2);
                     basketItemData36.setNumber(items.get(i).realRate3);
                     basketItemData36.setSelected(2);
                 } else if ("第二节大小".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
-                    basketItemData37.setId(items.get(i).id);
-                    basketItemData37.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData37.setMatchID(items.get(i).matchID);
-                    basketItemData37.setLeftStr("大");
-                    basketItemData37.setRightStr(items.get(i).realRate2);
-                    basketItemData37.setNumber(items.get(i).realRate1);
-                    basketItemData37.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
 
-                    basketItemData38.setId(items.get(i).id);
-                    basketItemData38.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData38.setMatchID(items.get(i).matchID);
-                    basketItemData38.setLeftStr("小");
-                    basketItemData38.setRightStr(items.get(i).realRate2);
-                    basketItemData38.setNumber(items.get(i).realRate3);
-                    basketItemData38.setSelected(2);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+
+                    itemData14.add(basketItemData1);
+                    itemData14.add(basketItemData2);
                 } else if ("第二节单双".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
                     basketItemData39.setId(items.get(i).id);
                     basketItemData39.setPayTypeID(items.get(i).payTypeID);
@@ -1965,21 +1909,26 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData40.setNumber(items.get(i).realRate3);
                     basketItemData40.setSelected(2);
                 } else if ("第三节大小".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
-                    basketItemData41.setId(items.get(i).id);
-                    basketItemData41.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData41.setMatchID(items.get(i).matchID);
-                    basketItemData41.setLeftStr("大");
-                    basketItemData41.setRightStr(items.get(i).realRate2);
-                    basketItemData41.setNumber(items.get(i).realRate1);
-                    basketItemData41.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
 
-                    basketItemData42.setId(items.get(i).id);
-                    basketItemData42.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData42.setMatchID(items.get(i).matchID);
-                    basketItemData42.setLeftStr("小");
-                    basketItemData42.setRightStr(items.get(i).realRate2);
-                    basketItemData42.setNumber(items.get(i).realRate3);
-                    basketItemData42.setSelected(2);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+
+                    itemData16.add(basketItemData1);
+                    itemData16.add(basketItemData2);
                 } else if ("第三节单双".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
                     basketItemData43.setId(items.get(i).id);
                     basketItemData43.setPayTypeID(items.get(i).payTypeID);
@@ -1997,21 +1946,26 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData44.setNumber(items.get(i).realRate3);
                     basketItemData44.setSelected(2);
                 } else if ("第四节大小".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
-                    basketItemData45.setId(items.get(i).id);
-                    basketItemData45.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData45.setMatchID(items.get(i).matchID);
-                    basketItemData45.setLeftStr("大");
-                    basketItemData45.setRightStr(items.get(i).realRate2);
-                    basketItemData45.setNumber(items.get(i).realRate1);
-                    basketItemData45.setSelected(1);
+                    BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
+                    basketItemData1.setId(items.get(i).id);
+                    basketItemData1.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData1.setMatchID(items.get(i).matchID);
+                    basketItemData1.setLeftStr("大");
+                    basketItemData1.setRightStr(items.get(i).realRate2);
+                    basketItemData1.setNumber(items.get(i).realRate1);
+                    basketItemData1.setSelected(1);
 
-                    basketItemData46.setId(items.get(i).id);
-                    basketItemData46.setPayTypeID(items.get(i).payTypeID);
-                    basketItemData46.setMatchID(items.get(i).matchID);
-                    basketItemData46.setLeftStr("小");
-                    basketItemData46.setRightStr(items.get(i).realRate2);
-                    basketItemData46.setNumber(items.get(i).realRate3);
-                    basketItemData46.setSelected(2);
+                    BasketData.BasketItemData basketItemData2 = new BasketData.BasketItemData();
+                    basketItemData2.setId(items.get(i).id);
+                    basketItemData2.setPayTypeID(items.get(i).payTypeID);
+                    basketItemData2.setMatchID(items.get(i).matchID);
+                    basketItemData2.setLeftStr("小");
+                    basketItemData2.setRightStr(items.get(i).realRate2);
+                    basketItemData2.setNumber(items.get(i).realRate3);
+                    basketItemData2.setSelected(2);
+
+                    itemData18.add(basketItemData1);
+                    itemData18.add(basketItemData2);
                 } else if ("第四节单双".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
                     basketItemData47.setId(items.get(i).id);
                     basketItemData47.setPayTypeID(items.get(i).payTypeID);
@@ -2032,57 +1986,27 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             }
         }
 
-        itemData1.add(basketItemData1);
-        itemData1.add(basketItemData2);
-        itemData1.add(basketItemData3);
-        itemData1.add(basketItemData4);
-        itemData2.add(basketItemData5);
-        itemData2.add(basketItemData6);
-        itemData2.add(basketItemData7);
-        itemData2.add(basketItemData8);
         itemData3.add(basketItemData9);
         itemData3.add(basketItemData10);
-        itemData4.add(basketItemData11);
-        itemData4.add(basketItemData12);
         itemData5.add(basketItemData13);
         itemData5.add(basketItemData14);
-        itemData6.add(basketItemData15);
-        itemData6.add(basketItemData16);
         itemData7.add(basketItemData17);
         itemData7.add(basketItemData18);
         itemData8.add(basketItemData19);
         itemData8.add(basketItemData20);
         itemData9.add(basketItemData21);
         itemData9.add(basketItemData22);
-        itemData10.add(basketItemData23);
-        itemData10.add(basketItemData24);
-        itemData10.add(basketItemData25);
-        itemData10.add(basketItemData26);
-        itemData10.add(basketItemData27);
-        itemData11.add(basketItemData28);
-        itemData11.add(basketItemData29);
-        itemData11.add(basketItemData30);
-        itemData11.add(basketItemData31);
-        itemData11.add(basketItemData32);
-        itemData12.add(basketItemData33);
-        itemData12.add(basketItemData34);
         itemData13.add(basketItemData35);
         itemData13.add(basketItemData36);
-        itemData14.add(basketItemData37);
-        itemData14.add(basketItemData38);
         itemData15.add(basketItemData39);
         itemData15.add(basketItemData40);
-        itemData16.add(basketItemData41);
-        itemData16.add(basketItemData42);
         itemData17.add(basketItemData43);
         itemData17.add(basketItemData44);
-        itemData18.add(basketItemData45);
-        itemData18.add(basketItemData46);
         itemData19.add(basketItemData47);
         itemData19.add(basketItemData48);
 
-        bean1.setItems(itemData1);
-        bean2.setItems(itemData2);
+        bean1.setItems(itemData);
+        bean2.setItems(itemData1);
         bean3.setItems(itemData3);
         bean4.setItems(itemData4);
         bean5.setItems(itemData5);

@@ -137,22 +137,22 @@ public class TimeCell extends LinearLayout {
 
         if (type == 1) {
             todayText.setTextColor(0xFFFF0000);
-            time = DateUtils.getCurTime("yyyyMMdd");
+            time = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         } else if (type == 2) {
             time1.setTextColor(0xFFFF0000);
-            time = DateUtils.getCurTimeAddND(1, "yyyyMMdd");
+            time = DateUtils.getCurTimeAddND(1, "yyyyMMddHH:mm:ss");
         } else if (type == 3) {
             time2.setTextColor(0xFFFF0000);
-            time = DateUtils.getCurTimeAddND(2, "yyyyMMdd");
+            time = DateUtils.getCurTimeAddND(2, "yyyyMMddHH:mm:ss");
         } else if (type == 4) {
             time3.setTextColor(0xFFFF0000);
-            time = DateUtils.getCurTimeAddND(3, "yyyyMMdd");
+            time = DateUtils.getCurTimeAddND(3, "yyyyMMddHH:mm:ss");
         } else if (type == 5) {
             time4.setTextColor(0xFFFF0000);
-            time = DateUtils.getCurTimeAddND(4, "yyyyMMdd");
+            time = DateUtils.getCurTimeAddND(4, "yyyyMMddHH:mm:ss");
         } else if (type == 7) {
             time6.setTextColor(0xFFFF0000);
-            time = "19700101";
+            time = "1970010100:00:00";
         }
 
         if (listener != null) {

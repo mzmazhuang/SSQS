@@ -1354,10 +1354,10 @@ public class CcApiClient {
      *
      * @param listener
      */
-    public void getMatchBallFilterList(OnCcListener listener) {
+    public void getMatchBallFilterList(int type, int subType, String date, OnCcListener listener) {
         CcListener mListener = new CcListener(listener, "doMatchBallFilterList");
 
-        Request("/v1.0/match/ball/filter", null, mListener, false);
+        Request("/v1.0/match/ball/filter/type/" + type + "/subType/" + subType + "/date/" + date, null, mListener, false);
     }
 
     /**
@@ -1581,7 +1581,7 @@ public class CcApiClient {
         if (b) {
             Request("/v1.0/match/type/" + type + "/date/" + mDate + "/subType/0/leagueIDs/" + leagueIDs + "/stype/" + sType + "/page/" + offset + "/count/" + limit + "", null, mListener, false);
         } else {
-            Request("/v1.0/match/roll/ball/subType/0/leagueIDs/" + leagueIDs + "/stype/+" + sType + "/page/" + offset + "/count/" + limit + "", null, mListener, false);
+            Request("/v1.0/match/roll/ball/subType/0/leagueIDs/" + leagueIDs + "/stype/" + sType + "/page/" + offset + "/count/" + limit + "", null, mListener, false);
         }
     }
 
@@ -2005,6 +2005,31 @@ public class CcApiClient {
         Request("/v1.0/award/turn", null, mListener, false);
     }
 
+    /**
+     * 中奖纪录
+     *
+     * @param offset
+     * @param limit
+     * @param listener
+     */
+    public void getRankList(int offset, int limit, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doRankListResult");
+
+        Request("/v1.0/sysMessage/winning/list/page/" + offset + "/count/" + limit, null, mListener, false);
+    }
+
+    /**
+     * 篮球详情获取头部信息
+     *
+     * @param matchId
+     * @param listener
+     */
+    public void getBasketBallHeadInfo(int matchId, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doBasketBallHeadInfoResult");
+
+        Request("/v1.0/match/ball/part/matchID/" + matchId, null, mListener, false);
+    }
+
     public interface OnCcListener {
         void onResponse(CcApiResult result);
     }
@@ -2331,6 +2356,10 @@ public class CcApiClient {
                     mRes.fromChampionsResult(arg0);
                 } else if (mTag.equals("doMatchBasketLastResult")) {
                     mRes.fromMatchBasketLastResult(arg0);
+                } else if (mTag.equals("doRankListResult")) {
+                    mRes.fromRankListResult(arg0);
+                } else if (mTag.equals("doBasketBallHeadInfoResult")) {
+                    mRes.fromBasketBallHeadInfoResult(arg0);
                 } else {
                     mRes.fromDefaultResult(arg0);
                 }

@@ -401,7 +401,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
 
                                 UIUtils.SendReRecevice(Constent.REFRESH_MONY);
 
-                                String s = "+" + banlance + "金币";
+                                String s = "+" + banlance + "元";
                                 mSignSucNum.setText(s);
                                 mSignSucLy.setVisibility(View.VISIBLE);
                                 mSevenDaySignLy.setVisibility(View.GONE);

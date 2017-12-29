@@ -17,7 +17,7 @@ public class TurnTablePrizeTextBean implements Serializable{
     private static final long serialVersionUID = 8501127344559291911L;
     /**
      * status : true
-     * data : ["恭喜球技过人获取得了300金币","恭喜匿名获取得了300金币"]
+     * data : ["恭喜球技过人获取得了300金额","恭喜匿名获取得了300金额"]
      * code : 0
      * msg :
      */

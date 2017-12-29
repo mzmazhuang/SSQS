@@ -50,7 +50,8 @@ public class ScoreBean implements Serializable {
                 '}';
     }
 
-
+    public String homeScore;
+    public String awayScore;
     public String home;
     public String leagueName;
     public int hYellow;
@@ -93,4 +94,10 @@ public class ScoreBean implements Serializable {
     public String part4AScore;//客队第四节比分
     public String hOverTimeScore;//主队加时赛比分
     public String aOverTimeScore;//客队加时赛比分
+
+    public String part1Time;//第一节时间
+    public String part2Time;//第二节时间
+    public String part3Time;//第三节时间
+    public String part4Time;//第四节时间
+    public String overTime;//加时赛时间
 }

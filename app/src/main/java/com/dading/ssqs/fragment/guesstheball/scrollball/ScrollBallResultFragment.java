@@ -287,7 +287,7 @@ public class ScrollBallResultFragment extends Fragment implements OnRefreshListe
     }
 
     private void setSelectTime(int day) {
-        currTime = DateUtils.getCurTimeAddND(-day, "yyyyMMdd");
+        currTime = DateUtils.getCurTimeAddND(-day, "yyyyMMddHH:mm:ss");
         resultTimeLayout.setTime(DateUtils.getCurTimeAddND(-day, "yyyy-MM-dd"));
 
         DataController.getInstance().clearScrollFootBallData();
@@ -357,7 +357,7 @@ public class ScrollBallResultFragment extends Fragment implements OnRefreshListe
 
     private void getNetDataWork(final int off, int lim) {
         if (TextUtils.isEmpty(currTime)) {
-            currTime = DateUtils.getCurTimeAddND(-1, "yyyyMMdd");
+            currTime = DateUtils.getCurTimeAddND(-1, "yyyyMMddHH:mm:ss");
         }
 
         SSQSApplication.apiClient(0).getScrollBallList(true, 3, currTime, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {

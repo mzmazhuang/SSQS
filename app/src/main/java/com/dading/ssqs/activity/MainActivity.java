@@ -19,6 +19,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dading.ssqs.R;
@@ -27,14 +28,20 @@ import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.NoticegBean;
+import com.dading.ssqs.bean.SevenPopBean;
+import com.dading.ssqs.bean.SignResultBean;
 import com.dading.ssqs.bean.VersionBean;
 import com.dading.ssqs.fragment.MainContentFragement;
+import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.PopUtil;
 import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
 import java.io.File;
+import java.util.List;
+
+import butterknife.ButterKnife;
 
 
 public class MainActivity extends BaseActivity {
@@ -56,6 +63,8 @@ public class MainActivity extends BaseActivity {
     private View mView;
     private View mViewMain;
     private PopupWindow mPopupWindow;
+    private Context mContext;
+
 
     @Override
     protected void initData() {
@@ -79,8 +88,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN |
-                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initFragment();
 
         Logger.d(TAG, "点击的url---" + UIUtils.getSputils().getBoolean(Constent.IS_CLICK, false) + "----:" + UIUtils.getSputils().getString(Constent.IS_CLICK_URL, "https://www.sogou.com/"));
@@ -94,10 +102,28 @@ public class MainActivity extends BaseActivity {
             intent.setData(content_url);
             startActivity(intent);
         }
+
+        getUserIsSign();
+    }
+
+    private SignBroadcastReceiver mRecevice;
+
+    private class SignBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            getUserIsSign();
+        }
+    }
+
+    @Override
+    protected void initListener() {
+        mRecevice = new SignBroadcastReceiver();
+        UIUtils.ReRecevice(mRecevice, Constent.MAIN_SIGN);
     }
 
     @Override
     protected int setLayoutId() {
+        mContext = this;
         return R.layout.activity_main;
     }
 
@@ -254,5 +280,339 @@ public class MainActivity extends BaseActivity {
                 super.onBackPressed();
             }
         }
+    }
+
+    private void getUserIsSign() {
+        SSQSApplication.apiClient(0).getTaskDay(new CcApiClient.OnCcListener() {
+            @Override
+            public void onResponse(CcApiResult result) {
+                if (result.isOk()) {
+                    SevenPopBean bean = (SevenPopBean) result.getData();
+                    if (bean != null && bean.isSign == 0) {
+                        popData(bean);
+                    }
+                }
+            }
+        });
+    }
+
+    //签到弹窗
+    private PopupWindow mPop;
+    private ImageView mSevenDayRedBet1;
+    private ImageView mSevenDayRedBet11;
+    private ImageView mSevenDayRedBet2;
+    private ImageView mSevenDayRedBet21;
+    private ImageView mSevenDayRedBet3;
+    private ImageView mSevenDayRedBet31;
+    private ImageView mSevenDayRedBet4;
+    private ImageView mSevenDayRedBet41;
+    private ImageView mSevenDayRedBet5;
+    private ImageView mSevenDayRedBet51;
+    private ImageView mSevenDayRedBet6;
+    private ImageView mSevenDayRedBet61;
+    private ImageView mSevenDayRedBet7;
+    private ImageView mSevenDayGdIv7;
+    private ImageView mSevenDayGdIv6;
+    private ImageView mSevenDayGdIv5;
+    private ImageView mSevenDayGdIv4;
+    private ImageView mSevenDayGdIv3;
+    private ImageView mSevenDayGdIv2;
+    private ImageView mSevenDayGdIv1;
+    private TextView mSevenDayAdd7;
+    private TextView mSevenDayAdd6;
+    private TextView mSevenDayAdd5;
+    private TextView mSevenDayAdd4;
+    private TextView mSevenDayAdd3;
+    private TextView mSevenDayAdd2;
+    private TextView mSevenDayAdd1;
+    private ImageView mSignButton;
+    private ImageView mSigncLose;
+    private RelativeLayout mSignLyOut;
+    private String mS;
+    private RelativeLayout mSignSucLy;
+    private TextView mSignSucNum;
+    private ImageView mSignSucClose;
+    private RelativeLayout mSevenDaySignLy;
+
+    private void popData(final SevenPopBean popBean) {
+        View view = View.inflate(mContext, R.layout.activity_seven_day, null);
+        mSevenDaySignLy = ButterKnife.findById(view, R.id.seven_day_sign_ly);
+        mSevenDayRedBet1 = ButterKnife.findById(view, R.id.seven_day_red_bet1);
+        mSevenDayRedBet11 = ButterKnife.findById(view, R.id.seven_day_red_bet11);
+        mSevenDayRedBet2 = ButterKnife.findById(view, R.id.seven_day_red_bet2);
+        mSevenDayRedBet21 = ButterKnife.findById(view, R.id.seven_day_red_bet21);
+        mSevenDayRedBet3 = ButterKnife.findById(view, R.id.seven_day_red_bet3);
+        mSevenDayRedBet31 = ButterKnife.findById(view, R.id.seven_day_red_bet31);
+        mSevenDayRedBet4 = ButterKnife.findById(view, R.id.seven_day_red_bet4);
+        mSevenDayRedBet41 = ButterKnife.findById(view, R.id.seven_day_red_bet41);
+        mSevenDayRedBet5 = ButterKnife.findById(view, R.id.seven_day_red_bet5);
+        mSevenDayRedBet51 = ButterKnife.findById(view, R.id.seven_day_red_bet51);
+        mSevenDayRedBet6 = ButterKnife.findById(view, R.id.seven_day_red_bet6);
+        mSevenDayRedBet61 = ButterKnife.findById(view, R.id.seven_day_red_bet61);
+        mSevenDayRedBet7 = ButterKnife.findById(view, R.id.seven_day_red_bet7);
+
+        mSevenDayGdIv1 = ButterKnife.findById(view, R.id.seven_day_gd_iv1);
+        mSevenDayGdIv2 = ButterKnife.findById(view, R.id.seven_day_gd_iv2);
+        mSevenDayGdIv3 = ButterKnife.findById(view, R.id.seven_day_gd_iv3);
+        mSevenDayGdIv4 = ButterKnife.findById(view, R.id.seven_day_gd_iv4);
+        mSevenDayGdIv5 = ButterKnife.findById(view, R.id.seven_day_gd_iv5);
+        mSevenDayGdIv6 = ButterKnife.findById(view, R.id.seven_day_gd_iv6);
+        mSevenDayGdIv7 = ButterKnife.findById(view, R.id.seven_day_gd_iv7);
+
+        mSevenDayAdd1 = ButterKnife.findById(view, R.id.seven_day_add1);
+        mSevenDayAdd2 = ButterKnife.findById(view, R.id.seven_day_add2);
+        mSevenDayAdd3 = ButterKnife.findById(view, R.id.seven_day_add3);
+        mSevenDayAdd4 = ButterKnife.findById(view, R.id.seven_day_add4);
+        mSevenDayAdd5 = ButterKnife.findById(view, R.id.seven_day_add5);
+        mSevenDayAdd6 = ButterKnife.findById(view, R.id.seven_day_add6);
+        mSevenDayAdd7 = ButterKnife.findById(view, R.id.seven_day_add7);
+
+        mSignButton = ButterKnife.findById(view, R.id.seven_sign_button);
+        mSigncLose = ButterKnife.findById(view, R.id.seven_day_close);
+        mSignLyOut = ButterKnife.findById(view, R.id.seven_day_ly_out);
+
+        mSignSucLy = ButterKnife.findById(view, R.id.seven_sign_suc_ly);
+        mSignSucNum = ButterKnife.findById(view, R.id.get_glod_num);
+        mSignSucClose = ButterKnife.findById(view, R.id.seven_day_suc_close);
+
+        mSevenDaySignLy.setVisibility(View.VISIBLE);
+        mSignSucLy.setVisibility(View.GONE);
+
+        mSignButton.setClickable(true);
+
+        SevenPopBean data = popBean;
+        final int dayCount = data.dayCount;
+        List<SevenPopBean.TasksEntity> tasks = data.tasks;
+        for (int i = 1; i <= tasks.size(); i++) {
+            int status = tasks.get(i - 1).status;
+            String text = "+" + tasks.get(i - 1).banlance;
+            if (status == 1) {
+                switch (i) {
+                    case 1:
+                        mSevenDayRedBet1.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        mSevenDayGdIv1.setImageResource(R.mipmap.s_gold_sel);
+                        mSevenDayAdd1.setText(text);
+                        mSevenDayAdd1.setTextColor(mContext.getResources().getColor(R.color.orange));
+                        break;
+                    case 2:
+                        mSevenDayRedBet2.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        mSevenDayRedBet11.setImageResource(R.mipmap.s_vertical_bar_sel);
+                        mSevenDayGdIv2.setImageResource(R.mipmap.s_gold_sel);
+                        mSevenDayAdd2.setText(text);
+                        mSevenDayAdd2.setTextColor(mContext.getResources().getColor(R.color.orange));
+                        break;
+                    case 3:
+                        mSevenDayRedBet21.setImageResource(R.mipmap.s_vertical_bar_sel);
+                        mSevenDayRedBet3.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        mSevenDayGdIv3.setImageResource(R.mipmap.s_gold_sel);
+                        mSevenDayAdd3.setText(text);
+                        mSevenDayAdd3.setTextColor(mContext.getResources().getColor(R.color.orange));
+                        break;
+                    case 4:
+                        mSevenDayRedBet31.setImageResource(R.mipmap.s_vertical_bar_sel);
+                        mSevenDayRedBet4.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        mSevenDayGdIv4.setImageResource(R.mipmap.s_gold_sel);
+                        mSevenDayAdd4.setText(text);
+                        mSevenDayAdd4.setTextColor(mContext.getResources().getColor(R.color.orange));
+                        break;
+                    case 5:
+                        mSevenDayRedBet41.setImageResource(R.mipmap.s_vertical_bar_sel);
+                        mSevenDayRedBet5.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        mSevenDayGdIv5.setImageResource(R.mipmap.s_gold_sel);
+                        mSevenDayAdd5.setText(text);
+                        mSevenDayAdd5.setTextColor(mContext.getResources().getColor(R.color.orange));
+                        break;
+                    case 6:
+                        mSevenDayRedBet51.setImageResource(R.mipmap.s_vertical_bar_sel);
+                        mSevenDayRedBet6.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        mSevenDayGdIv6.setImageResource(R.mipmap.s_gold_sel);
+                        mSevenDayAdd6.setText(text);
+                        mSevenDayAdd6.setTextColor(mContext.getResources().getColor(R.color.orange));
+                        break;
+                    case 7:
+                        //7不会出现只会在点击后出现
+                        mSevenDayRedBet7.setImageResource(R.mipmap.s_have_checked_in_sel);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                switch (i) {
+                    case 1:
+                        mSevenDayAdd1.setText(text);
+                        break;
+                    case 2:
+                        mSevenDayAdd2.setText(text);
+                        break;
+                    case 3:
+                        mSevenDayAdd3.setText(text);
+                        break;
+                    case 4:
+                        mSevenDayAdd4.setText(text);
+                        break;
+                    case 5:
+                        mSevenDayAdd5.setText(text);
+                        break;
+                    case 6:
+                        mSevenDayAdd6.setText(text);
+                        break;
+                    case 7:
+                        mSevenDayAdd7.setText(text);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        switch (dayCount) {
+            case 0:
+                mSevenDayRedBet1.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv1.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd1.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mS = data.tasks.get(0).banlance + "";
+                break;
+            case 1:
+                mSevenDayRedBet2.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv2.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd2.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mSevenDayRedBet11.setImageResource(R.mipmap.s_vertical_bar_sel);
+                mS = data.tasks.get(1).banlance + "";
+                break;
+            case 2:
+                mSevenDayRedBet3.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv3.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd3.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mSevenDayRedBet21.setImageResource(R.mipmap.s_vertical_bar_sel);
+                mS = data.tasks.get(2).banlance + "";
+                break;
+            case 3:
+                mSevenDayRedBet4.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv4.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd4.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mSevenDayRedBet31.setImageResource(R.mipmap.s_vertical_bar_sel);
+                mS = data.tasks.get(3).banlance + "";
+                break;
+            case 4:
+                mSevenDayRedBet5.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv5.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd5.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mSevenDayRedBet41.setImageResource(R.mipmap.s_vertical_bar_sel);
+                mS = data.tasks.get(4).banlance + "";
+                break;
+            case 5:
+                mSevenDayRedBet6.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv6.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd6.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mSevenDayRedBet51.setImageResource(R.mipmap.s_vertical_bar_sel);
+                mS = data.tasks.get(5).banlance + "";
+                break;
+            case 6:
+                mSevenDayRedBet7.setImageResource(R.mipmap.s_unclaimed);
+                mSevenDayGdIv7.setImageResource(R.mipmap.s_gold_sel);
+                mSevenDayAdd7.setTextColor(mContext.getResources().getColor(R.color.orange));
+                mSevenDayRedBet61.setImageResource(R.mipmap.s_vertical_bar_sel);
+                mS = data.tasks.get(6).banlance + "";
+                break;
+            default:
+                break;
+        }
+
+        UIUtils.getSputils().putString(Constent.SIGN_GLOD, mS);
+
+        mPop = PopUtil.popuMake(view);
+
+        mPop.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        mSignButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SSQSApplication.apiClient(0).userSign(new CcApiClient.OnCcListener() {
+                    @Override
+                    public void onResponse(CcApiResult result) {
+                        if (result.isOk()) {
+                            SignResultBean bean = (SignResultBean) result.getData();
+
+                            if (bean != null) {
+                                switch (bean.dayCount) {
+                                    case 1:
+                                        mSevenDayRedBet1.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    case 2:
+                                        mSevenDayRedBet11.setImageResource(R.mipmap.s_vertical_bar_sel);
+                                        mSevenDayRedBet2.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    case 3:
+                                        mSevenDayRedBet21.setImageResource(R.mipmap.s_vertical_bar_sel);
+                                        mSevenDayRedBet3.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    case 4:
+                                        mSevenDayRedBet31.setImageResource(R.mipmap.s_vertical_bar_sel);
+                                        mSevenDayRedBet4.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    case 5:
+                                        mSevenDayRedBet41.setImageResource(R.mipmap.s_vertical_bar_sel);
+                                        mSevenDayRedBet5.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    case 6:
+                                        mSevenDayRedBet51.setImageResource(R.mipmap.s_vertical_bar_sel);
+                                        mSevenDayRedBet6.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    case 7:
+                                        mSevenDayRedBet61.setImageResource(R.mipmap.s_vertical_bar_sel);
+                                        mSevenDayRedBet7.setImageResource(R.mipmap.s_have_checked_in_sel);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                int banlance = popBean.tasks.get(bean.dayCount).banlance;
+
+                                UIUtils.getSputils().putBoolean(Constent.SIGN_SUC, true);
+
+                                UIUtils.getSputils().putInt("banlance", banlance);
+
+                                UIUtils.SendReRecevice(Constent.TASK_TAG);
+
+                                UIUtils.SendReRecevice(Constent.REFRESH_MONY);
+
+                                String s = "+" + banlance + "元";
+                                mSignSucNum.setText(s);
+                                mSignSucLy.setVisibility(View.VISIBLE);
+                                mSevenDaySignLy.setVisibility(View.GONE);
+                                SSQSApplication.getHandler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mPop.dismiss();
+                                    }
+                                }, 2000);
+                                mSignButton.setImageResource(R.mipmap.s_parcel);
+                            }
+                        } else {
+                            if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContext)) {
+                                ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
+                            }
+                        }
+                    }
+                });
+            }
+        });
+        mSigncLose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPop.dismiss();
+            }
+        });
+        mSignLyOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPop.dismiss();
+            }
+        });
+
+        mSignSucClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPop.dismiss();
+            }
+        });
     }
 }

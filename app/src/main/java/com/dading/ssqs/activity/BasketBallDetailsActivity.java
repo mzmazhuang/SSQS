@@ -657,28 +657,23 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     if (bean != null) {
                         headCell.setTitle(matchTitle);
 
-                        String str;
-                        String time;
-
-                        if ((TextUtils.isEmpty(bean.part2AScore) || bean.part2AScore.equals("0")) && (TextUtils.isEmpty(bean.part2HScore) || bean.part2HScore.equals("0"))) {
-                            str = "第一节";
-                            time = bean.part1Time;
-                        } else if ((TextUtils.isEmpty(bean.part3AScore) || bean.part3AScore.equals("0")) && (TextUtils.isEmpty(bean.part3HScore) || bean.part3HScore.equals("0"))) {
-                            str = "第二节";
-                            time = bean.part2Time;
-                        } else if ((TextUtils.isEmpty(bean.part4AScore) || bean.part4AScore.equals("0")) && (TextUtils.isEmpty(bean.part4HScore) || bean.part4HScore.equals("0"))) {
-                            str = "第三节";
-                            time = bean.part3Time;
-                        } else {
-                            if ((TextUtils.isEmpty(bean.aOverTimeScore) || bean.aOverTimeScore.equals("0")) && (TextUtils.isEmpty(bean.hOverTimeScore) || bean.hOverTimeScore.equals("0"))) {
-                                str = "第四节";
-                                time = bean.part4Time;
-                            } else {
-                                str = "加时赛";
-                                time = bean.overTime;
-                            }
-                        }
+                        String time = bean.part1Time;
                         headCell.setTime(time);
+
+                        String str = "";
+
+                        if ("0".equals(bean.isOverTime)) {
+                            str = "第一节";
+                        } else if ("4".equals(bean.isOverTime)) {
+                            str = "第二节";
+                        } else if ("5".equals(bean.isOverTime)) {
+                            str = "第三节";
+                        } else if ("6".equals(bean.isOverTime)) {
+                            str = "第四节";
+                        } else if ("7".equals(bean.isOverTime)) {
+                            str = "加时赛";
+                        }
+
                         headCell.setSection(str);
 
                         headCell.setHomeTeamInfo(bean.home, bean.part1HScore, bean.part2HScore, bean.part3HScore, bean.part4HScore, bean.hOverTimeScore, bean.hHalfScore, bean.hSHalfScore, bean.homeScore);
@@ -689,7 +684,9 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                         getBasketBallInfo(bean.id);
                         getMyBasketBallInfo(bean.id);
                     }
-                } else {
+                } else
+
+                {
                     basketRefresh = true;
 
                     checkRefresh();
@@ -1516,6 +1513,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             visitingTeamSecondHalfView.setText(secondHalf);
             visitingTeamTotalView.setText(total);
         }
+
     }
 
     //对返回数据的处理  返回的数据用不了 各种格式不同 解析成自己能用的  冗余代码

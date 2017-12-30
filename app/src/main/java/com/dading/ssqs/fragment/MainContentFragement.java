@@ -70,7 +70,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     private ArrayList<RadioButton> mList;
 
     private LoadingBean bean;
-    private boolean isFirst;
 
     @Override
     protected int setLayout() {
@@ -153,8 +152,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
 
 
     private void isUserFul() {
-        if (bean == null && !isFirst) {
-            isFirst = true;
+        if (bean == null) {
             SSQSApplication.apiClient(0).getUserInfo(new CcApiClient.OnCcListener() {
                 @Override
                 public void onResponse(CcApiResult result) {
@@ -235,12 +233,11 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
             case R.id.main_my:
                 mMCurrButtonId = 4;
                 setChecked(4);
+                isUserFul();
                 break;
             default:
                 break;
         }
-        //不使用动画滑出该页面设置第几个页面
-        isUserFul();
         mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
     }
 
@@ -279,7 +276,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     break;
                 case Constent.LOADING_HOME_SAVANT:
                     mRg.check(mReferr.getId());
-                    isUserFul();
                     mMCurrButtonId = 1;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
                     Logger.d("GBSS", "收到廣播推薦------------------------------:");

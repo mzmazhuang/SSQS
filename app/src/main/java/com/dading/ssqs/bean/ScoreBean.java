@@ -96,8 +96,5 @@ public class ScoreBean implements Serializable {
     public String aOverTimeScore;//客队加时赛比分
 
     public String part1Time;//第一节时间
-    public String part2Time;//第二节时间
-    public String part3Time;//第三节时间
-    public String part4Time;//第四节时间
-    public String overTime;//加时赛时间
+    public String isOverTime;
 }

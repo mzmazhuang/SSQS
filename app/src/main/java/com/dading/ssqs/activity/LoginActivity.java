@@ -126,15 +126,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 setClicks();
                 switch (msg.arg1) {
                     case 1: // 成功
-                        /**
-                         *   /v1.0/user/third
-                         b)	请求方式:POST
-                         c)	请求参数说明：
-                         openID:唯一标识  avatar:头像  name: 昵称
-                         type : 第三方类型：1:qq2 :wechar 3：新浪
-                         备注：QQ，wechat:  openeid, nickname, figureurl_qq_2  SINA: avatar_hd, screen_name,id
-                         registrationID	string		是	极光推送唯一标识
-                         */
                         mLoadingAnimal.setVisibility(View.VISIBLE);
 
                         ThreeLoginElement element = new ThreeLoginElement();
@@ -509,6 +500,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         UIUtils.SendReRecevice(Constent.LOADING_ACTION);
         UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
         UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
+        UIUtils.SendReRecevice(Constent.MAIN_SIGN);
 
         UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean.toString());
         UIUtils.getSputils().putString(Constent.TOKEN, authToken);

@@ -19,6 +19,10 @@ public interface Constent {
      */
     String LOADING_ACTION = "LOADING_SUC";
     /**
+     * 签到
+     */
+    String MAIN_SIGN = "Main_Sign";
+    /**
      * 刷新我的余额
      */
     String REFRESH_MONY = "Refresh_money";

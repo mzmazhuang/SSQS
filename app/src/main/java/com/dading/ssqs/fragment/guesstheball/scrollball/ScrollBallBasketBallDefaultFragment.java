@@ -829,19 +829,20 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
             ScrollBallBasketBallBean.ScrollBaksetBallItems.Score score = new ScrollBallBasketBallBean.ScrollBaksetBallItems.Score();
             score.setLeftScore(currScoreBean.hScore);
             score.setRightScore(currScoreBean.aScore);
-            if ((TextUtils.isEmpty(currScoreBean.part2AScore) || currScoreBean.part2AScore.equals("0")) && (TextUtils.isEmpty(currScoreBean.part2HScore) || currScoreBean.part2HScore.equals("0"))) {
-                score.setCurrSchedule("第1节");
-            } else if ((TextUtils.isEmpty(currScoreBean.part3AScore) || currScoreBean.part3AScore.equals("0")) && (TextUtils.isEmpty(currScoreBean.part3HScore) || currScoreBean.part3HScore.equals("0"))) {
-                score.setCurrSchedule("第2节");
-            } else if ((TextUtils.isEmpty(currScoreBean.part4AScore) || currScoreBean.part4AScore.equals("0")) && (TextUtils.isEmpty(currScoreBean.part4HScore) || currScoreBean.part4HScore.equals("0"))) {
-                score.setCurrSchedule("第3节");
-            } else {
-                if ((TextUtils.isEmpty(currScoreBean.aOverTimeScore) || currScoreBean.aOverTimeScore.equals("0")) && (TextUtils.isEmpty(currScoreBean.hOverTimeScore) || currScoreBean.hOverTimeScore.equals("0"))) {
-                    score.setCurrSchedule("第4节");
-                } else {
-                    score.setCurrSchedule("加时赛");
-                }
+
+            String str = "";
+            if ("0".equals(currScoreBean.isOverTime)) {
+                str = "第一节";
+            } else if ("4".equals(currScoreBean.isOverTime)) {
+                str = "第二节";
+            } else if ("5".equals(currScoreBean.isOverTime)) {
+                str = "第三节";
+            } else if ("6".equals(currScoreBean.isOverTime)) {
+                str = "第四节";
+            } else if ("7".equals(currScoreBean.isOverTime)) {
+                str = "加时赛";
             }
+            score.setCurrSchedule(str);
 
             item.setScore(score);
 

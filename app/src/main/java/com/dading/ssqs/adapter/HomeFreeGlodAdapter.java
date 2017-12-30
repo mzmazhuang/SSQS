@@ -97,56 +97,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
         popData();
     }
 
-    /*public class JsInteration {
-        @JavascriptInterface
-        public void signPop(String message) {
-            mPop.dismiss();
-            Logger.d(TAG, "得到签到返回数据是------------------------------" + message);
-        }
-    }*/
-
     private void popData() {
-        //// TODO: 2016/11/2 网页版
-        /*mView2 = View.inflate(context, R.layout.qiandao, null);
-        mSevenDayWeb = ButterKnife.findById(mView2, R.id.seven_day2_web);
-        mSevenDayClose = ButterKnife.findById(mView2, R.id.seven_day2_pop_close);
-        mSevenDayPopLy = ButterKnife.findById(mView2, R.id.senven_day2_pop_ly);
-
-        //String url = "http://www.it1992.com/#/sign/" +    UIUtils.getSputils().getString(Constent.TOKEN, null);
-
-        WebSettings webSettings = mSevenDayWeb.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
-        webSettings.setDomStorageEnabled(true);
-        webSettings.setDatabaseEnabled(true);
-        webSettings.setAppCacheEnabled(true);
-        webSettings.setAllowFileAccess(true);
-        webSettings.setSavePassword(true);
-        webSettings.setSupportZoom(true);
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setUserAgentString("mac os");
-        webSettings.setDefaultTextEncodingName("utf-8");
-        *//**
-         * 用WebView显示图片，可使用这个参数 设置网页布局类型：
-         * 1、LayoutAlgorithm.NARROW_COLUMNS ：适应内容大小
-         * 2、LayoutAlgorithm.SINGLE_COLUMN : 适应屏幕，内容将自动缩放
-         *//*
-
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        webSettings.setUseWideViewPort(true);//适应手机缩放
-        webSettings.setLoadWithOverviewMode(true);
-
-        mSevenDayWeb.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        mSevenDayWeb.setHorizontalScrollbarOverlay(true);
-        mSevenDayWeb.setHorizontalScrollBarEnabled(true);
-        mSevenDayWeb.requestFocus();
-        //String url = "http://112.74.130.167/sign/";
-        String url = "http://www.ddzlink.com/sign/";
-        mSevenDayWeb.loadUrl(url);
-        Logger.d(TAG, "签到url------------------------------:" + url);
-        //网页版
-        mPop = PopUtil.popuMake(mView2);*/
-        //// TODO: 2016/11/2 原声版
         View view = View.inflate(context, R.layout.activity_seven_day, null);
         mSevenDaySignLy = ButterKnife.findById(view, R.id.seven_day_sign_ly);
         mSevenDayRedBet1 = ButterKnife.findById(view, R.id.seven_day_red_bet1);
@@ -347,7 +298,6 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
 
         UIUtils.getSputils().putString(Constent.SIGN_GLOD, mS);
 
-        //// TODO: 2016/11/2 原声版
         mPop = PopUtil.popuMake(view);
 
         mSignButton.setOnClickListener(new View.OnClickListener() {

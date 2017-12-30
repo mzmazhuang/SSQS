@@ -29,6 +29,7 @@ public class SevenPopBean implements Serializable {
     public int banlanceCount;
     public List<TasksEntity> tasks;
     public int dayCount;
+    public int isSign;
 
     public static class TasksEntity implements Serializable {
         /**

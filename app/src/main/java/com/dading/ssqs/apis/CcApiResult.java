@@ -1328,6 +1328,7 @@ public class CcApiResult {
             this.setMessage(json.getString("msg"));
             this.setStatus(json.getBoolean("status"));
             if (json.has("data") && !json.isNull("data")) {
+                JSONObject data = json.getJSONObject("data");
                 bean = gson.fromJson(data.toString(), SignResultBean.class);
             }
         } catch (Exception e) {

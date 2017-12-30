@@ -136,8 +136,8 @@ public class CcApiClient {
 
         if (Constent.DEBUG_VERSION) {//如果是debug环境 改用debug服务器
 //            this.mBaseUri = "https://www.ddzlink.com/zc-intf/rest";
-            this.mBaseUri = "http://10.10.31.71:8080/zc-intf/rest";//阿木
-//            this.mBaseUri = "http://13.124.189.54:8092/zc-intf/rest";//服务器
+//            this.mBaseUri = "http://10.10.31.71:8080/zc-intf/rest";//阿木
+            this.mBaseUri = "http://13.124.189.54:8092/zc-intf/rest";//服务器
             return;
         }
 

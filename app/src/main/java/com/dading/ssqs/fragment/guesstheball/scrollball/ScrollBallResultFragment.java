@@ -72,7 +72,7 @@ public class ScrollBallResultFragment extends Fragment implements OnRefreshListe
     private ResultTimeLayout resultTimeLayout;
 
     private int offset = 1;
-    private int limit = 10;
+    private int limit = 20;
 
     private int totalPage;
 

@@ -73,7 +73,7 @@ public class ToDayBasketBallChampionFragment extends Fragment implements OnRefre
     private ImageView defaultView;
 
     private int offset = 1;
-    private int limit = 10;
+    private int limit = 20;
 
     private int totalPage;
 

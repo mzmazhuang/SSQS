@@ -79,7 +79,7 @@ public class ScrollBallTotalFragment extends Fragment implements OnRefreshListen
     private ImageView defaultView;
 
     private int offset = 1;
-    private int limit = 10;
+    private int limit = 20;
     private boolean isRefresh = false;
 
     private int totalPage;

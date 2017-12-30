@@ -72,7 +72,7 @@ public class ToDayResultFragment extends Fragment implements OnRefreshListener, 
     private ResultTimeLayout resultTimeLayout;
 
     private int offset = 1;
-    private int limit = 10;
+    private int limit = 20;
 
     private int totalPage;
     private boolean isRefresh = false;

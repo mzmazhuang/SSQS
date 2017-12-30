@@ -84,7 +84,6 @@ public class ReferrCntrollar extends BaseTabsContainer {
     }
 
     private void processedData(List<PerferentialBean> bean) {
-
         mData = bean;
         mAdapter = new PerferentialAdapter(mContent, mData);
         mLv.setAdapter(mAdapter);
@@ -97,10 +96,11 @@ public class ReferrCntrollar extends BaseTabsContainer {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(mContent, PerferentialInfoActivity.class);
-                if (mData != null && mData.get(position) != null)
+                if (mData != null && mData.get(position) != null) {
                     intent.putExtra(Constent.PERFERENTIAL_WEB, mData.get(position).getWebUrl());
-                intent.putExtra(Constent.PERFERENTIAL_TITLE, mData.get(position).getTitle());
-                intent.putExtra(Constent.PERFERENTIAL_CONTENT, mData.get(position).getContent());
+                    intent.putExtra(Constent.PERFERENTIAL_TITLE, mData.get(position).getTitle());
+                    intent.putExtra(Constent.PERFERENTIAL_CONTENT, mData.get(position).getContent());
+                }
                 mContent.startActivity(intent);
             }
         });

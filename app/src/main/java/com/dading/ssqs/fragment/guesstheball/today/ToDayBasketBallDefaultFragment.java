@@ -81,7 +81,7 @@ public class ToDayBasketBallDefaultFragment extends Fragment implements OnRefres
     private List<ScoreBean> originalData;//原始数据
 
     private int offset = 1;
-    private int limit = 10;
+    private int limit = 20;
 
     private boolean isRefresh = false;
 

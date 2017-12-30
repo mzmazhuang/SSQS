@@ -62,7 +62,10 @@ public class BasketBallPassItemCell extends LinearLayout {
         titleTextView.setTextSize(14);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
-        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, RelativeLayout.CENTER_IN_PARENT));
+        titleTextView.setSingleLine();
+        titleTextView.setEllipsize(TextUtils.TruncateAt.END);
+        titleTextView.setGravity(Gravity.CENTER);
+        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 45, 0, 12, 0));
 
         tableLayout = new LinearLayout(context);
         tableLayout.setOrientation(LinearLayout.VERTICAL);

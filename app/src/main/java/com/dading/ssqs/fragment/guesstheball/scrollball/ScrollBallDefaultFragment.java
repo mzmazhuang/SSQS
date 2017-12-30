@@ -79,7 +79,7 @@ public class ScrollBallDefaultFragment extends Fragment implements OnRefreshList
     private ScrollBallCommitMenuView commitMenuView;
 
     private int offset = 1;
-    private int limit = 10;
+    private int limit = 20;
 
     private boolean isRefresh = false;
 

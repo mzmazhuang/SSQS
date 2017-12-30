@@ -33,7 +33,6 @@ public class HomeBean implements Serializable {
     private OrdersBeanX orders;
     private List<AdvertsBean> adverts;
     private List<MatchsBean> matchs;
-    private List<MessageBean> message;
     private List<BasketBallsBean> basketBalls;
 
     public OrdersBeanX getOrders() {
@@ -58,14 +57,6 @@ public class HomeBean implements Serializable {
 
     public void setMatchs(List<MatchsBean> matchs) {
         this.matchs = matchs;
-    }
-
-    public List<MessageBean> getMessage() {
-        return message;
-    }
-
-    public void setMessage(List<MessageBean> message) {
-        this.message = message;
     }
 
     public List<BasketBallsBean> getBasketBalls() {

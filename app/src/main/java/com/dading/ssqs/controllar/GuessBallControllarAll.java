@@ -27,12 +27,12 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
-import com.dading.ssqs.activity.GreenhandHelpActivity;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.activity.LoginActivity;
 import com.dading.ssqs.activity.NewRechargeActivity;
 import com.dading.ssqs.activity.OnLineServerActivity;
 import com.dading.ssqs.activity.RankingListActivity;
+import com.dading.ssqs.activity.WebActivity;
 import com.dading.ssqs.adapter.BaseMePagerAdapter;
 import com.dading.ssqs.adapter.HomeBasketballAdapter;
 import com.dading.ssqs.adapter.HomeMatchAdapter;
@@ -48,6 +48,7 @@ import com.dading.ssqs.components.RankingView;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.utils.AndroidUtilities;
+import com.dading.ssqs.utils.Constants;
 import com.dading.ssqs.utils.DensityUtil;
 import com.dading.ssqs.utils.ListScrollUtil;
 import com.dading.ssqs.utils.Logger;
@@ -108,29 +109,26 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private RankingView rankingView;
 
     private void processDataMessage(List<HomeMessageBean> bean) {
-        if (bean != null) {
-            mData = bean;
-            if (number < mData.size()) {
-                mHome_win_text.setText(mData.get(number).content);
-            }
-
-            Runnable r = new Runnable() {
-                @Override
-                public void run() {
-                    if (number < mData.size()) {
-                        mHome_win_text.setText(mData.get(number).content);
-                        ++number;
-                    } else {
-                        number = 0;
-                        mHome_win_text.setText(mData.get(number).content);
-                    }
-                    UIUtils.postTaskDelay(this, 1500);
-                }
-            };
-            //mHandler.removeCallbacksAndMessages(null);
-            UIUtils.removeTask(r);
-            UIUtils.postTaskDelay(r, 1500);
+        mData = bean;
+        if (number < mData.size()) {
+            mHome_win_text.setText(mData.get(number).content);
         }
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                if (number < mData.size()) {
+                    mHome_win_text.setText(mData.get(number).content);
+                    ++number;
+                } else {
+                    number = 0;
+                    mHome_win_text.setText(mData.get(number).content);
+                }
+                UIUtils.postTaskDelay(this, 1500);
+            }
+        };
+        UIUtils.removeTask(r);
+        UIUtils.postTaskDelay(r, 1500);
     }
 
     /**
@@ -228,7 +226,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                 if (result.isOk()) {
                     List<HomeMessageBean> items = (List<HomeMessageBean>) result.getData();
 
-                    if (items != null) {
+                    if (items != null && items.size() >= 1) {
                         processDataMessage(items);
                     }
                 } else {
@@ -310,19 +308,19 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
             mHVP = new ArrayList<>();
             mHVpTtile = new ArrayList<>();
             mAdverts = dataEntity.getAdverts();
-            for (final HomeBean.AdvertsBean bean : mAdverts) {
-                if (bean != null) {
-                    ImageView iv = new ImageView(mContent);
-                    Logger.d(TAG, "图片地址:" + bean.getImageUrl());
-                    SSQSApplication.glide.load(bean.getImageUrl()).error(R.mipmap.image_not).centerCrop().into(iv);
+            if (mAdverts != null) {
+                for (final HomeBean.AdvertsBean bean : mAdverts) {
+                    if (bean != null) {
+                        ImageView iv = new ImageView(mContent);
+                        SSQSApplication.glide.load(bean.getImageUrl()).error(R.mipmap.image_not).centerCrop().into(iv);
 
-                    mHVP.add(iv);
-                    mHVpTtile.add(bean.getName());
+                        mHVP.add(iv);
+                        mHVpTtile.add(bean.getName());
+                    }
                 }
+
+                homeVpCircleAdapter.setList(mHVP);
             }
-
-            homeVpCircleAdapter.setList(mHVP);
-
             /**
              * 为 mIndicatorContainer点的容器动态添加具体的孩子
              */
@@ -485,8 +483,9 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         mGreenhandHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContent, GreenhandHelpActivity.class);
-                mContent.startActivity(intent);
+                Intent intent = new Intent(mContent, WebActivity.class);
+                intent.putExtra("url", Constants.NEWPEOPLEHELPURL);
+                startActivity(intent);
             }
         });
 

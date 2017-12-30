@@ -42,6 +42,10 @@ public class TitleCell extends RelativeLayout {
         addView(tvTitleView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, RelativeLayout.CENTER_IN_PARENT));
     }
 
+    public void setTitle(String title) {
+        tvTitleView.setText(title);
+    }
+
     public void setBackListener(final OnClickListener listener) {
         backView.setOnClickListener(new OnClickListener() {
             @Override

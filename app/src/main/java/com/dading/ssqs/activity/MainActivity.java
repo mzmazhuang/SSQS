@@ -110,12 +110,6 @@ public class MainActivity extends BaseActivity {
     }
 
     public void getNotice() {
-        /**
-         22. 获取公告
-         a)	请求地址：/v1.0/notice
-         b)	请求方式:get
-         */
-
         SSQSApplication.apiClient(classGuid).getNotices(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {

@@ -10,6 +10,8 @@ import java.util.List;
 public class EarlyBean implements Serializable {
     private static final long serialVersionUID = 5417594684866279799L;
 
+    private int totalCount;
+    private int totalPage;
     private List<EarlyBeanItems> leagueName;
 
     public List<EarlyBeanItems> getLeagueName() {
@@ -18,6 +20,22 @@ public class EarlyBean implements Serializable {
 
     public void setLeagueName(List<EarlyBeanItems> leagueName) {
         this.leagueName = leagueName;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
     }
 
     public static class EarlyBeanItems implements Serializable {

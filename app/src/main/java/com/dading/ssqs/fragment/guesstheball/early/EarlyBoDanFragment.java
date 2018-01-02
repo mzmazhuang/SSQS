@@ -88,6 +88,9 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
     private boolean isRefresh = false;
     private int sType = 0;
 
+    private int offset = 1;
+    private int limit = 10;
+
     private String currSelectTime = "";
 
     private ScrollBallFootBallBoDanBean currFootBallBoDanBean = null;
@@ -101,6 +104,8 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
 
     private String leagueIDs = "0";
     private boolean isFilter = false;
+
+    private int totalPage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -247,15 +252,24 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
                     pageDialog.setItemListener(new PageDialogAdapter.OnClickListener() {
                         @Override
                         public void onClick(int page) {
+                            isFilter = true;
+
                             pageDialog.dismiss();
+
+                            offset = page;
+
+                            swipeToLoadLayout.setRefreshing(true);
                         }
                     });
                 }
 
                 List<Integer> pageList = new ArrayList<>();
-                pageList.add(1);
 
-                pageDialog.show(pageList, "页数选择", 1);
+                for (int i = 1; i <= totalPage; i++) {
+                    pageList.add(i);
+                }
+
+                pageDialog.show(pageList, "页数选择", offset);
             }
         });
         contentLayout.addView(filterCell);
@@ -579,7 +593,7 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
                         for (int k = 0; k < matchs.size(); k++) {
                             networkData.add(matchs.get(k));
                         }
-                        
+
                         break;
                     }
                 }
@@ -653,19 +667,16 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
             loadingDialog = new LoadingDialog(mContext);
         }
 
-        filterCell.setTotalPage(1);
-        filterCell.setCurrPage(1);
-
         loadingDialog.show();
-        getNetDataWork();
+        getNetDataWork(offset, limit);
     }
 
-    private void getNetDataWork() {
+    private void getNetDataWork(final int off, int lim) {
         if (TextUtils.isEmpty(currSelectTime)) {
             currSelectTime = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
-        SSQSApplication.apiClient(0).getEarlyFootBallList(currSelectTime, sType, leagueIDs, new CcApiClient.OnCcListener() {
+        SSQSApplication.apiClient(0).getEarlyFootBallList(currSelectTime, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
                 loadingDialog.dismiss();
@@ -675,8 +686,14 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
                 if (result.isOk()) {
                     EarlyBean earlyBean = (EarlyBean) result.getData();
 
+                    filterCell.setCurrPage(off);
+
                     if (earlyBean != null && earlyBean.getLeagueName() != null && earlyBean.getLeagueName().size() >= 1) {
                         defaultView.setVisibility(View.GONE);
+
+                        totalPage = earlyBean.getTotalCount();
+
+                        filterCell.setTotalPage(totalPage);
 
                         filterCell.beginRunnable(true);
 
@@ -715,8 +732,9 @@ public class EarlyBoDanFragment extends Fragment implements OnRefreshListener, N
             } else {
                 filterCell.setSelectText(LocaleController.getString(R.string.select_all));
                 leagueIDs = "0";
+                offset = 1;
             }
-            getNetDataWork();
+            getNetDataWork(offset, limit);
         }
     }
 

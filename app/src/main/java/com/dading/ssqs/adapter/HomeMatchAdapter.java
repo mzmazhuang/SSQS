@@ -160,13 +160,8 @@ public class HomeMatchAdapter extends BaseAdapter {
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(content, MatchInfoActivity.class);
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
-                int id = entity.getId();
-                intent.putExtra(Constent.MATCH_ID, id);
-                Logger.d(TAG, "home比赛传送的数据是------------------------------:" + id);
-                intent.putExtra(Constent.INTENT_FROM, "home");
-                content.startActivity(intent);
+                UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
             }
         });
         holder.collect1.setOnClickListener(new MyHomeListerner(position) {

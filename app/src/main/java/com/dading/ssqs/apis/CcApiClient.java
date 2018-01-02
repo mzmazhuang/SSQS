@@ -1165,10 +1165,10 @@ public class CcApiClient {
      *
      * @param listener
      */
-    public void getMatchBallGuessEarlyList(String date, int sType, String leagusIDs, OnCcListener listener) {
+    public void getMatchBallGuessEarlyList(String date, int sType, String leagusIDs, int page, int limit, OnCcListener listener) {
         CcListener mListener = new CcListener(listener, "doMatchBallEarlyList");
 
-        Request("/v1.0/match/ball/guess/date/" + date + "/leagueIDs/" + leagusIDs + "/stype/" + sType, null, mListener, false);
+        Request("/v1.0/match/ball/guess/date/" + date + "/leagueIDs/" + leagusIDs + "/stype/" + sType + "/page/" + page + "/count/" + limit, null, mListener, false);
     }
 
     /**
@@ -1586,10 +1586,10 @@ public class CcApiClient {
     }
 
     //足球早盘数据
-    public void getEarlyFootBallList(String date, int sType, String leagusIDs, OnCcListener listener) {
+    public void getEarlyFootBallList(String date, int sType, String leagusIDs, int page, int count, OnCcListener listener) {
         CcListener mListener = new CcListener(listener, "doEarlyFootBallList");
 
-        Request("/v1.0/match/guess/date/" + date + "/leagueIDs/" + leagusIDs + "/stype/" + sType, null, mListener, false);
+        Request("/v1.0/match/guess/date/" + date + "/leagueIDs/" + leagusIDs + "/stype/" + sType + "/page/" + page + "/count/" + count, null, mListener, false);
     }
 
     /**

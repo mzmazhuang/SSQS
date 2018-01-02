@@ -499,8 +499,9 @@ public class ToDayBasketBallChampionFragment extends Fragment implements OnRefre
                 swipeToLoadLayout.setRefreshEnabled(true);
 
                 if (result.isOk()) {
-
                     CcApiResult.ResultChampionPage page = (CcApiResult.ResultChampionPage) result.getData();
+
+                    filterCell.setCurrPage(off);
 
                     if (page != null && page.getItems() != null && page.getItems().size() >= 1) {
                         defaultView.setVisibility(View.GONE);
@@ -510,7 +511,6 @@ public class ToDayBasketBallChampionFragment extends Fragment implements OnRefre
                         totalPage = page.getTotalCount();
 
                         filterCell.setTotalPage(totalPage);
-                        filterCell.setCurrPage(off);
 
                         adapter.setList(getData(page.getItems()));
                     } else {
@@ -634,6 +634,9 @@ public class ToDayBasketBallChampionFragment extends Fragment implements OnRefre
     public void onRefresh() {
         if (!isRefresh) {
             isRefresh = true;
+
+            offset = 1;
+
             getNetDataWork(offset, limit);
         }
     }

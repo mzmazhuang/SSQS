@@ -101,6 +101,10 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
     private String leagueIDs = "0";
     private boolean isFilter = false;
 
+    private int offset = 1;
+    private int limit = 10;
+    private int totalPage;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getContext();
@@ -246,16 +250,24 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
                     pageDialog.setItemListener(new PageDialogAdapter.OnClickListener() {
                         @Override
                         public void onClick(int page) {
+                            isFilter = true;
+
                             pageDialog.dismiss();
 
+                            offset = page;
+
+                            swipeToLoadLayout.setRefreshing(true);
                         }
                     });
                 }
 
                 List<Integer> pageList = new ArrayList<>();
-                pageList.add(1);
 
-                pageDialog.show(pageList, "页数选择", 1);
+                for (int i = 1; i <= totalPage; i++) {
+                    pageList.add(i);
+                }
+
+                pageDialog.show(pageList, "页数选择", offset);
             }
         });
         contentLayout.addView(filterCell);
@@ -656,19 +668,16 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
             loadingDialog = new LoadingDialog(mContext);
         }
 
-        filterCell.setTotalPage(1);
-        filterCell.setCurrPage(1);
-
         loadingDialog.show();
-        getNetDataWork();
+        getNetDataWork(offset, limit);
     }
 
-    private void getNetDataWork() {
+    private void getNetDataWork(final int off, int lim) {
         if (TextUtils.isEmpty(currSelectTime)) {
             currSelectTime = DateUtils.getCurTime("yyyyMMddHH:mm:ss");
         }
 
-        SSQSApplication.apiClient(0).getEarlyFootBallList(currSelectTime, sType, leagueIDs, new CcApiClient.OnCcListener() {
+        SSQSApplication.apiClient(0).getEarlyFootBallList(currSelectTime, sType, leagueIDs, off, lim, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
                 loadingDialog.dismiss();
@@ -678,8 +687,14 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
                 if (result.isOk()) {
                     EarlyBean earlyBean = (EarlyBean) result.getData();
 
+                    filterCell.setCurrPage(off);
+
                     if (earlyBean != null && earlyBean.getLeagueName() != null && earlyBean.getLeagueName().size() >= 1) {
                         defaultView.setVisibility(View.GONE);
+
+                        totalPage = earlyBean.getTotalCount();
+
+                        filterCell.setTotalPage(totalPage);
 
                         filterCell.beginRunnable(true);
 
@@ -769,8 +784,10 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
             } else {
                 filterCell.setSelectText(LocaleController.getString(R.string.select_all));
                 leagueIDs = "0";
+
+                offset = 1;
             }
-            getNetDataWork();
+            getNetDataWork(offset, limit);
         }
     }
 

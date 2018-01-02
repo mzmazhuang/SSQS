@@ -17,13 +17,13 @@ import android.widget.PopupWindow;
  */
 public class PopUtil {
 
-    public static void closePop (PopupWindow pop) {
-        if (pop!=null&&pop.isShowing( ))
-            pop.dismiss( );
+    public static void closePop(PopupWindow pop) {
+        if (pop != null && pop.isShowing())
+            pop.dismiss();
     }
 
 
-    public static PopupWindow popuMake (View lv) {
+    public static PopupWindow popuMake(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -31,17 +31,16 @@ public class PopUtil {
          * 参数三:高度
          * 参数四:是否可以获取焦点
          */
-        PopupWindow mPopupWindow = null;
-        mPopupWindow = new PopupWindow(lv, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.
-                MATCH_PARENT, true);
+        PopupWindow mPopupWindow = new PopupWindow(lv, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
         //设置PopupWindow的背景图片是透明的颜色图片
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.DKGRAY));
-        mPopupWindow.getBackground( ).setAlpha(150);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(150);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(true);
         return mPopupWindow;
     }
-    public static PopupWindow popuMakeFalse (View lv) {
+
+    public static PopupWindow popuMakeFalse(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -53,12 +52,13 @@ public class PopUtil {
         mPopupWindow = new PopupWindow(lv, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.
                 MATCH_PARENT, true);
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.GRAY));
-        mPopupWindow.getBackground( ).setAlpha(100);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(100);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(false);
         return mPopupWindow;
     }
-    public static PopupWindow popuMakeFalseW (View lv) {
+
+    public static PopupWindow popuMakeFalseW(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -70,13 +70,13 @@ public class PopUtil {
         mPopupWindow = new PopupWindow(lv, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.
                 MATCH_PARENT, true);
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-        mPopupWindow.getBackground( ).setAlpha(150);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(150);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(false);
         return mPopupWindow;
     }
 
-    public static PopupWindow popuMakeWrap (View lv) {
+    public static PopupWindow popuMakeWrap(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -89,13 +89,13 @@ public class PopUtil {
                 WRAP_CONTENT, true);
         //设置PopupWindow的背景图片是透明的颜色图片
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.DKGRAY));
-        mPopupWindow.getBackground( ).setAlpha(200);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(200);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(true);
         return mPopupWindow;
     }
 
-    public static PopupWindow popuMakemm (View lv) {
+    public static PopupWindow popuMakemm(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -108,13 +108,13 @@ public class PopUtil {
                 MATCH_PARENT, true);
         //设置PopupWindow的背景图片是透明的颜色图片
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mPopupWindow.getBackground( ).setAlpha(200);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(200);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(true);
         return mPopupWindow;
     }
 
-    public static PopupWindow popuMakeWwf (View lv) {
+    public static PopupWindow popuMakeWwf(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -127,13 +127,13 @@ public class PopUtil {
                 WRAP_CONTENT, false);
         //设置PopupWindow的背景图片是透明的颜色图片
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mPopupWindow.getBackground( ).setAlpha(200);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(200);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(false);
         return mPopupWindow;
     }
 
-    public static PopupWindow popuMakeWw (View lv) {
+    public static PopupWindow popuMakeWw(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -146,13 +146,13 @@ public class PopUtil {
                 WRAP_CONTENT, false);
         //设置PopupWindow的背景图片是透明的颜色图片
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mPopupWindow.getBackground( ).setAlpha(200);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(200);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(true);
         return mPopupWindow;
     }
 
-    public static PopupWindow popuMakeMwf (View lv) {
+    public static PopupWindow popuMakeMwf(View lv) {
         /**
          * 创建PopupWindow
          * 参数一:要显示的View对象
@@ -165,7 +165,7 @@ public class PopUtil {
                 WRAP_CONTENT, false);
         //设置PopupWindow的背景图片是透明的颜色图片
         mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mPopupWindow.getBackground( ).setAlpha(200);//设置半透明给其他区域
+        mPopupWindow.getBackground().setAlpha(200);//设置半透明给其他区域
         //设置点击PopupWindow外面的位置可隐藏PopupWindow窗口
         mPopupWindow.setOutsideTouchable(false);
         return mPopupWindow;

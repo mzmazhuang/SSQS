@@ -515,8 +515,9 @@ public class EarlyChampionFragment extends Fragment implements OnRefreshListener
                 swipeToLoadLayout.setRefreshEnabled(true);
 
                 if (result.isOk()) {
-
                     CcApiResult.ResultChampionPage page = (CcApiResult.ResultChampionPage) result.getData();
+
+                    filterCell.setCurrPage(off);
 
                     if (page != null && page.getItems() != null && page.getItems().size() >= 1) {
                         defaultView.setVisibility(View.GONE);
@@ -526,7 +527,6 @@ public class EarlyChampionFragment extends Fragment implements OnRefreshListener
                         totalPage = page.getTotalCount();
 
                         filterCell.setTotalPage(totalPage);
-                        filterCell.setCurrPage(off);
 
                         adapter.setList(getData(page.getItems()));
                     } else {
@@ -650,6 +650,9 @@ public class EarlyChampionFragment extends Fragment implements OnRefreshListener
     public void onRefresh() {
         if (!isRefresh) {
             isRefresh = true;
+
+            offset = 1;
+
             getNetDataWork(offset, limit);
         }
     }

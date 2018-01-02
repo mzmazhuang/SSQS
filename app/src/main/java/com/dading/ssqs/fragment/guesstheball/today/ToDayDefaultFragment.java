@@ -648,6 +648,8 @@ public class ToDayDefaultFragment extends Fragment implements OnRefreshListener,
                 if (result.isOk()) {
                     CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
 
+                    filterCell.setCurrPage(off);
+
                     if (page != null && page.getItems() != null && page.getItems().size() >= 1) {
                         defaultView.setVisibility(View.GONE);
 
@@ -657,7 +659,6 @@ public class ToDayDefaultFragment extends Fragment implements OnRefreshListener,
 
                         totalPage = page.getTotalCount();
 
-                        filterCell.setCurrPage(off);
                         filterCell.setTotalPage(totalPage);
 
                         adapter.setData(getData(getFilterData(page.getItems())));
@@ -693,6 +694,8 @@ public class ToDayDefaultFragment extends Fragment implements OnRefreshListener,
             } else {
                 filterCell.setSelectText(LocaleController.getString(R.string.select_all));
                 leagueIDs = "0";
+
+                offset = 1;
             }
             getNetDataWork(offset, limit);
         }

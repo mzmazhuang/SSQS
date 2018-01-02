@@ -658,6 +658,8 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                 if (result.isOk()) {
                     CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
 
+                    filterCell.setCurrPage(off);
+
                     if (page != null && page.getItems() != null && page.getItems().size() >= 1) {
                         defaultView.setVisibility(View.GONE);
 
@@ -667,7 +669,6 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
 
                         totalPage = page.getTotalCount();
 
-                        filterCell.setCurrPage(off);
                         filterCell.setTotalPage(totalPage);
 
                         adapter.setList(getData(getFilterData(page.getItems())));
@@ -804,6 +805,8 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
             } else {
                 filterCell.setSelectText(LocaleController.getString(R.string.select_all));
                 leagueIDs = "0";
+
+                offset = 1;
             }
             getNetDataWork(offset, limit);
         }

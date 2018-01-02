@@ -149,13 +149,8 @@ public class HomeBasketballAdapter extends BaseAdapter implements ListAdapter {
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(content, MatchInfoActivity.class);
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
-                int id = entity.getId();
-                intent.putExtra(Constent.MATCH_ID, id);
-                Logger.d(TAG, "home比赛传送的数据是------------------------------:" + id);
-                intent.putExtra(Constent.INTENT_FROM, "home");
-                content.startActivity(intent);
+                UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
             }
         });
         if (entity.getIsFouce() != 1) {

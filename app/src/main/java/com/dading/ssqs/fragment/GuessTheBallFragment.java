@@ -133,6 +133,12 @@ public class GuessTheBallFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    private void initManager() {
+        if (fragmentManager == null) {
+            fragmentManager = getChildFragmentManager();
+        }
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         if (isVisibleToUser) {
@@ -167,6 +173,11 @@ public class GuessTheBallFragment extends Fragment {
     }
 
     public void setType(int type) {
+        if (!hasInit) {
+            hasInit = true;
+            
+            initManager();
+        }
         this.type = type;
 
         changePageTextColor(GuessBallType.SCROLLBALL, true);

@@ -296,6 +296,14 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && isShowPop) {
+            isShowPop = false;
+        }
+    }
+
     //签到弹窗
     private PopupWindow mPop;
     private ImageView mSevenDayRedBet1;
@@ -333,9 +341,10 @@ public class MainActivity extends BaseActivity {
     private TextView mSignSucNum;
     private ImageView mSignSucClose;
     private RelativeLayout mSevenDaySignLy;
+    private boolean isShowPop = false;
 
     private void popData(final SevenPopBean popBean) {
-        View view = View.inflate(mContext, R.layout.activity_seven_day, null);
+        final View view = View.inflate(mContext, R.layout.activity_seven_day, null);
         mSevenDaySignLy = ButterKnife.findById(view, R.id.seven_day_sign_ly);
         mSevenDayRedBet1 = ButterKnife.findById(view, R.id.seven_day_red_bet1);
         mSevenDayRedBet11 = ButterKnife.findById(view, R.id.seven_day_red_bet11);
@@ -521,7 +530,12 @@ public class MainActivity extends BaseActivity {
 
         mPop = PopUtil.popuMake(view);
 
-        mPop.showAtLocation(view, Gravity.CENTER, 0, 0);
+        //防止因为 activity is running异常
+        try {
+            mPop.showAtLocation(view, Gravity.CENTER, 0, 0);
+        } catch (Exception ex) {
+            isShowPop = true;
+        }
 
         mSignButton.setOnClickListener(new View.OnClickListener() {
             @Override

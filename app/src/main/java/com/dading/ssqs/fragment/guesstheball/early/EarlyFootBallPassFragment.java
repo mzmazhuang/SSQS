@@ -858,7 +858,7 @@ public class EarlyFootBallPassFragment extends Fragment implements OnRefreshList
             item.setTitle(currScoreBean.getHome());
             item.setByTitle(currScoreBean.getAway());
 
-            String time = DateUtils.changeFormater(currScoreBean.getOpenTime(), "yyyy-MM-dd HH:mm:ss", "HH:mm");
+            String time = DateUtils.changeFormater(currScoreBean.getOpenTime(), "yyyy-MM-dd HH:mm:ss", "MM-dd HH:mm");
 
             item.setTime(time);
 

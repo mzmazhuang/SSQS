@@ -111,7 +111,7 @@ public class EarlyFragment extends Fragment implements NotificationController.No
         });
         maskView.setVisibility(View.GONE);
         maskView.setBackgroundColor(0xA5000000);
-        maskLayout.addView(maskView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 100));
+        maskLayout.addView(maskView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 70));
 
         topCell = new GuessBallTopCell(mContext);
         topCell.setTopListener(topClickListener);

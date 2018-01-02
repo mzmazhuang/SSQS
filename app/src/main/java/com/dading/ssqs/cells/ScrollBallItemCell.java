@@ -16,6 +16,7 @@ import com.dading.ssqs.adapter.newAdapter.ScrollBallItemAdapter;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.ScrollBallFootBallBean;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallDefaultFragment;
+import com.dading.ssqs.utils.AndroidUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,12 +65,13 @@ public class ScrollBallItemCell extends LinearLayout {
 
         titleTextView = new TextView(context);
         titleTextView.setTextSize(14);
+        titleTextView.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(12), 0);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
         titleTextView.setGravity(Gravity.CENTER);
         titleTextView.setSingleLine();
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 45, 0, 12, 0));
+        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         //一级标题 如   场次/胜平负/让球/大小/单双
         LinearLayout titleLayout = new LinearLayout(context);

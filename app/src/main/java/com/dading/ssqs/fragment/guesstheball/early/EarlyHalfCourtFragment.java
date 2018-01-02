@@ -796,7 +796,7 @@ public class EarlyHalfCourtFragment extends Fragment implements OnRefreshListene
             item.setTitle(currData.get(i).getHome());
             item.setByTitle(currData.get(i).getAway());
 
-            String time = DateUtils.changeFormater(currData.get(i).getOpenTime(), "yyyy-MM-dd HH:mm:ss", "HH:mm");
+            String time = DateUtils.changeFormater(currData.get(i).getOpenTime(), "yyyy-MM-dd HH:mm:ss", "MM-dd HH:mm");
 
             item.setTime(time);
 

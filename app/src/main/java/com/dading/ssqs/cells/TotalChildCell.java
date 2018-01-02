@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.ScrollBallFootBallTotalBean;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallTotalFragment;
+import com.dading.ssqs.utils.AndroidUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,13 +53,14 @@ public class TotalChildCell extends LinearLayout {
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
         titleTextView = new TextView(context);
+        titleTextView.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(12), 0);
         titleTextView.setTextSize(14);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
         titleTextView.setSingleLine();
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
         titleTextView.setGravity(Gravity.CENTER);
-        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 45, 0, 12, 0));
+        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         tableLayout = new LinearLayout(context);
         tableLayout.setOrientation(LinearLayout.VERTICAL);

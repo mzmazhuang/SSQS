@@ -514,7 +514,7 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
         }
 
         @Override
-        public void onInfoClick(int matchId,String title) {
+        public void onInfoClick(int matchId, String title) {
 
         }
     };
@@ -582,10 +582,14 @@ public class EarlyBasketBallDefaultFragment extends Fragment implements OnRefres
                 for (int i = 0; i < originalData.getLeagueName().size(); i++) {
                     EarlyBean.EarlyBeanItems items = originalData.getLeagueName().get(i);
 
-                    List<EarlyBean.EarlyMatchs> matchs = items.getMatchs();
+                    if (title.equals(items.getTitle())) {
+                        List<EarlyBean.EarlyMatchs> matchs = items.getMatchs();
 
-                    for (int k = 0; k < matchs.size(); k++) {
-                        networkData.add(matchs.get(k));
+                        for (int k = 0; k < matchs.size(); k++) {
+                            networkData.add(matchs.get(k));
+                        }
+
+                        break;
                     }
                 }
             }

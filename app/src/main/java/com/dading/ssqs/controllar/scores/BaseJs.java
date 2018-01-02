@@ -112,12 +112,12 @@ public class BaseJs extends BaseScoreControllar {
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
-                    getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount);
+                    getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount, mFormatData, "0", "0", 1);
                 }
             };
             mTimer.schedule(task, 5000, 40 * 1000);
 
-            getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount);
+            getData(UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true), mCount, mFormatData, "0", "0", 1);
         }
     }
 
@@ -160,15 +160,17 @@ public class BaseJs extends BaseScoreControllar {
         UIUtils.removeTask(mTaskMore);
     }
 
-    public void getData(boolean b, int count) {
+    public void getData(boolean b, int count, String date, String subType, String leagusID, int page) {
         if (!isRefresh && !isLoadMore) {
             isRefresh = true;
 
-            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData, "0", 0, "0", 1, count, new CcApiClient.OnCcListener() {
+            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, date, subType, 0, leagusID, page, count, new CcApiClient.OnCcListener() {
                 @Override
                 public void onResponse(CcApiResult result) {
                     mLoadAnimal.setVisibility(View.GONE);
+                    mFristItem = 0;
                     mDrawable.stop();
+                    mJsList.onRefreshComplete();
                     isRefresh = false;
 
                     if (result.isOk()) {
@@ -226,40 +228,7 @@ public class BaseJs extends BaseScoreControllar {
 
                         boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
 
-                        if (!isRefresh && !isLoadMore) {
-                            isRefresh = true;
-
-                            SSQSApplication.apiClient(0).getMatchBallOrTypeList(b, 2, mFormatData, "0", 0, "0", 1, 10, new CcApiClient.OnCcListener() {
-                                @Override
-                                public void onResponse(CcApiResult result) {
-                                    mFristItem = 0;
-                                    mJsList.onRefreshComplete();
-                                    isRefresh = false;
-
-                                    if (result.isOk()) {
-                                        CcApiResult.ResultScorePage page = (CcApiResult.ResultScorePage) result.getData();
-
-                                        if (page != null) {
-                                            mPage = page.getTotalPage();
-                                            mTotalCount = page.getTotalCount();
-
-                                            if (page.getItems() != null) {
-                                                ToastUtils.midToast(mContent, "刷新成功!", 0);
-
-                                                mCount = 10;
-
-                                                mItems = page.getItems();
-
-                                                mAdapter.setData(mItems);
-                                            }
-                                        }
-                                    } else {
-                                        ToastUtils.midToast(mContent, result.getMessage(), 0);
-                                        Logger.d(TAG, result.getMessage() + "下拉JS失败信息");
-                                    }
-                                }
-                            });
-                        }
+                        getData(b, mCount, mFormatData, "0", "0", 1);
                     }
                 };
                 UIUtils.postTaskDelay(mTask, 500);
@@ -321,8 +290,6 @@ public class BaseJs extends BaseScoreControllar {
         mCount = mItems.size();
         mItems.addAll(items);
         if (mItems != null) {
-            Logger.d(TAG, "总共有" + mItems.size() + "条item");
-
             mAdapter.addData(items);
 
             mJsList.getRefreshableView().setSelection(mCount);

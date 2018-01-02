@@ -62,6 +62,7 @@ public class ScoreBean implements Serializable {
     public String aImageUrl;
     public int hRed;
     public String openTime;
+    public String systemTime;
     public int isOver;
     public int type;
     public String aScore;

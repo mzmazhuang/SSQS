@@ -102,10 +102,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
 
     @Override
     public int getCount() {
-        if (mData != null) {
-            return mData.size();
-        }
-        return 0;
+        return mData == null ? 0 : mData.size();
     }
 
     @Override
@@ -175,10 +172,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
             holder = (ViewHolder) convertView.getTag();
         }
 
-
-        //隐藏赔率
-        /*holder.scoreYpLy.setVisibility(View.GONE);
-        holder.scoreHgLy.setVisibility(View.GONE);*/
         mEntity = mData.get(position);
         mMap.put(position, holder.scoreSgWeekStarCb);
         mMapRed.put(position, holder.scoreSgMatchRedTwinkle);
@@ -269,7 +262,12 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         mAlphaAnim.setRepeatCount(Animation.INFINITE);
         mMapRed.get(position).setAnimation(mAlphaAnim);
         long openTimeL = DateUtils.formatDate(mEntity.openTime).getTime();
-        long curTimeL = date.getTime();
+
+        long curTimeL = 0;
+        if (!TextUtils.isEmpty(mEntity.systemTime)) {
+            curTimeL = DateUtils.formatDate(mEntity.systemTime).getTime();
+        }
+
         int m = (int) (((curTimeL - openTimeL) / 1000) / 60);
         mEntity.playTime = m;
 
@@ -286,30 +284,14 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                         mAlphaAnim.cancel();
                     }
                 } else {
-                    if (openTimeL < curTimeL) {
-                        mEntity.isVisibleTwilke = true;
-                        mAlphaAnim.start();
-                        //按照日期开始时间长
-
-                        if (mEntity.playTime > 64) {
-                            mEntity.playTime = mEntity.playTime - 15;
-                        }
-                        holder.scoreSgMatchResultTime.setText(String.valueOf(mEntity.playTime));
-                        holder.scoreSgMatchHalfScoreMain.setVisibility(View.VISIBLE);
-                        holder.scoreSgMatchHalfScoreSecond.setVisibility(View.VISIBLE);
-                        holder.middle.setVisibility(View.VISIBLE);
-                        holder.left.setVisibility(View.VISIBLE);
-                        holder.right.setVisibility(View.VISIBLE);
-                    } else {
-                        holder.scoreSgMatchResultTime.setText("赛前");
-                        mEntity.isVisibleTwilke = false;
-                        holder.scoreSgMatchHalfScoreMain.setVisibility(View.GONE);
-                        holder.scoreSgMatchHalfScoreSecond.setVisibility(View.GONE);
-                        holder.middle.setVisibility(View.GONE);
-                        holder.left.setVisibility(View.GONE);
-                        holder.right.setVisibility(View.GONE);
-                        mAlphaAnim.cancel();
-                    }
+                    holder.scoreSgMatchResultTime.setText("赛前");
+                    mEntity.isVisibleTwilke = false;
+                    holder.scoreSgMatchHalfScoreMain.setVisibility(View.GONE);
+                    holder.scoreSgMatchHalfScoreSecond.setVisibility(View.GONE);
+                    holder.middle.setVisibility(View.GONE);
+                    holder.left.setVisibility(View.GONE);
+                    holder.right.setVisibility(View.GONE);
+                    mAlphaAnim.cancel();
                 }
                 break;
             case 1:

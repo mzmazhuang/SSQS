@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.os.Process;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -142,7 +143,7 @@ public class MainActivity extends BaseActivity {
                 if (result.isOk()) {
                     NoticegBean bean = (NoticegBean) result.getData();
 
-                    if (bean != null) {
+                    if (bean != null && !TextUtils.isEmpty(bean.getTitle()) && !TextUtils.isEmpty(bean.getContent())) {
                         mPopNoticeTitle.setText(bean.getTitle());
                         mPopNoticeContent.setText(bean.getContent());
                         UIUtils.getMainThreadHandler().post(new Runnable() {

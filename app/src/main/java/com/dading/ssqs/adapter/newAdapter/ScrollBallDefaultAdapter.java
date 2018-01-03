@@ -25,6 +25,11 @@ public class ScrollBallDefaultAdapter extends RecyclerView.Adapter<ScrollBallDef
     private String openTitle;
     private ScrollBallItemAdapter.OnItemClickListener itemClickListener;
     private List<ScrollBallDefaultFragment.MergeBean> foucusList;
+    private boolean isScroll=false;
+
+    public void setScroll(boolean scroll) {
+        isScroll = scroll;
+    }
 
     public ScrollBallDefaultAdapter(Context context) {
         mContext = context;
@@ -99,7 +104,7 @@ public class ScrollBallDefaultAdapter extends RecyclerView.Adapter<ScrollBallDef
 
         public void setData(ScrollBallFootBallBean bean) {
             this.cell.setFocus(foucusList);
-            this.cell.setBean(bean);
+            this.cell.setBean(bean,isScroll);
             this.cell.setTopClickListener(readyListener);
             this.cell.setItemClickListener(itemClickListener);
 

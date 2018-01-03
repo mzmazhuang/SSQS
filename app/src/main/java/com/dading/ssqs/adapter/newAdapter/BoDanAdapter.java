@@ -21,6 +21,11 @@ public class BoDanAdapter extends RecyclerView.Adapter<BoDanAdapter.ItemViewHold
     private List<ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItems> list;
     private BoDanChildCell.OnItemClickListener listener;
     private List<ScrollBallBoDanFragment.MergeBean> focusList;
+    private boolean isScroll = false;
+
+    public void setScroll(boolean scroll) {
+        isScroll = scroll;
+    }
 
     public void setFocus(List<ScrollBallBoDanFragment.MergeBean> list) {
         focusList = list;
@@ -72,7 +77,7 @@ public class BoDanAdapter extends RecyclerView.Adapter<BoDanAdapter.ItemViewHold
 
         public void setData(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItems items) {
             this.cell.setTime(items.getTime());
-            this.cell.setTitle(items.getTitle() + "　VS　" + items.getByTitle());
+            this.cell.setTitle(items, isScroll);
             this.cell.setTableRowAndColumn(items, listener, focusList);
         }
     }

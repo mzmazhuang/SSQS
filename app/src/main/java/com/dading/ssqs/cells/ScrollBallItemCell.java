@@ -3,9 +3,13 @@ package com.dading.ssqs.cells;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,12 +33,16 @@ public class ScrollBallItemCell extends LinearLayout {
 
     private TextView timeTextView;
     private TextView titleTextView;
+    private LinearLayout pointLayout;
+    private ImageView pointView;
+    private TextView protTimeView;
     private List<ScrollBallDefaultFragment.MergeBean> focusList;
     private View lineView;
     private Context mContext;
     private LinearLayout cellLayout;
     private ScrollBallItemAdapter.OnItemClickListener listener;
     private int beanId;
+    private AlphaAnimation mAlphaAnim;
 
     private List<ScrollBallItemChildCell> cells = new ArrayList<>();
 
@@ -63,15 +71,36 @@ public class ScrollBallItemCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
+        LinearLayout titleTextLayout = new LinearLayout(context);
+        titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
+        titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+        topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+
         titleTextView = new TextView(context);
         titleTextView.setTextSize(14);
-        titleTextView.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(12), 0);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
-        titleTextView.setGravity(Gravity.CENTER);
         titleTextView.setSingleLine();
+        titleTextView.setGravity(Gravity.CENTER_VERTICAL);
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+        titleTextLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
+
+        pointLayout = new LinearLayout(context);
+        pointLayout.setVisibility(View.GONE);
+        pointLayout.setOrientation(LinearLayout.HORIZONTAL);
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+
+        protTimeView = new TextView(context);
+        protTimeView.setTextSize(10);
+        protTimeView.setTextColor(0xFFFF9600);
+        protTimeView.setSingleLine();
+        pointLayout.addView(protTimeView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+
+        pointView = new ImageView(context);
+        pointView.setScaleType(ImageView.ScaleType.FIT_XY);
+        pointView.setImageResource(R.mipmap.ic_guessball_scroll_point);
+        pointLayout.addView(pointView, LayoutHelper.createLinear(3, 6));
 
         //一级标题 如   场次/胜平负/让球/大小/单双
         LinearLayout titleLayout = new LinearLayout(context);
@@ -226,16 +255,44 @@ public class ScrollBallItemCell extends LinearLayout {
     }
 
     private void setTitle(String title) {
-        titleTextView.setText(title);
+        if (!TextUtils.isEmpty(title)) {
+            if (title.contains("<font")) {
+                titleTextView.setText(Html.fromHtml(title));
+            } else {
+                titleTextView.setText(title);
+            }
+        }
     }
 
     public void setBeanId(int id) {
         this.beanId = id;
     }
 
-    public void setData(ScrollBallFootBallBean.ScrollBeanItems bean) {
+    public void setData(ScrollBallFootBallBean.ScrollBeanItems bean, boolean isScroll) {
         setTime(bean.getTime());
-        setTitle(bean.getTitle() + "　VS　" + bean.getByTitle());
+
+        if (!isScroll) {
+            setTitle(bean.getTitle() + "　VS　" + bean.getByTitle());
+
+            if (mAlphaAnim != null) {
+                mAlphaAnim.cancel();
+            }
+        } else {
+            setTitle("<font color=\"#626262\">" + bean.getTitle() + "</font>&nbsp;&nbsp;<font color=\"#1FA605\">" + bean.gethScore() + "-" + bean.getaScore() + "</font>&nbsp;&nbsp;<font color=\"#626262\">" + bean.getByTitle() + "</font>");
+
+            if (!TextUtils.isEmpty(bean.getProtTime())) {
+                pointLayout.setVisibility(View.VISIBLE);
+
+                protTimeView.setText(bean.getProtTime());
+
+                mAlphaAnim = new AlphaAnimation(0.0f, 1.0f);
+                mAlphaAnim.setDuration(500);
+                mAlphaAnim.setRepeatCount(Animation.INFINITE);
+                pointView.setAnimation(mAlphaAnim);
+
+                mAlphaAnim.start();
+            }
+        }
         setItemChild(bean.getTestItems(), bean);
     }
 }

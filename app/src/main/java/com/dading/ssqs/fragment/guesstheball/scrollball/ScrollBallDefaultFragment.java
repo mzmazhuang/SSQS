@@ -260,6 +260,7 @@ public class ScrollBallDefaultFragment extends Fragment implements OnRefreshList
         scrollview.addView(mRecyclerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         adapter = new ScrollBallDefaultAdapter(mContext);
+        adapter.setScroll(true);
         adapter.setReadyListener(readyListener);
         adapter.setItemClickListener(itemClickListener);
         mRecyclerView.setAdapter(adapter);
@@ -814,6 +815,9 @@ public class ScrollBallDefaultFragment extends Fragment implements OnRefreshList
             item.setId(currData.get(i).id);
             item.setTitle(currData.get(i).home);
             item.setByTitle(currData.get(i).away);
+            item.setaScore(currData.get(i).aScore);
+            item.sethScore(currData.get(i).hScore);
+            item.setProtTime(currData.get(i).protime);
 
             String time = DateUtils.changeFormater(currData.get(i).openTime, "yyyy-MM-dd HH:mm:ss", "HH:mm");
 

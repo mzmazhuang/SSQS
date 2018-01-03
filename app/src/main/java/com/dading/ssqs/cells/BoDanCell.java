@@ -82,8 +82,9 @@ public class BoDanCell extends LinearLayout {
         addView(lineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
     }
 
-    public void setData(ScrollBallFootBallBoDanBean bean) {
+    public void setData(ScrollBallFootBallBoDanBean bean, boolean isScroll) {
         this.bean = bean;
+        adapter.setScroll(isScroll);
         adapter.setData(bean.getItems());
     }
 

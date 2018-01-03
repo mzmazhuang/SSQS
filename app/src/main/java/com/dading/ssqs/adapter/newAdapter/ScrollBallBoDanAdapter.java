@@ -25,6 +25,11 @@ public class ScrollBallBoDanAdapter extends RecyclerView.Adapter<ScrollBallBoDan
     private String openTitle;
     private BoDanChildCell.OnItemClickListener listener;
     private List<ScrollBallBoDanFragment.MergeBean> foucusList;
+    private boolean isScroll = false;
+
+    public void setScroll(boolean scroll) {
+        isScroll = scroll;
+    }
 
     public void setReadyListener(ScrollBallCell.OnReadyListener readyListener) {
         this.readyListener = readyListener;
@@ -101,7 +106,7 @@ public class ScrollBallBoDanAdapter extends RecyclerView.Adapter<ScrollBallBoDan
         public void setData(ScrollBallFootBallBoDanBean bean) {
             this.cell.setFocus(foucusList);
             this.cell.setTitle(bean.getTitle().getTitle());
-            this.cell.setData(bean);
+            this.cell.setData(bean, isScroll);
             this.cell.setTopClickListener(readyListener);
             this.cell.setListener(listener);
 

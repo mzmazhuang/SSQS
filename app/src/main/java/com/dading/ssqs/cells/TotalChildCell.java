@@ -3,13 +3,18 @@ package com.dading.ssqs.cells;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.dading.ssqs.R;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.ScrollBallFootBallTotalBean;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallTotalFragment;
@@ -36,6 +41,11 @@ public class TotalChildCell extends LinearLayout {
 
     private List<TotalItemCell> cells = new ArrayList<>();
 
+    private LinearLayout pointLayout;
+    private ImageView pointView;
+    private TextView protTimeView;
+    private AlphaAnimation mAlphaAnim;
+
     public TotalChildCell(Context context) {
         super(context);
         mContext = context;
@@ -52,15 +62,36 @@ public class TotalChildCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
+        LinearLayout titleTextLayout = new LinearLayout(context);
+        titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
+        titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+        topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+
         titleTextView = new TextView(context);
-        titleTextView.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(12), 0);
         titleTextView.setTextSize(14);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
         titleTextView.setSingleLine();
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
-        titleTextView.setGravity(Gravity.CENTER);
-        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+        titleTextView.setGravity(Gravity.CENTER_VERTICAL);
+        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
+
+        pointLayout = new LinearLayout(context);
+        pointLayout.setVisibility(View.GONE);
+        pointLayout.setOrientation(LinearLayout.HORIZONTAL);
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+
+        protTimeView = new TextView(context);
+        protTimeView.setTextSize(10);
+        protTimeView.setTextColor(0xFFFF9600);
+        protTimeView.setSingleLine();
+        pointLayout.addView(protTimeView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
+
+        pointView = new ImageView(context);
+        pointView.setScaleType(ImageView.ScaleType.FIT_XY);
+        pointView.setImageResource(R.mipmap.ic_guessball_scroll_point);
+        pointLayout.addView(pointView, LayoutHelper.createLinear(3, 6));
 
         tableLayout = new LinearLayout(context);
         tableLayout.setOrientation(LinearLayout.VERTICAL);
@@ -112,8 +143,29 @@ public class TotalChildCell extends LinearLayout {
         timeTextView.setText(time);
     }
 
-    public void setTitle(String title) {
-        titleTextView.setText(title);
+    public void setTitle(ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems items, boolean isScroll) {
+        if (!isScroll) {
+            titleTextView.setText(items.getTitle() + "　VS　" + items.getByTitle());
+
+            if (mAlphaAnim != null) {
+                mAlphaAnim.cancel();
+            }
+        } else {
+            titleTextView.setText(Html.fromHtml("<font color=\"#626262\">" + items.getTitle() + "</font>&nbsp;&nbsp;<font color=\"#1FA605\">" + items.gethScore() + "-" + items.getaScore() + "</font>&nbsp;&nbsp;<font color=\"#626262\">" + items.getByTitle() + "</font>"));
+
+            if (!TextUtils.isEmpty(items.getProtTime())) {
+                pointLayout.setVisibility(View.VISIBLE);
+
+                protTimeView.setText(items.getProtTime());
+
+                mAlphaAnim = new AlphaAnimation(0.0f, 1.0f);
+                mAlphaAnim.setDuration(500);
+                mAlphaAnim.setRepeatCount(Animation.INFINITE);
+                pointView.setAnimation(mAlphaAnim);
+
+                mAlphaAnim.start();
+            }
+        }
     }
 
     public void setData(ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems bean, List<ScrollBallTotalFragment.MergeBean> focusList, TotalItemCell.OnItemClickListener listener) {

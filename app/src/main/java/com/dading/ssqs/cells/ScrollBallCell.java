@@ -92,9 +92,10 @@ public class ScrollBallCell extends LinearLayout {
         tvTitle.setText(title);
     }
 
-    public void setBean(ScrollBallFootBallBean bean) {
+    public void setBean(ScrollBallFootBallBean bean, boolean isScroll) {
         this.bean = bean;
 
+        adapter.setScroll(isScroll);
         adapter.setBeanId(bean.getTitle().getId());
         setTitle(bean.getTitle().getTitle());
         setItems(bean.getItems());

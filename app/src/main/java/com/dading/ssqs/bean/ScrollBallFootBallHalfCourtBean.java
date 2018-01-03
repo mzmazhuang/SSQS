@@ -46,7 +46,34 @@ public class ScrollBallFootBallHalfCourtBean implements Serializable {
         private String time;
         private String title;
         private String byTitle;
+        private String aScore;
+        private String hScore;
+        private String protTime;
         private List<ScrollBallFootBallHalfCourtItem> itemList;
+
+        public String getaScore() {
+            return aScore;
+        }
+
+        public void setaScore(String aScore) {
+            this.aScore = aScore;
+        }
+
+        public String gethScore() {
+            return hScore;
+        }
+
+        public void sethScore(String hScore) {
+            this.hScore = hScore;
+        }
+
+        public String getProtTime() {
+            return protTime;
+        }
+
+        public void setProtTime(String protTime) {
+            this.protTime = protTime;
+        }
 
         public List<ScrollBallFootBallHalfCourtItem> getItemList() {
             return itemList;

@@ -48,7 +48,34 @@ public class ScrollBallFootBallBean implements Serializable {
         private String time;
         private String title;
         private String byTitle;
+        private String hScore;
+        private String aScore;
+        private String protTime;
         private List<ScrollBeanItem> testItems;
+
+        public String gethScore() {
+            return hScore;
+        }
+
+        public void sethScore(String hScore) {
+            this.hScore = hScore;
+        }
+
+        public String getaScore() {
+            return aScore;
+        }
+
+        public void setaScore(String aScore) {
+            this.aScore = aScore;
+        }
+
+        public String getProtTime() {
+            return protTime;
+        }
+
+        public void setProtTime(String protTime) {
+            this.protTime = protTime;
+        }
 
         public int getId() {
             return id;

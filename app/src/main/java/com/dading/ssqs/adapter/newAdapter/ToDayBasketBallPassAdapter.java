@@ -39,7 +39,7 @@ public class ToDayBasketBallPassAdapter extends RecyclerView.Adapter<ToDayBasket
         }
     }
 
-    public void clearData(){
+    public void clearData() {
         this.list.clear();
         notifyDataSetChanged();
     }
@@ -97,7 +97,7 @@ public class ToDayBasketBallPassAdapter extends RecyclerView.Adapter<ToDayBasket
 
         public void setData(ScrollBallFootBallBean bean) {
             this.cell.setFocus(foucusList);
-            this.cell.setBean(bean);
+            this.cell.setBean(bean, false);
             this.cell.setTopClickListener(readyListener);
             this.cell.setItemClickListener(itemClickListener);
 

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    >
+    android:orientation="horizontal">
 
     <View
         android:layout_width="0dp"
@@ -14,22 +12,21 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:background="@color/gray"
-        android:gravity="center"
-        />
+        android:gravity="center" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-<!--
-        <TextView
-            style="@style/w0h"
-            android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:text="@string/have_number"
-            android:textColor="@color/red"/>
--->
+        <!--
+                <TextView
+                    style="@style/w0h"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/have_number"
+                    android:textColor="@color/red"/>
+        -->
 
 
         <TextView
@@ -39,7 +36,7 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:text="@string/hava_click_loding"
-            android:textColor="@color/red"/>
+            android:textColor="@color/red" />
     </LinearLayout>
 
     <View
@@ -48,6 +45,5 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:background="@color/gray"
-        android:gravity="center"
-        />
+        android:gravity="center" />
 </LinearLayout>

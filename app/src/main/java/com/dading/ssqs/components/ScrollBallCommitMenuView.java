@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -299,6 +300,40 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
                 if (moneyLayout.getVisibility() == View.VISIBLE) {
                     String str = moneyTextView.getText().toString().trim();
                     if (str.length() >= 1) {
+                        moneyTextView.setText("");
+                    }
+                } else {
+                    if (currPosition >= 0) {
+                        List<MergeBean> list = new ArrayList<>();
+                        list.addAll(adapter.getData());
+
+                        for (int i = 0; i < list.size(); i++) {
+                            if (i == currPosition) {
+                                MergeBean bean = list.get(i);
+                                if (!TextUtils.isEmpty(bean.getMoney()) && bean.getMoney().length() >= 1) {
+                                    bean.setMoney("");
+                                }
+                                break;
+                            }
+                        }
+                        adapter.setCurrPosition(currPosition);
+                        adapter.setData(list);
+                    }
+                }
+            }
+
+            @Override
+            public void onDone() {
+                if (menuListener != null) {
+                    menuListener.onDone();
+                }
+            }
+
+            @Override
+            public void onBackSpace() {
+                if (moneyLayout.getVisibility() == View.VISIBLE) {
+                    String str = moneyTextView.getText().toString().trim();
+                    if (str.length() >= 1) {
                         moneyTextView.setText(str.substring(0, str.length() - 1));
                     }
                 } else {
@@ -318,13 +353,6 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
                         adapter.setCurrPosition(currPosition);
                         adapter.setData(list);
                     }
-                }
-            }
-
-            @Override
-            public void onDone() {
-                if (menuListener != null) {
-                    menuListener.onDone();
                 }
             }
         });
@@ -714,6 +742,8 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
         void onClear();
 
         void onDone();
+
+        void onBackSpace();
     }
 
     public class NumberView extends LinearLayout {
@@ -784,7 +814,24 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
                     }
                 }
             });
-            operationLayout.addView(clearView, LayoutHelper.createLinear(0, 28, 1f, 0, 0, 6, 0));
+            operationLayout.addView(clearView, LayoutHelper.createLinear(0, 28, 3f, 0, 0, 6, 0));
+
+            LinearLayout backSpaceLayout = new LinearLayout(context);
+            backSpaceLayout.setGravity(Gravity.CENTER);
+            backSpaceLayout.setBackgroundResource(R.drawable.bg_submit_number);
+            backSpaceLayout.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        listener.onBackSpace();
+                    }
+                }
+            });
+            operationLayout.addView(backSpaceLayout, LayoutHelper.createLinear(0, 28, 2f, 0, 0, 6, 0));
+
+            ImageView backSpaceView = new ImageView(context);
+            backSpaceView.setImageResource(R.mipmap.ic_guessball_backspace);
+            backSpaceLayout.addView(backSpaceView, LayoutHelper.createLinear(40, 20));
 
             TextView doneView = new TextView(context);
             doneView.setGravity(Gravity.CENTER);
@@ -800,7 +847,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
                     }
                 }
             });
-            operationLayout.addView(doneView, LayoutHelper.createLinear(0, 28, 1f));
+            operationLayout.addView(doneView, LayoutHelper.createLinear(0, 28, 6f));
         }
     }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/register_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_noload"
-    android:orientation="vertical">
+    android:background="@mipmap/bg_noload">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,156 +14,228 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="5dp"
             android:padding="@dimen/home_top_iv_padding"
             android:src="@mipmap/er_back_arrow" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/regiset_number"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rect_white_light"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:padding="5dp"
-            android:src="@mipmap/username" />
-
-        <EditText
-            android:id="@+id/regist_number_username"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
-            android:hint="@string/hint_regist_number"
-            android:inputType="phone"
-            android:maxLength="20"
-            android:maxLines="1"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray8"
-            android:textSize="13sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rect_white_light"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:padding="5dp"
-            android:src="@mipmap/password" />
-
-        <EditText
-            android:id="@+id/regist_number_pw"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
-            android:hint="@string/prompt_password_set"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:maxLines="1"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray8"
-            android:textSize="13sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rect_white_light"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:padding="5dp"
-            android:src="@mipmap/password" />
-
-        <EditText
-            android:id="@+id/regist_number_pw_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
-            android:hint="@string/prompt_password_again"
-            android:inputType="textPassword"
-            android:maxLength="20"
-            android:maxLines="1"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray8"
-            android:textSize="13sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rect_white_light"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:padding="5dp"
-            android:src="@mipmap/username" />
-
-        <EditText
-            android:id="@+id/regist_invite_code"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
-            android:hint="@string/hint_regist_invite_code"
-            android:inputType="phone"
-            android:maxLength="20"
-            android:maxLines="1"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/gray8"
-            android:textSize="13sp" />
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/regist_number_button"
+    <ScrollView
+        android:id="@+id/register_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/rect_gray"
-        android:clickable="false"
-        android:gravity="center"
-        android:text="@string/regiset"
-        android:textColor="@color/white"
-        android:textSize="13sp" />
+        android:layout_centerInParent="true">
 
-    <include layout="@layout/agree_regist" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-    <include layout="@layout/go_login" />
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rect_white_light"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/username" />
+
+                    <EditText
+                        android:id="@+id/regist_number_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:digits="[0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]"
+                        android:hint="@string/hint_regist_number"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/gray"
+                        android:textColorHint="@color/gray8"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/rect_white_light"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/password" />
+
+                    <EditText
+                        android:id="@+id/regist_number_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
+                        android:hint="@string/prompt_password_set"
+                        android:inputType="textPassword"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/gray"
+                        android:textColorHint="@color/gray8"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rect_white_light"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/password" />
+
+                    <EditText
+                        android:id="@+id/regist_number_pw_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
+                        android:hint="@string/prompt_password_again"
+                        android:inputType="textPassword"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/gray"
+                        android:textColorHint="@color/gray8"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rect_white_light"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/username" />
+
+                    <EditText
+                        android:id="@+id/regist_invite_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:digits="[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789]"
+                        android:hint="@string/hint_regist_invite_code"
+                        android:inputType="phone"
+                        android:maxLength="20"
+                        android:maxLines="1"
+                        android:textColor="@color/gray"
+                        android:textColorHint="@color/gray8"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/regist_number_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/rect_gray"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:text="@string/regiset"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:gravity="left">
+
+                    <CheckBox
+                        android:id="@+id/regiset_second_allow_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/selector_agree_checkbox" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|end"
+                        android:text="@string/allow_regiset_protocol"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/regiset_second_protocol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:text="@string/regiset_protocol"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp0.5"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/regiset_loading"
+                            style="@style/w0h"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:text="@string/hava_click_loding"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp0.5"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:background="#FFFFFF"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

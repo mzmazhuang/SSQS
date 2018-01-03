@@ -46,7 +46,7 @@ public class ScrollBallItemChildCell extends LinearLayout {
         tvLeftText.setTextSize(12);
         tvLeftText.setVisibility(View.GONE);
         tvLeftText.setGravity(Gravity.CENTER);
-        addView(tvLeftText, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 1f));
+        addView(tvLeftText, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
 
         tvRightText = new TextView(context);
         tvRightText.setTextColor(0xFFFF9600);
@@ -79,7 +79,7 @@ public class ScrollBallItemChildCell extends LinearLayout {
                                 tvRightText.setTextColor(0xFFFF9600);
                             }
                         } else {
-                            
+
                             if (listener.onItemClick(beanId, bean, items, true, isHome, position)) {
                                 check = true;
 

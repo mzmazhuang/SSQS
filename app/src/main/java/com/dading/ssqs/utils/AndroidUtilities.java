@@ -13,7 +13,9 @@ import android.os.Build;
 import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.dading.ssqs.SSQSApplication;
@@ -184,6 +186,17 @@ public class AndroidUtilities {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public static void hideKeyboard(View view) {
+        if (view == null) {
+            return;
+        }
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (!imm.isActive()) {
+            return;
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

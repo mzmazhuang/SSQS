@@ -273,7 +273,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
 
         switch (mEntity.isOver) {
             case 0:
-                //根据protime时间长
                 if (!TextUtils.isEmpty(mEntity.protime)) {//如果protime为空不处理
                     if (!"半场".equals(mEntity.protime)) {
                         mEntity.isVisibleTwilke = true;

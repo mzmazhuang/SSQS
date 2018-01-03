@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.activity.HomeFreeGlodActivity;
+import com.dading.ssqs.activity.LockPhoneActivity;
 import com.dading.ssqs.activity.LoginActivity;
 import com.dading.ssqs.apis.CcApiClient;
 import com.dading.ssqs.apis.CcApiResult;
@@ -499,23 +500,25 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
                         break;
                     case 1:
                         if (b && popBean != null) {
-                            mPop.showAtLocation(view, Gravity.CENTER, 0, 0);
+                            if (popBean.isSign == 0) {
+                                mPop.showAtLocation(view, Gravity.CENTER, 0, 0);
+                            }
                         } else {
                             Intent intent = new Intent(context, LoginActivity.class);
                             context.startActivity(intent);
                         }
                         break;
                     case 2:
-                        break;
-                    case 3:
                         //验证手机
-                        break;
-                    case 4:
-                        //关注圈子
-                        break;
-                    case 5:
-                        break;
-                    case 6:
+                        if (b && popBean != null) {
+                            if (entity.status == 0) {
+                                Intent intent = new Intent(context, LockPhoneActivity.class);
+                                context.startActivity(intent);
+                            }
+                        } else {
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            context.startActivity(intent);
+                        }
                         break;
                     default:
                         break;

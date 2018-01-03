@@ -88,8 +88,6 @@ public class GZScoreControllar extends BaseScoreControllar {
                                             mItems = page.getItems();
 
                                             mAdapter.setData(mItems);
-
-                                            ToastUtils.midToast(mContent, "刷新成功!", 0);
                                         }
                                     }
                                 } else {
@@ -171,7 +169,6 @@ public class GZScoreControllar extends BaseScoreControllar {
     private class GZRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Logger.d("GBSS", "我的关注收到通知------------------------------:");
             initData();
         }
     }

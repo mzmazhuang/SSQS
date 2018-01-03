@@ -55,6 +55,7 @@ import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.fragment.guesstheball.DataController;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallDefaultFragment;
 import com.dading.ssqs.utils.DateUtils;
+import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 
@@ -660,7 +661,7 @@ public class EarlyDefaultFragment extends Fragment implements OnRefreshListener,
                     });
                 }
             } catch (Exception ex) {
-                Log.e("Early default", "failure" + ex);
+                Logger.e("Early default", "failure" + ex);
             }
         }
     };

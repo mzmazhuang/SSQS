@@ -177,7 +177,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
 
                     for (int j = 0; j < 2; j++) {
                         BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
-                        childCell.setData(list.get(position), data, focusList);
+                        childCell.setData(list.get(position), data, focusList, position);
                         childCell.setListener(itemClickListener);
 
                         linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
@@ -203,7 +203,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
                 //一行 多列的
 
                 for (int i = 0; i < list.size(); i++) {
-                    oneRowManyColumCells.get(i).setData(list.get(i), data, focusList);
+                    oneRowManyColumCells.get(i).setData(list.get(i), data, focusList, 0);
                     oneRowManyColumCells.get(i).changeParams();
                     oneRowManyColumCells.get(i).setListener(itemClickListener);
                 }
@@ -215,7 +215,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
                 //一行 两列的
 
                 for (int i = 0; i < list.size(); i++) {
-                    oneRowTwoColumCells.get(i).setData(list.get(i), data, focusList);
+                    oneRowTwoColumCells.get(i).setData(list.get(i), data, focusList, i);
                     oneRowTwoColumCells.get(i).setListener(itemClickListener);
                 }
             } else {
@@ -239,7 +239,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
 
                     for (int j = 0; j < 2; j++) {
                         BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
-                        childCell.setData(list.get(position), data, focusList);
+                        childCell.setData(list.get(position), data, focusList, position);
                         childCell.setListener(itemClickListener);
 
                         linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));

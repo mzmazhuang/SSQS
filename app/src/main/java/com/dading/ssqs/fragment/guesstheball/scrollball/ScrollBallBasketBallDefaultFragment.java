@@ -832,20 +832,7 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
             ScrollBallBasketBallBean.ScrollBaksetBallItems.Score score = new ScrollBallBasketBallBean.ScrollBaksetBallItems.Score();
             score.setLeftScore(currScoreBean.hScore);
             score.setRightScore(currScoreBean.aScore);
-
-            String str = "";
-            if ("0".equals(currScoreBean.isOverTime)) {
-                str = "第一节";
-            } else if ("4".equals(currScoreBean.isOverTime)) {
-                str = "第二节";
-            } else if ("5".equals(currScoreBean.isOverTime)) {
-                str = "第三节";
-            } else if ("6".equals(currScoreBean.isOverTime)) {
-                str = "第四节";
-            } else if ("7".equals(currScoreBean.isOverTime)) {
-                str = "加时赛";
-            }
-            score.setCurrSchedule(str);
+            score.setCurrSchedule(currScoreBean.protime);
 
             item.setScore(score);
 
@@ -864,31 +851,7 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                 for (int j = 0; j < items.size(); j++) {
                     JCbean jCbean = items.get(j);
 
-                    boolean isAdd = false;
-
-                    if (score.getCurrSchedule().equals("第1节")) {
-                        if (jCbean.payTypeName.equals("第一节独赢") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第2节")) {
-                        if (jCbean.payTypeName.equals("第二节独赢") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第3节")) {
-                        if (jCbean.payTypeName.equals("第三节独赢") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第4节")) {
-                        if (jCbean.payTypeName.equals("第四节独赢") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("加时赛")) {
-                        if (jCbean.payTypeName.equals("加时赛独赢") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    }
-
-                    if (isAdd) {
+                    if (jCbean.payTypeID == 1 && currScoreBean.id == jCbean.matchID) {
                         oneRowData.add(getBeanItems("", jCbean.realRate1, 1, jCbean.id));
 
                         twoRowData.add(getBeanItems("", jCbean.realRate3, 2, jCbean.id));
@@ -908,31 +871,7 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                 for (int j = 0; j < items.size(); j++) {
                     JCbean jCbean = items.get(j);
 
-                    boolean isAdd = false;
-
-                    if (score.getCurrSchedule().equals("第1节")) {
-                        if (jCbean.payTypeName.equals("第一节让球") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第2节")) {
-                        if (jCbean.payTypeName.equals("第二节让球") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第3节")) {
-                        if (jCbean.payTypeName.equals("第三节让球") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第4节")) {
-                        if (jCbean.payTypeName.equals("第四节让球") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("加时赛")) {
-                        if (jCbean.payTypeName.equals("加时赛让球") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    }
-
-                    if (isAdd) {
+                    if (jCbean.payTypeID == 2 && currScoreBean.id == jCbean.matchID) {
                         String topStr = getRate2Str(items.get(j).realRate2, false);
                         String bottomStr = getRate2Str(items.get(j).realRate2, true);
 
@@ -966,31 +905,7 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                 for (int j = 0; j < items.size(); j++) {
                     JCbean jCbean = items.get(j);
 
-                    boolean isAdd = false;
-
-                    if (score.getCurrSchedule().equals("第1节")) {
-                        if (jCbean.payTypeName.equals("第一节大小") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第2节")) {
-                        if (jCbean.payTypeName.equals("第二节大小") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第3节")) {
-                        if (jCbean.payTypeName.equals("第三节大小") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("第4节")) {
-                        if (jCbean.payTypeName.equals("第四节大小") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    } else if (score.getCurrSchedule().equals("加时赛")) {
-                        if (jCbean.payTypeName.equals("加时赛大小") && currData.get(i).id == jCbean.matchID) {
-                            isAdd = true;
-                        }
-                    }
-
-                    if (isAdd) {
+                    if (jCbean.payTypeID == 3 && currScoreBean.id == jCbean.matchID) {
                         if (oneRowData.size() == 3 && twoRowData.size() == 3) {
                             threeRowData.add(getBeanItems("大" + jCbean.realRate2, jCbean.realRate1, 1, jCbean.id));
 
@@ -1017,39 +932,19 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                     fourRowData.add(new ScrollBallBasketBallBean.ScrollBaksetBallItems.ScrollBeanItem());
                 }
 
-                int homeId = -1;
-                int awayId = -1;
-
-                if (score.getCurrSchedule().equals("第1节")) {
-                    homeId = 43;
-                    awayId = 50;
-                } else if (score.getCurrSchedule().equals("第2节")) {
-                    homeId = 44;
-                    awayId = 51;
-                } else if (score.getCurrSchedule().equals("第3节")) {
-                    homeId = 45;
-                    awayId = 52;
-                } else if (score.getCurrSchedule().equals("第4节")) {
-                    homeId = 46;
-                    awayId = 53;
-                } else if (score.getCurrSchedule().equals("加时赛")) {
-                    homeId = 47;
-                    awayId = 54;
-                }
-
                 //球队得分 大/小 的数据
                 for (int j = 0; j < items.size(); j++) {
                     JCbean jCbean = items.get(j);
 
-                    if (jCbean.payTypeID == homeId) {//主
-                        if (currData.get(i).id == jCbean.matchID) {
+                    if (jCbean.payTypeID == 48) {//主
+                        if (currScoreBean.id == jCbean.matchID) {
                             oneRowData.add(getBeanItems("<font color=\"#E91212\">大</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate1, 1, jCbean.id));
 
                             twoRowData.add(getBeanItems("<font color=\"#8BEF81\">小</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate3, 2, jCbean.id));
                         }
                     }
-                    if (jCbean.payTypeID == awayId) {//客队
-                        if (currData.get(i).id == jCbean.matchID) {
+                    if (jCbean.payTypeID == 49) {//客队
+                        if (currScoreBean.id == jCbean.matchID) {
                             threeRowData.add(getBeanItems("<font color=\"#E91212\">大</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate1, 1, jCbean.id));
 
                             fourRowData.add(getBeanItems("<font color=\"#8BEF81\">小</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate3, 2, jCbean.id));

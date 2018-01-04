@@ -705,9 +705,10 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
         set.play(animator);
         set.setDuration(200);
         set.addListener(new AnimatorListenerAdapter() {
-
             @Override
             public void onAnimationStart(Animator animation) {
+                currPosition = -1;
+                
                 ScrollBallCommitMenuView.this.setVisibility(View.VISIBLE);
             }
         });

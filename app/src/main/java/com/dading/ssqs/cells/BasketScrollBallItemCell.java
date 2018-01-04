@@ -31,6 +31,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
 
     private TextView timeTextView;
     private TextView titleTextView;
+    private TextView allTextView;
 
     private TextView title1;
     private TextView title2;
@@ -85,6 +86,15 @@ public class BasketScrollBallItemCell extends LinearLayout {
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
         titleTextView.setGravity(Gravity.CENTER);
         topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+
+        allTextView = new TextView(context);
+        allTextView.setGravity(Gravity.CENTER_VERTICAL);
+        allTextView.setTextSize(10);
+        allTextView.setTextColor(0xFFBDBDBD);
+        allTextView.setText(LocaleController.getString(R.string.all_play));
+        allTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        allTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_all_play, 0, 0, 0);
+        topLayout.addView(allTextView, LayoutHelper.createRelative(75, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
 
         //一级标题 如   场次/胜平负/让球/大小/单双
         LinearLayout titleLayout = new LinearLayout(context);
@@ -224,6 +234,17 @@ public class BasketScrollBallItemCell extends LinearLayout {
         lineView = new View(context);
         lineView.setBackgroundColor(0xFFE4E4E4);
         addView(lineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
+    }
+
+    public void setAllClickListener(final OnClickListener listener) {
+        allTextView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onClick(view);
+                }
+            }
+        });
     }
 
     public void setInfoClickListener(final OnClickListener listener) {

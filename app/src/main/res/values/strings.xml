@@ -906,4 +906,5 @@
     <string name="new_ranking_people">最新中奖榜</string>
     <string name="winning_money">中奖金额(元)</string>
     <string name="ranking_match_type">比赛</string>
+    <string name="all_play">所有玩法</string>
 </resources>

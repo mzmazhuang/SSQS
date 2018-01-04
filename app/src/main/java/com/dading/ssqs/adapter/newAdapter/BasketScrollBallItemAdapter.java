@@ -90,6 +90,14 @@ public class BasketScrollBallItemAdapter extends RecyclerView.Adapter<BasketScro
                     }
                 }
             });
+            this.cell.setAllClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        listener.onInfoClick(bean.getId(), title);
+                    }
+                }
+            });
         }
     }
 

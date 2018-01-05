@@ -579,7 +579,7 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
                         if (result.isOk()) {
                             final List<JCbean> items = (List<JCbean>) result.getData();
 
-                            if (items != null) {
+                            if (items != null && items.size() >= 1) {
 
                                 Thread thread = new Thread(new Runnable() {
                                     @Override
@@ -599,6 +599,10 @@ public class ToDayFootBallPassFragment extends Fragment implements OnRefreshList
                                     }
                                 });
                                 SSQSApplication.cachedThreadPool.execute(thread);
+                            } else {
+                                loadingDialog.dismiss();
+
+                                ToastUtils.midToast(mContext, "足球-综合过关 暂无数据!!", 0);
                             }
                         } else {
                             ToastUtils.midToast(mContext, result.getMessage(), 0);

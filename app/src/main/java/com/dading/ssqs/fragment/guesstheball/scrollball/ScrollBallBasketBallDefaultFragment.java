@@ -602,7 +602,7 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                         if (result.isOk()) {
                             final List<JCbean> items = (List<JCbean>) result.getData();
 
-                            if (items != null) {
+                            if (items != null && items.size() >= 1) {
 
                                 Thread thread = new Thread(new Runnable() {
                                     @Override
@@ -622,6 +622,10 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                                     }
                                 });
                                 SSQSApplication.cachedThreadPool.execute(thread);
+                            } else {
+                                loadingDialog.dismiss();
+
+                                ToastUtils.midToast(mContext, "篮球 暂无数据!!", 0);
                             }
                         } else {
                             ToastUtils.midToast(mContext, result.getMessage(), 0);

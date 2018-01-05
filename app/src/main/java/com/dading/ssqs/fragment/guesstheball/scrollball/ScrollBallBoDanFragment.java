@@ -589,7 +589,7 @@ public class ScrollBallBoDanFragment extends Fragment implements OnRefreshListen
                         if (result.isOk()) {
                             final List<JCScorebean> items = (List<JCScorebean>) result.getData();
 
-                            if (items != null) {
+                            if (items != null && items.size() >= 1) {
 
                                 Thread thread = new Thread(new Runnable() {
                                     @Override
@@ -609,6 +609,10 @@ public class ScrollBallBoDanFragment extends Fragment implements OnRefreshListen
                                     }
                                 });
                                 SSQSApplication.cachedThreadPool.execute(thread);
+                            } else {
+                                loadingDialog.dismiss();
+
+                                ToastUtils.midToast(mContext, "波胆 暂无数据!!", 0);
                             }
                         } else {
                             ToastUtils.midToast(mContext, result.getMessage(), 0);

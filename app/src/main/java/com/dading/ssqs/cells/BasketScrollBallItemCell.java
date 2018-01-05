@@ -88,13 +88,13 @@ public class BasketScrollBallItemCell extends LinearLayout {
         topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         allTextView = new TextView(context);
-        allTextView.setGravity(Gravity.CENTER_VERTICAL);
+        allTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
         allTextView.setTextSize(10);
         allTextView.setTextColor(0xFFBDBDBD);
         allTextView.setText(LocaleController.getString(R.string.all_play));
         allTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
         allTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_all_play, 0, 0, 0);
-        topLayout.addView(allTextView, LayoutHelper.createRelative(75, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
+        topLayout.addView(allTextView, LayoutHelper.createRelative(63, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
 
         //一级标题 如   场次/胜平负/让球/大小/单双
         LinearLayout titleLayout = new LinearLayout(context);

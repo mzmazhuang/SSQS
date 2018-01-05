@@ -158,6 +158,8 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     bean = (LoadingBean) result.getData();
 
                     if (bean != null && result.getStatus()) {
+                        UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
+
                         if (isRefreshGlods) {
                             UIUtils.SendReRecevice(Constent.REFRESH_MONY);
                         } else {
@@ -167,7 +169,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                             UIUtils.getSputils().putInt(Constent.IS_VIP, bean.isVip);
                             UIUtils.getSputils().putBoolean(Constent.USER_TYPE, bean.userType == 3);
 
-                            UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
                             UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
 
                             //发送广播

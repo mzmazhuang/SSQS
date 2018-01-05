@@ -359,7 +359,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
 
         View lineView3 = new View(mContext);
         lineView3.setBackgroundColor(0xFFF5F4F9);
-        cellLayout .addView(lineView3, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
+        cellLayout.addView(lineView3, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
 
         return container;
     }
@@ -457,13 +457,15 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                     break;
                 case Constent.REFRESH_MONY:
                     int banlance = UIUtils.getSputils().getInt("banlance", 0);
+                    String num;
                     if (banlance > 0) {
-                        String num = (Integer.valueOf(UIUtils.getSputils().getString(Constent.GLODS, "")) + banlance) + "";
+                        num = (Integer.valueOf(UIUtils.getSputils().getString(Constent.GLODS, "")) + banlance) + "";
 
                         UIUtils.getSputils().putString(Constent.GLODS, num);
-
-                        moneyTextView.setText(num);
+                    } else {
+                        num = UIUtils.getSputils().getString(Constent.GLODS, "");
                     }
+                    moneyTextView.setText(num);
                     break;
             }
         }

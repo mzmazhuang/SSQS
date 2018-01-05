@@ -38,7 +38,7 @@ public class BasketScrollBallItemChildCell extends LinearLayout {
     public BasketScrollBallItemChildCell(Context context) {
         super(context);
 
-        setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         tvLeftText = new TextView(context);
         tvLeftText.setTextSize(12);

@@ -32,6 +32,7 @@ import java.util.List;
 public class ScrollBallItemCell extends LinearLayout {
 
     private TextView timeTextView;
+    private LinearLayout titleTextLayout;
     private TextView titleTextView;
     private LinearLayout pointLayout;
     private ImageView pointView;
@@ -71,8 +72,7 @@ public class ScrollBallItemCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
-        LinearLayout titleTextLayout = new LinearLayout(context);
-        titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextLayout = new LinearLayout(context);
         titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
         titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
         topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
@@ -82,14 +82,15 @@ public class ScrollBallItemCell extends LinearLayout {
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
         titleTextView.setSingleLine();
-        titleTextView.setGravity(Gravity.CENTER_VERTICAL);
+        titleTextView.setGravity(Gravity.CENTER);
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
         titleTextLayout.addView(titleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
 
         pointLayout = new LinearLayout(context);
         pointLayout.setVisibility(View.GONE);
         pointLayout.setOrientation(LinearLayout.HORIZONTAL);
-        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+        pointLayout.setGravity(Gravity.CENTER_HORIZONTAL);
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(20, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
 
         protTimeView = new TextView(context);
         protTimeView.setTextSize(10);
@@ -268,10 +269,16 @@ public class ScrollBallItemCell extends LinearLayout {
         this.beanId = id;
     }
 
-    public void setData(ScrollBallFootBallBean.ScrollBeanItems bean, boolean isScroll) {
+    public void setData(ScrollBallFootBallBean.ScrollBeanItems bean, int page) {
         setTime(bean.getTime());
 
-        if (!isScroll) {
+        if (page == 3) {
+            titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        } else {
+            titleTextLayout.setPadding(AndroidUtilities.dp(45), 0, AndroidUtilities.dp(45), 0);
+        }
+
+        if (page != 1) {
             setTitle(bean.getTitle() + "　VS　" + bean.getByTitle());
 
             if (mAlphaAnim != null) {

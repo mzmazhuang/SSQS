@@ -496,13 +496,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     }
 
     private void goSP(JSONObject bean, String authToken) {
+        Gson gson = new Gson();
+
         //发送广播
         UIUtils.SendReRecevice(Constent.LOADING_ACTION);
         UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
         UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
         UIUtils.SendReRecevice(Constent.MAIN_SIGN);
 
-        UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean.toString());
+        UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, gson.toJson(bean, LoadingBean.class));
         UIUtils.getSputils().putString(Constent.TOKEN, authToken);
         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
         Logger.d(TAG, "令牌----------" + authToken + "登陆状态是" + true);

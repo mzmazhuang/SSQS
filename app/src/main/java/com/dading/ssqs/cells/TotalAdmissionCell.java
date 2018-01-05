@@ -85,10 +85,10 @@ public class TotalAdmissionCell extends LinearLayout {
         addView(lineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
     }
 
-    public void setData(ScrollBallFootBallTotalBean bean, boolean isScroll) {
+    public void setData(ScrollBallFootBallTotalBean bean, int pageType) {
         this.bean = bean;
 
-        admissionAdapter.setScroll(isScroll);
+        admissionAdapter.setPageType(pageType);
         admissionAdapter.setList(bean.getItems());
     }
 

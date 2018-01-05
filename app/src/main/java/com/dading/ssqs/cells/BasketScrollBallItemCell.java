@@ -7,6 +7,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,7 +18,6 @@ import com.dading.ssqs.adapter.newAdapter.BasketScrollBallItemAdapter;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.ScrollBallBasketBallBean;
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallBasketBallDefaultFragment;
-import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallDefaultFragment;
 import com.dading.ssqs.utils.AndroidUtilities;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
 
     private TextView timeTextView;
     private TextView titleTextView;
-    private TextView allTextView;
+    private ImageView allImageView;
 
     private TextView title1;
     private TextView title2;
@@ -87,14 +87,9 @@ public class BasketScrollBallItemCell extends LinearLayout {
         titleTextView.setGravity(Gravity.CENTER);
         topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
-        allTextView = new TextView(context);
-        allTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-        allTextView.setTextSize(10);
-        allTextView.setTextColor(0xFFBDBDBD);
-        allTextView.setText(LocaleController.getString(R.string.all_play));
-        allTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
-        allTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_all_play, 0, 0, 0);
-        topLayout.addView(allTextView, LayoutHelper.createRelative(63, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
+        allImageView = new ImageView(context);
+        allImageView.setImageResource(R.mipmap.ic_all_play);
+        topLayout.addView(allImageView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
 
         //一级标题 如   场次/胜平负/让球/大小/单双
         LinearLayout titleLayout = new LinearLayout(context);
@@ -172,14 +167,14 @@ public class BasketScrollBallItemCell extends LinearLayout {
         //中间的内容   全场/半场  数字
         LinearLayout contentLayout = new LinearLayout(context);
         contentLayout.setOrientation(LinearLayout.HORIZONTAL);
-        addView(contentLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 120));
+        addView(contentLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 140));
 
         LinearLayout leftLayout = new LinearLayout(context);
         leftLayout.setOrientation(LinearLayout.VERTICAL);
         contentLayout.addView(leftLayout, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
 
         RelativeLayout leftTopLayout = new RelativeLayout(context);
-        leftLayout.addView(leftTopLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 61));
+        leftLayout.addView(leftTopLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 71));
 
         infoLayout = new LinearLayout(context);
         infoLayout.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), 0);
@@ -210,7 +205,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
         leftTopLayout.addView(view8, LayoutHelper.createRelative(1, LayoutHelper.MATCH_PARENT, RelativeLayout.ALIGN_PARENT_RIGHT));
 
         RelativeLayout leftBottomLayout = new RelativeLayout(context);
-        leftLayout.addView(leftBottomLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 59));
+        leftLayout.addView(leftBottomLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 69));
 
         View view9 = new View(context);
         view9.setBackgroundColor(0xFFE7E7E7);
@@ -226,7 +221,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
             cellLayout.addView(layout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
             for (int j = 0; j < 4; j++) {
                 BasketScrollBallItemChildCell cell = new BasketScrollBallItemChildCell(context);
-                layout.addView(cell, LayoutHelper.createLinear(0, 30, 1f));
+                layout.addView(cell, LayoutHelper.createLinear(0, 35, 1f));
                 cells.add(cell);
             }
         }
@@ -237,7 +232,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
     }
 
     public void setAllClickListener(final OnClickListener listener) {
-        allTextView.setOnClickListener(new OnClickListener() {
+        allImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (listener != null) {

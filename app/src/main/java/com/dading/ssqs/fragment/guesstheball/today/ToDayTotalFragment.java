@@ -256,6 +256,7 @@ public class ToDayTotalFragment extends Fragment implements OnRefreshListener, N
         scrollview.addView(mRecyclerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         adapter = new ScrollBallTotalAdapter(mContext);
+        adapter.setPageType(2);
         adapter.setReadyListener(readyListener);
         adapter.setListener(itemClickListener);
         mRecyclerView.setAdapter(adapter);

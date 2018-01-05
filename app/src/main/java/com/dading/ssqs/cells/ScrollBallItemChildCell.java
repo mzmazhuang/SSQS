@@ -39,8 +39,7 @@ public class ScrollBallItemChildCell extends LinearLayout {
     public ScrollBallItemChildCell(Context context) {
         super(context);
 
-        setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
-
+        setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         tvLeftText = new TextView(context);
         tvLeftText.setTextSize(12);

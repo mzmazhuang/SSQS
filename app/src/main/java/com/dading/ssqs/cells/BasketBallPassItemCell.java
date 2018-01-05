@@ -75,7 +75,7 @@ public class BasketBallPassItemCell extends LinearLayout {
 
         LinearLayout titlesLayout = new LinearLayout(mContext);
         titlesLayout.setOrientation(LinearLayout.HORIZONTAL);
-        tableLayout.addView(titlesLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
+        tableLayout.addView(titlesLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 42));
 
         for (int i = 0; i < titles.length; i++) {
             TextView titleView = new TextView(mContext);
@@ -109,7 +109,7 @@ public class BasketBallPassItemCell extends LinearLayout {
 
             for (int j = 0; j < 5; j++) {
                 BasketScrollBallItemChildCell cell = new BasketScrollBallItemChildCell(mContext);
-                layout.addView(cell, LayoutHelper.createLinear(0, 30, 1f));
+                layout.addView(cell, LayoutHelper.createLinear(0, 35, 1f));
                 cells.add(cell);
             }
         }

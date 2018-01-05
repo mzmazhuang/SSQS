@@ -257,7 +257,7 @@ public class ScrollBallBoDanFragment extends Fragment implements OnRefreshListen
         scrollview.addView(mRecyclerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         adapter = new ScrollBallBoDanAdapter(mContext);
-        adapter.setScroll(true);
+        adapter.setPageType(1);
         adapter.setReadyListener(readyListener);
         adapter.setListener(itemClickListener);
         mRecyclerView.setAdapter(adapter);

@@ -33,6 +33,8 @@ public class TotalChildCell extends LinearLayout {
     private TextView titleTextView;
     private LinearLayout tableLayout;
 
+    private LinearLayout titleTextLayout;
+
     private Context mContext;
 
     private String[] oneArray = new String[]{"球队", "0-1", "2-3", "4-6", "7或以上"};
@@ -62,8 +64,7 @@ public class TotalChildCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
-        LinearLayout titleTextLayout = new LinearLayout(context);
-        titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextLayout = new LinearLayout(context);
         titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
         titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
         topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
@@ -75,12 +76,12 @@ public class TotalChildCell extends LinearLayout {
         titleTextView.setSingleLine();
         titleTextView.setEllipsize(TextUtils.TruncateAt.END);
         titleTextView.setGravity(Gravity.CENTER_VERTICAL);
-        topLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
+        titleTextLayout.addView(titleTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
 
         pointLayout = new LinearLayout(context);
         pointLayout.setVisibility(View.GONE);
         pointLayout.setOrientation(LinearLayout.HORIZONTAL);
-        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(20, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
 
         protTimeView = new TextView(context);
         protTimeView.setTextSize(10);
@@ -99,7 +100,7 @@ public class TotalChildCell extends LinearLayout {
 
         LinearLayout titleLayout = new LinearLayout(mContext);
         titleLayout.setOrientation(LinearLayout.HORIZONTAL);
-        tableLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        tableLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 42));
 
         for (int i = 0; i < oneArray.length; i++) {
             RelativeLayout layout = new RelativeLayout(mContext);
@@ -143,8 +144,14 @@ public class TotalChildCell extends LinearLayout {
         timeTextView.setText(time);
     }
 
-    public void setTitle(ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems items, boolean isScroll) {
-        if (!isScroll) {
+    public void setTitle(ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems items, int page) {
+        if (page == 3) {
+            titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        } else {
+            titleTextLayout.setPadding(AndroidUtilities.dp(45), 0, AndroidUtilities.dp(45), 0);
+        }
+
+        if (page != 1) {
             titleTextView.setText(items.getTitle() + "　VS　" + items.getByTitle());
 
             if (mAlphaAnim != null) {

@@ -33,6 +33,7 @@ public class CommonBoDanCell extends LinearLayout {
     private TextView titleTextView;
 
     private Context mContext;
+    private LinearLayout titleTextLayout;
 
     private View view;
 
@@ -64,8 +65,7 @@ public class CommonBoDanCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
-        LinearLayout titleTextLayout = new LinearLayout(context);
-        titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextLayout = new LinearLayout(context);
         titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
         titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
         topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
@@ -82,7 +82,7 @@ public class CommonBoDanCell extends LinearLayout {
         pointLayout = new LinearLayout(context);
         pointLayout.setVisibility(View.GONE);
         pointLayout.setOrientation(LinearLayout.HORIZONTAL);
-        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(20, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
 
         protTimeView = new TextView(context);
         protTimeView.setTextSize(10);
@@ -101,7 +101,7 @@ public class CommonBoDanCell extends LinearLayout {
 
         LinearLayout oneRowLayout = new LinearLayout(mContext);
         oneRowLayout.setOrientation(LinearLayout.HORIZONTAL);
-        tableLayout.addView(oneRowLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        tableLayout.addView(oneRowLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 42));
 
         for (int i = 0; i < oneData.length; i++) {
             RelativeLayout layout = new RelativeLayout(mContext);
@@ -183,7 +183,7 @@ public class CommonBoDanCell extends LinearLayout {
 
         LinearLayout fourRowLayout = new LinearLayout(mContext);
         fourRowLayout.setOrientation(LinearLayout.HORIZONTAL);
-        tableLayout.addView(fourRowLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        tableLayout.addView(fourRowLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 42));
 
         for (int i = 0; i < fourData.length; i++) {
             RelativeLayout layout = new RelativeLayout(mContext);
@@ -245,8 +245,14 @@ public class CommonBoDanCell extends LinearLayout {
         timeTextView.setText(time);
     }
 
-    public void setTitle(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItems items, boolean isScroll) {
-        if (!isScroll) {
+    public void setTitle(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItems items, int pageType) {
+        if (pageType == 3) {
+            titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        } else {
+            titleTextLayout.setPadding(AndroidUtilities.dp(45), 0, AndroidUtilities.dp(45), 0);
+        }
+
+        if (pageType != 1) {
             titleTextView.setText(items.getTitle() + "　VS　" + items.getByTitle());
 
             if (mAlphaAnim != null) {

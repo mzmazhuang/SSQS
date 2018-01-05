@@ -30,7 +30,7 @@ public class GameResultItemCell extends LinearLayout {
 
         LinearLayout container = new LinearLayout(context);
         container.setOrientation(LinearLayout.HORIZONTAL);
-        addView(container, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 92));
+        addView(container, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 107));
 
         LinearLayout leftLayout = new LinearLayout(context);
         leftLayout.setOrientation(LinearLayout.VERTICAL);
@@ -42,7 +42,7 @@ public class GameResultItemCell extends LinearLayout {
         tip1View.setTextSize(12);
         tip1View.setText("比赛队伍");
         tip1View.setGravity(Gravity.CENTER);
-        leftLayout.addView(tip1View, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        leftLayout.addView(tip1View, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View lineView = new View(context);
         lineView.setBackgroundColor(0xFFE7E7E7);
@@ -54,7 +54,7 @@ public class GameResultItemCell extends LinearLayout {
         tip2View.setTextSize(12);
         tip2View.setText("半　　场");
         tip2View.setGravity(Gravity.CENTER);
-        leftLayout.addView(tip2View, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        leftLayout.addView(tip2View, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View line1View = new View(context);
         line1View.setBackgroundColor(0xFFE7E7E7);
@@ -66,7 +66,7 @@ public class GameResultItemCell extends LinearLayout {
         tip3View.setTextSize(12);
         tip3View.setText("全　　场");
         tip3View.setGravity(Gravity.CENTER);
-        leftLayout.addView(tip3View, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        leftLayout.addView(tip3View, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View leftView = new View(context);
         leftView.setBackgroundColor(0xFFE7E7E7);
@@ -79,7 +79,7 @@ public class GameResultItemCell extends LinearLayout {
         ranksName1 = new TextView(context);
         ranksName1.setTextSize(12);
         ranksName1.setGravity(Gravity.CENTER);
-        centerLayout.addView(ranksName1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        centerLayout.addView(ranksName1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View line2View = new View(context);
         line2View.setBackgroundColor(0xFFE7E7E7);
@@ -89,7 +89,7 @@ public class GameResultItemCell extends LinearLayout {
         integralView1.setBackgroundColor(0xFFFFFADC);
         integralView1.setTextSize(12);
         integralView1.setGravity(Gravity.CENTER);
-        centerLayout.addView(integralView1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        centerLayout.addView(integralView1, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View line3View = new View(context);
         line3View.setBackgroundColor(0xFFE7E7E7);
@@ -98,7 +98,7 @@ public class GameResultItemCell extends LinearLayout {
         integralView2 = new TextView(context);
         integralView2.setTextSize(12);
         integralView2.setGravity(Gravity.CENTER);
-        centerLayout.addView(integralView2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        centerLayout.addView(integralView2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View rightView = new View(context);
         rightView.setBackgroundColor(0xFFE7E7E7);
@@ -112,7 +112,7 @@ public class GameResultItemCell extends LinearLayout {
         ranksName2.setTextSize(12);
 
         ranksName2.setGravity(Gravity.CENTER);
-        rightLayout.addView(ranksName2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        rightLayout.addView(ranksName2, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View line4View = new View(context);
         line4View.setBackgroundColor(0xFFE7E7E7);
@@ -122,7 +122,7 @@ public class GameResultItemCell extends LinearLayout {
         integralView3.setBackgroundColor(0xFFFFFADC);
         integralView3.setTextSize(12);
         integralView3.setGravity(Gravity.CENTER);
-        rightLayout.addView(integralView3, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        rightLayout.addView(integralView3, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View line5View = new View(context);
         line5View.setBackgroundColor(0xFFE7E7E7);
@@ -131,7 +131,7 @@ public class GameResultItemCell extends LinearLayout {
         integralView4 = new TextView(context);
         integralView4.setTextSize(12);
         integralView4.setGravity(Gravity.CENTER);
-        rightLayout.addView(integralView4, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        rightLayout.addView(integralView4, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View view = new View(context);
         view.setBackgroundColor(0xFFE7E7E7);

@@ -25,10 +25,10 @@ public class ScrollBallTotalAdapter extends RecyclerView.Adapter<ScrollBallTotal
     private String openTitle;
     private List<ScrollBallTotalFragment.MergeBean> foucusList;
     private TotalItemCell.OnItemClickListener listener;
-    private boolean isScroll=false;
+    private int pageType = -1;
 
-    public void setScroll(boolean scroll) {
-        isScroll = scroll;
+    public void setPageType(int pageType) {
+        this.pageType = pageType;
     }
 
     public void setReadyListener(ScrollBallCell.OnReadyListener readyListener) {
@@ -105,7 +105,7 @@ public class ScrollBallTotalAdapter extends RecyclerView.Adapter<ScrollBallTotal
 
         public void setData(ScrollBallFootBallTotalBean bean) {
             this.cell.setTitle(bean.getTitle().getTitle());
-            this.cell.setData(bean,isScroll);
+            this.cell.setData(bean, pageType);
             this.cell.setTopClickListener(readyListener);
             this.cell.setFocus(foucusList);
             this.cell.setListener(listener);

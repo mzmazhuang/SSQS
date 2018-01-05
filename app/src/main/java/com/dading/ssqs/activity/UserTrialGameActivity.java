@@ -15,6 +15,7 @@ import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.TryPlayBean;
 import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
+import com.google.gson.Gson;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -121,6 +122,8 @@ public class UserTrialGameActivity extends BaseActivity {
                                 LoadingBean bean = (LoadingBean) result.getData();
 
                                 if (bean != null) {
+                                    Gson gson = new Gson();
+
                                     UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                                     UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
                                     UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
@@ -128,7 +131,7 @@ public class UserTrialGameActivity extends BaseActivity {
                                     UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
                                     UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");
                                     UIUtils.getSputils().putString(Constent.DIAMONDS, bean.diamond + "");
-                                    UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean.toString());
+                                    UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, gson.toJson(bean, LoadingBean.class));
                                     UIUtils.getSputils().putString(Constent.TOKEN, bean.authToken);
                                     finish();
                                 }

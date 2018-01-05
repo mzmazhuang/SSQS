@@ -23,10 +23,10 @@ public class ScrollBallItemAdapter extends RecyclerView.Adapter<ScrollBallItemAd
     private List<ScrollBallFootBallBean.ScrollBeanItems> list;
     private int dataId;
     private List<ScrollBallDefaultFragment.MergeBean> focusList;
-    private boolean isScroll = false;
+    private int pageType = -1;
 
-    public void setScroll(boolean scroll) {
-        isScroll = scroll;
+    public void setPageType(int pageType) {
+        this.pageType = pageType;
     }
 
     public void setFocus(List<ScrollBallDefaultFragment.MergeBean> list) {
@@ -93,7 +93,7 @@ public class ScrollBallItemAdapter extends RecyclerView.Adapter<ScrollBallItemAd
             this.cell.setListener(listener);
             this.cell.setFocus(focusList);
             this.cell.setBeanId(dataId);
-            this.cell.setData(bean,isScroll);
+            this.cell.setData(bean, pageType);
         }
     }
 

@@ -22,10 +22,10 @@ public class TotalAdmissionAdapter extends RecyclerView.Adapter<TotalAdmissionAd
     private List<ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems> list;
     private List<ScrollBallTotalFragment.MergeBean> focusList;
     private TotalItemCell.OnItemClickListener listener;
-    private boolean isScroll = false;
+    private int pageType = -1;
 
-    public void setScroll(boolean scroll) {
-        isScroll = scroll;
+    public void setPageType(int pageType) {
+        this.pageType = pageType;
     }
 
     public TotalAdmissionAdapter(Context context) {
@@ -77,7 +77,7 @@ public class TotalAdmissionAdapter extends RecyclerView.Adapter<TotalAdmissionAd
 
         public void setData(ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems bean) {
             cell.setTime(bean.getTime());
-            cell.setTitle(bean,isScroll);
+            cell.setTitle(bean, pageType);
             cell.setData(bean, focusList, listener);
         }
     }

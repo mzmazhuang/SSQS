@@ -16,7 +16,6 @@ import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.bean.SplashBeanGG;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.Logger;
 import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 import com.google.gson.Gson;
@@ -98,7 +97,6 @@ public class SplashControllar extends BaseFragnment {
                 } else {
                     if (!IS_GO_MAIN) {
                         IS_GO_MAIN = true;
-                        Logger.d(TAG, result.getMessage() + "引導頁失败信息");
                         Intent intent = new Intent(mContent, MainActivity.class);
                         mContent.startActivity(intent);
                         ((SplashAcitivty) mContent).finish();
@@ -110,7 +108,6 @@ public class SplashControllar extends BaseFragnment {
         //判断是否自动登陆
         mToken = UIUtils.getSputils().getString(Constent.TOKEN, "");
         if (!mToken.equals("")) {
-            Logger.d(TAG, "引导页有token------------------------------:" + mToken);
             SSQSApplication.apiClient(0).getUserInfo(new CcApiClient.OnCcListener() {
                 @Override
                 public void onResponse(CcApiResult result) {
@@ -160,14 +157,18 @@ public class SplashControllar extends BaseFragnment {
                 if (mData != null && mData.size() > 0) {
                     if (!IS_GO_MAIN) {
                         IS_GO_MAIN = true;
+
+                        UIUtils.removeTask(mTask);
+
                         Intent intent = new Intent(mContent, MainActivity.class);
-                        if (mData != null && mData.size() > 0)
+                        if (mData != null && mData.size() > 0) {
                             intent.putExtra(Constent.SPLASH_URL, mData.get(0).forwardUrl);
+                        }
                         mContent.startActivity(intent);
+
                         UIUtils.getSputils().putString(Constent.IS_FRISE, "1");
                         UIUtils.getSputils().putBoolean(Constent.IS_CLICK, true);
                         ((SplashAcitivty) mContent).finish();
-                        Logger.d(TAG, "我被点击了url-----------");
                     }
                 }
             }
@@ -189,9 +190,14 @@ public class SplashControllar extends BaseFragnment {
     private void goMain() {
         if (!IS_GO_MAIN) {
             IS_GO_MAIN = true;
+
+            UIUtils.removeTask(mTask);
+
             UIUtils.getSputils().putString(Constent.IS_FRISE, "1");
+
             Intent intent = new Intent(mContent, MainActivity.class);
             mContent.startActivity(intent);
+
             ((SplashAcitivty) mContent).finish();
         }
     }

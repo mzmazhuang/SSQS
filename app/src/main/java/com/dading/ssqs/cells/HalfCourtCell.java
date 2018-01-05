@@ -84,10 +84,10 @@ public class HalfCourtCell extends LinearLayout {
         addView(lineView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
     }
 
-    public void setData(ScrollBallFootBallHalfCourtBean bean, boolean isScroll) {
+    public void setData(ScrollBallFootBallHalfCourtBean bean, int pageType) {
         this.bean = bean;
 
-        adapter.setScroll(isScroll);
+        adapter.setPageType(pageType);
         adapter.setList(bean.getItems());
     }
 

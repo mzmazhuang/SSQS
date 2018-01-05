@@ -25,10 +25,10 @@ public class ScrollBallDefaultAdapter extends RecyclerView.Adapter<ScrollBallDef
     private String openTitle;
     private ScrollBallItemAdapter.OnItemClickListener itemClickListener;
     private List<ScrollBallDefaultFragment.MergeBean> foucusList;
-    private boolean isScroll=false;
+    private int pageType = -1;
 
-    public void setScroll(boolean scroll) {
-        isScroll = scroll;
+    public void setPageType(int pageType) {
+        this.pageType = pageType;
     }
 
     public ScrollBallDefaultAdapter(Context context) {
@@ -104,7 +104,7 @@ public class ScrollBallDefaultAdapter extends RecyclerView.Adapter<ScrollBallDef
 
         public void setData(ScrollBallFootBallBean bean) {
             this.cell.setFocus(foucusList);
-            this.cell.setBean(bean,isScroll);
+            this.cell.setBean(bean, pageType);
             this.cell.setTopClickListener(readyListener);
             this.cell.setItemClickListener(itemClickListener);
 

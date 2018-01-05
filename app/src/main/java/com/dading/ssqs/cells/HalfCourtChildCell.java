@@ -36,6 +36,8 @@ public class HalfCourtChildCell extends LinearLayout {
 
     private Context mContext;
 
+    private LinearLayout titleTextLayout;
+
     private String[] oneArray = new String[]{"球队", "胜/胜", "胜/平", "胜/负", "平/胜", "平/平", "平/负", "负/胜", "负/平", "负/负"};
 
     private View view;
@@ -63,8 +65,7 @@ public class HalfCourtChildCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
-        LinearLayout titleTextLayout = new LinearLayout(context);
-        titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextLayout = new LinearLayout(context);
         titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
         titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
         topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
@@ -81,7 +82,7 @@ public class HalfCourtChildCell extends LinearLayout {
         pointLayout = new LinearLayout(context);
         pointLayout.setVisibility(View.GONE);
         pointLayout.setOrientation(LinearLayout.HORIZONTAL);
-        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(20, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
 
         protTimeView = new TextView(context);
         protTimeView.setTextSize(10);
@@ -100,7 +101,7 @@ public class HalfCourtChildCell extends LinearLayout {
 
         LinearLayout titleLayout = new LinearLayout(mContext);
         titleLayout.setOrientation(LinearLayout.HORIZONTAL);
-        tableLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30));
+        tableLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 42));
 
         for (int i = 0; i < oneArray.length; i++) {
             RelativeLayout layout = new RelativeLayout(mContext);
@@ -133,7 +134,6 @@ public class HalfCourtChildCell extends LinearLayout {
         valueLayout.setOrientation(LinearLayout.HORIZONTAL);
         tableLayout.addView(valueLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
-
         for (int i = 0; i < 10; i++) {
             HalfCourtItemCell childCell = new HalfCourtItemCell(mContext);
 
@@ -161,8 +161,14 @@ public class HalfCourtChildCell extends LinearLayout {
         timeTextView.setText(time);
     }
 
-    public void setTitle(ScrollBallFootBallHalfCourtBean.ScrollBallFootBallHalfCourtItems items, boolean isScroll) {
-        if (!isScroll) {
+    public void setTitle(ScrollBallFootBallHalfCourtBean.ScrollBallFootBallHalfCourtItems items, int page) {
+        if (page == 3) {
+            titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        } else {
+            titleTextLayout.setPadding(AndroidUtilities.dp(45), 0, AndroidUtilities.dp(45), 0);
+        }
+
+        if (page != 1) {
             titleTextView.setText(items.getTitle() + "　VS　" + items.getByTitle());
 
             if (mAlphaAnim != null) {

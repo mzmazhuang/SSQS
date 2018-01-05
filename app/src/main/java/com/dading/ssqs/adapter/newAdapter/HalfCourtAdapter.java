@@ -22,10 +22,10 @@ public class HalfCourtAdapter extends RecyclerView.Adapter<HalfCourtAdapter.Item
     private List<ScrollBallFootBallHalfCourtBean.ScrollBallFootBallHalfCourtItems> list;
     private List<ScrollBallHalfCourtFragment.MergeBean> focusList;
     private HalfCourtItemCell.OnItemClickListener listener;
-    private boolean isScroll = false;
+    private int pageType=-1;
 
-    public void setScroll(boolean scroll) {
-        isScroll = scroll;
+    public void setPageType(int pageType) {
+        this.pageType = pageType;
     }
 
     public void setFocus(List<ScrollBallHalfCourtFragment.MergeBean> list) {
@@ -77,7 +77,7 @@ public class HalfCourtAdapter extends RecyclerView.Adapter<HalfCourtAdapter.Item
 
         public void setData(ScrollBallFootBallHalfCourtBean.ScrollBallFootBallHalfCourtItems bean) {
             cell.setTime(bean.getTime());
-            cell.setTitle(bean,isScroll);
+            cell.setTitle(bean,pageType);
             cell.setData(bean, focusList, listener);
         }
     }

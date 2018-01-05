@@ -260,7 +260,7 @@ public class ScrollBallDefaultFragment extends Fragment implements OnRefreshList
         scrollview.addView(mRecyclerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         adapter = new ScrollBallDefaultAdapter(mContext);
-        adapter.setScroll(true);
+        adapter.setPageType(1);
         adapter.setReadyListener(readyListener);
         adapter.setItemClickListener(itemClickListener);
         mRecyclerView.setAdapter(adapter);

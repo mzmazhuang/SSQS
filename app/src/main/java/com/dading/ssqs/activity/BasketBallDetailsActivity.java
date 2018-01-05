@@ -1296,7 +1296,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
             LinearLayout homeTeamLayout = new LinearLayout(context);
             homeTeamLayout.setOrientation(LinearLayout.HORIZONTAL);
-            homeTeamLayout.setBackgroundColor(0x7FA25E4A);
+            homeTeamLayout.setBackgroundColor(0x7FBE957C);
             homeTeamLayout.setGravity(Gravity.CENTER_VERTICAL);
             contentLayout.addView(homeTeamLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 22, 7, 0, 7, 0));
 
@@ -1362,7 +1362,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
             LinearLayout visitingTeamLayout = new LinearLayout(context);
             visitingTeamLayout.setOrientation(LinearLayout.HORIZONTAL);
-            visitingTeamLayout.setBackgroundColor(0x7FA25E4A);
+            visitingTeamLayout.setBackgroundColor(0x7FBE957C);
             visitingTeamLayout.setGravity(Gravity.CENTER_VERTICAL);
             contentLayout.addView(visitingTeamLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 22, 7, 0, 7, 0));
 

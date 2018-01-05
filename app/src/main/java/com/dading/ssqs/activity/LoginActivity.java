@@ -152,7 +152,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                             UIUtils.getSputils().putBoolean(Constent.USER_TYPE, bean.userType == 3);
                                             UIUtils.getSputils().putInt(Constent.IS_VIP, bean.isVip);
 
-                                            goSP(new JSONObject(gson.toJson(bean, LoadingBean.class)), bean.authToken);
+                                            goSP(gson.toJson(bean, LoadingBean.class), bean.authToken);
                                         } catch (Exception ex) {
                                             Logger.e(TAG, "json failure");
                                         }
@@ -451,7 +451,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                     UIUtils.getSputils().putInt(Constent.IS_VIP, bean.isVip);
 
                                     Gson gson = new Gson();
-                                    goSP(new JSONObject(gson.toJson(bean, LoadingBean.class)), bean.authToken);
+                                    
+                                    goSP(gson.toJson(bean, LoadingBean.class), bean.authToken);
                                 } catch (Exception ex) {
                                     Logger.e(TAG, "up json failure");
                                 }
@@ -495,16 +496,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
-    private void goSP(JSONObject bean, String authToken) {
-        Gson gson = new Gson();
-
+    private void goSP(String bean, String authToken) {
         //发送广播
         UIUtils.SendReRecevice(Constent.LOADING_ACTION);
         UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
         UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
         UIUtils.SendReRecevice(Constent.MAIN_SIGN);
 
-        UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, gson.toJson(bean, LoadingBean.class));
+        UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean);
         UIUtils.getSputils().putString(Constent.TOKEN, authToken);
         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
         Logger.d(TAG, "令牌----------" + authToken + "登陆状态是" + true);

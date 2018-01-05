@@ -140,14 +140,14 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     protected void initData() {
-        mUrl = "https://www.ddzlink.com/image-service/rest/v1.0/user/image";
+        mUrl = "http://13.124.189.54:8092/image-service/rest/v1.0/user/image";
         mToken = UIUtils.getSputils().getString(Constent.TOKEN, null);
         Intent intent = getIntent();
         String info = intent.getStringExtra(Constent.MY_INFO);
-        Logger.d(TAG, "修改头像传递的数据是------------------------------:" + info);
         mBean = JSON.parseObject(info, LoadingBean.class);
-        if (mBean != null)
+        if (mBean != null) {
             setInfo();
+        }
     }
 
     private void setInfo() {
@@ -260,7 +260,6 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             case R.id.popu_carema_gallery_ly:
                 mPopup.dismiss();
                 break;
-
             default:
                 break;
         }
@@ -276,19 +275,6 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.change_photo_save:
-                /**
-                 * /v1.0/user
-                 b)	请求方式:
-                 POST
-                 c)	请求参数说明：
-                 username: 昵称
-                 email: 邮箱
-                 sex:性别(1.男，2.女，3.你猜)
-                 signature：签名
-                 auth_token：登陆后加入请求头
-                 d)	返回格式：
-                 {"status":true,"code":0,"msg":"","data":null}
-                 */
                 UserElement element = new UserElement();
                 element.setSignature(mSignature);
                 element.setSex(String.valueOf(mSex));
@@ -317,7 +303,6 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.change_photo_nickname:
                 if (mBean.isEdit == 1) {
-                    //ToastUtils.midToast(ChangePhotoActivity.this, "您已更改过昵称,不可再次更改!", 0);
                     return;
                 }
                 Intent intent = new Intent(this, ChangePhotoNicknameActivity.class);
@@ -531,7 +516,6 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void run() {
                 mS = FileImageUpload.uploadFile(picture, mUrl, mToken);
-                Logger.d(TAG, "上传头像返回数据是------------------------------:" + mS);
                 UIUtils.getMainThreadHandler().post(new Runnable() {
                     @Override
                     public void run() {
@@ -540,8 +524,9 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
                             ImgResultBean bean = JSON.parseObject(mS, ImgResultBean.class);
                             data = bean.getData();
                         } else {
-                            if (mBean != null)
+                            if (mBean != null) {
                                 data = mBean.avatar;
+                            }
                             ToastUtils.midToast(ChangePhotoActivity.this, "更新头像失败,请检查图片!", 0);
                         }
                         goImg(data);
@@ -553,8 +538,9 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void goImg(final String data) {
-        if (!TextUtils.isEmpty(data))
+        if (!TextUtils.isEmpty(data)) {
             SSQSApplication.glide.load(data).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(ChangePhotoActivity.this)).into(mChangePhotoImg);
+        }
     }
 }
 

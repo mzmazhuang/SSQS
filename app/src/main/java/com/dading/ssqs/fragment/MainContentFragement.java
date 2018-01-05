@@ -18,7 +18,6 @@ import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.controllar.GuessBallControllarAll;
-import com.dading.ssqs.controllar.MyControllar;
 import com.dading.ssqs.controllar.ReferrCntrollar;
 import com.dading.ssqs.controllar.ScoreControllar;
 import com.dading.ssqs.utils.AndroidUtilities;
@@ -65,7 +64,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     public ReferrCntrollar mReferrCntrollar;
     public GuessTheBallFragment guessTheBallFragment;
     public ScoreControllar mScoreControllar;
-    public MyControllar mMyControllar;
+    public MyFragment myFragment;
     private GuessBallControllarAll mGuessBallControllarAll;
     private ArrayList<RadioButton> mList;
 
@@ -123,7 +122,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         //比分
         mScoreControllar = new ScoreControllar();
         //我的
-        mMyControllar = new MyControllar();
+        myFragment = new MyFragment();
         //首页
         mGuessBallControllarAll = new GuessBallControllarAll();
 
@@ -132,7 +131,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         mBaseDataControllar.add(mReferrCntrollar);
         mBaseDataControllar.add(guessTheBallFragment);
         mBaseDataControllar.add(mScoreControllar);
-        mBaseDataControllar.add(mMyControllar);
+        mBaseDataControllar.add(myFragment);
 
         Logger.d(TAG, mBaseDataControllar.size() + "");
 
@@ -151,15 +150,17 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     }
 
 
-    private void isUserFul() {
-        if (bean == null) {
-            SSQSApplication.apiClient(0).getUserInfo(new CcApiClient.OnCcListener() {
-                @Override
-                public void onResponse(CcApiResult result) {
-                    if (result.isOk()) {
-                        bean = (LoadingBean) result.getData();
+    private void isUserFul(final boolean isRefreshGlods) {
+        SSQSApplication.apiClient(0).getUserInfo(new CcApiClient.OnCcListener() {
+            @Override
+            public void onResponse(CcApiResult result) {
+                if (result.isOk()) {
+                    bean = (LoadingBean) result.getData();
 
-                        if (bean != null && result.getStatus()) {
+                    if (bean != null && result.getStatus()) {
+                        if (isRefreshGlods) {
+                            UIUtils.SendReRecevice(Constent.REFRESH_MONY);
+                        } else {
                             UIUtils.getSputils().putString(Constent.TOKEN, bean.authToken);
 
                             UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
@@ -172,16 +173,15 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                             //发送广播
                             UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                         }
-                    } else {
-                        if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContent)) {
-                            ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
-                        }
+                    }
+                } else {
+                    if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContent)) {
+                        ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }
-            });
-        }
+            }
+        });
     }
-
 
     @Override
     protected void setUnDe() {
@@ -233,7 +233,11 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
             case R.id.main_my:
                 mMCurrButtonId = 4;
                 setChecked(4);
-                isUserFul();
+                if (bean != null) {
+                    isUserFul(true);
+                } else {
+                    isUserFul(false);
+                }
                 break;
             default:
                 break;

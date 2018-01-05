@@ -4,9 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -199,4 +209,63 @@ public class AndroidUtilities {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
+    public static Drawable createListSelectorDrawable(Context context) {
+        if (Build.VERSION.SDK_INT >= 21) {
+            int[] attrs = new int[]{android.R.attr.selectableItemBackground};
+            TypedArray ta = context.obtainStyledAttributes(attrs);
+            Drawable drawableFromTheme = ta.getDrawable(0);
+            ta.recycle();
+            return drawableFromTheme;
+        } else {
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, new ColorDrawable(0x0f000000));
+            stateListDrawable.addState(new int[]{android.R.attr.state_focused}, new ColorDrawable(0x0f000000));
+            stateListDrawable.addState(new int[]{android.R.attr.state_selected}, new ColorDrawable(0x0f000000));
+            stateListDrawable.addState(new int[]{}, new ColorDrawable(0x00000000));
+            return stateListDrawable;
+        }
+    }
+
+    private static final Paint maskPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+    public static Drawable createBarSelectorDrawable() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            Drawable maskDrawable = null;
+            maskPaint.setColor(0xffffffff);
+            maskDrawable = new Drawable() {
+                @Override
+                public void draw(Canvas canvas) {
+                    android.graphics.Rect bounds = getBounds();
+                    canvas.drawCircle(bounds.centerX(), bounds.centerY(), AndroidUtilities.dp(18), maskPaint);
+                }
+
+                @Override
+                public void setAlpha(int alpha) {
+
+                }
+
+                @Override
+                public void setColorFilter(ColorFilter colorFilter) {
+
+                }
+
+                @Override
+                public int getOpacity() {
+                    return PixelFormat.UNKNOWN;
+                }
+            };
+            ColorStateList colorStateList = new ColorStateList(
+                    new int[][]{new int[]{}},
+                    new int[]{0xff000000}
+            );
+            return new RippleDrawable(colorStateList, null, maskDrawable);
+        } else {
+            StateListDrawable stateListDrawable = new StateListDrawable();
+            stateListDrawable.addState(new int[]{android.R.attr.state_pressed}, new ColorDrawable(0x0f000000));
+            stateListDrawable.addState(new int[]{android.R.attr.state_focused}, new ColorDrawable(0x0f000000));
+            stateListDrawable.addState(new int[]{android.R.attr.state_selected}, new ColorDrawable(0x0f000000));
+            stateListDrawable.addState(new int[]{}, new ColorDrawable(0x00000000));
+            return stateListDrawable;
+        }
+    }
 }

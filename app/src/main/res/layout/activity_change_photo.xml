@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/gray_d"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_d"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
-        android:gravity="center_vertical"
         android:background="@color/home_top_blue"
-        >
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/change_photo_return"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:padding="@dimen/home_top_iv_padding"
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
-            android:src="@mipmap/er_back_arrow"/>
+            android:padding="@dimen/home_top_iv_padding"
+            android:src="@mipmap/er_back_arrow" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +28,7 @@
             android:gravity="center"
             android:text="@string/edit_mode"
             android:textColor="@color/white"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/change_photo_save"
@@ -41,8 +40,7 @@
             android:background="@drawable/rect_stro_w"
             android:gravity="center"
             android:text="@string/save"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -63,16 +61,15 @@
             android:gravity="center"
             android:text="@string/head_img"
             android:textColor="@color/gray2"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/change_photo_img"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:background="@color/transparent"
             android:layout_toEndOf="@id/change_photo_photo_text"
-            />
+            android:background="@color/transparent" />
 
         <TextView
 
@@ -85,7 +82,7 @@
             android:gravity="center"
             android:text="@string/changephoto_title"
             android:textColor="@color/gray6"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
     </RelativeLayout>
 
@@ -105,7 +102,7 @@
             android:gravity="center"
             android:text="@string/nickname"
             android:textColor="@color/gray2"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/change_photo_nickname"
@@ -114,7 +111,7 @@
             android:layout_alignParentEnd="true"
             android:gravity="center"
             android:textColor="@color/gray6"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -134,18 +131,18 @@
             android:gravity="center"
             android:text="@string/sign_name"
             android:textColor="@color/gray2"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/change_photo_sign_text"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_toEndOf="@+id/singe"
             android:layout_alignParentEnd="true"
-            android:singleLine="true"
+            android:layout_toEndOf="@+id/singe"
             android:gravity="center_vertical|end"
+            android:singleLine="true"
             android:textColor="@color/gray3"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -164,7 +161,7 @@
             android:gravity="center"
             android:text="@string/sex"
             android:textColor="@color/gray2"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -178,8 +175,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginEnd="5dp"
-                android:src="@mipmap/r_gender_icon_man"
-                />
+                android:src="@mipmap/r_gender_icon_man" />
 
             <TextView
                 android:id="@+id/change_photo_man_tv"
@@ -189,14 +185,14 @@
                 android:gravity="center"
                 android:text="@string/man"
                 android:textColor="@color/gray6"
-                android:textSize="13sp"/>
+                android:textSize="13sp" />
 
             <ImageView
                 android:id="@+id/change_photo_woman_iv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginEnd="5dp"
-                android:src="@mipmap/r_gender_ic_female_n"/>
+                android:src="@mipmap/r_gender_ic_female_n" />
 
             <TextView
                 android:id="@+id/change_photo_woman_tv"
@@ -206,14 +202,14 @@
                 android:gravity="center"
                 android:text="@string/women"
                 android:textColor="@color/gray6"
-                android:textSize="13sp"/>
+                android:textSize="13sp" />
 
             <ImageView
                 android:id="@+id/change_photo_guess_iv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginEnd="5dp"
-                android:src="@mipmap/r_gender_ic_default_n"/>
+                android:src="@mipmap/r_gender_ic_default_n" />
 
             <TextView
                 android:id="@+id/change_photo_guess_tv"
@@ -222,7 +218,7 @@
                 android:gravity="center"
                 android:text="@string/you_guess"
                 android:textColor="@color/gray6"
-                android:textSize="13sp"/>
+                android:textSize="13sp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -244,7 +240,7 @@
             android:gravity="center"
             android:text="@string/leve"
             android:textColor="@color/gray2"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/change_photo_lv_go"
@@ -252,17 +248,17 @@
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/you"/>
+            android:src="@mipmap/you" />
 
         <TextView
             android:id="@+id/change_photo_lv_count"
-            android:textSize="13sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_toStartOf="@id/change_photo_lv_go"
+            android:gravity="center_vertical"
             android:textColor="@color/red"
-            />
+            android:textSize="13sp" />
+
         <TextView
             android:id="@+id/change_photo_lv_num"
             android:layout_width="33dp"
@@ -272,6 +268,6 @@
             android:background="@mipmap/vip_box"
             android:gravity="center"
             android:textColor="@color/gray6"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
     </RelativeLayout>
 </LinearLayout>

@@ -39,7 +39,6 @@ import com.dading.ssqs.components.ScrollBallCommitView;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
 import com.dading.ssqs.utils.AndroidUtilities;
-import com.dading.ssqs.utils.DateUtils;
 import com.dading.ssqs.utils.ToastUtils;
 import com.dading.ssqs.utils.UIUtils;
 

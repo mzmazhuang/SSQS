@@ -87,6 +87,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
         setEmptyView();
 
         mAdapter = new ScoreMatchAdapterSG(mContent, 1);
+        mAdapter.setShowIcon(false);
         mSgList.setAdapter(mAdapter);
 
         return mView;

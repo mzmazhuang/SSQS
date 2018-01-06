@@ -77,9 +77,7 @@ public class ScoreBean implements Serializable {
     public int aRed;
     public String hOrder;
     public String hScore;
-    public boolean redIcon;
     public long playTime;
-    public boolean isVisible;
     public boolean isVisibleTwilke;
     public String protime;
 

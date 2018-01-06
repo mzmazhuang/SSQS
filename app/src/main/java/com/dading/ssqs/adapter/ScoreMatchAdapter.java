@@ -55,13 +55,17 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
     private String mText2;
     private String mText3;
     private String mText4;
-    private String mText5;
-    private boolean mIsLoding;
     private ScoreBean mEntity;
     private final HashMap<Integer, CheckBox> mMap;
     private int mPostion;
     private AlphaAnimation mAlphaAnim;
     private HashMap<Integer, ImageView> mMapRed;
+
+    private boolean isShowIcon = true;
+
+    public void setShowIcon(boolean showIcon) {
+        isShowIcon = showIcon;
+    }
 
     public ScoreMatchAdapter(Context content, List<ScoreBean> sgData, int type) {
         this.content = content;
@@ -125,7 +129,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
             //比赛星期,图标
             holder.scoreSgWeekStarCbLy = (RelativeLayout) convertView.findViewById(R.id.score_sg_week_star_cb_ly);
             holder.scoreSgWeekStarCb = (CheckBox) convertView.findViewById(R.id.score_sg_week_star_cb);
-            holder.scoreSgTvWeek = (TextView) convertView.findViewById(R.id.score_sg_tv_week);
             //类型,开始时间
             holder.scoreSgMatchType = (TextView) convertView.findViewById(R.id.score_sg_match_type);
             holder.scoreSgMatchStart = (TextView) convertView.findViewById(R.id.score_sg_match_start);
@@ -141,12 +144,9 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
             holder.scoreSgYpBehind = (TextView) convertView.findViewById(R.id.score_sg_yp_behind);
 
             //上半场评分及目前,完场
-            holder.middle = (TextView) convertView.findViewById(R.id.middle);
-            holder.left = (TextView) convertView.findViewById(R.id.left);
-            holder.right = (TextView) convertView.findViewById(R.id.right);
             holder.scoreSgMatchResultTime = (TextView) convertView.findViewById(R.id.time_result);
             holder.scoreSgMatchRedTwinkle = (ImageView) convertView.findViewById(R.id.red_twinkle);
-            holder.scoreSgMatchRedTwinkleIvLy = (LinearLayout) convertView.findViewById(R.id.red_twinkle_zbo_cqiu);
+            holder.scoreSgMatchRedTwinkleIvLy = (RelativeLayout) convertView.findViewById(R.id.red_twinkle_zbo_cqiu);
             holder.scoreSgMatchHalfScoreMain = (TextView) convertView.findViewById(R.id.score_sg_half_score_main);
             holder.scoreSgMatchHalfScoreSecond = (TextView) convertView.findViewById(R.id.score_sg_half_score_second);
             holder.scoreSgMatchResultScoreMain = (TextView) convertView.findViewById(R.id.score_sg_result_score_main);
@@ -162,8 +162,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
             holder.scoreSgHgGroup = (TextView) convertView.findViewById(R.id.score_sg_hg_grow);
             holder.scoreSgHgBehind = (TextView) convertView.findViewById(R.id.score_sg_hg_behind);
 
-            holder.scoreSgPeople = (TextView) convertView.findViewById(R.id.score_sg_people);
-
             holder.scoreYpLy = (RelativeLayout) convertView.findViewById(R.id.score_yp_ly);
             holder.scoreHgLy = (RelativeLayout) convertView.findViewById(R.id.score_hg_ly);
 
@@ -177,7 +175,12 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         mMapRed.put(position, holder.scoreSgMatchRedTwinkle);
         mMapLy.put(position, holder.scoreSgWeekStarCbLy);
 
-        holder.scoreSgTvWeek.setText("星期一");
+        if (!isShowIcon) {
+            holder.scoreSgMatchRedTwinkleIvLy.setVisibility(View.GONE);
+        } else {
+            holder.scoreSgMatchRedTwinkleIvLy.setVisibility(View.VISIBLE);
+        }
+
         switch (position % 3) {
             case 0:
                 holder.scoreSgMatchType.setTextColor(ContextCompat.getColor(content, R.color.orange_tv));
@@ -209,8 +212,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         holder.scoreSgYpBehind.setText("1.0");
 
         //收藏比赛
-        mIsLoding = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-        //Logger.d(TAG, "登录状态-----------------------------:" + mIsLoding + "-----" + mEntity.isFouce);
         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             mMap.get(position).setClickable(true);
             mMapLy.get(position).setClickable(true);
@@ -230,15 +231,25 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         holder.scoreSgMatchResultScoreSecond.setText(mEntity.aScore);
         //隐藏红点
         holder.scoreSgMatchRedTwinkle.setVisibility(View.GONE);
-        //客队信息
-        if (!TextUtils.isEmpty(mEntity.hOrder) && !"0".equals(mEntity.hOrder)) {
-            String hOrder = "[" + mEntity.hOrder + "]";
-            holder.scoreSgMainRanking.setText(hOrder);
+
+        String hOrder;
+
+        if (!TextUtils.isEmpty(mEntity.hOrder)) {
+            hOrder = "[" + mEntity.hOrder + "]";
+        } else {
+            hOrder = "[0]";
         }
-        if (!TextUtils.isEmpty(mEntity.aOrder) && !"0".equals(mEntity.aOrder)) {
-            String text = "[" + mEntity.aOrder + "]";
-            holder.scoreSgVistorRanking.setText(text);
+        holder.scoreSgMainRanking.setText(hOrder);
+
+        String aOrder;
+
+        if (!TextUtils.isEmpty(mEntity.aOrder)) {
+            aOrder = "[" + mEntity.aOrder + "]";
+        } else {
+            aOrder = "[0]";
         }
+        holder.scoreSgVistorRanking.setText(aOrder);
+
         //判断是否有红黄牌记得隐藏
         holder.scoreSgVisitorRed.setVisibility(View.GONE);
         holder.scoreSgVisitorYellow.setVisibility(View.GONE);
@@ -250,11 +261,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         holder.scoreSgHgGroup.setText(mText4);
         holder.scoreSgHgBehind.setText("2.0");
 
-        mText5 = mEntity.joinCount + "";
-        holder.scoreSgPeople.setText(mText5);
-        holder.scoreSgMatchRedTwinkle.setVisibility(View.GONE);
-
-        Date date = new Date();
         holder.scoreSgMatchResultTime.setVisibility(View.VISIBLE);
         mEntity = mData.get(position);
         mAlphaAnim = new AlphaAnimation(0.0f, 1.0f);
@@ -277,6 +283,8 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                     if (!"半场".equals(mEntity.protime)) {
                         mEntity.isVisibleTwilke = true;
                         holder.scoreSgMatchResultTime.setText(mEntity.protime);
+                        holder.scoreSgMatchRedTwinkle.setVisibility(View.VISIBLE);
+                        mAlphaAnim.start();
                     } else {
                         mEntity.isVisibleTwilke = false;
                         holder.scoreSgMatchResultTime.setText(String.valueOf(mEntity.protime));
@@ -287,9 +295,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                     mEntity.isVisibleTwilke = false;
                     holder.scoreSgMatchHalfScoreMain.setVisibility(View.GONE);
                     holder.scoreSgMatchHalfScoreSecond.setVisibility(View.GONE);
-                    holder.middle.setVisibility(View.GONE);
-                    holder.left.setVisibility(View.GONE);
-                    holder.right.setVisibility(View.GONE);
                     mAlphaAnim.cancel();
                 }
                 break;
@@ -298,9 +303,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 holder.scoreSgMatchResultTime.setText("完场");
                 holder.scoreSgMatchHalfScoreMain.setVisibility(View.VISIBLE);
                 holder.scoreSgMatchHalfScoreSecond.setVisibility(View.VISIBLE);
-                holder.middle.setVisibility(View.VISIBLE);
-                holder.left.setVisibility(View.VISIBLE);
-                holder.right.setVisibility(View.VISIBLE);
                 mAlphaAnim.cancel();
                 break;
             case 2:
@@ -308,9 +310,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 holder.scoreSgMatchResultTime.setText("中断");
                 holder.scoreSgMatchHalfScoreMain.setVisibility(View.GONE);
                 holder.scoreSgMatchHalfScoreSecond.setVisibility(View.GONE);
-                holder.middle.setVisibility(View.GONE);
-                holder.left.setVisibility(View.GONE);
-                holder.right.setVisibility(View.GONE);
                 mAlphaAnim.cancel();
                 break;
             case 3:
@@ -321,23 +320,14 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                         holder.scoreSgMatchResultTime.setText(mEntity.protime);
                         mEntity.isVisibleTwilke = true;
                     }
+                    holder.scoreSgMatchRedTwinkle.setVisibility(View.VISIBLE);
                     mAlphaAnim.start();
                 }
                 holder.scoreSgMatchHalfScoreMain.setVisibility(View.VISIBLE);
                 holder.scoreSgMatchHalfScoreSecond.setVisibility(View.VISIBLE);
-                holder.middle.setVisibility(View.VISIBLE);
-                holder.left.setVisibility(View.VISIBLE);
-                holder.right.setVisibility(View.VISIBLE);
                 break;
             default:
                 break;
-        }
-        if (mEntity.isVisibleTwilke) {
-            mMapRed.get(position).setVisibility(View.VISIBLE);
-            holder.scoreSgMatchRedTwinkleIvLy.setVisibility(View.VISIBLE);
-        } else {
-            mMapRed.get(position).setVisibility(View.GONE);
-            holder.scoreSgMatchRedTwinkleIvLy.setVisibility(View.GONE);
         }
 
         holder.scoreSgWeekStarCbLy.setOnClickListener(new View.OnClickListener() {
@@ -345,9 +335,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
             public void onClick(View v) {
                 mMap.get(position).setClickable(false);
                 mMapLy.get(position).setClickable(false);
-                mIsLoding = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-
-                //okHttp post同步请求表单提交
 
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     int fouce = mData.get(position).isFouce;
@@ -372,13 +359,8 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 mMap.get(position).setClickable(true);
                 mMapLy.get(position).setClickable(true);
                 mPostion = position;
-                mIsLoding = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
-               /*
-                 * okHttp post同步请求表单提交
-                 */
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     int fouce = mData.get(position).isFouce;
-                    Logger.d(TAG, "添加关注时是否已经关注--------:" + fouce + "---" + mData.get(position).toString());
                     if (fouce == 1) {
                         removeGz(position);
 
@@ -403,7 +385,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 content.startActivity(intent);
             }
         });
-        // setVisiblesOrData(position);
 
         return convertView;
     }
@@ -583,7 +564,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
     }
 
     public static class ViewHolder {
-        public TextView scoreSgTvWeek;
         public TextView scoreSgMatchType;
         public TextView scoreSgMatchStart;
         public TextView scoreSgMainName;
@@ -603,7 +583,6 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         public TextView scoreSgHgStart;
         public TextView scoreSgHgGroup;
         public TextView scoreSgHgBehind;
-        public TextView scoreSgPeople;
         public ImageView scoreSgMatchRedTwinkle;
         public RelativeLayout scoreYpLy;
         public RelativeLayout scoreHgLy;
@@ -611,11 +590,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
         public TextView scoreSgMatchResultScoreSecond;
         public LinearLayout scoreSgItem;
         public CheckBox scoreSgWeekStarCb;
-        public LinearLayout scoreSgHalfLy;
-        public TextView middle;
-        public TextView left;
-        public TextView right;
-        public LinearLayout scoreSgMatchRedTwinkleIvLy;
+        public RelativeLayout scoreSgMatchRedTwinkleIvLy;
         public RelativeLayout scoreSgWeekStarCbLy;
     }
 

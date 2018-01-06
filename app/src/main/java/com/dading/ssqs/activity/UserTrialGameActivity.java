@@ -127,6 +127,7 @@ public class UserTrialGameActivity extends BaseActivity {
                                     UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                                     UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL_SCORE);
                                     UIUtils.SendReRecevice(Constent.GQ_RECEVICE);
+                                    UIUtils.SendReRecevice(Constent.MAIN_SIGN);
 
                                     UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
                                     UIUtils.getSputils().putString(Constent.GLODS, bean.banlance + "");

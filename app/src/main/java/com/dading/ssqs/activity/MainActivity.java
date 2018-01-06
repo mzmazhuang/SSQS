@@ -587,7 +587,7 @@ public class MainActivity extends BaseActivity {
                                     default:
                                         break;
                                 }
-                                int banlance = popBean.tasks.get(bean.dayCount).banlance;
+                                int banlance = popBean.tasks.get((bean.dayCount - 1)).banlance;
 
                                 UIUtils.getSputils().putBoolean(Constent.SIGN_SUC, true);
 

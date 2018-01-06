@@ -177,27 +177,27 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
 
         switch (mBean.sex) {
             case 1:
-                mChangePhotoManIv.setImageResource(R.mipmap.r_gender_icon_man);
+                mChangePhotoManIv.setImageResource(R.mipmap.ic_my_male);
                 mChangePhotoManTv.setTextColor(this.getResources().getColor(R.color.blue_t1));
-                mChangePhotoWomanIv.setImageResource(R.mipmap.r_gender_ic_female_n);
+                mChangePhotoWomanIv.setImageResource(R.mipmap.ic_female_gray);
                 mChangePhotoWomanTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoGuessIv.setImageResource(R.mipmap.r_gender_ic_default_n);
+                mChangePhotoGuessIv.setImageResource(R.mipmap.ic_other_gray);
                 mChangePhotoGuessTv.setTextColor(this.getResources().getColor(R.color.gray6));
                 break;
             case 2:
-                mChangePhotoManIv.setImageResource(R.mipmap.r_gender_ic_man_n);
+                mChangePhotoManIv.setImageResource(R.mipmap.ic_male_gray);
                 mChangePhotoManTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoWomanIv.setImageResource(R.mipmap.r_gender_icon_female);
+                mChangePhotoWomanIv.setImageResource(R.mipmap.ic_my_female);
                 mChangePhotoWomanTv.setTextColor(this.getResources().getColor(R.color.red_l1));
-                mChangePhotoGuessIv.setImageResource(R.mipmap.r_gender_ic_default_n);
+                mChangePhotoGuessIv.setImageResource(R.mipmap.ic_other_gray);
                 mChangePhotoGuessTv.setTextColor(this.getResources().getColor(R.color.gray6));
                 break;
             case 3:
-                mChangePhotoManIv.setImageResource(R.mipmap.r_gender_ic_man_n);
+                mChangePhotoManIv.setImageResource(R.mipmap.ic_male_gray);
                 mChangePhotoManTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoWomanIv.setImageResource(R.mipmap.r_gender_ic_female_n);
+                mChangePhotoWomanIv.setImageResource(R.mipmap.ic_female_gray);
                 mChangePhotoWomanTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoGuessIv.setImageResource(R.mipmap.baomi);
+                mChangePhotoGuessIv.setImageResource(R.mipmap.ic_my_other);
                 mChangePhotoGuessTv.setTextColor(this.getResources().getColor(R.color.PURSE));
                 break;
             default:
@@ -321,31 +321,31 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
 
             case R.id.change_photo_man_iv:
             case R.id.change_photo_man_tv:
-                mChangePhotoManIv.setImageResource(R.mipmap.r_gender_icon_man);
+                mChangePhotoManIv.setImageResource(R.mipmap.ic_my_male);
                 mChangePhotoManTv.setTextColor(this.getResources().getColor(R.color.blue_t1));
-                mChangePhotoWomanIv.setImageResource(R.mipmap.r_gender_ic_female_n);
+                mChangePhotoWomanIv.setImageResource(R.mipmap.ic_female_gray);
                 mChangePhotoWomanTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoGuessIv.setImageResource(R.mipmap.r_gender_ic_default_n);
+                mChangePhotoGuessIv.setImageResource(R.mipmap.ic_other_gray);
                 mChangePhotoGuessTv.setTextColor(this.getResources().getColor(R.color.gray6));
                 mSex = 1;
                 break;
             case R.id.change_photo_woman_iv:
             case R.id.change_photo_woman_tv:
-                mChangePhotoManIv.setImageResource(R.mipmap.r_gender_ic_man_n);
+                mChangePhotoManIv.setImageResource(R.mipmap.ic_male_gray);
                 mChangePhotoManTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoWomanIv.setImageResource(R.mipmap.r_gender_icon_female);
+                mChangePhotoWomanIv.setImageResource(R.mipmap.ic_my_female);
                 mChangePhotoWomanTv.setTextColor(this.getResources().getColor(R.color.red_l1));
-                mChangePhotoGuessIv.setImageResource(R.mipmap.r_gender_ic_default_n);
+                mChangePhotoGuessIv.setImageResource(R.mipmap.ic_other_gray);
                 mChangePhotoGuessTv.setTextColor(this.getResources().getColor(R.color.gray6));
                 mSex = 2;
                 break;
             case R.id.change_photo_guess_iv:
             case R.id.change_photo_guess_tv:
-                mChangePhotoManIv.setImageResource(R.mipmap.r_gender_ic_man_n);
+                mChangePhotoManIv.setImageResource(R.mipmap.ic_male_gray);
                 mChangePhotoManTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoWomanIv.setImageResource(R.mipmap.r_gender_ic_female_n);
+                mChangePhotoWomanIv.setImageResource(R.mipmap.ic_female_gray);
                 mChangePhotoWomanTv.setTextColor(this.getResources().getColor(R.color.gray6));
-                mChangePhotoGuessIv.setImageResource(R.mipmap.r_gender_icon_default);
+                mChangePhotoGuessIv.setImageResource(R.mipmap.ic_my_other);
                 mChangePhotoGuessTv.setTextColor(this.getResources().getColor(R.color.PURSE));
                 mSex = 3;
                 break;

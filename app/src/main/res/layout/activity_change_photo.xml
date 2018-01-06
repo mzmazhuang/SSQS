@@ -174,15 +174,15 @@
                 android:id="@+id/change_photo_man_iv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginEnd="5dp"
-                android:src="@mipmap/r_gender_icon_man" />
+                android:src="@mipmap/ic_male_gray" />
 
             <TextView
                 android:id="@+id/change_photo_man_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="30dp"
                 android:text="@string/man"
                 android:textColor="@color/gray6"
                 android:textSize="13sp" />
@@ -191,15 +191,15 @@
                 android:id="@+id/change_photo_woman_iv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginEnd="5dp"
-                android:src="@mipmap/r_gender_ic_female_n" />
+                android:src="@mipmap/ic_female_gray" />
 
             <TextView
                 android:id="@+id/change_photo_woman_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
                 android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="30dp"
                 android:text="@string/women"
                 android:textColor="@color/gray6"
                 android:textSize="13sp" />
@@ -208,14 +208,14 @@
                 android:id="@+id/change_photo_guess_iv"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginEnd="5dp"
-                android:src="@mipmap/r_gender_ic_default_n" />
+                android:src="@mipmap/ic_other_gray" />
 
             <TextView
                 android:id="@+id/change_photo_guess_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingLeft="5dp"
                 android:text="@string/you_guess"
                 android:textColor="@color/gray6"
                 android:textSize="13sp" />

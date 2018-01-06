@@ -129,23 +129,23 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 UIUtils.getSputils().putBoolean(Constent.USER_TYPE, mBean.userType == 3);
                 UIUtils.getSputils().putInt(Constent.USER_TYPE_NUM, mBean.userType);
 
-                if (TextUtils.isEmpty(mBean.avatar)) {
-                    switch (mBean.sex) {
-                        case 1:
-                            nickNameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_my_male, 0);
-                            break;
-                        case 2:
-                            nickNameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_my_female, 0);
-                            break;
-                        case 3:
-                            nickNameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_my_other, 0);
-                            break;
-
-                        default:
-                            break;
-                    }
-                } else {
+                if (!TextUtils.isEmpty(mBean.avatar)) {
                     avatarView.setImageResource(mBean.avatar);
+                }
+
+                switch (mBean.sex) {
+                    case 1:
+                        nickNameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_my_male, 0);
+                        break;
+                    case 2:
+                        nickNameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_my_female, 0);
+                        break;
+                    case 3:
+                        nickNameTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_my_other, 0);
+                        break;
+
+                    default:
+                        break;
                 }
 
                 nickNameTextView.setText(mBean.username);

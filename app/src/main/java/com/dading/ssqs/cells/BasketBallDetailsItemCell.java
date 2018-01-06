@@ -48,7 +48,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
 
         RelativeLayout topLayout = new RelativeLayout(context);
         topLayout.setBackgroundColor(0xFF673221);
-        topLayout.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(11), 0);
+        topLayout.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(11), 0);
         addView(topLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 25));
 
         tvTitle = new TextView(context);

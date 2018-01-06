@@ -26,7 +26,7 @@ public class RankingListCell extends RelativeLayout {
         super(context);
 
         LinearLayout container = new LinearLayout(context);
-        container.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        container.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         container.setOrientation(LinearLayout.HORIZONTAL);
         addView(container, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 40));
 

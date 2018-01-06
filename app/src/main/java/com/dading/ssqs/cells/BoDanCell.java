@@ -50,7 +50,7 @@ public class BoDanCell extends LinearLayout {
         setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         topLayout = new LinearLayout(context);
-        topLayout.setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(5), 0, AndroidUtilities.dp(5));
+        topLayout.setPadding(AndroidUtilities.INSTANCE.dp(12), AndroidUtilities.INSTANCE.dp(5), 0, AndroidUtilities.INSTANCE.dp(5));
         topLayout.setBackgroundColor(0xFFDEF5FF);
         topLayout.setOrientation(LinearLayout.HORIZONTAL);
         addView(topLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));

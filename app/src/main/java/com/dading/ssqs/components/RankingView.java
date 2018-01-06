@@ -36,13 +36,13 @@ public class RankingView extends LinearLayout {
         setOrientation(LinearLayout.VERTICAL);
 
         TextView titleView = new TextView(context);
-        titleView.setPadding(AndroidUtilities.dp(15), 0, 0, 0);
+        titleView.setPadding(AndroidUtilities.INSTANCE.dp(15), 0, 0, 0);
         titleView.setText(LocaleController.getString(R.string.winning_list));
         titleView.setTextSize(14);
         titleView.setTextColor(0xFF323232);
         titleView.setGravity(Gravity.CENTER_VERTICAL);
         titleView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_ranking, 0, 0, 0);
-        titleView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        titleView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 40));
 
         View lineView = new View(context);

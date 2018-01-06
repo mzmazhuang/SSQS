@@ -35,7 +35,7 @@ public class ChampionItemCell extends LinearLayout {
         setLayoutParams(LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         titleView = new TextView(context);
-        titleView.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        titleView.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         titleView.setTextSize(12);
         titleView.setGravity(Gravity.CENTER_VERTICAL);
         titleView.setBackgroundColor(0xFFFFFADC);

@@ -45,7 +45,7 @@ public class BankCell extends LinearLayout {
         setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         cardView = new CardView(context);
-        cardView.setRadius(AndroidUtilities.dp(5));
+        cardView.setRadius(AndroidUtilities.INSTANCE.dp(5));
         cardView.setCardBackgroundColor(0xFFF8F8F8);
         addView(cardView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 10, 10, 10, 10));
 
@@ -66,13 +66,13 @@ public class BankCell extends LinearLayout {
         infoLayout.addView(bankLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         TextView bankTextView = new TextView(context);
-        bankTextView.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        bankTextView.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         bankTextView.setTextColor(0xFF333333);
         bankTextView.setText(LocaleController.getString(R.string.bank_name_all));
         bankLayout.addView(bankTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         bankText = new TextView(context);
-        bankText.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        bankText.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         bankText.setTextColor(0xFFAEAEAE);
         bankLayout.addView(bankText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
@@ -81,13 +81,13 @@ public class BankCell extends LinearLayout {
         infoLayout.addView(numberLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         TextView numberTextView = new TextView(context);
-        numberTextView.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        numberTextView.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         numberTextView.setTextColor(0xFF333333);
         numberTextView.setText(LocaleController.getString(R.string.bank_num_all));
         numberLayout.addView(numberTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         numberText = new TextView(context);
-        numberText.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        numberText.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         numberText.setTextColor(0xFFAEAEAE);
         numberLayout.addView(numberText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
@@ -96,13 +96,13 @@ public class BankCell extends LinearLayout {
         infoLayout.addView(peopleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         TextView peopleTextView = new TextView(context);
-        peopleTextView.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        peopleTextView.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         peopleTextView.setTextColor(0xFF333333);
         peopleTextView.setText(LocaleController.getString(R.string.owner_all));
         peopleLayout.addView(peopleTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         peopleText = new TextView(context);
-        peopleText.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        peopleText.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         peopleText.setTextColor(0xFFAEAEAE);
         peopleLayout.addView(peopleText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
@@ -111,13 +111,13 @@ public class BankCell extends LinearLayout {
         infoLayout.addView(subTextLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         TextView subTextView = new TextView(context);
-        subTextView.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        subTextView.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         subTextView.setTextColor(0xFF333333);
         subTextView.setText(LocaleController.getString(R.string.bank_open_place));
         subTextLayout.addView(subTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         bankSubText = new TextView(context);
-        bankSubText.setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        bankSubText.setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         bankSubText.setTextColor(0xFFAEAEAE);
         subTextLayout.addView(bankSubText, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
     }

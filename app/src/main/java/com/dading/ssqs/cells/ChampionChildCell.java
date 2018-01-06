@@ -41,7 +41,7 @@ public class ChampionChildCell extends LinearLayout {
         setLayoutParams(LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 25));
 
         leftTextView = new TextView(mContext);
-        leftTextView.setPadding(AndroidUtilities.dp(12), 0, 0, 0);
+        leftTextView.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, 0, 0);
         leftTextView.setTextSize(12);
         leftTextView.setTextColor(0xFF222222);
         leftTextView.setSingleLine();
@@ -50,7 +50,7 @@ public class ChampionChildCell extends LinearLayout {
         addView(leftTextView, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
 
         rightTextView = new TextView(mContext);
-        rightTextView.setPadding(0, 0, AndroidUtilities.dp(12), 0);
+        rightTextView.setPadding(0, 0, AndroidUtilities.INSTANCE.dp(12), 0);
         rightTextView.setTextColor(0xFFFF0000);
         rightTextView.setTextSize(12);
         rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);

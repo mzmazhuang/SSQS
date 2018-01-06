@@ -140,7 +140,7 @@ public class NewBindBankCardActivity extends BaseActivity {
         bankNameCell.post(new Runnable() {
             @Override
             public void run() {
-                int left = bankNameCell.getTvName().getWidth() + AndroidUtilities.dp(25);
+                int left = bankNameCell.getTvName().getWidth() + AndroidUtilities.INSTANCE.dp(25);
                 int top = titleCell.getHeight() + tvTip.getHeight() + peopleCell.getHeight() + bankNameCell.getHeight();
 
                 selectBankListView = new SelectBankListView(mContext, itemClickListener);
@@ -280,7 +280,7 @@ public class NewBindBankCardActivity extends BaseActivity {
             setFocusable(true);
             setFocusableInTouchMode(true);
 
-            setPadding(AndroidUtilities.dp(15), 0, AndroidUtilities.dp(15), 0);
+            setPadding(AndroidUtilities.INSTANCE.dp(15), 0, AndroidUtilities.INSTANCE.dp(15), 0);
 
             tvName = new TextView(context);
             tvName.setId(R.id.bind_bank_name);

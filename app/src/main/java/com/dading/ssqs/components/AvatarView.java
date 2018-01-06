@@ -23,12 +23,12 @@ public class AvatarView extends LinearLayout {
     public AvatarView(Context context) {
         super(context);
 
-        setPadding(AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5), AndroidUtilities.dp(5));
+        setPadding(AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(5));
         setBackgroundResource(R.drawable.bg_avatar_border);
 
         avatar = new CircleImageView(context);
         avatar.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        avatar.setPadding(AndroidUtilities.dp(1), AndroidUtilities.dp(1), AndroidUtilities.dp(1), AndroidUtilities.dp(1));
+        avatar.setPadding(AndroidUtilities.INSTANCE.dp(1), AndroidUtilities.INSTANCE.dp(1), AndroidUtilities.INSTANCE.dp(1), AndroidUtilities.INSTANCE.dp(1));
         addView(avatar, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
     }
 

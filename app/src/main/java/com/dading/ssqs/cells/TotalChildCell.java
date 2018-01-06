@@ -146,9 +146,9 @@ public class TotalChildCell extends LinearLayout {
 
     public void setTitle(ScrollBallFootBallTotalBean.ScrollBallFootBallTotalItems items, int page) {
         if (page == 3) {
-            titleTextLayout.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+            titleTextLayout.setPadding(AndroidUtilities.INSTANCE.dp(75), 0, AndroidUtilities.INSTANCE.dp(75), 0);
         } else {
-            titleTextLayout.setPadding(AndroidUtilities.dp(45), 0, AndroidUtilities.dp(45), 0);
+            titleTextLayout.setPadding(AndroidUtilities.INSTANCE.dp(45), 0, AndroidUtilities.INSTANCE.dp(45), 0);
         }
 
         if (page != 1) {

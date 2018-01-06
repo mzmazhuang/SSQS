@@ -176,7 +176,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                         }
                     }
                 } else {
-                    if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContent)) {
+                    if (!AndroidUtilities.INSTANCE.checkIsLogin(result.getErrno(), mContent)) {
                         ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                     }
                 }

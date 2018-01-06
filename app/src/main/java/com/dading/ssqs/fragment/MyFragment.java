@@ -180,7 +180,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         contentLayout.addView(topLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 220));
 
         messageView = new ImageView(mContext);
-        messageView.setBackgroundDrawable(AndroidUtilities.createBarSelectorDrawable());
+        messageView.setBackgroundDrawable(AndroidUtilities.INSTANCE.createBarSelectorDrawable());
         messageView.setScaleType(ImageView.ScaleType.CENTER);
         messageView.setImageResource(R.mipmap.ic_my_message);
         messageView.setOnClickListener(this);
@@ -205,7 +205,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         nickNameTextView.setTextColor(Color.WHITE);
         nickNameTextView.setTypeface(Typeface.DEFAULT_BOLD);
         nickNameTextView.setTextSize(14);
-        nickNameTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        nickNameTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         nickNameTextView.setSingleLine();
         nickNameTextView.setEllipsize(TextUtils.TruncateAt.END);
         infoContentLayout.addView(nickNameTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
@@ -227,7 +227,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         moneyTextView = new TextView(mContext);
         moneyTextView.setTextSize(14);
         moneyTextView.setTextColor(Color.WHITE);
-        moneyTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        moneyTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         moneyTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_my_gold, 0, 0, 0);
         moneyTextView.setSingleLine();
         moneyTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -261,7 +261,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
 
         rechargeLayout = new LinearLayout(mContext);
         rechargeLayout.setGravity(Gravity.CENTER_VERTICAL);
-        rechargeLayout.setBackgroundDrawable(AndroidUtilities.createListSelectorDrawable(mContext));
+        rechargeLayout.setBackgroundDrawable(AndroidUtilities.INSTANCE.createListSelectorDrawable(mContext));
         rechargeLayout.setOnClickListener(this);
         operationLayout.addView(rechargeLayout, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
 
@@ -269,13 +269,13 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         rechargeTextView.setTextSize(14);
         rechargeTextView.setTextColor(0xFF323232);
         rechargeTextView.setText(LocaleController.getString(R.string.recharge));
-        rechargeTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        rechargeTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         rechargeTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_my_recharge, 0, 0, 0);
         rechargeLayout.addView(rechargeTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 12, 0, 0, 0));
 
         withdrawalLayout = new LinearLayout(mContext);
         withdrawalLayout.setGravity(Gravity.CENTER);
-        withdrawalLayout.setBackgroundDrawable(AndroidUtilities.createListSelectorDrawable(mContext));
+        withdrawalLayout.setBackgroundDrawable(AndroidUtilities.INSTANCE.createListSelectorDrawable(mContext));
         withdrawalLayout.setOnClickListener(this);
         operationLayout.addView(withdrawalLayout, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
 
@@ -283,13 +283,13 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         withdrawalTextView.setTextSize(14);
         withdrawalTextView.setTextColor(0xFF323232);
         withdrawalTextView.setText(LocaleController.getString(R.string.with_draw));
-        withdrawalTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        withdrawalTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         withdrawalTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_my_withdraw, 0, 0, 0);
         withdrawalLayout.addView(withdrawalTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         receiveLayout = new LinearLayout(mContext);
         receiveLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
-        receiveLayout.setBackgroundDrawable(AndroidUtilities.createListSelectorDrawable(mContext));
+        receiveLayout.setBackgroundDrawable(AndroidUtilities.INSTANCE.createListSelectorDrawable(mContext));
         receiveLayout.setOnClickListener(this);
         operationLayout.addView(receiveLayout, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
 
@@ -297,7 +297,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         receiveTextView.setTextSize(14);
         receiveTextView.setTextColor(0xFF323232);
         receiveTextView.setText(LocaleController.getString(R.string.free_get_glod));
-        receiveTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        receiveTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         receiveTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_my_receive, 0, 0, 0);
         receiveLayout.addView(receiveTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 12, 0));
 
@@ -479,7 +479,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         public MeCell(Context context, int resId, String title, boolean isLine) {
             super(context);
 
-            setBackgroundDrawable(AndroidUtilities.createListSelectorDrawable(context));
+            setBackgroundDrawable(AndroidUtilities.INSTANCE.createListSelectorDrawable(context));
             setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 48));
 
             iconView = new ImageView(context);
@@ -504,7 +504,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 View view = new View(context);
                 view.setBackgroundColor(0xFFEDEDED);
                 RelativeLayout.LayoutParams viewLP = LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 1);
-                viewLP.setMargins(AndroidUtilities.dp(42), 0, 0, 0);
+                viewLP.setMargins(AndroidUtilities.INSTANCE.dp(42), 0, 0, 0);
                 viewLP.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
                 addView(view, viewLP);
             }

@@ -142,7 +142,7 @@ public class SelectMatchDialog extends Dialog {
         RelativeLayout operationLayout = new RelativeLayout(mContext);
         operationLayout.setId(R.id.select_match_operation);
         operationLayout.setBackgroundColor(0xFFF5F4F9);
-        operationLayout.setPadding(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), 0);
+        operationLayout.setPadding(AndroidUtilities.INSTANCE.dp(10), 0, AndroidUtilities.INSTANCE.dp(10), 0);
         layout.addView(operationLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 40, RelativeLayout.ALIGN_PARENT_BOTTOM));
 
         LinearLayout textLayout = new LinearLayout(mContext);
@@ -164,7 +164,7 @@ public class SelectMatchDialog extends Dialog {
         textLayout.addView(allTextView, LayoutHelper.createLinear(65, 30));
 
         allNoTextView = new TextView(mContext);
-        allNoTextView.setPadding(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), 0);
+        allNoTextView.setPadding(AndroidUtilities.INSTANCE.dp(10), 0, AndroidUtilities.INSTANCE.dp(10), 0);
         allNoTextView.setTextSize(14);
         allNoTextView.setGravity(Gravity.CENTER);
         allNoTextView.setText("全不选");

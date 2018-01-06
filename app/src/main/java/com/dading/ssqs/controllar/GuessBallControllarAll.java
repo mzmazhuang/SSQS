@@ -289,7 +289,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                         listener.onDone();
                     }
                 } else {
-                    if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContent)) {
+                    if (!AndroidUtilities.INSTANCE.checkIsLogin(result.getErrno(), mContent)) {
                         //缓存数据
                         String s = UIUtils.getSputils().getString(Constent.HOME_CACHE, "");
                         if (!TextUtils.isEmpty(s)) {

@@ -70,7 +70,7 @@ public class SplashAcitivty extends BaseActivity {
         SplashControllar3 splashControllar3 = new SplashControllar3();
 
         mList = new ArrayList<>();
-        mCurrentName = AndroidUtilities.getVersionName(this);
+        mCurrentName = AndroidUtilities.INSTANCE.getVersionName(this);
         UIUtils.getSputils().putBoolean(Constent.CHIOCE, false);
 
         String s = UIUtils.getSputils().getString(Constent.IS_FRISE, "0");

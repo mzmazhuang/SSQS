@@ -57,11 +57,11 @@ public class BasketDetailsChildCell extends LinearLayout {
     }
 
     public void setLeftPadding(int padding) {
-        title.setPadding(AndroidUtilities.dp(padding), 0, 0, 0);
+        title.setPadding(AndroidUtilities.INSTANCE.dp(padding), 0, 0, 0);
     }
 
     public void setRightPadding(int padding) {
-        numberView.setPadding(0, 0, AndroidUtilities.dp(padding), 0);
+        numberView.setPadding(0, 0, AndroidUtilities.INSTANCE.dp(padding), 0);
     }
 
     public void changeParams() {

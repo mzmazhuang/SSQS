@@ -610,7 +610,7 @@ public class MainActivity extends BaseActivity {
                                 mSignButton.setImageResource(R.mipmap.s_parcel);
                             }
                         } else {
-                            if (!AndroidUtilities.checkIsLogin(result.getErrno(), mContext)) {
+                            if (!AndroidUtilities.INSTANCE.checkIsLogin(result.getErrno(), mContext)) {
                                 ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }

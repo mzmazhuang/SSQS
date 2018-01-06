@@ -78,7 +78,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
         titleTextView = new TextView(context);
-        titleTextView.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextView.setPadding(AndroidUtilities.INSTANCE.dp(75), 0, AndroidUtilities.INSTANCE.dp(75), 0);
         titleTextView.setTextSize(14);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);
@@ -177,12 +177,12 @@ public class BasketScrollBallItemCell extends LinearLayout {
         leftLayout.addView(leftTopLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 71));
 
         infoLayout = new LinearLayout(context);
-        infoLayout.setPadding(AndroidUtilities.dp(8), 0, AndroidUtilities.dp(8), 0);
+        infoLayout.setPadding(AndroidUtilities.INSTANCE.dp(8), 0, AndroidUtilities.INSTANCE.dp(8), 0);
         infoLayout.setOrientation(LinearLayout.VERTICAL);
         leftTopLayout.addView(infoLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, RelativeLayout.CENTER_IN_PARENT));
 
         title6 = new TextView(context);
-        title6.setPadding(0, AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4));
+        title6.setPadding(0, AndroidUtilities.INSTANCE.dp(4), 0, AndroidUtilities.INSTANCE.dp(4));
         title6.setTextSize(12);
         title6.setTextColor(0xFFFFD200);
         title6.setBackgroundResource(R.drawable.bg_basket_scroll_title);
@@ -190,7 +190,7 @@ public class BasketScrollBallItemCell extends LinearLayout {
         infoLayout.addView(title6, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         title7 = new TextView(context);
-        title7.setPadding(0, AndroidUtilities.dp(4), 0, AndroidUtilities.dp(4));
+        title7.setPadding(0, AndroidUtilities.INSTANCE.dp(4), 0, AndroidUtilities.INSTANCE.dp(4));
         title7.setTextSize(13);
         title7.setGravity(Gravity.CENTER);
         title7.setBackgroundResource(R.drawable.bg_basket_scroll_number);

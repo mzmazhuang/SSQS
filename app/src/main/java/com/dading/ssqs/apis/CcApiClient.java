@@ -2043,7 +2043,7 @@ public class CcApiClient {
             final int statusCode = 1;
 
             final String errMessage = "Network connect failed";
-            AndroidUtilities.runOnUIThread(new Runnable() {
+            AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
                 @Override
                 public void run() {
                     if (mListener != null)
@@ -2095,7 +2095,7 @@ public class CcApiClient {
                 Logger.d(TAG, "Error Response Status code:" + String.valueOf(statusCode) + ", Error message:" + errMessage);
                 final int finalStatusCode = statusCode;
                 final String finalErrMessage = errMessage;
-                AndroidUtilities.runOnUIThread(new Runnable() {
+                AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
                         if (mListener != null)
@@ -2115,7 +2115,7 @@ public class CcApiClient {
 
                     final String errMessage = "Network connect failed";
 
-                    AndroidUtilities.runOnUIThread(new Runnable() {
+                    AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
                             if (mListener != null)
@@ -2127,7 +2127,7 @@ public class CcApiClient {
                     Logger.d(TAG, "Exception:" + url);
                     final int statusCode = 1;
                     final String errMessage = "Network connect failed";
-                    AndroidUtilities.runOnUIThread(new Runnable() {
+                    AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
                             if (mListener != null)
@@ -2158,7 +2158,7 @@ public class CcApiClient {
 
                 //数据被篡改
                 if (!arg0.startsWith("{")) {
-                    AndroidUtilities.runOnUIThread(new Runnable() {
+                    AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
                         @Override
                         public void run() {
                             if (mListener != null)
@@ -2347,7 +2347,7 @@ public class CcApiClient {
                     mRes.setMessage("抱歉, 我们的服务出现了一点故障, 工程师正在紧张修复中, 请稍候再试");
                 }
 
-                AndroidUtilities.runOnUIThread(new Runnable() {
+                AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
                     @Override
                     public void run() {
                         if (mListener != null)

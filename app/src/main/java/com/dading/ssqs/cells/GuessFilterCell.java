@@ -61,7 +61,7 @@ public class GuessFilterCell extends RelativeLayout {
         tvCurrPage = new TextView(context);
         tvCurrPage.setTextColor(0xFF222222);
         tvCurrPage.setTextSize(13);
-        tvCurrPage.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(1), AndroidUtilities.dp(5), AndroidUtilities.dp(1));
+        tvCurrPage.setPadding(AndroidUtilities.INSTANCE.dp(10), AndroidUtilities.INSTANCE.dp(1), AndroidUtilities.INSTANCE.dp(5), AndroidUtilities.INSTANCE.dp(1));
         currPageLayout.addView(tvCurrPage, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         ImageView triangleView = new ImageView(context);
@@ -90,7 +90,7 @@ public class GuessFilterCell extends RelativeLayout {
         rightLayout.addView(timeFilterLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 27, 6, 0, 0, 0));
 
         timeTextView = new TextView(context);
-        timeTextView.setPadding(AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3));
+        timeTextView.setPadding(AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3));
         timeTextView.setTextSize(12);
         timeTextView.setTextColor(Color.WHITE);
         timeTextView.setText(LocaleController.getString(R.string.guess_time));
@@ -106,7 +106,7 @@ public class GuessFilterCell extends RelativeLayout {
         rightLayout.addView(selectLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 27, 6, 0, 0, 0));
 
         selectTextView = new TextView(context);
-        selectTextView.setPadding(AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3));
+        selectTextView.setPadding(AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3));
         selectTextView.setTextSize(12);
         selectTextView.setTextColor(Color.WHITE);
         selectTextView.setText(LocaleController.getString(R.string.select_all));
@@ -128,10 +128,10 @@ public class GuessFilterCell extends RelativeLayout {
 
         refreshTextView = new TextView(context);
         refreshTextView.setGravity(Gravity.CENTER_VERTICAL);
-        refreshTextView.setPadding(AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3));
+        refreshTextView.setPadding(AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3));
         refreshTextView.setTextSize(12);
         refreshTextView.setTextColor(0xFFFFF000);
-        refreshTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+        refreshTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
         refreshTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_refresh_white, 0, 0, 0);
         refreshLayout.addView(refreshTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
     }

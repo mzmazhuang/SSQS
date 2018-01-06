@@ -34,9 +34,9 @@ import java.util.HashMap;
 public class ValueAnimator extends Animator10 {
 
     private static float sDurationScale = 1.0f;
-    private static final int STOPPED    = 0;
-    private static final int RUNNING    = 1;
-    private static final int SEEKED     = 2;
+    private static final int STOPPED = 0;
+    private static final int RUNNING = 1;
+    private static final int SEEKED = 2;
 
     private long mStartTime;
     private long mSeekTime = -1;
@@ -55,7 +55,7 @@ public class ValueAnimator extends Animator10 {
     private boolean mStartListenersCalled = false;
     boolean mInitialized = false;
 
-    private long mDuration = (long)(300 * sDurationScale);
+    private long mDuration = (long) (300 * sDurationScale);
     private long mUnscaledDuration = 300;
     private long mStartDelay = 0;
     private long mUnscaledStartDelay = 0;
@@ -175,7 +175,7 @@ public class ValueAnimator extends Animator10 {
             throw new IllegalArgumentException("Animators cannot have negative duration: " + duration);
         }
         mUnscaledDuration = duration;
-        mDuration = (long)(duration * sDurationScale);
+        mDuration = (long) (duration * sDurationScale);
         return this;
     }
 
@@ -278,7 +278,7 @@ public class ValueAnimator extends Animator10 {
 
         private void scheduleAnimation() {
             if (!mAnimationScheduled) {
-                AndroidUtilities.runOnUIThread(this);
+                AndroidUtilities.INSTANCE.runOnUIThread(this);
                 mAnimationScheduled = true;
             }
         }
@@ -289,7 +289,7 @@ public class ValueAnimator extends Animator10 {
     }
 
     public void setStartDelay(long startDelay) {
-        this.mStartDelay = (long)(startDelay * sDurationScale);
+        this.mStartDelay = (long) (startDelay * sDurationScale);
         mUnscaledStartDelay = startDelay;
     }
 
@@ -492,7 +492,7 @@ public class ValueAnimator extends Animator10 {
         if ((mStarted || mRunning) && mListeners != null) {
             if (!mRunning) {
                 notifyStartListeners();
-             }
+            }
             ArrayList<AnimatorListener> tmpListeners = (ArrayList<AnimatorListener>) mListeners.clone();
             int numListeners = tmpListeners.size();
             for (AnimatorListener tmpListener : tmpListeners) {
@@ -542,33 +542,33 @@ public class ValueAnimator extends Animator10 {
     private boolean animationFrame(long currentTime) {
         boolean done = false;
         switch (mPlayingState) {
-        case RUNNING:
-        case SEEKED:
-            float fraction = mDuration > 0 ? (float)(currentTime - mStartTime) / mDuration : 1f;
-            if (fraction >= 1f) {
-                if (mCurrentIteration < mRepeatCount || mRepeatCount == INFINITE) {
-                    if (mListeners != null) {
-                        int numListeners = mListeners.size();
-                        for (AnimatorListener mListener : mListeners) {
-                            mListener.onAnimationRepeat(this);
+            case RUNNING:
+            case SEEKED:
+                float fraction = mDuration > 0 ? (float) (currentTime - mStartTime) / mDuration : 1f;
+                if (fraction >= 1f) {
+                    if (mCurrentIteration < mRepeatCount || mRepeatCount == INFINITE) {
+                        if (mListeners != null) {
+                            int numListeners = mListeners.size();
+                            for (AnimatorListener mListener : mListeners) {
+                                mListener.onAnimationRepeat(this);
+                            }
                         }
+                        if (mRepeatMode == REVERSE) {
+                            mPlayingBackwards = !mPlayingBackwards;
+                        }
+                        mCurrentIteration += (int) fraction;
+                        fraction = fraction % 1f;
+                        mStartTime += mDuration;
+                    } else {
+                        done = true;
+                        fraction = Math.min(fraction, 1.0f);
                     }
-                    if (mRepeatMode == REVERSE) {
-                        mPlayingBackwards = !mPlayingBackwards;
-                    }
-                    mCurrentIteration += (int)fraction;
-                    fraction = fraction % 1f;
-                    mStartTime += mDuration;
-                } else {
-                    done = true;
-                    fraction = Math.min(fraction, 1.0f);
                 }
-            }
-            if (mPlayingBackwards) {
-                fraction = 1f - fraction;
-            }
-            animateValue(fraction);
-            break;
+                if (mPlayingBackwards) {
+                    fraction = 1f - fraction;
+                }
+                animateValue(fraction);
+                break;
         }
 
         return done;

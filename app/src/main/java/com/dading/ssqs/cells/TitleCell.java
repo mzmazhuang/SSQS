@@ -30,7 +30,7 @@ public class TitleCell extends RelativeLayout {
         setBackgroundColor(getResources().getColor(R.color.home_top_blue));
 
         backView = new ImageView(context);
-        backView.setPadding(AndroidUtilities.dp(15), AndroidUtilities.dp(15), AndroidUtilities.dp(15), AndroidUtilities.dp(15));
+        backView.setPadding(AndroidUtilities.INSTANCE.dp(15), AndroidUtilities.INSTANCE.dp(15), AndroidUtilities.INSTANCE.dp(15), AndroidUtilities.INSTANCE.dp(15));
         backView.setImageResource(R.mipmap.er_back_arrow);
         addView(backView, LayoutHelper.createRelative(48, 48, 5, 0, 0, 0));
 

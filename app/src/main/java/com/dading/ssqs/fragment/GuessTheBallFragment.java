@@ -76,7 +76,7 @@ public class GuessTheBallFragment extends Fragment {
         scrollBallTextView.setTextColor(Color.WHITE);
         scrollBallTextView.setTextSize(18);
         scrollBallTextView.setText(LocaleController.getString(R.string.scroll_ball));
-        scrollBallTextView.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        scrollBallTextView.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         scrollBallTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +90,7 @@ public class GuessTheBallFragment extends Fragment {
         toDayTextView.setTextColor(0xFF00435E);
         toDayTextView.setTextSize(18);
         toDayTextView.setText(LocaleController.getString(R.string.today_match));
-        toDayTextView.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        toDayTextView.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         toDayTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +104,7 @@ public class GuessTheBallFragment extends Fragment {
         earlyTextView.setTextColor(0xFF00435E);
         earlyTextView.setTextSize(18);
         earlyTextView.setText(LocaleController.getString(R.string.early));
-        earlyTextView.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        earlyTextView.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         earlyTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

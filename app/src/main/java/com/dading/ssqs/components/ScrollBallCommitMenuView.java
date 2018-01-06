@@ -147,7 +147,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
 
         tvTitle = new TextView(context);
         tvTitle.setTextColor(0xFF222222);
-        tvTitle.setPadding(AndroidUtilities.dp(12), 0, 0, 0);
+        tvTitle.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, 0, 0);
         tvTitle.setBackgroundColor(Color.WHITE);
         tvTitle.setTextSize(12);
         tvTitle.setGravity(Gravity.CENTER_VERTICAL);
@@ -175,7 +175,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
         moneyLayout = new RelativeLayout(context);
         moneyLayout.setVisibility(View.GONE);
         moneyLayout.setBackgroundColor(0xFFE9F9FF);
-        moneyLayout.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        moneyLayout.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         keyBoardLayout.addView(moneyLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View moneyView = new View(context);
@@ -198,8 +198,8 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
         moneyLeftLayout.addView(tvMoneyTipView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         moneyTextView = new EditText(context);
-        AndroidUtilities.disableShowInput(moneyTextView);
-        moneyTextView.setPadding(AndroidUtilities.dp(2), 0, AndroidUtilities.dp(2), 0);
+        AndroidUtilities.INSTANCE.disableShowInput(moneyTextView);
+        moneyTextView.setPadding(AndroidUtilities.INSTANCE.dp(2), 0, AndroidUtilities.INSTANCE.dp(2), 0);
         moneyTextView.setTextSize(12);
         moneyTextView.setSingleLine();
         moneyTextView.setTextColor(0xFF222222);
@@ -440,7 +440,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) recyclerView.getLayoutParams();
 
         if (data.size() > 2) {
-            layoutParams.height = AndroidUtilities.dp(156);//78*2
+            layoutParams.height = AndroidUtilities.INSTANCE.dp(156);//78*2
         } else {
             layoutParams.height = LayoutHelper.WRAP_CONTENT;
         }
@@ -760,7 +760,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
 
             setOrientation(LinearLayout.VERTICAL);
             setBackgroundColor(Color.WHITE);
-            setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(8), AndroidUtilities.dp(12), AndroidUtilities.dp(8));
+            setPadding(AndroidUtilities.INSTANCE.dp(12), AndroidUtilities.INSTANCE.dp(8), AndroidUtilities.INSTANCE.dp(12), AndroidUtilities.INSTANCE.dp(8));
 
             LinearLayout numberInfoLayout = new LinearLayout(context);
             numberInfoLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -797,7 +797,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
             }
 
             LinearLayout operationLayout = new LinearLayout(context);
-            operationLayout.setPadding(0, AndroidUtilities.dp(6), 0, 0);
+            operationLayout.setPadding(0, AndroidUtilities.INSTANCE.dp(6), 0, 0);
             operationLayout.setOrientation(LinearLayout.HORIZONTAL);
             addView(operationLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 

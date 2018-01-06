@@ -18,7 +18,7 @@ public class LayoutHelper {
     public static final int WRAP_CONTENT = -2;
 
     private static int getSize(float size) {
-        return (int) (size < 0 ? size : AndroidUtilities.dp(size));
+        return (int) (size < 0 ? size : AndroidUtilities.INSTANCE.dp(size));
     }
 
     public static void setBounds(TextView view, int left, int top, int right, int bottom) {
@@ -51,7 +51,7 @@ public class LayoutHelper {
 
     public static FrameLayout.LayoutParams createFrame(int width, float height, int gravity, float leftMargin, float topMargin, float rightMargin, float bottomMargin) {
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(getSize(width), getSize(height), gravity);
-        layoutParams.setMargins(AndroidUtilities.dp(leftMargin), AndroidUtilities.dp(topMargin), AndroidUtilities.dp(rightMargin), AndroidUtilities.dp(bottomMargin));
+        layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(leftMargin), AndroidUtilities.INSTANCE.dp(topMargin), AndroidUtilities.INSTANCE.dp(rightMargin), AndroidUtilities.INSTANCE.dp(bottomMargin));
         return layoutParams;
     }
 
@@ -78,10 +78,10 @@ public class LayoutHelper {
             layoutParams.addRule(alignRelative, anchorRelative);
         }
 
-        layoutParams.topMargin = AndroidUtilities.dp(topMargin);
-        layoutParams.bottomMargin = AndroidUtilities.dp(bottomMargin);
-        layoutParams.leftMargin = AndroidUtilities.dp(leftMargin);
-        layoutParams.rightMargin = AndroidUtilities.dp(rightMargin);
+        layoutParams.topMargin = AndroidUtilities.INSTANCE.dp(topMargin);
+        layoutParams.bottomMargin = AndroidUtilities.INSTANCE.dp(bottomMargin);
+        layoutParams.leftMargin = AndroidUtilities.INSTANCE.dp(leftMargin);
+        layoutParams.rightMargin = AndroidUtilities.INSTANCE.dp(rightMargin);
         return layoutParams;
     }
 
@@ -115,7 +115,7 @@ public class LayoutHelper {
 
     public static LinearLayout.LayoutParams createLinear(int width, int height, float weight, int gravity, int leftMargin, int topMargin, int rightMargin, int bottomMargin) {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getSize(width), getSize(height), weight);
-        layoutParams.setMargins(AndroidUtilities.dp(leftMargin), AndroidUtilities.dp(topMargin), AndroidUtilities.dp(rightMargin), AndroidUtilities.dp(bottomMargin));
+        layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(leftMargin), AndroidUtilities.INSTANCE.dp(topMargin), AndroidUtilities.INSTANCE.dp(rightMargin), AndroidUtilities.INSTANCE.dp(bottomMargin));
 
         layoutParams.gravity = gravity;
         return layoutParams;
@@ -123,20 +123,20 @@ public class LayoutHelper {
 
     public static LinearLayout.LayoutParams createLinear(int width, int height, float weight, int leftMargin, int topMargin, int rightMargin, int bottomMargin) {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getSize(width), getSize(height), weight);
-        layoutParams.setMargins(AndroidUtilities.dp(leftMargin), AndroidUtilities.dp(topMargin), AndroidUtilities.dp(rightMargin), AndroidUtilities.dp(bottomMargin));
+        layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(leftMargin), AndroidUtilities.INSTANCE.dp(topMargin), AndroidUtilities.INSTANCE.dp(rightMargin), AndroidUtilities.INSTANCE.dp(bottomMargin));
         return layoutParams;
     }
 
     public static LinearLayout.LayoutParams createLinear(int width, int height, int gravity, int leftMargin, int topMargin, int rightMargin, int bottomMargin) {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getSize(width), getSize(height));
-        layoutParams.setMargins(AndroidUtilities.dp(leftMargin), AndroidUtilities.dp(topMargin), AndroidUtilities.dp(rightMargin), AndroidUtilities.dp(bottomMargin));
+        layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(leftMargin), AndroidUtilities.INSTANCE.dp(topMargin), AndroidUtilities.INSTANCE.dp(rightMargin), AndroidUtilities.INSTANCE.dp(bottomMargin));
         layoutParams.gravity = gravity;
         return layoutParams;
     }
 
     public static LinearLayout.LayoutParams createLinear(int width, int height, float leftMargin, float topMargin, float rightMargin, float bottomMargin) {
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(getSize(width), getSize(height));
-        layoutParams.setMargins(AndroidUtilities.dp(leftMargin), AndroidUtilities.dp(topMargin), AndroidUtilities.dp(rightMargin), AndroidUtilities.dp(bottomMargin));
+        layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(leftMargin), AndroidUtilities.INSTANCE.dp(topMargin), AndroidUtilities.INSTANCE.dp(rightMargin), AndroidUtilities.INSTANCE.dp(bottomMargin));
         return layoutParams;
     }
 

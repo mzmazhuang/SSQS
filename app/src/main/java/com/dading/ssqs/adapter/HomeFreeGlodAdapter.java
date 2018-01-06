@@ -370,7 +370,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
                                 mSignButton.setImageResource(R.mipmap.s_parcel);
                             }
                         } else {
-                            if (!AndroidUtilities.checkIsLogin(result.getErrno(), context)) {
+                            if (!AndroidUtilities.INSTANCE.checkIsLogin(result.getErrno(), context)) {
                                 ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
                             }
                         }

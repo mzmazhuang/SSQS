@@ -506,9 +506,9 @@ public class SwipeToLoadLayout extends ViewGroup {
                 boolean moved = Math.abs(yInitDiff) > Math.abs(xInitDiff);
                 boolean triggerCondition =
                         // refresh trigger condition
-                        (yInitDiff > AndroidUtilities.dp(3) && moved && onCheckCanRefresh()) ||
+                        (yInitDiff > AndroidUtilities.INSTANCE.dp(3) && moved && onCheckCanRefresh()) ||
                                 //load more trigger condition
-                                (yInitDiff < AndroidUtilities.dp(3) && moved && onCheckCanLoadMore());
+                                (yInitDiff < AndroidUtilities.INSTANCE.dp(3) && moved && onCheckCanLoadMore());
                 if (triggerCondition) {
                     // if the refresh's or load more's trigger condition  is true,
                     // intercept the move action event and pass it to SwipeToLoadLayout#onTouchEvent()

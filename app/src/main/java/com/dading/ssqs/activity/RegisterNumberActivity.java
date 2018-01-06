@@ -97,10 +97,10 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
     }
 
     private void hideKeyBroad() {
-        AndroidUtilities.hideKeyboard(mRegistNumberUsername);
-        AndroidUtilities.hideKeyboard(mRegistNumberPw);
-        AndroidUtilities.hideKeyboard(mRegistNumberPwConfirm);
-        AndroidUtilities.hideKeyboard(mRegistInviteCode);
+        AndroidUtilities.INSTANCE.hideKeyboard(mRegistNumberUsername);
+        AndroidUtilities.INSTANCE.hideKeyboard(mRegistNumberPw);
+        AndroidUtilities.INSTANCE.hideKeyboard(mRegistNumberPwConfirm);
+        AndroidUtilities.INSTANCE.hideKeyboard(mRegistInviteCode);
     }
 
     @OnClick({R.id.regist_number_return, R.id.regist_number_button, R.id.regiset_loading, R.id.regiset_second_protocol})

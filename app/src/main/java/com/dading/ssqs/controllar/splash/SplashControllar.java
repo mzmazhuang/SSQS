@@ -59,7 +59,7 @@ public class SplashControllar extends BaseFragnment {
 
     @Override
     public void initData() {
-        currentName = AndroidUtilities.getVersionName(mContent);
+        currentName = AndroidUtilities.INSTANCE.getVersionName(mContent);
         UIUtils.getSputils().putBoolean(Constent.IS_CLICK, false);
         mTime = 3;
 

@@ -60,7 +60,7 @@ public class BasketBallPassItemCell extends LinearLayout {
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
         titleTextView = new TextView(context);
-        titleTextView.setPadding(AndroidUtilities.dp(75), 0, AndroidUtilities.dp(75), 0);
+        titleTextView.setPadding(AndroidUtilities.INSTANCE.dp(75), 0, AndroidUtilities.INSTANCE.dp(75), 0);
         titleTextView.setTextSize(14);
         titleTextView.setTextColor(0xFF626262);
         titleTextView.setTypeface(Typeface.DEFAULT_BOLD);

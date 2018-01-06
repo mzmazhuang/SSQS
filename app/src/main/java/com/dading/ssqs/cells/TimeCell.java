@@ -37,7 +37,7 @@ public class TimeCell extends LinearLayout {
         setBackgroundColor(Color.WHITE);
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL);
-        setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
 
         todayText = new TextView(context);
         todayText.setTextSize(12);

@@ -70,7 +70,7 @@ public class ScrollBallCommitMenuCell extends LinearLayout {
         layout.addView(delImage, delLP);
 
         RelativeLayout infoLayout = new RelativeLayout(context);
-        infoLayout.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(45), 0);
+        infoLayout.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(45), 0);
         container.addView(infoLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 35));
 
         View view = new View(context);
@@ -102,7 +102,7 @@ public class ScrollBallCommitMenuCell extends LinearLayout {
 
         ranksTextView2 = new TextView(context);
         ranksTextView2.setSingleLine();
-        ranksTextView2.setPadding(0, 0, AndroidUtilities.dp(15), 0);
+        ranksTextView2.setPadding(0, 0, AndroidUtilities.INSTANCE.dp(15), 0);
         ranksTextView2.setTextSize(12);
         ranksTextView2.setTextColor(0xFF626262);
         ranksTextView2.setGravity(Gravity.RIGHT);
@@ -113,7 +113,7 @@ public class ScrollBallCommitMenuCell extends LinearLayout {
         leftLayout.addView(ranksTextView2, ranks2LP);
 
         RelativeLayout rightLayout = new RelativeLayout(context);
-        rightLayout.setPadding(AndroidUtilities.dp(15), 0, 0, 0);
+        rightLayout.setPadding(AndroidUtilities.INSTANCE.dp(15), 0, 0, 0);
         RelativeLayout.LayoutParams rightLP = LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT);
         rightLP.addRule(RelativeLayout.RIGHT_OF, view.getId());
         infoLayout.addView(rightLayout, rightLP);
@@ -146,7 +146,7 @@ public class ScrollBallCommitMenuCell extends LinearLayout {
         rightLayout.addView(oddsTextView, oddsLP);
 
         moneyLayout = new RelativeLayout(context);
-        moneyLayout.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        moneyLayout.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
         container.addView(moneyLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 35));
 
         View moneyView = new View(context);
@@ -169,8 +169,8 @@ public class ScrollBallCommitMenuCell extends LinearLayout {
         moneyLeftLayout.addView(tvMoneyTipView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT));
 
         moneyTextView = new EditText(context);
-        AndroidUtilities.disableShowInput(moneyTextView);
-        moneyTextView.setPadding(AndroidUtilities.dp(2), 0, AndroidUtilities.dp(2), 0);
+        AndroidUtilities.INSTANCE.disableShowInput(moneyTextView);
+        moneyTextView.setPadding(AndroidUtilities.INSTANCE.dp(2), 0, AndroidUtilities.INSTANCE.dp(2), 0);
         moneyTextView.setTextSize(12);
         moneyTextView.setSingleLine();
         moneyTextView.setTextColor(0xFF222222);

@@ -1010,7 +1010,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             setLayoutParams(LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
             RelativeLayout layout = new RelativeLayout(context);
-            layout.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+            layout.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
             layout.setOnClickListener(listener);
             addView(layout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 23));
 
@@ -1018,7 +1018,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             titleView.setTextSize(13);
             titleView.setTextColor(Color.WHITE);
             titleView.setGravity(Gravity.CENTER_VERTICAL);
-            titleView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+            titleView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
             if (type == 1) {
                 layout.setBackgroundColor(0xFFCF570E);
                 titleView.setText(LocaleController.getString(R.string.my_handicap));
@@ -1183,16 +1183,16 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             tvTitle.setTextSize(13);
             tvTitle.setTextColor(Color.WHITE);
             tvTitle.setGravity(Gravity.CENTER_VERTICAL);
-            tvTitle.setPadding(AndroidUtilities.dp(12), 0, 0, 0);
+            tvTitle.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, 0, 0);
             topLayout.addView(tvTitle, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT));
 
             refreshTextView = new TextView(context);
             refreshTextView.setGravity(Gravity.CENTER_VERTICAL);
-            refreshTextView.setPadding(AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3), AndroidUtilities.dp(3));
+            refreshTextView.setPadding(AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3), AndroidUtilities.INSTANCE.dp(3));
             refreshTextView.setTextSize(12);
             refreshTextView.setTextColor(0xFFFFF000);
             refreshTextView.setBackgroundResource(R.drawable.bg_basketball_details_refresh);
-            refreshTextView.setCompoundDrawablePadding(AndroidUtilities.dp(5));
+            refreshTextView.setCompoundDrawablePadding(AndroidUtilities.INSTANCE.dp(5));
             refreshTextView.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_refresh_white, 0, 0, 0);
             refreshTextView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -1213,7 +1213,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             addView(backgroundLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 94));
 
             LinearLayout contentLayout = new LinearLayout(context);
-            contentLayout.setPadding(0, AndroidUtilities.dp(15), 0, AndroidUtilities.dp(15));
+            contentLayout.setPadding(0, AndroidUtilities.INSTANCE.dp(15), 0, AndroidUtilities.INSTANCE.dp(15));
             contentLayout.setOrientation(LinearLayout.VERTICAL);
             backgroundLayout.addView(contentLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
@@ -1224,7 +1224,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             contentLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 20, 7, 0, 7, 0));
 
             LinearLayout leftTitleLayout = new LinearLayout(context);
-            leftTitleLayout.setPadding(AndroidUtilities.dp(5), 0, 0, 0);
+            leftTitleLayout.setPadding(AndroidUtilities.INSTANCE.dp(5), 0, 0, 0);
             leftTitleLayout.setOrientation(LinearLayout.HORIZONTAL);
             titleLayout.addView(leftTitleLayout, LayoutHelper.createLinear(0, LayoutHelper.WRAP_CONTENT, 6f));
 
@@ -1301,7 +1301,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             contentLayout.addView(homeTeamLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 22, 7, 0, 7, 0));
 
             homeTeamTitle = new TextView(context);
-            homeTeamTitle.setPadding(AndroidUtilities.dp(5), 0, 0, 0);
+            homeTeamTitle.setPadding(AndroidUtilities.INSTANCE.dp(5), 0, 0, 0);
             homeTeamTitle.setTextSize(12);
             homeTeamTitle.setTextColor(Color.WHITE);
             homeTeamTitle.setSingleLine();
@@ -1367,7 +1367,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             contentLayout.addView(visitingTeamLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 22, 7, 0, 7, 0));
 
             visitingTeamTitle = new TextView(context);
-            visitingTeamTitle.setPadding(AndroidUtilities.dp(5), 0, 0, 0);
+            visitingTeamTitle.setPadding(AndroidUtilities.INSTANCE.dp(5), 0, 0, 0);
             visitingTeamTitle.setTextSize(12);
             visitingTeamTitle.setTextColor(Color.WHITE);
             visitingTeamTitle.setSingleLine();

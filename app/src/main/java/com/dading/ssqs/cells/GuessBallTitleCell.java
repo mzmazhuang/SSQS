@@ -34,7 +34,7 @@ public class GuessBallTitleCell extends LinearLayout {
         tvName.setTextColor(Color.WHITE);
         tvName.setTextSize(13);
         tvName.setGravity(Gravity.CENTER);
-        tvName.setPadding(AndroidUtilities.dp(12), 0, AndroidUtilities.dp(12), 0);
+        tvName.setPadding(AndroidUtilities.INSTANCE.dp(12), 0, AndroidUtilities.INSTANCE.dp(12), 0);
 
         int height;
         if (isHeight) {

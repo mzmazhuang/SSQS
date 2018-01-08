@@ -73,5 +73,4 @@ public class AutoRecyclerView extends RecyclerView {
             }
         }
     }
-
 }

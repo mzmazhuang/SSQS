@@ -696,34 +696,34 @@ class TodayBoDanFragment : Fragment(), OnRefreshListener, NotificationController
                     for (k in entityList.indices) {
                         val itemsEntities = entityList[k].items
                         when {
-                            entityList[k].name == "主胜" -> for (l in itemsEntities.indices) {
-                                if (currData[i].id == itemsEntities[l].matchID) {
-                                    if (twoRowData.size < 11) {
-                                        twoRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[l].id, itemsEntities[l].payRate, 1))
+                            entityList[k].name == "主胜" -> itemsEntities.indices
+                                    .filter { currData[i].id == itemsEntities[it].matchID }
+                                    .forEach {
+                                        if (twoRowData.size < 11) {
+                                            twoRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[it].id, itemsEntities[it].payRate, 1))
+                                        }
                                     }
-                                }
-                            }
-                            entityList[k].name == "主负" -> for (l in itemsEntities.indices) {
-                                if (currData[i].id == itemsEntities[l].matchID) {
-                                    if (threeRowData.size < 11) {
-                                        threeRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[l].id, itemsEntities[l].payRate, 2))
+                            entityList[k].name == "主负" -> itemsEntities.indices
+                                    .filter { currData[i].id == itemsEntities[it].matchID }
+                                    .forEach {
+                                        if (threeRowData.size < 11) {
+                                            threeRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[it].id, itemsEntities[it].payRate, 2))
+                                        }
                                     }
-                                }
-                            }
-                            entityList[k].name == "平" -> for (l in itemsEntities.indices) {
-                                if (currData[i].id == itemsEntities[l].matchID) {
-                                    if (fiveRowData.size < 6) {
-                                        fiveRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[l].id, itemsEntities[l].payRate, 1))
+                            entityList[k].name == "平" -> itemsEntities.indices
+                                    .filter { currData[i].id == itemsEntities[it].matchID }
+                                    .forEach {
+                                        if (fiveRowData.size < 6) {
+                                            fiveRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[it].id, itemsEntities[it].payRate, 1))
+                                        }
                                     }
-                                }
-                            }
-                            entityList[k].name == "其他" -> for (l in itemsEntities.indices) {
-                                if (currData[i].id == itemsEntities[l].matchID) {
-                                    if (fiveRowData.size < 7) {
-                                        fiveRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[l].id, itemsEntities[l].payRate, 1))
+                            entityList[k].name == "其他" -> itemsEntities.indices
+                                    .filter { currData[i].id == itemsEntities[it].matchID }
+                                    .forEach {
+                                        if (fiveRowData.size < 7) {
+                                            fiveRowData.add(ScrollBallFootBallBoDanBean.ScrollBallFootBallBoDanItem(itemsEntities[it].id, itemsEntities[it].payRate, 1))
+                                        }
                                     }
-                                }
-                            }
                         }
                     }
                 }

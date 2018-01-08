@@ -176,11 +176,11 @@ public class ToDayHalfCourtFragment extends Fragment implements OnRefreshListene
                     });
                 }
                 //判断是否有联赛的数据  没有的话网路请求
-                if (DataController.getInstance().getTodayFootBallData() == null) {
-                    DataController.getInstance().syncFootBall(TAG, 2);
+                if (DataController.Companion.getInstance().getTodayFootBallData() == null) {
+                    DataController.Companion.getInstance().syncFootBall(TAG, 2);
                     loadingDialog.show();
                 } else {
-                    selectMatchDialog.show(DataController.getInstance().getTodayFootBallData(), DataController.getInstance().getTodayFootBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getTodayFootBallData(), DataController.Companion.getInstance().getTodayFootBallHotData(), "联赛选择");
                 }
             }
         });
@@ -809,7 +809,7 @@ public class ToDayHalfCourtFragment extends Fragment implements OnRefreshListene
             if (args != null && args.length >= 1) {
                 if (TAG.equals(args[0])) {
                     loadingDialog.dismiss();
-                    selectMatchDialog.show(DataController.getInstance().getTodayFootBallData(), DataController.getInstance().getTodayFootBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getTodayFootBallData(), DataController.Companion.getInstance().getTodayFootBallHotData(), "联赛选择");
                 }
             }
         }

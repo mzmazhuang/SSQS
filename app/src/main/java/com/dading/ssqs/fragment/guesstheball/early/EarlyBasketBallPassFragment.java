@@ -151,7 +151,7 @@ public class EarlyBasketBallPassFragment extends Fragment implements OnRefreshLi
             public void onChange(String time) {
                 currSelectTime = time;
 
-                DataController.getInstance().clearEarlyBasketBallData();
+                DataController.Companion.getInstance().clearEarlyBasketBallData();
 
                 swipeToLoadLayout.setRefreshing(true);
             }
@@ -206,11 +206,11 @@ public class EarlyBasketBallPassFragment extends Fragment implements OnRefreshLi
                     });
                 }
                 //判断是否有联赛的数据  没有的话网路请求
-                if (DataController.getInstance().getEarlyBaskteBallData() == null) {
-                    DataController.getInstance().syncEarlyBasketBall(TAG, currSelectTime);
+                if (DataController.Companion.getInstance().getEarlyBaskteBallData() == null) {
+                    DataController.Companion.getInstance().syncEarlyBasketBall(TAG, currSelectTime);
                     loadingDialog.show();
                 } else {
-                    selectMatchDialog.show(DataController.getInstance().getEarlyBaskteBallData(), DataController.getInstance().getEarlyBasketBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getEarlyBaskteBallData(), DataController.Companion.getInstance().getEarlyBasketBallHotData(), "联赛选择");
                 }
             }
         });
@@ -1015,7 +1015,7 @@ public class EarlyBasketBallPassFragment extends Fragment implements OnRefreshLi
             if (args != null && args.length >= 1) {
                 if (TAG.equals(args[0])) {
                     loadingDialog.dismiss();
-                    selectMatchDialog.show(DataController.getInstance().getEarlyBaskteBallData(), DataController.getInstance().getEarlyBasketBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getEarlyBaskteBallData(), DataController.Companion.getInstance().getEarlyBasketBallHotData(), "联赛选择");
                 }
             }
         }

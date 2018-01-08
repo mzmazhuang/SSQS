@@ -177,11 +177,11 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
                     });
                 }
                 //判断是否有联赛的数据  没有的话网路请求
-                if (DataController.getInstance().getBaskteBallData() == null) {
-                    DataController.getInstance().syncBasketBall(TAG, 6);
+                if (DataController.Companion.getInstance().getBaskteBallData() == null) {
+                    DataController.Companion.getInstance().syncBasketBall(TAG, 6);
                     loadingDialog.show();
                 } else {
-                    selectMatchDialog.show(DataController.getInstance().getBaskteBallData(), DataController.getInstance().getBasketBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getBaskteBallData(), DataController.Companion.getInstance().getBasketBallHotData(), "联赛选择");
                 }
             }
         });
@@ -1011,7 +1011,7 @@ public class ScrollBallBasketBallDefaultFragment extends Fragment implements OnR
             if (args != null && args.length >= 1) {
                 if (TAG.equals(args[0])) {
                     loadingDialog.dismiss();
-                    selectMatchDialog.show(DataController.getInstance().getBaskteBallData(), DataController.getInstance().getBasketBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getBaskteBallData(), DataController.Companion.getInstance().getBasketBallHotData(), "联赛选择");
                 }
             }
         }

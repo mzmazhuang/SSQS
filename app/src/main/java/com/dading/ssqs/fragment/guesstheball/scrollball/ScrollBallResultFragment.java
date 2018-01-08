@@ -163,11 +163,11 @@ public class ScrollBallResultFragment extends Fragment implements OnRefreshListe
                     });
                 }
                 //判断是否有联赛的数据  没有的话网路请求
-                if (DataController.getInstance().getFootBallData() == null) {
-                    DataController.getInstance().syncScrollFootBall(TAG, currTime);
+                if (DataController.Companion.getInstance().getFootBallData() == null) {
+                    DataController.Companion.getInstance().syncScrollFootBall(TAG, currTime);
                     loadingDialog.show();
                 } else {
-                    selectMatchDialog.show(DataController.getInstance().getFootBallData(), DataController.getInstance().getFootBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getFootBallData(), DataController.Companion.getInstance().getFootBallHotData(), "联赛选择");
                 }
             }
         });
@@ -290,7 +290,7 @@ public class ScrollBallResultFragment extends Fragment implements OnRefreshListe
         currTime = DateUtils.getCurTimeAddND(-day, "yyyyMMddHH:mm:ss");
         resultTimeLayout.setTime(DateUtils.getCurTimeAddND(-day, "yyyy-MM-dd"));
 
-        DataController.getInstance().clearScrollFootBallData();
+        DataController.Companion.getInstance().clearScrollFootBallData();
 
         swipeToLoadLayout.setRefreshing(true);
     }
@@ -513,7 +513,7 @@ public class ScrollBallResultFragment extends Fragment implements OnRefreshListe
             if (args != null && args.length >= 1) {
                 if (TAG.equals(args[0])) {
                     loadingDialog.dismiss();
-                    selectMatchDialog.show(DataController.getInstance().getFootBallData(), DataController.getInstance().getFootBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getFootBallData(), DataController.Companion.getInstance().getFootBallHotData(), "联赛选择");
                 }
             }
         }

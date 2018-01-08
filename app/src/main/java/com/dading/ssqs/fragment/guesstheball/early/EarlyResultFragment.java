@@ -178,11 +178,11 @@ public class EarlyResultFragment extends Fragment implements OnRefreshListener, 
                     });
                 }
                 //判断是否有联赛的数据  没有的话网路请求
-                if (DataController.getInstance().getEarlyFootBallData() == null) {
-                    DataController.getInstance().syncEarlyFootBall(TAG, currTime);
+                if (DataController.Companion.getInstance().getEarlyFootBallData() == null) {
+                    DataController.Companion.getInstance().syncEarlyFootBall(TAG, currTime);
                     loadingDialog.show();
                 } else {
-                    selectMatchDialog.show(DataController.getInstance().getEarlyFootBallData(), DataController.getInstance().getEarlyFootBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getEarlyFootBallData(), DataController.Companion.getInstance().getEarlyFootBallHotData(), "联赛选择");
                 }
             }
         });
@@ -309,7 +309,7 @@ public class EarlyResultFragment extends Fragment implements OnRefreshListener, 
         currTime = DateUtils.getCurTimeAddND(-day, "yyyyMMddHH:mm:ss");
         resultTimeLayout.setTime(DateUtils.getCurTimeAddND(-day, "yyyy-MM-dd"));
 
-        DataController.getInstance().clearEarlyFootBallData();
+        DataController.Companion.getInstance().clearEarlyFootBallData();
 
         swipeToLoadLayout.setRefreshing(true);
     }
@@ -520,7 +520,7 @@ public class EarlyResultFragment extends Fragment implements OnRefreshListener, 
             if (args != null && args.length >= 1) {
                 if (TAG.equals(args[0])) {
                     loadingDialog.dismiss();
-                    selectMatchDialog.show(DataController.getInstance().getEarlyFootBallData(), DataController.getInstance().getEarlyFootBallHotData(), "联赛选择");
+                    selectMatchDialog.show(DataController.Companion.getInstance().getEarlyFootBallData(), DataController.Companion.getInstance().getEarlyFootBallHotData(), "联赛选择");
                 }
             }
         }

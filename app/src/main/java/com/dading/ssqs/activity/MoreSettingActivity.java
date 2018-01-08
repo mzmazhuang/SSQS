@@ -81,7 +81,7 @@ public class MoreSettingActivity extends BaseActivity {
                 if (result.isOk()) {
                     JPushCheckedBean bean = (JPushCheckedBean) result.getData();
 
-                    if (bean != null) {
+                    if (bean != null && mSettingOpenJupshIv != null) {
                         if (bean.getData() == 1) {
                             mIsOpen = true;
                             mSettingOpenJupshIv.setBackgroundResource(R.mipmap.wifi_border_left);

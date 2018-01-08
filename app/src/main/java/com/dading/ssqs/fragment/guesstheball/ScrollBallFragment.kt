@@ -256,6 +256,10 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         }
     }
 
+    fun clearFilterData() {
+        DataController.getInstance().clearScrollFootBallData()
+    }
+
     fun changePage(str: String) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
 
@@ -278,6 +282,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         if (resultFragment != null) {
             fragmentTransaction.hide(resultFragment)
             resultFragment!!.filterPause()
+            clearFilterData()
         }
         if (ballBasketBallDefaultFragment != null) {
             fragmentTransaction.hide(ballBasketBallDefaultFragment)
@@ -335,6 +340,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
                         resultFragment!!.filterResume()
                         fragmentTransaction.show(resultFragment)
                     }
+                    clearFilterData()
                     currPage = 5
                 }
             }

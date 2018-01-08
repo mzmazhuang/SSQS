@@ -135,15 +135,15 @@ object AndroidUtilities {
 
     //检查是否登录
     fun checkIsLogin(errorCode: Int, context: Context): Boolean {
-        if (403 == errorCode) {
+        return if (403 == errorCode) {
             UIUtils.SendReRecevice(Constent.LOADING_ACTION)
             UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, false)
             val intent = Intent(context, LoginActivity::class.java)
             context.startActivity(intent)
 
-            return true
+            true
         } else {
-            return false
+            false
         }
     }
 
@@ -154,12 +154,12 @@ object AndroidUtilities {
      * @return
      */
     fun isNetworkAvailable(context: Context): Boolean {
-        try {
+        return try {
             val manger = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val info = manger.activeNetworkInfo
-            return info?.isConnected ?: false
+            info?.isConnected ?: false
         } catch (e: Exception) {
-            return false
+            false
         }
     }
 
@@ -185,7 +185,6 @@ object AndroidUtilities {
                 method.invoke(editText, false)
             } catch (e: Exception) {
             }
-
         }
     }
 
@@ -227,19 +226,19 @@ object AndroidUtilities {
      * 创建items按下背景
      */
     fun createListSelectorDrawable(context: Context): Drawable? {
-        if (Build.VERSION.SDK_INT >= 21) {
+        return if (Build.VERSION.SDK_INT >= 21) {
             val attrs = intArrayOf(android.R.attr.selectableItemBackground)
             val ta = context.obtainStyledAttributes(attrs)
             val drawableFromTheme = ta.getDrawable(0)
             ta.recycle()
-            return drawableFromTheme
+            drawableFromTheme
         } else {
             val stateListDrawable = StateListDrawable()
             stateListDrawable.addState(intArrayOf(android.R.attr.state_pressed), ColorDrawable(0x0f000000))
             stateListDrawable.addState(intArrayOf(android.R.attr.state_focused), ColorDrawable(0x0f000000))
             stateListDrawable.addState(intArrayOf(android.R.attr.state_selected), ColorDrawable(0x0f000000))
             stateListDrawable.addState(intArrayOf(), ColorDrawable(0x00000000))
-            return stateListDrawable
+            stateListDrawable
         }
     }
 

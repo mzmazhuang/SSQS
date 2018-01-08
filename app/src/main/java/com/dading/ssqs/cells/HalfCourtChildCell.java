@@ -82,7 +82,8 @@ public class HalfCourtChildCell extends LinearLayout {
         pointLayout = new LinearLayout(context);
         pointLayout.setVisibility(View.GONE);
         pointLayout.setOrientation(LinearLayout.HORIZONTAL);
-        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(20, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+        pointLayout.setGravity(Gravity.LEFT);
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(25, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
 
         protTimeView = new TextView(context);
         protTimeView.setTextSize(10);

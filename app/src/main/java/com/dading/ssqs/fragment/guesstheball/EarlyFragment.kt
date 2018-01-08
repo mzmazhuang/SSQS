@@ -270,8 +270,16 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         }
     }
 
+    private fun clearFilterData() {
+        DataController.getInstance().clearEarlyFootBallData()
+        DataController.getInstance().clearEarlyBasketBallData()
+    }
+
     private fun changePage(str: String) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
+
+        //因早盘里每个页面都有可以选择的7天 这样就不能保持数据一致 所以每次更换页面都把筛选数据清空
+        clearFilterData()
 
         if (defaultFragment != null) {
             defaultFragment!!.filterPause()

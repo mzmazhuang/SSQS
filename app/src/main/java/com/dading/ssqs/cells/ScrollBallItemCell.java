@@ -90,7 +90,8 @@ public class ScrollBallItemCell extends LinearLayout {
         pointLayout.setVisibility(View.GONE);
         pointLayout.setOrientation(LinearLayout.HORIZONTAL);
         pointLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(20, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
+        pointLayout.setGravity(Gravity.LEFT);
+        titleTextLayout.addView(pointLayout, LayoutHelper.createLinear(25, LayoutHelper.WRAP_CONTENT, 2, 6, 0, 0));
 
         protTimeView = new TextView(context);
         protTimeView.setTextSize(10);

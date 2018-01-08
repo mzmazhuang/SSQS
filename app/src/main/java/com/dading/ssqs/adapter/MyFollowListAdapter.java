@@ -177,7 +177,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
                                         processDataPop(bean);
                                     }
                                 } else {
-                                    Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
+                                    Logger.INSTANCE.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                                 }
                             }
                         });
@@ -207,7 +207,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
                                 holder.mMyFollowFollowTag.setChecked(false);
                                 data.remove(entity);
                                 MyFollowListAdapter.this.notifyDataSetChanged();
-                                Logger.d(TAG, "更新数据------------------------------:");
+                                Logger.INSTANCE.d(TAG, "更新数据------------------------------:");
 
                             } else {
                                 if (403 == result.getErrno()) {
@@ -323,7 +323,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    Logger.d(TAG, result.getMessage());
+                                    Logger.INSTANCE.d(TAG, result.getMessage());
                                     if (data.isFriend == 0) {
                                         data.isFriend = 0;
                                         mFollow.setChecked(false);
@@ -342,7 +342,7 @@ public class MyFollowListAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 mPop.dismiss();
-                Logger.d(TAG, "pop消失------------------------------:");
+                Logger.INSTANCE.d(TAG, "pop消失------------------------------:");
             }
         });
         mClose.setOnClickListener(new View.OnClickListener() {

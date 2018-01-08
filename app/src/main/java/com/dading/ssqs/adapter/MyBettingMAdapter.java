@@ -75,7 +75,7 @@ public class MyBettingMAdapter extends BaseExpandableListAdapter {
         BettingMBean entity = data.get(groupPosition);
         if (entity != null) {
             holder.mBettingLvItmeLeagueName.setText(entity.leagueName);
-            Logger.d(TAG, "设置主客队------------------------------:" + entity.home + "---" + entity.away);
+            Logger.INSTANCE.d(TAG, "设置主客队------------------------------:" + entity.home + "---" + entity.away);
             holder.mBettingLvItmeMain.setText(entity.home);
             holder.mBettingLvItmeSecond.setText(entity.away);
 
@@ -85,7 +85,7 @@ public class MyBettingMAdapter extends BaseExpandableListAdapter {
                 holder.mBettingLvItmeIv.setImageResource(R.mipmap.xia);
             }
             String openTime = entity.openTime;
-            Logger.d(TAG, "开始时间返回数据是------------------------------:" + openTime);
+            Logger.INSTANCE.d(TAG, "开始时间返回数据是------------------------------:" + openTime);
             if (openTime != null) {
                 String time = openTime.substring(11, 16);
                 String s = time + "";

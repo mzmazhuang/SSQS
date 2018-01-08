@@ -243,7 +243,7 @@ public class SearchSavantActivity extends BaseActivity {
                                 }
                             }
                         } else {
-                            Logger.d(TAG, result.getMessage() + "按级别搜索专家失败信息");
+                            Logger.INSTANCE.d(TAG, result.getMessage() + "按级别搜索专家失败信息");
                         }
                     }
                 });

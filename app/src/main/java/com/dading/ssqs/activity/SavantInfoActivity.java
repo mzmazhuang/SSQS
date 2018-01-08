@@ -183,7 +183,7 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                  status:  0-取消关注 1-关注
                  auth_token：登陆后加入请求头
                  */
-                Logger.d(TAG, "我被选中了");
+                Logger.INSTANCE.d(TAG, "我被选中了");
 
                 FocusUserElement element = new FocusUserElement();
                 element.setFouceUserID(mUserID);
@@ -194,12 +194,12 @@ public class SavantInfoActivity extends BaseActivity implements ViewPager.OnPage
                     public void onResponse(CcApiResult result) {
                         if (result.isOk()) {
                             if (mInfoData.isFouce == 0) {
-                                Logger.d(TAG, result.getMessage() + "关注成功信息");
+                                Logger.INSTANCE.d(TAG, result.getMessage() + "关注成功信息");
                                 mInfoData.isFouce = 1;
                                 mFansNum = mFansNum + 1;
                                 mSavantInfoFansNum.setText(String.valueOf(mFansNum));
                             } else {
-                                Logger.d(TAG, result.getMessage() + "取消关注成功信息");
+                                Logger.INSTANCE.d(TAG, result.getMessage() + "取消关注成功信息");
                                 mFansNum = mFansNum - 1;
                                 mSavantInfoFansNum.setText(String.valueOf(mFansNum));
                                 mInfoData.isFouce = 0;

@@ -127,7 +127,7 @@ public class MyPostAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = topicsEntity.id;
                 intent.putExtra("infoId", mId);
-                Logger.d(TAG, "赛事id---------------------" + topicsEntity.id);
+                Logger.INSTANCE.d(TAG, "赛事id---------------------" + topicsEntity.id);
                 context.startActivity(intent);
             }
         });

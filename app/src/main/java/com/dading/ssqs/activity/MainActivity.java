@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Logger.e("mazhuang", "System create" + System.currentTimeMillis());
+        Logger.INSTANCE.e("mazhuang", "System create" + System.currentTimeMillis());
     }
 
     @Override
@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initFragment();
 
-        Logger.d(TAG, "点击的url---" + UIUtils.getSputils().getBoolean(Constent.IS_CLICK, false) + "----:" + UIUtils.getSputils().getString(Constent.IS_CLICK_URL, "https://www.sogou.com/"));
+        Logger.INSTANCE.d(TAG, "点击的url---" + UIUtils.getSputils().getBoolean(Constent.IS_CLICK, false) + "----:" + UIUtils.getSputils().getString(Constent.IS_CLICK_URL, "https://www.sogou.com/"));
         /**
          * 打开外部浏览器
          */
@@ -179,7 +179,7 @@ public class MainActivity extends BaseActivity {
                         showUpdataDialog(bean);
                     }
                 } else {
-                    Logger.e(TAG, result.getMessage() + "版本更新失败信息");
+                    Logger.INSTANCE.e(TAG, result.getMessage() + "版本更新失败信息");
                 }
             }
         });

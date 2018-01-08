@@ -47,7 +47,7 @@ public class LuckBallActivity extends BaseActivity {
         if (spUtils.getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             url = url + spUtils.getString(Constent.TOKEN, "");
         }
-        Logger.d(TAG, "娛樂場項目返回数据是------------------------------:" + url);
+        Logger.INSTANCE.d(TAG, "娛樂場項目返回数据是------------------------------:" + url);
         mLuckBallWb.setWebChromeClient(new WebChromeClient( ));
         mLuckBallWb.setWebViewClient(new WebViewClient( ));
         mLuckBallWb.loadUrl("http://www.ddzlink.com/ssqsApp/tpl/game.html?token=8b53ebe9e0ce49719ac1117ab63528fc");

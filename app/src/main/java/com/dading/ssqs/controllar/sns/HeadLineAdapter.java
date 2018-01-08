@@ -110,7 +110,7 @@ public class HeadLineAdapter extends BaseAdapter implements ListAdapter {
         holder.mItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logger.d(TAG, "社区条目数据id--:" + entity.id + " 条目标题:" + entity.title);
+                Logger.INSTANCE.d(TAG, "社区条目数据id--:" + entity.id + " 条目标题:" + entity.title);
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);

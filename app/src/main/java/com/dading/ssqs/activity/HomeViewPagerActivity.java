@@ -172,7 +172,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         oks.setSite(data.title);
         // siteUrl是分享此内容的网站地址，仅在QQ空间使用
         oks.setImageUrl(data.logoUrl);
-        Logger.d(TAG, "shouye赛事返回数据是------------------------------:" + data.logoUrl);
+        Logger.INSTANCE.d(TAG, "shouye赛事返回数据是------------------------------:" + data.logoUrl);
         oks.setSiteUrl(data.forwardUrl);
         // 启动分享GUI
         oks.show(this);
@@ -448,7 +448,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         } else {
             mAnswerNumNo.setVisibility(View.GONE);
         }
-        Logger.d(TAG, mComments.toString());
+        Logger.INSTANCE.d(TAG, mComments.toString());
 
         mAdapter = new CommentsLvAdapter(this, mComments);
         mHomeMatchThingInfoCommentsLv.setAdapter(mAdapter);
@@ -485,7 +485,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
                 mIntent.putExtra(Constent.ALL_CIRCLE_TYPE_TAG, Constent.HOME_THING2_COME);
                 if (mArticles != null) {
                     Object o1 = JSON.toJSON(mArticles);
-                    Logger.d(TAG, "首页跳转类型返回数据是------------------------------:" + o1.toString());
+                    Logger.INSTANCE.d(TAG, "首页跳转类型返回数据是------------------------------:" + o1.toString());
                     mIntent.putExtra(Constent.ALL_CIRCLE_TYPE, o1.toString());
                     this.startActivity(mIntent);
                 }
@@ -661,7 +661,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         mPage++;
         /*if (mPage <= data.totalCount) {*/
         ToastUtils.midToast(UIUtils.getContext(), "刷新成功!", 0);
-        Logger.d(TAG, "加载更多返回数据是------------------------------:条目" + data.size());
+        Logger.INSTANCE.d(TAG, "加载更多返回数据是------------------------------:条目" + data.size());
         //mItems.addAll(data.items);
         for (CommentsBean s1 : data) {
                /* mItems.add(s1);
@@ -678,7 +678,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         }
 
         if (mItems != null)
-            Logger.d(TAG, "加载更多返回数据是------------------------------:条目总" + mItems.size());
+            Logger.INSTANCE.d(TAG, "加载更多返回数据是------------------------------:条目总" + mItems.size());
 
         mAdapter = new CommentsLvAdapter(this, mComments);
         mHomeMatchThingInfoCommentsLv.setAdapter(mAdapter);
@@ -727,7 +727,7 @@ public class HomeViewPagerActivity extends BaseActivity implements View.OnClickL
         } else {
             mAnswerNumNo.setVisibility(View.GONE);
         }
-        Logger.d(TAG, mComments.toString());
+        Logger.INSTANCE.d(TAG, mComments.toString());
 
         mAdapter = new CommentsLvAdapter(this, mComments);
         mHomeMatchThingInfoCommentsLv.setAdapter(mAdapter);

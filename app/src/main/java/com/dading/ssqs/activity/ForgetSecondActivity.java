@@ -76,7 +76,7 @@ public class ForgetSecondActivity extends BaseActivity implements View.OnFocusCh
         //获取上一步的手机号
         Intent intent = getIntent();
         mPhone = intent.getStringExtra("mobile");
-        Logger.d(TAG, "手机号码:" + mPhone);
+        Logger.INSTANCE.d(TAG, "手机号码:" + mPhone);
         mForgetSecondSendcode.setClickable(false);
         mTime = 180;
         final String s = mTime + "s";
@@ -160,7 +160,7 @@ public class ForgetSecondActivity extends BaseActivity implements View.OnFocusCh
                 startActivity(intent);
                 break;
             case R.id.forget_second_sendcode:
-                Logger.d(TAG, "mForgetSecondSendcode返回数据是------------------------------:" + mForgetSecondSendcode.getText().toString());
+                Logger.INSTANCE.d(TAG, "mForgetSecondSendcode返回数据是------------------------------:" + mForgetSecondSendcode.getText().toString());
                 if (mForgetSecondSendcode.getText().toString().equals(getString(R.string.send_again))) {
                     ForgetUserPasswordElement element = new ForgetUserPasswordElement();
                     element.setMobile(mPhone);

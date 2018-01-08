@@ -110,7 +110,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
         //获取上一步的手机号
         Intent intent = getIntent();
         mPhone = intent.getStringExtra("mobile");
-        Logger.d(TAG, "手机号码:" + mPhone);
+        Logger.INSTANCE.d(TAG, "手机号码:" + mPhone);
         mSecondAllowIcon.setChecked(true);
         mSecondSendCode.setClickable(false);
     }
@@ -147,7 +147,7 @@ public class RegisterSecondActivity extends BaseActivity implements View.OnFocus
                             mCountDownTimer.start();
                         } else {
                             ToastUtils.midToast(RegisterSecondActivity.this, result.getMessage(), 0);
-                            Logger.d(TAG, "注册手机验证码请求失败!...------------------------------:");
+                            Logger.INSTANCE.d(TAG, "注册手机验证码请求失败!...------------------------------:");
                         }
                     }
                 });

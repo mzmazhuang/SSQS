@@ -84,7 +84,7 @@ public class SSQSApplication extends MultiDexApplication {
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
         String registrationID = JPushInterface.getRegistrationID(this);//极光推送的注册标识
-        Logger.d(TAG, "返回数据是------------------------------:" + registrationID);
+        Logger.INSTANCE.d(TAG, "返回数据是------------------------------:" + registrationID);
 
         LeakCanary.install(this);
         // 主线程
@@ -132,7 +132,7 @@ public class SSQSApplication extends MultiDexApplication {
             appVersion = String.valueOf(pInfo.versionCode);
             systemVersion = "Android " + Build.VERSION.SDK_INT;
         } catch (Exception e) {
-            Logger.e("Application", e);
+            Logger.INSTANCE.e("Application", e);
         }
         return "imei=" + imei + "&model=" + deviceModel + "&language=" + langCode + "&version=" + appVersion + "&os=" + systemVersion;
     }

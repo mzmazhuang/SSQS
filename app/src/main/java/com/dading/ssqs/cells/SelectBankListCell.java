@@ -12,7 +12,7 @@ import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.base.LayoutHelper;
 
 /**
- * Created by asus on 2017/11/25.
+ * Created by mazhuang on 2017/11/25.
  */
 
 public class SelectBankListCell extends LinearLayout {

@@ -150,7 +150,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                         text0 += " vs " + info.away;
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text0);
-                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text0);
+                    Logger.INSTANCE.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text0);
                     break;
                 case 1:
                     mBettingLvChildWaitOpenCg1.setText("未完结");
@@ -160,7 +160,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                         text += " vs " + info.away;
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text);
-                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text);
+                    Logger.INSTANCE.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text);
                     break;
                 case 2:
                     mBettingLvChildWaitOpenCg1.setText("赢");
@@ -172,7 +172,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                         text1 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text1);
-                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text1);
+                    Logger.INSTANCE.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text1);
                     break;
                 case 3:
                     mBettingLvChildWaitOpenCg1.setText("输");
@@ -184,7 +184,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                         text2 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text2);
-                    Logger.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text2);
+                    Logger.INSTANCE.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text2);
                     break;
                 case 4:
                     mBettingLvChildWaitOpenCg1.setText("平");
@@ -195,7 +195,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                         text3 = info.home + " " + info.homeScore + ":" + info.awayScore + " " + info.away;
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text3);
-                    Logger.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text3);
+                    Logger.INSTANCE.d(TAG, "結果是--" + position + "---1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text3);
                     break;
                 case 5:
                     String text4;
@@ -206,7 +206,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text4);
                     mBettingLvChildWaitOpenCg1.setText("输一半");
-                    Logger.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text4);
+                    Logger.INSTANCE.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text4);
                     break;
                 case 6:
                     String text5;
@@ -217,7 +217,7 @@ public class HisAdapter extends BaseAdapter implements ListAdapter {
                     }
                     mBettingLvChildDoubleTeamCg1.setText(text5);
                     mBettingLvChildWaitOpenCg1.setText("赢一半");
-                    Logger.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text5);
+                    Logger.INSTANCE.d(TAG, "結果是---" + position + "--1-未完结 2-赢 3-输 4-平 5-输一半6-赢一半---:" + info.status + "--" + text5);
                     break;
                 default:
                     break;

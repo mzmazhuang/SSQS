@@ -94,7 +94,7 @@ public class MatchInfoPl {
             mLv.setVisibility(View.VISIBLE);
             mLv.setAdapter(new MyLvAdapter(context, mBean));
             mQxLvBottom.setVisibility(View.VISIBLE);
-            Logger.d(TAG, "倾向隐藏");
+            Logger.INSTANCE.d(TAG, "倾向隐藏");
             // mLyQx.setVisibility(View.GONE);
         }
     }
@@ -131,9 +131,9 @@ public class MatchInfoPl {
                       /*  ListScrollUtil.setListViewHeightBasedOnChildren(mQxLv1);
                         ListScrollUtil.setListViewHeightBasedOnChildren(mQxLv2);
                         mLyQx.setVisibility(View.GONE);*/
-                        Logger.d(TAG, "倾向显示");
+                        Logger.INSTANCE.d(TAG, "倾向显示");
                         mLv.setVisibility(View.GONE);
-                        Logger.d(TAG, "倾向隐藏");
+                        Logger.INSTANCE.d(TAG, "倾向隐藏");
 
                         break;
                     default:
@@ -156,7 +156,7 @@ public class MatchInfoPl {
                 } else {
                     mPlDataView.setVisibility(View.GONE);
                     mPlNoDataView.setVisibility(View.VISIBLE);
-                    Logger.d(TAG, result.getMessage() + "比赛详情赔率请求失败.失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "比赛详情赔率请求失败.失败信息");
                 }
             }
         });

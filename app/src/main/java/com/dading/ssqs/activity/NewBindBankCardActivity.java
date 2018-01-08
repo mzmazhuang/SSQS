@@ -182,7 +182,7 @@ public class NewBindBankCardActivity extends BaseActivity {
                         finish();
                     } else {
                         ToastUtils.midToast(mContext, "上传提现信息失败!" + result.getMessage(), 0);
-                        Logger.d("BindBank", result.getMessage() + "失败信息");
+                        Logger.INSTANCE.d("BindBank", result.getMessage() + "失败信息");
                     }
                 }
             });

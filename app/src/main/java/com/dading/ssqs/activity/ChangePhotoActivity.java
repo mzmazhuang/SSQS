@@ -387,7 +387,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
         try {
             file.createNewFile();
         } catch (IOException e) {
-            Logger.d(TAG, e.getMessage());
+            Logger.INSTANCE.d(TAG, e.getMessage());
         }
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -418,7 +418,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             baos.close();
             //标记压缩图片成功
         } catch (Exception e) {
-            Logger.d(TAG, e.getMessage());
+            Logger.INSTANCE.d(TAG, e.getMessage());
         }
         return file;
     }
@@ -463,7 +463,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
         if (requestCode == PHOTO_CAMERA) {
             // 设置文件保存路径这里放在跟目录下
             File picture = new File(Environment.getExternalStorageDirectory() + ImageName);
-            Logger.d(TAG, "相机path是------------------------------:" + picture.getPath());
+            Logger.INSTANCE.d(TAG, "相机path是------------------------------:" + picture.getPath());
             File file1 = compressImageFile(picture.getPath());
             if (file1 != null) {
                 runUp(file1);
@@ -486,7 +486,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             String picPath = cursor.getString(columnIndex);
             cursor.close();
             File file1 = compressImageFile(picPath);
-            Logger.d(TAG, "图库图片地址是----------:" + picPath + "----file___" + file1.getAbsolutePath());
+            Logger.INSTANCE.d(TAG, "图库图片地址是----------:" + picPath + "----file___" + file1.getAbsolutePath());
             if (file1 != null) {
                 runUp(file1);
             } else {
@@ -499,7 +499,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             mNickName = data.getStringExtra(Constent.NICK_NAME);
             mChangePhotoNickname.setText(mNickName);
             mBean.username = mNickName;
-            Logger.d(TAG, "修改昵称返回数据是------------------------------:" + mNickName);
+            Logger.INSTANCE.d(TAG, "修改昵称返回数据是------------------------------:" + mNickName);
 
         }
         //更改签名
@@ -507,7 +507,7 @@ public class ChangePhotoActivity extends BaseActivity implements View.OnClickLis
             mSignature = data.getStringExtra(Constent.SIGN_TEXT);
             mChangePhotoSignText.setText(mSignature);
             mBean.signature = mSignature;
-            Logger.d(TAG, "修改签名返回数据是------------------------------:" + mSignature);
+            Logger.INSTANCE.d(TAG, "修改签名返回数据是------------------------------:" + mSignature);
         }
     }
 

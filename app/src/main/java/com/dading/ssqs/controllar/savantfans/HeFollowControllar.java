@@ -88,7 +88,7 @@ public class HeFollowControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "专家他的关注失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "专家他的关注失败信息");
                 }
             }
         });
@@ -140,7 +140,7 @@ public class HeFollowControllar {
                             }
                         } else {
                             mPage--;
-                            Logger.d(TAG, result.getMessage() + "专家他的关注失败信息");
+                            Logger.INSTANCE.d(TAG, result.getMessage() + "专家他的关注失败信息");
                         }
                     }
                 });

@@ -87,7 +87,7 @@ public class LockPhoneActivity extends BaseActivity implements View.OnFocusChang
                     mLockPhonePhoneCode.setClickable(true);
                     return;
                 }
-                Logger.d(TAG, mMPhoneNumberText + "这是手机号");
+                Logger.INSTANCE.d(TAG, mMPhoneNumberText + "这是手机号");
 
                 SendBindPhoneYZMElement element=new SendBindPhoneYZMElement();
                 element.setMobile(mMPhoneNumberText);
@@ -145,6 +145,6 @@ public class LockPhoneActivity extends BaseActivity implements View.OnFocusChang
             mLockPhonePhoneCode.setBackgroundResource(R.mipmap.register_sel);
             mLockPhonePhoneCode.setClickable(true);
         }
-        Logger.d(TAG, s.toString());
+        Logger.INSTANCE.d(TAG, s.toString());
     }
 }

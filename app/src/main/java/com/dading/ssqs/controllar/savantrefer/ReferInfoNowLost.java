@@ -96,7 +96,7 @@ public class ReferInfoNowLost {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "专家推荐列表全场赛果失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "专家推荐列表全场赛果失败信息");
                 }
             }
         });
@@ -148,7 +148,7 @@ public class ReferInfoNowLost {
                                 }
                             }
                         } else {
-                            Logger.d(TAG, result.getMessage() + "专家推荐列表当前让球失败信息");
+                            Logger.INSTANCE.d(TAG, result.getMessage() + "专家推荐列表当前让球失败信息");
                         }
                     }
                 });

@@ -95,7 +95,7 @@ public class MySnsCollectControllar extends BaseFragnment {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "社區收藏失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "社區收藏失败信息");
                 }
             }
         });
@@ -155,7 +155,7 @@ public class MySnsCollectControllar extends BaseFragnment {
                             }
                         }
                     } else {
-                        Logger.d(TAG, result.getMessage() + "社區收藏失败信息");
+                        Logger.INSTANCE.d(TAG, result.getMessage() + "社區收藏失败信息");
                     }
                 }
             });

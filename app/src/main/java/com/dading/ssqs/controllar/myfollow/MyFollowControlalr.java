@@ -184,7 +184,7 @@ public class MyFollowControlalr extends Fragment {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "我的关注失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "我的关注失败信息");
                 }
             }
         });

@@ -32,7 +32,7 @@ public class AccountDetailAdapter extends BaseQuickAdapter<AccountDetailBean> {
     @Override
     protected void convert(BaseViewHolder baseViewHolder, AccountDetailBean itemsBean) {
         mI++;
-        Logger.d(TAG, "item 数------------------------------:" + mI);
+        Logger.INSTANCE.d(TAG, "item 数------------------------------:" + mI);
         /**
          * 1:rmb
          2:钻石，

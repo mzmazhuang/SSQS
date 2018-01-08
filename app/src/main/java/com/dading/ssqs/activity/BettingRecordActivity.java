@@ -318,11 +318,11 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
                 switch (checkedId) {
                     case R.id.betting_record_football:
                         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
-                        Logger.d(TAG, "投注记录------------------------------足球:");
+                        Logger.INSTANCE.d(TAG, "投注记录------------------------------足球:");
                         break;
                     case R.id.betting_record_basketball:
                         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
-                        Logger.d(TAG, "投注记录------------------------------篮球:");
+                        Logger.INSTANCE.d(TAG, "投注记录------------------------------篮球:");
                         break;
                     default:
                         break;
@@ -423,7 +423,7 @@ public class BettingRecordActivity extends BaseActivity implements ExpandableLis
             case R.id.betting_record_end_time:
                 mCanlendarTag = 2;
                 mBettingRecordStartTime.setClickable(false);
-                Logger.d(TAG, "结束日期被点击了------------------------------:");
+                Logger.INSTANCE.d(TAG, "结束日期被点击了------------------------------:");
                 String eToaday = mBettingRecordEndTime.getText().toString();
                 String[] splitend = eToaday.split("-");
                 StringBuilder bufferend = new StringBuilder();

@@ -94,7 +94,7 @@ public class HeadLineControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "头条失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "头条失败信息");
                 }
             }
         });
@@ -108,7 +108,7 @@ public class HeadLineControllar {
             for (SnsBean.TopPicEntity entity : topPic) {
                 ImageView target = new ImageView(context);
 
-                Logger.d(TAG, "社区轮播返回数据id---------:" + entity.id + "---" + entity.smallImage);
+                Logger.INSTANCE.d(TAG, "社区轮播返回数据id---------:" + entity.id + "---" + entity.smallImage);
 
                 SSQSApplication.glide.load(entity.smallImage).error(R.mipmap.fail).centerCrop().into(target);
 
@@ -190,7 +190,7 @@ public class HeadLineControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "头条失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "头条失败信息");
                 }
             }
         });

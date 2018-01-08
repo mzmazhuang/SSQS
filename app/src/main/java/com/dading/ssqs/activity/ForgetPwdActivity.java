@@ -97,7 +97,7 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
                  */
                 mPhoneNum = mForgetPhoneNumber.getText().toString();
 
-                Logger.d(TAG, mPhoneNum + "这是手机号");
+                Logger.INSTANCE.d(TAG, mPhoneNum + "这是手机号");
 
                 ForgetUserPasswordElement element=new ForgetUserPasswordElement();
                 element.setMobile(mPhoneNum);
@@ -119,7 +119,7 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
                                 finish();
                             } else {
                                 ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
-                                Logger.d(TAG, result.getMessage());
+                                Logger.INSTANCE.d(TAG, result.getMessage());
                             }
                         }
                     }
@@ -161,6 +161,6 @@ public class ForgetPwdActivity extends BaseActivity implements View.OnFocusChang
 
     @Override
     public void afterTextChanged(Editable s) {
-        Logger.d(TAG, s.toString());
+        Logger.INSTANCE.d(TAG, s.toString());
     }
 }

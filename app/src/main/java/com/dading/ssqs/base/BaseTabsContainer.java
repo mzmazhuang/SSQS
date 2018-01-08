@@ -154,10 +154,10 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
     public void setVisbilityViews(ArrayList<RelativeLayout> list, RelativeLayout ly) {
         for (RelativeLayout v : list) {
             if (v == ly) {
-                Logger.d(TAG, "是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
+                Logger.INSTANCE.d(TAG, "是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
                 v.setVisibility(View.VISIBLE);
             } else {
-                Logger.d(TAG, "不是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
+                Logger.INSTANCE.d(TAG, "不是标题显示---" + v.equals(ly) + "--------:" + (v == ly));
                 v.setVisibility(View.GONE);
             }
         }
@@ -292,12 +292,12 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
             case R.id.content_title_guessball_title_f:
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
                 UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL);
-                Logger.d("GBSS", "發送足球------------------------------:");
+                Logger.INSTANCE.d("GBSS", "發送足球------------------------------:");
                 break;
             case R.id.content_title_guessball_title_b:
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
                 UIUtils.SendReRecevice(Constent.LOADING_FOOTBALL);
-                Logger.d("GBSS", "發送籃球------------------------------:");
+                Logger.INSTANCE.d("GBSS", "發送籃球------------------------------:");
                 break;
             case R.id.content_title_score_title_f:
                 UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);

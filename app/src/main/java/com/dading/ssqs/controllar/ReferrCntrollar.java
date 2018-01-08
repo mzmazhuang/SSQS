@@ -71,7 +71,7 @@ public class ReferrCntrollar extends BaseTabsContainer {
                             processedData(items);
                         }
                     } else {
-                        Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
+                        Logger.INSTANCE.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                     }
                 }
             });

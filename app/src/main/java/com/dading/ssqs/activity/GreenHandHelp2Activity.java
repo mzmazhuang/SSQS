@@ -38,7 +38,7 @@ public class GreenHandHelp2Activity extends BaseActivity {
     public class Js {
         @JavascriptInterface
         public void sign ( ) {
-            Logger.d(TAG, "我被JS调用了------------------------------:");
+            Logger.INSTANCE.d(TAG, "我被JS调用了------------------------------:");
             GreenHandHelp2Activity.this.finish( );
         }
     }

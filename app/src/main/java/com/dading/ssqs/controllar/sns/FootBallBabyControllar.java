@@ -73,7 +73,7 @@ public class FootBallBabyControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "足球宝贝失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "足球宝贝失败信息");
                 }
             }
         });
@@ -125,7 +125,7 @@ public class FootBallBabyControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "足球宝贝失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "足球宝贝失败信息");
                 }
             }
         });

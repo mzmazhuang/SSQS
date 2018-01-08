@@ -129,7 +129,7 @@ public class EssayInfoAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = entity.id;
                 intent.putExtra("infoId", mId);
-                Logger.d(TAG, "赛事id---------------------" + entity.id);
+                Logger.INSTANCE.d(TAG, "赛事id---------------------" + entity.id);
                 context.startActivity(intent);
             }
         });

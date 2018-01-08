@@ -65,7 +65,7 @@ public class MatchBeforeRNAdapter extends BaseAdapter implements ListAdapter {
         if (openTime.length() > 16) {
             String time = openTime.substring(5, 16);
             String todaystr = openTime.substring(0, 10);
-            Logger.d(TAG,"日期是------------------------------:"+todaystr);
+            Logger.INSTANCE.d(TAG,"日期是------------------------------:"+todaystr);
             String zh = DateUtils.getTodayZh(todaystr);
             if (TextUtils.isEmpty(zh)) {
                 holder.mMatchTime.setText(time);
@@ -78,7 +78,7 @@ public class MatchBeforeRNAdapter extends BaseAdapter implements ListAdapter {
         String home = data.get(position).home;
         String away = data.get(position).away;
         int joinCount = data.get(position).joinCount;
-        Logger.d("leftrightr","返回数据是-----------:"+home+"---"+away);
+        Logger.INSTANCE.d("leftrightr","返回数据是-----------:"+home+"---"+away);
         holder.mMatchMain.setText(home);
         holder.mMatchSecond.setText(away);
         String text = joinCount + "人竞猜";

@@ -6,7 +6,6 @@ import java.util.Locale;
 
 /**
  * Created by mazhuang on 2017/11/20.
- * 语言文字的控制器
  */
 
 public class LocaleController {
@@ -73,7 +72,7 @@ public class LocaleController {
             }
         } catch (Exception e) {
             String TAG = "LocaleController";
-            Logger.e(TAG, e);
+            Logger.INSTANCE.e(TAG, e);
         }
         if (value == null) {
             value = "LOC_ERR:" + res;
@@ -82,7 +81,7 @@ public class LocaleController {
             return String.format(value, args);
         } catch (Exception e) {
             String TAG = "LocaleController";
-            Logger.e(TAG, e);
+            Logger.INSTANCE.e(TAG, e);
         }
         return value;
     }

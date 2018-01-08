@@ -111,7 +111,7 @@ public class MyGTAdapter extends BaseAdapter implements ListAdapter {
                 //添加数据传递过去到详情页面
                 mId = itemsEntity.articleID;
                 intent.putExtra("infoId", mId);
-                Logger.d(TAG, "赛事id---------------------" + mId);
+                Logger.INSTANCE.d(TAG, "赛事id---------------------" + mId);
                 context.startActivity(intent);
             }
         });

@@ -16,7 +16,7 @@ import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.utils.AndroidUtilities;
 
 /**
- * Created by asus on 2017/11/25.
+ * Created by mazhuang on 2017/11/25.
  */
 
 public class BankCell extends LinearLayout {

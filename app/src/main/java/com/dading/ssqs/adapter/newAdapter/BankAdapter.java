@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by asus on 2017/11/25.
+ * Created by mazhuang on 2017/11/25.
  */
 
 public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ItemViewHolder> {

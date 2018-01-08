@@ -66,7 +66,7 @@ public class MatchBeforeRDAdapter extends BaseAdapter implements ListAdapter {
         if (openTime.length() > 16) {
             String time = openTime.substring(5, 16);
             String todaystr = openTime.substring(0, 10);
-            Logger.d(TAG, "日期是------------------------------:" + todaystr);
+            Logger.INSTANCE.d(TAG, "日期是------------------------------:" + todaystr);
             String zh = DateUtils.getTodayZh(todaystr);
             if (TextUtils.isEmpty(zh)) {
                 holder.mMatchTime.setText(time);

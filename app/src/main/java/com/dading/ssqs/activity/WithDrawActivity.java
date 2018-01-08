@@ -176,7 +176,7 @@ public class WithDrawActivity extends BaseActivity {
                             mWithDrawBusinsessPwd.setText("");
                         } else {
                             ToastUtils.midToast(UIUtils.getContext(), "提现上传失败." + result.getMessage(), 0);
-                            Logger.d(TAG, result.getMessage() + "失败信息");
+                            Logger.INSTANCE.d(TAG, result.getMessage() + "失败信息");
                         }
                     }
                 });

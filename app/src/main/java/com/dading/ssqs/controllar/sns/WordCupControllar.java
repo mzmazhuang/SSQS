@@ -71,7 +71,7 @@ public class WordCupControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "世界杯失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "世界杯失败信息");
                 }
             }
         });
@@ -123,7 +123,7 @@ public class WordCupControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "世界杯失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "世界杯失败信息");
                 }
             }
         });

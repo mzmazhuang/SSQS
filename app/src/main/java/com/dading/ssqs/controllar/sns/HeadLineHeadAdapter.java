@@ -83,7 +83,7 @@ public class HeadLineHeadAdapter extends BaseAdapter implements ListAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final SnsBean.WritesEntity entity = data.get(position);
-        Logger.d(TAG, "头条返回数据是------------------------------:" + entity.id);
+        Logger.INSTANCE.d(TAG, "头条返回数据是------------------------------:" + entity.id);
 
         holder.snslvtitle.setText(entity.title);
         holder.snslvcomment.setText(entity.content);

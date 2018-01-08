@@ -74,7 +74,7 @@ public class SplashAcitivty extends BaseActivity {
         UIUtils.getSputils().putBoolean(Constent.CHIOCE, false);
 
         String s = UIUtils.getSputils().getString(Constent.IS_FRISE, "0");
-        Logger.d(TAG, "是否是第一次登陆---0是-1不是---------------------------:" + s);
+        Logger.INSTANCE.d(TAG, "是否是第一次登陆---0是-1不是---------------------------:" + s);
         if (s.equals("0")) {
             mList.add(splashControllar1);
             mList.add(splashControllar2);

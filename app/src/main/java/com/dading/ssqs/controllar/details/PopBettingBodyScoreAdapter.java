@@ -83,7 +83,7 @@ public class PopBettingBodyScoreAdapter extends BaseAdapter {
         /**
          * 还原初始化状态
          */
-        Logger.d(TAG,"比分Adapter的返回数据是---------:"+position+"==="+data.size());
+        Logger.INSTANCE.d(TAG,"比分Adapter的返回数据是---------:"+position+"==="+data.size());
         final JCScorebean.ListEntity.ItemsEntity item = data.get(position);
         /**
          *1进球数区间
@@ -92,9 +92,9 @@ public class PopBettingBodyScoreAdapter extends BaseAdapter {
          4全场单双
          5半场单双
          */
-        Logger.d(TAG,"itemtype返回数据是---------:"+item.type);
-        Logger.d(TAG,"itemname返回数据是---------:"+item.name);
-        Logger.d(TAG,"item.payRate返回数据是---------:"+item.payRate);
+        Logger.INSTANCE.d(TAG,"itemtype返回数据是---------:"+item.type);
+        Logger.INSTANCE.d(TAG,"itemname返回数据是---------:"+item.name);
+        Logger.INSTANCE.d(TAG,"item.payRate返回数据是---------:"+item.payRate);
         switch (item.type) {
             case 1:
                 hoder.mBettingBodyItemType.setText("进球数区间");//下注区间
@@ -135,13 +135,13 @@ public class PopBettingBodyScoreAdapter extends BaseAdapter {
         hoder.mItemBettingBodyClose.setOnClickListener(new MyItemSonCloseClickListern(context, position) {
             @Override
             public void onClick(View v) {
-                Logger.d(TAG, "关闭的postion是------------------------------:" + postion);
+                Logger.INSTANCE.d(TAG, "关闭的postion是------------------------------:" + postion);
                 data.remove(position);
                 if (data.size() <= 1) {
                     int i = DensityUtil.dip2px(context, 200);
                     hoder.mItemBettingBodyLy.setMinimumHeight(i);
                 }
-                Logger.d(TAG, "我被点击了....................close" + data.size());
+                Logger.INSTANCE.d(TAG, "我被点击了....................close" + data.size());
                 PopBettingBodyScoreAdapter.this.notifyDataSetChanged();
             }
         });

@@ -82,7 +82,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 else
                     holder.mItemSonMid.setVisibility(View.GONE);
 
-                Logger.d(TAG,"是不是足球------------:"+isFootBall);
+                Logger.INSTANCE.d(TAG,"是不是足球------------:"+isFootBall);
 
                 holder.mMatchInfoItemSubscribe.setText(context.getString(R.string.guess_ninty_result));
                 holder.mMatchInfoItemIcon.setImageResource(R.mipmap.vs);
@@ -132,7 +132,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 else
                     holder.mItemSonMid.setVisibility(View.GONE);
 
-                Logger.d(TAG,"是不是足球------------:"+isFootBall);
+                Logger.INSTANCE.d(TAG,"是不是足球------------:"+isFootBall);
 
                 holder.mMatchInfoItemSubscribe.setText(context.getString(R.string.guess_half_result));
                 holder.mMatchInfoItemIcon.setImageResource(R.mipmap.vs_banchang);

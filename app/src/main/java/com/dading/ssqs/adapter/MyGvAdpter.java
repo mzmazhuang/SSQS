@@ -78,7 +78,7 @@ public class MyGvAdpter extends BaseAdapter {
             if (position == 0) {
                 hoder.mTextTurnTable.setText(entity.name);
             }
-            Logger.d(TAG, "商品名4千------------------------------:" + entity.name + position);
+            Logger.INSTANCE.d(TAG, "商品名4千------------------------------:" + entity.name + position);
         } else if (position == 4) {
             hoder.mLyTurnTable.setBackgroundResource(R.mipmap.sm_lottery);
         } else {
@@ -86,7 +86,7 @@ public class MyGvAdpter extends BaseAdapter {
 
             SSQSApplication.glide.load(entity.itemImageUrl).error(R.mipmap.fail).centerCrop().into(hoder.mImageTurnTable);
 
-            Logger.d(TAG, "商品名4后------------------------------:" + entity.name + position);
+            Logger.INSTANCE.d(TAG, "商品名4后------------------------------:" + entity.name + position);
             hoder.mTextTurnTable.setText(entity.name);
         }
         return convertView;

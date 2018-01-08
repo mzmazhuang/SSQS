@@ -470,7 +470,7 @@ public abstract class ScoreMatchAdapter extends BaseAdapter implements ListAdapt
                 }
             }
         });
-        Logger.d(TAG, "点击的条目是------------------------------:" + position);
+        Logger.INSTANCE.d(TAG, "点击的条目是------------------------------:" + position);
     }
 
     private void removeGz(final int position) {

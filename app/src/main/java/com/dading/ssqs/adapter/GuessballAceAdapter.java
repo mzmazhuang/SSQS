@@ -172,7 +172,7 @@ public class GuessballAceAdapter extends BaseAdapter implements ListAdapter {
                                 Intent intent = new Intent(context, LoginActivity.class);
                                 context.startActivity(intent);
                             } else {
-                                Logger.d(TAG, result.getMessage());
+                                Logger.INSTANCE.d(TAG, result.getMessage());
                                 if (entity.isFouce == 0) {
                                     entity.isFouce = 0;
                                     hoder.mGuessballAceItemGuessFollow.setChecked(false);

@@ -107,9 +107,9 @@ public class CcApiClient {
                         try {
                             return chain.proceed(request);
                         } catch (Exception e) {
-                            if (!NetUtil.isConnected(mContext)) {
+                            if (!NetUtil.INSTANCE.isConnected(mContext)) {
                                 //没有网络时, 抛出网络错误。
-                                Logger.e(TAG, "error noconnect");
+                                Logger.INSTANCE.e(TAG, "error noconnect");
                                 throw e;
                             } else {
                                 if (Constent.DEBUG_VERSION) {
@@ -144,7 +144,7 @@ public class CcApiClient {
         if (index > -1) {
             this.mBaseUri = API_URLS[index];
             UIUtils.getSputils().putString("API_BASE_URL", this.mBaseUri);
-            Logger.d(TAG, "************** Select URL Router: " + index + " **************");
+            Logger.INSTANCE.d(TAG, "************** Select URL Router: " + index + " **************");
         } else {
             String baseUri = UIUtils.getSputils().getString("API_BASE_URL", "");
             if (TextUtils.isEmpty(baseUri)) {
@@ -2031,12 +2031,12 @@ public class CcApiClient {
             if (handled) return;
 
             //记录网络请求失败的原因
-            if (NetUtil.isConnected(mContext)) {
+            if (NetUtil.INSTANCE.isConnected(mContext)) {
                 Request request = call.request();
                 String url = request.url().toString().split("[?]")[0];
                 //请求超时不记录错误日志
                 if (!(e instanceof SocketTimeoutException) && !(e instanceof UnknownHostException)) {
-                    Logger.e(TAG, "Exception " + url + "=" + e);
+                    Logger.INSTANCE.e(TAG, "Exception " + url + "=" + e);
                 }
             }
 
@@ -2074,12 +2074,12 @@ public class CcApiClient {
                     errMessage = response.message();
 
                     if (statusCode > 1) {
-                        Logger.e(TAG, new IOException("Unexpected code " + response));
+                        Logger.INSTANCE.e(TAG, new IOException("Unexpected code " + response));
                     }
                 }
 
                 if (handled) {
-                    Logger.d(TAG, url + ": too slow");
+                    Logger.INSTANCE.d(TAG, url + ": too slow");
                     return;
                 }
                 handled = true;
@@ -2092,7 +2092,7 @@ public class CcApiClient {
                         }
                     }
                 }
-                Logger.d(TAG, "Error Response Status code:" + String.valueOf(statusCode) + ", Error message:" + errMessage);
+                Logger.INSTANCE.d(TAG, "Error Response Status code:" + String.valueOf(statusCode) + ", Error message:" + errMessage);
                 final int finalStatusCode = statusCode;
                 final String finalErrMessage = errMessage;
                 AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
@@ -2110,7 +2110,7 @@ public class CcApiClient {
                 try {
                     arg0 = responseBody.string();
                 } catch (SocketTimeoutException e) {
-                    Logger.d(TAG, "read-timeout:" + url);
+                    Logger.INSTANCE.d(TAG, "read-timeout:" + url);
                     final int statusCode = 1;
 
                     final String errMessage = "Network connect failed";
@@ -2124,7 +2124,7 @@ public class CcApiClient {
                     });
                     return;
                 } catch (Exception ex) {
-                    Logger.d(TAG, "Exception:" + url);
+                    Logger.INSTANCE.d(TAG, "Exception:" + url);
                     final int statusCode = 1;
                     final String errMessage = "Network connect failed";
                     AndroidUtilities.INSTANCE.runOnUIThread(new Runnable() {
@@ -2137,7 +2137,7 @@ public class CcApiClient {
                     return;
                 }
                 if (handled) {
-                    Logger.d(TAG, url + ": too slow");
+                    Logger.INSTANCE.d(TAG, url + ": too slow");
                     return;
                 }
 
@@ -2152,7 +2152,7 @@ public class CcApiClient {
                     }
                 }
 
-                Logger.d(TAG, url + ": " + arg0);
+                Logger.INSTANCE.d(TAG, url + ": " + arg0);
 
                 final CcApiResult mRes = new CcApiResult();
 
@@ -2359,7 +2359,7 @@ public class CcApiClient {
     }
 
     private void Request(String path, String params, final CcListener listener, boolean isPost) {
-        if (!NetUtil.isConnected(mContext)) {
+        if (!NetUtil.INSTANCE.isConnected(mContext)) {
             if (listener != null && listener.mListener != null)
                 listener.mListener.onResponse(new CcApiResult(1, "Network connect failed"));
             return;
@@ -2368,8 +2368,8 @@ public class CcApiClient {
     }
 
     private void RequestURL(String url, String params, final CcListener listener, boolean isPost) {
-        Logger.d(TAG, "Request url:" + url);
-        Logger.d(TAG, "Request params:" + params);
+        Logger.INSTANCE.d(TAG, "Request url:" + url);
+        Logger.INSTANCE.d(TAG, "Request params:" + params);
 
         Request.Builder builder;
 
@@ -2387,17 +2387,17 @@ public class CcApiClient {
 
         if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
             builder.addHeader(Constent.TOKEN, UIUtils.getSputils().getString(Constent.TOKEN, ""));
-            Logger.d(TAG, "token " + UIUtils.getSputils().getString(Constent.TOKEN, ""));
+            Logger.INSTANCE.d(TAG, "token " + UIUtils.getSputils().getString(Constent.TOKEN, ""));
         } else {
             builder.addHeader(Constent.TOKEN, "");
-            Logger.d(TAG, "token " + "");
+            Logger.INSTANCE.d(TAG, "token " + "");
         }
         builder.addHeader("Content-Type", "application/json;charset=UTF-8'");
 
         if (null != mDevice) {
-            String device = mDevice + "&wifi=" + (NetUtil.isConnectedWifi(mContext) ? "1" : "0");
+            String device = mDevice + "&wifi=" + (NetUtil.INSTANCE.isConnectedWifi(mContext) ? "1" : "0");
 //            builder.addHeader("X-Cc-Device", device);
-            Logger.d(TAG, "X-Cc-Device " + device);
+            Logger.INSTANCE.d(TAG, "X-Cc-Device " + device);
         }
 
         Call call = client.newCall(builder.build());

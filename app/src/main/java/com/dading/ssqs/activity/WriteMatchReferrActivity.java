@@ -204,7 +204,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
             if (mData.openTime != null && mData.openTime.length() >= 16)
                 mTextOpenTime.setText(mData.openTime.substring(0, 16));
 
-            Logger.d(TAG, "主队标记返回数据是------------------------------:" + mData.aImageUrl);
+            Logger.INSTANCE.d(TAG, "主队标记返回数据是------------------------------:" + mData.aImageUrl);
             SSQSApplication.glide.load(mData.hImageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mMainIcon);
 
             SSQSApplication.glide.load(mData.aImageUrl).error(R.mipmap.fail).centerCrop().transform(new GlideCircleTransform(this)).into(mSecondIcon);
@@ -386,7 +386,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                             dialog.dismiss();
                         }
                     });
-                    Logger.d(TAG, "我的等级是------------------------------:" + mBean.level);
+                    Logger.INSTANCE.d(TAG, "我的等级是------------------------------:" + mBean.level);
                     if (!TextUtils.isEmpty(price)) {
                         if (3 >= price.length()) {
                             switch (mBean.eLevel) {
@@ -515,7 +515,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.write_refer_all_result:
-                Logger.d(TAG, "返回数据是------------------------------:执行全场赛果");
+                Logger.INSTANCE.d(TAG, "返回数据是------------------------------:执行全场赛果");
                 mWriteReferAllResult.setChecked(true);
                 mWriteReferNowLost.setChecked(false);
                 mWriteReferAllSb.setChecked(false);
@@ -525,7 +525,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                 mChecked = "全场赛果";
                 break;
             case R.id.write_refer_now_lost:
-                Logger.d(TAG, "返回数据是------------------------------:执行当前让球");
+                Logger.INSTANCE.d(TAG, "返回数据是------------------------------:执行当前让球");
                 mWriteReferAllResult.setChecked(false);
                 mWriteReferNowLost.setChecked(true);
                 mWriteReferAllSb.setChecked(false);
@@ -535,7 +535,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                 mChecked = "当前让球";
                 break;
             case R.id.write_refer_all_sb:
-                Logger.d(TAG, "返回数据是------------------------------:执行全场大小");
+                Logger.INSTANCE.d(TAG, "返回数据是------------------------------:执行全场大小");
                 mWriteReferAllResult.setChecked(false);
                 mWriteReferNowLost.setChecked(false);
                 mWriteReferAllSb.setChecked(true);
@@ -545,7 +545,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                 mChecked = "全场大小";
                 break;
             case R.id.write_refer_half_result:
-                Logger.d(TAG, "返回数据是------------------------------:执行半场赛果");
+                Logger.INSTANCE.d(TAG, "返回数据是------------------------------:执行半场赛果");
                 mWriteReferAllResult.setChecked(false);
                 mWriteReferNowLost.setChecked(false);
                 mWriteReferAllSb.setChecked(false);
@@ -555,7 +555,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                 mChecked = "半场赛果";
                 break;
             case R.id.write_refer_half_lost:
-                Logger.d(TAG, "返回数据是------------------------------:执行半场让球");
+                Logger.INSTANCE.d(TAG, "返回数据是------------------------------:执行半场让球");
                 mWriteReferAllResult.setChecked(false);
                 mWriteReferNowLost.setChecked(false);
                 mWriteReferAllSb.setChecked(false);
@@ -565,7 +565,7 @@ public class WriteMatchReferrActivity extends BaseActivity implements View.OnCli
                 mChecked = "半场让球";
                 break;
             case R.id.write_refer_half_sb:
-                Logger.d(TAG, "返回数据是------------------------------:执行半场大小");
+                Logger.INSTANCE.d(TAG, "返回数据是------------------------------:执行半场大小");
                 mWriteReferAllResult.setChecked(false);
                 mWriteReferNowLost.setChecked(false);
                 mWriteReferAllSb.setChecked(false);

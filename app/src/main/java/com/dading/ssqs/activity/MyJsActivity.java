@@ -73,7 +73,7 @@ public class MyJsActivity extends BaseActivity {
 
         @JavascriptInterface
         public void androidShare(String mbean) {
-            Logger.d(TAG, "JS分享返回数据是------------------------------:" + mbean);
+            Logger.INSTANCE.d(TAG, "JS分享返回数据是------------------------------:" + mbean);
             try {
                 JSShareBean shareBean = JSON.parseObject(mbean, JSShareBean.class);
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false))

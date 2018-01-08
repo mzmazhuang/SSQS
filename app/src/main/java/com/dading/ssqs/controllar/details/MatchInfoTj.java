@@ -69,7 +69,7 @@ public class MatchInfoTj {
                     }
                 } else {
                     ToastUtils.midToast(UIUtils.getContext(), "比赛详情推荐" + result.getMessage(), 0);
-                    Logger.d(TAG, result.getMessage() + "失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });

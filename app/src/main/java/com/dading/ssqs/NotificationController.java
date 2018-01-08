@@ -148,7 +148,7 @@ public class NotificationController {
         if (!allowDuringAnimation && animationInProgress) {
             DelayedPost delayedPost = new DelayedPost(id, args);
             delayedPosts.add(delayedPost);
-            Logger.e("Notification", "delay post notification " + id + " with args count = " + args.length);
+            Logger.INSTANCE.e("Notification", "delay post notification " + id + " with args count = " + args.length);
             return;
         }
         broadcasting++;

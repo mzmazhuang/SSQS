@@ -167,7 +167,7 @@ public class MyAllCircleAdapter extends BaseAdapter implements ListAdapter {
                     Intent intent = new Intent(context, MatchTypeInfoActivity.class);
                     intent.putExtra(Constent.ALL_CIRCLE_TYPE, dataEntity.toString());
                     intent.putExtra(Constent.ALL_CIRCLE_TYPE_TAG, Constent.ALL_CIRCLE2_COME);
-                    Logger.d(TAG, "推荐圈子我被执行了------------------------------:");
+                    Logger.INSTANCE.d(TAG, "推荐圈子我被执行了------------------------------:");
                     context.startActivity(intent);
 
                 }

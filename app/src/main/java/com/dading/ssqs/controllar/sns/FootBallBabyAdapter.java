@@ -115,7 +115,7 @@ public class FootBallBabyAdapter extends BaseAdapter implements ListAdapter {
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);
-                Logger.d(TAG, "足球宝贝跳转------------------------------:");
+                Logger.INSTANCE.d(TAG, "足球宝贝跳转------------------------------:");
             }
         });
         holder.footballbabypcontent.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +124,7 @@ public class FootBallBabyAdapter extends BaseAdapter implements ListAdapter {
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, String.valueOf(entity.id));
                 context.startActivity(intent);
-                Logger.d(TAG, "足球宝贝跳转------------------------------:");
+                Logger.INSTANCE.d(TAG, "足球宝贝跳转------------------------------:");
             }
         });
         return convertView;

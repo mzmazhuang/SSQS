@@ -137,7 +137,7 @@ public class HomeBasketballAdapter extends BaseAdapter implements ListAdapter {
         holder.time.setText("共" + entity.getNum() + "玩法");
         HomeBean.BasketBallsBean.PayRateBeanX rate = entity.getPayRate();
         if (rate != null) {
-            Logger.d(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
+            Logger.INSTANCE.d(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
             holder.leftPl.setText(rate.getRealRate1());
             holder.midPl.setText(rate.getRealRate2());
             holder.rightPl.setText(rate.getRealRate3());

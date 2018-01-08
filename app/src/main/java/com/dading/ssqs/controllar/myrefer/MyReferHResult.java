@@ -90,7 +90,7 @@ public class MyReferHResult extends BaseFragnment {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "我的推荐失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "我的推荐失败信息");
                 }
             }
         });
@@ -153,7 +153,7 @@ public class MyReferHResult extends BaseFragnment {
                                 }
                             }
                         } else {
-                            Logger.d(TAG, result.getMessage() + "我的推荐赛果失败信息");
+                            Logger.INSTANCE.d(TAG, result.getMessage() + "我的推荐赛果失败信息");
                         }
                     }
                 });

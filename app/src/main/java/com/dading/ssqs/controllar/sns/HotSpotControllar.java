@@ -74,7 +74,7 @@ public class HotSpotControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "热点失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "热点失败信息");
                 }
             }
         });
@@ -126,7 +126,7 @@ public class HotSpotControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "热点失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "热点失败信息");
                 }
             }
         });

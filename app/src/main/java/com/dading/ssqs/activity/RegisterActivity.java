@@ -82,7 +82,7 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
                     ToastUtils.midToast(RegisterActivity.this, "請輸入您的手机号码!", 0);
                     return;
                 }
-                Logger.d(TAG, mMPhoneNumberText + "这是手机号");
+                Logger.INSTANCE.d(TAG, mMPhoneNumberText + "这是手机号");
 
                 SendYZMElement element=new SendYZMElement();
                 element.setMobile(mMPhoneNumberText);
@@ -146,6 +146,6 @@ public class RegisterActivity extends BaseActivity implements View.OnFocusChange
 
     @Override
     public void afterTextChanged(Editable s) {
-        Logger.d(TAG, s.toString());
+        Logger.INSTANCE.d(TAG, s.toString());
     }
 }

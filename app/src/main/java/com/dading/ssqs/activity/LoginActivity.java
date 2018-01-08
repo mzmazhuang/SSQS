@@ -154,7 +154,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
                                             goSP(gson.toJson(bean, LoadingBean.class), bean.authToken);
                                         } catch (Exception ex) {
-                                            Logger.e(TAG, "json failure");
+                                            Logger.INSTANCE.e(TAG, "json failure");
                                         }
                                     }
                                 } else {
@@ -299,7 +299,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             case R.id.loading_iv_qq_loading:
                 mLoginTag = 1;
                 setClicked();
-                Logger.d(TAG, "qq登陆");
+                Logger.INSTANCE.d(TAG, "qq登陆");
                 Platform qq = ShareSDK.getPlatform(QQ.NAME);
                 qq.authorize();
                 qq.setPlatformActionListener(new PlatformActionListener() {
@@ -315,7 +315,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         mUserIcon = platDB.getUserIcon();
                         mUserId = platDB.getUserId();
                         mUserName = platDB.getUserName();
-                        Logger.d(TAG, "qq的token是---------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender() + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
+                        Logger.INSTANCE.d(TAG, "qq的token是---------------------:" + platDB.getToken() + " gender:" + platDB.getUserGender() + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
                         mHandler.sendMessage(msg);
                     }
 
@@ -338,7 +338,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
             case R.id.loading_iv_xl_loading:
                 mLoginTag = 3;
-                Logger.d(TAG, "新浪登陆:");
+                Logger.INSTANCE.d(TAG, "新浪登陆:");
                 setClicked();
                 Platform weibo = ShareSDK.getPlatform(this, SinaWeibo.NAME);
                 weibo.SSOSetting(false);
@@ -355,7 +355,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         mUserId = platDB.getUserId();
                         mUserName = platDB.getUserName();
 
-                        Logger.d(TAG, "qq的token是-----" + platDB.getToken() + " gender:" + platDB.getUserGender()
+                        Logger.INSTANCE.d(TAG, "qq的token是-----" + platDB.getToken() + " gender:" + platDB.getUserGender()
                                 + " usericon:" + platDB.getUserIcon() + " id:" + platDB.getUserId() + " username:" + platDB.getUserName());
                         mHandler.sendMessage(msg);
                     }
@@ -378,7 +378,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 });
                 break;
             case R.id.top_back:
-                Logger.d(TAG, "我被点击了:返回");
+                Logger.INSTANCE.d(TAG, "我被点击了:返回");
                 UIUtils.hideKeyBord(this);
                 finish();
                 break;
@@ -392,7 +392,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 break;
 
             case R.id.et_loading_pwd_look:
-                Logger.d(TAG, "我被点击了查看");
+                Logger.INSTANCE.d(TAG, "我被点击了查看");
 
                 if (mCbLoadingPwdLook.isChecked()) {//显示密码
                     mEtLoadingPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
@@ -454,7 +454,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                     
                                     goSP(gson.toJson(bean, LoadingBean.class), bean.authToken);
                                 } catch (Exception ex) {
-                                    Logger.e(TAG, "up json failure");
+                                    Logger.INSTANCE.e(TAG, "up json failure");
                                 }
                             }
                         } else {
@@ -506,7 +506,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         UIUtils.getSputils().putString(Constent.LOADING_STATE_SP, bean);
         UIUtils.getSputils().putString(Constent.TOKEN, authToken);
         UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, true);
-        Logger.d(TAG, "令牌----------" + authToken + "登陆状态是" + true);
+        Logger.INSTANCE.d(TAG, "令牌----------" + authToken + "登陆状态是" + true);
         finish();
         mLoadingAnimal.setVisibility(View.GONE);
     }

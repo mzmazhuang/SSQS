@@ -77,7 +77,7 @@ public class AchieveTaskControllar extends Fragment {
                         mLv.setAdapter(new AchieveTaskAdapter(context, items));
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "成就任務失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "成就任務失败信息");
                 }
             }
         });

@@ -119,7 +119,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
 
         mDate = mFormatData2.replaceAll("-", "");
         UIUtils.getSputils().putString(Constent.SC_TIME, mFormatData1);
-        Logger.d(TAG, "赛程日期:" + mFormatData1);
+        Logger.INSTANCE.d(TAG, "赛程日期:" + mFormatData1);
         mWeek = AppendData(mFormatData2);
         mScoreWeekData.setText(mWeek);
 
@@ -458,7 +458,7 @@ public class SCScoreControllar extends BaseScoreControllar implements View.OnCli
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Logger.d("GBSS", "接到广播SC------------------------------:");
+            Logger.INSTANCE.d("GBSS", "接到广播SC------------------------------:");
             String action = intent.getAction();
 
             String s = UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0");

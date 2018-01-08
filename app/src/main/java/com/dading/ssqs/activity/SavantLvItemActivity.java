@@ -438,7 +438,7 @@ public class SavantLvItemActivity extends BaseActivity {
                      userID:用户ID
                      auth_token：登陆后加入请求头
                      */
-                    Logger.d(TAG, "我被选中了");
+                    Logger.INSTANCE.d(TAG, "我被选中了");
 
                     SSQSApplication.apiClient(classGuid).getExpertDetails(mMatchID, new CcApiClient.OnCcListener() {
                         @Override
@@ -461,7 +461,7 @@ public class SavantLvItemActivity extends BaseActivity {
                     });
                     mFollowFlag = true;
                 } else {
-                    Logger.d(TAG, "我No选中了");
+                    Logger.INSTANCE.d(TAG, "我No选中了");
                     mFollowFlag = false;
                 }
             }

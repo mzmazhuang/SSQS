@@ -122,7 +122,7 @@ public class SevenRedPeopleActivity extends BaseActivity {
     private class SavantFollowRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Logger.d(TAG, "进入七天红人广播------------------------------");
+            Logger.INSTANCE.d(TAG, "进入七天红人广播------------------------------");
             initData();
         }
     }

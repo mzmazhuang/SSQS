@@ -140,7 +140,7 @@ public class BaseJs extends BaseScoreControllar {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHH:mm:ss", Locale.CHINA);
         Date date = calendar.getTime();
         mFormatData = sdf.format(date);
-        Logger.d(TAG, "日期是-------------------------------------" + mFormatData);
+        Logger.INSTANCE.d(TAG, "日期是-------------------------------------" + mFormatData);
         mCount = 10;
     }
 
@@ -188,7 +188,7 @@ public class BaseJs extends BaseScoreControllar {
                         }
                     } else {
                         ToastUtils.midToast(mContent, result.getMessage(), 0);
-                        Logger.d(TAG, result.getMessage() + "下拉JS失败信息");
+                        Logger.INSTANCE.d(TAG, result.getMessage() + "下拉JS失败信息");
                     }
                 }
             });
@@ -240,7 +240,7 @@ public class BaseJs extends BaseScoreControllar {
                 mTaskMore = new Runnable() {
                     @Override
                     public void run() {
-                        Logger.d(TAG, "这是第几页--------------:" + mPage);
+                        Logger.INSTANCE.d(TAG, "这是第几页--------------:" + mPage);
                         ++mPage;
                         if (mPage > mTotalCount) {
                             --mPage;
@@ -273,7 +273,7 @@ public class BaseJs extends BaseScoreControllar {
                                                 } else {
                                                     mJsList.setMode(PullToRefreshBase.Mode.BOTH);
 
-                                                    Logger.d(TAG, result.getMessage() + "失败信息");
+                                                    Logger.INSTANCE.d(TAG, result.getMessage() + "失败信息");
                                                 }
                                             }
                                         });

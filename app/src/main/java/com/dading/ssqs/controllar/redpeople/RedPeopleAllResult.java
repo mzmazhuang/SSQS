@@ -83,7 +83,7 @@ public class RedPeopleAllResult extends BaseFragnment {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "红人全场赛果失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "红人全场赛果失败信息");
                 }
             }
         });
@@ -135,7 +135,7 @@ public class RedPeopleAllResult extends BaseFragnment {
                                 }
                             }
                         } else {
-                            Logger.d(TAG, result.getMessage() + "红人全场赛果失败信息");
+                            Logger.INSTANCE.d(TAG, result.getMessage() + "红人全场赛果失败信息");
                         }
                     }
                 });

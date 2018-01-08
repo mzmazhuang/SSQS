@@ -89,7 +89,7 @@ public abstract class BaseWithDrawDetailFrament extends BaseFragnment {
                         processData(page.getItems(), page.getTotalPage());
                     }
                 } else {
-                    Logger.d(TAG, "返回错误数据是------------------------------:" + result.getMessage());
+                    Logger.INSTANCE.d(TAG, "返回错误数据是------------------------------:" + result.getMessage());
                     mLoadingAnimal.setVisibility(View.GONE);
                     mShowNetworkErr.setVisibility(View.VISIBLE);
                     ToastUtils.midToast(UIUtils.getContext(), result.getMessage(), 0);
@@ -100,7 +100,7 @@ public abstract class BaseWithDrawDetailFrament extends BaseFragnment {
     }
 
     private void processData(List<WithDrawDetailBean> bean, int totalPage) {
-        Logger.d(TAG, "是否更多------------------------------:" + mB);
+        Logger.INSTANCE.d(TAG, "是否更多------------------------------:" + mB);
 
         if (totalPage == 1) {
             mRecycleview.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));

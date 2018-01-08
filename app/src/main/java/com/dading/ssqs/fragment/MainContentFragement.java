@@ -133,7 +133,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         mBaseDataControllar.add(mScoreControllar);
         mBaseDataControllar.add(myFragment);
 
-        Logger.d(TAG, mBaseDataControllar.size() + "");
+        Logger.INSTANCE.d(TAG, mBaseDataControllar.size() + "");
 
         //为viewpager赋值
         mAdapter = new MyPagerAdapter(this.getFragmentManager(), mBaseDataControllar);
@@ -283,7 +283,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     mRg.check(mReferr.getId());
                     mMCurrButtonId = 1;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-                    Logger.d("GBSS", "收到廣播推薦------------------------------:");
+                    Logger.INSTANCE.d("GBSS", "收到廣播推薦------------------------------:");
                     break;
                 case Constent.LOADING_GUESS_BALL:
                     if (guessTheBallFragment != null) {
@@ -302,12 +302,12 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     mRg.check(mMy.getId());
                     mMCurrButtonId = 4;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-                    Logger.d("GBSS", "收到个人信息-- ----------------------------:");
+                    Logger.INSTANCE.d("GBSS", "收到个人信息-- ----------------------------:");
                     break;
                 case Constent.LOADING_CASINO:
                     Intent casionIntent = new Intent(context, CasionActivity.class);
                     startActivity(casionIntent);
-                    Logger.d("GBSS", "收到廣播娱乐场-- ----------------------------:");
+                    Logger.INSTANCE.d("GBSS", "收到廣播娱乐场-- ----------------------------:");
                     break;
                 case Constent.LOADING_SCORE:
                     mRg.check(mScore.getId());

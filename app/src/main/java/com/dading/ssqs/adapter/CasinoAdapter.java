@@ -96,7 +96,7 @@ public class CasinoAdapter extends BaseAdapter implements ListAdapter {
                 intent.putExtra(Constent.CASINO_NAME, entity.name);
                 intent.putExtra(Constent.CASINO_URL, entity.url);
                 context.startActivity(intent);
-                Logger.d(TAG, "點擊它娛樂場------------------------------:");
+                Logger.INSTANCE.d(TAG, "點擊它娛樂場------------------------------:");
             }
         });
 

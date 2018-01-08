@@ -80,7 +80,7 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
         //获取上一步的手机号
         Intent intent = getIntent();
         mPhone = intent.getStringExtra("mobile");
-        Logger.d(TAG, "手机号码:" + mPhone);
+        Logger.INSTANCE.d(TAG, "手机号码:" + mPhone);
         mSecondSendCode.setClickable(false);
         mTime = 180;
         mS = "180s";
@@ -139,7 +139,7 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
                             mSecondSendCode.setTextColor(getResources().getColor(R.color.gray));
                             mSecondCode.setClickable(false);
                             UIUtils.postTaskDelay(mR, 1000);
-                            Logger.d(TAG, "验证码已发送!接收后请输入验证码...------------------------------:");
+                            Logger.INSTANCE.d(TAG, "验证码已发送!接收后请输入验证码...------------------------------:");
                         } else {
                             if (403 == result.getErrno()) {
                                 UIUtils.SendReRecevice(Constent.LOADING_ACTION);
@@ -189,7 +189,7 @@ public class LockSecondActivity extends BaseActivity implements View.OnFocusChan
                     return;
                 }
                 mSecondRegisetButton.setFocusable(true);
-                Logger.d(TAG, "验证码:" + mCode);
+                Logger.INSTANCE.d(TAG, "验证码:" + mCode);
 
                 UserBindElement userBindElement = new UserBindElement();
                 userBindElement.setMobile(mPhone);

@@ -257,7 +257,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                 mListT.remove(mSuggestionUploadIv1);
                 mListB.add(mSuggestionUploadIv1);
                 mListURL.remove(mSuggestionUploadIv1);
-                Logger.d(TAG, mListT.toString());
+                Logger.INSTANCE.d(TAG, mListT.toString());
                 break;
             case R.id.suggestion_upload_iv2:
                 UIUtils.hideKeyBord(this);
@@ -265,7 +265,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                 mListT.remove(mSuggestionUploadIv2);
                 mListB.add(mSuggestionUploadIv2);
                 mListURL.remove(mSuggestionUploadIv2);
-                Logger.d(TAG, mListT.toString());
+                Logger.INSTANCE.d(TAG, mListT.toString());
                 break;
             case R.id.suggestion_upload_iv3:
                 UIUtils.hideKeyBord(this);
@@ -273,13 +273,13 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                 mListT.remove(mSuggestionUploadIv3);
                 mListB.add(mSuggestionUploadIv3);
                 mListURL.remove(mSuggestionUploadIv3);
-                Logger.d(TAG, mListT.toString());
+                Logger.INSTANCE.d(TAG, mListT.toString());
                 break;
             case R.id.suggestion_upload_iv4:
                 UIUtils.hideKeyBord(this);
                 mSuggestionUploadIv4.setVisibility(View.GONE);
                 mListT.remove(mSuggestionUploadIv4);
-                Logger.d(TAG, mListT.toString());
+                Logger.INSTANCE.d(TAG, mListT.toString());
                 mListB.add(mSuggestionUploadIv4);
                 mListURL.remove(mSuggestionUploadIv4);
                 break;
@@ -365,7 +365,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
         if (requestCode == PHOTO_CAMERA) {
             // 设置文件保存路径这里放在跟目录下
             final File picture = new File(Environment.getExternalStorageDirectory() + ImageName);
-            Logger.d(TAG, "相机path是------------------------------:" + picture.getPath());
+            Logger.INSTANCE.d(TAG, "相机path是------------------------------:" + picture.getPath());
             if (mListB.size() <= 0) {
                 mSuggestionUploadIv5.setVisibility(View.GONE);
             } else {
@@ -386,7 +386,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
             int columnIndex = cursor.getColumnIndex(filePathColum[0]);
             String picPath = cursor.getString(columnIndex);
             cursor.close();
-            Logger.d(TAG, "图库图片地址是------------------------------:" + picPath);
+            Logger.INSTANCE.d(TAG, "图库图片地址是------------------------------:" + picPath);
             File file1 = compressImageFile(picPath);
             File file = new File(picPath);
             if (file1 != null) {
@@ -430,7 +430,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
         try {
             file.createNewFile();
         } catch (IOException e) {
-            Logger.d(TAG, e.getMessage());
+            Logger.INSTANCE.d(TAG, e.getMessage());
         }
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -452,7 +452,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
             //标记压缩图片成功
             mIsCompressSuccess = true;
         } catch (Exception e) {
-            Logger.d(TAG, e.getMessage());
+            Logger.INSTANCE.d(TAG, e.getMessage());
         }
         return file;
     }
@@ -468,7 +468,7 @@ public class SuggestionActivity extends BaseActivity implements View.OnClickList
                  Post
                  */
                 mS = FileImageUpload.uploadFile(picture, mUrl, UIUtils.getSputils().getString(Constent.TOKEN, null));
-                Logger.d(TAG, "上传图片返回数据是------------------------------:" + mS);
+                Logger.INSTANCE.d(TAG, "上传图片返回数据是------------------------------:" + mS);
                 if (!"FAIL".equals(mS)) {
                     FileUpResultBean bean = JSON.parseObject(mS, FileUpResultBean.class);
                     if (bean.status && bean.data != null && bean.data.imageUrl != null) {

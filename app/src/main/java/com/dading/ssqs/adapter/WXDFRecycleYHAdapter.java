@@ -84,14 +84,14 @@ public class WXDFRecycleYHAdapter extends BaseAdapter implements ListAdapter {
                 if (bean.isChecked()) {
                     bean.setChecked(false);
                     mCheckBean = null;
-                    Logger.d(TAG, "返回数据是------------------------------:空的");
+                    Logger.INSTANCE.d(TAG, "返回数据是------------------------------:空的");
                 } else {
                     for (WXDFBean.InfoBean beas : data) {
                         beas.setChecked(false);
                     }
                     bean.setChecked(true);
                     mCheckBean = bean;
-                    Logger.d(TAG, "返回数据是------------------------------:bean");
+                    Logger.INSTANCE.d(TAG, "返回数据是------------------------------:bean");
                 }
                 notifyDataSetChanged();
             }

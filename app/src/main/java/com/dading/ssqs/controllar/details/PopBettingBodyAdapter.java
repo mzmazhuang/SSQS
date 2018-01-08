@@ -121,7 +121,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                 for (Map.Entry<CheckBox, BetBean> cb : map.entrySet()) {
                     list.add(cb.getKey());
                 }
-                Logger.d(TAG, "关闭的postion是------------------------------:" + postion);
+                Logger.INSTANCE.d(TAG, "关闭的postion是------------------------------:" + postion);
                 CheckBox key = list.get(postion);
                 mListBean.remove(postion);
                 key.setChecked(false);//将外面选择状态改变
@@ -131,7 +131,7 @@ public class PopBettingBodyAdapter extends BaseAdapter implements ListAdapter {
                     int i = DensityUtil.dip2px(context, 200);
                     hoder.mItemBettingBodyLy.setMinimumHeight(i);
                 }
-                Logger.d(TAG, "我被点击了....................close" + map.size());
+                Logger.INSTANCE.d(TAG, "我被点击了....................close" + map.size());
                 PopBettingBodyAdapter.this.notifyDataSetChanged();
             }
         });

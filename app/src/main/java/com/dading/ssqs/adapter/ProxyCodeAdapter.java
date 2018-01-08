@@ -202,7 +202,7 @@ public class ProxyCodeAdapter extends BaseAdapter implements ListAdapter, Compou
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Logger.d(TAG, "返回数据是------------------------------:" + buttonView.getId());
+        Logger.INSTANCE.d(TAG, "返回数据是------------------------------:" + buttonView.getId());
         switch (buttonView.getId()) {
             case R.id.pop_proxy_user_setup:
                 if (isChecked) {

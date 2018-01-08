@@ -38,7 +38,7 @@ public class SnsVpHeadAdapter extends BaseMePagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Logger.d(TAG, "社区轮播数据id------:" + dataId.get(position));
+                Logger.INSTANCE.d(TAG, "社区轮播数据id------:" + dataId.get(position));
                 Intent intent = new Intent(context, MyJsActivity.class);
                 intent.putExtra(Constent.NEWS_ID, dataId.get(position).toString());
                 context.startActivity(intent);

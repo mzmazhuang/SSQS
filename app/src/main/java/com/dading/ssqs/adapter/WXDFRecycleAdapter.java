@@ -121,7 +121,7 @@ public class WXDFRecycleAdapter extends BaseAdapter implements ListAdapter {
 
             if (data.size() > 0) {
                 WXDFBean dataBean = data.get(0);
-                Logger.d("WXDaifuActivity", "返回数据是------:" + dataBean.getRemark());
+                Logger.INSTANCE.d("WXDaifuActivity", "返回数据是------:" + dataBean.getRemark());
                 holder.mWxDfItemContent.setText(bean.getMfrom() + "--" + bean.getMto());
             }
 

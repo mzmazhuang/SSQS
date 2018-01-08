@@ -194,7 +194,7 @@ public class AppException implements UncaughtExceptionHandler {
             mFileName = "log-" + time + "-" + timestamp + ".log";
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/PdaChina/";
-                Logger.d(TAG, "存储路径是------------------------------:" + path + "/" + mFileName);
+                Logger.INSTANCE.d(TAG, "存储路径是------------------------------:" + path + "/" + mFileName);
                 File dir = new File(path);
                 if (!dir.exists()) {
                     dir.mkdirs();
@@ -239,7 +239,7 @@ public class AppException implements UncaughtExceptionHandler {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.body() != null)
                     response.body().close();
-                Logger.d("上传text成功了", response.body().string());
+                Logger.INSTANCE.d("上传text成功了", response.body().string());
             }
         });
     }

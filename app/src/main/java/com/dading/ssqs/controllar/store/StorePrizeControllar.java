@@ -202,11 +202,11 @@ public class StorePrizeControllar implements View.OnClickListener {
             ++number;
             if (number < mDataText.size()) {
                 mStorePrizeText.setText(mDataText.get(number));
-                Logger.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
+                Logger.INSTANCE.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
             } else {
                 number = 0;
                 mStorePrizeText.setText(mDataText.get(number));
-                Logger.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
+                Logger.INSTANCE.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
             }
         }
     }
@@ -310,7 +310,7 @@ public class StorePrizeControllar implements View.OnClickListener {
                         processData(bean);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "商店奖品中獎失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "商店奖品中獎失败信息");
                 }
             }
         });
@@ -336,7 +336,7 @@ public class StorePrizeControllar implements View.OnClickListener {
                         processDataText(bean.data);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "獎品轮播失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "獎品轮播失败信息");
                 }
             }
         });
@@ -347,18 +347,18 @@ public class StorePrizeControllar implements View.OnClickListener {
         if (data != null && data.size() > 0) {
             mDataText = data;
             mStorePrizeText.setText(data.get(0));
-            Logger.d(TAG, "滚动返回数据是------------------------------:" + data.get(0));
+            Logger.INSTANCE.d(TAG, "滚动返回数据是------------------------------:" + data.get(0));
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     ++number;
                     if (number < mDataText.size()) {
                         mStorePrizeText.setText(mDataText.get(number));
-                        Logger.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
+                        Logger.INSTANCE.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
                     } else {
                         number = 0;
                         mStorePrizeText.setText(mDataText.get(number));
-                        Logger.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
+                        Logger.INSTANCE.d(TAG, "滚动返回数据是------------------------------:" + mDataText.get(number));
                     }
                     mHandler.postDelayed(this, 1500);
                 }
@@ -381,7 +381,7 @@ public class StorePrizeControllar implements View.OnClickListener {
         }
         String time = data.endTime;
         String endTime = time.substring(0, 4) + "年" + time.substring(5, 7) + "月" + time.substring(8, 10) + "日" + time.substring(11, 16);
-        Logger.d(TAG, "结束时间是------------------------------:" + endTime);
+        Logger.INSTANCE.d(TAG, "结束时间是------------------------------:" + endTime);
         String s = "本期截止时间:" + endTime;
         mStorePrizeRecordFinishData.setText(s);
     }

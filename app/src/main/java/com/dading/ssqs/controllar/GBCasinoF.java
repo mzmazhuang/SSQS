@@ -96,7 +96,7 @@ public class GBCasinoF extends BaseTabsContainer {
                     }
                 } else {
                     mLoadAgain.setClickable(false);
-                    Logger.d(TAG, result.getMessage() + "娱乐场失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "娱乐场失败信息");
                 }
             }
         });

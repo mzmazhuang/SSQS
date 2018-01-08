@@ -97,7 +97,7 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
                         processDataMessage(items);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "中奖信息失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "中奖信息失败信息");
                 }
             }
         });
@@ -271,8 +271,8 @@ public class MatchInfoLq implements TextWatcher, View.OnClickListener {
         mToken = UIUtils.getSputils().getString(Constent.TOKEN, null);
         mIsLoading = UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false);
 
-        Logger.d(TAG, "返回token数据是------------------------------:" + mToken);
-        Logger.d(TAG, formatGood);
+        Logger.INSTANCE.d(TAG, "返回token数据是------------------------------:" + mToken);
+        Logger.INSTANCE.d(TAG, formatGood);
 
         mStr = mEdtText.getText().toString();
         if (mIsLoading) {

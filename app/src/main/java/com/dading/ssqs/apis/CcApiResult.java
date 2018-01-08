@@ -571,7 +571,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), LoadingBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -591,7 +591,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -611,7 +611,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -631,7 +631,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -651,7 +651,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -670,7 +670,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultAccountPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -689,7 +689,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultArticlePage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -708,7 +708,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultExpertGuessPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -727,7 +727,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ShareBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -746,7 +746,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), NewInfoBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -765,7 +765,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultCommentDetailsListPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -784,7 +784,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultLHRankPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -803,7 +803,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), NoticegBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -822,7 +822,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), VersionBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -841,7 +841,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), MatchInfoBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -860,7 +860,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultALLCircleThingsPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -877,7 +877,7 @@ public class CcApiResult {
                 bean.setData(json.getInt("data"));
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -896,7 +896,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), MyNoReadBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -915,7 +915,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), PersonalReportBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -935,7 +935,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -954,7 +954,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ProxyCenterBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -974,7 +974,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -991,7 +991,7 @@ public class CcApiResult {
                 bean.setData(json.getString("data"));
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1010,7 +1010,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ProxyCmmsionsBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1029,7 +1029,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ProxyIntroBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1046,7 +1046,7 @@ public class CcApiResult {
                 bean.setData(json.getString("data"));
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1065,7 +1065,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), InviteCodeBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1082,7 +1082,7 @@ public class CcApiResult {
                 bean.setData(json.getInt("data"));
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1101,7 +1101,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), SavantInfoBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1120,7 +1120,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ReferInfoBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1139,7 +1139,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ResultSavantLevePage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1158,7 +1158,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ShoppingAddBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1177,7 +1177,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultTodayTopicPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1196,7 +1196,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), TryPlayBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1215,7 +1215,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), WithDrawBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1235,7 +1235,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1254,7 +1254,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), MatchBeforBeanAll.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1274,7 +1274,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1294,7 +1294,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1313,7 +1313,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), GeneralUserBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1332,7 +1332,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), SignResultBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1351,7 +1351,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultWithDrawDetailBeanPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1371,7 +1371,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1391,7 +1391,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1410,7 +1410,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), HomeBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1430,7 +1430,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1450,7 +1450,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1470,7 +1470,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1489,7 +1489,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultAccountDetailsPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1508,7 +1508,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), FXBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1527,7 +1527,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultMatchInfoMessagePage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1546,7 +1546,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultInfoPLPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1566,7 +1566,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1586,7 +1586,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1605,7 +1605,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), SKZRBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1624,7 +1624,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultReferReferPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1643,7 +1643,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultScorePage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1662,7 +1662,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultRankingPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1681,7 +1681,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), RankingBean2.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1700,7 +1700,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultMyTzGTPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1719,7 +1719,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultMyTzPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1739,7 +1739,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1758,7 +1758,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), TaskBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1777,7 +1777,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), SevenPopBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -1796,7 +1796,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultChargeHistoryPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1816,7 +1816,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1835,7 +1835,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultFansPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1854,7 +1854,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultMyFansPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1874,7 +1874,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -1893,7 +1893,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultSNSCollectPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1912,7 +1912,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultMyReferPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1931,7 +1931,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultRedPoplePage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1950,7 +1950,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultReferInfoARPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1969,7 +1969,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultSnsPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -1986,7 +1986,7 @@ public class CcApiResult {
                 bean.setData(json.getString("data"));
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2005,7 +2005,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), WXOrderBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2025,7 +2025,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -2044,7 +2044,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), StoreBean2.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2063,7 +2063,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), TurnTableResultBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2083,7 +2083,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2102,7 +2102,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultChampionPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -2121,7 +2121,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), EarlyBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2141,7 +2141,7 @@ public class CcApiResult {
                 }.getType());
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(items);
         return this;
@@ -2160,7 +2160,7 @@ public class CcApiResult {
                 page = gson.fromJson(data.toString(), ResultRankingListPage.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(page);
         return this;
@@ -2179,7 +2179,7 @@ public class CcApiResult {
                 bean = gson.fromJson(data.toString(), ScoreBean.class);
             }
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         this.setData(bean);
         return this;
@@ -2192,7 +2192,7 @@ public class CcApiResult {
             this.setMessage(json.getString("msg"));
             this.setStatus(json.getBoolean("status"));
         } catch (Exception e) {
-            Logger.e("CcApiResult", e);
+            Logger.INSTANCE.e("CcApiResult", e);
         }
         return this;
     }

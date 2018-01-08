@@ -142,7 +142,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.top_icon:
-                Logger.d(TAG, "点击删除------------------------------");
+                Logger.INSTANCE.d(TAG, "点击删除------------------------------");
                 mPop.showAtLocation(mView, Gravity.CENTER, 0, 0);
                 mTodayTopicDelet.setClickable(false);
 
@@ -204,7 +204,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
                     @Override
                     public void run() {
                         mPage++;
-                        Logger.d(TAG, "这是第几页--------------:" + mPage);
+                        Logger.INSTANCE.d(TAG, "这是第几页--------------:" + mPage);
                         if (mPage > totalCount) {
                             ToastUtils.midToast(UIUtils.getContext(), "已全部加载,无更多数据!", 0);
                         } else {
@@ -245,7 +245,7 @@ public class ToadyTopicActivity extends BaseActivity implements View.OnClickList
         int size = mDataItems.size();
         mDataItems.addAll(items);
         if (mDataItems != null)
-            Logger.d(TAG, "总共有" + mDataItems.size() + "条item");
+            Logger.INSTANCE.d(TAG, "总共有" + mDataItems.size() + "条item");
         mAdapter.notifyDataSetChanged();
         mTodayTopicList.getRefreshableView().smoothScrollToPosition(size);
         mTodayTopicList.onRefreshComplete();

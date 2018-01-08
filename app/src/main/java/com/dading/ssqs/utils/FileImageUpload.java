@@ -84,7 +84,7 @@ public class FileImageUpload {
                 int res = conn.getResponseCode();
                 System.out.println("response code:" + res);
                 if (res == 200) {
-                    Logger.d(TAG, "返回if res数据是------------------------------:" + res);
+                    Logger.INSTANCE.d(TAG, "返回if res数据是------------------------------:" + res);
                     int i = res;
                     InputStream input = conn.getInputStream();
                     StringBuffer sb1 = new StringBuffer();

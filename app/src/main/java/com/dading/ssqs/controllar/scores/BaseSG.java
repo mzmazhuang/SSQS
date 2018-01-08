@@ -186,7 +186,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
                     isGetData = false;
                 } else {
                     isGetData = false;
-                    Logger.d(TAG, result.getMessage() + "失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "失败信息");
                 }
             }
         });
@@ -209,7 +209,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
     public void initScorecalendar() {
         mScoreWeekLayout.setVisibility(View.VISIBLE);
         String text = mScoreWeekData.getText().toString();
-        Logger.d(TAG, "日期是:" + text);
+        Logger.INSTANCE.d(TAG, "日期是:" + text);
         mScoreWeekData.setText(mWeek);
         mScoreWeekLeft.setImageResource(R.mipmap.arrows_checked_2);
         mScoreWeekLeft.setClickable(true);
@@ -479,7 +479,7 @@ public class BaseSG extends BaseScoreControllar implements View.OnClickListener,
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Logger.d("GBSS", "接到广播赛果------------------------------:");
+            Logger.INSTANCE.d("GBSS", "接到广播赛果------------------------------:");
 
             String s = UIUtils.getSputils().getString(Constent.LEAGUEIDS, "0");
             String action = intent.getAction();//用于筛选

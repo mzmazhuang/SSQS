@@ -243,7 +243,7 @@ public class PersonalReportActivity extends BaseActivity implements View.OnClick
     }
 
     private void setProxyCanlendarTop(String startTime) {
-        Logger.d(TAG, "top时间------------------------------:" + startTime);
+        Logger.INSTANCE.d(TAG, "top时间------------------------------:" + startTime);
         String[] split = startTime.split("-");
         mCalendarYear.setText(split[0]);
         String aNew = DateUtils.getweekdayBystrNew(startTime);

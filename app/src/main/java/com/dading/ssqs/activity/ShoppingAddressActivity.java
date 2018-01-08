@@ -99,7 +99,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
     protected void initData() {
         Intent intent = getIntent();
         String addMsg = intent.getStringExtra(Constent.ADD_MSG);
-        Logger.d(TAG, "收到传递返回数据是------------------------------:" + addMsg);
+        Logger.INSTANCE.d(TAG, "收到传递返回数据是------------------------------:" + addMsg);
         if (addMsg != null) {
             mBean = JSON.parseObject(addMsg, ShoppingAddBean.class);
             mIsHave = true;
@@ -153,7 +153,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
 
         for (SsxCity.CitylistEntity ssx : citylist) {
             listP.add(ssx.p);//省集合list
-            Logger.d(TAG, "省份:" + ssx.p);
+            Logger.INSTANCE.d(TAG, "省份:" + ssx.p);
             listC = new ArrayList<>();
             /**
              * 如果是直辖市name就没有县
@@ -247,7 +247,7 @@ public class ShoppingAddressActivity extends BaseActivity implements View.OnClic
                     sb.append(mSheng.toString()).append(mShi.toString()).append(mXian.toString());
                 }
                 mShoppingAddrPlaceShengshixian.setText(sb.toString());
-                Logger.d(TAG, mSheng.toString() + "----" + mShi.toString() + "---" + mXian.toString());
+                Logger.INSTANCE.d(TAG, mSheng.toString() + "----" + mShi.toString() + "---" + mXian.toString());
                 mPopu.dismiss();
                 break;
 

@@ -148,22 +148,6 @@ object AndroidUtilities {
     }
 
     /**
-     * 判断网络是否可用
-     *
-     * @param context
-     * @return
-     */
-    fun isNetworkAvailable(context: Context): Boolean {
-        return try {
-            val manger = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val info = manger.activeNetworkInfo
-            info?.isConnected ?: false
-        } catch (e: Exception) {
-            false
-        }
-    }
-
-    /**
      * 只显示光标,不让软键盘弹出
      */
     fun disableShowInput(editText: EditText) {

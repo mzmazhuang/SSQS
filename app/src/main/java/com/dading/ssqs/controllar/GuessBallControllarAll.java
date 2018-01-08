@@ -242,7 +242,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                         processDataMessage(items);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "中奖信息失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "中奖信息失败信息");
                 }
             }
         });
@@ -342,7 +342,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                 if (i == 0) {
                     iv.setImageResource(R.mipmap.grey);
                     mHome_vp_title.setText(mHVpTtile.get(0));
-                    Logger.d(TAG, "home的viewpage标题-----" + mHVpTtile.get(0));
+                    Logger.INSTANCE.d(TAG, "home的viewpage标题-----" + mHVpTtile.get(0));
                 }
 
                 int width = DensityUtil.dip2px(mContent, 4);
@@ -612,7 +612,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                     Intent intent = new Intent(mContent, HomeViewPagerActivity.class);
                     if (mAdverts != null) {
                         intent.putExtra("infoId", mAdverts.get(position).getForwardID());
-                        Logger.d(TAG, "活动跳转返回数据id是----:" + mAdverts.get(position).getForwardID());
+                        Logger.INSTANCE.d(TAG, "活动跳转返回数据id是----:" + mAdverts.get(position).getForwardID());
                     } else {
                         intent.putExtra("infoId", position);
                     }
@@ -632,7 +632,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private class HomeControllarRecevice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Logger.d(TAG, "home接受到关注的通知------------------------:");
+            Logger.INSTANCE.d(TAG, "home接受到关注的通知------------------------:");
             getHOME(null);
         }
     }

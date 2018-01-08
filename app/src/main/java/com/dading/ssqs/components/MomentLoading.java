@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.dading.ssqs.R;
 
 /**
- * Created by asus on 2017/12/6.
+ * Created by mazhuang on 2017/12/6.
  * 加载
  */
 

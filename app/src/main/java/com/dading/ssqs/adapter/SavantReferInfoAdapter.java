@@ -80,7 +80,7 @@ public class SavantReferInfoAdapter extends BaseAdapter implements ListAdapter {
 
         String createDate = entity.createDate;
 
-        Logger.d(TAG, "创建时间返回数据是------------------------------:" + createDate);
+        Logger.INSTANCE.d(TAG, "创建时间返回数据是------------------------------:" + createDate);
         if (createDate != null) {
             String date = createDate.substring(5, 16);
             holder.publishTime.setText(date);//2016-07-29 11:46:05

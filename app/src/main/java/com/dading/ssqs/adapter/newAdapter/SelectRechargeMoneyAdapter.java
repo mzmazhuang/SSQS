@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by asus on 2017/11/24.
+ * Created by mazhuang on 2017/11/24.
  */
 
 public class SelectRechargeMoneyAdapter extends RecyclerView.Adapter<SelectRechargeMoneyAdapter.ItemViewHolder> {

@@ -160,7 +160,7 @@ public class HeFollowAdapter extends BaseAdapter implements ListAdapter {
                 if (entity.userType == 2) {
                     Intent intent = new Intent(context, SavantInfoActivity.class);
                     intent.putExtra(Constent.SAVANT_ID, entity.id);
-                    Logger.d(TAG, "传入的专家id是------------------------------:" + entity.id);
+                    Logger.INSTANCE.d(TAG, "传入的专家id是------------------------------:" + entity.id);
                     context.startActivity(intent);
                 } else {
                     /**
@@ -184,7 +184,7 @@ public class HeFollowAdapter extends BaseAdapter implements ListAdapter {
                                     processData(bean, entity.id);
                                 }
                             } else {
-                                Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
+                                Logger.INSTANCE.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                             }
                         }
                     });
@@ -237,7 +237,7 @@ public class HeFollowAdapter extends BaseAdapter implements ListAdapter {
                                 Intent intent = new Intent(context, LoginActivity.class);
                                 context.startActivity(intent);
                             } else {
-                                Logger.d(TAG, result.getMessage());
+                                Logger.INSTANCE.d(TAG, result.getMessage());
                                 if (entity.isFouce == 0) {
                                     entity.isFouce = 0;
                                     hoder.mFollowInfoFollowCb.setChecked(false);
@@ -375,7 +375,7 @@ public class HeFollowAdapter extends BaseAdapter implements ListAdapter {
                                     mFollow.setChecked(false);
                                 }
                             } else {
-                                Logger.d(TAG, result.getMessage());
+                                Logger.INSTANCE.d(TAG, result.getMessage());
                                 if (data.isFriend == 0) {
                                     data.isFriend = 0;
                                     mFollow.setChecked(false);
@@ -393,7 +393,7 @@ public class HeFollowAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 mPop.dismiss();
-                Logger.d(TAG, "pop消失------------------------------:");
+                Logger.INSTANCE.d(TAG, "pop消失------------------------------:");
             }
         });
         mClose.setOnClickListener(new View.OnClickListener() {

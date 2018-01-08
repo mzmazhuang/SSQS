@@ -33,7 +33,7 @@ public class RechargeFragmentDetailAdapter extends BaseQuickAdapter<RechargeDeta
     @Override
     protected void convert (BaseViewHolder baseViewHolder, RechargeDetailBean itemsBean) {
         mI++;
-        Logger.d(TAG, "item 数------------------------------:" + mI);
+        Logger.INSTANCE.d(TAG, "item 数------------------------------:" + mI);
         /**
          * 0：审核中，1：失败 2：提现成功
          */

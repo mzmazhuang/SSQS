@@ -73,7 +73,7 @@ public class PPAPControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "中超失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "中超失败信息");
                 }
             }
         });
@@ -125,7 +125,7 @@ public class PPAPControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "中超失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "中超失败信息");
                 }
             }
         });

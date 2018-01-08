@@ -149,7 +149,7 @@ public class ReferIncomeActivity extends BaseActivity {
                 break;
             case R.id.refer_income_match_refer:
                 //发送广播
-                Logger.d(TAG, "推荐------------------------------:广播");
+                Logger.INSTANCE.d(TAG, "推荐------------------------------:广播");
                 UIUtils.SendReRecevice(Constent.LOADING_HOME_SAVANT);
                 finish();
                 break;

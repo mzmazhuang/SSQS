@@ -161,7 +161,7 @@ public class RedPeopleSingleAdapterHBS extends BaseAdapter implements ListAdapte
                                     Intent intent = new Intent(context, LoginActivity.class);
                                     context.startActivity(intent);
                                 } else {
-                                    Logger.d(TAG, result.getMessage());
+                                    Logger.INSTANCE.d(TAG, result.getMessage());
                                     if (entity.isFouce == 0) {
                                         entity.isFouce = 0;
                                         hoder.mRedPeopleArItemFollow.setChecked(false);

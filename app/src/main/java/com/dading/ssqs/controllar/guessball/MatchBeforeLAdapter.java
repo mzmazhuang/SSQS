@@ -73,7 +73,7 @@ public class MatchBeforeLAdapter extends BaseAdapter implements ListAdapter {
         holder.mMatchbeforeLeftItemType.setText(entity.title);
         String s = "(" + entity.nums + ")";
         holder.mMatchbeforeLeftItemNum.setText(s);
-        Logger.d("leftrightl","返回数据是-----------:"+entity.title+"---"+entity.nums +"----"+entity.matchs.size());
+        Logger.INSTANCE.d("leftrightl","返回数据是-----------:"+entity.title+"---"+entity.nums +"----"+entity.matchs.size());
         return convertView;
     }
 

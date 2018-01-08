@@ -148,7 +148,7 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                                 ToastUtils.midToast(RegisterNumberActivity.this, "注册成功!", 0);
                                 finish();
                             } else {
-                                Logger.d(TAG, result.getMessage());
+                                Logger.INSTANCE.d(TAG, result.getMessage());
                                 ToastUtils.midToast(RegisterNumberActivity.this, result.getMessage(), 0);
                             }
                         }

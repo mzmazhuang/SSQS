@@ -295,7 +295,7 @@ public class StorePropControllar implements View.OnClickListener {
                         processData(mData);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "商店道具失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "商店道具失败信息");
                 }
             }
         });
@@ -472,7 +472,7 @@ public class StorePropControllar implements View.OnClickListener {
                 break;
             case R.id.pay_method_wx_pay:
                 //调用微信
-                Logger.d(TAG, "调用微信");
+                Logger.INSTANCE.d(TAG, "调用微信");
                 WXOrder();
                 mPayMethodWxPay.setClickable(false);
                 break;
@@ -486,7 +486,7 @@ public class StorePropControllar implements View.OnClickListener {
                     }
                 }
                 mPayMethodAliyPay.setClickable(false);
-                Logger.d(TAG, "调用支付宝");
+                Logger.INSTANCE.d(TAG, "调用支付宝");
                 getPay();
                 break;
 

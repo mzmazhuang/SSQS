@@ -119,7 +119,7 @@ public class StoreTurnTableControllar {
                     if (id >= 8) {
                         id = 0;
                     }
-                    Logger.d(TAG, "开始抽奖！改变第" + id + "图片");
+                    Logger.INSTANCE.d(TAG, "开始抽奖！改变第" + id + "图片");
                     break;
                 case 199:
                     ++number;
@@ -203,7 +203,7 @@ public class StoreTurnTableControllar {
                         processData(mData);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "商店转盘失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "商店转盘失败信息");
                 }
             }
         });
@@ -229,7 +229,7 @@ public class StoreTurnTableControllar {
                         processDataText(bean.data);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "转盘轮播失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "转盘轮播失败信息");
                 }
             }
         });
@@ -262,7 +262,7 @@ public class StoreTurnTableControllar {
         mTv.setText(mData.remark);
         String time = data.endTime;
         String endTime = time.substring(0, 4) + "年" + time.substring(5, 7) + "月" + time.substring(8, 10) + "日" + time.substring(11, 16);
-        Logger.d(TAG, "结束时间是------------------------------:" + endTime);
+        Logger.INSTANCE.d(TAG, "结束时间是------------------------------:" + endTime);
         String s = "本期截止时间:" + endTime;
         mStoreTurntableFinishData.setText(s);
 
@@ -341,7 +341,7 @@ public class StoreTurnTableControllar {
         mGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                Logger.d(TAG, "开始时间------------------------------:" + mStartTime + "------------现在时间" + new Date().getTime());
+                Logger.INSTANCE.d(TAG, "开始时间------------------------------:" + mStartTime + "------------现在时间" + new Date().getTime());
                 if (mData.isStart == 0) {
                     ToastUtils.midToast(context, "转盘抽奖活动尚未开始,敬请期待!", 0);
                     mGv.setClickable(true);
@@ -421,7 +421,7 @@ public class StoreTurnTableControllar {
                                             i = i - 1;
                                             stopTime = i * 200 + 3200;
                                         }
-                                        Logger.d(TAG, "开始抽奖！stopTime" + i);
+                                        Logger.INSTANCE.d(TAG, "开始抽奖！stopTime" + i);
                                         new Thread(changeView).start();
                                         isStart = true;
                                     } else {
@@ -429,7 +429,7 @@ public class StoreTurnTableControllar {
                                         mGv.setClickable(true);
                                     }
                                 } else {
-                                    Logger.d(TAG, result.getMessage() + "抽奖结果失败信息");
+                                    Logger.INSTANCE.d(TAG, result.getMessage() + "抽奖结果失败信息");
                                 }
                             }
                         }
@@ -457,7 +457,7 @@ public class StoreTurnTableControllar {
                 });
                 String s = "恭喜您,获得了" + mAwards.get(mI).name + "!";
                 mResutDialog.setText(s);
-                Logger.d(TAG, "恭喜中奖,您获得了" + mAwards.get(mI).name + "!");
+                Logger.INSTANCE.d(TAG, "恭喜中奖,您获得了" + mAwards.get(mI).name + "!");
                 mDialogResult.show();
                 String diamonsStr = UIUtils.getSputils().getString(Constent.GLODS, "");
                 int glod = Integer.parseInt(diamonsStr.replaceAll(",", ""));

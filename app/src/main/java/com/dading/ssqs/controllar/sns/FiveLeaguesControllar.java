@@ -73,7 +73,7 @@ public class FiveLeaguesControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "五大联赛失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "五大联赛失败信息");
                 }
             }
         });
@@ -125,7 +125,7 @@ public class FiveLeaguesControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "五大联赛失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "五大联赛失败信息");
                 }
             }
         });

@@ -26,7 +26,7 @@ public class WithDrawFragmentDetailAdapter extends BaseQuickAdapter<WithDrawDeta
     @Override
     protected void convert (BaseViewHolder baseViewHolder, WithDrawDetailBean itemsBean) {
         mI++;
-        Logger.d(TAG, "item 数------------------------------:" + mI);
+        Logger.INSTANCE.d(TAG, "item 数------------------------------:" + mI);
         /**
          * 0：审核中，1：失败 2：提现成功
          */

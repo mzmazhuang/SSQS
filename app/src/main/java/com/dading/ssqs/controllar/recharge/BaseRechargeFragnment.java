@@ -93,7 +93,7 @@ public abstract class BaseRechargeFragnment extends BaseFragnment {
     }
 
     private void processData(List<RechargeDetailBean> bean, int count, int page) {
-        Logger.d(TAG, "是否更多------------------------------:" + mB);
+        Logger.INSTANCE.d(TAG, "是否更多------------------------------:" + mB);
         mB = page < count;
         if (mB)
             mPage++;

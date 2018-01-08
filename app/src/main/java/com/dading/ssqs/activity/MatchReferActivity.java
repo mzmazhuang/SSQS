@@ -207,7 +207,7 @@ public class MatchReferActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.refer_write_authentication:
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
-                    Logger.d(TAG, "pop消失------------------------------:");
+                    Logger.INSTANCE.d(TAG, "pop消失------------------------------:");
                     SSQSApplication.apiClient(classGuid).getUserInfo(new CcApiClient.OnCcListener() {
                         @Override
                         public void onResponse(CcApiResult result) {
@@ -222,7 +222,7 @@ public class MatchReferActivity extends BaseActivity implements View.OnClickList
                                     } else {
                                         Intent savantAuth = new Intent(MatchReferActivity.this, SavantAuthenticationActivity.class);
                                         MatchReferActivity.this.startActivity(savantAuth);
-                                        Logger.d(TAG, "用户是否注册过专家返回数据是------------------------------:" + bean.isApply);
+                                        Logger.INSTANCE.d(TAG, "用户是否注册过专家返回数据是------------------------------:" + bean.isApply);
                                     }
                                     mPopupWindowWrite.dismiss();
 

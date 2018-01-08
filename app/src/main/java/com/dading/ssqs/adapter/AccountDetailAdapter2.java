@@ -37,7 +37,7 @@ public class AccountDetailAdapter2 extends RecyclerView.Adapter<AccountDetailAda
 
     @Override
     public void onBindViewHolder (MyViewHolder holder, int position) {
-        Logger.d(TAG, "返回数据是------------------------------:postion:" + position);
+        Logger.INSTANCE.d(TAG, "返回数据是------------------------------:postion:" + position);
         AccountDetailBean bean = data.get(position);
         holder.mAccountDetailItemItem.setText(bean.getItem( ));
         holder.mAccountDetailItemAmount.setText(bean.getAmount( ) + "");
@@ -48,7 +48,7 @@ public class AccountDetailAdapter2 extends RecyclerView.Adapter<AccountDetailAda
 
     @Override
     public int getItemCount ( ) {
-        Logger.d(TAG, "返回数据是------------------------------:" + data.size( ));
+        Logger.INSTANCE.d(TAG, "返回数据是------------------------------:" + data.size( ));
         return data.size( );
     }
 

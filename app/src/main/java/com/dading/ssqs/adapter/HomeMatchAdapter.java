@@ -138,7 +138,7 @@ public class HomeMatchAdapter extends BaseAdapter {
             }
             HomeBean.MatchsBean.PayRateBean rate = entity.getPayRate();
             if (rate != null) {
-                Logger.d(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
+                Logger.INSTANCE.d(TAG, "---" + rate.getRealRate1() + "----" + rate.getRealRate2() + "----:" + rate.getRealRate3());
                 holder.leftPl.setText(rate.getRealRate1());
                 holder.midPl.setText(rate.getRealRate2());
                 holder.rightPl.setText(rate.getRealRate3());

@@ -72,7 +72,7 @@ public class SnsRferControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "社区推荐失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "社区推荐失败信息");
                 }
             }
         });
@@ -124,7 +124,7 @@ public class SnsRferControllar {
                         }
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "社区推荐失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "社区推荐失败信息");
                 }
             }
         });

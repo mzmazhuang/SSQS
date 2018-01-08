@@ -242,7 +242,7 @@ public class HomeFreeGlodAdapter extends BaseAdapter implements ListAdapter {
             }
         }
         if (mStatus == 0) {
-            Logger.d(TAG, "改变今天原点------------------------------:");
+            Logger.INSTANCE.d(TAG, "改变今天原点------------------------------:");
             switch (dayCount) {
                 case 0:
                     mSevenDayRedBet1.setImageResource(R.mipmap.s_unclaimed);

@@ -49,7 +49,7 @@ public class MyBettingAdapterNoFinish extends BaseExpandableListAdapter {
     @Override
     public int getChildrenCount(int groupPosition) {
         List<BettingTBean.PayDetailsEntity> details = data.get(groupPosition).payDetails;
-        Logger.d(TAG, "子节点条目是------------------------------:" + details.size());
+        Logger.INSTANCE.d(TAG, "子节点条目是------------------------------:" + details.size());
         if (details != null) {
             return details.size();
         }
@@ -77,7 +77,7 @@ public class MyBettingAdapterNoFinish extends BaseExpandableListAdapter {
             List<BettingTBean.PayDetailsEntity> payDetails = entity.payDetails;
             if (payDetails.size() != 0 && payDetails.get(0).info.size() != 0) {
                 String openTime = payDetails.get(0).info.get(0).openTime;
-                Logger.d(TAG, "开始时间返回数据是------------------------------:" + openTime);
+                Logger.INSTANCE.d(TAG, "开始时间返回数据是------------------------------:" + openTime);
                 if (openTime != null) {
                     String date = openTime.substring(0, 11);
                     String week = DateUtils.getweekdayBystr(date);

@@ -270,7 +270,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
                         processData(mData);
                     }
                 } else {
-                    Logger.d(TAG, result.getMessage() + "红人明星中獎失败信息");
+                    Logger.INSTANCE.d(TAG, result.getMessage() + "红人明星中獎失败信息");
                 }
             }
         });
@@ -465,7 +465,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
                 //调用微信
                 mPayMethodWxPay.setClickable(false);
                 sendWX();
-                Logger.d(TAG, "调用微信");
+                Logger.INSTANCE.d(TAG, "调用微信");
                 break;
             case R.id.pay_method_aliy_pay:
                 //调用支付宝
@@ -476,7 +476,7 @@ public class StoreDiamondsControllar implements View.OnClickListener {
                         return;
                     }
                 }
-                Logger.d(TAG, "调用支付宝");
+                Logger.INSTANCE.d(TAG, "调用支付宝");
                 getPay();
                 mPayMethodAliyPay.setClickable(false);
                 break;

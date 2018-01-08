@@ -72,6 +72,7 @@ class EarlyBasketBallChampionFragment : Fragment(), OnRefreshListener, Notificat
     private var sType = 0
 
     private var isRefresh = false
+    private var isFilter = false
 
     private var leagueMatchId = -1//当前所点击的联赛id  用于判断 不能多个联赛一起选
     private val leagusList = ArrayList<ToDayFootBallChampionFragment.MergeBean>()
@@ -254,7 +255,13 @@ class EarlyBasketBallChampionFragment : Fragment(), OnRefreshListener, Notificat
 
         filterCell = GuessFilterCell(context)
         filterCell!!.setSecondRefresh(180)
-        filterCell!!.setRefreshListener { swipeToLoadLayout!!.isRefreshing = true }
+        filterCell!!.setRefreshListener {
+            if (isFilter) {
+                filterRefresh()
+            } else {
+                swipeToLoadLayout!!.isRefreshing = true
+            }
+        }
         filterCell!!.hideSelectMatch()
         filterCell!!.setFilterClickListener {
             if (filterDialog == null) {
@@ -272,7 +279,9 @@ class EarlyBasketBallChampionFragment : Fragment(), OnRefreshListener, Notificat
                         1
                     }
 
-                    swipeToLoadLayout!!.isRefreshing = true
+                    offset = 1
+
+                    filterRefresh()
                 }
             }
             filterDialog!!.show("顺序选择", filter_str)
@@ -285,7 +294,7 @@ class EarlyBasketBallChampionFragment : Fragment(), OnRefreshListener, Notificat
 
                     offset = page
 
-                    swipeToLoadLayout!!.isRefreshing = true
+                    filterRefresh()
                 }
             }
 
@@ -565,12 +574,26 @@ class EarlyBasketBallChampionFragment : Fragment(), OnRefreshListener, Notificat
         return list
     }
 
+    //筛选刷新
+    private fun filterRefresh() {
+        if (!isRefresh) {
+            isRefresh = true
+            isFilter = true
+
+            loadingDialog?.show()
+            getNetDataWork(offset, limit)
+        }
+    }
+
     override fun onRefresh() {
         if (!isRefresh) {
             isRefresh = true
+            isFilter = false
+
+            filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
+            sType = 0
 
             offset = 1
-
             getNetDataWork(offset, limit)
         }
     }

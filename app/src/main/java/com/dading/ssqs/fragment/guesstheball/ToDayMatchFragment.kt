@@ -297,10 +297,6 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         }
     }
 
-    fun clearFilterData() {
-        DataController.getInstance().clearScrollFootBallData()
-    }
-
     private fun changePage(str: String) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
 
@@ -335,7 +331,6 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         if (resultFragment != null) {
             resultFragment!!.filterPause()
             fragmentTransaction.hide(resultFragment)
-            clearFilterData()
         }
         if (basketBallPassFragment != null) {
             basketBallPassFragment!!.filterPause()
@@ -416,7 +411,6 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
                         resultFragment!!.filterResume()
                         fragmentTransaction.show(resultFragment)
                     }
-                    clearFilterData()
                     currPage = 7
                 }
             }

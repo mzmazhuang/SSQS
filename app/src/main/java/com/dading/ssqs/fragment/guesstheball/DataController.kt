@@ -7,6 +7,9 @@ import com.dading.ssqs.SSQSApplication
 import com.dading.ssqs.apis.CcApiClient
 import com.dading.ssqs.apis.CcApiResult
 import com.dading.ssqs.bean.GusessChoiceBean
+import com.dading.ssqs.fragment.guesstheball.early.EarlyResultFragment
+import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallResultFragment
+import com.dading.ssqs.fragment.guesstheball.today.ToDayResultFragment
 import com.dading.ssqs.utils.DateUtils
 
 /**
@@ -23,6 +26,10 @@ class DataController {
         private set//篮球滚球筛选数据
     var basketBallHotData: List<GusessChoiceBean>? = null
         private set//篮球滚球筛选热门数据
+    var scrollResultData: List<GusessChoiceBean>? = null
+        private set//滚球赛果
+    var scrollResultHotData: List<GusessChoiceBean>? = null
+        private set//滚球赛果热门
 
     var todayFootBallData: List<GusessChoiceBean>? = null
         private set//足球今日筛选数据
@@ -32,6 +39,10 @@ class DataController {
         private set//篮球今日筛选数据
     var todayBasketBallHotData: List<GusessChoiceBean>? = null
         private set//篮球今日筛选热门数据
+    var todayResultData: List<GusessChoiceBean>? = null
+        private set//今日赛果
+    var todayResultHotData: List<GusessChoiceBean>? = null
+        private set//今日赛果热门
 
     var earlyFootBallData: List<GusessChoiceBean>? = null
         private set//足球早盘筛选数据
@@ -41,6 +52,10 @@ class DataController {
         private set//篮球早盘筛选数据
     var earlyBasketBallHotData: List<GusessChoiceBean>? = null
         private set//篮球早盘筛选热门数据
+    var earlyResultData: List<GusessChoiceBean>? = null
+        private set//早盘赛果
+    var earlyResultHotData: List<GusessChoiceBean>? = null
+        private set//早盘赛果热门
 
     fun clearEarlyFootBallData() {
         earlyFootBallData = null
@@ -62,26 +77,42 @@ class DataController {
         todayFootBallHotData = null
     }
 
+    fun clearScrollResultData() {
+        scrollResultData = null
+        scrollResultHotData = null
+    }
+
+    fun clearTodayResultData() {
+        todayResultData = null
+        todayResultHotData = null
+    }
+
+    fun clearEarlyResultData() {
+        earlyResultData = null
+        earlyResultHotData = null
+    }
+
+    //获取足球
     fun syncFootBall(tag: String, type: Int) {
         syncFootBallData(tag, type, "")
     }
 
+    //获取赛果
     fun syncScrollFootBall(tag: String, date: String) {
-        syncFootBallData(tag, 6, date)
+        syncFootBallData(tag, 3, date)
     }
 
-    fun syncTodayFootBall(tag: String, date: String) {
-        syncFootBallData(tag, 2, date)
-    }
-
+    //获取早盘足球
     fun syncEarlyFootBall(tag: String, date: String) {
         syncFootBallData(tag, 7, date)
     }
 
+    //获取篮球
     fun syncBasketBall(tag: String, type: Int) {
         syncBasketBallData(tag, type, "")
     }
 
+    //获取早盘篮球
     fun syncEarlyBasketBall(tag: String, date: String) {
         syncBasketBallData(tag, 7, date)
     }
@@ -159,21 +190,38 @@ class DataController {
 
         SSQSApplication.apiClient(0).getMatchFilterList(type, 1, mDate) { result ->
             if (result.isOk) {
-                when (type) {
-                    6 -> {
-                        footBallHotData = result.data as List<GusessChoiceBean>
+                when (tag) {
+                    ScrollBallResultFragment.TAG -> {
+                        scrollResultHotData = result.data as List<GusessChoiceBean>
 
-                        selectAll(footBallHotData)
+                        selectAll(scrollResultHotData)
                     }
-                    2 -> {
-                        todayFootBallHotData = result.data as List<GusessChoiceBean>
+                    ToDayResultFragment.TAG -> {
+                        todayResultHotData = result.data as List<GusessChoiceBean>
 
-                        selectAll(todayFootBallHotData)
+                        selectAll(todayResultHotData)
                     }
-                    7 -> {
-                        earlyFootBallHotData = result.data as List<GusessChoiceBean>
+                    EarlyResultFragment.TAG -> {
+                        earlyResultHotData = result.data as List<GusessChoiceBean>
 
-                        selectAll(earlyFootBallHotData)
+                        selectAll(earlyResultHotData)
+                    }
+                    else -> when (type) {
+                        6 -> {
+                            footBallHotData = result.data as List<GusessChoiceBean>
+
+                            selectAll(footBallHotData)
+                        }
+                        2 -> {
+                            todayFootBallHotData = result.data as List<GusessChoiceBean>
+
+                            selectAll(todayFootBallHotData)
+                        }
+                        7 -> {
+                            earlyFootBallHotData = result.data as List<GusessChoiceBean>
+
+                            selectAll(earlyFootBallHotData)
+                        }
                     }
                 }
 
@@ -191,21 +239,38 @@ class DataController {
 
         SSQSApplication.apiClient(0).getMatchFilterList(type, 0, mDate) { result ->
             if (result.isOk) {
-                when (type) {
-                    6 -> {
-                        footBallData = result.data as List<GusessChoiceBean>
+                when (tag) {
+                    ScrollBallResultFragment.TAG -> {
+                        scrollResultData = result.data as List<GusessChoiceBean>
 
                         selectAll(footBallData)
                     }
-                    2 -> {
-                        todayFootBallData = result.data as List<GusessChoiceBean>
+                    ToDayResultFragment.TAG -> {
+                        todayResultData = result.data as List<GusessChoiceBean>
 
-                        selectAll(todayFootBallData)
+                        selectAll(todayResultData)
                     }
-                    7 -> {
-                        earlyFootBallData = result.data as List<GusessChoiceBean>
+                    EarlyResultFragment.TAG -> {
+                        earlyResultData = result.data as List<GusessChoiceBean>
 
-                        selectAll(earlyFootBallData)
+                        selectAll(earlyResultData)
+                    }
+                    else -> when (type) {
+                        6 -> {
+                            footBallData = result.data as List<GusessChoiceBean>
+
+                            selectAll(footBallData)
+                        }
+                        2 -> {
+                            todayFootBallData = result.data as List<GusessChoiceBean>
+
+                            selectAll(todayFootBallData)
+                        }
+                        7 -> {
+                            earlyFootBallData = result.data as List<GusessChoiceBean>
+
+                            selectAll(earlyFootBallData)
+                        }
                     }
                 }
 

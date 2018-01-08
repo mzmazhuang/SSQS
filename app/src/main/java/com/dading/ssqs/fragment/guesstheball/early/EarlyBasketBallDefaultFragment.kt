@@ -374,12 +374,17 @@ class EarlyBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notificati
 
         filterCell = GuessFilterCell(context)
         filterCell!!.setSecondRefresh(180)
-        filterCell!!.setRefreshListener { swipeToLoadLayout!!.isRefreshing = true }
+        filterCell!!.setRefreshListener {
+            if (isFilter) {
+                filterRefresh()
+            } else {
+                swipeToLoadLayout!!.isRefreshing = true
+            }
+        }
         filterCell!!.setSelectClickListener {
             if (selectMatchDialog == null) {
                 selectMatchDialog = SelectMatchDialog(context)
                 selectMatchDialog!!.setListener { list, isAll ->
-                    isFilter = true
                     if (isAll) {
                         filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
                     } else {
@@ -394,7 +399,10 @@ class EarlyBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notificati
                     if (leagueIDs.isNotEmpty()) {
                         leagueIDs = leagueIDs.substring(0, leagueIDs.length - 1)
                     }
-                    swipeToLoadLayout!!.isRefreshing = true
+
+                    offset = 1
+
+                    filterRefresh()
                 }
             }
             //判断是否有联赛的数据  没有的话网路请求
@@ -409,8 +417,6 @@ class EarlyBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notificati
             if (filterDialog == null) {
                 filterDialog = FilterDialog(context)
                 filterDialog!!.setItemListener { title ->
-                    isFilter = true
-
                     filter_str = title
 
                     filterDialog!!.dismiss()
@@ -422,7 +428,10 @@ class EarlyBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notificati
                     } else {
                         1
                     }
-                    swipeToLoadLayout!!.isRefreshing = true
+
+                    offset = 1
+
+                    filterRefresh()
                 }
             }
             filterDialog!!.show("顺序选择", filter_str)
@@ -431,13 +440,11 @@ class EarlyBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notificati
             if (pageDialog == null) {
                 pageDialog = PageDialog(context)
                 pageDialog!!.setItemListener { page ->
-                    isFilter = true
-
                     pageDialog!!.dismiss()
 
                     offset = page
 
-                    swipeToLoadLayout!!.isRefreshing = true
+                    filterRefresh()
                 }
             }
 
@@ -683,17 +690,27 @@ class EarlyBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notificati
         return list
     }
 
+    //筛选刷新
+    private fun filterRefresh() {
+        if (!isRefresh) {
+            isRefresh = true
+            isFilter = true
+
+            loadingDialog?.show()
+            getNetDataWork(offset, limit)
+        }
+    }
+
     override fun onRefresh() {
         if (!isRefresh) {
             isRefresh = true
-            if (isFilter) {
-                isFilter = false
-            } else {
-                filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
-                leagueIDs = "0"
+            isFilter = false
 
-                offset = 1
-            }
+            filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
+            leagueIDs = "0"
+            sType = 0
+
+            offset = 1
             getNetDataWork(offset, limit)
         }
     }

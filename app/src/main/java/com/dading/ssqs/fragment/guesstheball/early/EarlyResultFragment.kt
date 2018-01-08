@@ -164,12 +164,17 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
 
         filterCell = GuessFilterCell(context)
         filterCell!!.setSecondRefresh(180)
-        filterCell!!.setRefreshListener { swipeToLoadLayout!!.isRefreshing = true }
+        filterCell!!.setRefreshListener {
+            if (isFilter) {
+                filterRefresh()
+            } else {
+                swipeToLoadLayout!!.isRefreshing = true
+            }
+        }
         filterCell!!.setSelectClickListener {
             if (selectMatchDialog == null) {
                 selectMatchDialog = SelectMatchDialog(context)
                 selectMatchDialog!!.setListener { list, isAll ->
-                    isFilter = true
                     if (isAll) {
                         filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
                     } else {
@@ -184,23 +189,24 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
                     if (leagueIDs.isNotEmpty()) {
                         leagueIDs = leagueIDs.substring(0, leagueIDs.length - 1)
                     }
-                    swipeToLoadLayout!!.isRefreshing = true
+
+                    offset = 1
+
+                    filterRefresh()
                 }
             }
             //判断是否有联赛的数据  没有的话网路请求
-            if (DataController.getInstance().earlyFootBallData == null) {
-                DataController.getInstance().syncEarlyFootBall(TAG, currTime!!)
+            if (DataController.getInstance().earlyResultData == null) {
+                DataController.getInstance().syncScrollFootBall(TAG, currTime!!)
                 loadingDialog!!.show()
             } else {
-                selectMatchDialog!!.show(DataController.getInstance().earlyFootBallData, DataController.getInstance().earlyFootBallHotData, "联赛选择")
+                selectMatchDialog!!.show(DataController.getInstance().earlyResultData, DataController.getInstance().earlyResultHotData, "联赛选择")
             }
         }
         filterCell!!.setFilterClickListener {
             if (filterDialog == null) {
                 filterDialog = FilterDialog(context)
                 filterDialog!!.setItemListener { title ->
-                    isFilter = true
-
                     filter_str = title
 
                     filterDialog!!.dismiss()
@@ -212,7 +218,10 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
                     } else {
                         1
                     }
-                    swipeToLoadLayout!!.isRefreshing = true
+
+                    offset = 1
+
+                    filterRefresh()
                 }
             }
             filterDialog!!.show("顺序选择", filter_str)
@@ -220,13 +229,20 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
         filterCell!!.setPageClickListener {
             if (pageDialog == null) {
                 pageDialog = PageDialog(context)
-                pageDialog!!.setItemListener { pageDialog!!.dismiss() }
+                pageDialog!!.setItemListener { page ->
+                    pageDialog!!.dismiss()
+
+                    offset = page
+
+                    filterRefresh()
+                }
             }
 
             val pageList = ArrayList<Int>()
-            pageList.add(1)
 
-            pageDialog!!.show(pageList, "页数选择", 1)
+            pageList += 1..totalPage
+
+            pageDialog!!.show(pageList, "页数选择", offset)
         }
         contentLayout.addView(filterCell)
 
@@ -299,7 +315,7 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
         currTime = DateUtils.getCurTimeAddND(-day, "yyyyMMddHH:mm:ss")
         resultTimeLayout!!.setTime(DateUtils.getCurTimeAddND(-day, "yyyy-MM-dd"))
 
-        DataController.getInstance().clearEarlyFootBallData()
+        DataController.getInstance().clearEarlyResultData()
 
         swipeToLoadLayout!!.isRefreshing = true
     }
@@ -350,17 +366,27 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
         }
     }
 
+    //筛选刷新
+    private fun filterRefresh() {
+        if (!isRefresh) {
+            isRefresh = true
+            isFilter = true
+
+            loadingDialog?.show()
+            getNetDataWork(offset, limit)
+        }
+    }
+
     override fun onRefresh() {
         if (!isRefresh) {
             isRefresh = true
-            if (isFilter) {
-                isFilter = false
-            } else {
-                filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
-                leagueIDs = "0"
+            isFilter = false
 
-                offset = 1
-            }
+            filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
+            leagueIDs = "0"
+            sType = 0
+
+            offset = 1
             getNetDataWork(offset, limit)
         }
     }
@@ -453,13 +479,13 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
             if (args?.isNotEmpty()) {
                 if (TAG == args[0]) {
                     loadingDialog!!.dismiss()
-                    selectMatchDialog!!.show(DataController.getInstance().earlyFootBallData, DataController.getInstance().earlyFootBallHotData, "联赛选择")
+                    selectMatchDialog!!.show(DataController.getInstance().earlyResultData, DataController.getInstance().earlyResultHotData, "联赛选择")
                 }
             }
         }
     }
 
     companion object {
-        private val TAG = "EarlyResultFragment"
+        val TAG = "EarlyResultFragment"
     }
 }

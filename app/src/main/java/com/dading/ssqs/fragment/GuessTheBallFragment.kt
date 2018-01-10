@@ -24,9 +24,9 @@ import com.dading.ssqs.utils.AndroidUtilities
 
 class GuessTheBallFragment : Fragment() {
 
-    private var scrollBallTextView: TextView? = null
-    private var toDayTextView: TextView? = null
-    private var earlyTextView: TextView? = null
+    private lateinit var scrollBallTextView: TextView
+    private lateinit var toDayTextView: TextView
+    private lateinit var earlyTextView: TextView
 
     private var scrollBallFragment: ScrollBallFragment? = null
     private var toDayMatchFragment: ToDayMatchFragment? = null
@@ -63,30 +63,30 @@ class GuessTheBallFragment : Fragment() {
         titleLayout.addView(titleTextLayout, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT))
 
         scrollBallTextView = TextView(context)
-        scrollBallTextView!!.gravity = Gravity.CENTER_VERTICAL
-        scrollBallTextView!!.setTextColor(Color.WHITE)
-        scrollBallTextView!!.textSize = 18f
-        scrollBallTextView!!.text = LocaleController.getString(R.string.scroll_ball)
-        scrollBallTextView!!.setPadding(AndroidUtilities.dp(12f), 0, AndroidUtilities.dp(12f), 0)
-        scrollBallTextView!!.setOnClickListener { changePageTextColor(GuessBallType.SCROLLBALL, false) }
+        scrollBallTextView.gravity = Gravity.CENTER_VERTICAL
+        scrollBallTextView.setTextColor(Color.WHITE)
+        scrollBallTextView.textSize = 18f
+        scrollBallTextView.text = LocaleController.getString(R.string.scroll_ball)
+        scrollBallTextView.setPadding(AndroidUtilities.dp(12f), 0, AndroidUtilities.dp(12f), 0)
+        scrollBallTextView.setOnClickListener { changePageTextColor(GuessBallType.SCROLLBALL, false) }
         titleTextLayout.addView(scrollBallTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT))
 
         toDayTextView = TextView(context)
-        toDayTextView!!.gravity = Gravity.CENTER_VERTICAL
-        toDayTextView!!.setTextColor(-0xffbca2)
-        toDayTextView!!.textSize = 18f
-        toDayTextView!!.text = LocaleController.getString(R.string.today_match)
-        toDayTextView!!.setPadding(AndroidUtilities.dp(12f), 0, AndroidUtilities.dp(12f), 0)
-        toDayTextView!!.setOnClickListener { changePageTextColor(GuessBallType.TODAY, false) }
+        toDayTextView.gravity = Gravity.CENTER_VERTICAL
+        toDayTextView.setTextColor(-0xffbca2)
+        toDayTextView.textSize = 18f
+        toDayTextView.text = LocaleController.getString(R.string.today_match)
+        toDayTextView.setPadding(AndroidUtilities.dp(12f), 0, AndroidUtilities.dp(12f), 0)
+        toDayTextView.setOnClickListener { changePageTextColor(GuessBallType.TODAY, false) }
         titleTextLayout.addView(toDayTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT))
 
         earlyTextView = TextView(context)
-        earlyTextView!!.gravity = Gravity.CENTER_VERTICAL
-        earlyTextView!!.setTextColor(-0xffbca2)
-        earlyTextView!!.textSize = 18f
-        earlyTextView!!.text = LocaleController.getString(R.string.early)
-        earlyTextView!!.setPadding(AndroidUtilities.dp(12f), 0, AndroidUtilities.dp(12f), 0)
-        earlyTextView!!.setOnClickListener { changePageTextColor(GuessBallType.Early, false) }
+        earlyTextView.gravity = Gravity.CENTER_VERTICAL
+        earlyTextView.setTextColor(-0xffbca2)
+        earlyTextView.textSize = 18f
+        earlyTextView.text = LocaleController.getString(R.string.early)
+        earlyTextView.setPadding(AndroidUtilities.dp(12f), 0, AndroidUtilities.dp(12f), 0)
+        earlyTextView.setOnClickListener { changePageTextColor(GuessBallType.Early, false) }
         titleTextLayout.addView(earlyTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT))
 
         val parentLayout = LinearLayout(context)//用来替换fragment的布局
@@ -99,9 +99,9 @@ class GuessTheBallFragment : Fragment() {
     private fun init() {
         scrollBallFragment = ScrollBallFragment()
 
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.add(R.id.guess_parent, scrollBallFragment)
-        fragmentTransaction.commit()
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        fragmentTransaction?.add(R.id.guess_parent, scrollBallFragment)
+        fragmentTransaction?.commit()
     }
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
@@ -121,9 +121,9 @@ class GuessTheBallFragment : Fragment() {
             clearTextColor()
 
             when (type) {
-                GuessBallType.SCROLLBALL -> scrollBallTextView?.setTextColor(Color.WHITE)
-                GuessBallType.TODAY -> toDayTextView?.setTextColor(Color.WHITE)
-                GuessBallType.Early -> earlyTextView?.setTextColor(Color.WHITE)
+                GuessBallType.SCROLLBALL -> scrollBallTextView.setTextColor(Color.WHITE)
+                GuessBallType.TODAY -> toDayTextView.setTextColor(Color.WHITE)
+                GuessBallType.Early -> earlyTextView.setTextColor(Color.WHITE)
             }
 
             changePage(type)
@@ -171,28 +171,28 @@ class GuessTheBallFragment : Fragment() {
 
     //fragment 试图切换
     private fun changePage(type: GuessBallType) {
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
+        val fragmentTransaction = fragmentManager?.beginTransaction()
 
         if (scrollBallFragment != null) {
-            fragmentTransaction.hide(scrollBallFragment)
+            fragmentTransaction?.hide(scrollBallFragment)
             scrollBallFragment!!.fragmentPause()
         }
         if (toDayMatchFragment != null) {
-            fragmentTransaction.hide(toDayMatchFragment)
-            toDayMatchFragment!!.fragmentPause()
+            fragmentTransaction?.hide(toDayMatchFragment)
+            toDayMatchFragment?.fragmentPause()
         }
         if (earlyFragment != null) {
-            fragmentTransaction.hide(earlyFragment)
-            earlyFragment!!.fragmentPause()
+            fragmentTransaction?.hide(earlyFragment)
+            earlyFragment?.fragmentPause()
         }
 
         if (type == GuessBallType.SCROLLBALL) {
             if (scrollBallFragment == null) {
                 scrollBallFragment = ScrollBallFragment()
-                fragmentTransaction.add(R.id.guess_parent, scrollBallFragment)
+                fragmentTransaction?.add(R.id.guess_parent, scrollBallFragment)
             } else {
                 scrollBallFragment!!.fragmentResume()
-                fragmentTransaction.show(scrollBallFragment)
+                fragmentTransaction?.show(scrollBallFragment)
             }
             if (this.type > 0) {
                 if (this.type == 1) {
@@ -204,27 +204,27 @@ class GuessTheBallFragment : Fragment() {
         } else if (type == GuessBallType.TODAY) {
             if (toDayMatchFragment == null) {
                 toDayMatchFragment = ToDayMatchFragment()
-                fragmentTransaction.add(R.id.guess_parent, toDayMatchFragment)
+                fragmentTransaction?.add(R.id.guess_parent, toDayMatchFragment)
             } else {
-                toDayMatchFragment!!.fragmentResume()
-                fragmentTransaction.show(toDayMatchFragment)
+                toDayMatchFragment?.fragmentResume()
+                fragmentTransaction?.show(toDayMatchFragment)
             }
         } else if (type == GuessBallType.Early) {
             if (earlyFragment == null) {
                 earlyFragment = EarlyFragment()
-                fragmentTransaction.add(R.id.guess_parent, earlyFragment)
+                fragmentTransaction?.add(R.id.guess_parent, earlyFragment)
             } else {
-                earlyFragment!!.fragmentResume()
-                fragmentTransaction.show(earlyFragment)
+                earlyFragment?.fragmentResume()
+                fragmentTransaction?.show(earlyFragment)
             }
         }
-        fragmentTransaction.commit()
+        fragmentTransaction?.commit()
     }
 
     //清除标题字体颜色
     private fun clearTextColor() {
-        scrollBallTextView?.setTextColor(-0xffbca2)
-        toDayTextView?.setTextColor(-0xffbca2)
-        earlyTextView?.setTextColor(-0xffbca2)
+        scrollBallTextView.setTextColor(-0xffbca2)
+        toDayTextView.setTextColor(-0xffbca2)
+        earlyTextView.setTextColor(-0xffbca2)
     }
 }

@@ -212,20 +212,6 @@ public class RechargeBankActivity extends BaseActivity implements View.OnClickLi
                     ToastUtils.midToast(RechargeBankActivity.this, "请填写卡主姓名!", 0);
                     return;
                 }
-              /*  if (TextUtils.isEmpty(mAdapterType.getCheckTitle( ))) {
-                    ToastUtils.midToast(RechargeBankActivity.this, "请选择转账渠道!", 0);
-                    return;
-                }*/
-                /**
-                 * 36.	充值上传
-                 1)	请求地址：
-                 /v1.0/charge/save
-                 2)	请求方式:post
-                 3)	请求参数说明：字段名	类型	长度	是否必填	备注
-                 auth_token	string		是	token
-                 amount	int		是	充值金额
-                 id	int		是	充值类型ID
-                 */
                 final String value = mDepositAmount.getText().toString();
 
                 ChargeUploadElement element = new ChargeUploadElement();

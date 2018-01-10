@@ -45,7 +45,7 @@ import java.util.ArrayList
 
 class EarlyFragment : Fragment(), NotificationController.NotificationControllerDelegate {
 
-    private var topCell: GuessBallTopCell? = null
+    private lateinit var topCell: GuessBallTopCell
 
     private val footBallSubTitles = ArrayList<GuessTopTitle>()
     private val basketBallSubTitles = ArrayList<GuessTopTitle>()
@@ -54,7 +54,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
     private var twoTitleFootPosition = 0//二级标题足球的position  默认第一个选中
     private var twoTitleBasketPosition = -1//二级标题篮球的position
 
-    private var defaultFragment: EarlyDefaultFragment? = null
+    private lateinit var defaultFragment: EarlyDefaultFragment
     private var boDanFragment: EarlyBoDanFragment? = null
     private var totalFragment: EarlyTotalFragment? = null
     private var halfCourtFragment: EarlyHalfCourtFragment? = null
@@ -65,7 +65,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
     private var basketBallPassFragment: EarlyBasketBallPassFragment? = null
     private var footBallPassFragment: EarlyFootBallPassFragment? = null
 
-    private var maskView: View? = null
+    private lateinit var maskView: View
 
     private var currPage = 1
 
@@ -74,13 +74,13 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         if (id == 1) {//足球
             currTitlePosition = 1
             twoTitleFootPosition = 0
-            topCell?.setTopSubTitleData(footBallSubTitles)
-            topCell?.setTopSubTitleSelect(twoTitleFootPosition)
+            topCell.setTopSubTitleData(footBallSubTitles)
+            topCell.setTopSubTitleSelect(twoTitleFootPosition)
         } else if (id == 2) {//篮球
             currTitlePosition = 2
             twoTitleBasketPosition = 0
-            topCell?.setTopSubTitleData(basketBallSubTitles)
-            topCell?.setTopSubTitleSelect(twoTitleBasketPosition)
+            topCell.setTopSubTitleData(basketBallSubTitles)
+            topCell.setTopSubTitleSelect(twoTitleBasketPosition)
         }
 
         changePage(LocaleController.getString(R.string.scroll_title1))
@@ -97,13 +97,10 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
 
         //网络请求数据
 
-        var str = ""
-        for (i in footBallSubTitles.indices) {
-            if (footBallSubTitles[i].id == id) {
-                str = footBallSubTitles[i].name
-                break
-            }
-        }
+        val str = footBallSubTitles.indices
+                .firstOrNull { footBallSubTitles[it].id == id }
+                ?.let { footBallSubTitles[it].name }
+                ?: ""
 
         changePage(str)
     }
@@ -130,17 +127,17 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         maskLayout.addView(contentLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         maskView = View(context)
-        maskView!!.setOnClickListener {
+        maskView.setOnClickListener {
             hideMask()
             NotificationController.getInstance().postNotification(NotificationController.early_mask, "child_close")
         }
-        maskView!!.visibility = View.GONE
-        maskView!!.setBackgroundColor(-0x5b000000)
+        maskView.visibility = View.GONE
+        maskView.setBackgroundColor(-0x5b000000)
         maskLayout.addView(maskView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 70))
 
         topCell = GuessBallTopCell(context)
-        topCell!!.setTopListener(topClickListener)
-        topCell!!.setSubTopListener(subTitleClickListener)
+        topCell.setTopListener(topClickListener)
+        topCell.setSubTopListener(subTitleClickListener)
         contentLayout.addView(topCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         val parentLayout = LinearLayout(context)//用来替换fragment的布局
@@ -208,8 +205,8 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         topList.add(title1)
         topList.add(title2)
 
-        topCell!!.setTopTitleData(topList)
-        topCell!!.setTopSubTitleData(footBallSubTitles)
+        topCell.setTopTitleData(topList)
+        topCell.setTopSubTitleData(footBallSubTitles)
     }
 
     private fun init() {
@@ -217,14 +214,14 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
 
         defaultFragment = EarlyDefaultFragment()
 
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.add(R.id.early_parent, defaultFragment)
-        fragmentTransaction.commit()
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+        fragmentTransaction?.add(R.id.early_parent, defaultFragment)
+        fragmentTransaction?.commit()
     }
 
     fun fragmentResume() {
         if (currPage == 1 && defaultFragment != null) {
-            defaultFragment!!.filterResume()
+            defaultFragment.filterResume()
         } else if (currPage == 2 && boDanFragment != null) {
             boDanFragment!!.filterResume()
         } else if (currPage == 3 && totalFragment != null) {
@@ -248,7 +245,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
 
     fun fragmentPause() {
         if (currPage == 1 && defaultFragment != null) {
-            defaultFragment!!.filterPause()
+            defaultFragment.filterPause()
         } else if (currPage == 2 && boDanFragment != null) {
             boDanFragment!!.filterPause()
         } else if (currPage == 3 && totalFragment != null) {
@@ -281,158 +278,159 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         //因早盘里每个页面都有可以选择的7天 这样就不能保持数据一致 所以每次更换页面都把筛选数据清空
         clearFilterData()
 
-        if (defaultFragment != null) {
-            defaultFragment!!.filterPause()
+        defaultFragment.let {
+            defaultFragment.filterPause()
             fragmentTransaction.hide(defaultFragment)
         }
-        if (boDanFragment != null) {
+        boDanFragment.let {
             boDanFragment!!.filterPause()
             fragmentTransaction.hide(boDanFragment)
         }
-        if (totalFragment != null) {
+        totalFragment.let {
             totalFragment!!.filterPause()
             fragmentTransaction.hide(totalFragment)
         }
-        if (halfCourtFragment != null) {
+        halfCourtFragment.let {
             halfCourtFragment!!.filterPause()
             fragmentTransaction.hide(halfCourtFragment)
         }
-        if (resultFragment != null) {
+        resultFragment.let {
             resultFragment!!.filterPause()
             fragmentTransaction.hide(resultFragment)
         }
-        if (earlyChampionFragment != null) {
+        earlyChampionFragment.let {
             earlyChampionFragment!!.filterPause()
             fragmentTransaction.hide(earlyChampionFragment)
         }
-        if (earlyBasketBallChampionFragmen != null) {
+        earlyBasketBallChampionFragmen.let {
             earlyBasketBallChampionFragmen!!.filterPause()
             fragmentTransaction.hide(earlyBasketBallChampionFragmen)
         }
-        if (basketBallDefaultFragment != null) {
+        basketBallDefaultFragment.let {
             basketBallDefaultFragment!!.filterPause()
             fragmentTransaction.hide(basketBallDefaultFragment)
         }
-        if (basketBallPassFragment != null) {
+        basketBallPassFragment.let {
             basketBallPassFragment!!.filterPause()
             fragmentTransaction.hide(basketBallPassFragment)
         }
-        if (footBallPassFragment != null) {
+        footBallPassFragment.let {
             footBallPassFragment!!.filterPause()
             fragmentTransaction.hide(footBallPassFragment)
         }
 
-        if (currTitlePosition == 1) {//足球
-            when (str) {
-                LocaleController.getString(R.string.scroll_title1) -> {
-                    if (defaultFragment == null) {
-                        defaultFragment = EarlyDefaultFragment()
-                        fragmentTransaction.add(R.id.early_parent, defaultFragment)
-                    } else {
-                        defaultFragment!!.filterResume()
-                        fragmentTransaction.show(defaultFragment)
-                    }
+        when (currTitlePosition) {
+            1 -> {
+                when (str) {
+                    LocaleController.getString(R.string.scroll_title1) -> {
+                        if (defaultFragment == null) {
+                            defaultFragment = EarlyDefaultFragment()
+                            fragmentTransaction.add(R.id.early_parent, defaultFragment)
+                        } else {
+                            defaultFragment.filterResume()
+                            fragmentTransaction.show(defaultFragment)
+                        }
 
-                    currPage = 1
-                }
-                LocaleController.getString(R.string.scroll_title2) -> {
-                    if (boDanFragment == null) {
-                        boDanFragment = EarlyBoDanFragment()
-                        fragmentTransaction.add(R.id.early_parent, boDanFragment)
-                    } else {
-                        boDanFragment!!.filterResume()
-                        fragmentTransaction.show(boDanFragment)
+                        currPage = 1
                     }
+                    LocaleController.getString(R.string.scroll_title2) -> {
+                        if (boDanFragment == null) {
+                            boDanFragment = EarlyBoDanFragment()
+                            fragmentTransaction.add(R.id.early_parent, boDanFragment)
+                        } else {
+                            boDanFragment!!.filterResume()
+                            fragmentTransaction.show(boDanFragment)
+                        }
 
-                    currPage = 2
-                }
-                LocaleController.getString(R.string.scroll_title3) -> {
-                    if (totalFragment == null) {
-                        totalFragment = EarlyTotalFragment()
-                        fragmentTransaction.add(R.id.early_parent, totalFragment)
-                    } else {
-                        totalFragment!!.filterResume()
-                        fragmentTransaction.show(totalFragment)
+                        currPage = 2
                     }
-                    currPage = 3
-                }
-                LocaleController.getString(R.string.scroll_title4) -> {
-                    if (halfCourtFragment == null) {
-                        halfCourtFragment = EarlyHalfCourtFragment()
-                        fragmentTransaction.add(R.id.early_parent, halfCourtFragment)
-                    } else {
-                        halfCourtFragment!!.filterResume()
-                        fragmentTransaction.show(halfCourtFragment)
+                    LocaleController.getString(R.string.scroll_title3) -> {
+                        if (totalFragment == null) {
+                            totalFragment = EarlyTotalFragment()
+                            fragmentTransaction.add(R.id.early_parent, totalFragment)
+                        } else {
+                            totalFragment!!.filterResume()
+                            fragmentTransaction.show(totalFragment)
+                        }
+                        currPage = 3
                     }
-                    currPage = 4
-                }
-                LocaleController.getString(R.string.scroll_title5) -> {
-                    if (resultFragment == null) {
-                        resultFragment = EarlyResultFragment()
-                        fragmentTransaction.add(R.id.early_parent, resultFragment)
-                    } else {
-                        resultFragment!!.filterResume()
-                        fragmentTransaction.show(resultFragment)
+                    LocaleController.getString(R.string.scroll_title4) -> {
+                        if (halfCourtFragment == null) {
+                            halfCourtFragment = EarlyHalfCourtFragment()
+                            fragmentTransaction.add(R.id.early_parent, halfCourtFragment)
+                        } else {
+                            halfCourtFragment!!.filterResume()
+                            fragmentTransaction.show(halfCourtFragment)
+                        }
+                        currPage = 4
                     }
-                    currPage = 5
-                }
-                LocaleController.getString(R.string.scroll_title13) -> {
-                    if (earlyChampionFragment == null) {
-                        earlyChampionFragment = EarlyChampionFragment()
-                        fragmentTransaction.add(R.id.early_parent, earlyChampionFragment)
-                    } else {
-                        earlyChampionFragment!!.filterResume()
-                        fragmentTransaction.show(earlyChampionFragment)
+                    LocaleController.getString(R.string.scroll_title5) -> {
+                        if (resultFragment == null) {
+                            resultFragment = EarlyResultFragment()
+                            fragmentTransaction.add(R.id.early_parent, resultFragment)
+                        } else {
+                            resultFragment!!.filterResume()
+                            fragmentTransaction.show(resultFragment)
+                        }
+                        currPage = 5
                     }
-                    currPage = 6
-                }
-                LocaleController.getString(R.string.scroll_title14) -> {
-                    if (footBallPassFragment == null) {
-                        footBallPassFragment = EarlyFootBallPassFragment()
-                        fragmentTransaction.add(R.id.early_parent, footBallPassFragment)
-                    } else {
-                        footBallPassFragment!!.filterResume()
-                        fragmentTransaction.show(footBallPassFragment)
+                    LocaleController.getString(R.string.scroll_title13) -> {
+                        if (earlyChampionFragment == null) {
+                            earlyChampionFragment = EarlyChampionFragment()
+                            fragmentTransaction.add(R.id.early_parent, earlyChampionFragment)
+                        } else {
+                            earlyChampionFragment!!.filterResume()
+                            fragmentTransaction.show(earlyChampionFragment)
+                        }
+                        currPage = 6
                     }
-                    currPage = 7
+                    LocaleController.getString(R.string.scroll_title14) -> {
+                        if (footBallPassFragment == null) {
+                            footBallPassFragment = EarlyFootBallPassFragment()
+                            fragmentTransaction.add(R.id.early_parent, footBallPassFragment)
+                        } else {
+                            footBallPassFragment!!.filterResume()
+                            fragmentTransaction.show(footBallPassFragment)
+                        }
+                        currPage = 7
+                    }
                 }
             }
-
-        } else if (currTitlePosition == 2) {//篮球
-            when (str) {
-                LocaleController.getString(R.string.scroll_title1) -> {
-                    if (basketBallDefaultFragment == null) {
-                        basketBallDefaultFragment = EarlyBasketBallDefaultFragment()
-                        fragmentTransaction.add(R.id.early_parent, basketBallDefaultFragment)
-                    } else {
-                        basketBallDefaultFragment!!.filterResume()
-                        fragmentTransaction.show(basketBallDefaultFragment)
+            2 -> {
+                when (str) {
+                    LocaleController.getString(R.string.scroll_title1) -> {
+                        if (basketBallDefaultFragment == null) {
+                            basketBallDefaultFragment = EarlyBasketBallDefaultFragment()
+                            fragmentTransaction.add(R.id.early_parent, basketBallDefaultFragment)
+                        } else {
+                            basketBallDefaultFragment!!.filterResume()
+                            fragmentTransaction.show(basketBallDefaultFragment)
+                        }
+                        currPage = 8
                     }
-                    currPage = 8
-                }
-                LocaleController.getString(R.string.scroll_title13) -> {
-                    if (earlyBasketBallChampionFragmen == null) {
-                        earlyBasketBallChampionFragmen = EarlyBasketBallChampionFragment()
-                        fragmentTransaction.add(R.id.early_parent, earlyBasketBallChampionFragmen)
-                    } else {
-                        earlyBasketBallChampionFragmen!!.filterResume()
-                        fragmentTransaction.show(earlyBasketBallChampionFragmen)
+                    LocaleController.getString(R.string.scroll_title13) -> {
+                        if (earlyBasketBallChampionFragmen == null) {
+                            earlyBasketBallChampionFragmen = EarlyBasketBallChampionFragment()
+                            fragmentTransaction.add(R.id.early_parent, earlyBasketBallChampionFragmen)
+                        } else {
+                            earlyBasketBallChampionFragmen!!.filterResume()
+                            fragmentTransaction.show(earlyBasketBallChampionFragmen)
+                        }
+                        currPage = 9
                     }
-                    currPage = 9
-                }
-                LocaleController.getString(R.string.scroll_title14) -> {
-                    if (basketBallPassFragment == null) {
-                        basketBallPassFragment = EarlyBasketBallPassFragment()
-                        fragmentTransaction.add(R.id.early_parent, basketBallPassFragment)
-                    } else {
-                        basketBallPassFragment!!.filterResume()
-                        fragmentTransaction.show(basketBallPassFragment)
+                    LocaleController.getString(R.string.scroll_title14) -> {
+                        if (basketBallPassFragment == null) {
+                            basketBallPassFragment = EarlyBasketBallPassFragment()
+                            fragmentTransaction.add(R.id.early_parent, basketBallPassFragment)
+                        } else {
+                            basketBallPassFragment!!.filterResume()
+                            fragmentTransaction.show(basketBallPassFragment)
+                        }
+                        currPage = 10
                     }
-                    currPage = 10
                 }
             }
         }
-
         fragmentTransaction.commit()
     }
 
@@ -457,7 +455,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         set.addListener(object : AnimatorListenerAdapter() {
 
             override fun onAnimationStart(animation: Animator) {
-                maskView?.visibility = View.VISIBLE
+                maskView.visibility = View.VISIBLE
             }
         })
         set.start()
@@ -472,7 +470,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         set.addListener(object : AnimatorListenerAdapter() {
 
             override fun onAnimationEnd(animation: Animator) {
-                maskView?.visibility = View.GONE
+                maskView.visibility = View.GONE
             }
         })
         set.start()

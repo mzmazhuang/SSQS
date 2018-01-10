@@ -428,7 +428,7 @@ class ScrollBallResultFragment : Fragment(), OnRefreshListener, NotificationCont
         val beanItems2 = ArrayList<ScrollBallFootBallResultBean.ScrollBallFootBallResultItems>()
 
         for (i in currData.indices) {
-            if (currData[i].id == title.id) {
+            if (currData[i].leagueName == title.title) {
                 val item = ScrollBallFootBallResultBean.ScrollBallFootBallResultItems()
                 item.id = currData[i].id
                 item.title = currData[i].home

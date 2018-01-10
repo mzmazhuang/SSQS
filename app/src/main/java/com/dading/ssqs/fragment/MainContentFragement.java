@@ -112,23 +112,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         //设置默认选中首页图标
         mHome.setChecked(true);
         super.initData();
-
-        Logger.INSTANCE.e("mazhuang", "1=" + checkMethod("0"));
-        Logger.INSTANCE.e("mazhuang", "1=" + checkMethod(" 0.1 "));
-        Logger.INSTANCE.e("mazhuang", "1=" + checkMethod("abc"));
-        Logger.INSTANCE.e("mazhuang", "1=" + checkMethod("1 a"));
-        Logger.INSTANCE.e("mazhuang", "1=" + checkMethod("2e10"));
-    }
-
-    private boolean checkMethod(String s) {
-        boolean result = false;
-        try {
-            Double.parseDouble(s.trim());
-            result = true;
-        } catch (Exception ex) {
-            result = false;
-        }
-        return result;
     }
 
     private void setData() {

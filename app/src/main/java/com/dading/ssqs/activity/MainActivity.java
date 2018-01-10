@@ -68,13 +68,6 @@ public class MainActivity extends BaseActivity {
     private PopupWindow mPopupWindow;
     private Context mContext;
 
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Logger.INSTANCE.e("mazhuang", "System create" + System.currentTimeMillis());
-    }
-
     @Override
     protected void initData() {
         mBuilder = new AlertDialog.Builder(this);

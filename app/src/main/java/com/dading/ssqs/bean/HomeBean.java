@@ -214,6 +214,8 @@ public class HomeBean implements Serializable {
         private int sno;
         private int type;
         private int forwardID;
+        private String funsactionName;
+        private String forwardName;
 
         public int getId() {
             return id;
@@ -261,6 +263,22 @@ public class HomeBean implements Serializable {
 
         public void setForwardID(int forwardID) {
             this.forwardID = forwardID;
+        }
+
+        public String getFunsactionName() {
+            return funsactionName;
+        }
+
+        public void setFunsactionName(String funsactionName) {
+            this.funsactionName = funsactionName;
+        }
+
+        public String getForwardName() {
+            return forwardName;
+        }
+
+        public void setForwardName(String forwardName) {
+            this.forwardName = forwardName;
         }
     }
 

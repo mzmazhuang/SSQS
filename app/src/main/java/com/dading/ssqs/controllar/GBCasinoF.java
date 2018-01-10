@@ -66,22 +66,6 @@ public class GBCasinoF extends BaseTabsContainer {
     }
 
     private void getDataNetWork() {
-        /**
-         * 7.	娱乐场接口
-         5)	请求地址：
-         /v1.0/disport/list
-         6)	请求方式:
-         get
-         7)	请求参数说明：
-         无
-         字段名	类型	长度	备注
-         id	int		主键
-         name	sting		游戏名称
-         url	string		跳转的url
-         imageUrl	String		图片地址
-         status	int		是否调整 0:否1：是
-         */
-
         SSQSApplication.apiClient(0).getDisportList(new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {

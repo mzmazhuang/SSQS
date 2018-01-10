@@ -34,9 +34,9 @@ public class LuckBallActivity extends BaseActivity {
     TextView mTopTitle;
 
     @Override
-    protected void initData ( ) {
+    protected void initData() {
         SpUtils spUtils = new SpUtils(this);
-        Intent intent = getIntent( );
+        Intent intent = getIntent();
         String name = intent.getStringExtra(Constent.CASINO_NAME);
         String url = intent.getStringExtra(Constent.CASINO_URL);
         if (TextUtils.isEmpty(name))
@@ -48,20 +48,20 @@ public class LuckBallActivity extends BaseActivity {
             url = url + spUtils.getString(Constent.TOKEN, "");
         }
         Logger.INSTANCE.d(TAG, "娛樂場項目返回数据是------------------------------:" + url);
-        mLuckBallWb.setWebChromeClient(new WebChromeClient( ));
-        mLuckBallWb.setWebViewClient(new WebViewClient( ));
-        mLuckBallWb.loadUrl("http://www.ddzlink.com/ssqsApp/tpl/game.html?token=8b53ebe9e0ce49719ac1117ab63528fc");
+        mLuckBallWb.setWebChromeClient(new WebChromeClient());
+        mLuckBallWb.setWebViewClient(new WebViewClient());
+        mLuckBallWb.loadUrl(url);
     }
 
 
     @OnClick({R.id.top_back})
-    public void OnClik (View v) {
-        finish( );
+    public void OnClik(View v) {
+        finish();
     }
 
 
     @Override
-    protected int setLayoutId ( ) {
+    protected int setLayoutId() {
         return R.layout.activity_luck_ball;
     }
 }

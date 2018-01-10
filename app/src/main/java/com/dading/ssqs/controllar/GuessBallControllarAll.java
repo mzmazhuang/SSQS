@@ -609,14 +609,72 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
             iv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContent, HomeViewPagerActivity.class);
-                    if (mAdverts != null) {
-                        intent.putExtra("infoId", mAdverts.get(position).getForwardID());
-                        Logger.INSTANCE.d(TAG, "活动跳转返回数据id是----:" + mAdverts.get(position).getForwardID());
-                    } else {
-                        intent.putExtra("infoId", position);
+                    HomeBean.AdvertsBean bean = mAdverts.get(position);
+                    if (bean != null) {
+                        if (!TextUtils.isEmpty(bean.getForwardName())) {//子模块
+                            if ("篮球比分".equals(bean.getFunsactionName()) && "即时".equals(bean.getForwardName())) {
+
+                            } else if ("篮球比分".equals(bean.getFunsactionName()) && "赛果".equals(bean.getForwardName())) {
+
+                            } else if ("篮球比分".equals(bean.getFunsactionName()) && "赛程".equals(bean.getForwardName())) {
+
+                            } else if ("篮球比分".equals(bean.getFunsactionName()) && "关注".equals(bean.getForwardName())) {
+
+                            } else if ("篮球猜球".equals(bean.getFunsactionName()) && "滚球".equals(bean.getForwardName())) {
+
+                            } else if ("篮球猜球".equals(bean.getFunsactionName()) && "今日赛事".equals(bean.getForwardName())) {
+
+                            } else if ("篮球猜球".equals(bean.getFunsactionName()) && "早盘".equals(bean.getForwardName())) {
+
+                            } else if ("足球比分".equals(bean.getFunsactionName()) && "即时".equals(bean.getForwardName())) {
+
+                            } else if ("足球比分".equals(bean.getFunsactionName()) && "赛果".equals(bean.getForwardName())) {
+
+                            } else if ("足球比分".equals(bean.getFunsactionName()) && "赛程".equals(bean.getForwardName())) {
+
+                            } else if ("足球比分".equals(bean.getFunsactionName()) && "关注".equals(bean.getForwardName())) {
+
+                            } else if ("足球猜球".equals(bean.getFunsactionName()) && "滚球".equals(bean.getForwardName())) {
+
+                            } else if ("足球猜球".equals(bean.getFunsactionName()) && "今日赛事".equals(bean.getForwardName())) {
+
+                            } else if ("足球猜球".equals(bean.getFunsactionName()) && "早盘".equals(bean.getForwardName())) {
+
+                            } else if ("娱乐活动".equals(bean.getFunsactionName())) {//url
+
+                            } else if ("优惠活动".equals(bean.getFunsactionName())) {//url
+
+                            }
+                        } else if (!TextUtils.isEmpty(bean.getFunsactionName())) {//主模块
+                            if ("账户明细".equals(bean.getFunsactionName())) {
+
+                            } else if ("投注记录".equals(bean.getFunsactionName())) {
+
+                            } else if ("充值记录".equals(bean.getFunsactionName())) {
+
+                            } else if ("提款记录".equals(bean.getFunsactionName())) {
+
+                            } else if ("代理中心".equals(bean.getFunsactionName())) {
+
+                            } else if ("设置中心".equals(bean.getFunsactionName())) {
+
+                            } else if ("意见反馈".equals(bean.getFunsactionName())) {
+
+                            } else if ("消息中心".equals(bean.getFunsactionName())) {
+
+                            } else if ("新手帮助".equals(bean.getFunsactionName())) {
+
+                            } else if ("在线客服".equals(bean.getFunsactionName())) {
+
+                            } else if ("领币".equals(bean.getFunsactionName())) {
+
+                            } else if ("充值".equals(bean.getFunsactionName())) {
+
+                            } else if ("提现".equals(bean.getFunsactionName())) {
+
+                            }
+                        }
                     }
-                    mContent.startActivity(intent);
                 }
             });
             return iv;

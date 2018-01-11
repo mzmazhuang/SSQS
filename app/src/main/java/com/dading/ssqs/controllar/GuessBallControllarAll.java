@@ -457,25 +457,25 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         mFreeGlod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFootball();
+                setFootball(1);
             }
         });
         mMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFootball();
+                setFootball(1);
             }
         });
         mReferMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBasketball();
+                setBasketball(1);
             }
         });
         mRankWin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBasketball();
+                setBasketball(1);
             }
         });
         mYpRfer.setOnClickListener(new View.OnClickListener() {
@@ -522,13 +522,15 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         });
     }
 
-    private void setBasketball() {
+    private void setBasketball(int type) {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
+        UIUtils.getSputils().putInt("guessball_basket_type", type);
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
-    private void setFootball() {
+    private void setFootball(int type) {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
+        UIUtils.getSputils().putInt("guessball_foot_type", type);
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
@@ -621,11 +623,11 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                             } else if ("篮球比分".equals(bean.getFunsactionName()) && "关注".equals(bean.getForwardName())) {
 
                             } else if ("篮球猜球".equals(bean.getFunsactionName()) && "滚球".equals(bean.getForwardName())) {
-
+                                setBasketball(1);
                             } else if ("篮球猜球".equals(bean.getFunsactionName()) && "今日赛事".equals(bean.getForwardName())) {
-
+                                setBasketball(2);
                             } else if ("篮球猜球".equals(bean.getFunsactionName()) && "早盘".equals(bean.getForwardName())) {
-
+                                setBasketball(3);
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "即时".equals(bean.getForwardName())) {
 
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "赛果".equals(bean.getForwardName())) {
@@ -635,11 +637,11 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "关注".equals(bean.getForwardName())) {
 
                             } else if ("足球猜球".equals(bean.getFunsactionName()) && "滚球".equals(bean.getForwardName())) {
-
+                                setFootball(1);
                             } else if ("足球猜球".equals(bean.getFunsactionName()) && "今日赛事".equals(bean.getForwardName())) {
-
+                                setFootball(2);
                             } else if ("足球猜球".equals(bean.getFunsactionName()) && "早盘".equals(bean.getForwardName())) {
-
+                                setFootball(3);
                             } else if ("娱乐活动".equals(bean.getFunsactionName())) {//url
 
                             } else if ("优惠活动".equals(bean.getFunsactionName())) {//url

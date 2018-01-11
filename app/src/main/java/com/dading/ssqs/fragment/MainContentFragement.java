@@ -287,10 +287,13 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     break;
                 case Constent.LOADING_GUESS_BALL:
                     if (guessTheBallFragment != null) {
+
                         if (UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true)) {//足球
-                            guessTheBallFragment.setType(1);
+                            int type = UIUtils.getSputils().getInt("guessball_foot_type", 0);
+                            guessTheBallFragment.setType(1, type);
                         } else {//篮球
-                            guessTheBallFragment.setType(2);
+                            int type = UIUtils.getSputils().getInt("guessball_basket_type", 0);
+                            guessTheBallFragment.setType(2, type);
                         }
                     }
 

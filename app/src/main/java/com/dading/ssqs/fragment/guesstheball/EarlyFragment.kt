@@ -54,7 +54,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
     private var twoTitleFootPosition = 0//二级标题足球的position  默认第一个选中
     private var twoTitleBasketPosition = -1//二级标题篮球的position
 
-    private lateinit var defaultFragment: EarlyDefaultFragment
+    private var defaultFragment: EarlyDefaultFragment? = null
     private var boDanFragment: EarlyBoDanFragment? = null
     private var totalFragment: EarlyTotalFragment? = null
     private var halfCourtFragment: EarlyHalfCourtFragment? = null
@@ -68,6 +68,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
     private lateinit var maskView: View
 
     private var currPage = 1
+    private var ballType = -1
 
     //一级标题点击事件
     private val topClickListener = GuessBallTopAdapter.OnGuessTopClickListener { id ->
@@ -209,61 +210,87 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         topCell.setTopSubTitleData(footBallSubTitles)
     }
 
+    fun selectBasketBall() {
+        if (currTitlePosition != 2 || twoTitleBasketPosition != 0) {
+
+            currTitlePosition = 2
+
+            twoTitleBasketPosition = 0
+
+            topCell.setTopTitleSelect(1)
+            topCell.setTopSubTitleSelect(twoTitleBasketPosition)
+            topCell.refreshTitle()
+
+            changePage(LocaleController.getString(R.string.scroll_title1))
+        }
+    }
+
+    fun selectFootBall() {
+        if (currTitlePosition != 1 || twoTitleFootPosition != 0) {
+
+            currTitlePosition = 1
+
+            twoTitleFootPosition = 0
+
+            topCell.setTopTitleSelect(twoTitleFootPosition)
+            topCell.setTopSubTitleSelect(twoTitleFootPosition)
+            topCell.refreshTitle()
+
+            changePage(LocaleController.getString(R.string.scroll_title1))
+        }
+    }
+
+    fun setBallType(ballType: Int) {
+        this.ballType = ballType
+    }
+
     private fun init() {
         initTitels()
 
-        defaultFragment = EarlyDefaultFragment()
+        when (ballType) {
+            1 -> {
+                selectFootBall()
+            }
+            2 -> {
+                selectBasketBall()
+            }
+            else -> {
+                defaultFragment = EarlyDefaultFragment()
 
-        val fragmentTransaction = fragmentManager?.beginTransaction()
-        fragmentTransaction?.add(R.id.early_parent, defaultFragment)
-        fragmentTransaction?.commit()
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                fragmentTransaction?.add(R.id.early_parent, defaultFragment)
+                fragmentTransaction?.commit()
+            }
+        }
     }
 
     fun fragmentResume() {
-        if (currPage == 1 && defaultFragment != null) {
-            defaultFragment.filterResume()
-        } else if (currPage == 2 && boDanFragment != null) {
-            boDanFragment!!.filterResume()
-        } else if (currPage == 3 && totalFragment != null) {
-            totalFragment!!.filterResume()
-        } else if (currPage == 4 && halfCourtFragment != null) {
-            halfCourtFragment!!.filterResume()
-        } else if (currPage == 5 && resultFragment != null) {
-            resultFragment!!.filterResume()
-        } else if (currPage == 6 && earlyChampionFragment != null) {
-            earlyChampionFragment!!.filterResume()
-        } else if (currPage == 7 && footBallPassFragment != null) {
-            footBallPassFragment!!.filterResume()
-        } else if (currPage == 8 && basketBallDefaultFragment != null) {
-            basketBallDefaultFragment!!.filterResume()
-        } else if (currPage == 9 && earlyBasketBallChampionFragmen != null) {
-            earlyBasketBallChampionFragmen!!.filterResume()
-        } else if (currPage == 10 && basketBallPassFragment != null) {
-            basketBallPassFragment!!.filterResume()
+        when (currPage) {
+            1 -> defaultFragment?.filterResume()
+            2 -> boDanFragment?.filterResume()
+            3 -> totalFragment?.filterResume()
+            4 -> halfCourtFragment?.filterResume()
+            5 -> resultFragment?.filterResume()
+            6 -> earlyChampionFragment?.filterResume()
+            7 -> footBallPassFragment?.filterResume()
+            8 -> basketBallDefaultFragment?.filterResume()
+            9 -> earlyBasketBallChampionFragmen?.filterResume()
+            10 -> basketBallPassFragment?.filterResume()
         }
     }
 
     fun fragmentPause() {
-        if (currPage == 1 && defaultFragment != null) {
-            defaultFragment.filterPause()
-        } else if (currPage == 2 && boDanFragment != null) {
-            boDanFragment!!.filterPause()
-        } else if (currPage == 3 && totalFragment != null) {
-            totalFragment!!.filterPause()
-        } else if (currPage == 4 && halfCourtFragment != null) {
-            halfCourtFragment!!.filterPause()
-        } else if (currPage == 5 && resultFragment != null) {
-            resultFragment!!.filterPause()
-        } else if (currPage == 6 && earlyChampionFragment != null) {
-            earlyChampionFragment!!.filterPause()
-        } else if (currPage == 7 && footBallPassFragment != null) {
-            footBallPassFragment!!.filterPause()
-        } else if (currPage == 8 && basketBallDefaultFragment != null) {
-            basketBallDefaultFragment!!.filterPause()
-        } else if (currPage == 9 && earlyBasketBallChampionFragmen != null) {
-            earlyBasketBallChampionFragmen!!.filterPause()
-        } else if (currPage == 10 && basketBallPassFragment != null) {
-            basketBallPassFragment!!.filterPause()
+        when (currPage) {
+            1 -> defaultFragment?.filterPause()
+            2 -> boDanFragment?.filterPause()
+            3 -> totalFragment?.filterPause()
+            4 -> halfCourtFragment?.filterPause()
+            5 -> resultFragment?.filterPause()
+            6 -> earlyChampionFragment?.filterPause()
+            7 -> footBallPassFragment?.filterPause()
+            8 -> basketBallDefaultFragment?.filterPause()
+            9 -> earlyBasketBallChampionFragmen?.filterPause()
+            10 -> basketBallPassFragment?.filterPause()
         }
     }
 
@@ -278,44 +305,44 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         //因早盘里每个页面都有可以选择的7天 这样就不能保持数据一致 所以每次更换页面都把筛选数据清空
         clearFilterData()
 
-        defaultFragment.let {
-            defaultFragment.filterPause()
+        defaultFragment?.let {
+            defaultFragment?.filterPause()
             fragmentTransaction.hide(defaultFragment)
         }
-        boDanFragment.let {
-            boDanFragment!!.filterPause()
+        boDanFragment?.let {
+            boDanFragment?.filterPause()
             fragmentTransaction.hide(boDanFragment)
         }
-        totalFragment.let {
-            totalFragment!!.filterPause()
+        totalFragment?.let {
+            totalFragment?.filterPause()
             fragmentTransaction.hide(totalFragment)
         }
-        halfCourtFragment.let {
-            halfCourtFragment!!.filterPause()
+        halfCourtFragment?.let {
+            halfCourtFragment?.filterPause()
             fragmentTransaction.hide(halfCourtFragment)
         }
-        resultFragment.let {
-            resultFragment!!.filterPause()
+        resultFragment?.let {
+            resultFragment?.filterPause()
             fragmentTransaction.hide(resultFragment)
         }
-        earlyChampionFragment.let {
-            earlyChampionFragment!!.filterPause()
+        earlyChampionFragment?.let {
+            earlyChampionFragment?.filterPause()
             fragmentTransaction.hide(earlyChampionFragment)
         }
-        earlyBasketBallChampionFragmen.let {
-            earlyBasketBallChampionFragmen!!.filterPause()
+        earlyBasketBallChampionFragmen?.let {
+            earlyBasketBallChampionFragmen?.filterPause()
             fragmentTransaction.hide(earlyBasketBallChampionFragmen)
         }
-        basketBallDefaultFragment.let {
-            basketBallDefaultFragment!!.filterPause()
+        basketBallDefaultFragment?.let {
+            basketBallDefaultFragment?.filterPause()
             fragmentTransaction.hide(basketBallDefaultFragment)
         }
-        basketBallPassFragment.let {
-            basketBallPassFragment!!.filterPause()
+        basketBallPassFragment?.let {
+            basketBallPassFragment?.filterPause()
             fragmentTransaction.hide(basketBallPassFragment)
         }
-        footBallPassFragment.let {
-            footBallPassFragment!!.filterPause()
+        footBallPassFragment?.let {
+            footBallPassFragment?.filterPause()
             fragmentTransaction.hide(footBallPassFragment)
         }
 
@@ -327,7 +354,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
                             defaultFragment = EarlyDefaultFragment()
                             fragmentTransaction.add(R.id.early_parent, defaultFragment)
                         } else {
-                            defaultFragment.filterResume()
+                            defaultFragment?.filterResume()
                             fragmentTransaction.show(defaultFragment)
                         }
 

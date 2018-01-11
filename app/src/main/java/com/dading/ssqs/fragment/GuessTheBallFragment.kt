@@ -36,7 +36,7 @@ class GuessTheBallFragment : Fragment() {
 
     private var currType = GuessBallType.SCROLLBALL//当前的页面
 
-    private var type = -1
+    private var type = -1//足球还是篮球
 
     private enum class GuessBallType {
         SCROLLBALL, //滚球
@@ -127,20 +127,30 @@ class GuessTheBallFragment : Fragment() {
             }
 
             changePage(type)
-        }
-
-        if (checkPage) {
-            changePage(type)
+        } else {
+            if (checkPage) {
+                changePage(type)
+            }
         }
     }
 
-    fun setType(type: Int) {
+    fun setType(type: Int, pageType: Int) {
         if (!hasInit) {
             hasInit = true
         }
         this.type = type
 
-        changePageTextColor(GuessBallType.SCROLLBALL, true)
+        when (pageType) {
+            1 -> {
+                changePageTextColor(GuessBallType.SCROLLBALL, true)
+            }
+            2 -> {
+                changePageTextColor(GuessBallType.TODAY, true)
+            }
+            3 -> {
+                changePageTextColor(GuessBallType.Early, true)
+            }
+        }
     }
 
     fun fragmentResume() {
@@ -189,33 +199,35 @@ class GuessTheBallFragment : Fragment() {
         if (type == GuessBallType.SCROLLBALL) {
             if (scrollBallFragment == null) {
                 scrollBallFragment = ScrollBallFragment()
+                scrollBallFragment!!.setBallType(this.type)
                 fragmentTransaction?.add(R.id.guess_parent, scrollBallFragment)
             } else {
                 scrollBallFragment!!.fragmentResume()
                 fragmentTransaction?.show(scrollBallFragment)
-            }
-            if (this.type > 0) {
-                if (this.type == 1) {
-                    scrollBallFragment!!.selectFootBall()
-                } else if (this.type == 2) {
-                    scrollBallFragment!!.selectBasketBall()
-                }
+
+                if (this.type == 1) scrollBallFragment!!.selectFootBall() else if (this.type == 2) scrollBallFragment!!.selectBasketBall()
             }
         } else if (type == GuessBallType.TODAY) {
             if (toDayMatchFragment == null) {
                 toDayMatchFragment = ToDayMatchFragment()
+                toDayMatchFragment!!.setBallType(this.type)
                 fragmentTransaction?.add(R.id.guess_parent, toDayMatchFragment)
             } else {
                 toDayMatchFragment?.fragmentResume()
                 fragmentTransaction?.show(toDayMatchFragment)
+
+                if (this.type == 1) toDayMatchFragment!!.selectFootBall() else if (this.type == 2) toDayMatchFragment!!.selectBasketBall()
             }
         } else if (type == GuessBallType.Early) {
             if (earlyFragment == null) {
                 earlyFragment = EarlyFragment()
+                earlyFragment!!.setBallType(this.type)
                 fragmentTransaction?.add(R.id.guess_parent, earlyFragment)
             } else {
                 earlyFragment?.fragmentResume()
                 fragmentTransaction?.show(earlyFragment)
+
+                if (this.type == 1) earlyFragment!!.selectFootBall() else if (this.type == 2) earlyFragment!!.selectBasketBall()
             }
         }
         fragmentTransaction?.commit()

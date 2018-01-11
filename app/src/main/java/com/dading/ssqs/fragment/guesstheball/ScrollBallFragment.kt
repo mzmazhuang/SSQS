@@ -47,10 +47,10 @@ import java.util.ArrayList
 
 class ScrollBallFragment : Fragment(), NotificationController.NotificationControllerDelegate {
 
-    private var topCell: GuessBallTopCell? = null
-    private var tvTitle: TextView? = null
-    private var maskView: View? = null
-    private var rightLayout: LinearLayout? = null
+    private lateinit var topCell: GuessBallTopCell
+    private lateinit var tvTitle: TextView
+    private lateinit var maskView: View
+    private lateinit var rightLayout: LinearLayout
     //fragments
     private var scrollball_parent: ScrollBallDefaultFragment? = null
     private var boDanFragment: ScrollBallBoDanFragment? = null
@@ -68,24 +68,26 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
 
     private var currPage = 1//当前页面
 
+    private var ballType = -1;
+
     //一级title点击事件
     private val topClickListener = GuessBallTopAdapter.OnGuessTopClickListener { id ->
         if (currTitlePosition != id) {
             if (id == 1) {//足球
                 currTitlePosition = 1
                 twoTitleFootPosition = 0
-                topCell!!.setTopSubTitleData(footBallSubTitles)
-                topCell!!.setTopSubTitleSelect(twoTitleFootPosition)
+                topCell.setTopSubTitleData(footBallSubTitles)
+                topCell.setTopSubTitleSelect(twoTitleFootPosition)
             } else if (id == 2) {//篮球
                 currTitlePosition = 2
                 twoTitleBasketPosition = 0
-                topCell!!.setTopSubTitleData(basketBallSubTitles)
-                topCell!!.setTopSubTitleSelect(twoTitleBasketPosition)
+                topCell.setTopSubTitleData(basketBallSubTitles)
+                topCell.setTopSubTitleSelect(twoTitleBasketPosition)
             }
 
             val str = LocaleController.getString(R.string.scroll_title1)
 
-            tvTitle!!.text = LocaleController.getString(R.string.scroll_ball) + "-" + (if (currTitlePosition == 1) LocaleController.getString(R.string.football) else LocaleController.getString(R.string.basketball)) + ":" + str
+            tvTitle.text = LocaleController.getString(R.string.scroll_ball) + "-" + (if (currTitlePosition == 1) LocaleController.getString(R.string.football) else LocaleController.getString(R.string.basketball)) + ":" + str
 
             changePage(str)
         }
@@ -106,7 +108,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
                 ?.let { footBallSubTitles[it].name }
                 ?: ""
 
-        tvTitle!!.text = LocaleController.getString(R.string.scroll_ball) + "-" + (if (currTitlePosition == 1) LocaleController.getString(R.string.football) else LocaleController.getString(R.string.basketball)) + ":" + str
+        tvTitle.text = LocaleController.getString(R.string.scroll_ball) + "-" + (if (currTitlePosition == 1) LocaleController.getString(R.string.football) else LocaleController.getString(R.string.basketball)) + ":" + str
 
         changePage(str)
     }
@@ -116,6 +118,10 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
 
         NotificationController.getInstance().addObserver(this, NotificationController.scroll_mask)
         return view
+    }
+
+    fun setBallType(ballType: Int) {
+        this.ballType = ballType
     }
 
     override fun onDestroyView() {
@@ -136,17 +142,17 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         maskLayout.addView(contentLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         maskView = View(context)
-        maskView!!.setOnClickListener {
+        maskView.setOnClickListener {
             hideMask()
             NotificationController.getInstance().postNotification(NotificationController.scroll_mask, "child_close")
         }
-        maskView!!.visibility = View.GONE
-        maskView!!.setBackgroundColor(-0x5b000000)
+        maskView.visibility = View.GONE
+        maskView.setBackgroundColor(-0x5b000000)
         maskLayout.addView(maskView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 100))
 
         topCell = GuessBallTopCell(context)
-        topCell!!.setTopListener(topClickListener)
-        topCell!!.setSubTopListener(subTitleClickListener)
+        topCell.setTopListener(topClickListener)
+        topCell.setSubTopListener(subTitleClickListener)
         contentLayout.addView(topCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         val titleLayout = RelativeLayout(context)
@@ -154,33 +160,33 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         contentLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         tvTitle = TextView(context)
-        tvTitle!!.textSize = 13f
-        tvTitle!!.setTextColor(Color.WHITE)
-        tvTitle!!.text = LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
-        tvTitle!!.gravity = Gravity.CENTER
+        tvTitle.textSize = 13f
+        tvTitle.setTextColor(Color.WHITE)
+        tvTitle.text = LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
+        tvTitle.gravity = Gravity.CENTER
         titleLayout.addView(tvTitle, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, 30, 12, 0, 0, 0))
 
         rightLayout = LinearLayout(context)
-        rightLayout!!.visibility = View.GONE
-        rightLayout!!.orientation = LinearLayout.HORIZONTAL
-        rightLayout!!.gravity = Gravity.CENTER_VERTICAL
+        rightLayout.visibility = View.GONE
+        rightLayout.orientation = LinearLayout.HORIZONTAL
+        rightLayout.gravity = Gravity.CENTER_VERTICAL
         titleLayout.addView(rightLayout, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, 30, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT))
 
         val leftTextView = TextView(context)
         leftTextView.setTextColor(-0x8c462a)
         leftTextView.textSize = 12f
         leftTextView.text = "主要盘口"
-        rightLayout!!.addView(leftTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT))
+        rightLayout.addView(leftTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT))
 
         val lineView = View(context)
         lineView.setBackgroundColor(Color.WHITE)
-        rightLayout!!.addView(lineView, LayoutHelper.createLinear(1, 13, 5f, 0f, 5f, 0f))
+        rightLayout.addView(lineView, LayoutHelper.createLinear(1, 13, 5f, 0f, 5f, 0f))
 
         val rightTextView = TextView(context)
         rightTextView.setTextColor(-0x8c462a)
         rightTextView.textSize = 12f
         rightTextView.text = "赛节投注"
-        rightLayout!!.addView(rightTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT))
+        rightLayout.addView(rightTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT))
 
         val parentLayout = LinearLayout(context)//用来替换fragment的布局
         parentLayout.id = R.id.scrollball_parent
@@ -191,34 +197,24 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
     }
 
     fun fragmentResume() {
-        if (currPage == 1 && scrollball_parent != null) {
-            scrollball_parent!!.filterResume()
-        } else if (currPage == 2 && boDanFragment != null) {
-            boDanFragment!!.filterResume()
-        } else if (currPage == 3 && totalFragment != null) {
-            totalFragment!!.filterResume()
-        } else if (currPage == 4 && halfCourtFragment != null) {
-            halfCourtFragment!!.filterResume()
-        } else if (currPage == 5 && resultFragment != null) {
-            resultFragment!!.filterResume()
-        } else if (currPage == 6 && ballBasketBallDefaultFragment != null) {
-            ballBasketBallDefaultFragment!!.filterResume()
+        when (currPage) {
+            1 -> scrollball_parent?.filterResume()
+            2 -> boDanFragment?.filterResume()
+            3 -> totalFragment?.filterResume()
+            4 -> halfCourtFragment?.filterResume()
+            5 -> resultFragment?.filterResume()
+            6 -> ballBasketBallDefaultFragment?.filterResume()
         }
     }
 
     fun fragmentPause() {
-        if (currPage == 1 && scrollball_parent != null) {
-            scrollball_parent!!.filterPause()
-        } else if (currPage == 2 && boDanFragment != null) {
-            boDanFragment!!.filterPause()
-        } else if (currPage == 3 && totalFragment != null) {
-            totalFragment!!.filterPause()
-        } else if (currPage == 4 && halfCourtFragment != null) {
-            halfCourtFragment!!.filterPause()
-        } else if (currPage == 5 && resultFragment != null) {
-            resultFragment!!.filterPause()
-        } else if (currPage == 6 && ballBasketBallDefaultFragment != null) {
-            ballBasketBallDefaultFragment!!.filterPause()
+        when (currPage) {
+            1 -> scrollball_parent?.filterPause()
+            2 -> boDanFragment?.filterPause()
+            3 -> totalFragment?.filterPause()
+            4 -> halfCourtFragment?.filterPause()
+            5 -> resultFragment?.filterPause()
+            6 -> ballBasketBallDefaultFragment?.filterPause()
         }
     }
 
@@ -229,11 +225,11 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
 
             twoTitleBasketPosition = 0
 
-            topCell!!.setTopTitleSelect(1)
-            topCell!!.setTopSubTitleSelect(twoTitleBasketPosition)
-            topCell!!.refreshTitle()
+            topCell.setTopTitleSelect(1)
+            topCell.setTopSubTitleSelect(twoTitleBasketPosition)
+            topCell.refreshTitle()
 
-            tvTitle!!.text = LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.basketball) + ":" + LocaleController.getString(R.string.scroll_title1)
+            tvTitle.text = LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.basketball) + ":" + LocaleController.getString(R.string.scroll_title1)
 
             changePage(LocaleController.getString(R.string.scroll_title1))
         }
@@ -246,44 +242,45 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
 
             twoTitleFootPosition = 0
 
-            topCell!!.setTopTitleSelect(twoTitleFootPosition)
-            topCell!!.setTopSubTitleSelect(twoTitleFootPosition)
-            topCell!!.refreshTitle()
+            topCell.setTopTitleSelect(twoTitleFootPosition)
+            topCell.setTopSubTitleSelect(twoTitleFootPosition)
+            topCell.refreshTitle()
 
-            tvTitle!!.text = LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
+            tvTitle.text = LocaleController.getString(R.string.scroll_ball) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
 
             changePage(LocaleController.getString(R.string.scroll_title1))
         }
     }
 
-    fun changePage(str: String) {
+    private fun changePage(str: String) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
 
-        if (scrollball_parent != null) {
+        scrollball_parent?.let {
             fragmentTransaction.hide(scrollball_parent)
             scrollball_parent!!.filterPause()
         }
-        if (boDanFragment != null) {
+        boDanFragment?.let {
             fragmentTransaction.hide(boDanFragment)
             boDanFragment!!.filterPause()
         }
-        if (totalFragment != null) {
+        totalFragment?.let {
             fragmentTransaction.hide(totalFragment)
             totalFragment!!.filterPause()
         }
-        if (halfCourtFragment != null) {
+        halfCourtFragment?.let {
             fragmentTransaction.hide(halfCourtFragment)
             halfCourtFragment!!.filterPause()
         }
-        if (resultFragment != null) {
+        resultFragment?.let {
             fragmentTransaction.hide(resultFragment)
             resultFragment!!.filterPause()
         }
-        if (ballBasketBallDefaultFragment != null) {
+        ballBasketBallDefaultFragment?.let {
             fragmentTransaction.hide(ballBasketBallDefaultFragment)
             ballBasketBallDefaultFragment!!.filterPause()
         }
-        rightLayout!!.visibility = View.GONE
+
+        rightLayout.visibility = View.GONE
 
         if (currTitlePosition == 1) {
             when (str) {
@@ -400,23 +397,33 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         topList.add(title1)
         topList.add(title2)
 
-        topCell!!.setTopTitleData(topList)
-        topCell!!.setTopSubTitleData(footBallSubTitles)
+        topCell.setTopTitleData(topList)
+        topCell.setTopSubTitleData(footBallSubTitles)
     }
 
     private fun init() {
         initTitles()
 
-        scrollball_parent = ScrollBallDefaultFragment()
+        when (ballType) {
+            1 -> {
+                selectFootBall()
+            }
+            2 -> {
+                selectBasketBall()
+            }
+            else -> {
+                scrollball_parent = ScrollBallDefaultFragment()
 
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.add(R.id.scrollball_parent, scrollball_parent)
-        fragmentTransaction.commit()
+                val fragmentTransaction = fragmentManager!!.beginTransaction()
+                fragmentTransaction.add(R.id.scrollball_parent, scrollball_parent)
+                fragmentTransaction.commit()
+            }
+        }
     }
 
     override fun didReceivedNotification(id: Int, vararg args: String) {
         if (id == NotificationController.scroll_mask) {
-            if (args != null && args.isNotEmpty()) {
+            if (args?.isNotEmpty()) {
                 if ("open" == args[0]) {
                     openMask()
                 } else if ("close" == args[0]) {
@@ -435,7 +442,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         set.addListener(object : AnimatorListenerAdapter() {
 
             override fun onAnimationStart(animation: Animator) {
-                maskView!!.visibility = View.VISIBLE
+                maskView.visibility = View.VISIBLE
             }
         })
         set.start()
@@ -450,7 +457,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
         set.addListener(object : AnimatorListenerAdapter() {
 
             override fun onAnimationEnd(animation: Animator) {
-                maskView!!.visibility = View.GONE
+                maskView.visibility = View.GONE
             }
         })
         set.start()

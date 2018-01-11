@@ -53,8 +53,8 @@ import java.util.Calendar
 
 class ToDayMatchFragment : Fragment(), NotificationController.NotificationControllerDelegate {
 
-    private var topCell: GuessBallTopCell? = null
-    private var tvTitle: TextView? = null
+    private lateinit var topCell: GuessBallTopCell
+    private lateinit var tvTitle: TextView
 
     private val footBallSubTitles = ArrayList<GuessTopTitle>()
     private val basketBallSubTitles = ArrayList<GuessTopTitle>()
@@ -77,25 +77,26 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
     private var basketBallPassFragment: ToDayFootBallPassFragment? = null
     private var footBallPassFragment: ToDayBasketBallPassFragment? = null
 
-    private var maskView: View? = null
+    private lateinit var maskView: View
 
     private var currPage = 1//当前页面
+    private var ballType = -1;
 
     //一级标题点击事件
     private val topClickListener = GuessBallTopAdapter.OnGuessTopClickListener { id ->
         if (id == 1) {//足球
             currTitlePosition = 1
             twoTitleFootPosition = 0
-            topCell!!.setTopSubTitleData(footBallSubTitles)
-            topCell!!.setTopSubTitleSelect(twoTitleFootPosition)
+            topCell.setTopSubTitleData(footBallSubTitles)
+            topCell.setTopSubTitleSelect(twoTitleFootPosition)
         } else if (id == 2) {//篮球
             currTitlePosition = 2
             twoTitleBasketPosition = 0
-            topCell!!.setTopSubTitleData(basketBallSubTitles)
-            topCell!!.setTopSubTitleSelect(twoTitleBasketPosition)
+            topCell.setTopSubTitleData(basketBallSubTitles)
+            topCell.setTopSubTitleSelect(twoTitleBasketPosition)
         }
 
-        tvTitle!!.text = "今日-" + (if (currTitlePosition == 1) "足球" else "篮球") + ":" + LocaleController.getString(R.string.scroll_title1)
+        tvTitle.text = "今日-" + (if (currTitlePosition == 1) "足球" else "篮球") + ":" + LocaleController.getString(R.string.scroll_title1)
 
         changePage(LocaleController.getString(R.string.scroll_title1))
     }
@@ -115,9 +116,43 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
                 ?.let { footBallSubTitles[it].name }
                 ?: ""
 
-        tvTitle!!.text = "今日-" + (if (currTitlePosition == 1) "足球" else "篮球") + ":" + str
+        tvTitle.text = "今日-" + (if (currTitlePosition == 1) "足球" else "篮球") + ":" + str
 
         changePage(str)
+    }
+
+    fun selectBasketBall() {
+        if (currTitlePosition != 2 || twoTitleBasketPosition != 0) {
+
+            currTitlePosition = 2
+
+            twoTitleBasketPosition = 0
+
+            topCell.setTopTitleSelect(1)
+            topCell.setTopSubTitleSelect(twoTitleBasketPosition)
+            topCell.refreshTitle()
+
+            tvTitle.text = "今日" + "-" + LocaleController.getString(R.string.basketball) + ":" + LocaleController.getString(R.string.scroll_title1)
+
+            changePage(LocaleController.getString(R.string.scroll_title1))
+        }
+    }
+
+    fun selectFootBall() {
+        if (currTitlePosition != 1 || twoTitleFootPosition != 0) {
+
+            currTitlePosition = 1
+
+            twoTitleFootPosition = 0
+
+            topCell.setTopTitleSelect(twoTitleFootPosition)
+            topCell.setTopSubTitleSelect(twoTitleFootPosition)
+            topCell.refreshTitle()
+
+            tvTitle.text = "今日" + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
+
+            changePage(LocaleController.getString(R.string.scroll_title1))
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -145,17 +180,17 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         maskLayout.addView(contentLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         maskView = View(context)
-        maskView!!.setOnClickListener {
+        maskView.setOnClickListener {
             hideMask()
             NotificationController.getInstance().postNotification(NotificationController.today_mask, "child_close")
         }
-        maskView!!.visibility = View.GONE
-        maskView!!.setBackgroundColor(-0x5b000000)
+        maskView.visibility = View.GONE
+        maskView.setBackgroundColor(-0x5b000000)
         maskLayout.addView(maskView, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, 100))
 
         topCell = GuessBallTopCell(context)
-        topCell!!.setTopListener(topClickListener)
-        topCell!!.setSubTopListener(subTitleClickListener)
+        topCell.setTopListener(topClickListener)
+        topCell.setSubTopListener(subTitleClickListener)
         contentLayout.addView(topCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         val titleLayout = LinearLayout(context)
@@ -163,11 +198,11 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         contentLayout.addView(titleLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT))
 
         tvTitle = TextView(context)
-        tvTitle!!.typeface = Typeface.DEFAULT_BOLD
-        tvTitle!!.textSize = 13f
-        tvTitle!!.setTextColor(Color.WHITE)
-        tvTitle!!.text = LocaleController.getString(R.string.scroll_title15) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
-        tvTitle!!.gravity = Gravity.CENTER
+        tvTitle.typeface = Typeface.DEFAULT_BOLD
+        tvTitle.textSize = 13f
+        tvTitle.setTextColor(Color.WHITE)
+        tvTitle.text = LocaleController.getString(R.string.scroll_title15) + "-" + LocaleController.getString(R.string.football) + ":" + LocaleController.getString(R.string.scroll_title1)
+        tvTitle.gravity = Gravity.CENTER
         titleLayout.addView(tvTitle, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, 30, 12f, 0f, 0f, 0f))
 
         val parentLayout = LinearLayout(context)//用来替换fragment的布局
@@ -235,108 +270,104 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         topList.add(title1)
         topList.add(title2)
 
-        topCell!!.setTopTitleData(topList)
-        topCell!!.setTopSubTitleData(footBallSubTitles)
+        topCell.setTopTitleData(topList)
+        topCell.setTopSubTitleData(footBallSubTitles)
+    }
+
+    fun setBallType(ballType: Int) {
+        this.ballType = ballType
     }
 
     private fun init() {
         initTitles()
 
-        defaultFragment = ToDayDefaultFragment()
+        when (ballType) {
+            1 -> {
+                selectFootBall()
+            }
+            2 -> {
+                selectBasketBall()
+            }
+            else -> {
+                defaultFragment = ToDayDefaultFragment()
 
-        val fragmentTransaction = fragmentManager!!.beginTransaction()
-        fragmentTransaction.add(R.id.today_parent, defaultFragment)
-        fragmentTransaction.commit()
+                val fragmentTransaction = fragmentManager!!.beginTransaction()
+                fragmentTransaction.add(R.id.today_parent, defaultFragment)
+                fragmentTransaction.commit()
+            }
+        }
     }
 
     fun fragmentResume() {
-        if (currPage == 1 && defaultFragment != null) {
-            defaultFragment!!.filterResume()
-        } else if (currPage == 2 && boDanFragment != null) {
-            boDanFragment!!.filterResume()
-        } else if (currPage == 3 && toDayTotalFragment != null) {
-            toDayTotalFragment!!.filterResume()
-        } else if (currPage == 4 && halfCourtFragment != null) {
-            halfCourtFragment!!.filterResume()
-        } else if (currPage == 5 && toDayChampionFragment != null) {
-            toDayChampionFragment!!.filterResume()
-        } else if (currPage == 6 && basketBallPassFragment != null) {
-            basketBallPassFragment!!.filterResume()
-        } else if (currPage == 7 && resultFragment != null) {
-            resultFragment!!.filterResume()
-        } else if (currPage == 8 && basketBallDefaultFragment != null) {
-            basketBallDefaultFragment!!.filterResume()
-        } else if (currPage == 9 && toDayBasketBallChampionFragment != null) {
-            toDayBasketBallChampionFragment!!.filterResume()
-        } else if (currPage == 10 && footBallPassFragment != null) {
-            footBallPassFragment!!.filterResume()
+        when (currPage) {
+            1 -> defaultFragment?.filterResume()
+            2 -> boDanFragment?.filterResume()
+            3 -> toDayTotalFragment?.filterResume()
+            4 -> halfCourtFragment?.filterResume()
+            5 -> toDayChampionFragment?.filterResume()
+            6 -> basketBallPassFragment?.filterResume()
+            7 -> resultFragment?.filterResume()
+            8 -> basketBallDefaultFragment?.filterResume()
+            9 -> toDayBasketBallChampionFragment?.filterResume()
+            10 -> footBallPassFragment?.filterResume()
         }
     }
 
     fun fragmentPause() {
-        if (currPage == 1 && defaultFragment != null) {
-            defaultFragment!!.filterPause()
-        } else if (currPage == 2 && boDanFragment != null) {
-            boDanFragment!!.filterPause()
-        } else if (currPage == 3 && toDayTotalFragment != null) {
-            toDayTotalFragment!!.filterPause()
-        } else if (currPage == 4 && halfCourtFragment != null) {
-            halfCourtFragment!!.filterPause()
-        } else if (currPage == 5 && toDayChampionFragment != null) {
-            toDayChampionFragment!!.filterPause()
-        } else if (currPage == 6 && basketBallPassFragment != null) {
-            basketBallPassFragment!!.filterPause()
-        } else if (currPage == 7 && resultFragment != null) {
-            resultFragment!!.filterPause()
-        } else if (currPage == 8 && basketBallDefaultFragment != null) {
-            basketBallDefaultFragment!!.filterPause()
-        } else if (currPage == 9 && toDayBasketBallChampionFragment != null) {
-            toDayBasketBallChampionFragment!!.filterPause()
-        } else if (currPage == 10 && footBallPassFragment != null) {
-            footBallPassFragment!!.filterPause()
+        when (currPage) {
+            1 -> defaultFragment?.filterPause()
+            2 -> boDanFragment?.filterPause()
+            3 -> toDayTotalFragment?.filterPause()
+            4 -> halfCourtFragment?.filterPause()
+            5 -> toDayChampionFragment?.filterPause()
+            6 -> basketBallPassFragment?.filterPause()
+            7 -> resultFragment?.filterPause()
+            8 -> basketBallDefaultFragment?.filterPause()
+            9 -> toDayBasketBallChampionFragment?.filterPause()
+            10 -> footBallPassFragment?.filterPause()
         }
     }
 
     private fun changePage(str: String) {
         val fragmentTransaction = fragmentManager!!.beginTransaction()
 
-        if (defaultFragment != null) {
+        defaultFragment?.let {
             defaultFragment!!.filterPause()
             fragmentTransaction.hide(defaultFragment)
         }
-        if (boDanFragment != null) {
+        boDanFragment?.let {
             boDanFragment!!.filterPause()
             fragmentTransaction.hide(boDanFragment)
         }
-        if (toDayTotalFragment != null) {
+        toDayTotalFragment?.let {
             toDayTotalFragment!!.filterPause()
             fragmentTransaction.hide(toDayTotalFragment)
         }
-        if (halfCourtFragment != null) {
+        halfCourtFragment?.let {
             halfCourtFragment!!.filterPause()
             fragmentTransaction.hide(halfCourtFragment)
         }
-        if (toDayChampionFragment != null) {
+        toDayChampionFragment?.let {
             toDayChampionFragment!!.filterPause()
             fragmentTransaction.hide(toDayChampionFragment)
         }
-        if (toDayBasketBallChampionFragment != null) {
+        toDayBasketBallChampionFragment?.let {
             toDayBasketBallChampionFragment!!.filterPause()
             fragmentTransaction.hide(toDayBasketBallChampionFragment)
         }
-        if (basketBallDefaultFragment != null) {
+        basketBallDefaultFragment?.let {
             basketBallDefaultFragment!!.filterPause()
             fragmentTransaction.hide(basketBallDefaultFragment)
         }
-        if (resultFragment != null) {
+        resultFragment?.let {
             resultFragment!!.filterPause()
             fragmentTransaction.hide(resultFragment)
         }
-        if (basketBallPassFragment != null) {
+        basketBallPassFragment?.let {
             basketBallPassFragment!!.filterPause()
             fragmentTransaction.hide(basketBallPassFragment)
         }
-        if (footBallPassFragment != null) {
+        footBallPassFragment?.let {
             footBallPassFragment!!.filterPause()
             fragmentTransaction.hide(footBallPassFragment)
         }
@@ -460,7 +491,7 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         set.addListener(object : AnimatorListenerAdapter() {
 
             override fun onAnimationStart(animation: Animator) {
-                maskView!!.visibility = View.VISIBLE
+                maskView.visibility = View.VISIBLE
             }
         })
         set.start()
@@ -475,7 +506,7 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         set.addListener(object : AnimatorListenerAdapter() {
 
             override fun onAnimationEnd(animation: Animator) {
-                maskView!!.visibility = View.GONE
+                maskView.visibility = View.GONE
             }
         })
         set.start()
@@ -483,7 +514,7 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
 
     override fun didReceivedNotification(id: Int, vararg args: String) {
         if (id == NotificationController.today_mask) {
-            if (args != null && args.size >= 1) {
+            if (args?.isNotEmpty()) {
                 if ("open" == args[0]) {
                     openMask()
                 } else if ("close" == args[0]) {

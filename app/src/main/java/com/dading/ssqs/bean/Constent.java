@@ -93,9 +93,9 @@ public interface Constent {
      */
     String LOADING_HOME = "LOADING_HOME";
     /**
-     * 专家更多
+     * 跳转到优惠活动
      */
-    String LOADING_HOME_SAVANT = "LOADING_HOME_SAVANT";
+    String PREFERENTIAL_ACTIVITIES= "Preferential_Activities";
     /**
      * 跳轉個人信息
      */

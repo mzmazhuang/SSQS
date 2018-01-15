@@ -18,7 +18,6 @@ import com.dading.ssqs.base.BaseFragnment;
 import com.dading.ssqs.bean.Constent;
 import com.dading.ssqs.bean.LoadingBean;
 import com.dading.ssqs.controllar.GuessBallControllarAll;
-import com.dading.ssqs.controllar.ReferrCntrollar;
 import com.dading.ssqs.controllar.ScoreControllar;
 import com.dading.ssqs.utils.AndroidUtilities;
 import com.dading.ssqs.utils.Logger;
@@ -61,7 +60,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     public int mMCurrButtonId = 0;
     private HomeRecevice mRecevice;
     private MyPagerAdapter mAdapter;
-    public ReferrCntrollar mReferrCntrollar;
+    public PreferentialActivitiesFragment mPreferentialActivitiesFragment;
     public GuessTheBallFragment guessTheBallFragment;
     public ScoreControllar mScoreControllar;
     public MyFragment myFragment;
@@ -92,7 +91,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
 
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_HOME);
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_GUESS_BALL);
-        UIUtils.ReRecevice(mRecevice, Constent.LOADING_HOME_SAVANT);
+        UIUtils.ReRecevice(mRecevice, Constent.PREFERENTIAL_ACTIVITIES);
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_MY);
         UIUtils.ReRecevice(mRecevice, Constent.HOME_BALL);
         UIUtils.ReRecevice(mRecevice, Constent.LOADING_CASINO);
@@ -118,7 +117,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         //猜球界面
         guessTheBallFragment = new GuessTheBallFragment();
         //优惠
-        mReferrCntrollar = new ReferrCntrollar();
+        mPreferentialActivitiesFragment = new PreferentialActivitiesFragment();
         //比分
         mScoreControllar = new ScoreControllar();
         //我的
@@ -128,12 +127,10 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
 
         mBaseDataControllar = new ArrayList<>();
         mBaseDataControllar.add(mGuessBallControllarAll);
-        mBaseDataControllar.add(mReferrCntrollar);
+        mBaseDataControllar.add(mPreferentialActivitiesFragment);
         mBaseDataControllar.add(guessTheBallFragment);
         mBaseDataControllar.add(mScoreControllar);
         mBaseDataControllar.add(myFragment);
-
-        Logger.INSTANCE.d(TAG, mBaseDataControllar.size() + "");
 
         //为viewpager赋值
         mAdapter = new MyPagerAdapter(this.getFragmentManager(), mBaseDataControllar);
@@ -208,9 +205,6 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                 }
                 break;
             case R.id.main_referr:
-                if (mReferrCntrollar != null) {
-                    mReferrCntrollar.init();
-                }
                 mMCurrButtonId = 1;
                 setChecked(3);
                 break;
@@ -279,11 +273,10 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     mMCurrButtonId = 0;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
                     break;
-                case Constent.LOADING_HOME_SAVANT:
+                case Constent.PREFERENTIAL_ACTIVITIES:
                     mRg.check(mReferr.getId());
                     mMCurrButtonId = 1;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-                    Logger.INSTANCE.d("GBSS", "收到廣播推薦------------------------------:");
                     break;
                 case Constent.LOADING_GUESS_BALL:
                     if (guessTheBallFragment != null) {
@@ -305,14 +298,20 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     mRg.check(mMy.getId());
                     mMCurrButtonId = 4;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);
-                    Logger.INSTANCE.d("GBSS", "收到个人信息-- ----------------------------:");
                     break;
                 case Constent.LOADING_CASINO:
                     Intent casionIntent = new Intent(context, CasionActivity.class);
                     startActivity(casionIntent);
-                    Logger.INSTANCE.d("GBSS", "收到廣播娱乐场-- ----------------------------:");
                     break;
                 case Constent.LOADING_SCORE:
+                    if (mScoreControllar != null) {
+                        int type = UIUtils.getSputils().getInt("score_title_type", 0);
+
+                        int pageType = UIUtils.getSputils().getInt("score_page_type", 0);
+
+                        mScoreControllar.setTitleType(type, pageType);
+                    }
+
                     mRg.check(mScore.getId());
                     mMCurrButtonId = 3;
                     mNoScoreViewpager.setCurrentItem(mMCurrButtonId, false);

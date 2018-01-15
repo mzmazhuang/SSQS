@@ -46,6 +46,10 @@ public class TitleCell extends RelativeLayout {
         tvTitleView.setText(title);
     }
 
+    public void hideBack() {
+        backView.setVisibility(View.GONE);
+    }
+
     public void setBackListener(final OnClickListener listener) {
         backView.setOnClickListener(new OnClickListener() {
             @Override

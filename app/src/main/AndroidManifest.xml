@@ -259,10 +259,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.ReferIncomeActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".activity.RecomCodePrizeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />

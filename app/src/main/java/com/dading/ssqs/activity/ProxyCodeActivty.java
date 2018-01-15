@@ -95,15 +95,6 @@ public class ProxyCodeActivty extends BaseActivity {
                     ToastUtils.midToast(UIUtils.getContext(), "请输入您要生成的邀请码!", 0);
                     return;
                 }
-                /**
-                 * /v1.0/agent/code/create/{code}
-                 b)	请求方式:
-                 get
-                 c)	请求参数说明
-                 字段名	类型	长度	是否必填	备注
-                 auth_token	string		是	token
-                 code	string		是	邀请码
-                 */
                 volleyGet(mProxyUpCode.getText().toString(), UPLOAD);
                 break;
         }
@@ -137,6 +128,7 @@ public class ProxyCodeActivty extends BaseActivity {
                         switch (code) {
                             case 1:
                                 processedData(bean);
+                                break;
                             case 2:
                                 processedDataUp();
                                 break;
@@ -150,8 +142,6 @@ public class ProxyCodeActivty extends BaseActivity {
     }
 
     private void processedDataLook(List<ProxyIntroLookBean> beanLook) {
-        //mProxyCodeLv.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        //mProxyCodeLv.setAdapter(new ProxyLookCodeAdapter(R.layout.item_proxy_code, data,this));
         mProxyCodeLv.setAdapter(new ProxyCodeAdapter(this, beanLook));
     }
 
@@ -159,6 +149,9 @@ public class ProxyCodeActivty extends BaseActivity {
     private void processedDataUp() {
         ToastUtils.midToast(UIUtils.getContext(), "邀请码已生成!", 0);
         mProxyUpCode.setText("");
+
+        mProxyCodeRbL.setChecked(false);
+        mProxyCodeRbR.setChecked(true);
     }
 
     private void processedData(ProxyCodeBean bean) {

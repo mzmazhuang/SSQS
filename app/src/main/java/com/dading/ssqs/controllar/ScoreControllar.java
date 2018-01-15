@@ -460,8 +460,19 @@ public class ScoreControllar extends BaseTabsContainer {
                 mPager = 0;
             mScrollViewpager.setCurrentItem(mPager);
             boolean b = UIUtils.getSputils().getBoolean(Constent.IS_FOOTBALL, true);
-            Logger.INSTANCE.d("GBSS", "收到比分广播------------------------------:" + b);
             mScoreTitleRg.check(b ? R.id.content_title_score_title_f : R.id.content_title_score_title_b);
+        }
+    }
+
+    public void setTitleType(int type, int pageType) {//1==足球  2==篮球   pageType  1==及时 2==赛果 3==赛程 4==关注
+        if (pageType > 0) {
+            mPager = pageType - 1;
+            mScrollViewpager.setCurrentItem(mPager);
+        }
+        if (type == 1) {
+            mScoreTitleRg.check(R.id.content_title_score_title_f);
+        } else if (type == 2) {
+            mScoreTitleRg.check(R.id.content_title_score_title_b);
         }
     }
 }

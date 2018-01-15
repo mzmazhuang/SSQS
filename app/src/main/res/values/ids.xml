@@ -36,6 +36,7 @@
     <item name="ranking_container" type="id" />
     <item name="ranking_image" type="id" />
     <item name="ranking_right" type="id" />
+    <item name="perfer_next" type="id" />
     <!--end swipeToLoadLayout-->
 
 </resources>

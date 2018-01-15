@@ -30,13 +30,23 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
+import com.dading.ssqs.activity.AccountDetailActivity;
+import com.dading.ssqs.activity.BettingRecordActivity;
 import com.dading.ssqs.activity.HomeFreeGlodActivity;
 import com.dading.ssqs.activity.HomeViewPagerActivity;
 import com.dading.ssqs.activity.LoginActivity;
+import com.dading.ssqs.activity.MoreSettingActivity;
+import com.dading.ssqs.activity.MyMessageActivity;
+import com.dading.ssqs.activity.NewBindBankCardActivity;
 import com.dading.ssqs.activity.NewRechargeActivity;
 import com.dading.ssqs.activity.OnLineServerActivity;
+import com.dading.ssqs.activity.ProxyCenterActivity;
 import com.dading.ssqs.activity.RankingListActivity;
+import com.dading.ssqs.activity.RechargeDetailActivity;
+import com.dading.ssqs.activity.SuggestionActivity;
 import com.dading.ssqs.activity.WebActivity;
+import com.dading.ssqs.activity.WithDrawActivity;
+import com.dading.ssqs.activity.WithDrawDentailActivity;
 import com.dading.ssqs.adapter.BaseMePagerAdapter;
 import com.dading.ssqs.adapter.HomeBasketballAdapter;
 import com.dading.ssqs.adapter.HomeMatchAdapter;
@@ -534,6 +544,12 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
+    private void setScore(int pageType, int titleType) {
+        UIUtils.getSputils().putInt("score_page_type", pageType);
+        UIUtils.getSputils().putInt("score_title_type", titleType);
+        UIUtils.SendReRecevice(Constent.LOADING_SCORE);
+    }
+
     public class AutoScrollTask implements Runnable {
 
         public AutoScrollTask() {
@@ -615,13 +631,13 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                     if (bean != null) {
                         if (!TextUtils.isEmpty(bean.getForwardName())) {//子模块
                             if ("篮球比分".equals(bean.getFunsactionName()) && "即时".equals(bean.getForwardName())) {
-
+                                setScore(1, 2);
                             } else if ("篮球比分".equals(bean.getFunsactionName()) && "赛果".equals(bean.getForwardName())) {
-
+                                setScore(2, 2);
                             } else if ("篮球比分".equals(bean.getFunsactionName()) && "赛程".equals(bean.getForwardName())) {
-
+                                setScore(3, 2);
                             } else if ("篮球比分".equals(bean.getFunsactionName()) && "关注".equals(bean.getForwardName())) {
-
+                                setScore(4, 2);
                             } else if ("篮球猜球".equals(bean.getFunsactionName()) && "滚球".equals(bean.getForwardName())) {
                                 setBasketball(1);
                             } else if ("篮球猜球".equals(bean.getFunsactionName()) && "今日赛事".equals(bean.getForwardName())) {
@@ -629,51 +645,86 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                             } else if ("篮球猜球".equals(bean.getFunsactionName()) && "早盘".equals(bean.getForwardName())) {
                                 setBasketball(3);
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "即时".equals(bean.getForwardName())) {
-
+                                setScore(1, 1);
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "赛果".equals(bean.getForwardName())) {
-
+                                setScore(2, 1);
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "赛程".equals(bean.getForwardName())) {
-
+                                setScore(3, 1);
                             } else if ("足球比分".equals(bean.getFunsactionName()) && "关注".equals(bean.getForwardName())) {
-
+                                setScore(4, 1);
                             } else if ("足球猜球".equals(bean.getFunsactionName()) && "滚球".equals(bean.getForwardName())) {
                                 setFootball(1);
                             } else if ("足球猜球".equals(bean.getFunsactionName()) && "今日赛事".equals(bean.getForwardName())) {
                                 setFootball(2);
                             } else if ("足球猜球".equals(bean.getFunsactionName()) && "早盘".equals(bean.getForwardName())) {
                                 setFootball(3);
-                            } else if ("娱乐活动".equals(bean.getFunsactionName())) {//url
-
-                            } else if ("优惠活动".equals(bean.getFunsactionName())) {//url
-
+                            } else if ("娱乐活动".equals(bean.getFunsactionName()) || "优惠活动".equals(bean.getFunsactionName())) {
+                                UIUtils.SendReRecevice(Constent.PREFERENTIAL_ACTIVITIES);
                             }
                         } else if (!TextUtils.isEmpty(bean.getFunsactionName())) {//主模块
-                            if ("账户明细".equals(bean.getFunsactionName())) {
-
-                            } else if ("投注记录".equals(bean.getFunsactionName())) {
-
-                            } else if ("充值记录".equals(bean.getFunsactionName())) {
-
-                            } else if ("提款记录".equals(bean.getFunsactionName())) {
-
-                            } else if ("代理中心".equals(bean.getFunsactionName())) {
-
+                            if (!UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
+                                intentLogin();
                             } else if ("设置中心".equals(bean.getFunsactionName())) {
+                                Intent intent = new Intent(mContent, MoreSettingActivity.class);
+                                startActivity(intent);
+                            } else {
+                                boolean isTourist = UIUtils.getSputils().getBoolean(Constent.USER_TYPE, false);//是否是试玩
 
-                            } else if ("意见反馈".equals(bean.getFunsactionName())) {
+                                Intent intent = null;
+                                if ("账户明细".equals(bean.getFunsactionName())) {
+                                    if (isTourist) {
+                                        ToastUtils.midToast(mContent, "试玩账号不能查看账户明细!", 0);
+                                        return;
+                                    }
+                                    intent = new Intent(mContent, AccountDetailActivity.class);
+                                } else if ("投注记录".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, BettingRecordActivity.class);
+                                } else if ("充值记录".equals(bean.getFunsactionName())) {
+                                    if (isTourist) {
+                                        ToastUtils.midToast(mContent, "试玩账号不能查看充值记录!", 0);
+                                        return;
+                                    }
+                                    intent = new Intent(mContent, RechargeDetailActivity.class);
+                                } else if ("提款记录".equals(bean.getFunsactionName())) {
+                                    if (isTourist) {
+                                        ToastUtils.midToast(mContent, "试玩账号不能查看提款记录!", 0);
+                                        return;
+                                    }
+                                    intent = new Intent(mContent, WithDrawDentailActivity.class);
+                                } else if ("代理中心".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, ProxyCenterActivity.class);
+                                } else if ("意见反馈".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, SuggestionActivity.class);
+                                } else if ("消息中心".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, MyMessageActivity.class);
+                                } else if ("新手帮助".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, WebActivity.class);
+                                    intent.putExtra("url", Constants.NEWPEOPLEHELPURL);
+                                } else if ("在线客服".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, OnLineServerActivity.class);
+                                } else if ("领币".equals(bean.getFunsactionName())) {
+                                    intent = new Intent(mContent, HomeFreeGlodActivity.class);
+                                } else if ("充值".equals(bean.getFunsactionName())) {
+                                    if (isTourist) {
+                                        ToastUtils.midToast(mContent, "试玩账号不能进行充值!", 0);
+                                        return;
+                                    }
+                                    intent = new Intent(mContent, NewRechargeActivity.class);
+                                } else if ("提现".equals(bean.getFunsactionName())) {
+                                    if (isTourist) {
+                                        ToastUtils.midToast(mContent, "试玩账号不能进行提现!", 0);
+                                        return;
+                                    }
+                                    if (UIUtils.getSputils().getBoolean(Constent.IS_BIND_CARD, false)) {
+                                        intent = new Intent(mContent, WithDrawActivity.class);
+                                    } else {
+                                        intent = new Intent(mContent, NewBindBankCardActivity.class);
+                                    }
+                                }
 
-                            } else if ("消息中心".equals(bean.getFunsactionName())) {
-
-                            } else if ("新手帮助".equals(bean.getFunsactionName())) {
-
-                            } else if ("在线客服".equals(bean.getFunsactionName())) {
-
-                            } else if ("领币".equals(bean.getFunsactionName())) {
-
-                            } else if ("充值".equals(bean.getFunsactionName())) {
-
-                            } else if ("提现".equals(bean.getFunsactionName())) {
-
+                                if (intent != null) {
+                                    startActivity(intent);
+                                }
                             }
                         }
                     }
@@ -681,6 +732,11 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
             });
             return iv;
         }
+    }
+
+    private void intentLogin() {
+        Intent mIntent = new Intent(mContent, LoginActivity.class);
+        startActivity(mIntent);
     }
 
     @Override

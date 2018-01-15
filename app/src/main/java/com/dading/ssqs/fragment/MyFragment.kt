@@ -401,7 +401,7 @@ class MyFragment : Fragment(), View.OnClickListener {
                 }
                 view === withdrawalRecordCell -> {//提款记录
                     if (isTourist) {
-                        ToastUtils.midToast(context, "试玩账号不能查看提现!", 0)
+                        ToastUtils.midToast(context, "试玩账号不能查看提款记录!", 0)
                         return
                     }
                     intent = Intent(context, WithDrawDentailActivity::class.java)

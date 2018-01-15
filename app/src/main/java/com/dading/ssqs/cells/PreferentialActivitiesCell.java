@@ -32,7 +32,7 @@ public class PreferentialActivitiesCell extends LinearLayout {
 
         iconView = new ImageView(context);
         iconView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        addView(iconView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 220));
+        addView(iconView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 150));
 
         RelativeLayout bottomLayout = new RelativeLayout(context);
         addView(bottomLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));

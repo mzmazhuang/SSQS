@@ -60,6 +60,7 @@ import com.dading.ssqs.bean.HomeBean;
 import com.dading.ssqs.bean.HomeMessageBean;
 import com.dading.ssqs.bean.SevenPopBean;
 import com.dading.ssqs.bean.SignResultBean;
+import com.dading.ssqs.components.AutoRecyclerView;
 import com.dading.ssqs.components.RankingView;
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener;
 import com.dading.ssqs.components.swipetoloadlayout.SwipeToLoadLayout;
@@ -188,7 +189,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         LinearLayout rankingLayout = (LinearLayout) view.findViewById(R.id.ranking);
 
         //添加排行榜
-        rankingView = new RankingView(content, new RankingAdapter.OnItemClickListener() {
+        rankingView = new RankingView(content, new AutoRecyclerView.OnAutoRecyclerClickListener() {
             @Override
             public void onClick() {
                 Intent intent = new Intent(mContent, RankingListActivity.class);

@@ -21,6 +21,8 @@ import com.dading.ssqs.R
 import com.dading.ssqs.SSQSApplication
 import com.dading.ssqs.adapter.newAdapter.BankAdapter
 import com.dading.ssqs.adapter.newAdapter.FindTabAdapter
+import com.dading.ssqs.apis.CcApiClient
+import com.dading.ssqs.apis.CcApiResult
 import com.dading.ssqs.base.LayoutHelper
 import com.dading.ssqs.bean.Constent
 import com.dading.ssqs.bean.WXDFBean
@@ -36,6 +38,8 @@ import com.dading.ssqs.utils.UIUtils
 import java.util.ArrayList
 
 import com.dading.ssqs.bean.Constent.RECHARGE_INFO
+import com.dading.ssqs.bean.QRCodeBean
+import com.dading.ssqs.components.LoadingDialog
 
 /**
  * Created by mazhuang on 2017/11/24.
@@ -52,6 +56,7 @@ class NewRechargeActivity : BaseActivity() {
     private var zfbFragment: ZfbFragment? = null
     private var bankFragment: BankFragment? = null
     private var onLineFragment: OnLineFragment? = null
+    private var loadingDialog: LoadingDialog? = null
 
     private var mContext: Context? = null
 
@@ -98,6 +103,28 @@ class NewRechargeActivity : BaseActivity() {
             val content_url = Uri.parse(bean.bankAddress)
             intent.data = content_url
             startActivity(intent)
+        } else if (addrType == 7) {
+            if (loadingDialog == null) {
+                loadingDialog = LoadingDialog(this)
+            }
+            loadingDialog?.show()
+            SSQSApplication.apiClient(classGuid).getThirdImage(bean.payType, bean.money) { result ->
+                loadingDialog?.dismiss()
+                if (result.isOk) {
+                    val bean = result.data as QRCodeBean
+
+                    if (bean != null) {
+                        var intent = Intent(mContext, WebActivity::class.java)
+
+                        var bundle = Bundle()
+                        bundle.putString("url_content", bean.data)
+
+                        setStartIntent(bundle, intent)
+                    }
+                } else {
+                    ToastUtils.midToast(UIUtils.getContext(), result.message, 0)
+                }
+            }
         }
     }
 

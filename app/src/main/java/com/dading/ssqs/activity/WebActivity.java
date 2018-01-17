@@ -27,6 +27,7 @@ public class WebActivity extends BaseActivity {
     private TitleCell titleCell;
     private static String curr_title;//传参过来的标题
     private static String curr_url;//传参过来的url
+    private static String curr_content;//传参过来的网页内容
     private LoadingDialog loadingDialog;
 
     private static final int WEB_OPEN_PROGRESS = 0x3002;
@@ -42,6 +43,7 @@ public class WebActivity extends BaseActivity {
     protected View getContentView() {
         curr_url = getIntent().getStringExtra("url");
         curr_title = getIntent().getStringExtra("title");
+        curr_content = getIntent().getStringExtra("url_content");
 
         mContext = this;
 
@@ -68,14 +70,12 @@ public class WebActivity extends BaseActivity {
         loadingDialog = new LoadingDialog(mContext);
         loadingDialog.show();
 
-        if (!TextUtils.isEmpty(curr_url)) {
-            setUrl(curr_url);
-        }
+        setUrl(curr_url, curr_content);
 
         return container;
     }
 
-    private void setUrl(final String url) {
+    private void setUrl(final String url, final String content) {
         SSQSApplication.getHandler().post(new Runnable() {
             @SuppressLint("SetJavaScriptEnabled")
             public void run() {
@@ -98,7 +98,13 @@ public class WebActivity extends BaseActivity {
                 mWebView.getSettings().setDefaultFontSize(16);
                 mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
                 mWebView.clearHistory();
-                mWebView.loadUrl(url);
+
+                if (!TextUtils.isEmpty(url)) {
+                    mWebView.loadUrl(url);
+                } else if (!TextUtils.isEmpty(content)) {
+                    mWebView.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
+                }
+
                 mWebView.scrollTo(0, 0);
             }
         });

@@ -30,7 +30,7 @@ public class RankingView extends LinearLayout {
 
     private boolean isStart = false;
 
-    public RankingView(Context context, RankingAdapter.OnItemClickListener listener) {
+    public RankingView(Context context, AutoRecyclerView.OnAutoRecyclerClickListener listener) {
         super(context);
 
         setOrientation(LinearLayout.VERTICAL);
@@ -53,10 +53,10 @@ public class RankingView extends LinearLayout {
         autoRecyclerView.setHasFixedSize(true);
         autoRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         autoRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        autoRecyclerView.setListener(listener);
         addView(autoRecyclerView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         adapter = new RankingAdapter(context);
-        adapter.setListener(listener);
         autoRecyclerView.setAdapter(adapter);
     }
 

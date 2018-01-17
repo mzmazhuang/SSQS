@@ -5,6 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.dading.ssqs.utils.AndroidUtilities;
+import com.dading.ssqs.utils.Logger;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -38,21 +41,37 @@ public class AutoRecyclerView extends RecyclerView {
         removeCallbacks(autoPollTask);
     }
 
+    private boolean isClick = true;
+
     @Override
     public boolean onTouchEvent(MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (running)
-                    stop();
                 break;
             case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-            case MotionEvent.ACTION_OUTSIDE:
-                if (canRun)
-                    start();
+                if (listener != null && isClick) {
+                    listener.onClick();
+                }
                 break;
+            case MotionEvent.ACTION_MOVE:
+                if (AndroidUtilities.INSTANCE.dp(e.getY()) >= 0 && AndroidUtilities.INSTANCE.dp(e.getY()) <= getHeight()) {
+                    isClick = true;
+                } else {
+                    isClick = false;
+                }
+                return true;
         }
         return super.onTouchEvent(e);
+    }
+
+    private OnAutoRecyclerClickListener listener;
+
+    public void setListener(OnAutoRecyclerClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnAutoRecyclerClickListener {
+        void onClick();
     }
 
     static class AutoPollTask implements Runnable {

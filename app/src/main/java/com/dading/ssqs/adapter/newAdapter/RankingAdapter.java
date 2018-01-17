@@ -63,24 +63,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ItemView
             cell.setTitleText(bean.getUsername());
             cell.setSubTitle(bean.getMatchName());
             cell.setRightText(bean.getAmount());
-            cell.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (listener != null) {
-                        listener.onClick();
-                    }
-                }
-            });
         }
-    }
-
-    private OnItemClickListener listener;
-
-    public void setListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
-
-    public interface OnItemClickListener {
-        void onClick();
     }
 }

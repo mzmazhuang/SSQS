@@ -103,7 +103,7 @@ class NewRechargeActivity : BaseActivity() {
             val content_url = Uri.parse(bean.bankAddress)
             intent.data = content_url
             startActivity(intent)
-        } else if (addrType == 7) {
+        } else if (addrType == 7 || addrType == 8) {
             if (loadingDialog == null) {
                 loadingDialog = LoadingDialog(this)
             }

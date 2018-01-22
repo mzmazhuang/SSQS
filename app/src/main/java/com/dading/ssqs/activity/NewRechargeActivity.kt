@@ -46,14 +46,14 @@ import com.dading.ssqs.components.LoadingDialog
 class NewRechargeActivity : BaseActivity() {
 
     private lateinit var moneyView: EditText
-    private var selectRechargeMoneyView: SelectRechargeMoneyView? = null
-    private var tabLayout: TabLayout? = null
-    private var viewPager: ViewPager? = null
+    private lateinit var selectRechargeMoneyView: SelectRechargeMoneyView
+    private lateinit var tabLayout: TabLayout
+    private lateinit var viewPager: ViewPager
 
-    private var wxFragment: WxFragment? = null
-    private var zfbFragment: ZfbFragment? = null
-    private var bankFragment: BankFragment? = null
-    private var onLineFragment: OnLineFragment? = null
+    private lateinit var wxFragment: WxFragment
+    private lateinit var zfbFragment: ZfbFragment
+    private lateinit var bankFragment: BankFragment
+    private lateinit var onLineFragment: OnLineFragment
     private var loadingDialog: LoadingDialog? = null
 
     private var mContext: Context? = null
@@ -178,7 +178,7 @@ class NewRechargeActivity : BaseActivity() {
         inputLayout.addView(moneyView, layoutParams)
 
         selectRechargeMoneyView = SelectRechargeMoneyView(this)
-        selectRechargeMoneyView!!.setListener { text -> moneyView.setText(text) }
+        selectRechargeMoneyView.setListener { text -> moneyView.setText(text) }
         topLayout.addView(selectRechargeMoneyView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 10f, 0f, 10f, 0f))
 
         val tipView = TextView(this)
@@ -188,13 +188,13 @@ class NewRechargeActivity : BaseActivity() {
         topLayout.addView(tipView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 15f, 10f, 0f, 0f))
 
         tabLayout = TabLayout(this)
-        tabLayout!!.tabMode = TabLayout.MODE_FIXED
+        tabLayout.tabMode = TabLayout.MODE_FIXED
         container.addView(tabLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 30, 0f, 10f, 0f, 0f))
 
         viewPager = ViewPager(this)
-        viewPager!!.id = R.id.viewpager
-        viewPager!!.offscreenPageLimit = 4
-        viewPager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewPager.id = R.id.viewpager
+        viewPager.offscreenPageLimit = 4
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
@@ -221,19 +221,19 @@ class NewRechargeActivity : BaseActivity() {
         onLineFragment = OnLineFragment()
 
         val listFragments = ArrayList<Fragment>()
-        listFragments.add(wxFragment!!)
-        listFragments.add(zfbFragment!!)
-        listFragments.add(bankFragment!!)
-        listFragments.add(onLineFragment!!)
+        listFragments.add(wxFragment)
+        listFragments.add(zfbFragment)
+        listFragments.add(bankFragment)
+        listFragments.add(onLineFragment)
 
         for (i in mListTitle.indices) {
-            tabLayout!!.addTab(tabLayout!!.newTab().setText(mListTitle[i]))
+            tabLayout.addTab(tabLayout.newTab().setText(mListTitle[i]))
         }
 
         val mFindTabAdapter = FindTabAdapter(supportFragmentManager, listFragments, mListTitle)
 
-        viewPager!!.adapter = mFindTabAdapter
-        tabLayout!!.setupWithViewPager(viewPager)
+        viewPager.adapter = mFindTabAdapter
+        tabLayout.setupWithViewPager(viewPager)
 
         getData()
         return container
@@ -251,14 +251,14 @@ class NewRechargeActivity : BaseActivity() {
 
                 if (items != null && items!!.isNotEmpty()) {
                     if (items!![0].moneys != null) {
-                        selectRechargeMoneyView!!.setList(items!![0].moneys)
+                        selectRechargeMoneyView.setList(items!![0].moneys)
                     }
 
                     for (i in items!!.indices) {
                         when {
-                            items!![i].name == "微信支付" -> wxFragment!!.setList(items!![i].info)
-                            items!![i].name == "支付宝支付" -> zfbFragment!!.setList(items!![i].info)
-                            items!![i].name == "银行转账" -> bankFragment!!.setList(items!![i].info)
+                            items!![i].name == "微信支付" -> wxFragment.setList(items!![i].info)
+                            items!![i].name == "支付宝支付" -> zfbFragment.setList(items!![i].info)
+                            items!![i].name == "银行转账" -> bankFragment.setList(items!![i].info)
                         }
                     }
                 }

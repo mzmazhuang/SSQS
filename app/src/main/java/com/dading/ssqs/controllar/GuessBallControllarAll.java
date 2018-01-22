@@ -111,7 +111,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private TextView mReferMore;
     private List<HomeMessageBean> mData;
     private List<HomeBean.AdvertsBean> mAdverts;
-    public HomeControllarRecevice mRecevice;
     private Handler mHandler;
     private LinearLayout mYpRfer;
     private ImageView mGuessFourShop;
@@ -119,7 +118,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private LinearLayout mHome_football_title;
     private LinearLayout mHome_basketball_title;
     private View mFootballView;
-    private View mBasketballView;
     private TextView mHome_vp_title;
     private ArrayList<String> mHVpTtile;
     private View view;
@@ -184,7 +182,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         mMore = (TextView) view.findViewById(R.id.home_activity_more);
         mReferMore = (TextView) view.findViewById(R.id.home_referr_more);
         mFootballView = view.findViewById(R.id.home_football_view);
-        mBasketballView = view.findViewById(R.id.home_basketball_view);
 
         LinearLayout rankingLayout = (LinearLayout) view.findViewById(R.id.ranking);
 
@@ -266,8 +263,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
      */
     @Override
     public void initData() {
-        mRecevice = new HomeControllarRecevice();
-        UIUtils.ReRecevice(mRecevice, Constent.LOADING_ACTION);
         mAutoScrollTask = new AutoScrollTask();
         mAutoScrollTask.start();
 
@@ -290,9 +285,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                     HomeBean homeBean = (HomeBean) result.getData();
 
                     if (homeBean != null) {
-                        Gson gson = new Gson();
-
-                        UIUtils.getSputils().putString(Constent.HOME_CACHE, gson.toJson(homeBean, homeBean.getClass()));
                         processData(homeBean);
                     }
 
@@ -301,18 +293,7 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
                     }
                 } else {
                     if (!AndroidUtilities.INSTANCE.checkIsLogin(result.getErrno(), mContent)) {
-                        //缓存数据
-                        String s = UIUtils.getSputils().getString(Constent.HOME_CACHE, "");
-                        if (!TextUtils.isEmpty(s)) {
-                            try {
-                                HomeBean homeBean = JSON.parseObject(s, HomeBean.class);
-                                processData(homeBean);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            ToastUtils.midToast(mContent, "请求失败,没有缓存数据,请检查网络拉取最新赛事", 0);
-                        }
+                        ToastUtils.midToast(mContent, "请求失败,请检查网络拉取最新赛事", 0);
                     } else {
                         Toast.makeText(mContent, result.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -392,11 +373,9 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
         if (basketBalls == null || basketBalls.size() == 0) {
             mHome_basketball_title.setVisibility(View.GONE);
             mHome_recy_savant.setVisibility(View.GONE);
-            mBasketballView.setVisibility(View.GONE);
         } else {
             mHome_recy_savant.setVisibility(View.VISIBLE);
             mHome_basketball_title.setVisibility(View.VISIBLE);
-            mBasketballView.setVisibility(View.VISIBLE);
 
             mHome_recy_savant.setAdapter(new HomeBasketballAdapter(mContent, basketBalls));
 
@@ -535,13 +514,13 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
 
     private void setBasketball(int type) {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, false);
-        UIUtils.getSputils().putInt("guessball_basket_type", type);
+        UIUtils.getSputils().putInt("guessball_type", type);
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
     private void setFootball(int type) {
         UIUtils.getSputils().putBoolean(Constent.IS_FOOTBALL, true);
-        UIUtils.getSputils().putInt("guessball_foot_type", type);
+        UIUtils.getSputils().putInt("guessball_type", type);
         UIUtils.SendReRecevice(Constent.LOADING_GUESS_BALL);
     }
 
@@ -738,20 +717,6 @@ public class GuessBallControllarAll extends BaseTabsContainer implements OnRefre
     private void intentLogin() {
         Intent mIntent = new Intent(mContent, LoginActivity.class);
         startActivity(mIntent);
-    }
-
-    @Override
-    protected void setUnDe() {
-        super.setUnDe();
-        UIUtils.UnReRecevice(mRecevice);
-    }
-
-    private class HomeControllarRecevice extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Logger.INSTANCE.d(TAG, "home接受到关注的通知------------------------:");
-            getHOME(null);
-        }
     }
 
     @Override

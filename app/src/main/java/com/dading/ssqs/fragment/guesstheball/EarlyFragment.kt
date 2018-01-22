@@ -108,6 +108,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         NotificationController.getInstance().addObserver(this, NotificationController.early_mask)
+
         return initView()
     }
 
@@ -211,7 +212,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
     }
 
     fun selectBasketBall() {
-        if (currTitlePosition != 2 || twoTitleBasketPosition != 0) {
+        if (currTitlePosition != 2 || twoTitleBasketPosition != 0 || basketBallDefaultFragment == null) {
 
             currTitlePosition = 2
 
@@ -226,8 +227,7 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
     }
 
     fun selectFootBall() {
-        if (currTitlePosition != 1 || twoTitleFootPosition != 0) {
-
+        if (currTitlePosition != 1 || twoTitleFootPosition != 0 || defaultFragment == null) {
             currTitlePosition = 1
 
             twoTitleFootPosition = 0

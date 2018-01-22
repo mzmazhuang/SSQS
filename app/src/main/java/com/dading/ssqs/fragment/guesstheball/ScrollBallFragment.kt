@@ -219,7 +219,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
     }
 
     fun selectBasketBall() {
-        if (currTitlePosition != 2 || twoTitleBasketPosition != 0) {
+        if (currTitlePosition != 2 || twoTitleBasketPosition != 0 || ballBasketBallDefaultFragment == null) {
 
             currTitlePosition = 2
 
@@ -236,7 +236,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
     }
 
     fun selectFootBall() {
-        if (currTitlePosition != 1 || twoTitleFootPosition != 0) {
+        if (currTitlePosition != 1 || twoTitleFootPosition != 0 || scrollball_parent == null) {
 
             currTitlePosition = 1
 

@@ -85,7 +85,9 @@ public abstract class BaseAccFragnment extends BaseFragnment implements BaseQuic
         SSQSApplication.apiClient(0).getAccount(type, page, limit, new CcApiClient.OnCcListener() {
             @Override
             public void onResponse(CcApiResult result) {
-                mLoadingAnimal.setVisibility(View.GONE);
+                if (mLoadingAnimal != null) {
+                    mLoadingAnimal.setVisibility(View.GONE);
+                }
 
                 setVisiable(false);
                 if (result.isOk()) {
@@ -131,15 +133,15 @@ public abstract class BaseAccFragnment extends BaseFragnment implements BaseQuic
     }
 
     private void setVisiable(boolean b) {
-        mShowNetworkErr.setVisibility(b ? View.VISIBLE : View.GONE);
-
+        if (mShowNetworkErr != null) {
+            mShowNetworkErr.setVisibility(b ? View.VISIBLE : View.GONE);
+        }
     }
 
     private void processedData(List<AccountDetailBean> bean) {
-
         if (mB)
             mPage++;
-        if (totalPage == 1) {
+        if (totalPage == 1 && mRecycleview != null) {
             mRecycleview.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));
             mItems = bean;
             mAdapter = new AccountDetailAdapter(R.layout.account_detail_item, mItems);
@@ -154,9 +156,6 @@ public abstract class BaseAccFragnment extends BaseFragnment implements BaseQuic
         }
         if (mAdapter != null)
             mAdapter.notifyDataChangedAfterLoadMore(mB);
-        /*if (!mB)
-            ToastUtils.midToast(UIUtils.getContext( ), "已经加载完全部数据!", 0);*/
-
     }
 
     @OnClick({R.id.show_network_err_refresh})

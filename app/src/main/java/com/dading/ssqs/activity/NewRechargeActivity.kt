@@ -81,27 +81,27 @@ class NewRechargeActivity : BaseActivity() {
 
         val intent: Intent
         val bundle: Bundle
-        if (addrType == 1) {
+        if (addrType == 1) {//银行转账
             intent = Intent(mContext, RechargeBankActivity::class.java)
 
             bundle = Bundle()
             bundle.putSerializable(Constent.RECHARGE_BANK, bean)
 
             setStartIntent(bundle, intent)
-        } else if (addrType == 2 || addrType == 4 || addrType == 6) {
+        } else if (addrType == 2 || addrType == 4 || addrType == 6 || addrType == 10) {//普通二维码
             intent = Intent(mContext, RechargeActivity::class.java)
 
             bundle = Bundle()
             bundle.putSerializable(RECHARGE_INFO, bean)
 
             setStartIntent(bundle, intent)
-        } else if (addrType == 3) {
+        } else if (addrType == 3) {//网页链接
             intent = Intent()
             intent.action = "android.intent.action.VIEW"
             val content_url = Uri.parse(bean.bankAddress)
             intent.data = content_url
             startActivity(intent)
-        } else if (addrType == 7 || addrType == 8) {
+        } else if (addrType == 7 || addrType == 8) {//网页源代码
             if (loadingDialog == null) {
                 loadingDialog = LoadingDialog(this)
             }
@@ -111,14 +111,12 @@ class NewRechargeActivity : BaseActivity() {
                 if (result.isOk) {
                     val bean = result.data as QRCodeBean
 
-                    if (bean != null) {
-                        var intent = Intent(mContext, WebActivity::class.java)
+                    val intent = Intent(mContext, WebActivity::class.java)
 
-                        var bundle = Bundle()
-                        bundle.putString("url_content", bean.data)
+                    val bundle = Bundle()
+                    bundle.putString("url_content", bean.data)
 
-                        setStartIntent(bundle, intent)
-                    }
+                    setStartIntent(bundle, intent)
                 } else {
                     ToastUtils.midToast(UIUtils.getContext(), result.message, 0)
                 }

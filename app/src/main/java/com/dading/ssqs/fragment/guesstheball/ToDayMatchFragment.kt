@@ -122,7 +122,7 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
     }
 
     fun selectBasketBall() {
-        if (currTitlePosition != 2 || twoTitleBasketPosition != 0) {
+        if (currTitlePosition != 2 || twoTitleBasketPosition != 0 || basketBallDefaultFragment == null) {
 
             currTitlePosition = 2
 
@@ -139,7 +139,7 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
     }
 
     fun selectFootBall() {
-        if (currTitlePosition != 1 || twoTitleFootPosition != 0) {
+        if (currTitlePosition != 1 || twoTitleFootPosition != 0 || defaultFragment == null) {
 
             currTitlePosition = 1
 

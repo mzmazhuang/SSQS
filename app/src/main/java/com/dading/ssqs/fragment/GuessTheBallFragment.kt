@@ -120,13 +120,13 @@ class GuessTheBallFragment : Fragment() {
 
             clearTextColor()
 
+            changePage(type)
+
             when (type) {
                 GuessBallType.SCROLLBALL -> scrollBallTextView.setTextColor(Color.WHITE)
                 GuessBallType.TODAY -> toDayTextView.setTextColor(Color.WHITE)
                 GuessBallType.Early -> earlyTextView.setTextColor(Color.WHITE)
             }
-
-            changePage(type)
         } else {
             if (checkPage) {
                 changePage(type)
@@ -184,16 +184,16 @@ class GuessTheBallFragment : Fragment() {
         val fragmentTransaction = fragmentManager?.beginTransaction()
 
         if (scrollBallFragment != null) {
-            fragmentTransaction?.hide(scrollBallFragment)
             scrollBallFragment!!.fragmentPause()
+            fragmentTransaction?.hide(scrollBallFragment)
         }
         if (toDayMatchFragment != null) {
+            toDayMatchFragment!!.fragmentPause()
             fragmentTransaction?.hide(toDayMatchFragment)
-            toDayMatchFragment?.fragmentPause()
         }
         if (earlyFragment != null) {
+            earlyFragment!!.fragmentPause()
             fragmentTransaction?.hide(earlyFragment)
-            earlyFragment?.fragmentPause()
         }
 
         if (type == GuessBallType.SCROLLBALL) {

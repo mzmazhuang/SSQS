@@ -21,8 +21,6 @@ import com.dading.ssqs.R
 import com.dading.ssqs.SSQSApplication
 import com.dading.ssqs.adapter.newAdapter.BankAdapter
 import com.dading.ssqs.adapter.newAdapter.FindTabAdapter
-import com.dading.ssqs.apis.CcApiClient
-import com.dading.ssqs.apis.CcApiResult
 import com.dading.ssqs.base.LayoutHelper
 import com.dading.ssqs.bean.Constent
 import com.dading.ssqs.bean.WXDFBean
@@ -47,7 +45,7 @@ import com.dading.ssqs.components.LoadingDialog
 
 class NewRechargeActivity : BaseActivity() {
 
-    private var moneyView: EditText? = null
+    private lateinit var moneyView: EditText
     private var selectRechargeMoneyView: SelectRechargeMoneyView? = null
     private var tabLayout: TabLayout? = null
     private var viewPager: ViewPager? = null
@@ -65,7 +63,7 @@ class NewRechargeActivity : BaseActivity() {
     private var mType = 0
 
     private val listener = BankAdapter.OnRechargeClickListener { bean ->
-        val money = Integer.valueOf(moneyView!!.text.toString())!!
+        val money = Integer.valueOf(moneyView.text.toString())
         if (money <= 0) {
             ToastUtils.midToast(UIUtils.getContext(), "请输入具体金额", 0)
             return@OnRechargeClickListener
@@ -170,19 +168,19 @@ class NewRechargeActivity : BaseActivity() {
         inputLayout.addView(tvMoney, moneyLayoutParams)
 
         moneyView = EditText(this)
-        moneyView!!.inputType = InputType.TYPE_CLASS_NUMBER
-        moneyView!!.background = null
-        moneyView!!.textSize = 14f
-        moneyView!!.gravity = Gravity.CENTER_VERTICAL
-        moneyView!!.setTextColor(-0x8bda)
-        moneyView!!.setText("10")//默认值
+        moneyView.inputType = InputType.TYPE_CLASS_NUMBER
+        moneyView.background = null
+        moneyView.textSize = 14f
+        moneyView.gravity = Gravity.CENTER_VERTICAL
+        moneyView.setTextColor(-0x8bda)
+        moneyView.setText("10")//默认值
         val layoutParams = LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT, 10, 0, 10, 0)
         layoutParams.addRule(RelativeLayout.RIGHT_OF, chargeMoneyView.id)
         layoutParams.addRule(RelativeLayout.LEFT_OF, tvMoney.id)
         inputLayout.addView(moneyView, layoutParams)
 
         selectRechargeMoneyView = SelectRechargeMoneyView(this)
-        selectRechargeMoneyView!!.setListener { text -> moneyView!!.setText(text) }
+        selectRechargeMoneyView!!.setListener { text -> moneyView.setText(text) }
         topLayout.addView(selectRechargeMoneyView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 10f, 0f, 10f, 0f))
 
         val tipView = TextView(this)

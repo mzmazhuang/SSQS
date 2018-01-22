@@ -67,16 +67,6 @@ class DataController {
         earlyBasketBallHotData = null
     }
 
-    fun clearScrollFootBallData() {
-        footBallData = null
-        footBallHotData = null
-    }
-
-    fun clearToDayFootBallData() {
-        todayFootBallData = null
-        todayFootBallHotData = null
-    }
-
     fun clearScrollResultData() {
         scrollResultData = null
         scrollResultHotData = null

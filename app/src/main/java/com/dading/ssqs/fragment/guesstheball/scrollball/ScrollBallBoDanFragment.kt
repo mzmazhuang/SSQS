@@ -563,7 +563,7 @@ class ScrollBallBoDanFragment : Fragment(), OnRefreshListener, NotificationContr
 
                 filterCell!!.setCurrPage(off)
 
-                if (page?.items != null && page.items.size >= 1) {
+                if (page.items != null && page.items.size >= 1) {
                     defaultView!!.visibility = View.GONE
 
                     filterCell!!.beginRunnable(true)
@@ -614,7 +614,7 @@ class ScrollBallBoDanFragment : Fragment(), OnRefreshListener, NotificationContr
 
             filterCell!!.setSelectText(LocaleController.getString(R.string.select_all))
             leagueIDs = "0"
-            sType = 0;
+            sType = 0
 
             offset = 1
             getNetDataWork(offset, limit)
@@ -762,7 +762,7 @@ class ScrollBallBoDanFragment : Fragment(), OnRefreshListener, NotificationContr
 
     override fun didReceivedNotification(id: Int, vararg args: String) {
         if (id == NotificationController.scroll_mask) {
-            if (args?.isNotEmpty()) {
+            if (args.isNotEmpty()) {
                 if ("child_close" == args[0]) {
                     if (commitMenuView != null && commitMenuView!!.visibility == View.VISIBLE) {
                         commitMenuView!!.hide(false)

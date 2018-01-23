@@ -2009,6 +2009,29 @@ public class CcApiClient {
         Request("/v1.0/match/ball/part/matchID/" + matchId, null, mListener, false);
     }
 
+    /**
+     * 足球统计
+     *
+     * @param listener
+     */
+    public void getGuessBallFootBallTotal(int type, String date, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doGuessBallTotal");
+
+        Request("/v1.0/match/count/type/" + type + "/date/" + date + "/subType/0/leagueIDs/0/stype/0", null, mListener, false);
+    }
+
+    /**
+     * 篮球统计
+     *
+     * @param listener
+     */
+    public void getGuessBallBasketBallTotal(int type, String date, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doGuessBallTotal");
+
+        Request("/v1.0/match/counts/ball/type/" + type + "/date/" + date + "/subType/0/leagueIDs/0/stype/0", null, mListener, false);
+
+    }
+
     public interface OnCcListener {
         void onResponse(CcApiResult result);
     }
@@ -2339,6 +2362,8 @@ public class CcApiClient {
                     mRes.fromRankListResult(arg0);
                 } else if (mTag.equals("doBasketBallHeadInfoResult")) {
                     mRes.fromBasketBallHeadInfoResult(arg0);
+                } else if (mTag.equals("doGuessBallTotal")) {
+                    mRes.fromGuessBallTotalResult(arg0);
                 } else {
                     mRes.fromDefaultResult(arg0);
                 }

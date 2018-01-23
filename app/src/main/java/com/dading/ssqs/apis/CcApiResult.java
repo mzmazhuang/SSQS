@@ -2185,6 +2185,23 @@ public class CcApiResult {
         return this;
     }
 
+    public CcApiResult fromGuessBallTotalResult(String str) {
+        Integer total = 0;
+        try {
+            JSONObject json = new JSONObject(str);
+            this.setErrno(json.getInt("code"));
+            this.setMessage(json.getString("msg"));
+            this.setStatus(json.getBoolean("status"));
+            if (json.has("data") && !json.isNull("data")) {
+                total = json.getInt("data");
+            }
+        } catch (Exception e) {
+            Logger.INSTANCE.e("CcApiResult", e);
+        }
+        this.setData(total);
+        return this;
+    }
+
     public CcApiResult fromDefaultResult(String str) {
         try {
             JSONObject json = new JSONObject(str);

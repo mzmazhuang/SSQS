@@ -16,6 +16,7 @@ import android.widget.RelativeLayout
 import com.dading.ssqs.LocaleController
 import com.dading.ssqs.NotificationController
 import com.dading.ssqs.R
+import com.dading.ssqs.SSQSApplication
 import com.dading.ssqs.adapter.newAdapter.GuessBallTopAdapter
 import com.dading.ssqs.adapter.newAdapter.GuessBallTopSubAdapter
 import com.dading.ssqs.base.LayoutHelper
@@ -31,6 +32,7 @@ import com.dading.ssqs.fragment.guesstheball.early.EarlyFootBallPassFragment
 import com.dading.ssqs.fragment.guesstheball.early.EarlyHalfCourtFragment
 import com.dading.ssqs.fragment.guesstheball.early.EarlyResultFragment
 import com.dading.ssqs.fragment.guesstheball.early.EarlyTotalFragment
+import com.dading.ssqs.utils.DateUtils
 
 import java.util.ArrayList
 
@@ -191,18 +193,22 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         basketBallSubTitles.add(subTitle5)
         basketBallSubTitles.add(subTitle6)
 
+        createTitle(0, 0)
+    }
+
+    private fun createTitle(fTotal: Int, bTotal: Int) {
         //一级标题
         val topList = ArrayList<GuessTopTitle>()
 
         val title1 = GuessTopTitle()
         title1.id = 1
         title1.name = LocaleController.getString(R.string.football)
-        title1.count = 1
+        title1.count = fTotal
 
         val title2 = GuessTopTitle()
         title2.id = 2
         title2.name = LocaleController.getString(R.string.basketball)
-        title2.count = 3
+        title2.count = bTotal
 
         topList.add(title1)
         topList.add(title2)
@@ -262,6 +268,8 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
                 fragmentTransaction?.commit()
             }
         }
+
+        getFootBallTotal()
     }
 
     fun fragmentResume() {
@@ -306,43 +314,43 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
         clearFilterData()
 
         defaultFragment?.let {
-            defaultFragment?.filterPause()
+            defaultFragment!!.filterPause()
             fragmentTransaction.hide(defaultFragment)
         }
         boDanFragment?.let {
-            boDanFragment?.filterPause()
+            boDanFragment!!.filterPause()
             fragmentTransaction.hide(boDanFragment)
         }
         totalFragment?.let {
-            totalFragment?.filterPause()
+            totalFragment!!.filterPause()
             fragmentTransaction.hide(totalFragment)
         }
         halfCourtFragment?.let {
-            halfCourtFragment?.filterPause()
+            halfCourtFragment!!.filterPause()
             fragmentTransaction.hide(halfCourtFragment)
         }
         resultFragment?.let {
-            resultFragment?.filterPause()
+            resultFragment!!.filterPause()
             fragmentTransaction.hide(resultFragment)
         }
         earlyChampionFragment?.let {
-            earlyChampionFragment?.filterPause()
+            earlyChampionFragment!!.filterPause()
             fragmentTransaction.hide(earlyChampionFragment)
         }
         earlyBasketBallChampionFragmen?.let {
-            earlyBasketBallChampionFragmen?.filterPause()
+            earlyBasketBallChampionFragmen!!.filterPause()
             fragmentTransaction.hide(earlyBasketBallChampionFragmen)
         }
         basketBallDefaultFragment?.let {
-            basketBallDefaultFragment?.filterPause()
+            basketBallDefaultFragment!!.filterPause()
             fragmentTransaction.hide(basketBallDefaultFragment)
         }
         basketBallPassFragment?.let {
-            basketBallPassFragment?.filterPause()
+            basketBallPassFragment!!.filterPause()
             fragmentTransaction.hide(basketBallPassFragment)
         }
         footBallPassFragment?.let {
-            footBallPassFragment?.filterPause()
+            footBallPassFragment!!.filterPause()
             fragmentTransaction.hide(footBallPassFragment)
         }
 
@@ -501,5 +509,29 @@ class EarlyFragment : Fragment(), NotificationController.NotificationControllerD
             }
         })
         set.start()
+    }
+
+    private fun getFootBallTotal() {
+        val mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss")
+
+        SSQSApplication.apiClient(0).getGuessBallFootBallTotal(7, mDate) { result ->
+            if (result.isOk) {
+                var fTotal = result.data as Int
+
+                getBasketBallTotal(fTotal)
+            }
+        }
+    }
+
+    private fun getBasketBallTotal(fTotal: Int) {
+        val mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss")
+
+        SSQSApplication.apiClient(0).getGuessBallBasketBallTotal(7, mDate) { result ->
+            if (result.isOk) {
+                var bTotal = result.data as Int
+
+                createTitle(fTotal, bTotal)
+            }
+        }
     }
 }

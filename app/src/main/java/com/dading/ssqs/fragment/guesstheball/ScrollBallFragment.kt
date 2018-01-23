@@ -8,6 +8,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.support.annotation.IntDef
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
@@ -22,6 +23,7 @@ import android.widget.TextView
 import com.dading.ssqs.LocaleController
 import com.dading.ssqs.NotificationController
 import com.dading.ssqs.R
+import com.dading.ssqs.SSQSApplication
 import com.dading.ssqs.adapter.newAdapter.GuessBallTopAdapter
 import com.dading.ssqs.adapter.newAdapter.GuessBallTopSubAdapter
 import com.dading.ssqs.base.LayoutHelper
@@ -33,6 +35,7 @@ import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallDefaultFragmen
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallHalfCourtFragment
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallResultFragment
 import com.dading.ssqs.fragment.guesstheball.scrollball.ScrollBallTotalFragment
+import com.dading.ssqs.utils.DateUtils
 
 import java.util.ArrayList
 
@@ -381,18 +384,22 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
 
         basketBallSubTitles.add(subTitle1)
 
+        createTitle(0, 0)
+    }
+
+    private fun createTitle(fCount: Int, bCount: Int) {
         //一级标题
         val topList = ArrayList<GuessTopTitle>()
 
         val title1 = GuessTopTitle()
         title1.id = 1
         title1.name = LocaleController.getString(R.string.football)
-        title1.count = 5
+        title1.count = fCount
 
         val title2 = GuessTopTitle()
         title2.id = 2
         title2.name = LocaleController.getString(R.string.basketball)
-        title2.count = 1
+        title2.count = bCount
 
         topList.add(title1)
         topList.add(title2)
@@ -419,6 +426,8 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
                 fragmentTransaction.commit()
             }
         }
+
+        getFootBallTotal()
     }
 
     override fun didReceivedNotification(id: Int, vararg args: String) {
@@ -461,5 +470,29 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
             }
         })
         set.start()
+    }
+
+    private fun getFootBallTotal() {
+        val mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss")
+
+        SSQSApplication.apiClient(0).getGuessBallFootBallTotal(6, mDate) { result ->
+            if (result.isOk) {
+                var fTotal = result.data as Int
+
+                getBasketBallTotal(fTotal)
+            }
+        }
+    }
+
+    private fun getBasketBallTotal(fTotal: Int) {
+        val mDate = DateUtils.getCurTime("yyyyMMddHH:mm:ss")
+
+        SSQSApplication.apiClient(0).getGuessBallBasketBallTotal(6, mDate) { result ->
+            if (result.isOk) {
+                var bTotal = result.data as Int
+
+                createTitle(fTotal, bTotal)
+            }
+        }
     }
 }

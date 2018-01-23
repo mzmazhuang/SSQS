@@ -259,6 +259,8 @@ class ScrollBallResultFragment : Fragment(), OnRefreshListener, NotificationCont
 
                         selectTimeDialog!!.dismiss()
 
+                        resultTimeLayout!!.changeImageStyle(day)
+
                         setSelectTime(day)
                     }
                 }

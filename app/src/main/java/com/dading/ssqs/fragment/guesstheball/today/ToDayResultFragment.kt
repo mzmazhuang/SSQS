@@ -258,6 +258,8 @@ class ToDayResultFragment : Fragment(), OnRefreshListener, NotificationControlle
 
                         selectTimeDialog!!.dismiss()
 
+                        resultTimeLayout!!.changeImageStyle(day)
+
                         setSelectTime(day)
                     }
                 }

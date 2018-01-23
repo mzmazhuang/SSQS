@@ -20,6 +20,9 @@ public class ResultTimeLayout extends RelativeLayout {
     private TextView timeTextView;
     private int day = 1;
 
+    private ImageView rightView;
+    private ImageView leftView;
+
     private TimeListener listener;
 
     public void setListener(TimeListener listener) {
@@ -40,7 +43,7 @@ public class ResultTimeLayout extends RelativeLayout {
         timeLayout.setOrientation(LinearLayout.HORIZONTAL);
         addView(timeLayout, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, RelativeLayout.CENTER_IN_PARENT));
 
-        ImageView leftView = new ImageView(context);
+        leftView = new ImageView(context);
         leftView.setImageResource(R.mipmap.ic_result_left);
         leftView.setScaleType(ImageView.ScaleType.CENTER);
         leftView.setOnClickListener(new OnClickListener() {
@@ -52,6 +55,7 @@ public class ResultTimeLayout extends RelativeLayout {
                     if (listener != null) {
                         listener.onChange(day);
                     }
+                    changeImageStyle(day);
                 }
             }
         });
@@ -62,9 +66,9 @@ public class ResultTimeLayout extends RelativeLayout {
         timeTextView.setTextSize(12);
         timeLayout.addView(timeTextView, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 8, 0, 8, 0));
 
-        ImageView rightView = new ImageView(context);
+        rightView = new ImageView(context);
         rightView.setScaleType(ImageView.ScaleType.CENTER);
-        rightView.setImageResource(R.mipmap.ic_result_right);
+        rightView.setImageResource(R.mipmap.ic_result_right_gray);
         rightView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +77,7 @@ public class ResultTimeLayout extends RelativeLayout {
                     if (listener != null) {
                         listener.onChange(day);
                     }
+                    changeImageStyle(day);
                 }
             }
         });
@@ -105,5 +110,18 @@ public class ResultTimeLayout extends RelativeLayout {
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public void changeImageStyle(int day) {
+        if (day == 1) {
+            leftView.setImageResource(R.mipmap.ic_result_left);
+            rightView.setImageResource(R.mipmap.ic_result_right_gray);
+        } else if (day == 7) {
+            leftView.setImageResource(R.mipmap.ic_result_left_gray);
+            rightView.setImageResource(R.mipmap.ic_result_right);
+        } else {
+            leftView.setImageResource(R.mipmap.ic_result_left);
+            rightView.setImageResource(R.mipmap.ic_result_right);
+        }
     }
 }

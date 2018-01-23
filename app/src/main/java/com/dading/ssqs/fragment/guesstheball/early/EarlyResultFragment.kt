@@ -275,6 +275,8 @@ class EarlyResultFragment : Fragment(), OnRefreshListener, NotificationControlle
 
                         selectTimeDialog!!.dismiss()
 
+                        resultTimeLayout!!.changeImageStyle(day)
+
                         setSelectTime(day)
                     }
                 }

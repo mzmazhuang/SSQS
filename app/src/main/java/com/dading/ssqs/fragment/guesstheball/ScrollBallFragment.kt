@@ -384,7 +384,7 @@ class ScrollBallFragment : Fragment(), NotificationController.NotificationContro
 
         basketBallSubTitles.add(subTitle1)
 
-        createTitle(0, 0)
+        createTitle(-1, -1)
     }
 
     private fun createTitle(fCount: Int, bCount: Int) {

@@ -72,7 +72,7 @@ public class GuessBallTopAdapter extends RecyclerView.Adapter<GuessBallTopAdapte
 
         public void setData(final GuessTopTitle bean, final int position) {
             String value = bean.getName();
-            if (bean.getCount() > 0) {
+            if (bean.getCount() >= 0) {
                 value += "  (" + bean.getCount() + ")";
             }
             this.cell.setName(value);

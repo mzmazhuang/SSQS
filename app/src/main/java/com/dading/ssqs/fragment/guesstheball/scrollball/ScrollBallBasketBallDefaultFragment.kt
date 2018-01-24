@@ -803,7 +803,7 @@ class ScrollBallBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notif
                             fourRowData.add(getBeanItems(bottomStr, jCbean.realRate3, 2, jCbean.id))
 
                             break
-                        } else {
+                        } else if (oneRowData.size == 1 && twoRowData.size == 1) {
                             oneRowData.add(getBeanItems(topStr, jCbean.realRate1, 1, jCbean.id))
 
                             twoRowData.add(getBeanItems(bottomStr, jCbean.realRate3, 2, jCbean.id))
@@ -856,14 +856,14 @@ class ScrollBallBasketBallDefaultFragment : Fragment(), OnRefreshListener, Notif
                     val jCbean = items[j]
 
                     if (jCbean.payTypeID == 48) {//主
-                        if (currScoreBean.id == jCbean.matchID) {
+                        if (currScoreBean.id == jCbean.matchID && oneRowData.size == 3 && twoRowData.size == 3) {
                             oneRowData.add(getBeanItems("<font color=\"#E91212\">大</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate1, 1, jCbean.id))
 
                             twoRowData.add(getBeanItems("<font color=\"#8BEF81\">小</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate3, 2, jCbean.id))
                         }
                     }
                     if (jCbean.payTypeID == 49) {//客队
-                        if (currScoreBean.id == jCbean.matchID) {
+                        if (currScoreBean.id == jCbean.matchID && threeRowData.size == 3 && fourRowData.size == 3) {
                             threeRowData.add(getBeanItems("<font color=\"#E91212\">大</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate1, 1, jCbean.id))
 
                             fourRowData.add(getBeanItems("<font color=\"#8BEF81\">小</font><font color=\"#222222\">" + jCbean.realRate2 + "</font>", jCbean.realRate3, 2, jCbean.id))

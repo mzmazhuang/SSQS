@@ -256,7 +256,7 @@ class ToDayMatchFragment : Fragment(), NotificationController.NotificationContro
         basketBallSubTitles.add(subTitle5)
         basketBallSubTitles.add(subTitle6)
 
-        createTitle(0, 0)
+        createTitle(-1, -1)
     }
 
     private fun createTitle(fTotal: Int, bTotal: Int) {

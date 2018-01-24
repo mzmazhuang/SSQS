@@ -119,9 +119,9 @@ public class BasketBallDetailsItemCell extends LinearLayout {
         }
 
         moreRowTwoColumLayout = new LinearLayout(context);
-        moreRowTwoColumLayout.setOrientation(LinearLayout.HORIZONTAL);
+        moreRowTwoColumLayout.setOrientation(LinearLayout.VERTICAL);
         moreRowTwoColumLayout.setVisibility(View.GONE);
-        layout.addView(moreRowTwoColumLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
+        layout.addView(moreRowTwoColumLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         View view = new View(context);
         view.setBackgroundColor(0xFFE7E7E7);
@@ -177,7 +177,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
 
                     for (int j = 0; j < 2; j++) {
                         BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
-                        childCell.setData(list.get(position), data, focusList, position);
+                        childCell.setData(list.get(position), data, focusList, position, "全场让球".equals(list.get(0).getTagName()));
                         childCell.setListener(itemClickListener);
 
                         linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));
@@ -200,10 +200,9 @@ public class BasketBallDetailsItemCell extends LinearLayout {
                 oneRowTwoColumLayout.setVisibility(View.GONE);
                 oneRowMantColumLayout.setVisibility(View.VISIBLE);
                 moreRowTwoColumLayout.setVisibility(View.GONE);
-                //一行 多列的
 
                 for (int i = 0; i < list.size(); i++) {
-                    oneRowManyColumCells.get(i).setData(list.get(i), data, focusList, 0);
+                    oneRowManyColumCells.get(i).setData(list.get(i), data, focusList, 0, false);
                     oneRowManyColumCells.get(i).changeParams();
                     oneRowManyColumCells.get(i).setListener(itemClickListener);
                 }
@@ -215,10 +214,10 @@ public class BasketBallDetailsItemCell extends LinearLayout {
                 //一行 两列的
 
                 for (int i = 0; i < list.size(); i++) {
-                    oneRowTwoColumCells.get(i).setData(list.get(i), data, focusList, i);
+                    oneRowTwoColumCells.get(i).setData(list.get(i), data, focusList, i, false);
                     oneRowTwoColumCells.get(i).setListener(itemClickListener);
                 }
-            } else {
+            } else {  //多行 多列的
                 oneAndTwoLayout.setVisibility(View.GONE);
                 oneRowMantColumLayout.setVisibility(View.GONE);
                 oneRowTwoColumLayout.setVisibility(View.GONE);
@@ -231,15 +230,15 @@ public class BasketBallDetailsItemCell extends LinearLayout {
                 for (int i = 0; i < (list.size() / 2); i++) {
                     LinearLayout linearLayout = new LinearLayout(mContext);
                     linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                    oneAndTwoLayout.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
+                    moreRowTwoColumLayout.addView(linearLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 28));
 
                     View view = new View(mContext);
                     view.setBackgroundColor(0xFFE7E7E7);
-                    oneAndTwoLayout.addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
+                    moreRowTwoColumLayout.addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 1));
 
                     for (int j = 0; j < 2; j++) {
                         BasketDetailsChildCell childCell = new BasketDetailsChildCell(mContext);
-                        childCell.setData(list.get(position), data, focusList, position);
+                        childCell.setData(list.get(position), data, focusList, position, false);
                         childCell.setListener(itemClickListener);
 
                         linearLayout.addView(childCell, LayoutHelper.createLinear(0, LayoutHelper.MATCH_PARENT, 1f));

@@ -105,7 +105,7 @@ public class BasketDetailsChildCell extends LinearLayout {
         });
     }
 
-    public void setData(BasketBallDetailsActivity.BasketData.BasketItemData data, BasketBallDetailsActivity.BasketData basketData, List<BasketBallDetailsActivity.BasketData.BasketItemData> focus, int position) {
+    public void setData(BasketBallDetailsActivity.BasketData.BasketItemData data, BasketBallDetailsActivity.BasketData basketData, List<BasketBallDetailsActivity.BasketData.BasketItemData> focus, int position, boolean isCheck) {
         this.data = data;
         this.basketData = basketData;
 
@@ -119,7 +119,12 @@ public class BasketDetailsChildCell extends LinearLayout {
                 flag = false;
             }
 
-            String value = getRate2Str(data.getRightStr(), flag);
+            String value;
+            if (isCheck) {
+                value = getRate2Str(data.getRightStr(), flag);
+            } else {
+                value = data.getRightStr();
+            }
 
             if (!TextUtils.isEmpty(value) && !"null".equals(value)) {
                 rightView.setVisibility(View.VISIBLE);

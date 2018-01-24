@@ -372,7 +372,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="28dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@color/gray_e">
+                        android:background="@color/gray_e"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -419,7 +420,8 @@
                         android:id="@+id/home_recy_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"></ListView>
+                        android:layout_gravity="center"
+                        android:visibility="gone"></ListView>
 
                     <View
                         android:id="@+id/home_rank_view"

@@ -1,6 +1,7 @@
 package com.dading.ssqs.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -27,45 +28,45 @@ import butterknife.ButterKnife;
  */
 public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
     private static final String TAG = "HotMatchInfoLAdapter";
-    private final List<JCbean>             data;
-    private final Context                             context;
+    private final List<JCbean> data;
+    private final Context context;
     private final HashMap<Integer, JCbean> mMap;
     private final boolean isFootBall;
 
-    public HotMatchInfoLAdapter (List<JCbean> data, Context context, boolean isFootBall) {
+    public HotMatchInfoLAdapter(List<JCbean> data, Context context, boolean isFootBall) {
         this.context = context;
         this.data = data;
         this.isFootBall = isFootBall;
-        mMap = new HashMap<>( );
+        mMap = new HashMap<>();
     }
 
     @Override
-    public int getCount ( ) {
+    public int getCount() {
         if (data != null)
-            return data.size( );
+            return data.size();
 
         return 0;
     }
 
     @Override
-    public Object getItem (int position) {
+    public Object getItem(int position) {
         return null;
     }
 
     @Override
-    public long getItemId (int position) {
+    public long getItemId(int position) {
         return 0;
     }
 
     @Override
-    public View getView (int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.hot_match_info_item, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag( );
+            holder = (ViewHolder) convertView.getTag();
         }
         final JCbean d = data.get(position);
 
@@ -82,7 +83,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 else
                     holder.mItemSonMid.setVisibility(View.GONE);
 
-                Logger.INSTANCE.d(TAG,"是不是足球------------:"+isFootBall);
+                Logger.INSTANCE.d(TAG, "是不是足球------------:" + isFootBall);
 
                 holder.mMatchInfoItemSubscribe.setText(context.getString(R.string.guess_ninty_result));
                 holder.mMatchInfoItemIcon.setImageResource(R.mipmap.vs);
@@ -132,7 +133,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 else
                     holder.mItemSonMid.setVisibility(View.GONE);
 
-                Logger.INSTANCE.d(TAG,"是不是足球------------:"+isFootBall);
+                Logger.INSTANCE.d(TAG, "是不是足球------------:" + isFootBall);
 
                 holder.mMatchInfoItemSubscribe.setText(context.getString(R.string.guess_half_result));
                 holder.mMatchInfoItemIcon.setImageResource(R.mipmap.vs_banchang);
@@ -159,35 +160,35 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
         holder.mItemSonRightName.setText(d.away);
         holder.mItemSonRightNum.setText(d.realRate3);
         if (!d.cbTag1) {
-            holder.mItemSonLeft.setBackgroundColor(context.getResources( ).getColor(R.color.white));
-            holder.mItemSonLeftName.setTextColor(context.getResources( ).getColor(R.color.black));
-            holder.mItemSonLeftNum.setTextColor(context.getResources( ).getColor(R.color.orange));
+            holder.mItemSonLeft.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.mItemSonLeftName.setTextColor(context.getResources().getColor(R.color.black));
+            holder.mItemSonLeftNum.setTextColor(context.getResources().getColor(R.color.orange));
         } else {
-            holder.mItemSonLeft.setBackgroundColor(context.getResources( ).getColor(R.color.orange));
-            holder.mItemSonLeftName.setTextColor(context.getResources( ).getColor(R.color.white));
-            holder.mItemSonLeftNum.setTextColor(context.getResources( ).getColor(R.color.yellow_light));
+            holder.mItemSonLeft.setBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.mItemSonLeftName.setTextColor(context.getResources().getColor(R.color.white));
+            holder.mItemSonLeftNum.setTextColor(context.getResources().getColor(R.color.yellow_light));
         }
         if (!d.cbTag2) {
-            holder.mItemSonMid.setBackgroundColor(context.getResources( ).getColor(R.color.white));
-            holder.mItemSonMidName.setTextColor(context.getResources( ).getColor(R.color.black));
-            holder.mItemSonMidNum.setTextColor(context.getResources( ).getColor(R.color.orange));
+            holder.mItemSonMid.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.mItemSonMidName.setTextColor(context.getResources().getColor(R.color.black));
+            holder.mItemSonMidNum.setTextColor(context.getResources().getColor(R.color.orange));
         } else {
-            holder.mItemSonMid.setBackgroundColor(context.getResources( ).getColor(R.color.orange));
-            holder.mItemSonMidName.setTextColor(context.getResources( ).getColor(R.color.white));
-            holder.mItemSonMidNum.setTextColor(context.getResources( ).getColor(R.color.yellow_light));
+            holder.mItemSonMid.setBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.mItemSonMidName.setTextColor(context.getResources().getColor(R.color.white));
+            holder.mItemSonMidNum.setTextColor(context.getResources().getColor(R.color.yellow_light));
         }
         if (!d.cbTag3) {
-            holder.mItemSonRight.setBackgroundColor(context.getResources( ).getColor(R.color.white));
-            holder.mItemSonRightName.setTextColor(context.getResources( ).getColor(R.color.black));
-            holder.mItemSonRightNum.setTextColor(context.getResources( ).getColor(R.color.orange));
+            holder.mItemSonRight.setBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.mItemSonRightName.setTextColor(context.getResources().getColor(R.color.black));
+            holder.mItemSonRightNum.setTextColor(context.getResources().getColor(R.color.orange));
         } else {
-            holder.mItemSonRight.setBackgroundColor(context.getResources( ).getColor(R.color.orange));
-            holder.mItemSonRightName.setTextColor(context.getResources( ).getColor(R.color.white));
-            holder.mItemSonRightNum.setTextColor(context.getResources( ).getColor(R.color.yellow_light));
+            holder.mItemSonRight.setBackgroundColor(context.getResources().getColor(R.color.orange));
+            holder.mItemSonRightName.setTextColor(context.getResources().getColor(R.color.white));
+            holder.mItemSonRightNum.setTextColor(context.getResources().getColor(R.color.yellow_light));
         }
-        holder.mItemSonLeft.setOnClickListener(new View.OnClickListener( ) {
+        holder.mItemSonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v) {
+            public void onClick(View v) {
                 d.cbTag1 = !d.cbTag1;
                 if (d.cbTag1) {
                     mMap.put(d.id, d);
@@ -195,13 +196,13 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                     if (!d.cbTag1 && !d.cbTag2 && !d.cbTag3)
                         mMap.remove(d);
                 }
-                notifyDataSetChanged( );
+                notifyDataSetChanged();
                 UIUtils.SendReRecevice(Constent.HOT_DATA);
             }
         });
-        holder.mItemSonMid.setOnClickListener(new View.OnClickListener( ) {
+        holder.mItemSonMid.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v) {
+            public void onClick(View v) {
                 d.cbTag2 = !d.cbTag2;
                 if (d.cbTag2) {
                     mMap.put(d.id, d);
@@ -210,12 +211,12 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                         mMap.remove(d);
                 }
                 UIUtils.SendReRecevice(Constent.HOT_DATA);
-                notifyDataSetChanged( );
+                notifyDataSetChanged();
             }
         });
-        holder.mItemSonRight.setOnClickListener(new View.OnClickListener( ) {
+        holder.mItemSonRight.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v) {
+            public void onClick(View v) {
                 d.cbTag3 = !d.cbTag3;
                 if (d.cbTag3) {
                     mMap.put(d.id, d);
@@ -224,13 +225,13 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                         mMap.remove(d);
                 }
                 UIUtils.SendReRecevice(Constent.HOT_DATA);
-                notifyDataSetChanged( );
+                notifyDataSetChanged();
             }
         });
         return convertView;
     }
 
-    private void setSB (ViewHolder baseViewHolder, JCbean d) {
+    private void setSB(ViewHolder baseViewHolder, JCbean d) {
         String highBs = "高于" + d.realRate2;
         String lowBs = "低于" + d.realRate2;
         baseViewHolder.mItemSonLeftName.setText(highBs);
@@ -239,7 +240,7 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
         baseViewHolder.mItemSonRightNum.setText(d.realRate3);
     }
 
-    private void setLost (ViewHolder baseViewHolder, JCbean d) {
+    private void setLost(ViewHolder baseViewHolder, JCbean d) {
         if (d.realRate2.contains("/")) {
             String[] split = d.realRate2.split("/");
             if (!split[0].equals(split[1]) && Math.abs(Double.valueOf(split[0])) == Math.abs(Double.valueOf(split[1]))) {
@@ -260,63 +261,68 @@ public class HotMatchInfoLAdapter extends BaseAdapter implements ListAdapter {
                 baseViewHolder.mItemSonRightMid.setText(d.realRate2);
             }
         } else {
-            if (Double.valueOf(d.realRate2) > 0) {
-                String s = "+" + d.realRate2;
-                baseViewHolder.mItemSonLeftMid.setText(s);
-                String s1 = "-" + d.realRate2;
-                baseViewHolder.mItemSonRightMid.setText(s1);
-            } else {
-                if (Double.valueOf(d.realRate2) == 0) {
-                    String s = "" + Math.abs(Double.valueOf(d.realRate2));
+            if (!TextUtils.isEmpty(d.realRate2)) {
+                if (Double.valueOf(d.realRate2) > 0) {
+                    String s = "+" + d.realRate2;
                     baseViewHolder.mItemSonLeftMid.setText(s);
-                    String s1 = "" + Math.abs(Double.valueOf(d.realRate2));
+                    String s1 = "-" + d.realRate2;
                     baseViewHolder.mItemSonRightMid.setText(s1);
                 } else {
-                    baseViewHolder.mItemSonLeftMid.setText(d.realRate2);
-                    String text = "+" + Math.abs(Double.valueOf(d.realRate2));
-                    baseViewHolder.mItemSonRightMid.setText(text);
+                    if (Double.valueOf(d.realRate2) == 0) {
+                        String s = "" + Math.abs(Double.valueOf(d.realRate2));
+                        baseViewHolder.mItemSonLeftMid.setText(s);
+                        String s1 = "" + Math.abs(Double.valueOf(d.realRate2));
+                        baseViewHolder.mItemSonRightMid.setText(s1);
+                    } else {
+                        baseViewHolder.mItemSonLeftMid.setText(d.realRate2);
+                        String text = "+" + Math.abs(Double.valueOf(d.realRate2));
+                        baseViewHolder.mItemSonRightMid.setText(text);
+                    }
                 }
+            } else {
+                baseViewHolder.mItemSonLeftMid.setText("");
+                baseViewHolder.mItemSonRightMid.setText("");
             }
         }
     }
 
-    public HashMap<Integer, JCbean> getChecked ( ) {
+    public HashMap<Integer, JCbean> getChecked() {
         return mMap;
     }
 
     class ViewHolder {
         @Bind(R.id.match_info_item_icon)
-        ImageView    mMatchInfoItemIcon;
+        ImageView mMatchInfoItemIcon;
         @Bind(R.id.match_info_item_title)
-        TextView     mMatchInfoItemTitle;
+        TextView mMatchInfoItemTitle;
         @Bind(R.id.match_info_item_subscribe)
-        TextView     mMatchInfoItemSubscribe;
+        TextView mMatchInfoItemSubscribe;
         @Bind(R.id.match_info_item_title_ly)
         LinearLayout mMatchInfoItemTitleLy;
         @Bind(R.id.item_son_left_name)
-        TextView     mItemSonLeftName;
+        TextView mItemSonLeftName;
         @Bind(R.id.item_son_left_mid)
-        TextView     mItemSonLeftMid;
+        TextView mItemSonLeftMid;
         @Bind(R.id.item_son_left_num)
-        TextView     mItemSonLeftNum;
+        TextView mItemSonLeftNum;
         @Bind(R.id.item_son_left)
         LinearLayout mItemSonLeft;
         @Bind(R.id.item_son_mid_name)
-        TextView     mItemSonMidName;
+        TextView mItemSonMidName;
         @Bind(R.id.item_son_mid_num)
-        TextView     mItemSonMidNum;
+        TextView mItemSonMidNum;
         @Bind(R.id.item_son_mid)
         LinearLayout mItemSonMid;
         @Bind(R.id.item_son_right_name)
-        TextView     mItemSonRightName;
+        TextView mItemSonRightName;
         @Bind(R.id.item_son_right_mid)
-        TextView     mItemSonRightMid;
+        TextView mItemSonRightMid;
         @Bind(R.id.item_son_right_num)
-        TextView     mItemSonRightNum;
+        TextView mItemSonRightNum;
         @Bind(R.id.item_son_right)
         LinearLayout mItemSonRight;
 
-        ViewHolder (View view) {
+        ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }

@@ -1817,6 +1817,9 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData20.setRightStr(items.get(i).realRate2);
                     basketItemData20.setNumber(items.get(i).realRate3);
                     basketItemData20.setSelected(2);
+
+                    itemData8.add(basketItemData19);
+                    itemData8.add(basketItemData20);
                 } else if (items.get(i).payTypeID == 49) {//客场 得分 大小
                     basketItemData21.setId(items.get(i).id);
                     basketItemData21.setPayTypeID(items.get(i).payTypeID);
@@ -1833,6 +1836,9 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                     basketItemData22.setRightStr(items.get(i).realRate2);
                     basketItemData22.setNumber(items.get(i).realRate3);
                     basketItemData22.setSelected(2);
+
+                    itemData9.add(basketItemData21);
+                    itemData9.add(basketItemData22);
                 } else if ("第一节大小".equals(items.get(i).payTypeName) && TextUtils.isEmpty(items.get(i).teamName)) {
                     BasketData.BasketItemData basketItemData1 = new BasketData.BasketItemData();
                     basketItemData1.setId(items.get(i).id);
@@ -1989,10 +1995,6 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         itemData5.add(basketItemData14);
         itemData7.add(basketItemData17);
         itemData7.add(basketItemData18);
-        itemData8.add(basketItemData19);
-        itemData8.add(basketItemData20);
-        itemData9.add(basketItemData21);
-        itemData9.add(basketItemData22);
         itemData13.add(basketItemData35);
         itemData13.add(basketItemData36);
         itemData15.add(basketItemData39);

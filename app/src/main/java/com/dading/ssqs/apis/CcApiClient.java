@@ -138,6 +138,7 @@ public class CcApiClient {
 //            this.mBaseUri = "https://www.ddzlink.com/zc-intf/rest";
 //            this.mBaseUri = "http://10.10.31.71:8080/zc-intf/rest";//阿木
             this.mBaseUri = "http://13.124.189.54:8092/zc-intf/rest";//服务器
+//            this.mBaseUri = "http://10.10.31.75:8888/rest";//邱明海服务器
             return;
         }
 
@@ -453,10 +454,10 @@ public class CcApiClient {
      *
      * @param listener
      */
-    public void regAccount(RegAccountElement element, OnCcListener listener) {
+    public void regAccount(String sessionId, RegAccountElement element, OnCcListener listener) {
         CcListener mListener = new CcListener(listener, "doRegAccount");
 
-        Request("/v1.0/user/reg/account", element.buildParams(), mListener, true);
+        Request("/v1.0/user/reg/account?JSESSIONID=" + sessionId, element.buildParams(), mListener, true);
     }
 
     /**
@@ -2029,7 +2030,17 @@ public class CcApiClient {
         CcListener mListener = new CcListener(listener, "doGuessBallTotal");
 
         Request("/v1.0/match/counts/ball/type/" + type + "/date/" + date + "/subType/0/leagueIDs/0/stype/0", null, mListener, false);
+    }
 
+    /**
+     * 获取注册时验证码的sessionId
+     *
+     * @param listener
+     */
+    public void getRegisterCodeSessionId(OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doRegisterCodeSessionId");
+
+        Request("/v1.0/getSessionId", null, mListener, false);
     }
 
     public interface OnCcListener {
@@ -2364,6 +2375,8 @@ public class CcApiClient {
                     mRes.fromBasketBallHeadInfoResult(arg0);
                 } else if (mTag.equals("doGuessBallTotal")) {
                     mRes.fromGuessBallTotalResult(arg0);
+                } else if (mTag.equals("doRegisterCodeSessionId")) {
+                    mRes.fromCodeSessionIdResult(arg0);
                 } else {
                     mRes.fromDefaultResult(arg0);
                 }

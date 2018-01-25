@@ -12,6 +12,15 @@ public class RegAccountElement extends BaseElement {
     private String agentCode;
     private String mobile;
     private String code;
+    private String JSESSIONID;
+
+    public String getJSESSIONID() {
+        return JSESSIONID;
+    }
+
+    public void setJSESSIONID(String JSESSIONID) {
+        this.JSESSIONID = JSESSIONID;
+    }
 
     public String getAccount() {
         return account;

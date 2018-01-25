@@ -451,7 +451,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                                     UIUtils.getSputils().putInt(Constent.IS_VIP, bean.isVip);
 
                                     Gson gson = new Gson();
-                                    
+
                                     goSP(gson.toJson(bean, LoadingBean.class), bean.authToken);
                                 } catch (Exception ex) {
                                     Logger.INSTANCE.e(TAG, "up json failure");
@@ -477,13 +477,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 UIUtils.hideKeyBord(this);
                 Intent intentP = new Intent(this, RegisterActivity.class);
                 startActivity(intentP);
-                finish();
                 break;
             case R.id.loading_tv_new_user_number:
                 UIUtils.hideKeyBord(this);
                 Intent intent = new Intent(this, RegisterNumberActivity.class);
                 startActivity(intent);
-                finish();
                 break;
             case R.id.loading_tv_forgot_pwd:
                 UIUtils.hideKeyBord(this);

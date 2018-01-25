@@ -2202,6 +2202,20 @@ public class CcApiResult {
         return this;
     }
 
+    public CcApiResult fromCodeSessionIdResult(String str) {
+        String sessionId = "";
+        try {
+            JSONObject json = new JSONObject(str);
+            if (json.has("JSESSIONID") && !json.isNull("JSESSIONID")) {
+                sessionId = json.getString("JSESSIONID");
+            }
+        } catch (Exception e) {
+            Logger.INSTANCE.e("CcApiResult", e);
+        }
+        this.setData(sessionId);
+        return this;
+    }
+
     public CcApiResult fromDefaultResult(String str) {
         try {
             JSONObject json = new JSONObject(str);

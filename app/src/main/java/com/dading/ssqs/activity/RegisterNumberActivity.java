@@ -2,6 +2,7 @@ package com.dading.ssqs.activity;
 
 import android.content.Intent;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,11 +12,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dading.ssqs.R;
 import com.dading.ssqs.SSQSApplication;
 import com.dading.ssqs.apis.CcApiClient;
@@ -56,12 +59,16 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
     CheckBox mRegisetSecondAllowIcon;
     @Bind(R.id.regist_invite_code)
     EditText mRegistInviteCode;
-    @Bind(R.id.register_container)
-    RelativeLayout container;
     @Bind(R.id.register_scrollview)
     ScrollView scrollView;
+    @Bind(R.id.register_yzm)
+    EditText editTextYzm;
+    @Bind(R.id.yzm_image)
+    ImageView imageYzm;
 
     private boolean mIsAgree = true;
+
+    private String sessionId;
 
     @Override
     protected int setLayoutId() {
@@ -71,6 +78,21 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
     @Override
     protected void initData() {
         mRegisetSecondAllowIcon.setChecked(mIsAgree);
+
+        getSessionId();
+    }
+
+    private void getSessionId() {
+        SSQSApplication.apiClient(classGuid).getRegisterCodeSessionId(new CcApiClient.OnCcListener() {
+            @Override
+            public void onResponse(CcApiResult result) {
+                if (result != null && result.getData() != null) {
+                    sessionId = result.getData().toString();
+
+                    getYzm();
+                }
+            }
+        });
     }
 
     @Override
@@ -79,13 +101,6 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
         mRegistNumberPw.addTextChangedListener(this);
         mRegistNumberPwConfirm.addTextChangedListener(this);
         mRegisetSecondAllowIcon.setOnCheckedChangeListener(this);
-
-        container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hideKeyBroad();
-            }
-        });
 
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -96,6 +111,12 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
         });
     }
 
+    private void getYzm() {
+        SSQSApplication.glide.load(SSQSApplication.apiClient(classGuid).getBaseUri() + "/v1.0/identifyCode?JSESSIONID=" + sessionId)
+                .asBitmap().dontAnimate().skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE).into(imageYzm);
+    }
+
     private void hideKeyBroad() {
         AndroidUtilities.INSTANCE.hideKeyboard(mRegistNumberUsername);
         AndroidUtilities.INSTANCE.hideKeyboard(mRegistNumberPw);
@@ -103,7 +124,7 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
         AndroidUtilities.INSTANCE.hideKeyboard(mRegistInviteCode);
     }
 
-    @OnClick({R.id.regist_number_return, R.id.regist_number_button, R.id.regiset_loading, R.id.regiset_second_protocol})
+    @OnClick({R.id.regist_number_return, R.id.regist_number_button, R.id.regiset_loading, R.id.regiset_second_protocol, R.id.yzm_image})
     public void OnClik(View v) {
         Intent intent;
         UIUtils.hideKeyBord(this);
@@ -121,12 +142,16 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                 startActivity(intent);
                 finish();
                 break;
+            case R.id.yzm_image:
+                getYzm();
+                break;
             case R.id.regist_number_button:
                 //提交注册
 
                 String pwUsername = mRegistNumberUsername.getText().toString();
                 String pw = mRegistNumberPw.getText().toString();
                 String pwConfirm = mRegistNumberPwConfirm.getText().toString();
+                String yzm = editTextYzm.getText().toString().trim();
 
                 if (!mIsAgree) {
                     ToastUtils.midToast(RegisterNumberActivity.this, "请选择是否同意注册协议...", 0);
@@ -134,21 +159,27 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                     ToastUtils.midToast(RegisterNumberActivity.this, "账号或密码长度不得少于6位!", 0);
                 } else if (!pw.equals(pwConfirm)) {
                     ToastUtils.midToast(RegisterNumberActivity.this, "两次密码输入不一致,请检查设置的密码!", 0);
+                } else if (TextUtils.isEmpty(yzm)) {
+                    ToastUtils.midToast(RegisterNumberActivity.this, "请输入验证码!!", 0);
                 } else {
                     RegAccountElement element = new RegAccountElement();
                     element.setAccount(pwUsername);
                     element.setPassword(pw);
                     element.setRepassword(pwConfirm);
                     element.setAgentCode(mRegistInviteCode.getText().toString());
+                    element.setCode(yzm);
 
-                    SSQSApplication.apiClient(classGuid).regAccount(element, new CcApiClient.OnCcListener() {
+                    SSQSApplication.apiClient(classGuid).regAccount(sessionId, element, new CcApiClient.OnCcListener() {
                         @Override
                         public void onResponse(CcApiResult result) {
                             if (result.isOk()) {
                                 ToastUtils.midToast(RegisterNumberActivity.this, "注册成功!", 0);
                                 finish();
                             } else {
+                                getYzm();
+
                                 Logger.INSTANCE.d(TAG, result.getMessage());
+
                                 ToastUtils.midToast(RegisterNumberActivity.this, result.getMessage(), 0);
                             }
                         }
@@ -192,4 +223,8 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
         mIsAgree = isChecked;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

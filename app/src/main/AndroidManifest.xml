@@ -200,10 +200,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.PerferentialInfoActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".activity.UserTrialGameActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />

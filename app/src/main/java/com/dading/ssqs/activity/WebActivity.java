@@ -217,6 +217,8 @@ public class WebActivity extends BaseActivity {
     private void onTitled(String t) {
         if (TextUtils.isEmpty(curr_title)) {
             titleCell.setTitle(t);
+        } else {
+            titleCell.setTitle(curr_title);
         }
     }
 

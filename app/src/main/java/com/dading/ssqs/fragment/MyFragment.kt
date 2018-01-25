@@ -366,19 +366,19 @@ class MyFragment : Fragment(), View.OnClickListener {
                 view === rechargeLayout -> {//充值
                     if (isTourist) {
                         ToastUtils.midToast(context, "试玩账号不能进行充值!", 0)
-                        return
+                    } else {
+                        intent = Intent(context, NewRechargeActivity::class.java)
                     }
-                    intent = Intent(context, NewRechargeActivity::class.java)
                 }
                 view === withdrawalLayout -> {//提现
                     if (isTourist) {
                         ToastUtils.midToast(context, "试玩账号不能进行提现!", 0)
-                        return
-                    }
-                    intent = if (UIUtils.getSputils().getBoolean(Constent.IS_BIND_CARD, false)) {
-                        Intent(context, WithDrawActivity::class.java)
                     } else {
-                        Intent(context, NewBindBankCardActivity::class.java)
+                        intent = if (UIUtils.getSputils().getBoolean(Constent.IS_BIND_CARD, false)) {
+                            Intent(context, WithDrawActivity::class.java)
+                        } else {
+                            Intent(context, NewBindBankCardActivity::class.java)
+                        }
                     }
                 }
                 view === receiveLayout -> //领币
@@ -386,25 +386,25 @@ class MyFragment : Fragment(), View.OnClickListener {
                 view === accountDetailsCell -> {//账户明细
                     if (isTourist) {
                         ToastUtils.midToast(context, "试玩账号不能查看账户明细!", 0)
-                        return
+                    }else{
+                        intent = Intent(context, AccountDetailActivity::class.java)
                     }
-                    intent = Intent(context, AccountDetailActivity::class.java)
                 }
                 view === bettingRecordCell -> //投注记录
                     intent = Intent(context, BettingRecordActivity::class.java)
                 view === rechargeRecordCell -> {//充值记录
                     if (isTourist) {
                         ToastUtils.midToast(context, "试玩账号不能查看充值记录!", 0)
-                        return
+                    }else{
+                        intent = Intent(context, RechargeDetailActivity::class.java)
                     }
-                    intent = Intent(context, RechargeDetailActivity::class.java)
                 }
                 view === withdrawalRecordCell -> {//提款记录
                     if (isTourist) {
                         ToastUtils.midToast(context, "试玩账号不能查看提款记录!", 0)
-                        return
+                    }else{
+                        intent = Intent(context, WithDrawDentailActivity::class.java)
                     }
-                    intent = Intent(context, WithDrawDentailActivity::class.java)
                 }
                 view === agencyCenterCell -> //代理中心
                     intent = Intent(context, ProxyCenterActivity::class.java)

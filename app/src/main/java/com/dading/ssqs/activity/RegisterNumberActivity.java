@@ -89,7 +89,7 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                 if (result != null && result.getData() != null) {
                     sessionId = result.getData().toString();
 
-                    getYzm();
+                    getYzm(false);
                 }
             }
         });
@@ -111,8 +111,13 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
         });
     }
 
-    private void getYzm() {
-        SSQSApplication.glide.load(SSQSApplication.apiClient(classGuid).getBaseUri() + "/v1.0/identifyCode?JSESSIONID=" + sessionId)
+    private void getYzm(boolean isRefreshDate) {
+        String date = "";
+        if (isRefreshDate) {
+            date = "&date=" + System.currentTimeMillis();
+        }
+
+        SSQSApplication.glide.load(SSQSApplication.apiClient(classGuid).getBaseUri() + "/v1.0/identifyCode?JSESSIONID=" + sessionId + date)
                 .asBitmap().dontAnimate().skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE).into(imageYzm);
     }
@@ -143,7 +148,7 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                 finish();
                 break;
             case R.id.yzm_image:
-                getYzm();
+                getYzm(true);
                 break;
             case R.id.regist_number_button:
                 //提交注册
@@ -176,7 +181,7 @@ public class RegisterNumberActivity extends BaseActivity implements TextWatcher,
                                 ToastUtils.midToast(RegisterNumberActivity.this, "注册成功!", 0);
                                 finish();
                             } else {
-                                getYzm();
+                                getYzm(true);
 
                                 Logger.INSTANCE.d(TAG, result.getMessage());
 

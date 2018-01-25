@@ -16,12 +16,9 @@ import android.widget.Toast
 import com.dading.ssqs.LocaleController
 import com.dading.ssqs.R
 import com.dading.ssqs.SSQSApplication
-import com.dading.ssqs.activity.PerferentialInfoActivity
+import com.dading.ssqs.activity.WebActivity
 import com.dading.ssqs.adapter.newAdapter.PreferentialActivitiesAdapter
-import com.dading.ssqs.apis.CcApiClient
-import com.dading.ssqs.apis.CcApiResult
 import com.dading.ssqs.base.LayoutHelper
-import com.dading.ssqs.bean.Constent
 import com.dading.ssqs.bean.PerferentialBean
 import com.dading.ssqs.cells.TitleCell
 import com.dading.ssqs.components.swipetoloadlayout.OnRefreshListener
@@ -65,11 +62,10 @@ class PreferentialActivitiesFragment : Fragment(), OnRefreshListener {
 
         adapter = PreferentialActivitiesAdapter(context)
         adapter.setListener { bean ->
-            val intent = Intent(context, PerferentialInfoActivity::class.java)
+            val intent = Intent(context, WebActivity::class.java)
             if (bean != null) {
-                intent.putExtra(Constent.PERFERENTIAL_WEB, bean.webUrl)
-                intent.putExtra(Constent.PERFERENTIAL_TITLE, bean.title)
-                intent.putExtra(Constent.PERFERENTIAL_CONTENT, bean.content)
+                intent.putExtra("title", bean.title)
+                intent.putExtra("url", bean.content)
             }
             context.startActivity(intent)
         }

@@ -250,6 +250,8 @@ public class MoreSettingActivity extends BaseActivity {
                 break;
             case R.id.setting_out_loading:
                 UIUtils.getSputils().putBoolean(Constent.LOADING_BROCAST_TAG, false);
+
+                UIUtils.getSputils().putString(Constent.TOKEN, "");
                 //发送广播
                 UIUtils.SendReRecevice(Constent.LOADING_ACTION);
                 finish();

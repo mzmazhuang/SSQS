@@ -79,7 +79,7 @@ public class ScoreBImmediateAdapter extends RecyclerView.Adapter<ScoreBImmediate
             this.cell.setHomeName(bean.home);
             this.cell.setAwayName(bean.away);
             this.cell.setTime(bean.openTime);
-            this.cell.setMatchScore(bean.part1HScore, bean.part1AScore, bean.part2HScore, bean.part2AScore, bean.part3HScore, bean.part3AScore, bean.part4HScore, bean.part4AScore, bean.hOverTimeScore, bean.aOverTimeScore, bean.homeScore, bean.awayScore);
+            this.cell.setMatchScore(bean.part1HScore, bean.part1AScore, bean.part2HScore, bean.part2AScore, bean.part3HScore, bean.part3AScore, bean.part4HScore, bean.part4AScore, bean.hOverTimeScore, bean.aOverTimeScore, bean.hScore, bean.aScore);
             this.cell.setType(bean.isOver, bean.protime);
             this.cell.setFavorite(bean.isFouce == 1);
             this.cell.setFavoriteClickListener(new View.OnClickListener() {

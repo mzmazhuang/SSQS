@@ -134,48 +134,17 @@ class EarlyDefaultFragment : Fragment(), OnRefreshListener, NotificationControll
         SSQSApplication.cachedThreadPool.execute(thread)
     }
 
-    private val itemClickListener = ScrollBallItemAdapter.OnItemClickListener { id, bean, items, isAdd, isHome, position ->
-        //联赛id                                      //所点击的item                          //所点击的联赛信息                                                //是否是主场       //点击的位置
-        if (leagueMatchId == id || leagueMatchId == -1) {
-            leagueMatchId = id
+    private val itemClickListener = object : ScrollBallItemAdapter.OnItemClickListener {
+        override fun onAllClick(id: Int) {
+        }
 
-            if (isAdd) {//是添加 还是删除
-                if (leagusList.size == 0) {
-                    val mergeBean = ScrollBallDefaultFragment.MergeBean()
-                    mergeBean.items = items
+        override fun onItemClick(id: Int, bean: ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem, items: ScrollBallFootBallBean.ScrollBeanItems, isAdd: Boolean, isHome: Boolean, position: Int): Boolean {
+            //联赛id                                      //所点击的item                          //所点击的联赛信息                                                //是否是主场       //点击的位置
+            if (leagueMatchId == id || leagueMatchId == -1) {
+                leagueMatchId = id
 
-                    for (i in 0 until originalData!!.leagueName.size) {
-                        if (originalData!!.leagueName[i].id == id) {
-                            mergeBean.title = originalData!!.leagueName[i].title
-                            break
-                        }
-                    }
-
-                    val beanItems = ArrayList<ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem>()
-                    bean.position = position
-                    beanItems.add(bean)
-
-                    mergeBean.bean = beanItems
-
-                    leagusList.add(mergeBean)
-                } else {
-                    var isNew = true//是否添加新的数据
-                    for (i in leagusList.indices) {
-                        val mergeBean = leagusList[i]
-
-                        if (mergeBean.items!!.id == items.id) {//一个比赛下 不同的item
-                            isNew = false
-
-                            val beanItems = mergeBean.bean
-                            bean.position = position
-                            beanItems!!.add(bean)
-
-                            mergeBean.bean = beanItems
-                            break
-                        }
-                    }
-
-                    if (isNew) {
+                if (isAdd) {//是添加 还是删除
+                    if (leagusList.size == 0) {
                         val mergeBean = ScrollBallDefaultFragment.MergeBean()
                         mergeBean.items = items
 
@@ -193,44 +162,80 @@ class EarlyDefaultFragment : Fragment(), OnRefreshListener, NotificationControll
                         mergeBean.bean = beanItems
 
                         leagusList.add(mergeBean)
-                    }
-                }
-            } else {
-                val mergeBeanIterator = leagusList.iterator()
+                    } else {
+                        var isNew = true//是否添加新的数据
+                        for (i in leagusList.indices) {
+                            val mergeBean = leagusList[i]
 
-                while (mergeBeanIterator.hasNext()) {
-                    val mergeBean = mergeBeanIterator.next()
+                            if (mergeBean.items!!.id == items.id) {//一个比赛下 不同的item
+                                isNew = false
 
-                    if (mergeBean.items!!.id == items.id) {
-                        val beanItems = mergeBean.bean
+                                val beanItems = mergeBean.bean
+                                bean.position = position
+                                beanItems!!.add(bean)
 
-                        val beanItemIterator = beanItems!!.iterator()
-                        while (beanItemIterator.hasNext()) {
-                            val beanItem = beanItemIterator.next()
-                            if (beanItem.id == bean.id) {
-                                beanItemIterator.remove()
-
-                                if (beanItems.size == 0) {
-                                    mergeBeanIterator.remove()
-                                }
+                                mergeBean.bean = beanItems
                                 break
+                            }
+                        }
+
+                        if (isNew) {
+                            val mergeBean = ScrollBallDefaultFragment.MergeBean()
+                            mergeBean.items = items
+
+                            for (i in 0 until originalData!!.leagueName.size) {
+                                if (originalData!!.leagueName[i].id == id) {
+                                    mergeBean.title = originalData!!.leagueName[i].title
+                                    break
+                                }
+                            }
+
+                            val beanItems = ArrayList<ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem>()
+                            bean.position = position
+                            beanItems.add(bean)
+
+                            mergeBean.bean = beanItems
+
+                            leagusList.add(mergeBean)
+                        }
+                    }
+                } else {
+                    val mergeBeanIterator = leagusList.iterator()
+
+                    while (mergeBeanIterator.hasNext()) {
+                        val mergeBean = mergeBeanIterator.next()
+
+                        if (mergeBean.items!!.id == items.id) {
+                            val beanItems = mergeBean.bean
+
+                            val beanItemIterator = beanItems!!.iterator()
+                            while (beanItemIterator.hasNext()) {
+                                val beanItem = beanItemIterator.next()
+                                if (beanItem.id == bean.id) {
+                                    beanItemIterator.remove()
+
+                                    if (beanItems.size == 0) {
+                                        mergeBeanIterator.remove()
+                                    }
+                                    break
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            if (leagusList.size == 0) {
-                leagueMatchId = -1
-                commitView!!.visibility = View.GONE
+                if (leagusList.size == 0) {
+                    leagueMatchId = -1
+                    commitView!!.visibility = View.GONE
+                } else {
+                    commitView!!.setCount(leagusList.size)
+                    commitView!!.visibility = View.VISIBLE
+                }
+
+                return true
             } else {
-                commitView!!.setCount(leagusList.size)
-                commitView!!.visibility = View.VISIBLE
+                return false
             }
-
-            true
-        } else {
-            false
         }
     }
 

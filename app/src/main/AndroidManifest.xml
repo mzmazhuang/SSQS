@@ -604,6 +604,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name=".activity.ScrollFootBallDetailsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
 
         <!--shareSdK分享集成-->
         <activity

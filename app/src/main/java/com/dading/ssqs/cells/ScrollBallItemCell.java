@@ -44,6 +44,7 @@ public class ScrollBallItemCell extends LinearLayout {
     private ScrollBallItemAdapter.OnItemClickListener listener;
     private int beanId;
     private AlphaAnimation mAlphaAnim;
+    private ImageView allImageView;
 
     private List<ScrollBallItemChildCell> cells = new ArrayList<>();
 
@@ -72,10 +73,25 @@ public class ScrollBallItemCell extends LinearLayout {
         timeTextView.setTextColor(0xFFBDBDBD);
         topLayout.addView(timeTextView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 17, 0, 0, 0, RelativeLayout.CENTER_VERTICAL));
 
+        allImageView = new ImageView(context);
+        allImageView.setId(R.id.scroll_all_play);
+        allImageView.setImageResource(R.mipmap.ic_all_play);
+        allImageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onAllClick(beanId);
+                }
+            }
+        });
+        topLayout.addView(allImageView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
+
         titleTextLayout = new LinearLayout(context);
         titleTextLayout.setOrientation(LinearLayout.HORIZONTAL);
         titleTextLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-        topLayout.addView(titleTextLayout, LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
+        RelativeLayout.LayoutParams titleLP = LayoutHelper.createRelative(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT);
+        titleLP.addRule(RelativeLayout.LEFT_OF, allImageView.getId());
+        topLayout.addView(titleTextLayout, titleLP);
 
         titleTextView = new TextView(context);
         titleTextView.setTextSize(14);
@@ -275,12 +291,16 @@ public class ScrollBallItemCell extends LinearLayout {
 
         LinearLayout.LayoutParams layoutParams = (LayoutParams) titleTextView.getLayoutParams();
 
-        if (page == 3) {
+        if (page == 3) {//早盘页面
             titleTextLayout.setPadding(0, 0, AndroidUtilities.INSTANCE.dp(75f), 0);
 
             layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(75f), 0, 0, 0);
-        } else {
+        } else if (page == 2) {//今日
             titleTextLayout.setPadding(0, 0, AndroidUtilities.INSTANCE.dp(60f), 0);
+
+            layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(60f), 0, 0, 0);
+        } else {//滚球
+            titleTextLayout.setPadding(0, 0, AndroidUtilities.INSTANCE.dp(5f), 0);
 
             layoutParams.setMargins(AndroidUtilities.INSTANCE.dp(60f), 0, 0, 0);
         }
@@ -290,10 +310,14 @@ public class ScrollBallItemCell extends LinearLayout {
         if (page != 1) {
             setTitle(bean.getTitle() + "　VS　" + bean.getByTitle());
 
+            allImageView.setVisibility(View.GONE);
+
             if (mAlphaAnim != null) {
                 mAlphaAnim.cancel();
             }
         } else {
+            allImageView.setVisibility(View.VISIBLE);
+
             setTitle("<font color=\"#626262\">" + bean.getTitle() + "</font>&nbsp;&nbsp;<font color=\"#1FA605\">" + bean.gethScore() + "-" + bean.getaScore() + "</font>&nbsp;&nbsp;<font color=\"#626262\">" + bean.getByTitle() + "</font>");
 
             if (!TextUtils.isEmpty(bean.getProtTime())) {

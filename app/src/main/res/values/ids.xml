@@ -39,6 +39,7 @@
     <item name="perfer_next" type="id" />
     <item name="score_parent" type="id" />
     <item name="score_basket_center" type="id" />
+    <item name="scroll_all_play" type="id" />
     <!--end swipeToLoadLayout-->
 
 </resources>

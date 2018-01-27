@@ -708,7 +708,7 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
             @Override
             public void onAnimationStart(Animator animation) {
                 currPosition = -1;
-                
+
                 ScrollBallCommitMenuView.this.setVisibility(View.VISIBLE);
             }
         });

@@ -105,5 +105,7 @@ public class ScrollBallItemAdapter extends RecyclerView.Adapter<ScrollBallItemAd
 
     public interface OnItemClickListener {
         boolean onItemClick(int id, ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem bean, ScrollBallFootBallBean.ScrollBeanItems items, boolean isAdd, boolean isHome, int position);
+
+        void onAllClick(int id);
     }
 }

@@ -23,7 +23,6 @@ public class ScrollFootBallDetailsActivity extends BaseActivity implements OnRef
 
     private SwipeToLoadLayout swipeToLoadLayout;
 
-
     @Override
     protected int setLayoutId() {
         return 0;

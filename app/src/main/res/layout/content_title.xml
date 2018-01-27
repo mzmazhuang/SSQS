@@ -26,27 +26,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
                 android:src="@mipmap/chongzhi" />
-
-            <ImageView
-                android:id="@+id/home_LOG"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/h_home_log_2"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-            <ImageView
-                android:id="@+id/my_sns_colloect"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:padding="5dp"
-                android:src="@mipmap/my_favorite" />
         </RelativeLayout>
-
 
         <!--推荐-->
         <RelativeLayout
@@ -126,7 +106,6 @@
 
 
         <!--猜球-->
-
         <RelativeLayout
             android:id="@+id/content_title_guessball_ly"
             android:layout_width="match_parent"
@@ -155,9 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:padding="3dp"
-                    android:src="@mipmap/a_bet_coin_1"
-
-                    />
+                    android:src="@mipmap/a_bet_coin_1" />
 
                 <TextView
                     android:id="@+id/content_title_guessball_glod_number"
@@ -230,19 +207,10 @@
         </RelativeLayout>
 
         <!--比分-->
-
         <RelativeLayout
             android:id="@+id/content_title_score_ly"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/content_title_score_store"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="20dp"
-                android:src="@mipmap/chongzhi" />
 
             <RadioGroup
                 android:id="@+id/content_title_score_title_rg"
@@ -275,24 +243,14 @@
             </RadioGroup>
 
             <ImageView
-                android:id="@+id/content_title_score_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:src="@mipmap/set" />
-
-            <ImageView
                 android:id="@+id/content_title_score_choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="12dp"
-                android:layout_toStartOf="@id/content_title_score_setting"
                 android:gravity="center"
-                android:src="@mipmap/suaixuan" />
+                android:src="@mipmap/ic_score_filter" />
         </RelativeLayout>
 
         <!--我的-->

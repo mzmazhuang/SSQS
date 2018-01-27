@@ -330,7 +330,7 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
             Logger.INSTANCE.d(TAG, "比分返回数据是------------------------------:" + mData.hScore + "-" + mData.aScore);
 
             //半场比分
-            if (mData.hHalfScore.equals("")) {
+            if ("".equals(mData.hHalfScore)) {
                 mMatchUpHalfscore.setVisibility(View.GONE);
             } else {
                 mMatchUpHalfscore.setVisibility(View.VISIBLE);
@@ -390,10 +390,10 @@ public class MatchInfoActivity extends BaseActivity implements View.OnClickListe
                             if (split.length > 1) {//判断是篮球还是足球
                                 //判断是否要减15分钟
                                 Logger.INSTANCE.d(TAG, "分割时间------------------------------:" + split[1]);
-                                if (!TextUtils.isEmpty(split[1]) && Integer.parseInt(split[1]) > 64)
-                                    mMatchInfoTimer.setText(split[0] + " " + String.valueOf(Integer.parseInt(split[1]) - 15));
+                                if (!TextUtils.isEmpty(split[1]))
+                                    mMatchInfoTimer.setText(split[0] + " " + split[1]);
                                 else
-                                    mMatchInfoTimer.setText(split[1]);
+                                    mMatchInfoTimer.setText(split[0]);
                             } else {
                                 if (Integer.parseInt(mData.protime) > 64) {
                                     mMatchInfoTimer.setText(String.valueOf(Integer.parseInt(mData.protime) - 15));

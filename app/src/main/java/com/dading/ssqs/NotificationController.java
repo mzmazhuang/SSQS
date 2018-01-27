@@ -19,11 +19,16 @@ import java.util.ArrayList;
 public class NotificationController {
     private static int totalEvents = 1;
 
-    public static final int scroll_mask = totalEvents++;
-    public static final int today_mask = totalEvents++;
-    public static final int early_mask = totalEvents++;
-    public static final int footBallFilter = totalEvents++;
-    public static final int basketBallFilter = totalEvents++;
+    public static final int scroll_mask = totalEvents++;//遮罩
+    public static final int today_mask = totalEvents++;//遮罩
+    public static final int early_mask = totalEvents++;//遮罩
+    public static final int footBallFilter = totalEvents++;//早盘足球筛选
+    public static final int basketBallFilter = totalEvents++;//早盘篮球筛选
+    public static final int scoreBasketBallFilter = totalEvents++;//比分篮球筛选
+    public static final int scoreFootBallFilter = totalEvents++;//比分足球筛选
+    public static final int scoreFootChildPage = totalEvents++;//page页面变化
+    public static final int scoreBasketChildPage = totalEvents++;//page页面变化
+    public static final int scoreChildRefresh = totalEvents++;//刷新
 
     private static final String BROADCAST_NOTIFICATION = "broadcast_notification";
     private static final String BROADCAST_NOTIFICATION_ID = "id";

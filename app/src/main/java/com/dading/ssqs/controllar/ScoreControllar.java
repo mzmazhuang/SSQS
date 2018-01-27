@@ -443,13 +443,6 @@ public class ScoreControllar extends BaseTabsContainer {
                 }
             }
         });
-        mScoreSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContent, MoreSettingActivity.class);
-                mContent.startActivity(intent);
-            }
-        });
     }
 
     private class ScoreRecevice extends BroadcastReceiver {

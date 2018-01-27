@@ -54,8 +54,6 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
     @Bind(R.id.content_icon_Store)
     ImageView mStore;
 
-    @Bind(R.id.my_sns_colloect)
-    public ImageView mSnsCollect;
     @Bind(R.id.content_title_home_ly)
     public RelativeLayout mContenHomeLy;
     @Bind(R.id.content_referr_Store)
@@ -94,22 +92,16 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
     public ImageButton mGuessIcon;
     @Bind(R.id.content_title_guessball_ly)
     public RelativeLayout mGuessBallLy;
-    @Bind(R.id.content_title_score_store)
-    public ImageView mScoreStore;
     //@Bind(R.id.content_title_score_title_f)
     public RadioButton mScoreTitleFootball;
     //@Bind(content_title_score_title_b)
     public RadioButton mScoreTitleBasketBall;
     @Bind(R.id.content_title_score_title_rg)
     public RadioGroup mScoreTitleRg;
-    @Bind(R.id.content_title_score_setting)
-    public ImageView mScoreSetting;
     @Bind(R.id.content_title_score_choice)
     public ImageView mScoreChoice;
     @Bind(R.id.content_title_score_ly)
     public RelativeLayout mScoreLy;
-    @Bind(R.id.content_my_setting)
-    public ImageView mMyStoreSetting;
     @Bind(R.id.content_my_message_num)
     public TextView mMyStoreMessNum;
     @Bind(R.id.content_my_message)
@@ -233,8 +225,8 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
      * 2016-4-9 下午8:01:53
      */
     @OnClick({R.id.content_my_setting, R.id.content_my_message, R.id.content_title_guessball_photo_back
-            , R.id.content_icon_Store, R.id.content_referr_Store, R.id.content_title_score_store, R.id.content_title_guessball_beticon
-            , R.id.content_title_guessball_glod_add, R.id.content_title_guessball_glod_number, R.id.my_sns_colloect})
+            , R.id.content_icon_Store, R.id.content_referr_Store, R.id.content_title_guessball_beticon
+            , R.id.content_title_guessball_glod_add, R.id.content_title_guessball_glod_number})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.content_my_setting:
@@ -256,7 +248,6 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
                 break;
             case R.id.content_icon_Store:
             case R.id.content_referr_Store:
-            case R.id.content_title_score_store:
                 if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
                     mIntent = new Intent(mContent, NewRechargeActivity.class);
                 } else {
@@ -273,15 +264,6 @@ public abstract class BaseTabsContainer extends Fragment implements RadioGroup.O
                 intentGlodBuy.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intentGlodBuy.putExtra(Constent.DIAMONDS, "2");
                 startActivity(intentGlodBuy);
-                break;
-
-            case R.id.my_sns_colloect:
-                if (UIUtils.getSputils().getBoolean(Constent.LOADING_BROCAST_TAG, false)) {
-                    mIntent = new Intent(mContent, MatchCollectActivity.class);
-                } else {
-                    mIntent = new Intent(mContent, LoginActivity.class);
-                }
-                startActivity(mIntent);
                 break;
         }
     }

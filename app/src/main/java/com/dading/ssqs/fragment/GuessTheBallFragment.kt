@@ -231,6 +231,8 @@ class GuessTheBallFragment : Fragment() {
             }
         }
         fragmentTransaction?.commit()
+
+        this.type = 0
     }
 
     //清除标题字体颜色

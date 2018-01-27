@@ -31,6 +31,9 @@ public class DateUtils {
      * java时间转正毫秒值
      */
     public static Date formatDate(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return new Date();
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
         Date d = null;
         try {

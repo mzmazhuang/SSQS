@@ -42,6 +42,7 @@
     <color name="gray_c">#ccc</color>
     <color name="gray_e3">#E3E3E3</color>
     <color name="gray8">#888</color>
+    <color name="score_gray">#65D2FF</color>
     <color name="gray9">#999</color>
     <color name="gray6">#666</color>
     <color name="gray5">#535353</color>

@@ -274,6 +274,17 @@ public class CcApiClient {
     }
 
     /**
+     * 添加进收藏/移除进收藏
+     *
+     * @param listener
+     */
+    public void fouceMatchBasketBall(FouceMatchBallElement element, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doFouceMatchBall");
+
+        Request("/v1.0/fouceMatch/ball", element.buildParams(), mListener, true);
+    }
+
+    /**
      * 注册试用账号
      *
      * @param listener

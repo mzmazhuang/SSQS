@@ -80,7 +80,7 @@ public class PageLoadMoreFooterView extends SwipeLoadMoreFooterLayout {
 
     @Override
     public void onLoadMore() {
-        tvLoadMore.setText(LocaleController.getString(R.string.loading));
+        tvLoadMore.setText(LocaleController.getString(R.string.loading_more));
         loading.setVisibility(VISIBLE);
         loading.startAnimation(loadingAnim);
     }

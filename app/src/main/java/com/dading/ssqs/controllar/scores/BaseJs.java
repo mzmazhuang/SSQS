@@ -264,7 +264,7 @@ public class BaseJs extends BaseScoreControllar {
 
                                                     if (page != null) {
                                                         mPage = page.getTotalPage();
-                                                        mCount = page.getTotalCount();
+                                                        mTotalCount = page.getTotalCount();
 
                                                         if (page.getItems() != null) {
                                                             addData(page.getItems());
@@ -287,7 +287,7 @@ public class BaseJs extends BaseScoreControllar {
     }
 
     private void addData(List<ScoreBean> items) {
-        mCount = mItems.size();
+        int mCount = mItems.size();
         mItems.addAll(items);
         if (mItems != null) {
             mAdapter.addData(items);
@@ -321,7 +321,7 @@ public class BaseJs extends BaseScoreControllar {
 
                                     if (page != null) {
                                         mPage = page.getTotalPage();
-                                        mCount = page.getTotalCount();
+                                        mTotalCount = page.getTotalCount();
 
                                         if (page.getItems() != null) {
 

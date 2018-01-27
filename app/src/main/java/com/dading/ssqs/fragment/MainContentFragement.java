@@ -62,7 +62,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
     private MyPagerAdapter mAdapter;
     public PreferentialActivitiesFragment mPreferentialActivitiesFragment;
     public GuessTheBallFragment guessTheBallFragment;
-    public ScoreControllar mScoreControllar;
+    public ScoreFragment scoreFragment;
     public MyFragment myFragment;
     private GuessBallControllarAll mGuessBallControllarAll;
     private ArrayList<RadioButton> mList;
@@ -119,7 +119,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         //优惠
         mPreferentialActivitiesFragment = new PreferentialActivitiesFragment();
         //比分
-        mScoreControllar = new ScoreControllar();
+        scoreFragment = new ScoreFragment();
         //我的
         myFragment = new MyFragment();
         //首页
@@ -129,7 +129,7 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
         mBaseDataControllar.add(mGuessBallControllarAll);
         mBaseDataControllar.add(mPreferentialActivitiesFragment);
         mBaseDataControllar.add(guessTheBallFragment);
-        mBaseDataControllar.add(mScoreControllar);
+        mBaseDataControllar.add(scoreFragment);
         mBaseDataControllar.add(myFragment);
 
         //为viewpager赋值
@@ -304,12 +304,12 @@ public class MainContentFragement extends BaseFragnment implements RadioGroup.On
                     startActivity(casionIntent);
                     break;
                 case Constent.LOADING_SCORE:
-                    if (mScoreControllar != null) {
+                    if (scoreFragment != null) {
                         int type = UIUtils.getSputils().getInt("score_title_type", 0);
 
                         int pageType = UIUtils.getSputils().getInt("score_page_type", 0);
 
-                        mScoreControllar.setTitleType(type, pageType);
+                        scoreFragment.setTitleType(type, pageType);
                     }
 
                     mRg.check(mScore.getId());

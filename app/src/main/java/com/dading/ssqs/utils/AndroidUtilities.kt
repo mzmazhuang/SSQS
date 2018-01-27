@@ -33,7 +33,7 @@ import com.dading.ssqs.activity.LoginActivity
 import com.dading.ssqs.bean.Constent
 
 import java.lang.reflect.Method
-import java.util.Hashtable
+import java.util.*
 
 /**
  * Created by mazhuang on 2017/11/20.
@@ -47,6 +47,8 @@ object AndroidUtilities {
     private val displaySize = Point()
     private val displayMetrics = DisplayMetrics()
     private var screenSize: Point? = null
+    private val colors = intArrayOf(-0x35ff36, -0xfe3257, -0x1a56e8, -0x19c2d9, -0xffcf36, -0xff4136, -0x1687b0, -0x75af17, -0x104cee, -0x9d80)
+
 
     /**
      * 获取屏幕宽高
@@ -264,5 +266,9 @@ object AndroidUtilities {
             stateListDrawable.addState(intArrayOf(), ColorDrawable(0x00000000))
             return stateListDrawable
         }
+    }
+
+    fun getRandomColor(): Int {
+        return colors[Random().nextInt(10)]
     }
 }

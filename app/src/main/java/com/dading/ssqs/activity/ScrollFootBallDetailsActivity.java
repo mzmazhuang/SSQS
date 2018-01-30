@@ -605,8 +605,8 @@ public class ScrollFootBallDetailsActivity extends BaseActivity implements OnRef
                     bean = (ScoreBean) result.getData();
 
                     if (bean != null) {
-                        headCell.setHomeTeamInfo(bean.home, "0", bean.hHalfScore, "0", bean.homeScore);
-                        headCell.setvisitingTeamInfo(bean.away, "0", bean.aHalfScore, "0", bean.awayScore);
+                        headCell.setHomeTeamInfo(bean.home, bean.hOverTimeScore, bean.hHalfScore, bean.hSHalfScore, bean.homeScore);
+                        headCell.setvisitingTeamInfo(bean.away, bean.aOverTimeScore, bean.aHalfScore, bean.aSHalfScore, bean.awayScore);
                         headCell.setSection(bean.protime);
 
                     }

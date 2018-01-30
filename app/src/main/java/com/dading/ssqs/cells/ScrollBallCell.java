@@ -97,6 +97,7 @@ public class ScrollBallCell extends LinearLayout {
 
         adapter.setPageType(type);
         adapter.setBeanId(bean.getTitle().getId());
+        adapter.setTitle(bean.getTitle().getTitle());
         setTitle(bean.getTitle().getTitle());
         setItems(bean.getItems());
     }

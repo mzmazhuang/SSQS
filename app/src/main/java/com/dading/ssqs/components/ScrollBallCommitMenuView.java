@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.dading.ssqs.R;
 import com.dading.ssqs.activity.BasketBallDetailsActivity;
+import com.dading.ssqs.activity.ScrollFootBallDetailsActivity;
 import com.dading.ssqs.adapter.newAdapter.ScrollBallCommitMenuAdapter;
 import com.dading.ssqs.base.LayoutHelper;
 import com.dading.ssqs.bean.ChampionBean;
@@ -436,6 +437,13 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
         getMergeBean(data);
     }
 
+    public void setFootDetailsData(List<ScrollFootBallDetailsActivity.FootData.FootItemData> list) {
+        isFirst = false;
+
+        List<MergeBean> data = getData(list);
+        getMergeBean(data);
+    }
+
     private void getMergeBean(List<MergeBean> data) {
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) recyclerView.getLayoutParams();
 
@@ -581,6 +589,20 @@ public class ScrollBallCommitMenuView extends RelativeLayout {
                 }
             } else if (list.get(i) instanceof BasketBallDetailsActivity.BasketData.BasketItemData) {
                 BasketBallDetailsActivity.BasketData.BasketItemData bean = (BasketBallDetailsActivity.BasketData.BasketItemData) list.get(i);
+
+                MergeBean mergeBean = new MergeBean();
+                mergeBean.setItemsId(bean.getId());
+                mergeBean.setItemsTitle(bean.getHomeName());
+                mergeBean.setItemsByTitle(bean.getAwayName());
+                mergeBean.setHome(true);
+                mergeBean.setTitle(bean.getTitle());
+                mergeBean.setOddsName(bean.getTitle());
+                mergeBean.setBeanStr(bean.getNumber());
+                mergeBean.setMoney("");
+
+                items.add(mergeBean);
+            } else if (list.get(i) instanceof ScrollFootBallDetailsActivity.FootData.FootItemData) {
+                ScrollFootBallDetailsActivity.FootData.FootItemData bean = (ScrollFootBallDetailsActivity.FootData.FootItemData) list.get(i);
 
                 MergeBean mergeBean = new MergeBean();
                 mergeBean.setItemsId(bean.getId());

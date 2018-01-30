@@ -135,7 +135,7 @@ class EarlyDefaultFragment : Fragment(), OnRefreshListener, NotificationControll
     }
 
     private val itemClickListener = object : ScrollBallItemAdapter.OnItemClickListener {
-        override fun onAllClick(id: Int) {
+        override fun onAllClick(id: String, title: String) {
         }
 
         override fun onItemClick(id: Int, bean: ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem, items: ScrollBallFootBallBean.ScrollBeanItems, isAdd: Boolean, isHome: Boolean, position: Int): Boolean {

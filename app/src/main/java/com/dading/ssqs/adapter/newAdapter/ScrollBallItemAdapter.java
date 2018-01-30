@@ -3,6 +3,7 @@ package com.dading.ssqs.adapter.newAdapter;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.dading.ssqs.bean.ScrollBallFootBallBean;
@@ -24,6 +25,11 @@ public class ScrollBallItemAdapter extends RecyclerView.Adapter<ScrollBallItemAd
     private int dataId;
     private List<ScrollBallDefaultFragment.MergeBean> focusList;
     private int pageType = -1;
+    private String title;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public void setPageType(int pageType) {
         this.pageType = pageType;
@@ -89,11 +95,19 @@ public class ScrollBallItemAdapter extends RecyclerView.Adapter<ScrollBallItemAd
             this.cell = cell;
         }
 
-        public void setData(ScrollBallFootBallBean.ScrollBeanItems bean) {
+        public void setData(final ScrollBallFootBallBean.ScrollBeanItems bean) {
             this.cell.setListener(listener);
             this.cell.setFocus(focusList);
             this.cell.setBeanId(dataId);
             this.cell.setData(bean, pageType);
+            this.cell.setAllClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        listener.onAllClick(bean.getId() + "", title);
+                    }
+                }
+            });
         }
     }
 
@@ -106,6 +120,6 @@ public class ScrollBallItemAdapter extends RecyclerView.Adapter<ScrollBallItemAd
     public interface OnItemClickListener {
         boolean onItemClick(int id, ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem bean, ScrollBallFootBallBean.ScrollBeanItems items, boolean isAdd, boolean isHome, int position);
 
-        void onAllClick(int id);
+        void onAllClick(String id, String title);
     }
 }

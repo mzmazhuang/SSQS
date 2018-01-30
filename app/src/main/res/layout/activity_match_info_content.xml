@@ -108,9 +108,10 @@
                         android:id="@+id/match_info_main_icon"
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
 
-                        />
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="12dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

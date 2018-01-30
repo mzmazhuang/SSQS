@@ -132,12 +132,12 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         View view = View.inflate(mContext, R.layout.fragment_scrollball, null);
         contentLayout.addView(view);
 
-        swipeToLoadLayout = (SwipeToLoadLayout) view.findViewById(R.id.swipeToLoadLayout);
+        swipeToLoadLayout = view.findViewById(R.id.swipeToLoadLayout);
         //为swipeToLoadLayout设置下拉刷新监听者
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setRefreshEnabled(false);//初始先不能刷新
 
-        RecyclerScrollview scrollview = (RecyclerScrollview) view.findViewById(R.id.swipe_target);
+        RecyclerScrollview scrollview = view.findViewById(R.id.swipe_target);
 
         LinearLayout infoLayout = new LinearLayout(mContext);
         infoLayout.setOrientation(LinearLayout.VERTICAL);
@@ -169,7 +169,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
             @Override
             public void onClick(View view) {
                 if (commitMenuView.getVisibility() == View.GONE) {
-                    commitMenuView.setTitle("滚球-篮球-" + bean == null ? "" : bean.leagueName);
+                    commitMenuView.setTitle("滚球-篮球-" + matchTitle);
                     if (myDatas.size() > 0) {
                         commitMenuView.setBasketDetailsData(myDatas);
                     } else {
@@ -233,6 +233,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         return container;
     }
 
+    //删除
     private ScrollBallCommitMenuAdapter.OnMenuClickListener menuClickListener = new ScrollBallCommitMenuAdapter.OnMenuClickListener() {
         @Override
         public void onClick(int position, int dataId, final int itemId, final String value) {
@@ -290,6 +291,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         }
     };
 
+    //下注
     private void pay() {
         List<ScrollBallCommitMenuView.MergeBean> moneyLists = commitMenuView.getMoney();
 
@@ -366,6 +368,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         }
     }
 
+    //下注
     private void basketBallPay(PayBallElement element) {
         SSQSApplication.apiClient(classGuid).payBall(element, new CcApiClient.OnCcListener() {
             @Override
@@ -388,6 +391,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         });
     }
 
+    //点击item
     private BasketBallDetailsItemCell.OnItemClickListener myClickListener = new BasketBallDetailsItemCell.OnItemClickListener() {
         @Override
         public boolean onClick(BasketData.BasketItemData data, BasketData basketData, boolean isAdd) {
@@ -417,6 +421,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         }
     };
 
+    //点击item
     private BasketBallDetailsItemCell.OnItemClickListener mainClickListener = new BasketBallDetailsItemCell.OnItemClickListener() {
         @Override
         public boolean onClick(BasketData.BasketItemData data, BasketData basketData, boolean isAdd) {
@@ -446,6 +451,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         }
     };
 
+    //收藏
     private BasketBallDetailsItemAdapter.OnItemClickListener myListener = new BasketBallDetailsItemAdapter.OnItemClickListener() {
         @Override
         public void onClick(final BasketData bean) {
@@ -487,6 +493,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
             element.setPayRateBallID(str);
             element.setPayTypeID(payTypeID);
+            element.setType(2);
 
             SSQSApplication.apiClient(classGuid).focusMatch(element, new CcApiClient.OnCcListener() {
                 @Override
@@ -541,6 +548,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         }
     };
 
+    //收藏
     private BasketBallDetailsItemAdapter.OnItemClickListener mainListener = new BasketBallDetailsItemAdapter.OnItemClickListener() {
         @Override
         public void onClick(final BasketData bean) {
@@ -582,6 +590,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
 
             element.setPayRateBallID(str);
             element.setPayTypeID(payTypeID);
+            element.setType(2);
 
             SSQSApplication.apiClient(classGuid).focusMatch(element, new CcApiClient.OnCcListener() {
                 @Override
@@ -649,6 +658,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         getBasketBallHeadInfo(matchID);
     }
 
+    //获取头信息
     private void getBasketBallHeadInfo(int matchId) {
         SSQSApplication.apiClient(classGuid).getBasketBallHeadInfo(matchId, new CcApiClient.OnCcListener() {
             @Override
@@ -685,12 +695,11 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                         getBasketBallInfo(bean.id);
                         getMyBasketBallInfo(bean.id);
                     }
-                } else
-
-                {
+                } else {
                     basketRefresh = true;
 
-                    checkRefresh();
+                    getBasketBallInfo(bean.id);
+                    getMyBasketBallInfo(bean.id);
                 }
             }
         });
@@ -774,6 +783,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         });
     }
 
+    //对数据进行筛选
     private void setData(final List<JCbean> items, final List<BasketBallLastBean> lastBean, final boolean isMain) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -801,6 +811,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
         SSQSApplication.cachedThreadPool.execute(thread);
     }
 
+    //对数据进行筛选
     private void checkRefresh() {
         if (mainRefresh && myRefresh && basketRefresh) {
             loadingDialog.dismiss();
@@ -819,7 +830,7 @@ public class BasketBallDetailsActivity extends BaseActivity implements OnRefresh
                         for (int i = 0; i < myDatas.size(); i++) {
                             for (int j = 0; j < mainDatas.size(); j++) {
                                 if (myDatas.get(i).getId() == mainDatas.get(j).getId()) {
-                                    mainDatas.get(j).setLike(true);
+                                    mainDatas.get(j).setLike(true);//收藏
                                     break;
                                 }
                             }

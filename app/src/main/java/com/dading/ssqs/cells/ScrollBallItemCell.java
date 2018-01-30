@@ -76,14 +76,6 @@ public class ScrollBallItemCell extends LinearLayout {
         allImageView = new ImageView(context);
         allImageView.setId(R.id.scroll_all_play);
         allImageView.setImageResource(R.mipmap.ic_all_play);
-        allImageView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onAllClick(beanId);
-                }
-            }
-        });
         topLayout.addView(allImageView, LayoutHelper.createRelative(LayoutHelper.WRAP_CONTENT, LayoutHelper.MATCH_PARENT, 0, 0, 12, 0, RelativeLayout.ALIGN_PARENT_RIGHT));
 
         titleTextLayout = new LinearLayout(context);
@@ -280,6 +272,17 @@ public class ScrollBallItemCell extends LinearLayout {
                 titleTextView.setText(title);
             }
         }
+    }
+
+    public void setAllClickListener(final OnClickListener listener) {
+        allImageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onClick(view);
+                }
+            }
+        });
     }
 
     public void setBeanId(int id) {

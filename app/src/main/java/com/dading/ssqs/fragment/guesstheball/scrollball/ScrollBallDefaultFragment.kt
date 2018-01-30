@@ -234,10 +234,11 @@ class ScrollBallDefaultFragment : Fragment(), OnRefreshListener, NotificationCon
             }
         }
 
-        override fun onAllClick(id: Int) {
+        override fun onAllClick(id: String, title: String) {
             val intent = Intent(context!!.applicationContext, ScrollFootBallDetailsActivity::class.java)
 
             intent.putExtra("data_id", id)
+            intent.putExtra("data_title", title)
 
             startActivity(intent)
         }

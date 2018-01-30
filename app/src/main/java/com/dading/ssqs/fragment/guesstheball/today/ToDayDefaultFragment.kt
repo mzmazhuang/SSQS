@@ -90,7 +90,7 @@ class ToDayDefaultFragment : Fragment(), OnRefreshListener, NotificationControll
     private var isFilter = false
 
     private val itemClickListener = object : ScrollBallItemAdapter.OnItemClickListener {
-        
+
         override fun onItemClick(id: Int, bean: ScrollBallFootBallBean.ScrollBeanItems.ScrollBeanItem, items: ScrollBallFootBallBean.ScrollBeanItems, isAdd: Boolean, isHome: Boolean, position: Int): Boolean {
             //联赛id                                      //所点击的item                          //所点击的联赛信息                                                //是否是主场       //点击的位置
             if (leagueMatchId == id || leagueMatchId == -1) {
@@ -191,7 +191,7 @@ class ToDayDefaultFragment : Fragment(), OnRefreshListener, NotificationControll
             }
         }
 
-        override fun onAllClick(id: Int) {
+        override fun onAllClick(id: String, title: String) {
 
         }
     }

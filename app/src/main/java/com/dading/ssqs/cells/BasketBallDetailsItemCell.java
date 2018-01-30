@@ -124,7 +124,7 @@ public class BasketBallDetailsItemCell extends LinearLayout {
         layout.addView(moreRowTwoColumLayout, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
         View view = new View(context);
-        view.setBackgroundColor(0xFFE7E7E7);
+        view.setBackgroundColor(0xFFF5F4F9);
         addView(view, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 8));
     }
 

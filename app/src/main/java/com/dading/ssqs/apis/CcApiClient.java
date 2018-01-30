@@ -1113,6 +1113,30 @@ public class CcApiClient {
         Request("/v1.0/pay/matchID/" + matchId, null, mListener, false);
     }
 
+    /**
+     * 足球赔率 我的盘口  全场赛果、全场让球、全场大小、半场赛果、半场让球、半场大小、全场单双、半场单双
+     *
+     * @param matchId
+     * @param listener
+     */
+    public void getFootInfo(String matchId, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doMatchResult");
+
+        Request("/v1.0/pay/foucePay/matchID/" + matchId, null, mListener, false);
+    }
+
+    /**
+     * 4.足球 我的盘口 进球区间数、全场比分主胜、全场比分主平、全场比分主负、全场比分其他、半全场赛果、
+     *
+     * @param matchId
+     * @param listener
+     */
+    public void getFootDetails(String matchId, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doScoreByIdList");
+
+        Request("/v1.0/pay/foucePay/score/matchID/" + matchId, null, mListener, false);
+    }
+
     //篮球信息
     public void getMatchBasketBallResult(String matchId, String status, OnCcListener listener) {
         CcListener mListener = new CcListener(listener, "doMatchBasketBallResult");
@@ -1595,6 +1619,18 @@ public class CcApiClient {
         } else {
             Request("/v1.0/match/roll/ball/subType/0/leagueIDs/" + leagueIDs + "/stype/" + sType + "/page/" + offset + "/count/" + limit + "", null, mListener, false);
         }
+    }
+
+    /**
+     * 足球全部玩法头部信息
+     *
+     * @param matchId
+     * @param listener
+     */
+    public void getFootHeadInfo(String matchId, OnCcListener listener) {
+        CcListener mListener = new CcListener(listener, "doFootBallHeadInfoResult");
+
+        Request("/v1.0/match/part/matchID/" + matchId, null, mListener, false);
     }
 
     //足球早盘数据
@@ -2382,7 +2418,7 @@ public class CcApiClient {
                     mRes.fromMatchBasketLastResult(arg0);
                 } else if (mTag.equals("doRankListResult")) {
                     mRes.fromRankListResult(arg0);
-                } else if (mTag.equals("doBasketBallHeadInfoResult")) {
+                } else if (mTag.equals("doBasketBallHeadInfoResult") || mTag.equals("doFootBallHeadInfoResult")) {
                     mRes.fromBasketBallHeadInfoResult(arg0);
                 } else if (mTag.equals("doGuessBallTotal")) {
                     mRes.fromGuessBallTotalResult(arg0);

@@ -50,6 +50,7 @@ public class JCScorebean {
             public String returnNum;
             public int wdr;
             public int type;
+            public int payTypeID;
         }
     }
 }

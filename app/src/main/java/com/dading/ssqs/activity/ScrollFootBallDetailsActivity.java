@@ -608,7 +608,6 @@ public class ScrollFootBallDetailsActivity extends BaseActivity implements OnRef
                         headCell.setHomeTeamInfo(bean.home, bean.hOverTimeScore, bean.hHalfScore, bean.hSHalfScore, bean.homeScore);
                         headCell.setvisitingTeamInfo(bean.away, bean.aOverTimeScore, bean.aHalfScore, bean.aSHalfScore, bean.awayScore);
                         headCell.setSection(bean.protime);
-
                     }
 
                     getMyNetDataWork();

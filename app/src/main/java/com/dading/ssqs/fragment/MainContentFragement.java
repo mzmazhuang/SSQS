@@ -37,7 +37,6 @@ import butterknife.ButterKnife;
  * 更新者     $Author$
  * 更新时间   $Date$
  * 更新描述   ${}
- * 测试
  */
 public class MainContentFragement extends BaseFragnment implements RadioGroup.OnCheckedChangeListener {
 
